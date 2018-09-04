@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x Service Discovery - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">Download</a></li>
+        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.tk/community/">Community</a></li>
+        <li><a href="https://vertx.tk/materials/">Materials</a></li>
+        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x Service Discovery</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_using_the_service_discovery">Using the service discovery</a></li>
+<li><a href="#_overall_concepts">Overall concepts</a>
+<ul class="sectlevel2">
+<li><a href="#_service_records">Service records</a></li>
+<li><a href="#_service_provider_and_publisher">Service Provider and publisher</a></li>
+<li><a href="#_service_consumer">Service Consumer</a></li>
+<li><a href="#_service_object">Service object</a></li>
+<li><a href="#_service_types">Service types</a></li>
+<li><a href="#_service_events">Service events</a></li>
+<li><a href="#_backend">Backend</a></li>
+</ul>
+</li>
+<li><a href="#_creating_a_service_discovery_instance">Creating a service discovery instance</a></li>
+<li><a href="#_publishing_services">Publishing services</a></li>
+<li><a href="#_withdrawing_services">Withdrawing services</a></li>
+<li><a href="#_looking_for_services">Looking for services</a></li>
+<li><a href="#_retrieving_a_service_reference">Retrieving a service reference</a></li>
+<li><a href="#_types_of_services">Types of services</a>
+<ul class="sectlevel2">
+<li><a href="#_services_with_no_type">Services with no type</a></li>
+<li><a href="#_http_endpoints">HTTP endpoints</a></li>
+<li><a href="#_event_bus_services">Event bus services</a></li>
+<li><a href="#_message_source">Message source</a></li>
+<li><a href="#_jdbc_data_source">JDBC Data source</a></li>
+<li><a href="#_redis_data_source">Redis Data source</a></li>
+<li><a href="#_mongo_data_source">Mongo Data source</a></li>
+</ul>
+</li>
+<li><a href="#_listening_for_service_arrivals_and_departures">Listening for service arrivals and departures</a></li>
+<li><a href="#_listening_for_service_usage">Listening for service usage</a></li>
+<li><a href="#_service_discovery_bridges">Service discovery bridges</a></li>
+<li><a href="#_additional_bridges">Additional bridges</a></li>
+<li><a href="#_additional_backends">Additional backends</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_using_the_service_discovery">Using the service discovery</a></li>
+<li><a href="#_overall_concepts">Overall concepts</a>
+<ul class="sectlevel2">
+<li><a href="#_service_records">Service records</a></li>
+<li><a href="#_service_provider_and_publisher">Service Provider and publisher</a></li>
+<li><a href="#_service_consumer">Service Consumer</a></li>
+<li><a href="#_service_object">Service object</a></li>
+<li><a href="#_service_types">Service types</a></li>
+<li><a href="#_service_events">Service events</a></li>
+<li><a href="#_backend">Backend</a></li>
+</ul>
+</li>
+<li><a href="#_creating_a_service_discovery_instance">Creating a service discovery instance</a></li>
+<li><a href="#_publishing_services">Publishing services</a></li>
+<li><a href="#_withdrawing_services">Withdrawing services</a></li>
+<li><a href="#_looking_for_services">Looking for services</a></li>
+<li><a href="#_retrieving_a_service_reference">Retrieving a service reference</a></li>
+<li><a href="#_types_of_services">Types of services</a>
+<ul class="sectlevel2">
+<li><a href="#_services_with_no_type">Services with no type</a></li>
+<li><a href="#_http_endpoints">HTTP endpoints</a></li>
+<li><a href="#_event_bus_services">Event bus services</a></li>
+<li><a href="#_message_source">Message source</a></li>
+<li><a href="#_jdbc_data_source">JDBC Data source</a></li>
+<li><a href="#_redis_data_source">Redis Data source</a></li>
+<li><a href="#_mongo_data_source">Mongo Data source</a></li>
+</ul>
+</li>
+<li><a href="#_listening_for_service_arrivals_and_departures">Listening for service arrivals and departures</a></li>
+<li><a href="#_listening_for_service_usage">Listening for service usage</a></li>
+<li><a href="#_service_discovery_bridges">Service discovery bridges</a></li>
+<li><a href="#_additional_bridges">Additional bridges</a></li>
+<li><a href="#_additional_backends">Additional backends</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This component provides an infrastructure to publish and discover various resources, such as service
+proxies, HTTP endpoints, data sources&#8230;&#8203; These resources are called <code>services</code>. A <code>service</code> is a discoverable
+functionality. It can be qualified by its type, metadata, and location. So a <code>service</code> can be a database, a
+service proxy, a HTTP endpoint and any other resource you can imagine as soon as you can describe it, discover it
+and interact with it. It does not have to be a vert.x entity, but can be anything. Each service is described by a
+<code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The service discovery implements the interactions defined in service-oriented computing. And to some extent,
+also provides the dynamic service-oriented computing interactions. So, applications can react to arrival and
+departure of services.</p>
+</div>
+<div class="paragraph">
+<p>A service provider can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>publish a service record</p>
+</li>
+<li>
+<p>un-publish a published record</p>
+</li>
+<li>
+<p>update the status of a published service (down, out of service&#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A service consumer can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>lookup services</p>
+</li>
+<li>
+<p>bind to a selected service (it gets a <code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html">ServiceReference</a></code>) and use it</p>
+</li>
+<li>
+<p>release the service once the consumer is done with it</p>
+</li>
+<li>
+<p>listen for arrival, departure and modification of services.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Consumer would 1) lookup a service record matching their need, 2) retrieve the
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html">ServiceReference</a></code> that give access to the service, 3) get a service object to access
+the service, 4) release the service object once done.</p>
+</div>
+<div class="paragraph">
+<p>The process can be simplified using <em>service type</em> where you can directly retrieve the service object if you know
+from which type it is (JDBC client, Http client&#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>As stated above, the central piece of information shared by the providers and consumers are
+<code><a href="../../vertx-service-discovery/dataobjects.html#Record">records</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Providers and consumers must create their own <code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html">ServiceDiscovery</a></code> instance. These
+instances are collaborating in the background (distributed structure) to keep the set of services in sync.</p>
+</div>
+<div class="paragraph">
+<p>The service discovery supports bridges to import and export services from / to other discovery technologies.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_service_discovery">Using the service discovery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use the Vert.x service discovery, add the following dependency to the <em>dependencies</em> section of your build
+descriptor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+&lt;groupId&gt;io.vertx&lt;/groupId&gt;
+&lt;artifactId&gt;vertx-service-discovery&lt;/artifactId&gt;
+&lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-service-discovery:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overall_concepts">Overall concepts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The discovery mechanism is based on a few concepts explained in this section.</p>
+</div>
+<div class="sect2">
+<h3 id="_service_records">Service records</h3>
+<div class="paragraph">
+<p>A service <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> is an object that describes a service published by a service
+provider. It contains a name, some metadata, a location object (describing where is the service). This record is
+the only object shared by the provider (having published it) and the consumer (retrieve it when doing a lookup).</p>
+</div>
+<div class="paragraph">
+<p>The metadata and even the location format depend on the <code>service type</code> (see below).</p>
+</div>
+<div class="paragraph">
+<p>A record is published when the provider is ready to be used, and withdrawn when the service provider is stopping.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_provider_and_publisher">Service Provider and publisher</h3>
+<div class="paragraph">
+<p>A service provider is an entity providing a <em>service</em>. The publisher is responsible for publishing a record
+describing the provider. It may be a single entity (a provider publishing itself) or a different entity.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_consumer">Service Consumer</h3>
+<div class="paragraph">
+<p>Service consumers search for services in the service discovery. Each lookup retrieves <code>0..n</code>
+<code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>. From these records, a consumer can retrieve a
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html">ServiceReference</a></code>, representing the binding between the consumer and the provider.
+This reference allows the consumer to retrieve the <em>service object</em> (to use the service),  and release the service.</p>
+</div>
+<div class="paragraph">
+<p>It is important to release service references to cleanup the objects and update the service usages.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_object">Service object</h3>
+<div class="paragraph">
+<p>The service object is the object that gives access to a service. It can come in various forms, such as a proxy, a client,
+and may even be non-existent for some service types. The nature of the service object depends on the service type.</p>
+</div>
+<div class="paragraph">
+<p>Notice that because of the polyglot nature of Vert.x, the service object can differ if you retrieve it from Java,
+Groovy or another language.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_types">Service types</h3>
+<div class="paragraph">
+<p>Services are just resources, and there are a lot of different kinds of services. They can be functional services,
+databases, REST APIs, and so on. The Vert.x service discovery has the concept of service types to handle this
+heterogeneity. Each type defines:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>how the service is located (URI, event bus address, IP / DNS&#8230;&#8203;) - <em>location</em></p>
+</li>
+<li>
+<p>the nature of the service object (service proxy, HTTP client, message consumer&#8230;&#8203;) - <em>client</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some service types are implemented and provided by the service discovery component, but you can add
+your own.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_events">Service events</h3>
+<div class="paragraph">
+<p>Every time a service provider is published or withdrawn, an event is fired on the event bus. This event contains
+the record that has been modified.</p>
+</div>
+<div class="paragraph">
+<p>In addition, in order to track who is using who, every time a reference is retrieved with
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html#get_reference-instance_method">getReference</a></code> or released with
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html#release-instance_method">release</a></code>, events are emitted on the event bus to track the
+service usages.</p>
+</div>
+<div class="paragraph">
+<p>More details on these events below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_backend">Backend</h3>
+<div class="paragraph">
+<p>The service discovery uses a Vert.x distributed data structure to store the records. So, all members of the cluster
+have access to all the records. This is the default backend implementation. You can implement your own by
+implementing the <code><a href="unavailable">ServiceDiscoveryBackend</a></code> SPI. For instance, we provide an
+implementation based on Redis.</p>
+</div>
+<div class="paragraph">
+<p>Notice that the discovery does not require Vert.x clustering. In single-node mode, the structure is local. It can
+be populated with <code><a href="../../yardoc/VertxServiceDiscovery/ServiceImporter.html">ServiceImporter</a>`s. Since 3.5.0, you can use a local
+structure even in clustered mode by setting the system property `vertx-service-discovery-backend-local</code> to <code>true</code> (or
+the environment variable <code>VERTX-SERVICE-DISCOVERY-BACKEND-LOCAL</code> to <code>true</code>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_service_discovery_instance">Creating a service discovery instance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Publishers and consumers must create their own <code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html">ServiceDiscovery</a></code>
+instance to use the discovery infrastructure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+# Use default configuration
+discovery = VertxServiceDiscovery::ServiceDiscovery.create(vertx)
+
+# Customize the configuration
+discovery = VertxServiceDiscovery::ServiceDiscovery.create(vertx, {
+  'announceAddress' =&gt; "service-announce",
+  'name' =&gt; "my-name"
+})
+
+# Do something...
+
+discovery.close()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default, the announce address (the event bus address on which service events are sent is: <code>vertx.discovery
+.announce</code>. You can also configure a name used for the service usage (see section about service usage).</p>
+</div>
+<div class="paragraph">
+<p>When you don&#8217;t need the service discovery object anymore, don&#8217;t forget to close it. It closes the different
+discovery importers and exporters you have configured and releases the service references.</p>
+</div>
+<div class="paragraph">
+<p>You should avoid sharing the service discovery instance, so service usage would represent the right "usages".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_publishing_services">Publishing services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have a service discovery instance, you can publish services. The process is the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>create a record for a specific service provider</p>
+</li>
+<li>
+<p>publish this record</p>
+</li>
+<li>
+<p>keep the published record that is used to un-publish a service or modify it.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To create records, you can either use the <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> class, or use convenient methods
+from the service types.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/http_endpoint'
+# Manual record creation
+record = {
+  'type' =&gt; "eventbus-service-proxy",
+  'location' =&gt; {
+    'endpoint' =&gt; "the-service-address"
+  },
+  'name' =&gt; "my-service",
+  'metadata' =&gt; {
+    'some-label' =&gt; "some-value"
+  }
+}
+
+discovery.publish(record) { |ar_err,ar|
+  if (ar_err == nil)
+    # publication succeeded
+    publishedRecord = ar
+  else
+    # publication failed
+  end
+}
+
+# Record creation from a type
+record = VertxServiceDiscovery::HttpEndpoint.create_record("some-rest-api", "localhost", 8080, "/api")
+discovery.publish(record) { |ar_err,ar|
+  if (ar_err == nil)
+    # publication succeeded
+    publishedRecord = ar
+  else
+    # publication failed
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is important to keep a reference on the returned records, as this record has been extended by a <code>registration id</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_withdrawing_services">Withdrawing services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To withdraw (un-publish) a record, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">discovery.unpublish(record['registration']) { |ar_err,ar|
+  if (ar_err == nil)
+    # Ok
+  else
+    # cannot un-publish the service, may have already been removed, or the record is not published
+  end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_looking_for_services">Looking for services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>This section explains the low-level process to retrieve services, each service type provide convenient method to
+aggregates the different steps.</em></p>
+</div>
+<div class="paragraph">
+<p>On the consumer side, the first thing to do is to lookup for records. You can search for a single record or all
+the matching ones. In the first case, the first matching record is returned.</p>
+</div>
+<div class="paragraph">
+<p>Consumer can pass a filter to select the service. There are two ways to describe the filter:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A function taking a <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> as parameter and returning a boolean (it&#8217;s a
+predicate)</p>
+</li>
+<li>
+<p>This filter is a JSON object. Each entry of the given filter is checked against the record. All entries must
+exactly match the record. The entry can use the special <code>*</code> value to denote a requirement on the key, but not on
+the value.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see an example of a JSON filter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{ "name" = "a" } =&gt; matches records with name set to "a"
+{ "color" = "*" } =&gt; matches records with "color" set
+{ "color" = "red" } =&gt; only matches records with "color" set to "red"
+{ "color" = "red", "name" = "a"} =&gt; only matches records with name set to "a", and color set to "red"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the JSON filter is not set ({@code null} or empty), it accepts all records. When using functions, to accept all
+records, you must return <em>true</em> regardless the record.</p>
+</div>
+<div class="paragraph">
+<p>Here are some examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"># Get any record
+discovery.get_record(lambda { |r|
+  true
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    if (ar != nil)
+      # we have a record
+    else
+      # the lookup succeeded, but no matching service
+    end
+  else
+    # lookup failed
+  end
+}
+
+discovery.get_record(nil) { |ar_err,ar|
+  if (ar_err == nil)
+    if (ar != nil)
+      # we have a record
+    else
+      # the lookup succeeded, but no matching service
+    end
+  else
+    # lookup failed
+  end
+}
+
+
+# Get a record by name
+discovery.get_record(lambda { |r|
+  r['name'].==("some-name")
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    if (ar != nil)
+      # we have a record
+    else
+      # the lookup succeeded, but no matching service
+    end
+  else
+    # lookup failed
+  end
+}
+
+discovery.get_record({
+  'name' =&gt; "some-service"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    if (ar != nil)
+      # we have a record
+    else
+      # the lookup succeeded, but no matching service
+    end
+  else
+    # lookup failed
+  end
+}
+
+# Get all records matching the filter
+discovery.get_records(lambda { |r|
+  "some-value".==(r['metadata']['some-label'])
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    results = ar
+    # If the list is not empty, we have matching record
+    # Else, the lookup succeeded, but no matching service
+  else
+    # lookup failed
+  end
+}
+
+
+discovery.get_records({
+  'some-label' =&gt; "some-value"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    results = ar
+    # If the list is not empty, we have matching record
+    # Else, the lookup succeeded, but no matching service
+  else
+    # lookup failed
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can retrieve a single record or all matching records with
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html#get_records-instance_method">getRecords</a></code>.
+By default, record lookup does include only records with a <code>status</code> set to <code>UP</code>. This can be overridden:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>when using JSON filter, just set <code>status</code> to the value you want (or <code>*</code> to accept all status)</p>
+</li>
+<li>
+<p>when using function, set the <code>includeOutOfService</code> parameter to <code>true</code> in
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html#get_records-instance_method">getRecords</a></code>
+.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_retrieving_a_service_reference">Retrieving a service reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have chosen the <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>, you can retrieve a
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html">ServiceReference</a></code> and then the service object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/http_client'
+require 'vertx/message_consumer'
+reference1 = discovery.get_reference(record1)
+reference2 = discovery.get_reference(record2)
+
+# Then, gets the service object, the returned type depends on the service type:
+# For http endpoint:
+client = reference1.get_as(Vertx::HttpClient::class)
+# For message source
+consumer = reference2.get_as(Vertx::MessageConsumer::class)
+
+# When done with the service
+reference1.release()
+reference2.release()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Don&#8217;t forget to release the reference once done.</p>
+</div>
+<div class="paragraph">
+<p>The service reference represents a binding with the service provider.</p>
+</div>
+<div class="paragraph">
+<p>When retrieving a service reference you can pass a <code><a href="unavailable">JsonObject</a></code> used to configure the
+service object. It can contain various data about the service object. Some service types do not need additional
+configuration, some require configuration (as data sources):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-jdbc/jdbc_client'
+reference = discovery.get_reference_with_configuration(record, conf)
+
+# Then, gets the service object, the returned type depends on the service type:
+# For http endpoint:
+client = reference.get_as(VertxJdbc::JDBCClient::class)
+
+# Do something with the client...
+
+# When done with the service
+reference.release()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the previous examples, the code uses
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html#get_as-instance_method">getAs</a></code>. The parameter is the type of
+object you expect to get. If you are using Java, you can use
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceReference.html#get-instance_method">get</a></code>. However in the other language you must pass the expected
+type.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_types_of_services">Types of services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A said above, the service discovery has the service type concept to manage the heterogeneity of the
+different services.</p>
+</div>
+<div class="paragraph">
+<p>These types are provided by default:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="../../yardoc/VertxServiceDiscovery/HttpEndpoint.html">HttpEndpoint</a></code> - for REST API&#8217;s, the service object is a
+<code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code> configured on the host and port (the location is the url).</p>
+</li>
+<li>
+<p><code><a href="../../yardoc/VertxServiceDiscovery/EventBusService.html">EventBusService</a></code> - for service proxies, the service object is a proxy. Its
+type is the proxies interface (the location is the address).</p>
+</li>
+<li>
+<p><code><a href="../../yardoc/VertxServiceDiscovery/MessageSource.html">MessageSource</a></code> - for message sources (publisher), the service object is a
+<code><a href="../../yardoc/Vertx/MessageConsumer.html">MessageConsumer</a></code> (the location is the address).</p>
+</li>
+<li>
+<p><code><a href="../../yardoc/VertxServiceDiscovery/JDBCDataSource.html">JDBCDataSource</a></code> - for JDBC data sources, the service object is a
+<code><a href="../../yardoc/VertxJdbc/JDBCClient.html">JDBCClient</a></code> (the configuration of the client is computed from the location, metadata and
+consumer configuration).</p>
+</li>
+<li>
+<p><code><a href="../../yardoc/VertxServiceDiscovery/RedisDataSource.html">RedisDataSource</a></code> - for Redis data sources, the service object is a
+<code><a href="../../yardoc/VertxRedis/RedisClient.html">RedisClient</a></code> (the configuration of the client is computed from the location, metadata and
+consumer configuration).</p>
+</li>
+<li>
+<p><code><a href="../../yardoc/VertxServiceDiscovery/MongoDataSource.html">MongoDataSource</a></code> - for Mongo data sources, the service object is a
+<code><a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a></code> (the configuration of the client is computed from the location, metadata and
+consumer configuration).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This section gives details about service types in general and describes how to use the default service types.</p>
+</div>
+<div class="sect2">
+<h3 id="_services_with_no_type">Services with no type</h3>
+<div class="paragraph">
+<p>Some records may have no type (<code><a href="todo">ServiceType.UNKNOWN</a></code>). It is not possible to
+retrieve a reference for these records, but you can build the connection details from the <code>location</code> and
+<code>metadata</code> of the <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Using these services does not fire service usage events.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_http_endpoints">HTTP endpoints</h3>
+<div class="paragraph">
+<p>A HTTP endpoint represents a REST API or a service accessible using HTTP requests. The HTTP endpoint service
+objects are <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code> configured with the host, port and ssl.</p>
+</div>
+<div class="sect3">
+<h4 id="_publishing_a_http_endpoint">Publishing a HTTP endpoint</h4>
+<div class="paragraph">
+<p>To publish a HTTP endpoint, you need a <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>. You can create the record using
+<code><a href="../../yardoc/VertxServiceDiscovery/HttpEndpoint.html#create_record-class_method">HttpEndpoint.createRecord</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The next snippet illustrates hot to create a <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> from
+<code><a href="../../yardoc/VertxServiceDiscovery/HttpEndpoint.html">HttpEndpoint</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/http_endpoint'
+record1 = VertxServiceDiscovery::HttpEndpoint.create_record("some-http-service", "localhost", 8433, "/api")
+
+discovery.publish(record1) { |ar_err,ar|
+  # ...
+}
+
+record2 = VertxServiceDiscovery::HttpEndpoint.create_record("some-other-name", true, "localhost", 8433, "/api", {
+  'some-metadata' =&gt; "some value"
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you run your service in a container or on the cloud, it may not know its public IP and public port, so the
+publication must be done by another entity having this info. Generally it&#8217;s a bridge.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_a_http_endpoint">Consuming a HTTP endpoint</h4>
+<div class="paragraph">
+<p>Once a HTTP endpoint is published, a consumer can retrieve it. The service object is a
+<code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code> with a port and host configured:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/http_client'
+# Get the record
+discovery.get_record({
+  'name' =&gt; "some-http-service"
+}) { |ar_err,ar|
+  if (ar_err == nil &amp;&amp; ar != nil)
+    # Retrieve the service reference
+    reference = discovery.get_reference(ar)
+    # Retrieve the service object
+    client = reference.get_as(Vertx::HttpClient::class)
+
+    # You need to path the complete path
+    client.get_now("/api/persons") { |response|
+
+      # ...
+
+      # Dont' forget to release the service
+      reference.release()
+
+    }
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the
+<code><a href="../../yardoc/VertxServiceDiscovery/HttpEndpoint.html#get_client-class_method">HttpEndpoint.getClient</a></code>
+method to combine lookup and service retrieval in one call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+require 'vertx-service-discovery/http_endpoint'
+VertxServiceDiscovery::HttpEndpoint.get_client(discovery, {
+  'name' =&gt; "some-http-service"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    client = ar
+
+    # You need to path the complete path
+    client.get_now("/api/persons") { |response|
+
+      # ...
+
+      # Dont' forget to release the service
+      VertxServiceDiscovery::ServiceDiscovery.release_service_object(discovery, client)
+
+    }
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this second version, the service object is released using
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html#release_service_object-class_method">ServiceDiscovery.releaseServiceObject</a></code>,
+so you don&#8217;t need to keep the service reference.</p>
+</div>
+<div class="paragraph">
+<p>Since Vert.x 3.4.0, another client has been provided. This higher-level client, named <code><a href="../../yardoc/VertxWebClient/WebClient.html">WebClient</a></code>
+tends to be easier to use. You can retrieve a <code><a href="../../yardoc/VertxWebClient/WebClient.html">WebClient</a></code> instances using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-web-client/web_client'
+# Get the record
+discovery.get_record({
+  'name' =&gt; "some-http-service"
+}) { |ar_err,ar|
+  if (ar_err == nil &amp;&amp; ar != nil)
+    # Retrieve the service reference
+    reference = discovery.get_reference(ar)
+    # Retrieve the service object
+    client = reference.get_as(VertxWebClient::WebClient::class)
+
+    # You need to path the complete path
+    client.get("/api/persons").send() { |response_err,response|
+
+      # ...
+
+      # Dont' forget to release the service
+      reference.release()
+
+    }
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And, if you prefer the approach using the service type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+require 'vertx-service-discovery/http_endpoint'
+VertxServiceDiscovery::HttpEndpoint.get_web_client(discovery, {
+  'name' =&gt; "some-http-service"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    client = ar
+
+    # You need to path the complete path
+    client.get("/api/persons").send() { |response_err,response|
+
+      # ...
+
+      # Dont' forget to release the service
+      VertxServiceDiscovery::ServiceDiscovery.release_service_object(discovery, client)
+
+    }
+  end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_event_bus_services">Event bus services</h3>
+<div class="paragraph">
+<p>Event bus services are service proxies. They implement async-RPC services on top of the event bus. When retrieving
+a service object from an event bus service, you get a service proxy of the right type. You can access helper
+methods from <code><a href="../../yardoc/VertxServiceDiscovery/EventBusService.html">EventBusService</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Notice that service proxies (service implementations and service interfaces) are developed in Java.</p>
+</div>
+<div class="sect3">
+<h4 id="_publishing_an_event_bus_service">Publishing an event bus service</h4>
+<div class="paragraph">
+<p>To publish an event bus service, you need to create a <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/event_bus_service'
+record = VertxServiceDiscovery::EventBusService.create_record("some-eventbus-service", "address", "examples.MyService", {
+  'some-metadata' =&gt; "some value"
+})
+
+discovery.publish(record) { |ar_err,ar|
+  # ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_an_event_bus_service">Consuming an event bus service</h4>
+<div class="paragraph">
+<p>To consume an event bus service you can either retrieve the record and then get the reference, or use the
+<code><a href="../../yardoc/VertxServiceDiscovery/EventBusService.html">EventBusService</a></code> interface that combines the two operations in one call.</p>
+</div>
+<div class="paragraph">
+<p>However, as the service is searched by (Java) interface, you need to specify the type of client you expect.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+require 'vertx-service-discovery/event_bus_service'
+require 'org-acme/MyService'
+VertxServiceDiscovery::EventBusService.get_service_proxy_with_json_filter(discovery, {
+'service.interface' =&gt; "org.acme.MyService"
+}, Acme::MyService) { |ar_err,ar|
+if (ar_err == nil)
+service = ar
+
+# Dont' forget to release the service
+VertxServiceDiscovery::ServiceDiscovery.release_service_object(discovery, service)
+end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_message_source">Message source</h3>
+<div class="paragraph">
+<p>A message source is a component sending messages on the event bus on a specific address. Message source clients are
+<code><a href="../../yardoc/Vertx/MessageConsumer.html">MessageConsumer</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The <em>location</em> or a message source service is the event bus address on which messages are sent.</p>
+</div>
+<div class="sect3">
+<h4 id="_publishing_a_message_source">Publishing a message source</h4>
+<div class="paragraph">
+<p>As for the other service types, publishing a message source is a 2-step process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>create a record, using <code><a href="../../yardoc/VertxServiceDiscovery/MessageSource.html">MessageSource</a></code></p>
+</li>
+<li>
+<p>publish the record</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/message_source'
+record = VertxServiceDiscovery::MessageSource.create_record("some-message-source-service", "some-address")
+
+discovery.publish(record) { |ar_err,ar|
+  # ...
+}
+
+record = VertxServiceDiscovery::MessageSource.create_record("some-other-message-source-service", "some-address", "examples.MyData")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the second record, the type of payload is also indicated. This information is optional.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_a_message_source">Consuming a message source</h4>
+<div class="paragraph">
+<p>On the consumer side, you can retrieve the record and the reference, or use the
+<code><a href="../../yardoc/VertxServiceDiscovery/MessageSource.html">MessageSource</a></code> class to retrieve the service is one call.</p>
+</div>
+<div class="paragraph">
+<p>With the first approach, the code is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/message_consumer'
+# Get the record
+discovery.get_record({
+  'name' =&gt; "some-message-source-service"
+}) { |ar_err,ar|
+  if (ar_err == nil &amp;&amp; ar != nil)
+    # Retrieve the service reference
+    reference = discovery.get_reference(ar)
+    # Retrieve the service object
+    consumer = reference.get_as(Vertx::MessageConsumer::class)
+
+    # Attach a message handler on it
+    consumer.handler() { |message|
+      # message handler
+      payload = message.body()
+    }
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When, using <code><a href="../../yardoc/VertxServiceDiscovery/MessageSource.html">MessageSource</a></code>, it becomes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/message_source'
+VertxServiceDiscovery::MessageSource.get_consumer(discovery, {
+  'name' =&gt; "some-message-source-service"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    consumer = ar
+
+    # Attach a message handler on it
+    consumer.handler() { |message|
+      # message handler
+      payload = message.body()
+    }
+    # ...
+  end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jdbc_data_source">JDBC Data source</h3>
+<div class="paragraph">
+<p>Data sources represents databases or data stores. JDBC data sources are a specialization for databases accessible
+using a JDBC driver. The client of a JDBC data source service is a <code><a href="../../yardoc/VertxJdbc/JDBCClient.html">JDBCClient</a></code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_publishing_a_jdbc_service">Publishing a JDBC service</h4>
+<div class="paragraph">
+<p>As for the other service types, publishing a JDBC data source is a 2-step process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>create a record, using <code><a href="../../yardoc/VertxServiceDiscovery/JDBCDataSource.html">JDBCDataSource</a></code></p>
+</li>
+<li>
+<p>publish the record</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/jdbc_data_source'
+record = VertxServiceDiscovery::JDBCDataSource.create_record("some-data-source-service", {
+  'url' =&gt; "some jdbc url"
+}, {
+  'some-metadata' =&gt; "some-value"
+})
+
+discovery.publish(record) { |ar_err,ar|
+  # ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As JDBC data sources can represent a high variety of databases, and their access is often different, the record is
+rather unstructured. The <code>location</code> is a simple JSON object that should provide the fields to access the data
+source (JDBC url, username&#8230;&#8203;). The set of fields may depend on the database but also on the connection pool used
+in front.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_a_jdbc_service">Consuming a JDBC service</h4>
+<div class="paragraph">
+<p>As stated in the previous section, how to access a data source depends on the data source itself. To build the
+<code><a href="../../yardoc/VertxJdbc/JDBCClient.html">JDBCClient</a></code>, you can merge configuration: the record location, the metadata and a json object provided by
+the consumer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-jdbc/jdbc_client'
+# Get the record
+discovery.get_record({
+  'name' =&gt; "some-data-source-service"
+}) { |ar_err,ar|
+  if (ar_err == nil &amp;&amp; ar != nil)
+    # Retrieve the service reference
+    reference = discovery.get_reference_with_configuration(ar, {
+      'username' =&gt; "clement",
+      'password' =&gt; "*****"
+    })
+
+    # Retrieve the service object
+    client = reference.get_as(VertxJdbc::JDBCClient::class)
+
+    # ...
+
+    # when done
+    reference.release()
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the <code><a href="../../yardoc/VertxJdbc/JDBCClient.html">JDBCClient</a></code> class to the lookup and retrieval in one call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+require 'vertx-service-discovery/jdbc_data_source'
+VertxServiceDiscovery::JDBCDataSource.get_jdbc_client(discovery, {
+  'name' =&gt; "some-data-source-service"
+}, {
+  'username' =&gt; "clement",
+  'password' =&gt; "*****"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    client = ar
+
+    # ...
+
+    # Dont' forget to release the service
+    VertxServiceDiscovery::ServiceDiscovery.release_service_object(discovery, client)
+
+  end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_redis_data_source">Redis Data source</h3>
+<div class="paragraph">
+<p>Redis data sources are a specialization for Redis persistence databases.
+The client of a Redis data source service is a <code><a href="../../yardoc/VertxRedis/RedisClient.html">RedisClient</a></code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_publishing_a_redis_service">Publishing a Redis service</h4>
+<div class="paragraph">
+<p>Publishing a Redis data source is a 2-step process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>create a record, using <code><a href="../../yardoc/VertxServiceDiscovery/RedisDataSource.html">RedisDataSource</a></code></p>
+</li>
+<li>
+<p>publish the record</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/redis_data_source'
+record = VertxServiceDiscovery::RedisDataSource.create_record("some-redis-data-source-service", {
+  'url' =&gt; "localhost"
+}, {
+  'some-metadata' =&gt; "some-value"
+})
+
+discovery.publish(record) { |ar_err,ar|
+  # ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>location</code> is a simple JSON object that should provide the fields to access the Redis data
+source (url, port&#8230;&#8203;).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_a_redis_service">Consuming a Redis service</h4>
+<div class="paragraph">
+<p>As stated in the previous section, how to access a data source depends on the data source itself. To build the
+<code><a href="../../yardoc/VertxRedis/RedisClient.html">RedisClient</a></code>, you can merge configuration: the record location, the metadata and a json object provided by
+the consumer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-redis/redis_client'
+# Get the record
+discovery.get_record({
+  'name' =&gt; "some-redis-data-source-service"
+}) { |ar_err,ar|
+  if (ar_err == nil &amp;&amp; ar != nil)
+    # Retrieve the service reference
+    reference = discovery.get_reference(ar)
+
+    # Retrieve the service instance
+    client = reference.get_as(VertxRedis::RedisClient::class)
+
+    # ...
+
+    # when done
+    reference.release()
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the <code><a href="../../yardoc/VertxServiceDiscovery/RedisDataSource.html">RedisDataSource</a></code> class to the lookup and retrieval in one call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+require 'vertx-service-discovery/redis_data_source'
+VertxServiceDiscovery::RedisDataSource.get_redis_client(discovery, {
+  'name' =&gt; "some-redis-data-source-service"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    client = ar
+
+    # ...
+
+    # Dont' forget to release the service
+    VertxServiceDiscovery::ServiceDiscovery.release_service_object(discovery, client)
+
+  end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mongo_data_source">Mongo Data source</h3>
+<div class="paragraph">
+<p>Mongo data sources are a specialization for MongoDB databases.
+The client of a Mongo data source service is a <code><a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a></code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_publishing_a_mongo_service">Publishing a Mongo service</h4>
+<div class="paragraph">
+<p>Publishing a Mongo data source is a 2-step process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>create a record, using <code><a href="../../yardoc/VertxServiceDiscovery/MongoDataSource.html">MongoDataSource</a></code></p>
+</li>
+<li>
+<p>publish the record</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/mongo_data_source'
+record = VertxServiceDiscovery::MongoDataSource.create_record("some-data-source-service", {
+  'connection_string' =&gt; "some mongo connection"
+}, {
+  'some-metadata' =&gt; "some-value"
+})
+
+discovery.publish(record) { |ar_err,ar|
+  # ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>location</code> is a simple JSON object that should provide the fields to access the Redis data
+source (url, port&#8230;&#8203;).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consuming_a_mongo_service">Consuming a Mongo service</h4>
+<div class="paragraph">
+<p>As stated in the previous section, how to access a data source depends on the data source itself. To build the
+<code><a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a></code>, you can merge configuration: the record location, the metadata and a json object
+provided by the consumer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby"># Get the record
+discovery.get_record({
+  'name' =&gt; "some-data-source-service"
+}) { |ar_err,ar|
+  if (ar_err == nil &amp;&amp; ar != nil)
+    # Retrieve the service reference
+    reference = discovery.get_reference_with_configuration(ar, {
+      'username' =&gt; "clement",
+      'password' =&gt; "*****"
+    })
+
+    # Retrieve the service object
+    client = reference.get()
+
+    # ...
+
+    # when done
+    reference.release()
+  end
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the <code><a href="../../yardoc/VertxServiceDiscovery/MongoDataSource.html">MongoDataSource</a></code> class to the lookup and retrieval in one call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-service-discovery/service_discovery'
+require 'vertx-service-discovery/mongo_data_source'
+VertxServiceDiscovery::MongoDataSource.get_mongo_client(discovery, {
+  'name' =&gt; "some-data-source-service"
+}, {
+  'username' =&gt; "clement",
+  'password' =&gt; "*****"
+}) { |ar_err,ar|
+  if (ar_err == nil)
+    client = ar
+
+    # ...
+
+    # Dont' forget to release the service
+    VertxServiceDiscovery::ServiceDiscovery.release_service_object(discovery, client)
+
+  end
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_listening_for_service_arrivals_and_departures">Listening for service arrivals and departures</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every time a provider is published or removed, an event is published on the <em>vertx.discovery.announce</em> address.
+This address is configurable from the <code><a href="../../vertx-service-discovery/dataobjects.html#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The received record has a <code>status</code> field indicating the new state of the record:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UP</code> : the service is available, you can start using it</p>
+</li>
+<li>
+<p><code>DOWN</code> : the service is not available anymore, you should not use it anymore</p>
+</li>
+<li>
+<p><code>OUT_OF_SERVICE</code> : the service is not running, you should not use it anymore, but it may come back later.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_listening_for_service_usage">Listening for service usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every time a service reference is retrieved (<code>bind</code>) or released (<code>release</code>), an event is published on the <em>vertx
+.discovery.usage</em> address. This address is configurable from the <code><a href="../../vertx-service-discovery/dataobjects.html#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>It lets you listen for service usage and map the service bindings.</p>
+</div>
+<div class="paragraph">
+<p>The received message is a <code><a href="unavailable">JsonObject</a></code> containing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the record in the <code>record</code> field</p>
+</li>
+<li>
+<p>the type of event in the <code>type</code> field. It&#8217;s either <code>bind</code> or <code>release</code></p>
+</li>
+<li>
+<p>the id of the service discovery (either its name or the node id) in the <code>id</code> field</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This <code>id</code> is configurable from the <code><a href="../../vertx-service-discovery/dataobjects.html#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code>. By default it&#8217;s "localhost" on
+single node configuration and the id of the node in clustered mode.</p>
+</div>
+<div class="paragraph">
+<p>You can disable the service usage support by setting the usage address to <code>null</code> with
+<code><a href="../../vertx-service-discovery/dataobjects.html#ServiceDiscoveryOptions#set_usage_address-instance_method">usageAddress</a></code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_service_discovery_bridges">Service discovery bridges</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bridges let you import and export services from / to other discovery mechanism such as Docker, Kubernetes, Consul&#8230;&#8203;
+Each bridge decides how the services are imported and exported. It does not have to be bi-directional.</p>
+</div>
+<div class="paragraph">
+<p>You can provide your own bridge by implementing the <code><a href="../../yardoc/VertxServiceDiscovery/ServiceImporter.html">ServiceImporter</a></code> interface and
+register it using
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceDiscovery.html#register_service_importer-instance_method">registerServiceImporter</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The second parameter can provide an optional configuration for the bridge.</p>
+</div>
+<div class="paragraph">
+<p>When the bridge is registered the</p>
+</div>
+<div class="paragraph">
+<p><code><a href="../../yardoc/VertxServiceDiscovery/ServiceImporter.html">#start)</a></code>
+method is called. It lets you configure the bridge. When the bridge is configured, ready and has imported /
+exported the initial services, it must complete the given <code><a href="../../yardoc/Vertx/Future.html">Future</a></code>. If the bridge starts
+method is blocking, it must use an
+<code><a href="../../yardoc/Vertx/Vertx.html#execute_blocking-instance_method">executeBlocking</a></code> construct, and
+complete the given future object.</p>
+</div>
+<div class="paragraph">
+<p>When the service discovery is stopped, the bridge is stopped. The
+<code><a href="../../yardoc/VertxServiceDiscovery/ServiceImporter.html#close-instance_method">close</a></code>
+method is called that provides the opportunity to cleanup resources, removed imported / exported services&#8230;&#8203; This
+method must complete the given <code><a href="../../yardoc/Vertx/Future.html">Future</a></code> to notify the caller of the completion.</p>
+</div>
+<div class="paragraph">
+<p>Notice than in a cluster, only one member needs to register the bridge as the records are accessible by all members.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_bridges">Additional bridges</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition of the bridges supported by this library, Vert.x Service Discovery provides additional
+bridges you can use in your application.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::consul-bridge.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::kubernetes-bridge.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::zookeeper-bridge.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::docker-links-bridge.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_backends">Additional backends</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition of the backend supported by this library, Vert.x Service Discovery provides additional
+backends you can use in your application.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::redis-backend.adoc[]</p>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-09-04 18:06:10 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">Home</a></li>
+          <li><a href="https://vertx.tk/download/">Download</a></li>
+          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.tk/blog/">Blog</a></li>
+          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

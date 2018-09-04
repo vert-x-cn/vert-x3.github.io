@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SessionOptions - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href="index.html">io.vertx.kotlin.ext.consul</a>&nbsp;/&nbsp;<a href=".">SessionOptions</a><br/>
+<br/>
+<h1>SessionOptions</h1>
+<a name="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)"></a>
+<code><span class="keyword">fun </span><span class="identifier">SessionOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)/behavior">behavior</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionBehavior</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)/checks">checks</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html"><span class="identifier">Iterable</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)/lockDelay">lockDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)/node">node</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.consul$SessionOptions(io.vertx.ext.consul.SessionBehavior, kotlin.collections.Iterable((kotlin.String)), kotlin.Long, kotlin.String, kotlin.String, kotlin.Long)/ttl">ttl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionOptions</span></code>
+<p>A function providing a DSL for building <a href="#">io.vertx.ext.consul.SessionOptions</a> objects.</p>
+<p>Options used to create session.</p>
+<h3>Parameters</h3>
+<p><a name="behavior"></a>
+<code>behavior</code> - Set the behavior when a session is invalidated. The release behavior is the default if none is specified.</p>
+<p><a name="checks"></a>
+<code>checks</code> - Set a list of associated health checks. It is highly recommended that, if you override this list, you include the default "serfHealth"</p>
+<p><a name="lockDelay"></a>
+<code>lockDelay</code> - Set the lock-delay period.</p>
+<p><a name="name"></a>
+<code>name</code> - Set the human-readable name for the Session</p>
+<p><a name="node"></a>
+<code>node</code> - Set the node to which the session will be assigned</p>
+<p><a name="ttl"></a>
+<code>ttl</code> - Set the TTL interval. When TTL interval expires without being renewed, the session has expired and an invalidation is triggered. If specified, it must be between 10s and 86400s currently. The contract of a TTL is that it represents a lower bound for invalidation; that is, Consul will not expire the session before the TTL is reached, but it is allowed to delay the expiration past the TTL. The lowest practical TTL should be used to keep the number of managed sessions low. When locks are forcibly expired, such as during a leader election, sessions may not be reaped for up to double this TTL, so long TTL values (&gt; 1 hour) should be avoided.</p>
+</BODY>
+</HTML>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x MySQL / PostgreSQL client - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">Download</a></li>
+        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.tk/community/">Community</a></li>
+        <li><a href="https://vertx.tk/materials/">Materials</a></li>
+        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x MySQL / PostgreSQL client</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_using_the_mysql_and_postgresql_client">Using the MySQL and PostgreSQL client</a>
+<ul class="sectlevel2">
+<li><a href="#_in_a_regular_application">In a regular application</a></li>
+<li><a href="#_in_an_application_packaged_in_a_fat_jar">In an application packaged in a fat jar</a></li>
+<li><a href="#_in_an_application_using_a_vert_x_distributions">In an application using a vert.x distributions</a></li>
+</ul>
+</li>
+<li><a href="#_creating_a_client">Creating a client</a>
+<ul class="sectlevel2">
+<li><a href="#_using_default_shared_pool">Using default shared pool</a></li>
+<li><a href="#_specifying_a_pool_name">Specifying a pool name</a></li>
+<li><a href="#_creating_a_client_with_a_non_shared_data_source">Creating a client with a non shared data source</a></li>
+</ul>
+</li>
+<li><a href="#_closing_the_client">Closing the client</a></li>
+<li><a href="#_getting_a_connection">Getting a connection</a>
+<ul class="sectlevel2">
+<li><a href="#_configuring_reconnections">Configuring reconnections</a></li>
+<li><a href="#_note_about_date_and_timestamps">Note about date and timestamps</a></li>
+<li><a href="#_note_about_last_inserted_ids">Note about last inserted ids</a></li>
+<li><a href="#_note_about_stored_procedures">Note about stored procedures</a></li>
+</ul>
+</li>
+<li><a href="#_configuration">Configuration</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_using_the_mysql_and_postgresql_client">Using the MySQL and PostgreSQL client</a>
+<ul class="sectlevel2">
+<li><a href="#_in_a_regular_application">In a regular application</a></li>
+<li><a href="#_in_an_application_packaged_in_a_fat_jar">In an application packaged in a fat jar</a></li>
+<li><a href="#_in_an_application_using_a_vert_x_distributions">In an application using a vert.x distributions</a></li>
+</ul>
+</li>
+<li><a href="#_creating_a_client">Creating a client</a>
+<ul class="sectlevel2">
+<li><a href="#_using_default_shared_pool">Using default shared pool</a></li>
+<li><a href="#_specifying_a_pool_name">Specifying a pool name</a></li>
+<li><a href="#_creating_a_client_with_a_non_shared_data_source">Creating a client with a non shared data source</a></li>
+</ul>
+</li>
+<li><a href="#_closing_the_client">Closing the client</a></li>
+<li><a href="#_getting_a_connection">Getting a connection</a>
+<ul class="sectlevel2">
+<li><a href="#_configuring_reconnections">Configuring reconnections</a></li>
+<li><a href="#_note_about_date_and_timestamps">Note about date and timestamps</a></li>
+<li><a href="#_note_about_last_inserted_ids">Note about last inserted ids</a></li>
+<li><a href="#_note_about_stored_procedures">Note about stored procedures</a></li>
+</ul>
+</li>
+<li><a href="#_configuration">Configuration</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Async MySQL / PostgreSQL Client is responsible for providing an
+interface for Vert.x applications that need to interact with a MySQL or PostgreSQL database.</p>
+</div>
+<div class="paragraph">
+<p>It uses Mauricio Linhares <a href="https://github.com/mauricio/postgresql-async">async driver</a> to interact with the MySQL
+or PostgreSQL databases in a non blocking way.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_mysql_and_postgresql_client">Using the MySQL and PostgreSQL client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes how to configure your project to be able to use the MySQL / PostgreSQL client in your
+application.</p>
+</div>
+<div class="sect2">
+<h3 id="_in_a_regular_application">In a regular application</h3>
+<div class="paragraph">
+<p>To use this client, you need to add the following jar to your <code>CLASSPATH</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>vertx-mysql-postgresql-client 3.6.0-SNAPSHOT (the client)</p>
+</li>
+<li>
+<p>scala-library 2.11.4</p>
+</li>
+<li>
+<p>the postgress-async-2.11 and mysdql-async-2.11 from <a href="https://github.com/mauricio/postgresql-async" class="bare">https://github.com/mauricio/postgresql-async</a></p>
+</li>
+<li>
+<p>joda time</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All these jars are downloadable from Maven Central.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_an_application_packaged_in_a_fat_jar">In an application packaged in a fat jar</h3>
+<div class="paragraph">
+<p>If you are building a <em>Fat-jar</em> using Maven or Gradle, just add the following dependencies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-mysql-postgresql-client&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-mysql-postgresql-client:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_an_application_using_a_vert_x_distributions">In an application using a vert.x distributions</h3>
+<div class="paragraph">
+<p>If you are using a vert.x distribution, add the jar files listed above to the <code>$VERTX_HOME/lib</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can edit the <code>vertx-stack.json</code> file located in <code>$VERTX_HOME</code>, and set <code>"included": true</code>
+for the <code>vertx-mysql-postgresql-client</code> dependency. Once done, launch: <code>vertx resolve --dir=lib --stack=
+./vertx-stack.json</code>. It downloads the client and its dependencies.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_client">Creating a client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several ways to create a client. Let&#8217;s go through them all.</p>
+</div>
+<div class="sect2">
+<h3 id="_using_default_shared_pool">Using default shared pool</h3>
+<div class="paragraph">
+<p>In most cases you will want to share a pool between different client instances.</p>
+</div>
+<div class="paragraph">
+<p>E.g. you scale your application by deploying multiple instances of your verticle and you want each verticle instance
+to share the same pool so you don&#8217;t end up with multiple pools</p>
+</div>
+<div class="paragraph">
+<p>You do this as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// To create a MySQL client:
+
+var mySQLClientConfig = json {
+  obj("host" to "mymysqldb.mycompany")
+}
+var mySQLClient = MySQLClient.createShared(vertx, mySQLClientConfig)
+
+// To create a PostgreSQL client:
+
+var postgreSQLClientConfig = json {
+  obj("host" to "mypostgresqldb.mycompany")
+}
+var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConfig)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first call to <code><a href="../../apidocs/io/vertx/ext/asyncsql/MySQLClient.html#createShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-">MySQLClient.createShared</a></code>
+or <code><a href="../../apidocs/io/vertx/ext/asyncsql/PostgreSQLClient.html#createShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-">PostgreSQLClient.createShared</a></code>
+will actually create the data source, and the specified config will be used.</p>
+</div>
+<div class="paragraph">
+<p>Subsequent calls will return a new client instance that uses the same data source, so the configuration won&#8217;t be used.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_specifying_a_pool_name">Specifying a pool name</h3>
+<div class="paragraph">
+<p>You can create a client specifying a pool name as follows</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// To create a MySQL client:
+
+var mySQLClientConfig = json {
+  obj("host" to "mymysqldb.mycompany")
+}
+var mySQLClient = MySQLClient.createShared(vertx, mySQLClientConfig, "MySQLPool1")
+
+// To create a PostgreSQL client:
+
+var postgreSQLClientConfig = json {
+  obj("host" to "mypostgresqldb.mycompany")
+}
+var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConfig, "PostgreSQLPool1")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If different clients are created using the same Vert.x instance and specifying the same pool name, they will
+share the same data source.</p>
+</div>
+<div class="paragraph">
+<p>The first call to <code><a href="../../apidocs/io/vertx/ext/asyncsql/MySQLClient.html#createShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-java.lang.String-">MySQLClient.createShared</a></code>
+or <code><a href="../../apidocs/io/vertx/ext/asyncsql/PostgreSQLClient.html#createShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-java.lang.String-">PostgreSQLClient.createShared</a></code>
+will actually create the data source, and the specified config will be used.</p>
+</div>
+<div class="paragraph">
+<p>Subsequent calls will return a new client instance that uses the same pool, so the configuration won&#8217;t be used.</p>
+</div>
+<div class="paragraph">
+<p>Use this way of creating if you wish different groups of clients to have different pools, e.g. they&#8217;re
+interacting with different databases.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_client_with_a_non_shared_data_source">Creating a client with a non shared data source</h3>
+<div class="paragraph">
+<p>In most cases you will want to share a pool between different client instances.
+However, it&#8217;s possible you want to create a client instance that doesn&#8217;t share its pool with any other client.</p>
+</div>
+<div class="paragraph">
+<p>In that case you can use <code><a href="../../apidocs/io/vertx/ext/asyncsql/MySQLClient.html#createNonShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-">MySQLClient.createNonShared</a></code>
+or <code><a href="../../apidocs/io/vertx/ext/asyncsql/PostgreSQLClient.html#createNonShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-">PostgreSQLClient.createNonShared</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// To create a MySQL client:
+
+var mySQLClientConfig = json {
+  obj("host" to "mymysqldb.mycompany")
+}
+var mySQLClient = MySQLClient.createNonShared(vertx, mySQLClientConfig)
+
+// To create a PostgreSQL client:
+
+var postgreSQLClientConfig = json {
+  obj("host" to "mypostgresqldb.mycompany")
+}
+var postgreSQLClient = PostgreSQLClient.createNonShared(vertx, postgreSQLClientConfig)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to calling <code><a href="../../apidocs/io/vertx/ext/asyncsql/MySQLClient.html#createShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-java.lang.String-">MySQLClient.createShared</a></code>
+or <code><a href="../../apidocs/io/vertx/ext/asyncsql/PostgreSQLClient.html#createShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-java.lang.String-">PostgreSQLClient.createShared</a></code>
+with a unique pool name each time.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_closing_the_client">Closing the client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can hold on to the client for a long time (e.g. the life-time of your verticle), but once you have finished with
+it, you should close it using <code><a href="../../apidocs/io/vertx/ext/sql/SQLClient.html#close-io.vertx.core.Handler-">close</a></code> or
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLClient.html#close--">close</a></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_a_connection">Getting a connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use <code><a href="../../apidocs/io/vertx/ext/sql/SQLClient.html#getConnection-io.vertx.core.Handler-">getConnection</a></code> to get a connection.</p>
+</div>
+<div class="paragraph">
+<p>This will return the connection in the handler when one is ready from the pool.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// Now do stuff with it:
+
+client.getConnection({ res -&gt;
+  if (res.succeeded()) {
+
+    var connection = res.result()
+
+    // Got a connection
+
+  } else {
+    // Failed to get connection - deal with it
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve finished with the connection make sure you close it afterwards.</p>
+</div>
+<div class="paragraph">
+<p>The connection is an instance of <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html">SQLConnection</a></code> which is a common interface used by
+other SQL clients.</p>
+</div>
+<div class="paragraph">
+<p>You can learn how to use it in the <a href="http://vertx.io/docs/vertx-sql-common/kotlin/">common sql interface</a> documentation.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuring_reconnections">Configuring reconnections</h3>
+<div class="paragraph">
+<p>This service is able to recover from temporary database outages, such as those which occur during a database restart or
+brief loss of network connectivity. You can configure the expected behaviour when acquiring connections via the
+following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>maxConnectionRetries</code></p>
+</li>
+<li>
+<p><code>connectionRetryDelay</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the internal connection pool attempts to acquire an open connection and fails, it will retry up to
+<code>maxConnectionRetries</code> times, with a delay of <code>connectionRetryDelay</code> milliseconds between each attempt.
+If all attempts fail, any clients waiting for connections from the pool will be notified with an Error, indicating that
+a Connection could not be acquired. Note that clients will not be notified with an Error until a full round of attempts
+fail, which may be some time after the initial connection attempt.</p>
+</div>
+<div class="paragraph">
+<p>If <code>maxConnectionRetries</code> is set to <code>0</code>, the internal connection pool will not perform any reconnection (default). If
+<code>maxConnectionRetries</code> is set to <code>-1</code>, the internal connection pool will attempt to acquire new connections indefinitely,
+so any call to <code><a href="../../apidocs/io/vertx/ext/sql/SQLClient.html#getConnection-io.vertx.core.Handler-">getConnection</a></code>
+may be indefinitely waiting for a successful acquisition.</p>
+</div>
+<div class="paragraph">
+<p>Once a full round of acquisition attempts fails, the internal connection pool will remain active, and will try
+again to acquire connections in response to future requests for connections.</p>
+</div>
+<div class="paragraph">
+<p>Note that if a database restart occurs, a pool may contain previously acquired but now stale Connections that will only be
+detected and purged lazily, when the pool attempts to reuse them.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_note_about_date_and_timestamps">Note about date and timestamps</h3>
+<div class="paragraph">
+<p>Whenever you get dates back from the database, this service will implicitly convert them into ISO 8601
+(<code>yyyy-MM-ddTHH:mm:ss.SSS</code>) formatted strings. MySQL usually discards milliseconds, so you will regularly see <code>.000</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_note_about_last_inserted_ids">Note about last inserted ids</h3>
+<div class="paragraph">
+<p>When inserting new rows into a table, you might want to retrieve auto-incremented ids from the database. The JDBC API
+usually lets you retrieve the last inserted id from a connection. If you use MySQL, it will work the way it does like
+the JDBC API. In PostgreSQL you can add the
+<a href="http://www.postgresql.org/docs/current/static/sql-insert.html">"RETURNING" clause</a> to get the latest inserted ids. Use
+one of the <code>query</code> methods to get access to the returned columns.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_note_about_stored_procedures">Note about stored procedures</h3>
+<div class="paragraph">
+<p>The <code>call</code> and <code>callWithParams</code> methods are not implemented currently.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration">Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Both the PostgreSql and MySql clients take the same configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+ "host" : &lt;your-host&gt;,
+ "port" : &lt;your-port&gt;,
+ "maxPoolSize" : &lt;maximum-number-of-open-connections&gt;,
+ "username" : &lt;your-username&gt;,
+ "password" : &lt;your-password&gt;,
+ "database" : &lt;name-of-your-database&gt;,
+ "charset" : &lt;name-of-the-character-set&gt;,
+ "connectTimeout" : &lt;timeout-in-milliseconds&gt;,
+ "testTimeout" : &lt;timeout-in-milliseconds&gt;,
+ "queryTimeout" : &lt;timeout-in-milliseconds&gt;,
+ "maxConnectionRetries" : &lt;maximum-number-of-connection-retries&gt;,
+ "connectionRetryDelay" : &lt;delay-in-milliseconds&gt;,
+ "sslMode" : &lt;"disable"|"prefer"|"require"|"verify-ca"|"verify-full"&gt;,
+ "sslRootCert" : &lt;path to file with certificate&gt;
+}</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>host</code></dt>
+<dd>
+<p>The host of the database. Defaults to <code>localhost</code>.</p>
+</dd>
+<dt class="hdlist1"><code>port</code></dt>
+<dd>
+<p>The port of the database. Defaults to <code>5432</code> for PostgreSQL and <code>3306</code> for MySQL.</p>
+</dd>
+<dt class="hdlist1"><code>maxPoolSize</code></dt>
+<dd>
+<p>The number of connections that may be kept open. Defaults to <code>10</code>.</p>
+</dd>
+<dt class="hdlist1"><code>username</code></dt>
+<dd>
+<p>The username to connect to the database. Defaults to <code>vertx</code>.</p>
+</dd>
+<dt class="hdlist1"><code>password</code></dt>
+<dd>
+<p>The password to connect to the database. Defaults to <code>password</code>.</p>
+</dd>
+<dt class="hdlist1"><code>database</code></dt>
+<dd>
+<p>The name of the database you want to connect to. Defaults to <code>testdb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>charset</code></dt>
+<dd>
+<p>The name of the character set you want to use for the connection. Defaults to <code>UTF-8</code>.</p>
+</dd>
+<dt class="hdlist1"><code>connectTimeout</code></dt>
+<dd>
+<p>The timeout to wait for connecting to the database. Defaults to <code>10000</code> (= 10 seconds).</p>
+</dd>
+<dt class="hdlist1"><code>testTimeout</code></dt>
+<dd>
+<p>The timeout for connection tests performed by pools. Defaults to <code>10000</code> (= 10 seconds).</p>
+</dd>
+<dt class="hdlist1"><code>queryTimeout</code></dt>
+<dd>
+<p>The timeout to wait for a query in milliseconds. Default is not set.</p>
+</dd>
+<dt class="hdlist1"><code>maxConnectionRetries</code></dt>
+<dd>
+<p>Maximum number of connection retries. Defaults to <code>0</code> (no retries).<br>
+Special values:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-1 </dt>
+<dd>
+<p>Unlimited number of connection retries</p>
+</dd>
+<dt class="hdlist1">0  </dt>
+<dd>
+<p>No connection retries will be done</p>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>connectionRetryDelay</code></dt>
+<dd>
+<p>Delay in milliseconds between each retry attempt. Defaults to <code>5000</code> (= 5 seconds).</p>
+</dd>
+<dt class="hdlist1"><code>sslMode</code> </dt>
+<dd>
+<p>If you want to enable SSL support you should enable this parameter.
+For example to connect Heroku you will need to use <strong>prefer</strong>.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">"disable" </dt>
+<dd>
+<p>only try a non-SSL connection</p>
+</dd>
+<dt class="hdlist1">"prefer"  </dt>
+<dd>
+<p>first try an SSL connection; if that fails, try a non-SSL connection</p>
+</dd>
+<dt class="hdlist1">"require"  </dt>
+<dd>
+<p>only try an SSL connection, but don&#8217;t verify Certificate Authority</p>
+</dd>
+<dt class="hdlist1">"verify-ca"  </dt>
+<dd>
+<p>only try an SSL connection, and verify that the server certificate is issued by a trusted
+certificate authority (CA)</p>
+</dd>
+<dt class="hdlist1">"verify-full"  </dt>
+<dd>
+<p>only try an SSL connection, verify that the server certificate is issued by a trusted CA and
+that the server host name matches that in the certificate</p>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1"><code>sslRootCert</code> </dt>
+<dd>
+<p>Path to SSL root certificate file. Is used if you want to verify privately issued certificate.
+Refer to <a href="https://github.com/mauricio/postgresql-async">postgresql-async</a> documentation for more details.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-09-04 18:06:10 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">Home</a></li>
+          <li><a href="https://vertx.tk/download/">Download</a></li>
+          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.tk/blog/">Blog</a></li>
+          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

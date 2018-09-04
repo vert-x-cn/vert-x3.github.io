@@ -1,0 +1,1335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: VertxConsul::Watch
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!VertxConsul/Watch.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (W)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../VertxConsul.html" title="VertxConsul (module)">VertxConsul</a></span></span>
+     &raquo; 
+    <span class="title">Watch</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: VertxConsul::Watch
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">VertxConsul::Watch</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    Watches are a way of specifying a view of data (e.g. list of nodes, KV pairs, health checks)
+ which is monitored for updates. When an update is detected, an <code>Handler</code> with <code>AsyncResult</code> is invoked.
+ As an example, you could watch the status of health checks and notify when a check is critical.
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#events-class_method" title="events (class method)">+ (::VertxConsul::Watch) <strong>events</strong>(event = nil, vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Creates Watch to monitoring the custom user events.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key-class_method" title="key (class method)">+ (::VertxConsul::Watch) <strong>key</strong>(key = nil, vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Creates Watch to monitoring a specific key in the KV store.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key_prefix-class_method" title="key_prefix (class method)">+ (::VertxConsul::Watch) <strong>key_prefix</strong>(keyPrefix = nil, vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Creates Watch to monitoring a prefix of keys in the KV store.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#nodes-class_method" title="nodes (class method)">+ (::VertxConsul::Watch) <strong>nodes</strong>(vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Creates Watch to monitoring the list of available nodes.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#service-class_method" title="service (class method)">+ (::VertxConsul::Watch) <strong>service</strong>(service = nil, vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Creates Watch to monitoring the nodes providing the service.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#services-class_method" title="services (class method)">+ (::VertxConsul::Watch) <strong>services</strong>(vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Creates Watch to monitoring the list of available services.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_handler-instance_method" title="#set_handler (instance method)">- (self) <strong>set_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set the result handler.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start-instance_method" title="#start (instance method)">- (self) <strong>start</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Start this Watch.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop-instance_method" title="#stop (instance method)">- (void) <strong>stop</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Stop the watch and release its resources.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="events-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>) <strong>events</strong>(event = nil, vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates <code>Watch</code> to monitoring the custom user events.
+ This maps to the <a href="https://www.consul.io/docs/agent/http/event.html#event_list">/v1/event/list</a> API internally.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>event</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the event name</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Vertx</code> instance</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the options to create underlying Consul client</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Watch</code> instance</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_events'>events</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:events</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>EventList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:events</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>EventList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling events(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event'>event</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="key-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>) <strong>key</strong>(key = nil, vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates <code>Watch</code> to monitoring a specific key in the KV store.
+ This maps to the <a href="https://www.consul.io/api/kv.html">/v1/kv/</a> API internally.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the key</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Vertx</code> instance</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the options to create underlying Consul client</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Watch</code> instance</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:key</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>KeyValue</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:key</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>KeyValue</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling key(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_key'>key</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="key_prefix-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>) <strong>key_prefix</strong>(keyPrefix = nil, vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates <code>Watch</code> to monitoring a prefix of keys in the KV store.
+ This maps to the <a href="https://www.consul.io/api/kv.html">/v1/kv/</a> API internally.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>keyPrefix</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the key</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Vertx</code> instance</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the options to create underlying Consul client</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Watch</code> instance</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key_prefix'>key_prefix</span><span class='lparen'>(</span><span class='id identifier rubyid_keyPrefix'>keyPrefix</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_keyPrefix'>keyPrefix</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:keyPrefix</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_keyPrefix'>keyPrefix</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>KeyValueList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_keyPrefix'>keyPrefix</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:keyPrefix</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_keyPrefix'>keyPrefix</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>KeyValueList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling key_prefix(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_keyPrefix'>keyPrefix</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="nodes-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>) <strong>nodes</strong>(vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates <code>Watch</code> to monitoring the list of available nodes.
+ This maps to the <a href="https://www.consul.io/api/catalog.html#list-nodes">/v1/catalog/nodes</a> API internally.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Vertx</code> instance</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the options to create underlying Consul client</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Watch</code> instance</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_nodes'>nodes</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:nodes</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>NodeList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:nodes</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>NodeList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling nodes(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="service-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>) <strong>service</strong>(service = nil, vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates <code>Watch</code> to monitoring the nodes providing the service.
+ This maps to the <a href="https://www.consul.io/docs/agent/http/health.html#health_service">/v1/health/service/&lt;service&gt;</a> API internally.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the service name</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Vertx</code> instance</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the options to create underlying Consul client</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Watch</code> instance</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_service'>service</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:service</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ServiceEntryList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:service</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='comma'>,</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ServiceEntryList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling service(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_service'>service</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="services-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>) <strong>services</strong>(vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates <code>Watch</code> to monitoring the list of available services.
+ This maps to the <a href="https://www.consul.io/docs/agent/http/catalog.html#catalog_services">/v1/catalog/services</a> API internally.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Vertx</code> instance</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the options to create underlying Consul client</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxConsul::Watch (class)">::VertxConsul::Watch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the <code>Watch</code> instance</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_services'>services</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:services</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ServiceList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:services</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ConsulClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>Watch</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_data_object_type'>data_object_type</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtConsul</span><span class='op'>::</span><span class='const'>ServiceList</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling services(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="set_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>set_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set the result handler. As data is changed, the handler will be called with the result.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the result handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_handler'>set_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxConsul</span><span class='op'>::</span><span class='const'>WatchResult</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="start-instance_method">
+  
+    - (<tt>self</tt>) <strong>start</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Start this <code>Watch</code>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:start</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling start()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stop-instance_method">
+  
+    - (<tt>void</tt>) <strong>stop</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Stop the watch and release its resources
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-consul/watch.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop'>stop</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:stop</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling stop()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Aug 21 15:09:38 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.3.3).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The OAuth2 auth provider - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">Download</a></li>
+        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.tk/community/">Community</a></li>
+        <li><a href="https://vertx.tk/materials/">Materials</a></li>
+        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>The OAuth2 auth provider</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_the_oauth2_auth_provider">The OAuth2 auth provider</a>
+<ul class="sectlevel2">
+<li><a href="#_authorization_code_flow">Authorization Code Flow</a></li>
+<li><a href="#_password_credentials_flow">Password Credentials Flow</a></li>
+<li><a href="#_client_credentials_flow">Client Credentials Flow</a></li>
+<li><a href="#_extensions">Extensions</a></li>
+<li><a href="#_getting_started">Getting Started</a></li>
+<li><a href="#_openid_connect_discovery">OpenID Connect Discovery</a></li>
+<li><a href="#_accesstoken_object">AccessToken object</a></li>
+<li><a href="#_example_configuration_for_common_oauth2_providers">Example configuration for common OAuth2 providers</a></li>
+<li><a href="#_token_introspection">Token Introspection</a></li>
+<li><a href="#_verifying_jwt_tokens">Verifying JWT tokens</a></li>
+</ul>
+</li>
+<li><a href="#_role_based_access_control">Role Based Access Control</a>
+<ul class="sectlevel2">
+<li><a href="#_keycloak_jwt">Keycloak JWT</a></li>
+<li><a href="#_microprofile_jwt_1_1_spec">MicroProfile JWT 1.1 spec</a></li>
+</ul>
+</li>
+<li><a href="#_token_management">Token Management</a>
+<ul class="sectlevel2">
+<li><a href="#_check_if_it_is_expired">Check if it is expired</a></li>
+<li><a href="#_refresh_token">Refresh token</a></li>
+<li><a href="#_revoke_token">Revoke token</a></li>
+<li><a href="#_introspect">Introspect</a></li>
+<li><a href="#_logging_out">Logging out</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_the_oauth2_auth_provider">The OAuth2 auth provider</a>
+<ul class="sectlevel2">
+<li><a href="#_authorization_code_flow">Authorization Code Flow</a></li>
+<li><a href="#_password_credentials_flow">Password Credentials Flow</a></li>
+<li><a href="#_client_credentials_flow">Client Credentials Flow</a></li>
+<li><a href="#_extensions">Extensions</a></li>
+<li><a href="#_getting_started">Getting Started</a></li>
+<li><a href="#_openid_connect_discovery">OpenID Connect Discovery</a></li>
+<li><a href="#_accesstoken_object">AccessToken object</a></li>
+<li><a href="#_example_configuration_for_common_oauth2_providers">Example configuration for common OAuth2 providers</a></li>
+<li><a href="#_token_introspection">Token Introspection</a></li>
+<li><a href="#_verifying_jwt_tokens">Verifying JWT tokens</a></li>
+</ul>
+</li>
+<li><a href="#_role_based_access_control">Role Based Access Control</a>
+<ul class="sectlevel2">
+<li><a href="#_keycloak_jwt">Keycloak JWT</a></li>
+<li><a href="#_microprofile_jwt_1_1_spec">MicroProfile JWT 1.1 spec</a></li>
+</ul>
+</li>
+<li><a href="#_token_management">Token Management</a>
+<ul class="sectlevel2">
+<li><a href="#_check_if_it_is_expired">Check if it is expired</a></li>
+<li><a href="#_refresh_token">Refresh token</a></li>
+<li><a href="#_revoke_token">Revoke token</a></li>
+<li><a href="#_introspect">Introspect</a></li>
+<li><a href="#_logging_out">Logging out</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="sect1">
+<h2 id="_the_oauth2_auth_provider">The OAuth2 auth provider</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This component contains an out of the box OAuth2 (and to some extent OpenID Connect) relying party implementation.
+To use this project, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-auth-oauth2&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-auth-oauth2:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>OAuth2 lets users grant the access to the desired resources to third party applications, giving them the possibility
+to enable and disable those accesses whenever they want.</p>
+</div>
+<div class="paragraph">
+<p>Vert.x OAuth2 supports the following flows.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Authorization Code Flow (for apps with servers that can store persistent information).</p>
+</li>
+<li>
+<p>Password Credentials Flow (when previous flow can&#8217;t be used or during development).</p>
+</li>
+<li>
+<p>Client Credentials Flow (the client can request an access token using only its client credentials)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The same code will work with OpenID Connect <a href="https://openid.net/connect/" class="bare">https://openid.net/connect/</a> servers and supports the Discovery protocol
+as specified in <a href="http://openid.net/specs/openid-connect-discovery-1_0.html" class="bare">http://openid.net/specs/openid-connect-discovery-1_0.html</a> .</p>
+</div>
+<div class="sect2">
+<h3 id="_authorization_code_flow">Authorization Code Flow</h3>
+<div class="paragraph">
+<p>The authorization code grant type is used to obtain both access tokens and refresh tokens and is optimized for
+confidential clients. As a redirection-based flow, the client must be capable of interacting with the resource
+owner&#8217;s user-agent (typically a web browser) and capable of receiving incoming requests (via redirection) from the
+authorization server.</p>
+</div>
+<div class="paragraph">
+<p>For more details see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.1">Oauth2 specification, section 4.1</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_password_credentials_flow">Password Credentials Flow</h3>
+<div class="paragraph">
+<p>The resource owner password credentials grant type is suitable in cases where the resource owner has a trust
+relationship with the client, such as the device operating system or a highly privileged application. The
+authorization server should take special care when enabling this grant type, and only allow it when other flows are
+not viable.</p>
+</div>
+<div class="paragraph">
+<p>The grant type is suitable for clients capable of obtaining the resource owner&#8217;s credentials (username and password,
+typically using an interactive form).  It is also used to migrate existing clients using direct authentication
+schemes such as HTTP Basic or Digest authentication to OAuth by converting the stored credentials to an access token.</p>
+</div>
+<div class="paragraph">
+<p>For more details see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.3">Oauth2 specification, section 4.3</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_credentials_flow">Client Credentials Flow</h3>
+<div class="paragraph">
+<p>The client can request an access token using only its client credentials (or other supported means of authentication)
+when the client is requesting access to the protected resources under its control, or those of another resource owner
+that have been previously arranged with the authorization server (the method of which is beyond the scope of this
+specification).</p>
+</div>
+<div class="paragraph">
+<p>The client credentials grant type MUST only be used by confidential clients.</p>
+</div>
+<div class="paragraph">
+<p>For more details see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.4">Oauth2 specification, section 4.4</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_extensions">Extensions</h3>
+<div class="paragraph">
+<p>The provider supports RFC7523 an extension to allow server to server authorization based on JWT.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_started">Getting Started</h3>
+<div class="paragraph">
+<p>An example on how to use this provider and authenticate with GitHub can be implemented as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2 { oAuth2Auth, auth_code }
+
+...
+
+
+value oauth2 = oAuth2Auth.create(vertx, auth_code, OAuth2ClientOptions {
+  clientID = "YOUR_CLIENT_ID";
+  clientSecret = "YOUR_CLIENT_SECRET";
+  site = "https://github.com/login";
+  tokenPath = "/oauth/access_token";
+  authorizationPath = "/oauth/authorize";
+});
+
+// when there is a need to access a protected resource or call a protected method,
+// call the authZ url for a challenge
+
+value authorization_uri = oauth2.authorizeURL(JsonObject {
+  redirect_uri = "http://localhost:8080/callback";
+  scope = "notifications";
+  state = "3(#0/!~";
+});
+
+// when working with web application use the above string as a redirect url
+
+// in this case GitHub will call you back in the callback uri one should now complete the handshake as:
+
+
+value code = "xxxxxxxxxxxxxxxxxxxxxxxx";
+
+oauth2.authenticate(JsonObject {
+  code = code;
+  redirect_uri = "http://localhost:8080/callback";
+}, (User|Throwable res) {
+  if (is Throwable name) {
+    // error, the code provided is not valid
+  } else {
+    // save the token and continue...
+  };
+});</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_authorization_code_flow_2">Authorization Code flow</h4>
+<div class="paragraph">
+<p>The Authorization Code flow is made up from two parts. At first your application asks to the user the permission to
+access their data. If the user approves the OAuth2 server sends to the client an authorization code. In the second
+part, the client POST the authorization code along with its client secret to the authority server in order to get the
+access token.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2 { oAuth2Auth, auth_code }
+
+...
+
+
+// Set the client credentials and the OAuth2 server
+value credentials = OAuth2ClientOptions {
+  clientID = "&lt;client-id&gt;";
+  clientSecret = "&lt;client-secret&gt;";
+  site = "https://api.oauth.com";
+};
+
+
+// Initialize the OAuth2 Library
+value oauth2 = oAuth2Auth.create(vertx, auth_code, credentials);
+
+// Authorization oauth2 URI
+value authorization_uri = oauth2.authorizeURL(JsonObject {
+  redirect_uri = "http://localhost:8080/callback";
+  scope = "&lt;scope&gt;";
+  state = "&lt;state&gt;";
+});
+
+// Redirect example using Vert.x
+response.putHeader("Location", authorization_uri).setStatusCode(302).end();
+
+value tokenConfig = JsonObject {
+  code = "&lt;code&gt;";
+  redirect_uri = "http://localhost:3000/callback";
+};
+
+// Callbacks
+// Save the access token
+oauth2.authenticate(tokenConfig, (User|Throwable res) {
+  if (is Throwable name) {
+    print("Access Token Error: ``res.getMessage()``");
+  } else {
+    // Get the access token object (the authorization code is given from the previous step).
+    value token = res;
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_password_credentials_flow_2">Password Credentials Flow</h4>
+<div class="paragraph">
+<p>This flow is suitable when the resource owner has a trust relationship with the client, such as its computer
+operating system or a highly privileged application. Use this flow only when other flows are not viable or when you
+need a fast way to test your application.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2 { oAuth2Auth, accessToken, password }
+
+...
+
+
+// Initialize the OAuth2 Library
+value oauth2 = oAuth2Auth.create(vertx, password);
+
+value tokenConfig = JsonObject {
+  username = "username";
+  password = "password";
+};
+
+// Callbacks
+// Save the access token
+oauth2.authenticate(tokenConfig, (User|Throwable res) {
+  if (is Throwable name) {
+    print("Access Token Error: ``res.getMessage()``");
+  } else {
+    // Get the access token object (the authorization code is given from the previous step).
+    value token = res;
+
+    token.fetch("/users", (OAuth2Response|Throwable res2) {
+      // the user object should be returned here...
+    });
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_client_credentials_flow_2">Client Credentials Flow</h4>
+<div class="paragraph">
+<p>This flow is suitable when client is requesting access to the protected resources under its control.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2 { oAuth2Auth, client }
+
+...
+
+
+// Set the client credentials and the OAuth2 server
+value credentials = OAuth2ClientOptions {
+  clientID = "&lt;client-id&gt;";
+  clientSecret = "&lt;client-secret&gt;";
+  site = "https://api.oauth.com";
+};
+
+
+// Initialize the OAuth2 Library
+value oauth2 = oAuth2Auth.create(vertx, client, credentials);
+
+value tokenConfig = JsonObject();
+
+// Callbacks
+// Save the access token
+oauth2.authenticate(tokenConfig, (User|Throwable res) {
+  if (is Throwable name) {
+    print("Access Token Error: ``res.getMessage()``");
+  } else {
+    // Get the access token object (the authorization code is given from the previous step).
+    value token = res;
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_openid_connect_discovery">OpenID Connect Discovery</h3>
+<div class="paragraph">
+<p>There is limited support for OpenID Discovery servers. Using OIDC Discovery will simplify the configuration of your
+auth module into a single line of code, for example, consider setting up your auth using Google:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2.providers { openIDConnectAuth }
+
+...
+
+
+openIDConnectAuth.discover(vertx, OAuth2ClientOptions {
+  site = "https://accounts.google.com";
+  clientID = "clientId";
+}, (OAuth2Auth|Throwable res) {
+  if (is OAuth2Auth res) {
+    // the setup call succeeded.
+    // at this moment your auth is ready to use and
+    // google signature keys are loaded so tokens can be decoded and verified.
+  } else {
+    // the setup failed.
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Behind the scenes a couple of actions are performed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>HTTP get request to the <code>.well-known/openid-configuration</code> resource</p>
+</li>
+<li>
+<p>Validation of the response <code>issuer</code> field as mandated by the spec (the issuer value must match the request one)</p>
+</li>
+<li>
+<p>If the JWK uri is present, keys are loaded from the server and added to the auth keychain</p>
+</li>
+<li>
+<p>the auth module is configure and returned to the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A couple of well known OpenID Connect Discovery providers are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keycloak: <code><a href="http://keycloakhost:keycloakport/auth/realms/{realm}" class="bare">http://keycloakhost:keycloakport/auth/realms/{realm}</a></code></p>
+</li>
+<li>
+<p>Google: <code><a href="https://accounts.google.com" class="bare">https://accounts.google.com</a></code></p>
+</li>
+<li>
+<p>SalesForce: <code><a href="https://login.salesforce.com" class="bare">https://login.salesforce.com</a></code></p>
+</li>
+<li>
+<p>Microsoft: <code><a href="https://login.windows.net/common" class="bare">https://login.windows.net/common</a></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This and the given <code>client id</code> is enough to configure your auth provider object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_accesstoken_object">AccessToken object</h3>
+<div class="paragraph">
+<p>When a token expires we need to refresh it. OAuth2 offers the AccessToken class that add a couple of useful methods
+to refresh the access token when it is expired.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">// Check if the token is expired. If expired it is refreshed.
+if (token.expired()) {
+  // Callbacks
+  token.refresh((Throwable? res) {
+    if (!exists res) {
+      // success
+    } else {
+      // error handling...
+    };
+  });
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you&#8217;ve done with the token or you want to log out, you can revoke the access token and refresh token.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">// Revoke only the access token
+token.revoke("access_token", (Throwable? res) {
+  // Session ended. But the refresh_token is still valid.
+
+  // Revoke the refresh_token
+  token.revoke("refresh_token", (Throwable? res1) =&gt; print("token revoked."));
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_configuration_for_common_oauth2_providers">Example configuration for common OAuth2 providers</h3>
+<div class="paragraph">
+<p>For convenience there are several helpers to assist your with your configuration. Currently we provide:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure Active Directory <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/AzureADAuth.type.html">AzureADAuth</a></code></p>
+</li>
+<li>
+<p>Box.com <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/BoxAuth.type.html">BoxAuth</a></code></p>
+</li>
+<li>
+<p>Dropbox <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/DropboxAuth.type.html">DropboxAuth</a></code></p>
+</li>
+<li>
+<p>Facebook <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/FacebookAuth.type.html">FacebookAuth</a></code></p>
+</li>
+<li>
+<p>Foursquare <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/FoursquareAuth.type.html">FoursquareAuth</a></code></p>
+</li>
+<li>
+<p>Github <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/GithubAuth.type.html">GithubAuth</a></code></p>
+</li>
+<li>
+<p>Google <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/GoogleAuth.type.html">GoogleAuth</a></code></p>
+</li>
+<li>
+<p>Instagram <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/InstagramAuth.type.html">InstagramAuth</a></code></p>
+</li>
+<li>
+<p>Keycloak <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/KeycloakAuth.type.html">KeycloakAuth</a></code></p>
+</li>
+<li>
+<p>LinkedIn <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/LinkedInAuth.type.html">LinkedInAuth</a></code></p>
+</li>
+<li>
+<p>Mailchimp <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/MailchimpAuth.type.html">MailchimpAuth</a></code></p>
+</li>
+<li>
+<p>Salesforce <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/SalesforceAuth.type.html">SalesforceAuth</a></code></p>
+</li>
+<li>
+<p>Shopify <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/ShopifyAuth.type.html">ShopifyAuth</a></code></p>
+</li>
+<li>
+<p>Soundcloud <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/SoundcloudAuth.type.html">SoundcloudAuth</a></code></p>
+</li>
+<li>
+<p>Stripe <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/StripeAuth.type.html">StripeAuth</a></code></p>
+</li>
+<li>
+<p>Twitter <code><a href="../../ceylondoc/vertx-auth-oauth2//providers/TwitterAuth.type.html">TwitterAuth</a></code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_jboss_keycloak">JBoss Keycloak</h4>
+<div class="paragraph">
+<p>When using this Keycloak the provider has knowledge on how to parse access tokens and extract grants from inside.
+This information is quite valuable since it allows to do authorization at the API level, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2 { accessToken, password }
+import io.vertx.ceylon.ext.auth.oauth2.providers { keycloakAuth }
+
+...
+
+// you would get this config from the keycloak admin console
+value keycloakJson = JsonObject {
+  realm = "master";
+  realm-public-key = "MIIBIjANBgkqhk...wIDAQAB";
+  auth-server-url = "http://localhost:9000/auth";
+  ssl-required = "external";
+  resource = "frontend";
+  credentials = JsonObject {
+    secret = "2fbf5e18-b923-4a83-9657-b4ebd5317f60";
+  };
+};
+
+// Initialize the OAuth2 Library
+value oauth2 = keycloakAuth.create(vertx, password, keycloakJson);
+
+// first get a token (authenticate)
+oauth2.authenticate(JsonObject {
+  username = "user";
+  password = "secret";
+}, (User|Throwable res) {
+  if (is Throwable name) {
+    // error handling...
+  } else {
+    value token = res;
+
+    // now check for permissions
+    token.isAuthorized("account:manage-account", (Boolean|Throwable r) {
+      if (r) {
+        // this user is authorized to manage its account
+      };
+    });
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We also provide a helper class for Keycloak so that we can we can easily retrieve decoded token and some necessary
+data (e.g. <code>preferred_username</code>) from the Keycloak principal. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2 { keycloakHelper }
+
+...
+
+// you can get the decoded `id_token` from the Keycloak principal
+value idToken = keycloakHelper.idToken(principal);
+
+// you can also retrieve some properties directly from the Keycloak principal
+// e.g. `preferred_username`
+value username = keycloakHelper.preferredUsername(principal);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please remember that Keycloak <strong>does</strong> implement OpenID Connect, so you can configure it just by using it&#8217;s discovery url:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2.providers { openIDConnectAuth }
+
+...
+
+
+openIDConnectAuth.discover(vertx, OAuth2ClientOptions {
+  site = "http://server:port/auth/realms/your_realm";
+  clientID = "clientId";
+}, (OAuth2Auth|Throwable res) {
+  if (is OAuth2Auth res) {
+    // the setup call succeeded.
+    // at this moment your auth is ready to use and
+    // google signature keys are loaded so tokens can be decoded and verified.
+  } else {
+    // the setup failed.
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since you can deploy your Keycloak server anywhere, just replace <code>server:port</code> with the correct value and the <code>your_realm</code>
+value with your application realm.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_google_server_to_server">Google Server to Server</h4>
+<div class="paragraph">
+<p>The provider also supports Server to Server or the RFC7523 extension. This is a feature present on Google with their
+service account.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_token_introspection">Token Introspection</h3>
+<div class="paragraph">
+<p>Tokens can be introspected in order to assert that they are still valid. Although there is RFC7662 for this purpose
+not many providers implement it. Instead there are variations also known as <code>TokenInfo</code> end points. The OAuth2
+provider will accept both end points as a configuration. Currently we are known to work with <code>Google</code> and <code>Keycloak</code>.</p>
+</div>
+<div class="paragraph">
+<p>Token introspection assumes that tokens are opaque, so they need to be validated on the provider server. Every time a
+token is validated it requires a round trip to the provider. Introspection can be performed at the OAuth2 level or at
+the User level:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">// OAuth2Auth level
+oauth2.introspectToken("opaque string", (AccessToken|Throwable res) {
+  if (is AccessToken res) {
+    // token is valid!
+    value accessToken = res;
+  };
+});
+
+// User level
+token.introspect((Throwable? res) {
+  if (!exists res) {
+    // Token is valid!
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verifying_jwt_tokens">Verifying JWT tokens</h3>
+<div class="paragraph">
+<p>We&#8217;ve just covered how to introspect a token however when dealing with JWT tokens one can reduce the amount of trips
+to the provider server thus enhancing your overall response times. In this case tokens will be verified using the
+JWT protocol at your application side only. Verifying JWT tokens is cheaper and offers better performance, however
+due to the stateless nature of JWTs it is not possible to know if a user is logged out and a token is invalid. For
+this specific case one needs to use the token introspection if the provider supports it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">// OAuth2Auth level
+oauth2.decodeToken("jwt-token", (AccessToken|Throwable res) {
+  if (is AccessToken res) {
+    // token is valid!
+    value accessToken = res;
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Until now we covered mostly authentication, although the implementation is relying party (that means that the real
+authentication happens somewhere else), there is more you can do with the handler. For example you can also do
+authorization if the provider is known to support JSON web tokens. This is a common feature if your provider is a
+OpenId Connect provider or if the provider does support `access_token`s as JWTs.</p>
+</div>
+<div class="paragraph">
+<p>Such provider is Keycloak that is a OpenId Connect implementation. In that case you will be able to perform
+authorization in a very easy way.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_role_based_access_control">Role Based Access Control</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OAuth2 is an AuthN protocol, however OpenId Connect adds JWTs to the token format which means that AuthZ can be encoded
+at the token level. Currently there are 2 known JWT AuthZ known formats:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keycloak</p>
+</li>
+<li>
+<p>MicroProfile JWT 1.1 spec</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_keycloak_jwt">Keycloak JWT</h3>
+<div class="paragraph">
+<p>Given that Keycloak does provide <code>JWT</code> `access_token`s one can authorize at two distinct levels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>role</p>
+</li>
+<li>
+<p>authority</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To distinct the two, the auth provider follows the same recommendations from the base user class, i.e.: use the`:` as
+a separator for the two. It should be noted that both role and authorities do not need to be together, in the most
+simple case an authority is enough.</p>
+</div>
+<div class="paragraph">
+<p>In order to map to keycloak&#8217;s token format the following checks are performed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If no role is provided, it is assumed to the the provider realm name</p>
+</li>
+<li>
+<p>If the role is <code>realm</code> then the lookup happens in <code>realm_access</code> list</p>
+</li>
+<li>
+<p>If a role is provided then the lookup happends in the <code>resource_access</code> list under the role name</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_check_for_a_specific_authorities">Check for a specific authorities</h4>
+<div class="paragraph">
+<p>Here is one example how you can perform authorization after the user has been loaded from the oauth2 handshake, for
+example you want to see if the user can <code>print</code> in the current application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.isAuthorized("print", (Boolean|Throwable res) {
+  // in this case it is assumed that the role is the current application
+  if (is Boolean res &amp;&amp; res) {
+    // Yes the user can print
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However this is quite specific, you might want to verify if the user can <code>add-user</code> to the whole system (the realm):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.isAuthorized("realm:add-user", (Boolean|Throwable res) {
+  // the role is "realm"
+  // the authority is "add-user"
+  if (is Boolean res &amp;&amp; res) {
+    // Yes the user can add users to the application
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or if the user can access the <code>year-report</code> in the <code>finance</code> department:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.isAuthorized("finance:year-report", (Boolean|Throwable res) {
+  // the role is "finance"
+  // the authority is "year-report"
+  if (is Boolean res &amp;&amp; res) {
+    // Yes the user can access the year report from the finance department
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_microprofile_jwt_1_1_spec">MicroProfile JWT 1.1 spec</h3>
+<div class="paragraph">
+<p>Another format in the form of a spec is the MP-JWT 1.1. This spec defines a JSON array of strings under the property
+name <code>groups</code> that define the "groups" the token has an authority over.</p>
+</div>
+<div class="paragraph">
+<p>In order to use this spec to assert AuthZ the right handler must be set:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.ext.auth.oauth2.rbac { microProfileRBAC }
+
+...
+
+// use the MP-JWT 1.1 spec handler to
+// handle Role-Based Access Control (AuthZ)
+oauth2Auth.rbacHandler(microProfileRBAC.create());</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_token_management">Token Management</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_check_if_it_is_expired">Check if it is expired</h3>
+<div class="paragraph">
+<p>Tokens are usually fetched from the server and cached, in this case when used later they might have already expired
+and be invalid, you can verify if the token is still valid like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">// internal validation against, expiration date
+value isExpired = user.expired();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This call is totally offline, it could still happen that the Oauth2 server invalidated your token but you get a non
+expired token result. The reason behind this is that the expiration is checked against the token expiration dates,
+not before date and such values.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refresh_token">Refresh token</h3>
+<div class="paragraph">
+<p>There are times you know the token is about to expire and would like to avoid to redirect the user again to the login
+screen. In this case you can refresh the token. To refresh a token you need to have already a user and call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.refresh((Throwable? res) {
+  if (!exists res) {
+    // the refresh call succeeded
+  } else {
+    // the token was not refreshed, a best practise would be
+    // to forcefully logout the user since this could be a
+    // symptom that you're logged out by the server and this
+    // token is not valid anymore.
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_revoke_token">Revoke token</h3>
+<div class="paragraph">
+<p>Since tokens can be shared across various applications you might want to disallow the usage of the current token by
+any application. In order to do this one needs to revoke the token against the Oauth2 server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.revoke("access_token", (Throwable? res) {
+  if (!exists res) {
+    // the refresh call succeeded
+  } else {
+    // the token was not refreshed, a best practise would be
+    // to forcefully logout the user since this could be a
+    // symptom that you're logged out by the server and this
+    // token is not valid anymore.
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is important to note that this call requires a token type. The reason is because some providers will return more
+than one token e.g.:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>id_token</p>
+</li>
+<li>
+<p>refresh_token</p>
+</li>
+<li>
+<p>access_token</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So one needs to know what token to invalidate. It should be obvious that if you invalidate the <code>refresh_token</code> you&#8217;re
+still logged in but you won&#8217;t be able to refresh anymore, which means that once the token expires you need to redirect
+the user again to the login page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_introspect">Introspect</h3>
+<div class="paragraph">
+<p>Introspect a token is similar to a expiration check, however one needs to note that this check is fully online. This
+means that the check happens on the OAuth2 server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.introspect((Throwable? res) {
+  if (!exists res) {
+    // the introspection call succeeded
+  } else {
+    // the token failed the introspection. You should proceed
+    // to logout the user since this means that this token is
+    // not valid anymore.
+  };
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Important note is that even if the <code>expired()</code> call is <code>true</code> the return from the <code>introspect</code> call can still be an
+error. This is because the OAuth2 might have received a request to invalidate the token or a loggout in between.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging_out">Logging out</h3>
+<div class="paragraph">
+<p>Logging out is not a <code>Oauth2</code> feature but it is present on <code>OpenID Connect</code> and most providers do support some sort
+of logging out. This provider also covers this area if the configuration is enough to let it make the call. For the
+user this is as simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">user.logout((Throwable? res) {
+  if (!exists res) {
+    // the logout call succeeded
+  } else {
+    // the user might not have been logged out
+    // to know why:
+    print(res);
+  };
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-09-04 18:06:05 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">Home</a></li>
+          <li><a href="https://vertx.tk/download/">Download</a></li>
+          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.tk/blog/">Blog</a></li>
+          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

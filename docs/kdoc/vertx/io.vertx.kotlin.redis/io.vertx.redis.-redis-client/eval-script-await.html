@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>evalScriptAwait - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.kotlin.redis</a>&nbsp;/&nbsp;<a href="index.html">io.vertx.redis.RedisClient</a>&nbsp;/&nbsp;<a href=".">evalScriptAwait</a><br/>
+<br/>
+<h1>evalScriptAwait</h1>
+<a name="io.vertx.kotlin.redis$evalScriptAwait(io.vertx.redis.RedisClient, io.vertx.redis.Script, kotlin.collections.List((kotlin.String)), kotlin.collections.List((kotlin.String)))"></a>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisClient</span><span class="symbol">.</span><span class="identifier">evalScriptAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis$evalScriptAwait(io.vertx.redis.RedisClient, io.vertx.redis.Script, kotlin.collections.List((kotlin.String)), kotlin.collections.List((kotlin.String)))/script">script</span><span class="symbol">:</span>&nbsp;<span class="identifier">Script</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.redis$evalScriptAwait(io.vertx.redis.RedisClient, io.vertx.redis.Script, kotlin.collections.List((kotlin.String)), kotlin.collections.List((kotlin.String)))/keys">keys</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.redis$evalScriptAwait(io.vertx.redis.RedisClient, io.vertx.redis.Script, kotlin.collections.List((kotlin.String)), kotlin.collections.List((kotlin.String)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
+<p>Execute a Lua script server side. This method is a high level wrapper around EVAL and EVALSHA
+using the latter if possible, falling back to EVAL if the script is not cached by the server yet.
+According to Redis documentation, executed scripts are guaranteed to be in the script cache of a
+given execution of a Redis instance forever, which means typically the overhead incurred by
+optimistically sending EVALSHA is minimal, while improving performance and saving bandwidth
+compared to using EVAL every time.</p>
+<h3>Parameters</h3>
+<p><a name="script"></a>
+<code>script</code> - Lua script and its SHA1 digest</p>
+<p><a name="keys"></a>
+<code>keys</code> - List of keys</p>
+<p><a name="args"></a>
+<code>args</code> - List of argument values</p>
+<p><a name="handler"></a>
+<code>handler</code> - Handler for the result of this call. group: scripting</p>
+<p><strong>Return</strong><br/>
+<ul><li></li>
+</ul>
+
+
+</p>
+</BODY>
+</HTML>

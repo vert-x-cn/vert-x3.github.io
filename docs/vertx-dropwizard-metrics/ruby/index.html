@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Metrics - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">Download</a></li>
+        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.tk/community/">Community</a></li>
+        <li><a href="https://vertx.tk/materials/">Materials</a></li>
+        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Metrics</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_features">Features</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_command_line_activation">Command line activation</a></li>
+<li><a href="#_metrics_service">Metrics service</a>
+<ul class="sectlevel2">
+<li><a href="#_naming">Naming</a></li>
+<li><a href="#_retrieving_metrics">Retrieving metrics</a></li>
+</ul>
+</li>
+<li><a href="#_data">Data</a>
+<ul class="sectlevel2">
+<li><a href="#gauge">Gauge</a></li>
+<li><a href="#counter">Counter</a></li>
+<li><a href="#histogram">Histogram</a></li>
+<li><a href="#meter">Meter</a></li>
+<li><a href="#throughput_meter">ThroughputMeter</a></li>
+<li><a href="#timer">Timer</a></li>
+<li><a href="#throughput_timer">Throughput Timer</a></li>
+</ul>
+</li>
+<li><a href="#_the_metrics">The metrics</a>
+<ul class="sectlevel2">
+<li><a href="#_vert_x_metrics">Vert.x metrics</a></li>
+<li><a href="#_event_bus_metrics">Event bus metrics</a></li>
+<li><a href="#http-server-metrics">Http server metrics</a></li>
+<li><a href="#_http_client_metrics">Http client metrics</a></li>
+<li><a href="#net-server-metrics">Net server metrics</a></li>
+<li><a href="#_net_client_metrics">Net client metrics</a></li>
+<li><a href="#_datagram_socket_metrics">Datagram socket metrics</a></li>
+<li><a href="#_pool_metrics">Pool metrics</a></li>
+</ul>
+</li>
+<li><a href="#jmx">JMX</a></li>
+<li><a href="#_enabling_remote_jmx">Enabling remote JMX</a></li>
+<li><a href="#dropwizard-registry">Accessing Dropwizard Registry</a></li>
+<li><a href="#_using_already_existing_dropwizard_registry">Using already existing Dropwizard Registry</a></li>
+<li><a href="#_using_jolokia_and_hawtio">Using Jolokia and Hawtio</a></li>
+<li><a href="#_using_jolokia_and_jmx4perl_to_expose_metrics_to_nagios">Using Jolokia and JMX4Perl to expose metrics to Nagios</a></li>
+<li><a href="#_metrics_commands_via_telnet_or_ssh_in_vert_x_shell_service">Metrics commands via Telnet or SSH in Vert.x Shell service</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_features">Features</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_command_line_activation">Command line activation</a></li>
+<li><a href="#_metrics_service">Metrics service</a>
+<ul class="sectlevel2">
+<li><a href="#_naming">Naming</a></li>
+<li><a href="#_retrieving_metrics">Retrieving metrics</a></li>
+</ul>
+</li>
+<li><a href="#_data">Data</a>
+<ul class="sectlevel2">
+<li><a href="#gauge">Gauge</a></li>
+<li><a href="#counter">Counter</a></li>
+<li><a href="#histogram">Histogram</a></li>
+<li><a href="#meter">Meter</a></li>
+<li><a href="#throughput_meter">ThroughputMeter</a></li>
+<li><a href="#timer">Timer</a></li>
+<li><a href="#throughput_timer">Throughput Timer</a></li>
+</ul>
+</li>
+<li><a href="#_the_metrics">The metrics</a>
+<ul class="sectlevel2">
+<li><a href="#_vert_x_metrics">Vert.x metrics</a></li>
+<li><a href="#_event_bus_metrics">Event bus metrics</a></li>
+<li><a href="#http-server-metrics">Http server metrics</a></li>
+<li><a href="#_http_client_metrics">Http client metrics</a></li>
+<li><a href="#net-server-metrics">Net server metrics</a></li>
+<li><a href="#_net_client_metrics">Net client metrics</a></li>
+<li><a href="#_datagram_socket_metrics">Datagram socket metrics</a></li>
+<li><a href="#_pool_metrics">Pool metrics</a></li>
+</ul>
+</li>
+<li><a href="#jmx">JMX</a></li>
+<li><a href="#_enabling_remote_jmx">Enabling remote JMX</a></li>
+<li><a href="#dropwizard-registry">Accessing Dropwizard Registry</a></li>
+<li><a href="#_using_already_existing_dropwizard_registry">Using already existing Dropwizard Registry</a></li>
+<li><a href="#_using_jolokia_and_hawtio">Using Jolokia and Hawtio</a></li>
+<li><a href="#_using_jolokia_and_jmx4perl_to_expose_metrics_to_nagios">Using Jolokia and JMX4Perl to expose metrics to Nagios</a></li>
+<li><a href="#_metrics_commands_via_telnet_or_ssh_in_vert_x_shell_service">Metrics commands via Telnet or SSH in Vert.x Shell service</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project implements the Vert.x Metrics Service Provider Interface (SPI) reporting metrics to the
+<a href="https://github.com/dropwizard/metrics">Dropwizard metrics</a> library.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_features">Features</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A fairly simple API to retrieve metrics via the <code><a href="../../yardoc/Vertx/Measured.html">Measured</a></code>
+interface which is implemented by various Vert.x components like <code><a href="../../yardoc/Vertx/HttpServer.html">HttpServer</a></code>,
+<code><a href="../../yardoc/Vertx/NetServer.html">NetServer</a></code>, and even <code><a href="../../yardoc/Vertx/Vertx.html">Vertx</a></code> itself.</p>
+</div>
+<div class="paragraph">
+<p>Configurable JMX reporting based on Dropwizard implementation, exposing Vert.x as JMX MBeans.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To enable metrics, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-dropwizard-metrics&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-dropwizard-metrics:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then when you create vertx enable metrics using the <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also enable JMX:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'jmxEnabled' =&gt; true
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To see details about JMX see the <a href="#jmx">JMX</a> section at the bottom.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_command_line_activation">Command line activation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When running Vert.x from the command line interface, metrics can be activated via JVM system properties. System
+properties beginning with <em>vertx.metrics.options.</em> are transmitted to the metrics options.</p>
+</div>
+<div class="paragraph">
+<p>The <em>vertx.metrics.options.enabled</em> is a standard Vert.x Core option for enabling the metrics implementations, this
+options must be set to <code>true</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java -jar your-fat-jar -Dvertx.metrics.options.enabled=true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#set_registry_name-instance_method">vertx.metrics.options.registryName</a></code>
+configures the <a href="#dropwizard-registry">Dropwizard Registry</a> to use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java -jar your-fat-jar -Dvertx.metrics.options.enabled=true -Dvertx.metrics.options.registryName=my-registry</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#set_jmx_enabled-instance_method">vertx.metrics.options.jmxEnabled</a></code> and
+<code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#set_jmx_domain-instance_method">vertx.metrics.options.jmxDomain</a></code>
+configures the <a href="#jmx">JMX</a> registration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java -jar your-fat-jar -Dvertx.metrics.options.enabled=true -Dvertx.metrics.options.jmxEnabled=true ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#set_config_path-instance_method">vertx.metrics.options.configPath</a></code>
+option allows to reconfigure the metrics from a property file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metrics_service">Metrics service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While Vert.x core defines an SPI for reporting metrics (implemented for instance in this project), it does not define
+an API for retrieving metrics (because some metrics collectors just do reporting and nothing more).</p>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../yardoc/VertxDropwizard/MetricsService.html">MetricsService</a></code> provides an API in front of the Dropwizard Registry to get
+metrics data snapshots.</p>
+</div>
+<div class="sect2">
+<h3 id="_naming">Naming</h3>
+<div class="paragraph">
+<p>Each measured component listed below (except for Vertx) will have a base name associated with it. Each metric
+can be retrieved by providing the fully qualified name &lt;fqn&gt; <code>baseName</code> + <code>.</code> + <code>metricName</code> from Vertx:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">metrics = metricsService.get_metrics_snapshot(vertx)
+metrics['vertx.eventbus.handlers']</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or from the measured component itself using just the metric name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">eventBus = vertx.event_bus()
+metrics = metricsService.get_metrics_snapshot(eventBus)
+metrics['handlers']</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See more examples below on how to retrieve/use metrics for a specific component.</p>
+</div>
+<div class="paragraph">
+<p>Metrics names can also be listed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">metricsNames = metricsService.metrics_names()
+metricsNames.each do |metricsName|
+  puts "Known metrics name #{metricsName}"
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>baseName</code> defaults to <code>vertx</code>, but can be set to a custom value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">metricsOptions = {
+  'baseName' =&gt; "foo"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_retrieving_metrics">Retrieving metrics</h3>
+<div class="paragraph">
+<p>Once enabled, the <code><a href="../../yardoc/VertxDropwizard/MetricsService.html">MetricsService</a></code> allows to retrieve metrics snapshots from any
+<code><a href="../../yardoc/Vertx/Measured.html">Measured</a></code> object which provides a map of the metric name to the data,
+represented by a <code><a href="unavailable">JsonObject</a></code>. So for example if we were to print out all metrics
+for a particular Vert.x instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-dropwizard/metrics_service'
+metricsService = VertxDropwizard::MetricsService.create(vertx)
+metrics = metricsService.get_metrics_snapshot(vertx)
+puts metrics</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+For details on the actual contents of the data (the actual metric) represented by the <code><a href="unavailable">JsonObject</a></code>
+consult the implementation documentation like <a href="https://github.com/vert-x3/vertx-metrics">vertx-metrics</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Often it is desired that you only want to capture specific metrics for a particular component, like an http server
+without having to know the details of the naming scheme of every metric (something which is left to the implementers of the SPI).</p>
+</div>
+<div class="paragraph">
+<p>Since <code><a href="../../yardoc/Vertx/HttpServer.html">HttpServer</a></code> implements <code><a href="../../yardoc/Vertx/Measured.html">Measured</a></code>, you can easily grab all metrics
+that are specific for that particular http server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-dropwizard/metrics_service'
+metricsService = VertxDropwizard::MetricsService.create(vertx)
+server = vertx.create_http_server()
+# set up server
+metrics = metricsService.get_metrics_snapshot(server)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Metrics can also be retrieved using a base name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-dropwizard/metrics_service'
+metricsService = VertxDropwizard::MetricsService.create(vertx)
+metrics = metricsService.get_metrics_snapshot("vertx.eventbus.message")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data">Data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below is how each dropwizard metric is represented in JSON. Please refer to the
+<a href="https://github.com/dropwizard/metrics">Dropwizard metrics</a> documentation for detailed information on each metric.</p>
+</div>
+<div class="sect2">
+<h3 id="gauge">Gauge</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">{
+ "type"  : "gauge",
+ "value" : value // any json value
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="counter">Counter</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">{
+ "type"  : "counter",
+ "count" : 1 // number
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="histogram">Histogram</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">{
+ "type"   : "histogram",
+ "count"  : 1 // long
+ "min"    : 1 // long
+ "max"    : 1 // long
+ "mean"   : 1.0 // double
+ "stddev" : 1.0 // double
+ "median" : 1.0 // double
+ "75%"    : 1.0 // double
+ "95%"    : 1.0 // double
+ "98%"    : 1.0 // double
+ "99%"    : 1.0 // double
+ "99.9%"  : 1.0 // double
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="meter">Meter</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">{
+ "type"              : "meter",
+ "count"             : 1 // long
+ "meanRate"          : 1.0 // double
+ "oneMinuteRate"     : 1.0 // double
+ "fiveMinuteRate"    : 1.0 // double
+ "fifteenMinuteRate" : 1.0 // double
+ "rate"              : "events/second" // string representing rate
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="throughput_meter">ThroughputMeter</h3>
+<div class="paragraph">
+<p>Extends a <a href="#meter">Meter</a> to provide an instant throughput.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">{
+ "type"              : "meter",
+ "count"             : 40 // long
+ "meanRate"          : 2.0 // double
+ "oneSecondRate"     : 3 // long - number of occurence for the last second
+ "oneMinuteRate"     : 1.0 // double
+ "fiveMinuteRate"    : 1.0 // double
+ "fifteenMinuteRate" : 1.0 // double
+ "rate"              : "events/second" // string representing rate
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timer">Timer</h3>
+<div class="paragraph">
+<p>A timer is basically a combination of Histogram + Meter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">{
+ "type": "timer",
+
+ // histogram data
+ "count"  : 1 // long
+ "min"    : 1 // long
+ "max"    : 1 // long
+ "mean"   : 1.0 // double
+ "stddev" : 1.0 // double
+ "median" : 1.0 // double
+ "75%"    : 1.0 // double
+ "95%"    : 1.0 // double
+ "98%"    : 1.0 // double
+ "99%"    : 1.0 // double
+ "99.9%"  : 1.0 // double
+
+ // meter data
+ "meanRate"          : 1.0 // double
+ "oneMinuteRate"     : 1.0 // double
+ "fiveMinuteRate"    : 1.0 // double
+ "fifteenMinuteRate" : 1.0 // double
+ "rate"              : "events/second" // string representing rate
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="throughput_timer">Throughput Timer</h3>
+<div class="paragraph">
+<p>Extends a <a href="#timer">Timer</a> to provide an instant throughput metric.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">{
+ "type": "timer",
+
+ // histogram data
+ "count"      : 1 // long
+ "min"        : 1 // long
+ "max"        : 1 // long
+ "mean"       : 1.0 // double
+ "stddev"     : 1.0 // double
+ "median"     : 1.0 // double
+ "75%"        : 1.0 // double
+ "95%"        : 1.0 // double
+ "98%"        : 1.0 // double
+ "99%"        : 1.0 // double
+ "99.9%"      : 1.0 // double
+
+ // meter data
+ "meanRate"          : 1.0 // double
+ "oneSecondRate"     : 3 // long - number of occurence for the last second
+ "oneMinuteRate"     : 1.0 // double
+ "fiveMinuteRate"    : 1.0 // double
+ "fifteenMinuteRate" : 1.0 // double
+ "rate"              : "events/second" // string representing rate
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_metrics">The metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following metrics are currently provided.</p>
+</div>
+<div class="sect2">
+<h3 id="_vert_x_metrics">Vert.x metrics</h3>
+<div class="paragraph">
+<p>The following metrics are provided:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>vertx.event-loop-size</code> - A <a href="#gauge">Gauge</a> of the number of threads in the event loop pool</p>
+</li>
+<li>
+<p><code>vertx.worker-pool-size</code> - A <a href="#gauge">Gauge</a> of the number of threads in the worker pool</p>
+</li>
+<li>
+<p><code>vertx.cluster-host</code> - A <a href="#gauge">Gauge</a> of the cluster-host setting</p>
+</li>
+<li>
+<p><code>vertx.cluster-port</code> - A <a href="#gauge">Gauge</a> of the cluster-port setting</p>
+</li>
+<li>
+<p><code>vertx.verticles</code> - A <a href="#counter">Counter</a> of the number of verticles currently deployed</p>
+</li>
+<li>
+<p><code>vertx.verticles.&lt;verticle-name&gt;</code> - A <a href="#counter">Counter</a> of the number of deployment of a particular verticle</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_event_bus_metrics">Event bus metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.eventbus</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>handlers</code> - A <a href="#counter">Counter</a> of the number of event bus handlers</p>
+</li>
+<li>
+<p><code>handlers.myaddress</code> - A <a href="#timer">Timer</a> representing the rate of which messages are being processed for the <em>myaddress</em> handler</p>
+</li>
+<li>
+<p><code>messages.bytes-read</code> - A <a href="#meter">Meter</a> of the number of bytes read when receiving remote messages</p>
+</li>
+<li>
+<p><code>messages.bytes-written</code> - A <a href="#meter">Meter</a> of the number of bytes written when sending remote messages</p>
+</li>
+<li>
+<p><code>messages.pending</code> - A <a href="#counter">Counter</a> of the number of messages received but not yet processed by an handler</p>
+</li>
+<li>
+<p><code>messages.pending-local</code> - A <a href="#counter">Counter</a> of the number of messages locally received but not yet processed by an handler</p>
+</li>
+<li>
+<p><code>messages.pending-remote</code> - A <a href="#counter">Counter</a> of the number of messages remotely received but not yet processed by an handler</p>
+</li>
+<li>
+<p><code>messages.received</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being received</p>
+</li>
+<li>
+<p><code>messages.received-local</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which local messages are being received</p>
+</li>
+<li>
+<p><code>messages.received-remote</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which remote messages are being received</p>
+</li>
+<li>
+<p><code>messages.delivered</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being delivered to an handler</p>
+</li>
+<li>
+<p><code>messages.delivered-local</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which local messages are being delivered to an handler</p>
+</li>
+<li>
+<p><code>messages.delivered-remote</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which remote messages are being delivered to an handler</p>
+</li>
+<li>
+<p><code>messages.sent</code> - A <a href="#throughput_metert">[throughput_metert]</a> representing the rate of which messages are being sent</p>
+</li>
+<li>
+<p><code>messages.sent-local</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being sent locally</p>
+</li>
+<li>
+<p><code>messages.sent-remote</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being sent remotely</p>
+</li>
+<li>
+<p><code>messages.published</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being published</p>
+</li>
+<li>
+<p><code>messages.published-local</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being published locally</p>
+</li>
+<li>
+<p><code>messages.published-remote</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being published remotely</p>
+</li>
+<li>
+<p><code>messages.reply-failures</code> - A <a href="#meter">Meter</a> representing the rate of reply failures</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The monitored event bus handlers is configurable via a match performed on the handler registration address.
+Vert.x can have potentially a huge amount of registered event bus, therefore the only good default for this
+setting is to monitor zero handlers.</p>
+</div>
+<div class="paragraph">
+<p>The monitored handlers can be configured in the <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code> via
+a specific address match or a regex match:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true,
+    'monitoredEventBusHandlers' =&gt; [
+      {
+        'value' =&gt; "some-address"
+      },
+      {
+        'value' =&gt; "business-.*",
+        'type' =&gt; "REGEX"
+      }
+    ]
+  }
+})</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+if you use regex match, a wrong regex can potentially match a lot of handlers.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="http-server-metrics">Http server metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.http.servers.&lt;host&gt;:&lt;port&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Http server includes all the metrics of a <a href="#net-server-metrics">Net Server</a> plus the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>requests</code> - A <a href="#throughput_timer">Throughput Timer</a> of a request and the rate of it&#8217;s occurrence</p>
+</li>
+<li>
+<p><code>&lt;http-method&gt;-requests</code> - A <a href="#throughput_timer">Throughput Timer</a> of a specific http method request and the rate of it&#8217;s occurrence</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Examples: <code>get-requests</code>, <code>post-requests</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>&lt;http-method&gt;-requests./&lt;uri&gt;</code> - A <a href="#throughput_timer">Throughput Timer</a> of a specific http method &amp; URI request and the rate of it&#8217;s occurrence</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Examples: <code>get-requests./some/uri</code>, <code>post-requests./some/uri?foo=bar</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>responses-1xx</code> - A <a href="#throughput_meter">ThroughputMeter</a> of the 1xx response code</p>
+</li>
+<li>
+<p><code>responses-2xx</code> - A <a href="#throughput_meter">ThroughputMeter</a> of the 2xx response code</p>
+</li>
+<li>
+<p><code>responses-3xx</code> - A <a href="#throughput_meter">ThroughputMeter</a> of the 3xx response code</p>
+</li>
+<li>
+<p><code>responses-4xx</code> - A <a href="#throughput_meter">ThroughputMeter</a> of the 4xx response code</p>
+</li>
+<li>
+<p><code>responses-5xx</code> - A <a href="#throughput_meter">ThroughputMeter</a> of the 5xx response code</p>
+</li>
+<li>
+<p><code>open-websockets</code> - A <a href="#counter">Counter</a> of the number of open web socket connections</p>
+</li>
+<li>
+<p><code>open-websockets.&lt;remote-host&gt;</code> - A <a href="#counter">Counter</a> of the number of open web socket connections for a particular remote host</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Http URI metrics must be explicitely configured in the options either by exact match or regex match:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true,
+    'monitoredHttpServerUris' =&gt; [
+      {
+        'value' =&gt; "/"
+      },
+      {
+        'value' =&gt; "/foo/.*",
+        'type' =&gt; "REGEX"
+      }
+    ]
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case if the uri contains some path parameters like <code>/users/:userId</code> it might not make sense to have a separate entry in the registry for each user
+id (like <code>get-requests./users/1</code>, <code>get-requests./users/2</code> and so on) but a summarized one. To achieve that you can set an alias to the match instance
+in this case the alias will be used as a part of the registry name instead of uri like <code>&lt;http-method&gt;-requests.&lt;alias&gt;</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true,
+    'monitoredHttpServerUris' =&gt; [
+      {
+        'value' =&gt; "/users/.*",
+        'alias' =&gt; "users",
+        'type' =&gt; "REGEX"
+      }
+    ]
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>For <code>bytes-read</code> and <code>bytes-written</code> the bytes represent the body of the request/response, so headers, etc are ignored.</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_http_client_metrics">Http client metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.http.clients</code> (by default) or <code>vertx.http.clients.&lt;id&gt;</code> where <code>&lt;id&gt;</code> is a non empty string
+configured by <code><a href="../dataobjects.html#HttpClientOptions#set_metrics_name-instance_method">metricsName</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Http client includes all the metrics of a <a href="#http-server-metrics">Http Server</a> plus the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>connections.max-pool-size</code> - A <a href="#gauge">Gauge</a> of the max connection pool size</p>
+</li>
+<li>
+<p><code>connections.pool-ratio</code> - A ratio <a href="#gauge">Gauge</a> of the open connections / max connection pool size</p>
+</li>
+<li>
+<p><code>responses-1xx</code> - A <a href="#meter">Meter</a> of the 1xx response code</p>
+</li>
+<li>
+<p><code>responses-2xx</code> - A <a href="#meter">Meter</a> of the 2xx response code</p>
+</li>
+<li>
+<p><code>responses-3xx</code> - A <a href="#meter">Meter</a> of the 3xx response code</p>
+</li>
+<li>
+<p><code>responses-4xx</code> - A <a href="#meter">Meter</a> of the 4xx response code</p>
+</li>
+<li>
+<p><code>responses-5xx</code> - A <a href="#meter">Meter</a> of the 5xx response code</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The http client manages a pool of connection for each remote endpoint with a queue of pending requests</p>
+</div>
+<div class="paragraph">
+<p>Endpoint metrics are available too:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>endpoint.&lt;host:port&gt;.queue-delay</code> - A <a href="#timer">Timer</a> of the wait time of a pending request in the queue</p>
+</li>
+<li>
+<p><code>endpoint.&lt;host:port&gt;.queue-size</code> - A <a href="#counter">Counter</a> of the actual queue size</p>
+</li>
+<li>
+<p><code>endpoint.&lt;host:port&gt;.open-netsockets</code> - A <a href="#counter">Counter</a> of the actual number of open sockets to the endpoint</p>
+</li>
+<li>
+<p><code>endpoint.&lt;host:port&gt;.usage</code> - A <a href="#timer">Timer</a> of the delay between the request starts and the response ends</p>
+</li>
+<li>
+<p><code>endpoint.&lt;host:port&gt;.in-use</code> - A <a href="#counter">Counter</a> of the actual number of request/response</p>
+</li>
+<li>
+<p><code>endpoint.&lt;host:port&gt;.ttfb</code> - A <a href="#timer">Timer</a> of the wait time between the request ended and its response begins</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>where &lt;host&gt; is the endpoint host name possibly unresolved and &lt;port&gt; the TCP port.</p>
+</div>
+<div class="paragraph">
+<p>The monitored endpoints are configurable via a match performed on the server <code>$host:$port</code>.
+The default for this setting is to monitor no endpoints.</p>
+</div>
+<div class="paragraph">
+<p>The monitored endpoints can be configured in the <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code> via
+a specific hostname match or a regex match:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true,
+    'monitoredHttpClientEndpoints' =&gt; [
+      {
+        'value' =&gt; "some-host:80"
+      },
+      {
+        'value' =&gt; "another-host:.*",
+        'type' =&gt; "REGEX"
+      }
+    ]
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="net-server-metrics">Net server metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.net.servers.&lt;host&gt;:&lt;port&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open-netsockets</code> - A <a href="#counter">Counter</a> of the number of open net socket connections</p>
+</li>
+<li>
+<p><code>open-netsockets.&lt;remote-host&gt;</code> - A <a href="#counter">Counter</a> of the number of open net socket connections for a particular remote host</p>
+</li>
+<li>
+<p><code>connections</code> - A <a href="#timer">Timer</a> of a connection and the rate of it&#8217;s occurrence</p>
+</li>
+<li>
+<p><code>exceptions</code> - A <a href="#counter">Counter</a> of the number of exceptions</p>
+</li>
+<li>
+<p><code>bytes-read</code> - A <a href="#histogram">Histogram</a> of the number of bytes read.</p>
+</li>
+<li>
+<p><code>bytes-written</code> - A <a href="#histogram">Histogram</a> of the number of bytes written.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_net_client_metrics">Net client metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.net.clients</code> (by default) or <code>vertx.net.clients.&lt;id&gt;</code> where <code>&lt;id&gt;</code> is a non empty string
+configured by <code><a href="../dataobjects.html#NetClientOptions#set_metrics_name-instance_method">metricsName</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Net client includes all the metrics of a <a href="#net-server-metrics">Net Server</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_datagram_socket_metrics">Datagram socket metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.datagram</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sockets</code> - A <a href="#counter">Counter</a> of the number of datagram sockets</p>
+</li>
+<li>
+<p><code>exceptions</code> - A <a href="#counter">Counter</a> of the number of exceptions</p>
+</li>
+<li>
+<p><code>bytes-written</code> - A <a href="#histogram">Histogram</a> of the number of bytes written.</p>
+</li>
+<li>
+<p><code>&lt;host&gt;:&lt;port&gt;.bytes-read</code> - A <a href="#histogram">Histogram</a> of the number of bytes read.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This metric will only be available if the datagram socket is listening</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pool_metrics">Pool metrics</h3>
+<div class="paragraph">
+<p>Base name: <code>vertx.pools.&lt;type&gt;.&lt;name&gt;</code> where <code>type</code> is the type of the pool (e.g <em>worker</em>, <em>datasource</em>) and
+<code>name</code> is the name of the pool (e.g <code>vert.x-worker-thread</code>).</p>
+</div>
+<div class="paragraph">
+<p>Pools of type <em>worker</em> are blocking worker pools. Vert.x exposes its worker as <em>vert.x-worker-thread</em> and
+<em>vert.x-internal-blocking</em>. Named worker executor created with <code><a href="../../yardoc/Vertx/WorkerExecutor.html">WorkerExecutor</a></code> are exposed.</p>
+</div>
+<div class="paragraph">
+<p>Datasource created with Vert.x JDBC clients are exposed as <em>datasource</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>queue-delay</code> - A <a href="#timer">Timer</a> measuring the duration of the delay to obtain the resource, i.e the wait time in the queue</p>
+</li>
+<li>
+<p><code>queue-size</code> - A <a href="#counter">Counter</a> of the actual number of waiters in the queue</p>
+</li>
+<li>
+<p><code>usage</code> - A <a href="#timer">Timer</a> measuring the duration of the usage of the resource</p>
+</li>
+<li>
+<p><code>in-use</code> - A <a href="#count">[count]</a> of the actual number of resources used</p>
+</li>
+<li>
+<p><code>pool-ratio</code> - A ratio <a href="#gauge">Gauge</a> of the in use resource / pool size</p>
+</li>
+<li>
+<p><code>max-pool-size</code> - A <a href="#gauge">Gauge</a> of the max pool size</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>pool-ratio</code> and the <code>max_pool_size</code> won&#8217;t be present when the measured pool&#8217;s max pool size could not
+be determined.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jmx">JMX</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JMX is disabled by default.</p>
+</div>
+<div class="paragraph">
+<p>If you want JMX, then you need to enabled that:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'jmxEnabled' =&gt; true
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If running Vert.x from the command line you can enable metrics and JMX by uncommented the JMX_OPTS line in the
+<code>vertx</code> or <code>vertx.bat</code> script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>JMX_OPTS="-Dcom.sun.management.jmxremote -Dvertx.metrics.options.jmxEnabled=true"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can configure the domain under which the MBeans will be created:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'jmxEnabled' =&gt; true,
+    'jmxDomain' =&gt; "mydomain"
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the command line, just append the following system properties to your application (works for the <code>vertx</code> cli and
+fat jars):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>-Dvertx.metrics.options.jmxEnabled=true -Dvertx.metrics.options.jmxDomain=vertx</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enabling_remote_jmx">Enabling remote JMX</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want the metrics to be exposed remotely over JMX, then you need to set, at minimum the following system property:</p>
+</div>
+<div class="paragraph">
+<p><code>com.sun.management.jmxremote</code></p>
+</div>
+<div class="paragraph">
+<p>If running from the command line this can be done by editing the <code>vertx</code> or <code>vertx.bat</code> and uncommenting the
+<code>JMX_OPTS</code> line.</p>
+</div>
+<div class="paragraph">
+<p>Please see the <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html">Oracle JMX documentation</a> for more information on configuring JMX</p>
+</div>
+<div class="paragraph">
+<p><strong>If running Vert.x on a public server please be careful about exposing remote JMX access</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dropwizard-registry">Accessing Dropwizard Registry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When configuring the metrics service, an optional registry name can be specified for registering the underlying
+<a href="https://dropwizard.github.io/metrics/3.1.0/getting-started/#the-registry">Dropwizard Registry</a> in the
+the <a href="https://dropwizard.github.io/metrics/3.1.0/apidocs/com/codahale/metrics/SharedMetricRegistries.html">Dropwizard Shared Registry</a>
+so you can retrieve this registry and use according to your needs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+options = {
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true,
+    'registryName' =&gt; "my-registry"
+  }
+}
+vertx = Vertx::Vertx.vertx(options)
+# Get the registry
+registry = Java::ComCodahaleMetrics::SharedMetricRegistries.get_or_create("my-registry")
+# Do whatever you need with the registry
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_already_existing_dropwizard_registry">Using already existing Dropwizard Registry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Optionally, it is possible to utilize already existing <a href="https://dropwizard.github.io/metrics/3.1.0/getting-started/#the-registry">Dropwizard Registry</a>.
+In order to do so pass <code>MetricRegistry</code> instance as parameter for <code>setMetricRegistry</code> function in <code>VertxOptions</code> object.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MetricRegistry metricRegistry = new MetricRegistry();
+VertxOptions options = new VertxOptions().setMetricsOptions(
+   new DropwizardMetricsOptions().setEnabled(true).setMetricRegistry(metricRegistry)
+);
+Vertx vertx = Vertx.vertx(options);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_jolokia_and_hawtio">Using Jolokia and Hawtio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://jolokia.org/">Jolokia</a> is a JMX-HTTP bridge giving an alternative to JSR-160 connectors. It is an agent based
+approach with support for many platforms. In addition to basic JMX operations it enhances JMX remoting with features
+like bulk requests.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://hawt.io/">Hawtio</a> is a modular web console consuming the data exposed by Jolokia. It lets you create dashboards
+and retrieve data from JMX such as memory, cpu, or any vert.x metrics.</p>
+</div>
+<div class="paragraph">
+<p>This section explains how to configure your vert.x application to retrieve the metrics in Hawtio.</p>
+</div>
+<div class="paragraph">
+<p>First, you need to configure your vert.x instance with the following options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx/vertx'
+vertx = Vertx::Vertx.vertx({
+  'metricsOptions' =&gt; {
+    'enabled' =&gt; true,
+    'jmxEnabled' =&gt; true,
+    'jmxDomain' =&gt; "vertx-metrics"
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can change the domain to whatever you want. The same configuration can be used for clustered Vert.x instances.
+This configuration instructs vertx-dropwizard-metrics to expose the metrics in the local MBean server, so
+Jolokia can retrieve them.</p>
+</div>
+<div class="paragraph">
+<p>Then you need, to <em>plug</em> jolokia to expose the data. There are several ways to <em>plug</em> jolokia. See
+<a href="https://jolokia.org/reference/html/architecture.html">for further details</a>. Here, we explain how to use the
+Jolokia agent with the default configuration. Refer to the <a href="https://jolokia.org/reference/html/">the jolokia
+documentation</a> to configure it.</p>
+</div>
+<div class="paragraph">
+<p>The agent can either be attached when you start the application or attached on a running JVM (you would need
+special permission to access the process). In the first case, launch you application using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>java -javaagent:/.../agents/jolokia-jvm.jar=port=7777,host=localhost -jar ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>-javaagent</code> specifies the path to the jolokia agent jar file. You can configure the port and host from the
+command line. Here it registers the REST endpoint on <code><a href="http://localhost:7777" class="bare">http://localhost:7777</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also attach the agent on a running JVM with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>java -jar jolokia-jvm.jar start PID</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace <code>PID</code> with the process id of the JVM.</p>
+</div>
+<div class="paragraph">
+<p>Once Jolokia is configured and launched, you can consume the data from Hawtio.</p>
+</div>
+<div class="paragraph">
+<p>On Hawtio, enter the connection details as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/hawtio-connect.png" alt="hawtio connect">
+</div>
+</div>
+<div class="paragraph">
+<p>Then, you can go to the <em>JMX</em> tab and you should find a <em>directory</em> with the name you entered as JMX domain
+in the Vert.x configuration:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/hawtio-jmx.png" alt="hawtio jmx">
+</div>
+</div>
+<div class="paragraph">
+<p>From this, you can configure your dashboard and retrieve any metric exposed by vert.x.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_jolokia_and_jmx4perl_to_expose_metrics_to_nagios">Using Jolokia and JMX4Perl to expose metrics to Nagios</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://search.cpan.org/~roland/jmx4perl/scripts/check_jmx4perl">Check_jmx4perl</a> is a Nagios plugin using jmx4perl for
+accessing JMX data remotely. It lets you expose the Vert.x metrics to Nagios.</p>
+</div>
+<div class="paragraph">
+<p>First you need to start your application with the Jolokia JVM agent attached to it. There are several ways to
+attach jolokia. See <a href="https://jolokia.org/reference/html/architecture.html">for further details</a>. Here, we explain how
+to use the Jolokia agent with the default configuration. Refer to the <a href="https://jolokia.org/reference/html/">the jolokia
+documentation</a> to configure it.</p>
+</div>
+<div class="paragraph">
+<p>The agent can either be attached when you start the application or attached on a running JVM (you would need
+special permission to access the process). In the first case, launch you application using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>java -javaagent:/.../agents/jolokia-jvm.jar=port=7777,host=localhost -jar ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>-javaagent</code> specifies the path to the jolokia agent jar file. You can configure the port and host from the
+command line. Here it registers the REST endpoint on <code><a href="http://localhost:7777" class="bare">http://localhost:7777</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also attach the agent on a running JVM with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>java -jar jolokia-jvm.jar start PID</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace <code>PID</code> with the process id of the JVM.</p>
+</div>
+<div class="paragraph">
+<p>Once Jolokia is started, you can configure your Nagios check such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>check_jmx4perl --url http://10.0.2.2:8778/jolokia --name eventloops --mbean vertx:name=vertx.event-loop-size
+--attribute Value --warning 4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check <a href="http://search.cpan.org/~roland/jmx4perl/scripts/check_jmx4perl">check_jmx4perl documentation</a> to get more
+details about check configuration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metrics_commands_via_telnet_or_ssh_in_vert_x_shell_service">Metrics commands via Telnet or SSH in Vert.x Shell service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To find out the available metrics commands you can use the <em>help</em> builtin command:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Available commands</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>metrics-ls: List the known metrics for the current Vert.x instance</p>
+</li>
+<li>
+<p>metrics-info: Show metrics info for the current Vert.x instance in JSON format</p>
+</li>
+<li>
+<p>metrics-histogram: Show histogram metrics table for the current Vert.x instance in real time</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-09-04 18:06:08 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">Home</a></li>
+          <li><a href="https://vertx.tk/download/">Download</a></li>
+          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.tk/blog/">Blog</a></li>
+          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

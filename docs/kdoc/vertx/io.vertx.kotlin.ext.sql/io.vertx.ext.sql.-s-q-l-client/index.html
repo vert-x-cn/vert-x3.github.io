@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.kotlin.ext.sql.io.vertx.ext.sql.SQLClient - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.kotlin.ext.sql</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.sql.SQLClient</a><br/>
+<br/>
+<h3>Extensions for io.vertx.ext.sql.SQLClient</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="call-await.html">callAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">callAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$callAwait(io.vertx.ext.sql.SQLClient, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
+<p>Calls the given SQL PROCEDURE which returns the result from the procedure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="call-with-params-await.html">callWithParamsAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">callWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/outputs">outputs</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
+<p>Calls the given SQL PROCEDURE which returns the result from the procedure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-await.html">closeAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">closeAwait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the client and release all resources.
+Call the handler when close is complete.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection-await.html">getConnectionAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">getConnectionAwait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLConnection</span></code>
+<p>Returns a connection that can be used to perform SQL operations on. It's important to remember
+to close the connection when you are done, so it is returned to the pool.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-await.html">queryAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">queryAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryAwait(io.vertx.ext.sql.SQLClient, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
+<p>Execute a single SQL statement, this method acquires a connection from the the pool and executes the SQL
+statement and returns it back after the execution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-single-await.html">querySingleAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">querySingleAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$querySingleAwait(io.vertx.ext.sql.SQLClient, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span><span class="symbol">?</span></code>
+<p>Execute a one shot SQL statement that returns a single SQL row. This method will reduce the boilerplate code by
+getting a connection from the pool (this object) and return it back after the execution. Only the first result
+from the result set is returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-single-with-params-await.html">querySingleWithParamsAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">querySingleWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$querySingleWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$querySingleWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/arguments">arguments</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span><span class="symbol">?</span></code>
+<p>Execute a one shot SQL statement with arguments that returns a single SQL row. This method will reduce the
+boilerplate code by getting a connection from the pool (this object) and return it back after the execution.
+Only the first result from the result set is returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-stream-await.html">queryStreamAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">queryStreamAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryStreamAwait(io.vertx.ext.sql.SQLClient, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLRowStream</span></code>
+<p>Executes the given SQL SELECT statement which returns the results of the query as a read stream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-stream-with-params-await.html">queryStreamWithParamsAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">queryStreamWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryStreamWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryStreamWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLRowStream</span></code>
+<p>Executes the given SQL SELECT statement which returns the results of the query as a read stream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-with-params-await.html">queryWithParamsAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">queryWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/arguments">arguments</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
+<p>Execute a single SQL prepared statement, this method acquires a connection from the the pool and executes the SQL
+prepared statement and returns it back after the execution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-await.html">updateAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">updateAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$updateAwait(io.vertx.ext.sql.SQLClient, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UpdateResult</span></code>
+<p>Executes the given SQL statement which may be an INSERT, UPDATE, or DELETE
+statement.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-with-params-await.html">updateWithParamsAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLClient</span><span class="symbol">.</span><span class="identifier">updateWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$updateWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$updateWithParamsAwait(io.vertx.ext.sql.SQLClient, kotlin.String, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UpdateResult</span></code>
+<p>Executes the given prepared statement which may be an INSERT, UPDATE, or DELETE
+statement with the given parameters</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

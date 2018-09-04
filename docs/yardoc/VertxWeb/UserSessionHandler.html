@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: VertxWeb::UserSessionHandler
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!VertxWeb/UserSessionHandler.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (U)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../VertxWeb.html" title="VertxWeb (module)">VertxWeb</a></span></span>
+     &raquo; 
+    <span class="title">UserSessionHandler</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: VertxWeb::UserSessionHandler
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">VertxWeb::UserSessionHandler</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    This handler should be used if you want to store the User object in the Session so it's available between
+ different requests, without you having re-authenticate each time.
+
+ It requires that the session handler is already present on previous matching routes.
+
+ It requires an Auth provider so, if the user is deserialized from a clustered session it knows which Auth provider
+ to associate the session with.
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="j_api_type-classvariable" class="">@@j_api_type =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accept%3F-class_method" title="accept? (class method)">+ (Boolean) <strong>accept?</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-class_method" title="create (class method)">+ (::VertxWeb::UserSessionHandler) <strong>create</strong>(authProvider = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Create a new handler.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#j_api_type-class_method" title="j_api_type (class method)">+ (Object) <strong>j_api_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#j_class-class_method" title="j_class (class method)">+ (Object) <strong>j_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unwrap-class_method" title="unwrap (class method)">+ (Object) <strong>unwrap</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wrap-class_method" title="wrap (class method)">+ (Object) <strong>wrap</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle-instance_method" title="#handle (instance method)">- (void) <strong>handle</strong>(event = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Something has happened, so handle it.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="accept?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>accept?</strong>(obj) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_accept?'>accept?</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>UserSessionHandler</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxWeb::UserSessionHandler (class)">::VertxWeb::UserSessionHandler</a></span></tt>) <strong>create</strong>(authProvider = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Create a new handler
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>authProvider</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../VertxAuthCommon/AuthProvider.html" title="VertxAuthCommon::AuthProvider (class)">::VertxAuthCommon::AuthProvider</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>The auth provider to use</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxWeb::UserSessionHandler (class)">::VertxWeb::UserSessionHandler</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_authProvider'>authProvider</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_authProvider'>authProvider</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>UserSessionHandler</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtAuth</span><span class='op'>::</span><span class='const'>AuthProvider</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_authProvider'>authProvider</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxWeb</span><span class='op'>::</span><span class='const'>UserSessionHandler</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling create(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_authProvider'>authProvider</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="j_api_type-class_method">
+  
+    + (<tt>Object</tt>) <strong>j_api_type</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_api_type'>j_api_type</span>
+  <span class='cvar'>@@j_api_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="j_class-class_method">
+  
+    + (<tt>Object</tt>) <strong>j_class</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_class'>j_class</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>UserSessionHandler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unwrap-class_method">
+  
+    + (<tt>Object</tt>) <strong>unwrap</strong>(obj) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_unwrap'>unwrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="wrap-class_method">
+  
+    + (<tt>Object</tt>) <strong>wrap</strong>(obj) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='const'>UserSessionHandler</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="handle-instance_method">
+  
+    - (<tt>void</tt>) <strong>handle</strong>(event = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Something has happened, so handle it.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>event</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="RoutingContext.html" title="VertxWeb::RoutingContext (class)">::VertxWeb::RoutingContext</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the event to handle</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/user_session_handler.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handle'>handle</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:handle</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWeb</span><span class='op'>::</span><span class='const'>RoutingContext</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling handle(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event'>event</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Aug 21 15:09:50 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.3.3).
+</div>
+
+  </body>
+</html>

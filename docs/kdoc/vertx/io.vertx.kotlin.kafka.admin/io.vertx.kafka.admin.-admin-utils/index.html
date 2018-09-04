@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.kotlin.kafka.admin.io.vertx.kafka.admin.AdminUtils - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.kotlin.kafka.admin</a>&nbsp;/&nbsp;<a href=".">io.vertx.kafka.admin.AdminUtils</a><br/>
+<br/>
+<h3>Extensions for io.vertx.kafka.admin.AdminUtils</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="change-topic-config-await.html">changeTopicConfigAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AdminUtils</span><span class="symbol">.</span><span class="identifier">changeTopicConfigAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.kafka.admin$changeTopicConfigAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.collections.Map((kotlin.String, )))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.kafka.admin$changeTopicConfigAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.collections.Map((kotlin.String, )))/topicConfig">topicConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html"><span class="identifier">Map</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Updates the configuration of the topic given by topicName. Configuration parameters
+are passed in as a Map (Key -&gt; Value) of Strings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-await.html">closeAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AdminUtils</span><span class="symbol">.</span><span class="identifier">closeAwait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Closes the underlying connection to Zookeeper. It is required to call the method for cleanup
+purposes if AdminUtils was not created with autoClose set to true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-topic-await.html">createTopicAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AdminUtils</span><span class="symbol">.</span><span class="identifier">createTopicAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int)/partitionCount">partitionCount</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int)/replicationFactor">replicationFactor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)</p>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AdminUtils</span><span class="symbol">.</span><span class="identifier">createTopicAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.Map((kotlin.String, )))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.Map((kotlin.String, )))/partitionCount">partitionCount</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.Map((kotlin.String, )))/replicationFactor">replicationFactor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.kafka.admin$createTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.Map((kotlin.String, )))/topicConfig">topicConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html"><span class="identifier">Map</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s). In contrast
+to @see <a href="#">io.vertx.kafka.admin.AdminUtils</a>, one can pass in additional configuration
+parameters as a map (String -&gt; String).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-topic-await.html">deleteTopicAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AdminUtils</span><span class="symbol">.</span><span class="identifier">deleteTopicAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.kafka.admin$deleteTopicAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delete the Kafka topic given by the topicName.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="topic-exists-await.html">topicExistsAwait</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AdminUtils</span><span class="symbol">.</span><span class="identifier">topicExistsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.kafka.admin$topicExistsAwait(io.vertx.kafka.admin.AdminUtils, kotlin.String)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Checks if the Kafka topic given by topicName does exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

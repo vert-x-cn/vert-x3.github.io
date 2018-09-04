@@ -1,0 +1,4484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Vertx::HttpServerResponse
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Vertx/HttpServerResponse.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (H)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Vertx.html" title="Vertx (module)">Vertx</a></span></span>
+     &raquo; 
+    <span class="title">HttpServerResponse</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Vertx::HttpServerResponse
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Vertx::HttpServerResponse</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="WriteStream.html" title="Vertx::WriteStream (module)">WriteStream</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    Represents a server-side HTTP response.
+ <p>
+ An instance of this is created and associated to every instance of
+ <span class='object_link'><a href="HttpServerRequest.html" title="Vertx::HttpServerRequest (class)">HttpServerRequest</a></span> that.
+ <p>
+ It allows the developer to control the HTTP response that is sent back to the
+ client for a particular HTTP request.
+ <p>
+ It contains methods that allow HTTP headers and trailers to be set, and for a body to be written out to the response.
+ <p>
+ It also allows files to be streamed by the kernel directly from disk to the
+ outgoing HTTP connection, bypassing user space altogether (where supported by
+ the underlying operating system). This is a very efficient way of
+ serving files from the server since buffers do not have to be read one by one
+ from the file and written to the outgoing socket.
+ <p>
+ It implements <span class='object_link'><a href="WriteStream.html" title="Vertx::WriteStream (module)">WriteStream</a></span> so it can be used with
+ <span class='object_link'><a href="Pump.html" title="Vertx::Pump (class)">Pump</a></span> to pump data with flow control.
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="j_api_type-classvariable" class="">@@j_api_type =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accept%3F-class_method" title="accept? (class method)">+ (Boolean) <strong>accept?</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#j_api_type-class_method" title="j_api_type (class method)">+ (Object) <strong>j_api_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#j_class-class_method" title="j_class (class method)">+ (Object) <strong>j_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unwrap-class_method" title="unwrap (class method)">+ (Object) <strong>unwrap</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wrap-class_method" title="wrap (class method)">+ (Object) <strong>wrap</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#body_end_handler-instance_method" title="#body_end_handler (instance method)">- (self) <strong>body_end_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Provides a handler that will be called after the last part of the body is written to the wire.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bytes_written-instance_method" title="#bytes_written (instance method)">- (Fixnum) <strong>bytes_written</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The total number of bytes written for the body of the response.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#chunked%3F-instance_method" title="#chunked? (instance method)">- (true, false) <strong>chunked?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Is the response chunked?.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">- (void) <strong>close</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Close the underlying TCP connection corresponding to the request.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close_handler-instance_method" title="#close_handler (instance method)">- (self) <strong>close_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set a close handler for the response, this is called when the underlying connection is closed and the response  was still using the connection.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#closed%3F-instance_method" title="#closed? (instance method)">- (true, false) <strong>closed?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Has the underlying TCP connection corresponding to the request already been closed?.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#drain_handler-instance_method" title="#drain_handler (instance method)">- (self) <strong>drain_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#end-instance_method" title="#end (instance method)">- (void) <strong>end</strong>(param_1 = nil, param_2 = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Same as <span class='object_link'><a href="#end-instance_method" title="Vertx::HttpServerResponse#end (method)">#end</a></span> but writes a String with the specified encoding before ending the response.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#end_handler-instance_method" title="#end_handler (instance method)">- (self) <strong>end_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set an end handler for the response.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ended%3F-instance_method" title="#ended? (instance method)">- (true, false) <strong>ended?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Has the response already ended?.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exception_handler-instance_method" title="#exception_handler (instance method)">- (self) <strong>exception_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_status_code-instance_method" title="#get_status_code (instance method)">- (Fixnum) <strong>get_status_code</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The HTTP status code of the response.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_status_message-instance_method" title="#get_status_message (instance method)">- (String) <strong>get_status_message</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The HTTP status message of the response.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#head_written%3F-instance_method" title="#head_written? (instance method)">- (true, false) <strong>head_written?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Have the headers for the response already been written?.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#headers-instance_method" title="#headers (instance method)">- (::Vertx::MultiMap) <strong>headers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The HTTP headers.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#headers_end_handler-instance_method" title="#headers_end_handler (instance method)">- (self) <strong>headers_end_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Provide a handler that will be called just before the headers are written to the wire.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#push-instance_method" title="#push (instance method)">- (self) <strong>push</strong>(param_1 = nil, param_2 = nil, param_3 = nil, param_4 = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Push a response to the client.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#put_header-instance_method" title="#put_header (instance method)">- (self) <strong>put_header</strong>(name = nil, value = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Put an HTTP header.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#put_trailer-instance_method" title="#put_trailer (instance method)">- (self) <strong>put_trailer</strong>(name = nil, value = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Put an HTTP trailer.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset-instance_method" title="#reset (instance method)">- (void) <strong>reset</strong>(code = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Reset this HTTP/2 stream with the error code.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send_file-instance_method" title="#send_file (instance method)">- (self) <strong>send_file</strong>(filename = nil, offset = nil, length = nil) { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Like <span class='object_link'><a href="#send_file-instance_method" title="Vertx::HttpServerResponse#send_file (method)">#send_file</a></span> but providing a handler which will be notified once the file has been  completely written to the wire.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_chunked-instance_method" title="#set_chunked (instance method)">- (self) <strong>set_chunked</strong>(chunked = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>If chunked is true, this response will use HTTP chunked encoding, and each call to write to the body  will correspond to a new HTTP chunk sent on the wire.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_status_code-instance_method" title="#set_status_code (instance method)">- (self) <strong>set_status_code</strong>(statusCode = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set the status code.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_status_message-instance_method" title="#set_status_message (instance method)">- (self) <strong>set_status_message</strong>(statusMessage = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set the status message.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_write_queue_max_size-instance_method" title="#set_write_queue_max_size (instance method)">- (self) <strong>set_write_queue_max_size</strong>(maxSize = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stream_id-instance_method" title="#stream_id (instance method)">- (Fixnum) <strong>stream_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The id of the stream of this response,  for HTTP/1.x.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#trailers-instance_method" title="#trailers (instance method)">- (::Vertx::MultiMap) <strong>trailers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The HTTP trailers.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">- (self) <strong>write</strong>(param_1 = nil, param_2 = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Write a String to the response body, encoded using the encoding enc.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_continue-instance_method" title="#write_continue (instance method)">- (self) <strong>write_continue</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Used to write an interim 100 Continue response to signify that the client should send the rest of the request.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_custom_frame-instance_method" title="#write_custom_frame (instance method)">- (self) <strong>write_custom_frame</strong>(param_1 = nil, param_2 = nil, param_3 = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Write an HTTP/2 frame to the response, allowing to extend the HTTP/2 protocol.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_queue_full%3F-instance_method" title="#write_queue_full? (instance method)">- (true, false) <strong>write_queue_full?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>This will return true if there are more bytes in the write queue than the value set using <span class='object_link'><a href="#set_write_queue_max_size-instance_method" title="Vertx::HttpServerResponse#set_write_queue_max_size (method)">#set_write_queue_max_size</a></span>.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="accept?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>accept?</strong>(obj) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_accept?'>accept?</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>HttpServerResponse</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="j_api_type-class_method">
+  
+    + (<tt>Object</tt>) <strong>j_api_type</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_api_type'>j_api_type</span>
+  <span class='cvar'>@@j_api_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="j_class-class_method">
+  
+    + (<tt>Object</tt>) <strong>j_class</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_class'>j_class</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpServerResponse</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unwrap-class_method">
+  
+    + (<tt>Object</tt>) <strong>unwrap</strong>(obj) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_unwrap'>unwrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="wrap-class_method">
+  
+    + (<tt>Object</tt>) <strong>wrap</strong>(obj) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='const'>HttpServerResponse</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="body_end_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>body_end_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Provides a handler that will be called after the last part of the body is written to the wire.
+ The handler is called asynchronously of when the response has been received by the client.
+ This provides a hook allowing you to do more operations once the request has been sent over the wire
+ such as resource cleanup.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+349
+350
+351
+352
+353
+354
+355</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 349</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_body_end_handler'>body_end_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:bodyEndHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='kw'>yield</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling body_end_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bytes_written-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>bytes_written</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns the total number of bytes written for the body of the response.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the total number of bytes written for the body of the response.</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+357
+358
+359
+360
+361
+362</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 357</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bytes_written'>bytes_written</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:bytesWritten</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling bytes_written()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="chunked?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>chunked?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns is the response chunked?
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>is the response chunked?</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_chunked?'>chunked?</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:isChunked</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling chunked?()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close-instance_method">
+  
+    - (<tt>void</tt>) <strong>close</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Close the underlying TCP connection corresponding to the request.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+305
+306
+307
+308
+309
+310</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 305</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:close</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling close()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>close_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set a close handler for the response, this is called when the underlying connection is closed and the response
+ was still using the connection.
+ <p>
+ For HTTP/1.x it is called when the connection is closed before <code>end()</code> is called, therefore it is not
+ guaranteed to be called.
+ <p>
+ For HTTP/2 it is called when the related stream is closed, and therefore it will be always be called.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close_handler'>close_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:closeHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='kw'>yield</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling close_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="closed?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>closed?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns has the underlying TCP connection corresponding to the request already been closed?
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>has the underlying TCP connection corresponding to the request already been closed?</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+319
+320
+321
+322
+323
+324</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 319</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_closed?'>closed?</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:closed</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling closed?()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="drain_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>drain_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106
+107
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_drain_handler'>drain_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:drainHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='kw'>yield</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling drain_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="end-instance_method">
+  
+    
+      <span class="overload">- (<tt>void</tt>) <strong>end</strong> </span>
+    
+      <span class="overload">- (<tt>void</tt>) <strong>end</strong>(chunk) </span>
+    
+      <span class="overload">- (<tt>void</tt>) <strong>end</strong>(chunk) </span>
+    
+      <span class="overload">- (<tt>void</tt>) <strong>end</strong>(chunk, enc) </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Same as <span class='object_link'><a href="#end-instance_method" title="Vertx::HttpServerResponse#end (method)">#end</a></span> but writes a String with the specified encoding before ending the response.
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>void</tt>) <strong>end</strong>(chunk) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chunk</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the string to write before ending the response</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>void</tt>) <strong>end</strong>(chunk) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chunk</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the buffer to write before ending the response</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>void</tt>) <strong>end</strong>(chunk, enc) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chunk</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the string to write before ending the response</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>enc</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the encoding to use</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 262</span>
+
+<span class='kw'>def</span> <span class='kw'>end</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_1'>param_1</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:end</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:end</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:end</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreBuffer</span><span class='op'>::</span><span class='const'>Buffer</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:end</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling end(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_2'>param_2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="end_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>end_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set an end handler for the response. This will be called when the response is disposed to allow consistent cleanup
+ of the response.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 235</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_end_handler'>end_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:endHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='kw'>yield</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling end_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ended?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>ended?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns has the response already ended?
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>has the response already ended?</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+312
+313
+314
+315
+316
+317</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 312</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ended?'>ended?</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:ended</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling ended?()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exception_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>exception_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exception_handler'>exception_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:exceptionHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_from_throwable'>from_throwable</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling exception_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_status_code-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>get_status_code</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns the HTTP status code of the response. The default is <code>200</code> representing <code>OK</code>.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the HTTP status code of the response. The default is <code>200</code> representing <code>OK</code>.</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_status_code'>get_status_code</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:getStatusCode</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling get_status_code()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_status_message-instance_method">
+  
+    - (<tt>String</tt>) <strong>get_status_message</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns the HTTP status message of the response. If this is not specified a default value will be used depending on what <span class='object_link'><a href="#set_status_code-instance_method" title="Vertx::HttpServerResponse#set_status_code (method)">#set_status_code</a></span> has been set to.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the HTTP status message of the response. If this is not specified a default value will be used depending on what <span class='object_link'><a href="#set_status_code-instance_method" title="Vertx::HttpServerResponse#set_status_code (method)">#set_status_code</a></span> has been set to.</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 130</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_status_message'>get_status_message</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:getStatusMessage</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling get_status_message()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="head_written?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>head_written?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns have the headers for the response already been written?
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>have the headers for the response already been written?</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+326
+327
+328
+329
+330
+331</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 326</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_head_written?'>head_written?</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:headWritten</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling head_written?()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="headers-instance_method">
+  
+    - (<tt><span class='object_link'><a href="MultiMap.html" title="Vertx::MultiMap (class)">::Vertx::MultiMap</a></span></tt>) <strong>headers</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns The HTTP headers
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="MultiMap.html" title="Vertx::MultiMap (class)">::Vertx::MultiMap</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The HTTP headers</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176
+177
+178
+179
+180
+181
+182</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 174</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_headers'>headers</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>if</span> <span class='ivar'>@cached_headers</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+      <span class='kw'>return</span> <span class='ivar'>@cached_headers</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='ivar'>@cached_headers</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:headers</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>MultiMap</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling headers()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="headers_end_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>headers_end_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Provide a handler that will be called just before the headers are written to the wire.<p>
+ This provides a hook allowing you to add any more headers or do any more operations before this occurs.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+336
+337
+338
+339
+340
+341
+342</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 336</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_headers_end_handler'>headers_end_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:headersEndHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='kw'>yield</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling headers_end_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="push-instance_method">
+  
+    
+      <span class="overload">- (<tt>self</tt>) <strong>push</strong>(method, path, handler) { ... }</span>
+    
+      <span class="overload">- (<tt>self</tt>) <strong>push</strong>(method, host, path, handler) { ... }</span>
+    
+      <span class="overload">- (<tt>self</tt>) <strong>push</strong>(method, path, headers, handler) { ... }</span>
+    
+      <span class="overload">- (<tt>self</tt>) <strong>push</strong>(method, host, path, headers, handler) { ... }</span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Push a response to the client.<p/>
+
+ The <code>handler</code> will be notified with a <i>success</i> when the push can be sent and with
+ a <i>failure</i> when the client has disabled push or reset the push before it has been sent.<p/>
+
+ The <code>handler</code> may be queued if the client has reduced the maximum number of streams the server can push
+ concurrently.<p/>
+
+ Push can be sent only for peer initiated streams and if the response is not ended.
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>push</strong>(method, path, handler) { ... }</span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>:OPTIONS</tt>, <tt>:GET</tt>, <tt>:HEAD</tt>, <tt>:POST</tt>, <tt>:PUT</tt>, <tt>:DELETE</tt>, <tt>:TRACE</tt>, <tt>:CONNECT</tt>, <tt>:PATCH</tt>, <tt>:OTHER</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>push</strong>(method, host, path, handler) { ... }</span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>:OPTIONS</tt>, <tt>:GET</tt>, <tt>:HEAD</tt>, <tt>:POST</tt>, <tt>:PUT</tt>, <tt>:DELETE</tt>, <tt>:TRACE</tt>, <tt>:CONNECT</tt>, <tt>:PATCH</tt>, <tt>:OTHER</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>push</strong>(method, path, headers, handler) { ... }</span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>:OPTIONS</tt>, <tt>:GET</tt>, <tt>:HEAD</tt>, <tt>:POST</tt>, <tt>:PUT</tt>, <tt>:DELETE</tt>, <tt>:TRACE</tt>, <tt>:CONNECT</tt>, <tt>:PATCH</tt>, <tt>:OTHER</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>headers</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="MultiMap.html" title="Vertx::MultiMap (class)">::Vertx::MultiMap</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>push</strong>(method, host, path, headers, handler) { ... }</span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>:OPTIONS</tt>, <tt>:GET</tt>, <tt>:HEAD</tt>, <tt>:POST</tt>, <tt>:PUT</tt>, <tt>:DELETE</tt>, <tt>:TRACE</tt>, <tt>:CONNECT</tt>, <tt>:PATCH</tt>, <tt>:OTHER</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the method of the promised request</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the host of the promised request</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the path of the promised request</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>headers</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="MultiMap.html" title="Vertx::MultiMap (class)">::Vertx::MultiMap</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the headers of the promised request</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the handler notified when the response can be written</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 400</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_4'>param_4</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Symbol</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_4'>param_4</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:push</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_valueOf'>valueOf</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span> <span class='op'>?</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>HttpServerResponse</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Symbol</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_4'>param_4</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:push</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_valueOf'>valueOf</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span> <span class='op'>?</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>HttpServerResponse</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Symbol</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_4'>param_4</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:push</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>MultiMap</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_valueOf'>valueOf</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span> <span class='op'>?</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>HttpServerResponse</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Symbol</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_4'>param_4</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:push</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>MultiMap</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpMethod</span><span class='period'>.</span><span class='id identifier rubyid_valueOf'>valueOf</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='comma'>,</span><span class='id identifier rubyid_param_4'>param_4</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span> <span class='op'>?</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>HttpServerResponse</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling push(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_2'>param_2</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_3'>param_3</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_4'>param_4</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="put_header-instance_method">
+  
+    - (<tt>self</tt>) <strong>put_header</strong>(name = nil, value = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Put an HTTP header
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the header name</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the header value.</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+187
+188
+189
+190
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 187</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_put_header'>put_header</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:putHeader</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling put_header(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="put_trailer-instance_method">
+  
+    - (<tt>self</tt>) <strong>put_trailer</strong>(name = nil, value = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Put an HTTP trailer
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the trailer name</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the trailer value</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213
+214</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_put_trailer'>put_trailer</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:putTrailer</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling put_trailer(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset-instance_method">
+  
+    - (<tt>void</tt>) <strong>reset</strong>(code = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Reset this HTTP/2 stream with the error <code>code</code>.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>code</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the error code</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+419
+420
+421
+422
+423
+424
+425
+426</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 419</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reset'>reset</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:reset</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_code'>code</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:reset</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling reset(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_code'>code</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="send_file-instance_method">
+  
+    - (<tt>self</tt>) <strong>send_file</strong>(filename = nil, offset = nil, length = nil) { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Like <span class='object_link'><a href="#send_file-instance_method" title="Vertx::HttpServerResponse#send_file (method)">#send_file</a></span> but providing a handler which will be notified once the file has been
+ completely written to the wire.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>path to the file to serve</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>offset</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the offset to serve from</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>length</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the length to serve to</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>handler that will be called on completion</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 281</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_send_file'>send_file</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_offset'>offset</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_offset'>offset</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:sendFile</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_offset'>offset</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:sendFile</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span><span class='id identifier rubyid_offset'>offset</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_offset'>offset</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:sendFile</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_offset'>offset</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:sendFile</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_offset'>offset</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:sendFile</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_offset'>offset</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:sendFile</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling send_file(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_offset'>offset</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_chunked-instance_method">
+  
+    - (<tt>self</tt>) <strong>set_chunked</strong>(chunked = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    If <code>chunked</code> is <code>true</code>, this response will use HTTP chunked encoding, and each call to write to the body
+ will correspond to a new HTTP chunk sent on the wire.
+ <p>
+ If chunked encoding is used the HTTP header <code>Transfer-Encoding</code> with a value of <code>Chunked</code> will be
+ automatically inserted in the response.
+ <p>
+ If <code>chunked</code> is <code>false</code>, this response will not use HTTP chunked encoding, and therefore the total size
+ of any data that is written in the respone body must be set in the <code>Content-Length</code> header <b>before</b> any
+ data is written out.
+ <p>
+ An HTTP chunked response is typically used when you do not know the total size of the request body up front.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chunked</span>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161
+162
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_chunked'>set_chunked</span><span class='lparen'>(</span><span class='id identifier rubyid_chunked'>chunked</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_chunked'>chunked</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>TrueClass</span> <span class='op'>||</span> <span class='id identifier rubyid_chunked'>chunked</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>FalseClass</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setChunked</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_boolean'>boolean</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_chunked'>chunked</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_chunked(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_chunked'>chunked</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_status_code-instance_method">
+  
+    - (<tt>self</tt>) <strong>set_status_code</strong>(statusCode = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set the status code. If the status message hasn't been explicitly set, a default status message corresponding
+ to the code will be looked-up and used.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>statusCode</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124
+125
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_status_code'>set_status_code</span><span class='lparen'>(</span><span class='id identifier rubyid_statusCode'>statusCode</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_statusCode'>statusCode</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setStatusCode</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_statusCode'>statusCode</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_status_code(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_statusCode'>statusCode</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_status_message-instance_method">
+  
+    - (<tt>self</tt>) <strong>set_status_message</strong>(statusMessage = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set the status message
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>statusMessage</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+139
+140
+141
+142
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 139</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_status_message'>set_status_message</span><span class='lparen'>(</span><span class='id identifier rubyid_statusMessage'>statusMessage</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_statusMessage'>statusMessage</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setStatusMessage</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_statusMessage'>statusMessage</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_status_message(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_statusMessage'>statusMessage</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_write_queue_max_size-instance_method">
+  
+    - (<tt>self</tt>) <strong>set_write_queue_max_size</strong>(maxSize = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>maxSize</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_write_queue_max_size'>set_write_queue_max_size</span><span class='lparen'>(</span><span class='id identifier rubyid_maxSize'>maxSize</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_maxSize'>maxSize</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setWriteQueueMaxSize</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_maxSize'>maxSize</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_write_queue_max_size(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_maxSize'>maxSize</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stream_id-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>stream_id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns the id of the stream of this response,  for HTTP/1.x
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the id of the stream of this response,  for HTTP/1.x</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+364
+365
+366
+367
+368
+369</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 364</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stream_id'>stream_id</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:streamId</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling stream_id()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="trailers-instance_method">
+  
+    - (<tt><span class='object_link'><a href="MultiMap.html" title="Vertx::MultiMap (class)">::Vertx::MultiMap</a></span></tt>) <strong>trailers</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns The HTTP trailers
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="MultiMap.html" title="Vertx::MultiMap (class)">::Vertx::MultiMap</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The HTTP trailers</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 195</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_trailers'>trailers</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>if</span> <span class='ivar'>@cached_trailers</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+      <span class='kw'>return</span> <span class='ivar'>@cached_trailers</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='ivar'>@cached_trailers</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:trailers</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>MultiMap</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling trailers()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write-instance_method">
+  
+    
+      <span class="overload">- (<tt>self</tt>) <strong>write</strong>(data) </span>
+    
+      <span class="overload">- (<tt>self</tt>) <strong>write</strong>(chunk) </span>
+    
+      <span class="overload">- (<tt>self</tt>) <strong>write</strong>(chunk, enc) </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Write a String to the response body, encoded using the encoding <code>enc</code>.
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>write</strong>(data) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>write</strong>(chunk) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chunk</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the string to write</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>write</strong>(chunk, enc) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chunk</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the string to write</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>enc</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the encoding to use</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:write</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreBuffer</span><span class='op'>::</span><span class='const'>Buffer</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:write</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:write</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling write(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_2'>param_2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_continue-instance_method">
+  
+    - (<tt>self</tt>) <strong>write_continue</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Used to write an interim 100 Continue response to signify that the client should send the rest of the request.
+ Must only be used if the request contains an "Expect:100-Continue" header
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+245
+246
+247
+248
+249
+250
+251</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 245</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_continue'>write_continue</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:writeContinue</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling write_continue()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_custom_frame-instance_method">
+  
+    
+      <span class="overload">- (<tt>self</tt>) <strong>writeCustomFrame</strong>(frame) </span>
+    
+      <span class="overload">- (<tt>self</tt>) <strong>writeCustomFrame</strong>(type, flags, payload) </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Write an HTTP/2 frame to the response, allowing to extend the HTTP/2 protocol.<p>
+
+ The frame is sent immediatly and is not subject to flow control.
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>writeCustomFrame</strong>(frame) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>frame</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HttpFrame.html" title="Vertx::HttpFrame (class)">::Vertx::HttpFrame</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the frame to write</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">- (<tt>self</tt>) <strong>writeCustomFrame</strong>(type, flags, payload) </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the 8-bit frame type</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>flags</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the 8-bit frame flags</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>payload</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the frame payload</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_custom_frame'>write_custom_frame</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:writeCustomFrame</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreHttp</span><span class='op'>::</span><span class='const'>HttpFrame</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:writeCustomFrame</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreBuffer</span><span class='op'>::</span><span class='const'>Buffer</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling write_custom_frame(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_2'>param_2</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_3'>param_3</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_queue_full?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>write_queue_full?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    This will return <code>true</code> if there are more bytes in the write queue than the value set using <span class='object_link'><a href="#set_write_queue_max_size-instance_method" title="Vertx::HttpServerResponse#set_write_queue_max_size (method)">#set_write_queue_max_size</a></span>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>true if write queue is full</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/http_server_response.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_queue_full?'>write_queue_full?</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:writeQueueFull</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling write_queue_full?()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Aug 21 15:09:47 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.3.3).
+</div>
+
+  </body>
+</html>

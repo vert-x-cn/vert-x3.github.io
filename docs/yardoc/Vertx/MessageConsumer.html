@@ -1,0 +1,1494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Vertx::MessageConsumer
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Vertx/MessageConsumer.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Vertx.html" title="Vertx (module)">Vertx</a></span></span>
+     &raquo; 
+    <span class="title">MessageConsumer</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Vertx::MessageConsumer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Vertx::MessageConsumer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="ReadStream.html" title="Vertx::ReadStream (module)">ReadStream</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    An event bus consumer object representing a stream of message to an <span class='object_link'><a href="EventBus.html" title="Vertx::EventBus (class)">EventBus</a></span> address that can
+ be read from.
+ <p>
+ The <span class='object_link'><a href="EventBus.html#consumer-instance_method" title="Vertx::EventBus#consumer (method)">EventBus#consumer</a></span> or <span class='object_link'><a href="EventBus.html#local_consumer-instance_method" title="Vertx::EventBus#local_consumer (method)">EventBus#local_consumer</a></span>
+ creates a new consumer, the returned consumer is not yet registered against the event bus. Registration
+ is effective after the <span class='object_link'><a href="#handler-instance_method" title="Vertx::MessageConsumer#handler (method)">#handler</a></span> method is invoked.<p>
+
+ The consumer is unregistered from the event bus using the <span class='object_link'><a href="#unregister-instance_method" title="Vertx::MessageConsumer#unregister (method)">#unregister</a></span> method or by calling the
+ <span class='object_link'><a href="#handler-instance_method" title="Vertx::MessageConsumer#handler (method)">#handler</a></span> with a null value..
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#address-instance_method" title="#address (instance method)">- (String) <strong>address</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The address the handler was registered with.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#body_stream-instance_method" title="#body_stream (instance method)">- (::Vertx::ReadStream) <strong>body_stream</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>A read stream for the body of the message stream.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#completion_handler-instance_method" title="#completion_handler (instance method)">- (void) <strong>completion_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Optional method which can be called to indicate when the registration has been propagated across the cluster.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#end_handler-instance_method" title="#end_handler (instance method)">- (self) <strong>end_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exception_handler-instance_method" title="#exception_handler (instance method)">- (self) <strong>exception_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fetch-instance_method" title="#fetch (instance method)">- (self) <strong>fetch</strong>(amount = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_max_buffered_messages-instance_method" title="#get_max_buffered_messages (instance method)">- (Fixnum) <strong>get_max_buffered_messages</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The maximum number of messages that can be buffered when this stream is paused.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handler-instance_method" title="#handler (instance method)">- (self) <strong>handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pause-instance_method" title="#pause (instance method)">- (self) <strong>pause</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#registered%3F-instance_method" title="#registered? (instance method)">- (true, false) <strong>registered?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>True if the current consumer is registered.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resume-instance_method" title="#resume (instance method)">- (self) <strong>resume</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_max_buffered_messages-instance_method" title="#set_max_buffered_messages (instance method)">- (::Vertx::MessageConsumer) <strong>set_max_buffered_messages</strong>(maxBufferedMessages = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set the number of messages this registration will buffer when this stream is paused.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unregister-instance_method" title="#unregister (instance method)">- (void) <strong>unregister</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Unregisters the handler which created this registration.</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="address-instance_method">
+  
+    - (<tt>String</tt>) <strong>address</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns The address the handler was registered with.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The address the handler was registered with.</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_address'>address</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:address</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling address()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="body_stream-instance_method">
+  
+    - (<tt><span class='object_link'><a href="ReadStream.html" title="Vertx::ReadStream (module)">::Vertx::ReadStream</a></span></tt>) <strong>body_stream</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns a read stream for the body of the message stream.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ReadStream.html" title="Vertx::ReadStream (module)">::Vertx::ReadStream</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>a read stream for the body of the message stream.</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_body_stream'>body_stream</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:bodyStream</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>ReadStreamImpl</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling body_stream()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="completion_handler-instance_method">
+  
+    - (<tt>void</tt>) <strong>completion_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Optional method which can be called to indicate when the registration has been propagated across the cluster.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the completion handler</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_completion_handler'>completion_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:completionHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling completion_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="end_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>end_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_end_handler'>end_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:endHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='kw'>yield</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling end_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exception_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>exception_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exception_handler'>exception_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:exceptionHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_from_throwable'>from_throwable</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling exception_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fetch-instance_method">
+  
+    - (<tt>self</tt>) <strong>fetch</strong>(amount = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>amount</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_amount'>amount</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_amount'>amount</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:fetch</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_long'>long</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling fetch(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_amount'>amount</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_max_buffered_messages-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>get_max_buffered_messages</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns the maximum number of messages that can be buffered when this stream is paused
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the maximum number of messages that can be buffered when this stream is paused</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_max_buffered_messages'>get_max_buffered_messages</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:getMaxBufferedMessages</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling get_max_buffered_messages()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handler'>handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:handler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Message</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pause-instance_method">
+  
+    - (<tt>self</tt>) <strong>pause</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pause'>pause</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:pause</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling pause()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="registered?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>registered?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns true if the current consumer is registered
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>true if the current consumer is registered</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_registered?'>registered?</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:isRegistered</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling registered?()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="resume-instance_method">
+  
+    - (<tt>self</tt>) <strong>resume</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_resume'>resume</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:resume</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling resume()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_max_buffered_messages-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Vertx::MessageConsumer (class)">::Vertx::MessageConsumer</a></span></tt>) <strong>set_max_buffered_messages</strong>(maxBufferedMessages = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set the number of messages this registration will buffer when this stream is paused. The default
+ value is <code>1000</code>. When a new value is set, buffered messages may be discarded to reach
+ the new value.
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>maxBufferedMessages</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>the maximum number of messages that can be buffered</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Vertx::MessageConsumer (class)">::Vertx::MessageConsumer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>this registration</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_max_buffered_messages'>set_max_buffered_messages</span><span class='lparen'>(</span><span class='id identifier rubyid_maxBufferedMessages'>maxBufferedMessages</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_maxBufferedMessages'>maxBufferedMessages</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setMaxBufferedMessages</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_maxBufferedMessages'>maxBufferedMessages</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>MessageConsumer</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_max_buffered_messages(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_maxBufferedMessages'>maxBufferedMessages</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unregister-instance_method">
+  
+    - (<tt>void</tt>) <strong>unregister</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>Unregisters the handler which created this registration
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>the handler called when the unregister is done. For example in a cluster when all nodes of the event bus have been unregistered.</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+131
+132
+133
+134
+135
+136
+137
+138</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx/message_consumer.rb', line 131</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unregister'>unregister</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:unregister</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:unregister</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling unregister()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Aug 21 15:09:40 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.3.3).
+</div>
+
+  </body>
+</html>
