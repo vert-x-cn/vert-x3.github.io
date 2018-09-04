@@ -243,7 +243,7 @@
 <li><a href="#_多播">多播</a></li>
 </ul>
 </li>
-<li><a href="#_dns_client">DNS client</a>
+<li><a href="#_dns_客户端">DNS 客户端</a>
 <ul class="sectlevel2">
 <li><a href="#_lookup">lookup</a></li>
 <li><a href="#_lookup4">lookup4</a></li>
@@ -483,7 +483,7 @@
 <li><a href="#_多播">多播</a></li>
 </ul>
 </li>
-<li><a href="#_dns_client">DNS client</a>
+<li><a href="#_dns_客户端">DNS 客户端</a>
 <ul class="sectlevel2">
 <li><a href="#_lookup">lookup</a></li>
 <li><a href="#_lookup4">lookup4</a></li>
@@ -7876,15 +7876,14 @@ bound the `<a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.h
 </div>
 </div>
 <div class="sect1">
-<h2 id="_dns_client">DNS client</h2>
+<h2 id="_dns_客户端">DNS 客户端</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Often you will find yourself in situations where you need to obtain DNS informations in an asynchronous fashion.
-Unfortunally this is not possible with the API that is shipped with the Java Virtual Machine itself. Because of
-this Vert.x offers it&#8217;s own API for DNS resolution which is fully asynchronous.</p>
+<p>通常情况下，您需要以异步方式来获取DNS信息。
+但不幸的是，Java 虚拟机本身附带的API是不可能的，因此Vert.x提供了它自己的完全异步解析DNS的API。</p>
 </div>
 <div class="paragraph">
-<p>To obtain a DnsClient instance you will create a new via the Vertx instance.</p>
+<p>若要获取 <code>DnsClient</code> 实例，您可以通过 <code>Vertx</code> 实例来创建一个。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7917,14 +7916,16 @@ var client2 = vertx.createDnsClient({
 });</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>请注意，您可以传入 <code>InetSocketAddress</code> 参数的变量，以指定多个的DNS服务器来尝试查询解析DNS。它将按照此处指定的相同顺序查询DNS服务器，若在使用上一个DNS服务器解析时出现了错误，下一个将会被继续调用。</p>
+</div>
 <div class="sect2">
 <h3 id="_lookup">lookup</h3>
 <div class="paragraph">
-<p>Try to lookup the A (ipv4) or AAAA (ipv6) record for a given name. The first which is returned will be used,
-so it behaves the same way as you may be used from when using "nslookup" on your operation system.</p>
+<p>当尝试为一个指定名称元素获取A（ipv4）或 AAAA（ipv6）记录时，第一条被返回的（记录）将会被使用。它的操作方式和操作系统上使用 <code>nslookup</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>To lookup the A / AAAA record for "vertx.io" you would typically use it like:</p>
+<p>要为 <code>vertx.io</code> 获取 A/AAAA 记录，您需要像下面那样做：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7942,11 +7943,10 @@ client.lookup("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_lookup4">lookup4</h3>
 <div class="paragraph">
-<p>Try to lookup the A (ipv4) record for a given name. The first which is returned will be used, so it behaves
-the same way as you may be used from when using "nslookup" on your operation system.</p>
+<p>尝试查找给定名称的A（ipv4）记录。第一个返回的（记录）将会被使用，因此它的操作方式与操作系统上使用`nslookup`类似。</p>
 </div>
 <div class="paragraph">
-<p>To lookup the A record for "vertx.io" you would typically use it like:</p>
+<p>要查找 <code>vertx.io</code> 的A记录，您需要像下面那样做：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7964,11 +7964,10 @@ client.lookup4("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_lookup6">lookup6</h3>
 <div class="paragraph">
-<p>Try to lookup the AAAA (ipv6) record for a given name. The first which is returned will be used, so it behaves the
-same way as you may be used from when using "nslookup" on your operation system.</p>
+<p>尝试查找给定名称的 AAAA（ipv6）记录。第一个返回的（记录）将会被使用，因此它的操作方式与在操作系统上使用 <code>nslookup</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>To lookup the A record for "vertx.io" you would typically use it like:</p>
+<p>要查找 <code>vertx.io</code> 的 AAAA记录，您需要像下面那样做：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7986,11 +7985,10 @@ client.lookup6("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_resolvea">resolveA</h3>
 <div class="paragraph">
-<p>Try to resolve all A (ipv4) records for a given name. This is quite similar to using "dig" on unix like operation
-systems.</p>
+<p>尝试解析给定名称的所有A（ipv4）记录，这与在unix操作系统上使用`dig`类似。</p>
 </div>
 <div class="paragraph">
-<p>To lookup all the A records for "vertx.io" you would typically do:</p>
+<p>要查找`vertx.io`的所有A记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8011,11 +8009,10 @@ client.resolveA("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_resolveaaaa">resolveAAAA</h3>
 <div class="paragraph">
-<p>Try to resolve all AAAA (ipv6) records for a given name. This is quite similar to using "dig" on unix like
-operation systems.</p>
+<p>尝试解析给定名称的所有AAAA（ipv6）记录，这与在Unix操作系统上使用`dig`类似。</p>
 </div>
 <div class="paragraph">
-<p>To lookup all the AAAAA records for "vertx.io" you would typically do:</p>
+<p>要查找`vertx.io`的所有AAAA记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8036,11 +8033,10 @@ client.resolveAAAA("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_resolvecname">resolveCNAME</h3>
 <div class="paragraph">
-<p>Try to resolve all CNAME records for a given name. This is quite similar to using "dig" on unix like operation
-systems.</p>
+<p>尝试解析给定名称的所有CNAME记录，这与在Unix操作系统上使用`dig`类似。</p>
 </div>
 <div class="paragraph">
-<p>To lookup all the CNAME records for "vertx.io" you would typically do:</p>
+<p>要查找`vertx.io`的所有CNAME记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8061,11 +8057,10 @@ client.resolveCNAME("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_resolvemx">resolveMX</h3>
 <div class="paragraph">
-<p>Try to resolve all MX records for a given name. The MX records are used to define which Mail-Server accepts
-emails for a given domain.</p>
+<p>尝试解析给定名称的所有MX记录，MX记录用于定义哪个邮件服务器接受给定域的电子邮件。</p>
 </div>
 <div class="paragraph">
-<p>To lookup all the MX records for "vertx.io" you would typically do:</p>
+<p>要查找您常用执行的`vertx.io`的所有MX记录：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8083,11 +8078,11 @@ client.resolveMX("vertx.io", function (ar, ar_err) {
 </div>
 </div>
 <div class="paragraph">
-<p>Be aware that the List will contain the <code><a href="../../jsdoc/module-vertx-js_mx_record-MxRecord.html">MxRecord</a></code> sorted by the priority of them, which
+<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../jsdoc/module-vertx-js_mx_record-MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。
 means MX records with smaller priority coming first in the List.</p>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../jsdoc/module-vertx-js_mx_record-MxRecord.html">MxRecord</a></code> allows you to access the priority and the name of the MX record by offer methods for it like:</p>
+<p><code><a href="../../jsdoc/module-vertx-js_mx_record-MxRecord.html">MxRecord</a></code> 允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8099,10 +8094,10 @@ record.name();</code></pre>
 <div class="sect2">
 <h3 id="_resolvetxt">resolveTXT</h3>
 <div class="paragraph">
-<p>Try to resolve all TXT records for a given name. TXT records are often used to define extra informations for a domain.</p>
+<p>尝试解析给定名称的所有TXT记录，TXT记录通常用于定义域的额外信息。</p>
 </div>
 <div class="paragraph">
-<p>To resolve all the TXT records for "vertx.io" you could use something along these lines:</p>
+<p>要解析`vertx.io`的所有TXT记录，您可以使用下边几行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8123,11 +8118,10 @@ client.resolveTXT("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_resolvens">resolveNS</h3>
 <div class="paragraph">
-<p>Try to resolve all NS records for a given name. The NS records specify which DNS Server hosts the DNS informations
-for a given domain.</p>
+<p>尝试解析给定名称的所有NS记录，NS记录指定哪个DNS服务器托管给定域的DNS信息。</p>
 </div>
 <div class="paragraph">
-<p>To resolve all the NS records for "vertx.io" you could use something along these lines:</p>
+<p>要解析`vertx.io`的所有NS记录，您可以使用下边几行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8148,11 +8142,10 @@ client.resolveNS("vertx.io", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_resolvesrv">resolveSRV</h3>
 <div class="paragraph">
-<p>Try to resolve all SRV records for a given name. The SRV records are used to define extra informations like port and
-hostname of services. Some protocols need this extra informations.</p>
+<p>尝试解析给定名称的所有SRV记录，SRV记录用于定义服务端口和主机名等额外信息。一些协议需要这个额外信息。</p>
 </div>
 <div class="paragraph">
-<p>To lookup all the SRV records for "vertx.io" you would typically do:</p>
+<p>要查找`vertx.io`的所有SRV记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8170,11 +8163,10 @@ client.resolveSRV("vertx.io", function (ar, ar_err) {
 </div>
 </div>
 <div class="paragraph">
-<p>Be aware that the List will contain the SrvRecords sorted by the priority of them, which means SrvRecords
-with smaller priority coming first in the List.</p>
+<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../jsdoc/module-vertx-js_srv_record-SrvRecord.html">SrvRecord</a></code> ，这意味着优先级低的记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../jsdoc/module-vertx-js_srv_record-SrvRecord.html">SrvRecord</a></code> allows you to access all informations contained in the SRV record itself:</p>
+<p><code><a href="../../jsdoc/module-vertx-js_srv_record-SrvRecord.html">SrvRecord</a></code> 允许您访问SRV记录本身中包含的所有信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8188,16 +8180,16 @@ record.target();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Please refer to the API docs for the exact details.</p>
+<p>有关详细信息，请参阅API文档。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_resolveptr">resolvePTR</h3>
 <div class="paragraph">
-<p>Try to resolve the PTR record for a given name. The PTR record maps an ipaddress to a name.</p>
+<p>尝试解析给定名称的PTR记录，PTR记录将`ipaddress`映射到名称。</p>
 </div>
 <div class="paragraph">
-<p>To resolve the PTR record for the ipaddress 10.0.0.1 you would use the PTR notion of "1.0.0.10.in-addr.arpa"</p>
+<p>要解析IP地址`10.0.0.1`的PTR记录，您将使用`1.0.0.10.in-addr.arpa`的PTR概念。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8216,11 +8208,10 @@ client.resolvePTR("1.0.0.10.in-addr.arpa", function (ar, ar_err) {
 <div class="sect2">
 <h3 id="_reverselookup">reverseLookup</h3>
 <div class="paragraph">
-<p>Try to do a reverse lookup for an ipaddress. This is basically the same as resolve a PTR record, but allows you to
-just pass in the ipaddress and not a valid PTR query string.</p>
+<p>尝试对ipaddress进行反向查找，这与解析PTR记录类似，但是允许您只传递ipaddress，而不是有效的PTR查询字符串。</p>
 </div>
 <div class="paragraph">
-<p>To do a reverse lookup for the ipaddress 10.0.0.1 do something similar like this:</p>
+<p>要做ipaddress 10.0.0.1的反向查找类似的事：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10364,7 +10355,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:06:07 CST
+                上次更新时间 2018-09-04 18:43:36 CST
               
               
             </div>
