@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -142,21 +142,21 @@
 <p>在 Vert.x 内部，大部分数据被重新组织（shuffle，表意为洗牌）成 <code>Buffer</code> 格式。</p>
 </div>
 <div class="paragraph">
-<p>一个 <code>Buffer</code> 是可以读取或写入的0个或多个字节序列，并且根据需要可以自动扩容、将任意字节写入 <code>Buffer</code>。您也可以将 <code>Buffer</code> 想象成字节数组（译者注：类似于 JDK 中的 <code>ByteBuffer</code>）。</p>
+<p>一个 <code>Buffer</code> 是可以读取或写入的0个或多个字节序列，并且根据需要可以自动扩容、将任意字节写入 <code>Buffer</code> 。您也可以将 <code>Buffer</code> 想象成字节数组（译者注：类似于 JDK 中的 <code>ByteBuffer</code> ）。</p>
 </div>
 <div class="sect2">
 <h3 id="_创建_buffer">创建 Buffer</h3>
 <div class="paragraph">
-<p>可以使用静态方法 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html#buffer()">Buffer.buffer</a></code> 来创建 <code>Buffer</code>。</p>
+<p>可以使用静态方法 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html#buffer()">Buffer.buffer</a></code> 来创建 <code>Buffer</code> 。</p>
 </div>
 <div class="paragraph">
-<p><code>Buffer</code> 可以从字符串或字节数组初始化，或者直接创建空的 <code>Buffer</code>。</p>
+<p><code>Buffer</code> 可以从字符串或字节数组初始化，或者直接创建空的 <code>Buffer</code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一些创建 <code>Buffer</code> 的例子。</p>
 </div>
 <div class="paragraph">
-<p>创建一个空的 <code>Buffer</code>：</p>
+<p>创建一个空的 <code>Buffer</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -164,7 +164,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>从字符串创建一个 <code>Buffer</code>，这个 <code>Buffer</code> 中的字符会以 UTF-8 格式编码：</p>
+<p>从字符串创建一个 <code>Buffer</code> ， 这个 <code>Buffer</code> 中的字符会以 UTF-8 格式编码：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -172,7 +172,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>从字符串创建一个 <code>Buffer</code>，这个字符串可以用指定的编码方式编码，例如：</p>
+<p>从字符串创建一个 <code>Buffer</code> ，这个字符串可以用指定的编码方式编码，例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -180,7 +180,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>创建一个指定初始大小的 <code>Buffer</code>。若您知道您的 <code>Buffer</code> 会写入一定量的数据，您可以创建 <code>Buffer</code> 并指定它的大小。
+<p>创建一个指定初始大小的 <code>Buffer</code> 。若您知道您的 <code>Buffer</code> 会写入一定量的数据，您可以创建 <code>Buffer</code> 并指定它的大小。
 这使得这个 <code>Buffer</code> 初始化时分配了更多的内存，比数据写入时重新调整大小的效率更高。</p>
 </div>
 <div class="paragraph">
@@ -200,7 +200,7 @@
 <div class="sect3">
 <h4 id="_追加到buffer">追加到Buffer</h4>
 <div class="paragraph">
-<p>您可以使用 {@code appendXXX} 方法追加数据到 <code>Buffer</code>。<code>Buffer</code> 类提供了追加各种不同类型数据的追加写入方法。</p>
+<p>您可以使用 {@code appendXXX} 方法追加数据到 <code>Buffer</code> 。 <code>Buffer</code> 类提供了追加各种不同类型数据的追加写入方法。</p>
 </div>
 <div class="paragraph">
 <p>因为 {@code appendXXX} 方法的返回值就是 Buffer 自身，所以它可以链式地调用:</p>
@@ -218,7 +218,7 @@ socket.write(buff)</code></pre>
 <div class="sect3">
 <h4 id="_随机访问写buffer">随机访问写Buffer</h4>
 <div class="paragraph">
-<p>您还可以指定一个索引值，通过 {@code setXXX} 方法写入数据到 <code>Buffer</code>，它也存在各种不同数据类型的方法。
+<p>您还可以指定一个索引值，通过 {@code setXXX} 方法写入数据到 <code>Buffer</code> ，它也存在各种不同数据类型的方法。
 所有的 set 方法都会将索引值作为第一个参数 —— 这表示 <code>Buffer</code> 中开始写入数据的位置。</p>
 </div>
 <div class="paragraph">
@@ -253,7 +253,7 @@ while(i &lt; buff.length()){
 <div class="sect2">
 <h3 id="_使用无符号数">使用无符号数</h3>
 <div class="paragraph">
-<p>可使用 {@code getUnsignedXXX},
+<p>可使用 {@code getUnsignedXXX} ,
 {@code appendUnsignedXXX} 和 {@code setUnsignedXXX} 方法将无符号数从 <code>Buffer</code> 中读取或追加/设置到 <code>Buffer</code> 里。这对以优化网络协议和最小化带宽消耗为目的实现的编解码器是很有用的。</p>
 </div>
 <div class="paragraph">
@@ -268,7 +268,7 @@ println(buff.getUnsignedByte(pos))</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>控制台中显示 <code>200</code>。</p>
+<p>控制台中显示 <code>200</code> 。</p>
 </div>
 </div>
 <div class="sect2">
@@ -304,7 +304,7 @@ println(buff.getUnsignedByte(pos))</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:37 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -321,12 +321,11 @@ println(buff.getUnsignedByte(pos))</code></pre>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

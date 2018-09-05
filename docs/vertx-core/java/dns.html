@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -211,7 +211,7 @@ client.lookup("vertx.io", ar -&gt; {
 <div class="sect2">
 <h3 id="_lookup4">lookup4</h3>
 <div class="paragraph">
-<p>尝试查找给定名称的A（ipv4）记录。第一个返回的（记录）将会被使用，因此它的操作方式与操作系统上使用`nslookup`类似。</p>
+<p>尝试查找给定名称的A（ipv4）记录。第一个返回的（记录）将会被使用，因此它的操作方式与操作系统上使用 <code>nslookup</code> 类似。</p>
 </div>
 <div class="paragraph">
 <p>要查找 <code>vertx.io</code> 的A记录，您需要像下面那样做：</p>
@@ -253,10 +253,10 @@ client.lookup6("vertx.io", ar -&gt; {
 <div class="sect2">
 <h3 id="_resolvea">resolveA</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的所有A（ipv4）记录，这与在unix操作系统上使用`dig`类似。</p>
+<p>尝试解析给定名称的所有A（ipv4）记录，这与在unix操作系统上使用 <code>dig</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有A记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有A记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -277,10 +277,10 @@ client.resolveA("vertx.io", ar -&gt; {
 <div class="sect2">
 <h3 id="_resolveaaaa">resolveAAAA</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的所有AAAA（ipv6）记录，这与在Unix操作系统上使用`dig`类似。</p>
+<p>尝试解析给定名称的所有AAAA（ipv6）记录，这与在Unix操作系统上使用 <code>dig</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有AAAA记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有AAAA记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -301,10 +301,10 @@ client.resolveAAAA("vertx.io", ar -&gt; {
 <div class="sect2">
 <h3 id="_resolvecname">resolveCNAME</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的所有CNAME记录，这与在Unix操作系统上使用`dig`类似。</p>
+<p>尝试解析给定名称的所有CNAME记录，这与在Unix操作系统上使用 <code>dig</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有CNAME记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有CNAME记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -328,7 +328,7 @@ client.resolveCNAME("vertx.io", ar -&gt; {
 <p>尝试解析给定名称的所有MX记录，MX记录用于定义哪个邮件服务器接受给定域的电子邮件。</p>
 </div>
 <div class="paragraph">
-<p>要查找您常用执行的`vertx.io`的所有MX记录：</p>
+<p>要查找您常用执行的 <code>vertx.io</code> 的所有MX记录：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -346,8 +346,7 @@ client.resolveMX("vertx.io", ar -&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../apidocs/io/vertx/core/dns/MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。
-means MX records with smaller priority coming first in the List.</p>
+<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../apidocs/io/vertx/core/dns/MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
 <p><code><a href="../../apidocs/io/vertx/core/dns/MxRecord.html">MxRecord</a></code> 允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
@@ -365,7 +364,7 @@ record.name();</code></pre>
 <p>尝试解析给定名称的所有TXT记录，TXT记录通常用于定义域的额外信息。</p>
 </div>
 <div class="paragraph">
-<p>要解析`vertx.io`的所有TXT记录，您可以使用下边几行：</p>
+<p>要解析 <code>vertx.io</code> 的所有TXT记录，您可以使用下边几行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -389,7 +388,7 @@ client.resolveTXT("vertx.io", ar -&gt; {
 <p>尝试解析给定名称的所有NS记录，NS记录指定哪个DNS服务器托管给定域的DNS信息。</p>
 </div>
 <div class="paragraph">
-<p>要解析`vertx.io`的所有NS记录，您可以使用下边几行：</p>
+<p>要解析 <code>vertx.io</code> 的所有NS记录，您可以使用下边几行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -413,7 +412,7 @@ client.resolveNS("vertx.io", ar -&gt; {
 <p>尝试解析给定名称的所有SRV记录，SRV记录用于定义服务端口和主机名等额外信息。一些协议需要这个额外信息。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有SRV记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有SRV记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -454,10 +453,10 @@ record.target();</code></pre>
 <div class="sect2">
 <h3 id="_resolveptr">resolvePTR</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的PTR记录，PTR记录将`ipaddress`映射到名称。</p>
+<p>尝试解析给定名称的PTR记录，PTR记录将 <code>ipaddress</code> 映射到名称。</p>
 </div>
 <div class="paragraph">
-<p>要解析IP地址`10.0.0.1`的PTR记录，您将使用`1.0.0.10.in-addr.arpa`的PTR概念。</p>
+<p>要解析IP地址 <code>10.0.0.1</code> 的PTR记录，您将使用 <code>1.0.0.10.in-addr.arpa</code> 的PTR概念。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -498,12 +497,12 @@ client.reverseLookup("10.0.0.1", ar -&gt; {
 <div class="sect2">
 <h3 id="_错误处理">错误处理</h3>
 <div class="paragraph">
-<p>如前边部分所述，<code>DnsClient</code> 允许您传递一个`Handler`，一旦查询完成将会传入一个`AsyncResult`给`Handler`并通知它。
-在出现错误的情况下，通知中将包含一个`DnsException`，该异常会包含一个说明为何失败的
-<code><a href="../../apidocs/io/vertx/core/dns/DnsResponseCode.html">DnsResponseCode</a></code>。此`DnsResponseCode`可用于更详细检查原因。</p>
+<p>如前边部分所述， <code>DnsClient</code> 允许您传递一个 <code>Handler</code> ，一旦查询完成将会传入一个 <code>AsyncResult</code> 给 <code>Handler</code> 并通知它。
+在出现错误的情况下，通知中将包含一个 <code>DnsException</code> ，该异常会包含一个说明为何失败的
+<code><a href="../../apidocs/io/vertx/core/dns/DnsResponseCode.html">DnsResponseCode</a></code> 。此 <code>DnsResponseCode</code> 可用于更详细检查原因。</p>
 </div>
 <div class="paragraph">
-<p>可能的`DnsResponseCode`值是：</p>
+<p>可能的 <code>DnsResponseCode</code> 值是：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -584,7 +583,7 @@ client.lookup("nonexisting.vert.xio", ar -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:36 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -601,12 +600,11 @@ client.lookup("nonexisting.vert.xio", ar -&gt; {
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

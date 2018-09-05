@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -149,14 +149,14 @@
 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 接口。</p>
 </div>
 <div class="paragraph">
-<p>让我们举个例子，我们要从`ReadStream`中读取数据，然后将数据写入`WriteStream`。</p>
+<p>让我们举个例子，我们要从 <code>ReadStream</code> 中读取数据，然后将数据写入 <code>WriteStream</code> 。</p>
 </div>
 <div class="paragraph">
-<p>一个非常简单的例子是从 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了`ReadStream`也实现了`WriteStream` 接口。
-请注意，这些操作适用于任何实现了`ReadStream`和 <code>WriteStream</code> 接口的对象，包括HTTP 请求、HTTP 响应、异步文件 I/O 和 WebSocket等。</p>
+<p>一个非常简单的例子是从 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了 <code>ReadStream</code> 也实现了 <code>WriteStream</code> 接口。
+请注意，这些操作适用于任何实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口的对象，包括HTTP 请求、HTTP 响应、异步文件 I/O 和 WebSocket等。</p>
 </div>
 <div class="paragraph">
-<p>一个最简单的方法是直接获取已经读取的数据，并立即将其写入`NetSocket`：</p>
+<p>一个最简单的方法是直接获取已经读取的数据，并立即将其写入 <code>NetSocket</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -173,7 +173,7 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>上面的例子有一个问题：如果从Socket读取数据的速度比写回Socket的速度快，那么它将在`NetSocket`的写队列中不断堆积，最终耗尽内存。
+<p>上面的例子有一个问题：如果从Socket读取数据的速度比写回Socket的速度快，那么它将在 <code>NetSocket</code> 的写队列中不断堆积，最终耗尽内存。
 这是有可能会发生，例如，若Socket另一端的客户端读取速度不够快，无法快速地向连接的另一端回压。</p>
 </div>
 <div class="paragraph">
@@ -196,7 +196,7 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>这个例子不会耗尽内存，但如果写入队列已满，我们最终会丢失数据。我们真正想要做的是在写入队列已满时暂停读取 <code>NetSocket</code>：</p>
+<p>这个例子不会耗尽内存，但如果写入队列已满，我们最终会丢失数据。我们真正想要做的是在写入队列已满时暂停读取 <code>NetSocket</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -238,11 +238,11 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 </div>
 <div class="paragraph">
 <p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler(io.vertx.core.Handler))">drainHandler</a></code>
-事件处理器将被调用，它会恢复`NetSocket`的状态，允许读取更多的数据。</p>
+事件处理器将被调用，它会恢复 <code>NetSocket</code> 的状态，允许读取更多的数据。</p>
 </div>
 <div class="paragraph">
 <p>在编写Vert.x 应用程序时，这样做是很常见的，因此我们提供了一个名为 <code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html">Pump</a></code> 的帮助类，它为您完成所有这些艰苦的工作。
-您只需要给 <code>ReadStream</code> 追加上 <code>WriteStream</code>，然后启动它：</p>
+您只需要给 <code>ReadStream</code> 追加上 <code>WriteStream</code> ，然后启动它：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -264,11 +264,11 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="sect2">
 <h3 id="_readstream">ReadStream</h3>
 <div class="paragraph">
-<p><code>ReadStream</code>（可读流） 接口的实现类包括： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html">HttpClientResponse</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html">DatagramSocket</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerFileUpload.html">HttpServerFileUpload</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html">MessageConsumer</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/TimeoutStream.html">TimeoutStream</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code>.</p>
+<p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html">DatagramSocket</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html">HttpServerRequest</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/TimeoutStream.html">TimeoutStream</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> .</p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -276,19 +276,19 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#handler(io.vertx.core.Handler))">handler</a></code>: 设置一个处理器，它将从`ReadStream`读取项</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#handler(io.vertx.core.Handler))">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#pause()">pause</a></code>: 暂停处理器，暂停时，处理器中将不会受到任何项</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#pause()">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#resume()">resume</a></code>: 恢复处理器，若任何项到达则处理器将被调用</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#resume()">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code>: 若ReadStream发生异常，将被调用</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#endHandler(io.vertx.core.Handler))">endHandler</a></code>: 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#endHandler(io.vertx.core.Handler))">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
 </li>
 </ul>
 </div>
@@ -296,8 +296,8 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="sect2">
 <h3 id="_writestream">WriteStream</h3>
 <div class="paragraph">
-<p><code>WriteStream</code>（可写流）接口的实现类包括： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html">HttpServerResponse</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code>,
+<p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> ,
 and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.html">MessageProducer</a></code></p>
 </div>
 <div class="paragraph">
@@ -306,19 +306,19 @@ and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#write(java.lang.Object)">write</a></code>: 写入一个对象到 <code>WriteStream</code>，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#write(java.lang.Object)">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code>: 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code> 返回`true`。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code>: 若写队列被认为已满，则返回`true`。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code>: 若`WriteStream`发生异常，则被调用。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler(io.vertx.core.Handler))">drainHandler</a></code>: 若`WriteStream`被认为不再满，则处理器将被调用。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler(io.vertx.core.Handler))">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
 </li>
 </ul>
 </div>
@@ -331,14 +331,14 @@ and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#start()">start</a></code>: 启动泵。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#start()">start</a></code> : 启动泵。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#stop()">stop</a></code>:
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#stop()">stop</a></code> :
 停止泵，当泵启动时它要处于停止模式。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code>:
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code> :
 与 <code>WriteStream</code> 接口的 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code> 方法相同。</p>
 </li>
 </ul>
@@ -359,7 +359,7 @@ and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:37 CST
+                上次更新时间 2018-09-05 15:27:15 CST
               
               
             </div>
@@ -376,12 +376,11 @@ and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

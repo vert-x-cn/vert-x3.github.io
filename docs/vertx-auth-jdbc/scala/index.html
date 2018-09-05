@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -105,8 +105,8 @@
 <li><a href="#_jdbc_auth_provider_implementation">JDBC Auth Provider implementation</a></li>
 <li><a href="#_vertx_auth_jdbc_and_gdpr">Vertx Auth JDBC and GDPR</a></li>
 <li><a href="#_hashing_passwords">Hashing passwords</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_authorisation_permission_role_model">Authorisation - Permission-Role Model</a></li>
+<li><a href="#_认证">认证</a></li>
+<li><a href="#_授权_permission_role模型">授权 - Permission/Role模型</a></li>
 </ul>
         </div>
       </div>
@@ -117,22 +117,21 @@
 <li><a href="#_jdbc_auth_provider_implementation">JDBC Auth Provider implementation</a></li>
 <li><a href="#_vertx_auth_jdbc_and_gdpr">Vertx Auth JDBC and GDPR</a></li>
 <li><a href="#_hashing_passwords">Hashing passwords</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_authorisation_permission_role_model">Authorisation - Permission-Role Model</a></li>
+<li><a href="#_认证">认证</a></li>
+<li><a href="#_授权_permission_role模型">授权 - Permission/Role模型</a></li>
 </ul>
         </div>
         <div class="sect1">
 <h2 id="_jdbc_auth_provider_implementation">JDBC Auth Provider implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We provide an implementation of <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code> which uses the Vert.x <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html">JDBCClient</a></code>
-to perform authentication and authorisation against any JDBC compliant database. To use this project,
-add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>Vert.X中提供了一个使用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html">JDBCClient</a></code> 的 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code>
+实现，它针对任何兼容JDBC的关系数据库执行认证和授权。若要在自己的项目中使用它，则需要在构建描述信息的 <em>dependencies</em> 节点中添加如下信息：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -148,7 +147,7 @@ add the following dependency to the <em>dependencies</em> section of your build 
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -158,11 +157,10 @@ add the following dependency to the <em>dependencies</em> section of your build 
 </div>
 </div>
 <div class="paragraph">
-<p>To create an instance you first need an instance of <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html">JDBCClient</a></code>. To learn how to create one
-of those please consult the documentation for the JDBC client.</p>
+<p>如果要创建一个客户端实例，你首先需要一个 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html">JDBCClient</a></code> 的实例，要知道如何创建这个实例可按照文档中的内容实施。</p>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve got one of those you can create a <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html">JDBCAuth</a></code> instance as follows:</p>
+<p>一旦你创建了一个 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html">JDBCClient</a></code> 实例后，就可以按下边代码创建 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html">JDBCAuth</a></code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -172,18 +170,16 @@ var authProvider = JDBCAuth.create(vertx, jdbcClient)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve got your instance you can authenticate and authorise with it just like any <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code>.</p>
+<p>创建好上边的实例过后你就可以如使用任何 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code> 执行认证和授权功能了。</p>
 </div>
 <div class="paragraph">
-<p>The out of the box config assumes certain queries for authentication and authorisation, these can easily be changed
-with the operations <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setAuthenticationQuery(java.lang.String)">setAuthenticationQuery</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setPermissionsQuery(java.lang.String)">setPermissionsQuery</a></code> and
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolesQuery(java.lang.String)">setRolesQuery</a></code>, if you want to use them with a different
-database schema.</p>
+<p>Vert.X的默认标准配置（Out Of the Box）中包含了某些针对认证和授权的信息查询， 如果你想要使用不同的数据库模式（Schema），
+这些查询内容可以通过 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setAuthenticationQuery(java.lang.String)">setAuthenticationQuery</a></code>,
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setPermissionsQuery(java.lang.String)">setPermissionsQuery</a></code> 和
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolesQuery(java.lang.String)">setRolesQuery</a></code> 方法进行更改：</p>
 </div>
 <div class="paragraph">
-<p>The default implementation assumes that the password is stored in the database as a SHA-512 hash after being
-concatenated with a salt. It also assumes the salt is stored in the table too.</p>
+<p>Vert.X默认实现中的密码在数据库中使用了SHA-512算法加密后进行存储，之后会连接对应的 <code>salt</code> 值，这个 <code>salt</code> 值和密码存储在同一个表里。</p>
 </div>
 <div class="paragraph">
 <p>The basic data definition for the storage should look like this:</p>
@@ -235,8 +231,8 @@ passwords, so you will need to migrate the passwords from one algorithm to the s
 </table>
 </div>
 <div class="paragraph">
-<p>If you want to override this behaviour you can do so by providing an alternative hash strategy and setting it with
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setHashStrategy(io.vertx.ext.auth.jdbc.JDBCHashStrategy)">setHashStrategy</a></code>.</p>
+<p>如果你想要重写这些行为，则可以重写
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setHashStrategy(io.vertx.ext.auth.jdbc.JDBCHashStrategy)">setHashStrategy</a></code> 方法去修改Hash策略的设置。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -245,9 +241,7 @@ passwords, so you will need to migrate the passwords from one algorithm to the s
 <div class="title">Warning</div>
 </td>
 <td class="content">
-It is advised to always store your passwords as hashes in your database tables which have been created
-with a salt which should be stored in the row too. A strong hashing algorithm should be used. It is strongly advised
-never to store your passwords as plain text.
+<em>强烈建议在存储密码时使用哈希算法加密过后保存在数据库中，这个哈希值是在创建这一行记录时基于 <code>salt</code> 值计算的，应用中应该使用强壮的密码算法，在存储密码时绝对不要使用明文。</em>
 </td>
 </tr>
 </table>
@@ -434,11 +428,10 @@ conn.updateWithParamsFuture("INSERT INTO user VALUES (?, ?, ?)", new io.vertx.co
 </div>
 </div>
 <div class="sect1">
-<h2 id="_authentication">Authentication</h2>
+<h2 id="_认证">认证</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When authenticating using this implementation, it assumes <code>username</code> and <code>password</code> fields are present in the
-authentication info:</p>
+<p>如果要使用默认的认证实现，认证信息中用了 <code>username</code> 和 <code>password</code> 字段进行表述：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -457,16 +450,14 @@ authProvider.authenticateFuture(authInfo).onComplete{
 </div>
 </div>
 <div class="sect1">
-<h2 id="_authorisation_permission_role_model">Authorisation - Permission-Role Model</h2>
+<h2 id="_授权_permission_role模型">授权 - Permission/Role模型</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Although Vert.x auth itself does not mandate any specific model of permissions (they are just opaque strings), this
-implementation assumes a familiar user/role/permission model, where a user can have zero or more roles and a role
-can have zero or more permissions.</p>
+<p>尽管Vert.X Auth自身并不要求使用特定的许可模型（它本身只是使用了不透明的字符串），但默认的实现使用了比较熟悉的：用户/角色/许可模型，这样在应用里你可以使用一个或者多个角色，而一个角色也可以拥有一个或者多个许可。</p>
 </div>
 <div class="paragraph">
-<p>If validating if a user has a particular permission simply pass the permission into.
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String,%20io.vertx.core.Handler)">isAuthorised</a></code> as follows:</p>
+<p>如果要验证一个用户是否拥有特定的许可，则需要将许可信息传递到
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String,%20io.vertx.core.Handler)">isAuthorised</a></code> 中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -481,7 +472,7 @@ can have zero or more permissions.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If validating that a user has a particular <em>role</em> then you should prefix the argument with the role prefix.</p>
+<p>如果要验证一个用户是否属于特定角色，则可以使用前缀法给角色带上前缀表示：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -496,7 +487,7 @@ can have zero or more permissions.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The default role prefix is <code>role:</code>. You can change this with <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolePrefix(java.lang.String)">setRolePrefix</a></code>.</p>
+<p>Vert.X中的默认角色前缀使用了 <code>role:</code> ，这个值可通过 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolePrefix(java.lang.String)">setRolePrefix</a></code> 进行更改。</p>
 </div>
 <div class="paragraph">
 <p>@author &lt;a href="mailto:julien@julienviet.com"&gt;Julien Viet&lt;/a&gt;
@@ -511,7 +502,7 @@ can have zero or more permissions.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:35 CST
+                上次更新时间 2018-09-05 15:27:12 CST
               
               
             </div>
@@ -528,12 +519,11 @@ can have zero or more permissions.</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

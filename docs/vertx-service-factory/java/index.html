@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Vert.x Service Factory - Vert.x</title>
+  <title>Vert.x Service Factory 手册 - Vert.x</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -87,7 +87,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Vert.x Service Factory</h1>
+          <h1>Vert.x Service Factory 手册</h1>
           
         </div>
       </div>
@@ -102,10 +102,10 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_service_identifier">Service identifier</a></li>
-<li><a href="#_usage">Usage</a></li>
-<li><a href="#_making_it_available">Making it available</a></li>
-<li><a href="#_service_descriptor">Service descriptor</a></li>
+<li><a href="#_service_标识符">Service 标识符</a></li>
+<li><a href="#_使用">使用</a></li>
+<li><a href="#_使其可用">使其可用</a></li>
+<li><a href="#_服务描述符">服务描述符</a></li>
 </ul>
         </div>
       </div>
@@ -113,57 +113,49 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_service_identifier">Service identifier</a></li>
-<li><a href="#_usage">Usage</a></li>
-<li><a href="#_making_it_available">Making it available</a></li>
-<li><a href="#_service_descriptor">Service descriptor</a></li>
+<li><a href="#_service_标识符">Service 标识符</a></li>
+<li><a href="#_使用">使用</a></li>
+<li><a href="#_使其可用">使其可用</a></li>
+<li><a href="#_服务描述符">服务描述符</a></li>
 </ul>
         </div>
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The vert.x service factory is an implementation of VerticleFactory which deploys a verticle given a service (id)
-name. Notice that this factory is not directly related to
-<a href="http://vertx.io/docs/vertx-service-proxy/java">vert.x service proxies</a>, but is about facilities to deploy
-individual components.</p>
+<p>vert.x service factory 是VerticleFactory 的一个实现，能根据服务id部署一个verticle 。
+注意这个factory与 <a href="http://vertx.io/docs/vertx-service-proxy/java">vert.x服务代理</a> 没有直接关系，而是一个关于部署单个组件的设施。</p>
 </div>
 <div class="paragraph">
-<p>The service name is used to lookup a JSON descriptor file which determines the actual verticle that is to be deployed,
-and can also contain deployment options for the verticle such as whether it should be run as a worker, and default
-config for the service.</p>
+<p>服务名被用于查找JSON描述符文件，JSON描述符文件决定实际被部署的verticle，包含部署参数例如是否作为一个worker来运行等等。</p>
 </div>
 <div class="paragraph">
-<p>It is useful as it decouples the service user from the actual verticle that is deployed and it allows the service
-to provide default deployment options and configuration.</p>
+<p>服务使用者从实际被部署的verticle中解耦是很有用的，并且允许服务提供默认的部署参数和配置。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_service_identifier">Service identifier</h2>
+<h2 id="_service_标识符">Service 标识符</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The service name is simply a string - you can use anything you want, but it&#8217;s a good convention to use a reverse
-domain name (rather like a Java package name) so not to clash with other similar named services that might be on your
-classpath. E.g:</p>
+<p>服务名字是一个简单的字符串，可以随用户定义，但是建议用户使用域名反转的方式（如java包的定义），这样避免你类路径中的其他服务同名。例如：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Good names: <code>com.mycompany.services.clever-db-service</code>, <code>org.widgets.widget-processor</code></p>
+<p>推荐命名: <code>com.mycompany.services.clever-db-service</code> , <code>org.widgets.widget-processor</code></p>
 </li>
 <li>
-<p>Poor names (but they are still valid): <code>accounting-service</code>, <code>foo</code></p>
+<p>不推荐但是有效的命名: <code>accounting-service</code> , <code>foo</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_usage">Usage</h2>
+<h2 id="_使用">使用</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When deploying the service use the prefix <code>service:</code>, this selects the service verticle factory.
-The verticle can be deployed programmatically e.g.:</p>
+<p>当部署一个服务时使用 <code>service:</code> ，选择服务verticle工厂。这个verticle可以通过编程的方式部署,例如:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -171,7 +163,7 @@ The verticle can be deployed programmatically e.g.:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Or can be deployed on the command line with:</p>
+<p>也可以通过命令行的方式部署：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -181,17 +173,16 @@ The verticle can be deployed programmatically e.g.:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_making_it_available">Making it available</h2>
+<h2 id="_使其可用">使其可用</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x picks up <code>VerticleFactory</code> implementations from the classpath, so you just need to make sure the
-vertx-service-factory jar file on the classpath. First you need to add the Maven verticle factory to your application&#8217;s
-classpath. If you are using a fat jar, you can use the following dependencies:</p>
+<p>Vert.x 服务要实现 <code>VerticleFactory</code> ，所以需要你的classpath中确保
+vertx-service-factory 的jar文件。首先你需要添加verticle factory的maven依赖，如果你使用的是fat jar的方式，你可以用如下依赖：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在你的 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -207,7 +198,7 @@ classpath. If you are using a fat jar, you can use the following dependencies:</
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在你的 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -217,8 +208,8 @@ classpath. If you are using a fat jar, you can use the following dependencies:</
 </div>
 </div>
 <div class="paragraph">
-<p>You can also register a <code>VerticleFactory</code> instances programmatically on your <code>vertx</code> instance using the
-<code><a href="../../apidocs/io/vertx/core/Vertx.html#registerVerticleFactory-io.vertx.core.spi.VerticleFactory-">registerVerticleFactory</a></code> method:</p>
+<p>你也可以通过编程的方式用
+<code><a href="../../apidocs/io/vertx/core/Vertx.html#registerVerticleFactory-io.vertx.core.spi.VerticleFactory-">registerVerticleFactory</a></code> 方法注册 <code>VerticleFactory</code> 实例</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -228,19 +219,16 @@ classpath. If you are using a fat jar, you can use the following dependencies:</
 </div>
 </div>
 <div class="sect1">
-<h2 id="_service_descriptor">Service descriptor</h2>
+<h2 id="_服务描述符">服务描述符</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When you ask to deploy a service, the service factory first looks for a descriptor file on the classpath.
-The descriptor file name is given by the service name concatenated with the <code>.json</code> file extension.</p>
+<p>当部署一个服务时，这个服务工厂首先在classpath中查找这个文件描述符。这个文件描述器就是服务名加 <code>.json</code> 。</p>
 </div>
 <div class="paragraph">
-<p>E.g. for a service name of <code>com.mycompany.clever-db-service</code> it would like for a descriptor file called
-<code>com.mycompany.clever-db-service.json</code> on the classpath.</p>
+<p>例如：对于一个服务名： <code>com.mycompany.clever-db-service</code> ,那么他的服务描述符文件为： <code>com.mycompany.clever-db-service.json</code></p>
 </div>
 <div class="paragraph">
-<p>The descriptor file is simply a text file which must contain a valid JSON object. At minimum the JSON must provide
-a <code>main</code> field which determines the actual verticle that will be deployed, e.g:</p>
+<p>文件描述符文件是一个简单的text文件，内容为有效的JSON对象。JSON中至少必须提供 <code>main</code> 属性，用于指定实际被部署的verticle，例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -250,7 +238,7 @@ a <code>main</code> field which determines the actual verticle that will be depl
 </div>
 </div>
 <div class="paragraph">
-<p>or</p>
+<p>或者</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -260,8 +248,7 @@ a <code>main</code> field which determines the actual verticle that will be depl
 </div>
 </div>
 <div class="paragraph">
-<p>or you could even redirect to a different verticle factory e.g. the Maven verticle factory to dynamically load the
-service from Maven at run-time:</p>
+<p>或者你甚至可以重定向到一个不同的verticle工厂。例如，这个Maven verticle工厂在运行时动态的从Maven中加载服务：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -271,7 +258,7 @@ service from Maven at run-time:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The JSON can also provide an <code>options</code> field which maps exactly to a <code><a href="../../apidocs/io/vertx/core/DeploymentOptions.html">DeploymentOptions</a></code> object.</p>
+<p>JSON还能提供 <code>options</code> 属性，可精确的被映射到 <code>DeploymentOptions</code> 对象中。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -288,12 +275,10 @@ service from Maven at run-time:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When deploying a service from a service descriptor, any fields that are specified in the descriptor, such as <code>worker</code>,
-<code>isolationGroup</code>, etc cannot be overridden by any deployment options passed in at deployment time.</p>
+<p>当使用服务描述符来部署一个服务时，任何属性如 <code>worker</code> , <code>isolationGroup</code> 等不能被在部署时传递的部署参数所覆盖。</p>
 </div>
 <div class="paragraph">
-<p>The exception is <code>config</code>. Any configuration passed in at deploy time will override any corresponding fields in any
-config present in the descriptor file.</p>
+<p>但是 <code>config</code> 是一个例外。任意的config在部署时传递的任何配置都将覆盖任何呈现在文件描述符文件中对应的属性。</p>
 </div>
 </div>
 </div>
@@ -304,7 +289,7 @@ config present in the descriptor file.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:40 CST
+                上次更新时间 2018-09-05 15:27:23 CST
               
               
             </div>
@@ -321,12 +306,11 @@ config present in the descriptor file.</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -209,7 +209,7 @@ var server = vertx.createHttpServer(options);</code></pre>
 <div class="sect2">
 <h3 id="_配置_http_2_服务端">配置 HTTP/2 服务端</h3>
 <div class="paragraph">
-<p>Vert.x支持 TLS `h2`和TCP `h2c`之上的 HTTP/2 协议。</p>
+<p>Vert.x支持 TLS <code>h2</code> 和TCP <code>h2c</code> 之上的 HTTP/2 协议。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -247,7 +247,7 @@ var server = vertx.createHttpServer(options);</code></pre>
 <p>通常情况，ALPN会对 <code>h2</code> 协议达成一致，尽管服务器或客户端决定了仍然使用 HTTP/1.1 协议。</p>
 </div>
 <div class="paragraph">
-<p>要处理 <code>h2c</code> 请求，TLS必须被禁用，服务器将升级到 HTTP/2 以满足任何希望升级到 HTTP/2 的 HTTP/1.1 请求。它还将接受以 <code>PRI*HTTP/2.0\r\nSM\r\n</code> 开始的`h2c`直接连接。</p>
+<p>要处理 <code>h2c</code> 请求，TLS必须被禁用，服务器将升级到 HTTP/2 以满足任何希望升级到 HTTP/2 的 HTTP/1.1 请求。它还将接受以 <code>PRI*HTTP/2.0\r\nSM\r\n</code> 开始的 <code>h2c</code> 直接连接。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -256,13 +256,13 @@ var server = vertx.createHttpServer(options);</code></pre>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-大多数浏览器不支持 <code>h2c</code>，所以在建站时，您应该使用 <code>h2</code> 而不是 <code>h2c</code>。
+大多数浏览器不支持 <code>h2c</code> ，所以在建站时，您应该使用 <code>h2</code> 而不是 <code>h2c</code> 。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>当服务器接受 HTTP/2 连接时， 它会向客户端发送其 <code><a href="../dataobjects.html#HttpServerOptions#getInitialSettings">初始设置</a></code>。定义客户端如何使用连接，服务器的默认初始设置为：</p>
+<p>当服务器接受 HTTP/2 连接时， 它会向客户端发送其 <code><a href="../dataobjects.html#HttpServerOptions#getInitialSettings">初始设置</a></code> 。定义客户端如何使用连接，服务器的默认初始设置为：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -330,7 +330,7 @@ server.listen(8080, "myhost.com");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认主机名是`0.0.0.0`，它表示：监听所有可用地址；默认端口号是`80`。</p>
+<p>默认主机名是 <code>0.0.0.0</code> ，它表示：监听所有可用地址；默认端口号是 <code>80</code> 。</p>
 </div>
 <div class="paragraph">
 <p>实际的绑定也是异步的，因此服务器也许并没有在调用 <code>listen</code> 方法返回时监听，而是在一段时间过后才监听。</p>
@@ -377,8 +377,8 @@ server.requestHandler(function (request) {
 <p>如果请求包含请求体，那么该请求体将在请求处理器被调用后的某个时间到达服务器。</p>
 </div>
 <div class="paragraph">
-<p>服务请求对象允许您检索 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#uri">uri</a></code>,
-<code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#path">path</a></code>, <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#params">params</a></code> 和
+<p>服务请求对象允许您检索 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#uri">uri</a></code> ,
+<code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#path">path</a></code> , <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#params">params</a></code> 和
 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#headers">headers</a></code> 等其他信息。</p>
 </div>
 <div class="paragraph">
@@ -485,7 +485,7 @@ console.log("User agent is " + headers.get("User-Agent"));</code></pre>
 <p>使用 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#host">host</a></code> 方法返回 HTTP 请求中的主机名。</p>
 </div>
 <div class="paragraph">
-<p>对于 HTTP/1.x 请求返回请求头中的 <code>host</code> 值，对于 HTTP/1 请求则返回伪头中的`:authority`的值。</p>
+<p>对于 HTTP/1.x 请求返回请求头中的 <code>host</code> 值，对于 HTTP/1 请求则返回伪头中的 <code>:authority</code> 的值。</p>
 </div>
 </div>
 <div class="sect3">
@@ -575,7 +575,7 @@ request.endHandler(function (v) {
 </div>
 </div>
 <div class="paragraph">
-<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#bodyHandler">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时，<code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
+<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#bodyHandler">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时， <code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -742,7 +742,7 @@ request.endHandler(function (v) {
 <div class="sect3">
 <h4 id="_设置状态码和消息">设置状态码和消息</h4>
 <div class="paragraph">
-<p>默认的 HTTP 状态响应码为 <code>200</code>，表示 <code>OK</code>。</p>
+<p>默认的 HTTP 状态响应码为 <code>200</code> ，表示 <code>OK</code> 。</p>
 </div>
 <div class="paragraph">
 <p>可使用 <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#setStatusCode">setStatusCode</a></code> 方法设置不同状态代码。</p>
@@ -830,7 +830,7 @@ response.end();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>您也可以和调用`write`方法一样传 <code>String</code> 或 <code>Buffer</code> 给 <code>end</code> 方法。这种情况，它和先调用带 <code>String</code> 或 <code>Buffer</code> 参数的 <code>write</code> 方法，之后调用无参 <code>end</code> 方法一样。例如：</p>
+<p>您也可以和调用 <code>write</code> 方法一样传 <code>String</code> 或 <code>Buffer</code> 给 <code>end</code> 方法。这种情况，它和先调用带 <code>String</code> 或 <code>Buffer</code> 参数的 <code>write</code> 方法，之后调用无参 <code>end</code> 方法一样。例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1049,8 +1049,8 @@ response.putTrailer("X-wibble", "woobble").putTrailer("X-quux", "flooble");</cod
 <h4 id="_pumping_响应">Pumping 响应</h4>
 <div class="paragraph">
 <p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> 实例，因此您可以从任何
-<code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../jsdoc/module-vertx-js_async_file-AsyncFile.html">AsyncFile</a></code>, <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code>,
-<code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html">WebSocket</a></code> 或 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html">HttpServerRequest</a></code>.</p>
+<code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../jsdoc/module-vertx-js_async_file-AsyncFile.html">AsyncFile</a></code> , <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code> ,
+<code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html">WebSocket</a></code> 或 <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一个例子，它回应了任何 PUT 方法的响应中的请求体，它为请求体使用了 Pump，所以即使 HTTP 请求体很大并填满了内存，任何时候它依旧会工作：</p>
@@ -1173,7 +1173,7 @@ response.sendFile("&lt;html&gt;&lt;head&gt;&lt;script src=\"/main.js\"&gt;&lt;/s
 <p>当服务器准备推送响应时，推送响应处理器会被调用，并会发送响应。</p>
 </div>
 <div class="paragraph">
-<p>推送响应处理器客户能会接收到失败，如：客户端可能取消推送，因为它已经在缓存中包含了 <code>main.js</code>，并不在需要它。</p>
+<p>推送响应处理器客户能会接收到失败，如：客户端可能取消推送，因为它已经在缓存中包含了 <code>main.js</code> ，并不在需要它。</p>
 </div>
 <div class="paragraph">
 <p>您必须在响应结束之前调用 <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#push">push</a></code> 方法，但是在推送响应过后依然可以写响应。</p>
@@ -1184,7 +1184,7 @@ response.sendFile("&lt;html&gt;&lt;head&gt;&lt;script src=\"/main.js\"&gt;&lt;/s
 <div class="paragraph">
 <p>You can set an <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#exceptionHandler">exceptionHandler</a></code> to receive any
 exceptions that happens before the connection is passed to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#requestHandler">requestHandler</a></code>
-or to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#websocketHandler">websocketHandler</a></code>, e.g during the TLS handshake.</p>
+or to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#websocketHandler">websocketHandler</a></code> , e.g during the TLS handshake.</p>
 </div>
 </div>
 </div>
@@ -1215,7 +1215,7 @@ or to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html
 <p>若找到这样的请求头，服务器将使用所支持的压缩算法之一自动压缩响应正文并发送回客户端。</p>
 </div>
 <div class="paragraph">
-<p>Whenever the response needs to be sent without compression you can set the header <code>content-encoding</code> to <code>identity</code>:</p>
+<p>Whenever the response needs to be sent without compression you can set the header <code>content-encoding</code> to <code>identity</code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1460,7 +1460,7 @@ client.post("some-uri", function (response) {
 </div>
 </div>
 <div class="paragraph">
-<p>可以用UTF-8编码方式编码字符串和以指定方式编码编码字符串、或写`Buffer`的方法：</p>
+<p>可以用UTF-8编码方式编码字符串和以指定方式编码编码字符串、或写 <code>Buffer</code> 的方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1503,10 +1503,10 @@ request.end(buffer);</code></pre>
 <p>带请求体的非分块 HTTP 请求需要提供 <code>Content-Length</code> 头。</p>
 </div>
 <div class="paragraph">
-<p>因此，若您不使用 HTTP 分块，则必须在写入请求之前设置`Content-Length`头，否则会出错。</p>
+<p>因此，若您不使用 HTTP 分块，则必须在写入请求之前设置 <code>Content-Length</code> 头，否则会出错。</p>
 </div>
 <div class="paragraph">
-<p>若您在调用其中一个 <code>end</code> 方法处理 String 或 Buffer，在写入请求体之前，Vert.x 将自动计算并设置 <code>Content-Length</code>。</p>
+<p>若您在调用其中一个 <code>end</code> 方法处理 String 或 Buffer，在写入请求体之前，Vert.x 将自动计算并设置 <code>Content-Length</code> 。</p>
 </div>
 <div class="paragraph">
 <p>若您在使用HTTP 分块模式，则不需要 <code>Content-Length</code> 头，因此您不必先计算大小。</p>
@@ -1593,7 +1593,7 @@ request.end(buffer);</code></pre>
 <p>您可使用 <code><a href="../../jsdoc/module-vertx-js_http_client_request-HttpClientRequest.html#setChunked">setChunked</a></code> 将HTTP 请求设置成分块模式。</p>
 </div>
 <div class="paragraph">
-<p>在分块模式下，每次调用 <code>write</code> 方法将导致新的块被写入到报文，这种模式中，无需先设置请求头中的 <code>Content-Length</code>。</p>
+<p>在分块模式下，每次调用 <code>write</code> 方法将导致新的块被写入到报文，这种模式中，无需先设置请求头中的 <code>Content-Length</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1735,7 +1735,7 @@ request.writeCustomFrame(frameType, frameStatus, payload);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认情况，发送 `NO_ERROR(0)`错误代码，可发送另一个代码：</p>
+<p>默认情况，发送 <code>NO_ERROR(0)</code> 错误代码，可发送另一个代码：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1882,13 +1882,13 @@ client.getNow("some-uri", function (response) {
 <p>您可以通过 <code><a href="../../jsdoc/module-vertx-js_http_client_response-HttpClientResponse.html#cookies">cookies</a></code> 方法从响应中获取 Cookie 列表。</p>
 </div>
 <div class="paragraph">
-<p>或者您可以在响应中自己解析`Set-Cookie`头。</p>
+<p>或者您可以在响应中自己解析 <code>Set-Cookie</code> 头。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_30x_重定向处理器">30x 重定向处理器</h4>
 <div class="paragraph">
-<p>客户端可配置成遵循HTTP 重定向：当客户端接收到 <code>301</code>、<code>302</code>、<code>303</code> 或 <code>307</code> 状态代码时，它遵循由 <code>Location</code> 响应头提供的重定向，并且响应处理器将传递重定向响应以替代原始响应。</p>
+<p>客户端可配置成遵循HTTP 重定向：当客户端接收到 <code>301</code> 、 <code>302</code> 、 <code>303</code> 或 <code>307</code> 状态代码时，它遵循由 <code>Location</code> 响应头提供的重定向，并且响应处理器将传递重定向响应以替代原始响应。</p>
 </div>
 <div class="paragraph">
 <p>这有个例子：</p>
@@ -1906,7 +1906,7 @@ client.getNow("some-uri", function (response) {
 <div class="ulist">
 <ul>
 <li>
-<p>当接收到 <code>301</code>、<code>302</code> 或 <code>303</code> 状态代码时，使用 GET 方法执行重定向</p>
+<p>当接收到 <code>301</code> 、 <code>302</code> 或 <code>303</code> 状态代码时，使用 GET 方法执行重定向</p>
 </li>
 <li>
 <p>当接收到 <code>307</code> 状态代码时，使用相同的 HTTP 方法和缓存的请求体执行重定向</p>
@@ -1926,7 +1926,7 @@ client.getNow("some-uri", function (response) {
 </table>
 </div>
 <div class="paragraph">
-<p>默认情况最大的重定向数为 <code>16</code>，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#setMaxRedirects">maxRedirects</a></code> 方法设置。</p>
+<p>默认情况最大的重定向数为 <code>16</code> ，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#setMaxRedirects">maxRedirects</a></code> 方法设置。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1991,7 +1991,7 @@ client.redirectHandler(function (response) {
 <div class="ulist">
 <ul>
 <li>
-<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../jsdoc/module-vertx-js_http_client_request-HttpClientRequest.html#setHost">setHost</a></code>）</p>
+<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../jsdoc/module-vertx-js_http_client_request-HttpClientRequest.html#setHost">setHost</a></code> ）</p>
 </li>
 <li>
 <p>请求体，除非返回的请求使用了 <code>GET</code> 方法</p>
@@ -2011,7 +2011,7 @@ client.redirectHandler(function (response) {
 <div class="sect3">
 <h4 id="_100_continue_处理">100-Continue 处理</h4>
 <div class="paragraph">
-<p>根据 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html">HTTP/1.1 规范</a> ，一个客户端可以设置请求头 <code>Expect: 100-Continue</code>，并且在发送剩余请求体之前先发送请求头。</p>
+<p>根据 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html">HTTP/1.1 规范</a> ，一个客户端可以设置请求头 <code>Expect: 100-Continue</code> ，并且在发送剩余请求体之前先发送请求头。</p>
 </div>
 <div class="paragraph">
 <p>然后服务器可以通过回复临时响应状态 <code>Status: 100 (Continue)</code> 来告诉客户端可以发送请求的剩余部分。</p>
@@ -2054,7 +2054,7 @@ request.continueHandler(function (v) {
 <p>这个可通过 <code><a href="../dataobjects.html#HttpServerOptions#setHandle100ContinueAutomatically">handle100ContinueAutomatically</a></code> 方法来设置。</p>
 </div>
 <div class="paragraph">
-<p>若您想要决定是否手动发送持续响应，那么此属性可设置成`false`（默认值），然后您可以通过检查头信息并且调用 <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#writeContinue">writeContinue</a></code>
+<p>若您想要决定是否手动发送持续响应，那么此属性可设置成 <code>false</code> （默认值），然后您可以通过检查头信息并且调用 <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#writeContinue">writeContinue</a></code>
 方法让客户端持续发送请求体：</p>
 </div>
 <div class="listingblock">
@@ -2078,7 +2078,7 @@ request.continueHandler(function (v) {
 </div>
 </div>
 <div class="paragraph">
-<p>您也可以通过直接发送故障状态代码来拒绝该请求：这种情况下，请求体应该被忽略或连接应该被关闭（<code>100-Continue</code> 是一个性能提示，并不是逻辑协议约束）：</p>
+<p>您也可以通过直接发送故障状态代码来拒绝该请求：这种情况下，请求体应该被忽略或连接应该被关闭（ <code>100-Continue</code> 是一个性能提示，并不是逻辑协议约束）：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2148,7 +2148,7 @@ request.end();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>若没有设置任何处理器时，任何被推送的流将被客户端自动重置流（错误代码 <code>8</code>）。</p>
+<p>若没有设置任何处理器时，任何被推送的流将被客户端自动重置流（错误代码 <code>8</code> ）。</p>
 </div>
 </div>
 <div class="sect3">
@@ -2157,7 +2157,7 @@ request.end();</code></pre>
 <p>HTTP/2 是用于 HTTP 请求/响应模型的具有各种帧的一个帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>要接收自定义帧，您可以在请求中使用 <code>customFrameHandler</code>，每次自定义帧到达时就会调用它。以下是一个例子：</p>
+<p>要接收自定义帧，您可以在请求中使用 <code>customFrameHandler</code> ，每次自定义帧到达时就会调用它。以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2212,7 +2212,7 @@ request.end();</code></pre>
 </div>
 <div class="paragraph">
 <p>为了连接池（能）工作，配置客户端时，keep alive 必须通过 <code><a href="../dataobjects.html#HttpClientOptions#setKeepAlive">keepAlive</a></code>
-方法设置成`true`。默认值为`true`。</p>
+方法设置成 <code>true</code> 。默认值为 <code>true</code> 。</p>
 </div>
 <div class="paragraph">
 <p>当 keep alive 启用时，Vert.x 将为每一个发送的 HTTP/1.0 请求添加一个 <code>Connection: Keep-Alive</code> 头。
@@ -2530,7 +2530,7 @@ connection.shutdownHandler(function (v) {
 <div class="sect2">
 <h3 id="_httpclient_使用说明">HttpClient 使用说明</h3>
 <div class="paragraph">
-<p>`HttpClient`可以在一个 Verticle 中使用或者嵌入使用。</p>
+<p><code>HttpClient</code> 可以在一个 Verticle 中使用或者嵌入使用。</p>
 </div>
 <div class="paragraph">
 <p>在 Verticle 中使用时，Verticle <strong>应该使用自己的客户端实例</strong>。</p>
@@ -2570,15 +2570,9 @@ connection.shutdownHandler(function (v) {
 </div>
 </div>
 <div class="paragraph">
-<p>这个服务正在监听 <code>8080</code> 端口。所以，当这个 Verticle 被实例化多次，如运行以下命令：</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>`vertx run io.vertx.examples.http.sharing.HttpServerVerticle -instances 2`,</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>将会发生什么？如果两个 Verticle 都绑定到同一个端口，您将收到一个 Socket 异常。幸运的是，Vert.x 可以为您处理这种情况。在与现有服务端相同的主机和端口上部署另一个服务器时，实际上并不会尝试创建在同一主机/端口上监听的新服务端，它只绑定一次到Socket，当接收到请求时，会按照轮询策略调用服务端的请求处理函数。</p>
+<p>这个服务正在监听 <code>8080</code> 端口。所以，当这个 Verticle 被实例化多次，如运行以下命令：
+<code>vertx run io.vertx.examples.http.sharing.HttpServerVerticle -instances 2</code> ,
+将会发生什么？如果两个 Verticle 都绑定到同一个端口，您将收到一个 Socket 异常。幸运的是，Vert.x 可以为您处理这种情况。在与现有服务端相同的主机和端口上部署另一个服务器时，实际上并不会尝试创建在同一主机/端口上监听的新服务端，它只绑定一次到Socket，当接收到请求时，会按照轮询策略调用服务端的请求处理函数。</p>
 </div>
 <div class="paragraph">
 <p>我们现在想象一个客户端，如下：</p>
@@ -2642,10 +2636,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="ulist">
 <ul>
 <li>
-<p>即使客户端配置成使用 SSL/TLS，该值设置成`false`将禁用SSL/TLS。</p>
+<p>即使客户端配置成使用 SSL/TLS，该值设置成 <code>false</code> 将禁用SSL/TLS。</p>
 </li>
 <li>
-<p>即使客户端配置成不使用 SSL/TLS，该值设置成`true`将启用SSL/TLS，实际的客户端SSL/TLS（如受信、密钥/证书、密码、ALPN 等）将被重用。</p>
+<p>即使客户端配置成不使用 SSL/TLS，该值设置成 <code>true</code> 将启用SSL/TLS，实际的客户端SSL/TLS（如受信、密钥/证书、密码、ALPN 等）将被重用。</p>
 </li>
 </ul>
 </div>
@@ -2655,7 +2649,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect3">
 <h4 id="_server_name_indication_sni">Server Name Indication (SNI)</h4>
 <div class="paragraph">
-<p>Vert.x http servers can be configured to use SNI in exactly the same way as {@linkplain io.vertx.core.net net servers}.</p>
+<p>Vert.x http servers can be configured to use SNI in exactly the same way as {@linkplain io.vertx.core.net net servers} .</p>
 </div>
 <div class="paragraph">
 <p>Vert.x http client will present the actual hostname as <em>server name</em> during the TLS handshake.</p>
@@ -2681,8 +2675,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <p>第一种方法需要在服务端实例上提供一个 <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#websocketHandler">websocketHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler`传入一个
-`<a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
+<p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler</code> 传入一个
+<code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2730,8 +2724,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_服务端_websocket_2">服务端 WebSocket</h5>
 <div class="paragraph">
-<p><code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#headers">headers</a></code>,
-<code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#path">path</a></code>, <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#query">query</a></code> 和
+<p><code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#headers">headers</a></code> ,
+<code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#path">path</a></code> , <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#query">query</a></code> 和
 <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#uri">URI</a></code> 。</p>
 </div>
 </div>
@@ -2874,7 +2868,7 @@ websocket.writeFinalBinaryFrame(buff);</code></pre>
 <p>HTTP 客户端支持通过HTTP 代理（如Squid）或 <strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理访问 HTTP/HTTPS 的 URL。CONNECT 协议使用 HTTP/1.x，但可以连接到 HTTP/1.x 和 HTTP/2 服务器。</p>
 </div>
 <div class="paragraph">
-<p>到 <code>h2c</code>（未加密HTTP/2服务器）的连接可能不受 HTTP 代理支持，因为代理仅支持 HTTP/1.1。</p>
+<p>到 <code>h2c</code> （未加密HTTP/2服务器）的连接可能不受 HTTP 代理支持，因为代理仅支持 HTTP/1.1。</p>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../dataobjects.html#HttpClientOptions">HttpClientOptions</a></code> 中的
@@ -2963,7 +2957,7 @@ support them (gopher:// for example).</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:36 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -2980,12 +2974,11 @@ support them (gopher:// for example).</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

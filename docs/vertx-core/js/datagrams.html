@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -158,7 +158,7 @@
 <p>依照UDP的本质，它最适合一些允许丢弃数据包的应用（如监视应用程序）。</p>
 </div>
 <div class="paragraph">
-<p>其优点是与TCP相比具有更少的开销，而且可以由`NetServer`和`NetClient`处理（参考前文）。</p>
+<p>其优点是与TCP相比具有更少的开销，而且可以由 <code>NetServer</code> 和 <code>NetClient</code> 处理（参考前文）。</p>
 </div>
 <div class="sect2">
 <h3 id="_创建_datagramsocket">创建 DatagramSocket</h3>
@@ -212,7 +212,7 @@ socket.send("A string used as content", 1234, "10.0.0.1", function (asyncResult,
 <p>这样您就可以接收到被发送至 <code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html">DatagramPacket</a></code> 所监听的地址和端口的 <code><a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.html">DatagramSocket</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>除此之外，您还要设置一个`Handler`，每接收到一个 <code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
+<p>除此之外，您还要设置一个 <code>Handler</code> ，每接收到一个 <code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
 </div>
 <div class="paragraph">
 <p><code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html">DatagramPacket</a></code> 有以下方法：</p>
@@ -220,10 +220,10 @@ socket.send("A string used as content", 1234, "10.0.0.1", function (asyncResult,
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html#sender">sender</a></code>: 表示数据发送方的`InetSocketAddress`。</p>
+<p><code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html#sender">sender</a></code>: 表示数据发送方的 <code>InetSocketAddress</code> 。</p>
 </li>
 <li>
-<p><code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html#data">data</a></code>: 保存接收数据的`Buffer`。</p>
+<p><code><a href="../../jsdoc/module-vertx-js_datagram_packet-DatagramPacket.html#data">data</a></code>: 保存接收数据的 <code>Buffer</code> 。</p>
 </li>
 </ul>
 </div>
@@ -286,7 +286,7 @@ socket.send(buffer, 1234, "230.0.0.1", function (asyncResult, asyncResult_err) {
 <div class="sect4">
 <h5 id="_接收多播数据包">接收多播数据包</h5>
 <div class="paragraph">
-<p>若要接收特定多播组的数据包，您需要通过调用 <code><a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.html">DatagramSocket</a></code> 的`listen(&#8230;&#8203;)`方法来绑定一个地址并且加入多播组，并加入多播组。</p>
+<p>若要接收特定多播组的数据包，您需要通过调用 <code><a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.html">DatagramSocket</a></code> 的 <code>listen(&#8230;&#8203;)</code> 方法来绑定一个地址并且加入多播组，并加入多播组。</p>
 </div>
 <div class="paragraph">
 <p>这样，您将能够接收到被发送到
@@ -301,15 +301,15 @@ socket.send(buffer, 1234, "230.0.0.1", function (asyncResult, asyncResult_err) {
 <div class="ulist">
 <ul>
 <li>
-<p><code>sender()</code>: 表示数据报发送方的`InetSocketAddress`</p>
+<p><code>sender()</code> : 表示数据报发送方的 <code>InetSocketAddress</code></p>
 </li>
 <li>
-<p><code>data()</code>: 保存接收数据的`Buffer`</p>
+<p><code>data()</code> : 保存接收数据的 <code>Buffer</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>因此，要监听指定的地址和端口、并且接收多播组`230.0.0.1`的数据报，您将执行如下操作：</p>
+<p>因此，要监听指定的地址和端口、并且接收多播组 <code>230.0.0.1</code> 的数据报，您将执行如下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -386,7 +386,7 @@ socket.listen(1234, "0.0.0.0", function (asyncResult, asyncResult_err) {
 <p>这是专家级别的技巧。</p>
 </div>
 <div class="paragraph">
-<p>要屏蔽来自特定地址的多播，您可以在 <code>DatagramSocket</code> 上调用 <code>blockMulticastGroup(&#8230;&#8203;)</code>，如下所示：</p>
+<p>要屏蔽来自特定地址的多播，您可以在 <code>DatagramSocket</code> 上调用 <code>blockMulticastGroup(&#8230;&#8203;)</code> ，如下所示：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -418,19 +418,19 @@ socket.blockMulticastGroup("230.0.0.1", "10.0.0.2", function (asyncResult, async
 <p><code><a href="../dataobjects.html#DatagramSocketOptions#setReceiveBufferSize">receiveBufferSize</a></code> 设置TCP接收缓冲区大小（以字节为单位）。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setReuseAddress">reuseAddress</a></code> 若为`true`，则`TIME_WAIT`状态中的地址在关闭后可重用。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setReuseAddress">reuseAddress</a></code> 若为 <code>true</code> ，则 <code>TIME_WAIT</code> 状态中的地址在关闭后可重用。</p>
 </li>
 <li>
 <p><code><a href="../dataobjects.html#DatagramSocketOptions#setTrafficClass">trafficClass</a></code></p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setBroadcast">broadcast</a></code> 设置或清除`SO_BROADCAST`套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setBroadcast">broadcast</a></code> 设置或清除 <code>SO_BROADCAST</code> 套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastNetworkInterface">multicastNetworkInterface</a></code> 设置或清除`IP_MULTICAST_LOOP`套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastNetworkInterface">multicastNetworkInterface</a></code> 设置或清除 <code>IP_MULTICAST_LOOP</code> 套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastTimeToLive">multicastTimeToLive</a></code> 设置`IP_MULTICAST_TTL`套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastTimeToLive">multicastTimeToLive</a></code> 设置 <code>IP_MULTICAST_TTL</code> 套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
 </li>
 </ul>
 </div>
@@ -438,8 +438,8 @@ socket.blockMulticastGroup("230.0.0.1", "10.0.0.2", function (asyncResult, async
 <div class="sect3">
 <h4 id="_datagramsocket本地地址">DatagramSocket本地地址</h4>
 <div class="paragraph">
-<p>Y若您在调用`listen(&#8230;&#8203;)<code>之前已经绑定了
-bound the `<a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
+<p>Y若您在调用 <code>listen(&#8230;&#8203;)</code> 之前已经绑定了
+bound the <code><a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
 <code><a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.html#localAddress">localAddress</a></code> 来查找套接字的本地地址（即UDP Socket这边的地址，它将返回一个InetSocketAddress，否则返回null。</p>
 </div>
 </div>
@@ -459,7 +459,7 @@ bound the `<a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.h
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:36 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -476,12 +476,11 @@ bound the `<a href="../../jsdoc/module-vertx-js_datagram_socket-DatagramSocket.h
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

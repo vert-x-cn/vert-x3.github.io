@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Vert.x Core Manual - Vert.x</title>
+  <title>Vert.x Core 手册 - Vert.x</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -87,7 +87,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Vert.x Core Manual</h1>
+          <h1>Vert.x Core 手册</h1>
           
         </div>
       </div>
@@ -639,9 +639,9 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Vert.x Core中的功能相当底层 —— 您在此不会找到诸如数据库访问、授权或高层Web应用的功能。您可以在*Vert.x ext* （扩展包）
-（译者注：Vert.x的扩展包是Vert.x的子项目集合，类似 <code><a href="../../#web">Web</a></code> 、<code><a href="../../#web-client">Web Client</a></code>
-、<code><a href="../../#data_access">Data Access</a></code> 等）中找到这些功能。</p>
+<p>Vert.x Core中的功能相当底层 —— 您在此不会找到诸如数据库访问、授权或高层Web应用的功能。您可以在 <strong>Vert.x ext</strong> （扩展包）
+（译者注：Vert.x的扩展包是Vert.x的子项目集合，类似 <code><a href="../../#web">Web</a></code> 、 <code><a href="../../#web-client">Web Client</a></code>
+、 <code><a href="../../#data_access">Data Access</a></code> 等）中找到这些功能。</p>
 </div>
 <div class="paragraph">
 <p><strong>Vert.x Core</strong> 小而轻，您可以只使用您需要的部分。它可整体嵌入现存应用中。我们并不会强迫您用特定的方式构造您的应用。</p>
@@ -722,7 +722,7 @@ vertx = Vertx::Vertx.vertx()</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-请注意：<strong>大部分应用将只会需要一个Vert.x实例，但如果您有需要也可创建多个Vert.x实例，如：隔离的事件总线或不同组的客户端和服务器。</strong>
+<strong>大部分应用将只会需要一个Vert.x实例，但如果您有需要也可创建多个Vert.x实例，如：隔离的事件总线或不同组的客户端和服务器。</strong>
 </td>
 </tr>
 </table>
@@ -851,7 +851,7 @@ server.request_handler() { |request|
 <p>除了很少的特例（如以 "Sync" 结尾的某些文件系统操作），Vert.x中的所有API都不会阻塞调用线程。</p>
 </div>
 <div class="paragraph">
-<p>如果可以立即提供结果，它将立即返回，否则您需要提供一个处理器（<code>Handler</code>）来接收稍后回调的事件。</p>
+<p>如果可以立即提供结果，它将立即返回，否则您需要提供一个处理器（ <code>Handler</code> ）来接收稍后回调的事件。</p>
 </div>
 <div class="paragraph">
 <p>因为Vert.x API不会阻塞线程，所以通过Vert.x您可以只使用少量的线程来处理大量的并发。</p>
@@ -929,7 +929,7 @@ server.request_handler() { |request|
 <div class="title">Note</div>
 </td>
 <td class="content">
-请注意：<strong>即使一个 <code>Vertx</code> 实例维护了多个 Event Loop，任何一个特定的处理器永远不会被并发执行。大部分情况下（除了 <a href="#worker_verticles">Worker Verticle</a> 以外）它们总是在同一个 Event Loop 线程中被调用。</strong>
+<strong>即使一个 <code>Vertx</code> 实例维护了多个 Event Loop，任何一个特定的处理器永远不会被并发执行。大部分情况下（除了 <a href="#worker_verticles">Worker Verticle</a> 以外）它们总是在同一个 Event Loop 线程中被调用。</strong>
 </td>
 </tr>
 </table>
@@ -1043,7 +1043,7 @@ server.request_handler() { |request|
 </div>
 <div class="paragraph">
 <p>若您不需要关心您调用 <code><a href="../../yardoc/Vertx/Vertx.html#execute_blocking-instance_method">executeBlocking</a></code>
-的顺序，可以将 <code>ordered</code> 参数的值设为 <code>false</code>。这样任何 <code>executeBlocking</code> 都会在 Worker Pool 中并行执行。</p>
+的顺序，可以将 <code>ordered</code> 参数的值设为 <code>false</code> 。这样任何 <code>executeBlocking</code> 都会在 Worker Pool 中并行执行。</p>
 </div>
 <div class="paragraph">
 <p>另外一种运行阻塞式代码的方法是使用<a href="#worker_verticles">Worker Verticle</a></p>
@@ -1106,7 +1106,7 @@ executor = vertx.create_shared_worker_executor("my-worker-pool", poolSize, maxEx
 <div class="title">Note</div>
 </td>
 <td class="content">
-请注意：<strong>这个配置信息在 worker pool 创建的时候设置。</strong>
+<strong>这个配置信息在 worker pool 创建的时候设置。</strong>
 </td>
 </tr>
 </table>
@@ -1134,7 +1134,7 @@ executor = vertx.create_shared_worker_executor("my-worker-pool", poolSize, maxEx
 <div class="sect2">
 <h3 id="_并发合并">并发合并</h3>
 <div class="paragraph">
-<p><code><a href="../../yardoc/Vertx/CompositeFuture.html#all-class_method">CompositeFuture.all</a></code> 方法接受多个 <code>Future</code> 对象作为参数（最多6个，或者传入 <code>List</code>）。当所有的 <code>Future</code> 都成功完成，该方法将返回一个 <strong>成功的</strong> <code>Future</code>；当任一个 <code>Future</code> 执行失败，则返回一个 <strong>失败的</strong> <code>Future</code>：</p>
+<p><code><a href="../../yardoc/Vertx/CompositeFuture.html#all-class_method">CompositeFuture.all</a></code> 方法接受多个 <code>Future</code> 对象作为参数（最多6个，或者传入 <code>List</code> ）。当所有的 <code>Future</code> 都成功完成，该方法将返回一个 <strong>成功的</strong> <code>Future</code> ；当任一个 <code>Future</code> 执行失败，则返回一个 <strong>失败的</strong> <code>Future</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1171,7 +1171,7 @@ Vertx::CompositeFuture.all([future1, future2, future3])</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>不同于 <code>all</code> 方法的合并会等待所有的 Future 成功执行（或任一失败），<code>any</code> 方法的合并会等待第一个成功执行的Future。 <code><a href="../../yardoc/Vertx/CompositeFuture.html#any-class_method">CompositeFuture.any</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个，或传入 <code>List</code>）。当任意一个 <code>Future</code> 成功得到结果，则该 <code>Future</code> 成功；当所有的 <code>Future</code> 都执行失败，则该 <code>Future</code> 失败。</p>
+<p>不同于 <code>all</code> 方法的合并会等待所有的 Future 成功执行（或任一失败）， <code>any</code> 方法的合并会等待第一个成功执行的Future。 <code><a href="../../yardoc/Vertx/CompositeFuture.html#any-class_method">CompositeFuture.any</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个，或传入 <code>List</code> ）。当任意一个 <code>Future</code> 成功得到结果，则该 <code>Future</code> 成功；当所有的 <code>Future</code> 都执行失败，则该 <code>Future</code> 失败。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1224,7 +1224,7 @@ Vertx::CompositeFuture.join([future1, future2, future3])</code></pre>
 <div class="sect2">
 <h3 id="_顺序合并">顺序合并</h3>
 <div class="paragraph">
-<p>和 <code>all</code> 以及 <code>any</code> 实现的并发组合不同， <code><a href="../../yardoc/Vertx/Future.html#compose-instance_method">compose</a></code> 方法作用于顺序组合 <code>Future</code>。</p>
+<p>和 <code>all</code> 以及 <code>any</code> 实现的并发组合不同， <code><a href="../../yardoc/Vertx/Future.html#compose-instance_method">compose</a></code> 方法作用于顺序组合 <code>Future</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1254,18 +1254,18 @@ fut1.compose(lambda { |v|
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>一个文件被创建（<code>fut1</code>）</p>
+<p>一个文件被创建（ <code>fut1</code> ）</p>
 </li>
 <li>
-<p>一些东西被写入到文件（<code>fut2</code>）</p>
+<p>一些东西被写入到文件（ <code>fut2</code> ）</p>
 </li>
 <li>
-<p>文件被移走（<code>startFuture</code>）</p>
+<p>文件被移走（ <code>startFuture</code> ）</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>如果这三个步骤全部成功，则最终的 <code>Future</code>（<code>startFuture</code>）会是成功的；其中任何一步失败，则最终 <code>Future</code> 就是失败的。</p>
+<p>如果这三个步骤全部成功，则最终的 <code>Future</code> （ <code>startFuture</code> ）会是成功的；其中任何一步失败，则最终 <code>Future</code> 就是失败的。</p>
 </div>
 <div class="paragraph">
 <p>例子中使用了：</p>
@@ -1273,10 +1273,10 @@ fut1.compose(lambda { |v|
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../yardoc/Vertx/Future.html#compose-instance_method">compose</a></code>：当前 <code>Future</code> 完成时，执行相关代码，并返回 <code>Future</code>。当返回的 <code>Future</code> 完成时，组合完成。</p>
+<p><code><a href="../../yardoc/Vertx/Future.html#compose-instance_method">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并返回 <code>Future</code> 。当返回的 <code>Future</code> 完成时，组合完成。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/Future.html#compose-instance_method">compose</a></code>：当前 <code>Future</code> 完成时，执行相关代码，并完成下一个 <code>Future</code> 的处理。</p>
+<p><code><a href="../../yardoc/Vertx/Future.html#compose-instance_method">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并完成下一个 <code>Future</code> 的处理。</p>
 </li>
 </ul>
 </div>
@@ -1284,7 +1284,7 @@ fut1.compose(lambda { |v|
 <p>对于第二个例子，处理器需要完成 <code>next</code> future，以此来汇报处理成功或者失败。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../yardoc/Vertx/Future.html#completer-instance_method">completer</a></code> 方法来串起一个带操作结果的或失败的 <code>Future</code> ，它可使您避免用传统方式编写代码：如果成功则完成 <code>Future</code>，否则就标记为失败。（译者注：3.4.0 以后不需要再使用 <code>completer</code> 方法）</p>
+<p>您可以使用 <code><a href="../../yardoc/Vertx/Future.html#completer-instance_method">completer</a></code> 方法来串起一个带操作结果的或失败的 <code>Future</code> ，它可使您避免用传统方式编写代码：如果成功则完成 <code>Future</code> ，否则就标记为失败。（译者注：3.4.0 以后不需要再使用 <code>completer</code> 方法）</p>
 </div>
 </div>
 </div>
@@ -1741,7 +1741,7 @@ puts Java::JavaLang::System.getenv("HOME")</code></pre>
 </div>
 <div class="paragraph">
 <p>当使用隔离组时，您需要用
-<code><a href="../dataobjects.html#DeploymentOptions#set_isolated_classes-instance_method">isolatedClasses</a></code>  方法来提供一个您想隔离的类名列表。列表项可以是一个Java 限定类全名，如 <code>com.mycompany.myproject.engine.MyClass</code>；也可以是包含通配符的可匹配某个包或子包的任何类，例如 <code>com.mycompany.myproject.*</code> 将会匹配所有 <code>com.mycompany.myproject</code> 包或任意子包中的任意类名。</p>
+<code><a href="../dataobjects.html#DeploymentOptions#set_isolated_classes-instance_method">isolatedClasses</a></code>  方法来提供一个您想隔离的类名列表。列表项可以是一个Java 限定类全名，如 <code>com.mycompany.myproject.engine.MyClass</code> ；也可以是包含通配符的可匹配某个包或子包的任何类，例如 <code>com.mycompany.myproject.*</code> 将会匹配所有 <code>com.mycompany.myproject</code> 包或任意子包中的任意类名。</p>
 </div>
 <div class="paragraph">
 <p>请注意仅仅只有匹配的类会被隔离，其他任意类会被当前类加载器加载。</p>
@@ -1871,7 +1871,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-译者注：每个 <code>Verticle</code> 在部署的时候都会被分配一个 <code>Context</code>（根据配置不同，可以是Event Loop Context 或者 Worker Context），之后此 <code>Verticle</code> 上所有的普通代码都会在此 <code>Context</code> 上执行（即对应的 Event Loop 或Worker 线程）。一个 <code>Context</code> 对应一个 Event Loop 线程（或 Worker 线程），但一个 Event Loop 可能对应多个 <code>Context</code>。
+译者注：每个 <code>Verticle</code> 在部署的时候都会被分配一个 <code>Context</code> （根据配置不同，可以是Event Loop Context 或者 Worker Context），之后此 <code>Verticle</code> 上所有的普通代码都会在此 <code>Context</code> 上执行（即对应的 Event Loop 或Worker 线程）。一个 <code>Context</code> 对应一个 Event Loop 线程（或 Worker 线程），但一个 Event Loop 可能对应多个 <code>Context</code> 。
 </td>
 </tr>
 </table>
@@ -2194,10 +2194,10 @@ eb.consumer("news.uk.sport") { |message|
 </div>
 </div>
 <div class="paragraph">
-<p>当一个消息达到您的处理器，该处理器会以 `<a href="../../yardoc/Vertx/Message.html">message</a>`为参数被调用。</p>
+<p>当一个消息达到您的处理器，该处理器会以 <code><a href="../../yardoc/Vertx/Message.html">message</a></code> 为参数被调用。</p>
 </div>
 <div class="paragraph">
-<p>调用 <code>consumer</code> 方法会返回一个 `<a href="../../yardoc/Vertx/MessageConsumer.html">MessageConsumer</a>`对象。</p>
+<p>调用 <code>consumer</code> 方法会返回一个 <code><a href="../../yardoc/Vertx/MessageConsumer.html">MessageConsumer</a></code> 对象。</p>
 </div>
 <div class="paragraph">
 <p>该对象随后可用于撤销处理器、或将处理器用作流式处理。</p>
@@ -2239,7 +2239,7 @@ consumer.handler() { |message|
 <p>您可以通过 <code><a href="../../yardoc/Vertx/MessageConsumer.html#unregister-instance_method">unregister</a></code> 方法来注销处理器。</p>
 </div>
 <div class="paragraph">
-<p>若您在集群模式下的 Event Bus 中撤销处理器，则同样会花费一些时间在节点中传播。若您想在完成后收到通知，可以使用 `<a href="../../yardoc/Vertx/MessageConsumer.html#unregister-instance_method">unregister</a>`方法注册处理器：</p>
+<p>若您在集群模式下的 Event Bus 中撤销处理器，则同样会花费一些时间在节点中传播。若您想在完成后收到通知，可以使用 <code><a href="../../yardoc/Vertx/MessageConsumer.html#unregister-instance_method">unregister</a></code> 方法注册处理器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2384,10 +2384,10 @@ consumer.handler() { |message|
 <p>一个简单地实现了返回当天时间的服务，在应答的消息里会包含当天时间信息。</p>
 </li>
 <li>
-<p>一个实现了持久化队列的消息消费者，当消息成功持久化到存储时，可以使用`true`来应答消息，或`false`表示失败。</p>
+<p>一个实现了持久化队列的消息消费者，当消息成功持久化到存储时，可以使用 <code>true</code> 来应答消息，或 <code>false</code> 表示失败。</p>
 </li>
 <li>
-<p>一个处理订单的消息消费者也许会用`true`确认这个订单已经成功处理并且可以从数据库中删除。</p>
+<p>一个处理订单的消息消费者也许会用 <code>true</code> 确认这个订单已经成功处理并且可以从数据库中删除。</p>
 </li>
 </ul>
 </div>
@@ -2650,21 +2650,21 @@ json = JSON.generate(array)</code></pre>
 <p>在 Vert.x 内部，大部分数据被重新组织（shuffle，表意为洗牌）成 <code>Buffer</code> 格式。</p>
 </div>
 <div class="paragraph">
-<p>一个 <code>Buffer</code> 是可以读取或写入的0个或多个字节序列，并且根据需要可以自动扩容、将任意字节写入 <code>Buffer</code>。您也可以将 <code>Buffer</code> 想象成字节数组（译者注：类似于 JDK 中的 <code>ByteBuffer</code>）。</p>
+<p>一个 <code>Buffer</code> 是可以读取或写入的0个或多个字节序列，并且根据需要可以自动扩容、将任意字节写入 <code>Buffer</code> 。您也可以将 <code>Buffer</code> 想象成字节数组（译者注：类似于 JDK 中的 <code>ByteBuffer</code> ）。</p>
 </div>
 <div class="sect2">
 <h3 id="_创建_buffer">创建 Buffer</h3>
 <div class="paragraph">
-<p>可以使用静态方法 <code><a href="../../yardoc/Vertx/Buffer.html#buffer-class_method">Buffer.buffer</a></code> 来创建 <code>Buffer</code>。</p>
+<p>可以使用静态方法 <code><a href="../../yardoc/Vertx/Buffer.html#buffer-class_method">Buffer.buffer</a></code> 来创建 <code>Buffer</code> 。</p>
 </div>
 <div class="paragraph">
-<p><code>Buffer</code> 可以从字符串或字节数组初始化，或者直接创建空的 <code>Buffer</code>。</p>
+<p><code>Buffer</code> 可以从字符串或字节数组初始化，或者直接创建空的 <code>Buffer</code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一些创建 <code>Buffer</code> 的例子。</p>
 </div>
 <div class="paragraph">
-<p>创建一个空的 <code>Buffer</code>：</p>
+<p>创建一个空的 <code>Buffer</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2673,7 +2673,7 @@ buff = Vertx::Buffer.buffer()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>从字符串创建一个 <code>Buffer</code>，这个 <code>Buffer</code> 中的字符会以 UTF-8 格式编码：</p>
+<p>从字符串创建一个 <code>Buffer</code> ， 这个 <code>Buffer</code> 中的字符会以 UTF-8 格式编码：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2682,7 +2682,7 @@ buff = Vertx::Buffer.buffer("some string")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>从字符串创建一个 <code>Buffer</code>，这个字符串可以用指定的编码方式编码，例如：</p>
+<p>从字符串创建一个 <code>Buffer</code> ，这个字符串可以用指定的编码方式编码，例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2691,7 +2691,7 @@ buff = Vertx::Buffer.buffer("some string", "UTF-16")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>创建一个指定初始大小的 <code>Buffer</code>。若您知道您的 <code>Buffer</code> 会写入一定量的数据，您可以创建 <code>Buffer</code> 并指定它的大小。
+<p>创建一个指定初始大小的 <code>Buffer</code> 。若您知道您的 <code>Buffer</code> 会写入一定量的数据，您可以创建 <code>Buffer</code> 并指定它的大小。
 这使得这个 <code>Buffer</code> 初始化时分配了更多的内存，比数据写入时重新调整大小的效率更高。</p>
 </div>
 <div class="paragraph">
@@ -2712,7 +2712,7 @@ buff = Vertx::Buffer.buffer(10000)</code></pre>
 <div class="sect3">
 <h4 id="_追加到buffer">追加到Buffer</h4>
 <div class="paragraph">
-<p>您可以使用 {@code appendXXX} 方法追加数据到 <code>Buffer</code>。<code>Buffer</code> 类提供了追加各种不同类型数据的追加写入方法。</p>
+<p>您可以使用 {@code appendXXX} 方法追加数据到 <code>Buffer</code> 。 <code>Buffer</code> 类提供了追加各种不同类型数据的追加写入方法。</p>
 </div>
 <div class="paragraph">
 <p>因为 {@code appendXXX} 方法的返回值就是 Buffer 自身，所以它可以链式地调用:</p>
@@ -2731,7 +2731,7 @@ socket.write(buff)</code></pre>
 <div class="sect3">
 <h4 id="_随机访问写buffer">随机访问写Buffer</h4>
 <div class="paragraph">
-<p>您还可以指定一个索引值，通过 {@code setXXX} 方法写入数据到 <code>Buffer</code>，它也存在各种不同数据类型的方法。
+<p>您还可以指定一个索引值，通过 {@code setXXX} 方法写入数据到 <code>Buffer</code> ，它也存在各种不同数据类型的方法。
 所有的 set 方法都会将索引值作为第一个参数 —— 这表示 <code>Buffer</code> 中开始写入数据的位置。</p>
 </div>
 <div class="paragraph">
@@ -2768,7 +2768,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_使用无符号数">使用无符号数</h3>
 <div class="paragraph">
-<p>可使用 {@code getUnsignedXXX},
+<p>可使用 {@code getUnsignedXXX} ,
 {@code appendUnsignedXXX} 和 {@code setUnsignedXXX} 方法将无符号数从 <code>Buffer</code> 中读取或追加/设置到 <code>Buffer</code> 里。这对以优化网络协议和最小化带宽消耗为目的实现的编解码器是很有用的。</p>
 </div>
 <div class="paragraph">
@@ -2784,7 +2784,7 @@ puts buff.get_unsigned_byte(pos)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>控制台中显示 <code>200</code>。</p>
+<p>控制台中显示 <code>200</code> 。</p>
 </div>
 </div>
 <div class="sect2">
@@ -2870,7 +2870,7 @@ server.listen(1234, "localhost")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认主机名是 <code>0.0.0.0</code>，它表示：监听所有可用地址。默认端口号是 <code>0</code>，这也是一个特殊值，它告诉服务器随机选择并监听一个本地没有被占用的端口。</p>
+<p>默认主机名是 <code>0.0.0.0</code> ，它表示：监听所有可用地址。默认端口号是 <code>0</code> ，这也是一个特殊值，它告诉服务器随机选择并监听一个本地没有被占用的端口。</p>
 </div>
 <div class="paragraph">
 <p>实际的绑定也是异步的，因此服务器在调用了 <code>listen</code> 方法的一段时间之后才会实际开始监听。</p>
@@ -2894,7 +2894,7 @@ server.listen(1234, "localhost") { |res_err,res|
 <div class="sect2">
 <h3 id="_监听随机端口">监听随机端口</h3>
 <div class="paragraph">
-<p>若设置监听端口为`0`，服务器将随机寻找一个没有使用的端口来监听。</p>
+<p>若设置监听端口为 <code>0</code> ，服务器将随机寻找一个没有使用的端口来监听。</p>
 </div>
 <div class="paragraph">
 <p>可以调用 <code><a href="../../yardoc/Vertx/NetServer.html#actual_port-instance_method">actualPort</a></code> 方法来获得服务器实际监听的端口：</p>
@@ -2915,7 +2915,7 @@ server.listen(0, "localhost") { |res_err,res|
 <div class="sect2">
 <h3 id="_接收传入连接的通知">接收传入连接的通知</h3>
 <div class="paragraph">
-<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../yardoc/Vertx/NetServer.html#connect_handler-instance_method">connectHandler</a></code>:</p>
+<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../yardoc/Vertx/NetServer.html#connect_handler-instance_method">connectHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3320,7 +3320,7 @@ server = vertx.create_net_server(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者，您可以自己读取密钥库到一个`Buffer`，并将它直接提供给 <code>JksOptions</code>：</p>
+<p>或者，您可以自己读取密钥库到一个 <code>Buffer</code> ，并将它直接提供给 <code>JksOptions</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3337,7 +3337,7 @@ server = vertx.create_net_server(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3369,7 +3369,7 @@ server = vertx.create_net_server(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>另外一种分别提供服务器私钥和证书的方法是使用`.pem`文件。</p>
+<p>另外一种分别提供服务器私钥和证书的方法是使用 <code>.pem</code> 文件。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3446,7 +3446,7 @@ server = vertx.create_net_server(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者您可以自己读取受信存储到`Buffer`，并将它直接提供：</p>
+<p>或者您可以自己读取受信存储到 <code>Buffer</code> ，并将它直接提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3463,7 +3463,7 @@ server = vertx.create_net_server(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3537,14 +3537,14 @@ server = vertx.create_net_server(options)</code></pre>
 <p>客户端也可以轻松地配置为SSL。使用SSL和使用标准套接字具有完全相同的API。</p>
 </div>
 <div class="paragraph">
-<p>若要启用 <code>NetClient</code> 上的SSL，可调用函数 <code>setSSL(true)</code>。</p>
+<p>若要启用 <code>NetClient</code> 上的SSL，可调用函数 <code>setSSL(true)</code> 。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_客户端受信配置">客户端受信配置</h4>
 <div class="paragraph">
-<p>若客户端将 <code><a href="../dataobjects.html#ClientOptionsBase#set_trust_all-instance_method">trustALl</a></code> 设置为 <code>true</code>，则客户端将信任所有服务端证书。
-连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为`false`。</p>
+<p>若客户端将 <code><a href="../dataobjects.html#ClientOptionsBase#set_trust_all-instance_method">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
+连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为 <code>false</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3594,7 +3594,7 @@ client = vertx.create_net_client(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>它也支持`Buffer`的配置：</p>
+<p>它也支持 <code>Buffer</code> 的配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3610,7 +3610,7 @@ client = vertx.create_net_client(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3641,7 +3641,7 @@ client = vertx.create_net_client(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>另一种提供服务器证书颁发机构的方法是使用一个`.pem`文件列表。</p>
+<p>另一种提供服务器证书颁发机构的方法是使用一个 <code>.pem</code> 文件列表。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3712,7 +3712,7 @@ client = vertx.create_net_client(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3882,7 +3882,7 @@ client = vertx.create_net_client(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>也支持通过`Buffer`来配置：</p>
+<p>也支持通过 <code>Buffer</code> 来配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4012,7 +4012,7 @@ indicated server name.</p>
 <ul>
 <li>
 <p>if <code><a href="../dataobjects.html#JksOptions">JksOptions</a></code> were used to set the trust options
-(<code><a href="../dataobjects.html#NetServerOptions#set_trust_options-instance_method">options</a></code>) then an exact match with the trust store
+( <code><a href="../dataobjects.html#NetServerOptions#set_trust_options-instance_method">options</a></code> ) then an exact match with the trust store
 alias is done</p>
 </li>
 <li>
@@ -4254,7 +4254,7 @@ server = vertx.create_http_server(options)</code></pre>
 <div class="sect2">
 <h3 id="_配置_http_2_服务端">配置 HTTP/2 服务端</h3>
 <div class="paragraph">
-<p>Vert.x支持 TLS `h2`和TCP `h2c`之上的 HTTP/2 协议。</p>
+<p>Vert.x支持 TLS <code>h2</code> 和TCP <code>h2c</code> 之上的 HTTP/2 协议。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4292,7 +4292,7 @@ server = vertx.create_http_server(options)</code></pre>
 <p>通常情况，ALPN会对 <code>h2</code> 协议达成一致，尽管服务器或客户端决定了仍然使用 HTTP/1.1 协议。</p>
 </div>
 <div class="paragraph">
-<p>要处理 <code>h2c</code> 请求，TLS必须被禁用，服务器将升级到 HTTP/2 以满足任何希望升级到 HTTP/2 的 HTTP/1.1 请求。它还将接受以 <code>PRI*HTTP/2.0\r\nSM\r\n</code> 开始的`h2c`直接连接。</p>
+<p>要处理 <code>h2c</code> 请求，TLS必须被禁用，服务器将升级到 HTTP/2 以满足任何希望升级到 HTTP/2 的 HTTP/1.1 请求。它还将接受以 <code>PRI*HTTP/2.0\r\nSM\r\n</code> 开始的 <code>h2c</code> 直接连接。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4301,13 +4301,13 @@ server = vertx.create_http_server(options)</code></pre>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-大多数浏览器不支持 <code>h2c</code>，所以在建站时，您应该使用 <code>h2</code> 而不是 <code>h2c</code>。
+大多数浏览器不支持 <code>h2c</code> ，所以在建站时，您应该使用 <code>h2</code> 而不是 <code>h2c</code> 。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>当服务器接受 HTTP/2 连接时， 它会向客户端发送其 <code><a href="../dataobjects.html#HttpServerOptions#get_initial_settings-instance_method">初始设置</a></code>。定义客户端如何使用连接，服务器的默认初始设置为：</p>
+<p>当服务器接受 HTTP/2 连接时， 它会向客户端发送其 <code><a href="../dataobjects.html#HttpServerOptions#get_initial_settings-instance_method">初始设置</a></code> 。定义客户端如何使用连接，服务器的默认初始设置为：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4375,7 +4375,7 @@ server.listen(8080, "myhost.com")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认主机名是`0.0.0.0`，它表示：监听所有可用地址；默认端口号是`80`。</p>
+<p>默认主机名是 <code>0.0.0.0</code> ，它表示：监听所有可用地址；默认端口号是 <code>80</code> 。</p>
 </div>
 <div class="paragraph">
 <p>实际的绑定也是异步的，因此服务器也许并没有在调用 <code>listen</code> 方法返回时监听，而是在一段时间过后才监听。</p>
@@ -4422,8 +4422,8 @@ server.request_handler() { |request|
 <p>如果请求包含请求体，那么该请求体将在请求处理器被调用后的某个时间到达服务器。</p>
 </div>
 <div class="paragraph">
-<p>服务请求对象允许您检索 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#uri-instance_method">uri</a></code>,
-<code><a href="../../yardoc/Vertx/HttpServerRequest.html#path-instance_method">path</a></code>, <code><a href="../../yardoc/Vertx/HttpServerRequest.html#params-instance_method">params</a></code> 和
+<p>服务请求对象允许您检索 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#uri-instance_method">uri</a></code> ,
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html#path-instance_method">path</a></code> , <code><a href="../../yardoc/Vertx/HttpServerRequest.html#params-instance_method">params</a></code> 和
 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#headers-instance_method">headers</a></code> 等其他信息。</p>
 </div>
 <div class="paragraph">
@@ -4530,7 +4530,7 @@ puts "User agent is #{headers.get("User-Agent")}"</code></pre>
 <p>使用 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#host-instance_method">host</a></code> 方法返回 HTTP 请求中的主机名。</p>
 </div>
 <div class="paragraph">
-<p>对于 HTTP/1.x 请求返回请求头中的 <code>host</code> 值，对于 HTTP/1 请求则返回伪头中的`:authority`的值。</p>
+<p>对于 HTTP/1.x 请求返回请求头中的 <code>host</code> 值，对于 HTTP/1 请求则返回伪头中的 <code>:authority</code> 的值。</p>
 </div>
 </div>
 <div class="sect3">
@@ -4620,7 +4620,7 @@ request.end_handler() { |v|
 </div>
 </div>
 <div class="paragraph">
-<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#body_handler-instance_method">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时，<code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
+<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#body_handler-instance_method">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时， <code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4787,7 +4787,7 @@ request.end_handler() { |v|
 <div class="sect3">
 <h4 id="_设置状态码和消息">设置状态码和消息</h4>
 <div class="paragraph">
-<p>默认的 HTTP 状态响应码为 <code>200</code>，表示 <code>OK</code>。</p>
+<p>默认的 HTTP 状态响应码为 <code>200</code> ，表示 <code>OK</code> 。</p>
 </div>
 <div class="paragraph">
 <p>可使用 <code><a href="../../yardoc/Vertx/HttpServerResponse.html#set_status_code-instance_method">setStatusCode</a></code> 方法设置不同状态代码。</p>
@@ -4875,7 +4875,7 @@ response.end()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>您也可以和调用`write`方法一样传 <code>String</code> 或 <code>Buffer</code> 给 <code>end</code> 方法。这种情况，它和先调用带 <code>String</code> 或 <code>Buffer</code> 参数的 <code>write</code> 方法，之后调用无参 <code>end</code> 方法一样。例如：</p>
+<p>您也可以和调用 <code>write</code> 方法一样传 <code>String</code> 或 <code>Buffer</code> 给 <code>end</code> 方法。这种情况，它和先调用带 <code>String</code> 或 <code>Buffer</code> 参数的 <code>write</code> 方法，之后调用无参 <code>end</code> 方法一样。例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5094,8 +5094,8 @@ response.put_trailer("X-wibble", "woobble").put_trailer("X-quux", "flooble")</co
 <h4 id="_pumping_响应">Pumping 响应</h4>
 <div class="paragraph">
 <p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 实例，因此您可以从任何
-<code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code>, <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code>,
-<code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code> 或 <code><a href="../../yardoc/Vertx/HttpServerRequest.html">HttpServerRequest</a></code>.</p>
+<code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code> , <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> ,
+<code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code> 或 <code><a href="../../yardoc/Vertx/HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一个例子，它回应了任何 PUT 方法的响应中的请求体，它为请求体使用了 Pump，所以即使 HTTP 请求体很大并填满了内存，任何时候它依旧会工作：</p>
@@ -5218,7 +5218,7 @@ response.send_file("&lt;html&gt;&lt;head&gt;&lt;script src=\"/main.js\"&gt;&lt;/
 <p>当服务器准备推送响应时，推送响应处理器会被调用，并会发送响应。</p>
 </div>
 <div class="paragraph">
-<p>推送响应处理器客户能会接收到失败，如：客户端可能取消推送，因为它已经在缓存中包含了 <code>main.js</code>，并不在需要它。</p>
+<p>推送响应处理器客户能会接收到失败，如：客户端可能取消推送，因为它已经在缓存中包含了 <code>main.js</code> ，并不在需要它。</p>
 </div>
 <div class="paragraph">
 <p>您必须在响应结束之前调用 <code><a href="../../yardoc/Vertx/HttpServerResponse.html#push-instance_method">push</a></code> 方法，但是在推送响应过后依然可以写响应。</p>
@@ -5229,7 +5229,7 @@ response.send_file("&lt;html&gt;&lt;head&gt;&lt;script src=\"/main.js\"&gt;&lt;/
 <div class="paragraph">
 <p>You can set an <code><a href="../../yardoc/Vertx/HttpServer.html#exception_handler-instance_method">exceptionHandler</a></code> to receive any
 exceptions that happens before the connection is passed to the <code><a href="../../yardoc/Vertx/HttpServer.html#request_handler-instance_method">requestHandler</a></code>
-or to the <code><a href="../../yardoc/Vertx/HttpServer.html#websocket_handler-instance_method">websocketHandler</a></code>, e.g during the TLS handshake.</p>
+or to the <code><a href="../../yardoc/Vertx/HttpServer.html#websocket_handler-instance_method">websocketHandler</a></code> , e.g during the TLS handshake.</p>
 </div>
 </div>
 </div>
@@ -5260,7 +5260,7 @@ or to the <code><a href="../../yardoc/Vertx/HttpServer.html#websocket_handler-in
 <p>若找到这样的请求头，服务器将使用所支持的压缩算法之一自动压缩响应正文并发送回客户端。</p>
 </div>
 <div class="paragraph">
-<p>Whenever the response needs to be sent without compression you can set the header <code>content-encoding</code> to <code>identity</code>:</p>
+<p>Whenever the response needs to be sent without compression you can set the header <code>content-encoding</code> to <code>identity</code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5505,7 +5505,7 @@ client.post("some-uri") { |response|
 </div>
 </div>
 <div class="paragraph">
-<p>可以用UTF-8编码方式编码字符串和以指定方式编码编码字符串、或写`Buffer`的方法：</p>
+<p>可以用UTF-8编码方式编码字符串和以指定方式编码编码字符串、或写 <code>Buffer</code> 的方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5548,10 +5548,10 @@ request.end(buffer)</code></pre>
 <p>带请求体的非分块 HTTP 请求需要提供 <code>Content-Length</code> 头。</p>
 </div>
 <div class="paragraph">
-<p>因此，若您不使用 HTTP 分块，则必须在写入请求之前设置`Content-Length`头，否则会出错。</p>
+<p>因此，若您不使用 HTTP 分块，则必须在写入请求之前设置 <code>Content-Length</code> 头，否则会出错。</p>
 </div>
 <div class="paragraph">
-<p>若您在调用其中一个 <code>end</code> 方法处理 String 或 Buffer，在写入请求体之前，Vert.x 将自动计算并设置 <code>Content-Length</code>。</p>
+<p>若您在调用其中一个 <code>end</code> 方法处理 String 或 Buffer，在写入请求体之前，Vert.x 将自动计算并设置 <code>Content-Length</code> 。</p>
 </div>
 <div class="paragraph">
 <p>若您在使用HTTP 分块模式，则不需要 <code>Content-Length</code> 头，因此您不必先计算大小。</p>
@@ -5638,7 +5638,7 @@ request.end(buffer)</code></pre>
 <p>您可使用 <code><a href="../../yardoc/Vertx/HttpClientRequest.html#set_chunked-instance_method">setChunked</a></code> 将HTTP 请求设置成分块模式。</p>
 </div>
 <div class="paragraph">
-<p>在分块模式下，每次调用 <code>write</code> 方法将导致新的块被写入到报文，这种模式中，无需先设置请求头中的 <code>Content-Length</code>。</p>
+<p>在分块模式下，每次调用 <code>write</code> 方法将导致新的块被写入到报文，这种模式中，无需先设置请求头中的 <code>Content-Length</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5780,7 +5780,7 @@ request.write_custom_frame(frameType, frameStatus, payload)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认情况，发送 `NO_ERROR(0)`错误代码，可发送另一个代码：</p>
+<p>默认情况，发送 <code>NO_ERROR(0)</code> 错误代码，可发送另一个代码：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5927,13 +5927,13 @@ client.get_now("some-uri") { |response|
 <p>您可以通过 <code><a href="../../yardoc/Vertx/HttpClientResponse.html#cookies-instance_method">cookies</a></code> 方法从响应中获取 Cookie 列表。</p>
 </div>
 <div class="paragraph">
-<p>或者您可以在响应中自己解析`Set-Cookie`头。</p>
+<p>或者您可以在响应中自己解析 <code>Set-Cookie</code> 头。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_30x_重定向处理器">30x 重定向处理器</h4>
 <div class="paragraph">
-<p>客户端可配置成遵循HTTP 重定向：当客户端接收到 <code>301</code>、<code>302</code>、<code>303</code> 或 <code>307</code> 状态代码时，它遵循由 <code>Location</code> 响应头提供的重定向，并且响应处理器将传递重定向响应以替代原始响应。</p>
+<p>客户端可配置成遵循HTTP 重定向：当客户端接收到 <code>301</code> 、 <code>302</code> 、 <code>303</code> 或 <code>307</code> 状态代码时，它遵循由 <code>Location</code> 响应头提供的重定向，并且响应处理器将传递重定向响应以替代原始响应。</p>
 </div>
 <div class="paragraph">
 <p>这有个例子：</p>
@@ -5951,7 +5951,7 @@ client.get_now("some-uri") { |response|
 <div class="ulist">
 <ul>
 <li>
-<p>当接收到 <code>301</code>、<code>302</code> 或 <code>303</code> 状态代码时，使用 GET 方法执行重定向</p>
+<p>当接收到 <code>301</code> 、 <code>302</code> 或 <code>303</code> 状态代码时，使用 GET 方法执行重定向</p>
 </li>
 <li>
 <p>当接收到 <code>307</code> 状态代码时，使用相同的 HTTP 方法和缓存的请求体执行重定向</p>
@@ -5971,7 +5971,7 @@ client.get_now("some-uri") { |response|
 </table>
 </div>
 <div class="paragraph">
-<p>默认情况最大的重定向数为 <code>16</code>，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#set_max_redirects-instance_method">maxRedirects</a></code> 方法设置。</p>
+<p>默认情况最大的重定向数为 <code>16</code> ，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#set_max_redirects-instance_method">maxRedirects</a></code> 方法设置。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6036,7 +6036,7 @@ client.redirect_handler(lambda { |response|
 <div class="ulist">
 <ul>
 <li>
-<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../yardoc/Vertx/HttpClientRequest.html#set_host-instance_method">setHost</a></code>）</p>
+<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../yardoc/Vertx/HttpClientRequest.html#set_host-instance_method">setHost</a></code> ）</p>
 </li>
 <li>
 <p>请求体，除非返回的请求使用了 <code>GET</code> 方法</p>
@@ -6056,7 +6056,7 @@ client.redirect_handler(lambda { |response|
 <div class="sect3">
 <h4 id="_100_continue_处理">100-Continue 处理</h4>
 <div class="paragraph">
-<p>根据 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html">HTTP/1.1 规范</a> ，一个客户端可以设置请求头 <code>Expect: 100-Continue</code>，并且在发送剩余请求体之前先发送请求头。</p>
+<p>根据 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html">HTTP/1.1 规范</a> ，一个客户端可以设置请求头 <code>Expect: 100-Continue</code> ，并且在发送剩余请求体之前先发送请求头。</p>
 </div>
 <div class="paragraph">
 <p>然后服务器可以通过回复临时响应状态 <code>Status: 100 (Continue)</code> 来告诉客户端可以发送请求的剩余部分。</p>
@@ -6099,7 +6099,7 @@ request.continue_handler() { |v|
 <p>这个可通过 <code><a href="../dataobjects.html#HttpServerOptions#set_handle100_continue_automatically-instance_method">handle100ContinueAutomatically</a></code> 方法来设置。</p>
 </div>
 <div class="paragraph">
-<p>若您想要决定是否手动发送持续响应，那么此属性可设置成`false`（默认值），然后您可以通过检查头信息并且调用 <code><a href="../../yardoc/Vertx/HttpServerResponse.html#write_continue-instance_method">writeContinue</a></code>
+<p>若您想要决定是否手动发送持续响应，那么此属性可设置成 <code>false</code> （默认值），然后您可以通过检查头信息并且调用 <code><a href="../../yardoc/Vertx/HttpServerResponse.html#write_continue-instance_method">writeContinue</a></code>
 方法让客户端持续发送请求体：</p>
 </div>
 <div class="listingblock">
@@ -6123,7 +6123,7 @@ request.continue_handler() { |v|
 </div>
 </div>
 <div class="paragraph">
-<p>您也可以通过直接发送故障状态代码来拒绝该请求：这种情况下，请求体应该被忽略或连接应该被关闭（<code>100-Continue</code> 是一个性能提示，并不是逻辑协议约束）：</p>
+<p>您也可以通过直接发送故障状态代码来拒绝该请求：这种情况下，请求体应该被忽略或连接应该被关闭（ <code>100-Continue</code> 是一个性能提示，并不是逻辑协议约束）：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6193,7 +6193,7 @@ request.end()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>若没有设置任何处理器时，任何被推送的流将被客户端自动重置流（错误代码 <code>8</code>）。</p>
+<p>若没有设置任何处理器时，任何被推送的流将被客户端自动重置流（错误代码 <code>8</code> ）。</p>
 </div>
 </div>
 <div class="sect3">
@@ -6202,7 +6202,7 @@ request.end()</code></pre>
 <p>HTTP/2 是用于 HTTP 请求/响应模型的具有各种帧的一个帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>要接收自定义帧，您可以在请求中使用 <code>customFrameHandler</code>，每次自定义帧到达时就会调用它。以下是一个例子：</p>
+<p>要接收自定义帧，您可以在请求中使用 <code>customFrameHandler</code> ，每次自定义帧到达时就会调用它。以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6257,7 +6257,7 @@ request.end()</code></pre>
 </div>
 <div class="paragraph">
 <p>为了连接池（能）工作，配置客户端时，keep alive 必须通过 <code><a href="../dataobjects.html#HttpClientOptions#set_keep_alive-instance_method">keepAlive</a></code>
-方法设置成`true`。默认值为`true`。</p>
+方法设置成 <code>true</code> 。默认值为 <code>true</code> 。</p>
 </div>
 <div class="paragraph">
 <p>当 keep alive 启用时，Vert.x 将为每一个发送的 HTTP/1.0 请求添加一个 <code>Connection: Keep-Alive</code> 头。
@@ -6575,7 +6575,7 @@ connection.shutdown_handler() { |v|
 <div class="sect2">
 <h3 id="_httpclient_使用说明">HttpClient 使用说明</h3>
 <div class="paragraph">
-<p>`HttpClient`可以在一个 Verticle 中使用或者嵌入使用。</p>
+<p><code>HttpClient</code> 可以在一个 Verticle 中使用或者嵌入使用。</p>
 </div>
 <div class="paragraph">
 <p>在 Verticle 中使用时，Verticle <strong>应该使用自己的客户端实例</strong>。</p>
@@ -6615,15 +6615,9 @@ connection.shutdown_handler() { |v|
 </div>
 </div>
 <div class="paragraph">
-<p>这个服务正在监听 <code>8080</code> 端口。所以，当这个 Verticle 被实例化多次，如运行以下命令：</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>`vertx run io.vertx.examples.http.sharing.HttpServerVerticle -instances 2`,</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>将会发生什么？如果两个 Verticle 都绑定到同一个端口，您将收到一个 Socket 异常。幸运的是，Vert.x 可以为您处理这种情况。在与现有服务端相同的主机和端口上部署另一个服务器时，实际上并不会尝试创建在同一主机/端口上监听的新服务端，它只绑定一次到Socket，当接收到请求时，会按照轮询策略调用服务端的请求处理函数。</p>
+<p>这个服务正在监听 <code>8080</code> 端口。所以，当这个 Verticle 被实例化多次，如运行以下命令：
+<code>vertx run io.vertx.examples.http.sharing.HttpServerVerticle -instances 2</code> ,
+将会发生什么？如果两个 Verticle 都绑定到同一个端口，您将收到一个 Socket 异常。幸运的是，Vert.x 可以为您处理这种情况。在与现有服务端相同的主机和端口上部署另一个服务器时，实际上并不会尝试创建在同一主机/端口上监听的新服务端，它只绑定一次到Socket，当接收到请求时，会按照轮询策略调用服务端的请求处理函数。</p>
 </div>
 <div class="paragraph">
 <p>我们现在想象一个客户端，如下：</p>
@@ -6687,10 +6681,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="ulist">
 <ul>
 <li>
-<p>即使客户端配置成使用 SSL/TLS，该值设置成`false`将禁用SSL/TLS。</p>
+<p>即使客户端配置成使用 SSL/TLS，该值设置成 <code>false</code> 将禁用SSL/TLS。</p>
 </li>
 <li>
-<p>即使客户端配置成不使用 SSL/TLS，该值设置成`true`将启用SSL/TLS，实际的客户端SSL/TLS（如受信、密钥/证书、密码、ALPN 等）将被重用。</p>
+<p>即使客户端配置成不使用 SSL/TLS，该值设置成 <code>true</code> 将启用SSL/TLS，实际的客户端SSL/TLS（如受信、密钥/证书、密码、ALPN 等）将被重用。</p>
 </li>
 </ul>
 </div>
@@ -6700,7 +6694,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect3">
 <h4 id="_server_name_indication_sni_2">Server Name Indication (SNI)</h4>
 <div class="paragraph">
-<p>Vert.x http servers can be configured to use SNI in exactly the same way as {@linkplain io.vertx.core.net net servers}.</p>
+<p>Vert.x http servers can be configured to use SNI in exactly the same way as {@linkplain io.vertx.core.net net servers} .</p>
 </div>
 <div class="paragraph">
 <p>Vert.x http client will present the actual hostname as <em>server name</em> during the TLS handshake.</p>
@@ -6726,8 +6720,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <p>第一种方法需要在服务端实例上提供一个 <code><a href="../../yardoc/Vertx/HttpServer.html#websocket_handler-instance_method">websocketHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler`传入一个
-`<a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
+<p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler</code> 传入一个
+<code><a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6775,8 +6769,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_服务端_websocket_2">服务端 WebSocket</h5>
 <div class="paragraph">
-<p><code><a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../yardoc/Vertx/ServerWebSocket.html#headers-instance_method">headers</a></code>,
-<code><a href="../../yardoc/Vertx/ServerWebSocket.html#path-instance_method">path</a></code>, <code><a href="../../yardoc/Vertx/ServerWebSocket.html#query-instance_method">query</a></code> 和
+<p><code><a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../yardoc/Vertx/ServerWebSocket.html#headers-instance_method">headers</a></code> ,
+<code><a href="../../yardoc/Vertx/ServerWebSocket.html#path-instance_method">path</a></code> , <code><a href="../../yardoc/Vertx/ServerWebSocket.html#query-instance_method">query</a></code> 和
 <code><a href="../../yardoc/Vertx/ServerWebSocket.html#uri-instance_method">URI</a></code> 。</p>
 </div>
 </div>
@@ -6919,7 +6913,7 @@ websocket.write_final_binary_frame(buff)</code></pre>
 <p>HTTP 客户端支持通过HTTP 代理（如Squid）或 <strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理访问 HTTP/HTTPS 的 URL。CONNECT 协议使用 HTTP/1.x，但可以连接到 HTTP/1.x 和 HTTP/2 服务器。</p>
 </div>
 <div class="paragraph">
-<p>到 <code>h2c</code>（未加密HTTP/2服务器）的连接可能不受 HTTP 代理支持，因为代理仅支持 HTTP/1.1。</p>
+<p>到 <code>h2c</code> （未加密HTTP/2服务器）的连接可能不受 HTTP 代理支持，因为代理仅支持 HTTP/1.1。</p>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../dataobjects.html#HttpClientOptions">HttpClientOptions</a></code> 中的
@@ -7125,7 +7119,7 @@ sd.get_async_map("mymap") { |res_err,res|
 <p>您可以使用 <code><a href="../../yardoc/Vertx/AsyncMap.html#put-instance_method">put</a></code> 方法将数据放入Map。</p>
 </div>
 <div class="paragraph">
-<p>`put`方法是异步的，一旦完成它会通知处理器：</p>
+<p><code>put</code> 方法是异步的，一旦完成它会通知处理器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7267,7 +7261,7 @@ sd.get_async_map("mymap") { |res_err,res|
 <p>每个Vert.x 实例有一个文件系统对象，您可以使用  <code><a href="../../yardoc/Vertx/Vertx.html#file_system-instance_method">fileSystem</a></code> 方法获取它。</p>
 </div>
 <div class="paragraph">
-<p>每个操作都提供了阻塞和非阻塞版本，其中非阻塞版本接受一个处理器 <code>Handler</code>，当操作完成或发生错误时调用该处理器。</p>
+<p>每个操作都提供了阻塞和非阻塞版本，其中非阻塞版本接受一个处理器 <code>Handler</code> ，当操作完成或发生错误时调用该处理器。</p>
 </div>
 <div class="paragraph">
 <p>以下是文件异步拷贝的示例：</p>
@@ -7287,7 +7281,7 @@ fs.copy("foo.txt", "bar.txt") { |res_err,res|
 </div>
 </div>
 <div class="paragraph">
-<p>阻塞版本的方法名为 <code>xxxBlocking</code>，它要么返回结果或直接抛出异常。
+<p>阻塞版本的方法名为 <code>xxxBlocking</code> ，它要么返回结果或直接抛出异常。
 很多情况下，一些潜在的阻塞操作可以快速返回（这取决于操作系统和文件系统），这就是我们为什么提供它。
 但是强烈建议您在 Event Loop 中使用它之前测试使用它们究竟需要耗费多长时间，以避免打破黄金法则。</p>
 </div>
@@ -7375,7 +7369,7 @@ fileSystem.open("myfile.txt", options) { |res_err,res|
 </div>
 </div>
 <div class="paragraph">
-<p><code>AsyncFile</code> 实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口，因此您可以将文件和其他流对象配合 <strong>泵</strong> 工作，如 <code>NetSocket</code>、HTTP 请求和响应和 WebSocket 等。</p>
+<p><code>AsyncFile</code> 实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口，因此您可以将文件和其他流对象配合 <strong>泵</strong> 工作，如 <code>NetSocket</code> 、HTTP 请求和响应和 WebSocket 等。</p>
 </div>
 <div class="paragraph">
 <p>它们还允许您直接读写。</p>
@@ -7383,7 +7377,7 @@ fileSystem.open("myfile.txt", options) { |res_err,res|
 <div class="sect3">
 <h4 id="_随机访问写">随机访问写</h4>
 <div class="paragraph">
-<p>要使用`AsyncFile`进行随机访问写，请使用
+<p>要使用 <code>AsyncFile</code> 进行随机访问写，请使用
 <code><a href="../../yardoc/Vertx/AsyncFile.html#write-instance_method">write</a></code> 方法。</p>
 </div>
 <div class="paragraph">
@@ -7392,13 +7386,13 @@ fileSystem.open("myfile.txt", options) { |res_err,res|
 <div class="ulist">
 <ul>
 <li>
-<p><code>buffer</code>: 要写入的缓冲</p>
+<p><code>buffer</code> : 要写入的缓冲</p>
 </li>
 <li>
-<p><code>position</code>: 一个整数指定在文件中写入缓冲的位置，若位置大于或等于文件大小，文件将被扩展以适应偏移的位置</p>
+<p><code>position</code> : 一个整数指定在文件中写入缓冲的位置，若位置大于或等于文件大小，文件将被扩展以适应偏移的位置</p>
 </li>
 <li>
-<p><code>handler</code>: 结果处理器</p>
+<p><code>handler</code> : 结果处理器</p>
 </li>
 </ul>
 </div>
@@ -7435,7 +7429,7 @@ vertx.file_system().open("target/classes/hello.txt", {
 <div class="sect3">
 <h4 id="_随机访问读">随机访问读</h4>
 <div class="paragraph">
-<p>要使用`AsyncFile`进行随机访问读，请使用
+<p>要使用 <code>AsyncFile</code> 进行随机访问读，请使用
 <code><a href="../../yardoc/Vertx/AsyncFile.html#read-instance_method">read</a></code>
 方法。</p>
 </div>
@@ -7445,19 +7439,19 @@ vertx.file_system().open("target/classes/hello.txt", {
 <div class="ulist">
 <ul>
 <li>
-<p><code>buffer</code>: 读取数据的 Buffer</p>
+<p><code>buffer</code> : 读取数据的 Buffer</p>
 </li>
 <li>
-<p><code>offset</code>: 读取数据将被放到 Buffer 中的偏移量</p>
+<p><code>offset</code> : 读取数据将被放到 Buffer 中的偏移量</p>
 </li>
 <li>
-<p><code>position</code>: 从文件中读取数据的位置</p>
+<p><code>position</code> : 从文件中读取数据的位置</p>
 </li>
 <li>
-<p><code>length</code>: 要读取的数据的字节数</p>
+<p><code>length</code> : 要读取的数据的字节数</p>
 </li>
 <li>
-<p><code>handler</code>: 结果处理器</p>
+<p><code>handler</code> : 结果处理器</p>
 </li>
 </ul>
 </div>
@@ -7494,7 +7488,7 @@ vertx.file_system().open("target/classes/les_miserables.txt", {
 <h4 id="_打开选项">打开选项</h4>
 <div class="paragraph">
 <p>打开 <code>AsyncFile</code> 时，您可以传递一个 <code><a href="../dataobjects.html#OpenOptions">OpenOptions</a></code> 实例，这些选项描述了访问文件的行为。例如：您可使用
-<code><a href="../dataobjects.html#OpenOptions#set_read-instance_method">read</a></code>, <code><a href="../dataobjects.html#OpenOptions#set_write-instance_method">write</a></code>
+<code><a href="../dataobjects.html#OpenOptions#set_read-instance_method">read</a></code> , <code><a href="../dataobjects.html#OpenOptions#set_write-instance_method">write</a></code>
 和 <code><a href="../dataobjects.html#OpenOptions#set_perms-instance_method">perms</a></code> 方法配置文件访问权限。</p>
 </div>
 <div class="paragraph">
@@ -7510,7 +7504,7 @@ vertx.file_system().open("target/classes/les_miserables.txt", {
 <h4 id="_将数据刷新到底层存储">将数据刷新到底层存储</h4>
 <div class="paragraph">
 <p>在 <code>OpenOptions</code> 中，您可以使用
-<code><a href="../dataobjects.html#OpenOptions#set_dsync-instance_method">dsync</a></code>. 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
+<code><a href="../dataobjects.html#OpenOptions#set_dsync-instance_method">dsync</a></code> . 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
 <code><a href="../../yardoc/Vertx/AsyncFile.html#flush-instance_method">flush</a></code> 方法手动刷新OS缓存中的数据写入。</p>
 </div>
 <div class="paragraph">
@@ -7520,7 +7514,8 @@ vertx.file_system().open("target/classes/les_miserables.txt", {
 <div class="sect3">
 <h4 id="_将_asyncfile_作为_readstream_和_writestream">将 AsyncFile 作为 ReadStream 和 WriteStream</h4>
 <div class="paragraph">
-<p><code>AsyncFile`实现了 `ReadStream</code> 和 <code>WriteStream</code> 接口。您可以使用泵将数据与其他读取和写入流进行数据*泵*送。例如，这会将内容复制到另外一个`AsyncFile`：</p>
+<p><code>AsyncFile</code> 实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口。您可以使用泵将数据与其他读取和写入流进行数据*泵*送。
+例如，这会将内容复制到另外一个 <code>AsyncFile</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7545,7 +7540,7 @@ vertx.file_system().open("target/classes/les_miserables.txt", {
 </div>
 </div>
 <div class="paragraph">
-<p>您还可以使用泵将文件内容写入到HTTP 响应中，或者写入任意 <code>WriteStream</code>。</p>
+<p>您还可以使用泵将文件内容写入到HTTP 响应中，或者写入任意 <code>WriteStream</code> 。</p>
 </div>
 </div>
 <div class="sect3">
@@ -7558,13 +7553,13 @@ vertx.file_system().open("target/classes/les_miserables.txt", {
 当第二次访问相同资源时，访问的文件直接从（工作线程的）文件系统提供。即使类路径资源发生变化（例如开发系统中），也会提供原始内容。</p>
 </div>
 <div class="paragraph">
-<p>您可以将系统属性`vertx.disableFileCaching`设置为`true`，禁用此（文件）缓存行为。</p>
+<p>您可以将系统属性 <code>vertx.disableFileCaching</code> 设置为 <code>true</code> ，禁用此（文件）缓存行为。</p>
 </div>
 <div class="paragraph">
-<p>文件缓存的路径默认为`.vertx`，它可以通过设置系统属性`vertx.cacheDirBase`进行自定义。</p>
+<p>文件缓存的路径默认为 <code>.vertx</code> ，它可以通过设置系统属性 <code>vertx.cacheDirBase</code> 进行自定义。</p>
 </div>
 <div class="paragraph">
-<p>您还可以通过系统属性`vertx.disableFileCPResolving`设置为`true`来禁用整个类路径解析功能。</p>
+<p>您还可以通过系统属性 <code>vertx.disableFileCPResolving</code> 设置为 <code>true</code> 来禁用整个类路径解析功能。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -7573,7 +7568,7 @@ vertx.file_system().open("target/classes/les_miserables.txt", {
 <div class="title">Note</div>
 </td>
 <td class="content">
-<strong>当加载`io.vertx.core.impl.FileResolver`类时，这些系统属性将被评估一次，因此，在加载此类之前应该设置这些属性，或者在启动它时作为JVM系统属性来设置。</strong>
+<strong>当加载 <code>io.vertx.core.impl.FileResolver</code> 类时，这些系统属性将被评估一次，因此，在加载此类之前应该设置这些属性，或者在启动它时作为JVM系统属性来设置。</strong>
 </td>
 </tr>
 </table>
@@ -7586,7 +7581,7 @@ you can do so via the <code><a href="../dataobjects.html#FileSystemOptions#set_c
 <div class="sect3">
 <h4 id="_关闭_asyncfile">关闭 AsyncFile</h4>
 <div class="paragraph">
-<p>您可调用 <code><a href="../../yardoc/Vertx/AsyncFile.html#close-instance_method">close</a></code> 方法来关闭 <code>AsyncFile</code>。关闭是异步的，如果希望在关闭过后收到通知，您可指定一个处理器作为函数（<code>close</code>）参数传入。</p>
+<p>您可调用 <code><a href="../../yardoc/Vertx/AsyncFile.html#close-instance_method">close</a></code> 方法来关闭 <code>AsyncFile</code> 。关闭是异步的，如果希望在关闭过后收到通知，您可指定一个处理器作为函数（ <code>close</code> ）参数传入。</p>
 </div>
 </div>
 </div>
@@ -7623,7 +7618,7 @@ you can do so via the <code><a href="../dataobjects.html#FileSystemOptions#set_c
 <p>依照UDP的本质，它最适合一些允许丢弃数据包的应用（如监视应用程序）。</p>
 </div>
 <div class="paragraph">
-<p>其优点是与TCP相比具有更少的开销，而且可以由`NetServer`和`NetClient`处理（参考前文）。</p>
+<p>其优点是与TCP相比具有更少的开销，而且可以由 <code>NetServer</code> 和 <code>NetClient</code> 处理（参考前文）。</p>
 </div>
 <div class="sect2">
 <h3 id="_创建_datagramsocket">创建 DatagramSocket</h3>
@@ -7677,7 +7672,7 @@ socket.send("A string used as content", 1234, "10.0.0.1") { |asyncResult_err,asy
 <p>这样您就可以接收到被发送至 <code><a href="../../yardoc/Vertx/DatagramPacket.html">DatagramPacket</a></code> 所监听的地址和端口的 <code><a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>除此之外，您还要设置一个`Handler`，每接收到一个 <code><a href="../../yardoc/Vertx/DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
+<p>除此之外，您还要设置一个 <code>Handler</code> ，每接收到一个 <code><a href="../../yardoc/Vertx/DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
 </div>
 <div class="paragraph">
 <p><code><a href="../../yardoc/Vertx/DatagramPacket.html">DatagramPacket</a></code> 有以下方法：</p>
@@ -7685,10 +7680,10 @@ socket.send("A string used as content", 1234, "10.0.0.1") { |asyncResult_err,asy
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../yardoc/Vertx/DatagramPacket.html#sender-instance_method">sender</a></code>: 表示数据发送方的`InetSocketAddress`。</p>
+<p><code><a href="../../yardoc/Vertx/DatagramPacket.html#sender-instance_method">sender</a></code>: 表示数据发送方的 <code>InetSocketAddress</code> 。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/DatagramPacket.html#data-instance_method">data</a></code>: 保存接收数据的`Buffer`。</p>
+<p><code><a href="../../yardoc/Vertx/DatagramPacket.html#data-instance_method">data</a></code>: 保存接收数据的 <code>Buffer</code> 。</p>
 </li>
 </ul>
 </div>
@@ -7751,7 +7746,7 @@ socket.send(buffer, 1234, "230.0.0.1") { |asyncResult_err,asyncResult|
 <div class="sect4">
 <h5 id="_接收多播数据包">接收多播数据包</h5>
 <div class="paragraph">
-<p>若要接收特定多播组的数据包，您需要通过调用 <code><a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code> 的`listen(&#8230;&#8203;)`方法来绑定一个地址并且加入多播组，并加入多播组。</p>
+<p>若要接收特定多播组的数据包，您需要通过调用 <code><a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code> 的 <code>listen(&#8230;&#8203;)</code> 方法来绑定一个地址并且加入多播组，并加入多播组。</p>
 </div>
 <div class="paragraph">
 <p>这样，您将能够接收到被发送到
@@ -7766,15 +7761,15 @@ socket.send(buffer, 1234, "230.0.0.1") { |asyncResult_err,asyncResult|
 <div class="ulist">
 <ul>
 <li>
-<p><code>sender()</code>: 表示数据报发送方的`InetSocketAddress`</p>
+<p><code>sender()</code> : 表示数据报发送方的 <code>InetSocketAddress</code></p>
 </li>
 <li>
-<p><code>data()</code>: 保存接收数据的`Buffer`</p>
+<p><code>data()</code> : 保存接收数据的 <code>Buffer</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>因此，要监听指定的地址和端口、并且接收多播组`230.0.0.1`的数据报，您将执行如下操作：</p>
+<p>因此，要监听指定的地址和端口、并且接收多播组 <code>230.0.0.1</code> 的数据报，您将执行如下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7851,7 +7846,7 @@ socket.listen(1234, "0.0.0.0") { |asyncResult_err,asyncResult|
 <p>这是专家级别的技巧。</p>
 </div>
 <div class="paragraph">
-<p>要屏蔽来自特定地址的多播，您可以在 <code>DatagramSocket</code> 上调用 <code>blockMulticastGroup(&#8230;&#8203;)</code>，如下所示：</p>
+<p>要屏蔽来自特定地址的多播，您可以在 <code>DatagramSocket</code> 上调用 <code>blockMulticastGroup(&#8230;&#8203;)</code> ，如下所示：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7883,19 +7878,19 @@ socket.block_multicast_group("230.0.0.1", "10.0.0.2") { |asyncResult_err,asyncRe
 <p><code><a href="../dataobjects.html#DatagramSocketOptions#set_receive_buffer_size-instance_method">receiveBufferSize</a></code> 设置TCP接收缓冲区大小（以字节为单位）。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_reuse_address-instance_method">reuseAddress</a></code> 若为`true`，则`TIME_WAIT`状态中的地址在关闭后可重用。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_reuse_address-instance_method">reuseAddress</a></code> 若为 <code>true</code> ，则 <code>TIME_WAIT</code> 状态中的地址在关闭后可重用。</p>
 </li>
 <li>
 <p><code><a href="../dataobjects.html#DatagramSocketOptions#set_traffic_class-instance_method">trafficClass</a></code></p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_broadcast-instance_method">broadcast</a></code> 设置或清除`SO_BROADCAST`套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_broadcast-instance_method">broadcast</a></code> 设置或清除 <code>SO_BROADCAST</code> 套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_multicast_network_interface-instance_method">multicastNetworkInterface</a></code> 设置或清除`IP_MULTICAST_LOOP`套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_multicast_network_interface-instance_method">multicastNetworkInterface</a></code> 设置或清除 <code>IP_MULTICAST_LOOP</code> 套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_multicast_time_to_live-instance_method">multicastTimeToLive</a></code> 设置`IP_MULTICAST_TTL`套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#set_multicast_time_to_live-instance_method">multicastTimeToLive</a></code> 设置 <code>IP_MULTICAST_TTL</code> 套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
 </li>
 </ul>
 </div>
@@ -7903,8 +7898,8 @@ socket.block_multicast_group("230.0.0.1", "10.0.0.2") { |asyncResult_err,asyncRe
 <div class="sect3">
 <h4 id="_datagramsocket本地地址">DatagramSocket本地地址</h4>
 <div class="paragraph">
-<p>Y若您在调用`listen(&#8230;&#8203;)<code>之前已经绑定了
-bound the `<a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
+<p>Y若您在调用 <code>listen(&#8230;&#8203;)</code> 之前已经绑定了
+bound the <code><a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
 <code><a href="../../yardoc/Vertx/DatagramSocket.html#local_address-instance_method">localAddress</a></code> 来查找套接字的本地地址（即UDP Socket这边的地址，它将返回一个InetSocketAddress，否则返回null。</p>
 </div>
 </div>
@@ -7985,7 +7980,7 @@ client.lookup("vertx.io") { |ar_err,ar|
 <div class="sect2">
 <h3 id="_lookup4">lookup4</h3>
 <div class="paragraph">
-<p>尝试查找给定名称的A（ipv4）记录。第一个返回的（记录）将会被使用，因此它的操作方式与操作系统上使用`nslookup`类似。</p>
+<p>尝试查找给定名称的A（ipv4）记录。第一个返回的（记录）将会被使用，因此它的操作方式与操作系统上使用 <code>nslookup</code> 类似。</p>
 </div>
 <div class="paragraph">
 <p>要查找 <code>vertx.io</code> 的A记录，您需要像下面那样做：</p>
@@ -8027,10 +8022,10 @@ client.lookup6("vertx.io") { |ar_err,ar|
 <div class="sect2">
 <h3 id="_resolvea">resolveA</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的所有A（ipv4）记录，这与在unix操作系统上使用`dig`类似。</p>
+<p>尝试解析给定名称的所有A（ipv4）记录，这与在unix操作系统上使用 <code>dig</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有A记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有A记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8051,10 +8046,10 @@ client.resolve_a("vertx.io") { |ar_err,ar|
 <div class="sect2">
 <h3 id="_resolveaaaa">resolveAAAA</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的所有AAAA（ipv6）记录，这与在Unix操作系统上使用`dig`类似。</p>
+<p>尝试解析给定名称的所有AAAA（ipv6）记录，这与在Unix操作系统上使用 <code>dig</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有AAAA记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有AAAA记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8075,10 +8070,10 @@ client.resolve_aaaa("vertx.io") { |ar_err,ar|
 <div class="sect2">
 <h3 id="_resolvecname">resolveCNAME</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的所有CNAME记录，这与在Unix操作系统上使用`dig`类似。</p>
+<p>尝试解析给定名称的所有CNAME记录，这与在Unix操作系统上使用 <code>dig</code> 类似。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有CNAME记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有CNAME记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8102,7 +8097,7 @@ client.resolve_cname("vertx.io") { |ar_err,ar|
 <p>尝试解析给定名称的所有MX记录，MX记录用于定义哪个邮件服务器接受给定域的电子邮件。</p>
 </div>
 <div class="paragraph">
-<p>要查找您常用执行的`vertx.io`的所有MX记录：</p>
+<p>要查找您常用执行的 <code>vertx.io</code> 的所有MX记录：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8120,8 +8115,7 @@ client.resolve_mx("vertx.io") { |ar_err,ar|
 </div>
 </div>
 <div class="paragraph">
-<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../yardoc/Vertx/MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。
-means MX records with smaller priority coming first in the List.</p>
+<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../yardoc/Vertx/MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
 <p><code><a href="../../yardoc/Vertx/MxRecord.html">MxRecord</a></code> 允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
@@ -8139,7 +8133,7 @@ record.name()</code></pre>
 <p>尝试解析给定名称的所有TXT记录，TXT记录通常用于定义域的额外信息。</p>
 </div>
 <div class="paragraph">
-<p>要解析`vertx.io`的所有TXT记录，您可以使用下边几行：</p>
+<p>要解析 <code>vertx.io</code> 的所有TXT记录，您可以使用下边几行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8163,7 +8157,7 @@ client.resolve_txt("vertx.io") { |ar_err,ar|
 <p>尝试解析给定名称的所有NS记录，NS记录指定哪个DNS服务器托管给定域的DNS信息。</p>
 </div>
 <div class="paragraph">
-<p>要解析`vertx.io`的所有NS记录，您可以使用下边几行：</p>
+<p>要解析 <code>vertx.io</code> 的所有NS记录，您可以使用下边几行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8187,7 +8181,7 @@ client.resolve_ns("vertx.io") { |ar_err,ar|
 <p>尝试解析给定名称的所有SRV记录，SRV记录用于定义服务端口和主机名等额外信息。一些协议需要这个额外信息。</p>
 </div>
 <div class="paragraph">
-<p>要查找`vertx.io`的所有SRV记录，您通常会执行以下操作：</p>
+<p>要查找 <code>vertx.io</code> 的所有SRV记录，您通常会执行以下操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8228,10 +8222,10 @@ record.target()</code></pre>
 <div class="sect2">
 <h3 id="_resolveptr">resolvePTR</h3>
 <div class="paragraph">
-<p>尝试解析给定名称的PTR记录，PTR记录将`ipaddress`映射到名称。</p>
+<p>尝试解析给定名称的PTR记录，PTR记录将 <code>ipaddress</code> 映射到名称。</p>
 </div>
 <div class="paragraph">
-<p>要解析IP地址`10.0.0.1`的PTR记录，您将使用`1.0.0.10.in-addr.arpa`的PTR概念。</p>
+<p>要解析IP地址 <code>10.0.0.1</code> 的PTR记录，您将使用 <code>1.0.0.10.in-addr.arpa</code> 的PTR概念。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8295,14 +8289,14 @@ client.reverse_lookup("10.0.0.1") { |ar_err,ar|
 <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 接口。</p>
 </div>
 <div class="paragraph">
-<p>让我们举个例子，我们要从`ReadStream`中读取数据，然后将数据写入`WriteStream`。</p>
+<p>让我们举个例子，我们要从 <code>ReadStream</code> 中读取数据，然后将数据写入 <code>WriteStream</code> 。</p>
 </div>
 <div class="paragraph">
-<p>一个非常简单的例子是从 <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了`ReadStream`也实现了`WriteStream` 接口。
-请注意，这些操作适用于任何实现了`ReadStream`和 <code>WriteStream</code> 接口的对象，包括HTTP 请求、HTTP 响应、异步文件 I/O 和 WebSocket等。</p>
+<p>一个非常简单的例子是从 <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了 <code>ReadStream</code> 也实现了 <code>WriteStream</code> 接口。
+请注意，这些操作适用于任何实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口的对象，包括HTTP 请求、HTTP 响应、异步文件 I/O 和 WebSocket等。</p>
 </div>
 <div class="paragraph">
-<p>一个最简单的方法是直接获取已经读取的数据，并立即将其写入`NetSocket`：</p>
+<p>一个最简单的方法是直接获取已经读取的数据，并立即将其写入 <code>NetSocket</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8319,7 +8313,7 @@ server.connect_handler() { |sock|
 </div>
 </div>
 <div class="paragraph">
-<p>上面的例子有一个问题：如果从Socket读取数据的速度比写回Socket的速度快，那么它将在`NetSocket`的写队列中不断堆积，最终耗尽内存。
+<p>上面的例子有一个问题：如果从Socket读取数据的速度比写回Socket的速度快，那么它将在 <code>NetSocket</code> 的写队列中不断堆积，最终耗尽内存。
 这是有可能会发生，例如，若Socket另一端的客户端读取速度不够快，无法快速地向连接的另一端回压。</p>
 </div>
 <div class="paragraph">
@@ -8342,7 +8336,7 @@ server.connect_handler() { |sock|
 </div>
 </div>
 <div class="paragraph">
-<p>这个例子不会耗尽内存，但如果写入队列已满，我们最终会丢失数据。我们真正想要做的是在写入队列已满时暂停读取 <code>NetSocket</code>：</p>
+<p>这个例子不会耗尽内存，但如果写入队列已满，我们最终会丢失数据。我们真正想要做的是在写入队列已满时暂停读取 <code>NetSocket</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8384,11 +8378,11 @@ server.connect_handler() { |sock|
 </div>
 <div class="paragraph">
 <p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="../../yardoc/Vertx/WriteStream.html#drain_handler-instance_method">drainHandler</a></code>
-事件处理器将被调用，它会恢复`NetSocket`的状态，允许读取更多的数据。</p>
+事件处理器将被调用，它会恢复 <code>NetSocket</code> 的状态，允许读取更多的数据。</p>
 </div>
 <div class="paragraph">
 <p>在编写Vert.x 应用程序时，这样做是很常见的，因此我们提供了一个名为 <code><a href="../../yardoc/Vertx/Pump.html">Pump</a></code> 的帮助类，它为您完成所有这些艰苦的工作。
-您只需要给 <code>ReadStream</code> 追加上 <code>WriteStream</code>，然后启动它：</p>
+您只需要给 <code>ReadStream</code> 追加上 <code>WriteStream</code> ，然后启动它：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8411,11 +8405,11 @@ server.connect_handler() { |sock|
 <div class="sect2">
 <h3 id="_readstream">ReadStream</h3>
 <div class="paragraph">
-<p><code>ReadStream</code>（可读流） 接口的实现类包括： <code><a href="../../yardoc/Vertx/HttpClientResponse.html">HttpClientResponse</a></code>, <code><a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code>,
-<code><a href="../../yardoc/Vertx/HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../yardoc/Vertx/HttpServerFileUpload.html">HttpServerFileUpload</a></code>,
-<code><a href="../../yardoc/Vertx/HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="../../yardoc/Vertx/MessageConsumer.html">MessageConsumer</a></code>,
-<code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code>, <code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code>, <code><a href="../../yardoc/Vertx/TimeoutStream.html">TimeoutStream</a></code>,
-<code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code>.</p>
+<p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="../../yardoc/Vertx/HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="../../yardoc/Vertx/DatagramSocket.html">DatagramSocket</a></code> ,
+<code><a href="../../yardoc/Vertx/HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../yardoc/Vertx/HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html">HttpServerRequest</a></code> , <code><a href="../../yardoc/Vertx/MessageConsumer.html">MessageConsumer</a></code> ,
+<code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> , <code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code> , <code><a href="../../yardoc/Vertx/TimeoutStream.html">TimeoutStream</a></code> ,
+<code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code> .</p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -8423,19 +8417,19 @@ server.connect_handler() { |sock|
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../yardoc/Vertx/ReadStream.html#handler-instance_method">handler</a></code>: 设置一个处理器，它将从`ReadStream`读取项</p>
+<p><code><a href="../../yardoc/Vertx/ReadStream.html#handler-instance_method">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/ReadStream.html#pause-instance_method">pause</a></code>: 暂停处理器，暂停时，处理器中将不会受到任何项</p>
+<p><code><a href="../../yardoc/Vertx/ReadStream.html#pause-instance_method">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/ReadStream.html#resume-instance_method">resume</a></code>: 恢复处理器，若任何项到达则处理器将被调用</p>
+<p><code><a href="../../yardoc/Vertx/ReadStream.html#resume-instance_method">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/ReadStream.html#exception_handler-instance_method">exceptionHandler</a></code>: 若ReadStream发生异常，将被调用</p>
+<p><code><a href="../../yardoc/Vertx/ReadStream.html#exception_handler-instance_method">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/ReadStream.html#end_handler-instance_method">endHandler</a></code>: 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
+<p><code><a href="../../yardoc/Vertx/ReadStream.html#end_handler-instance_method">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
 </li>
 </ul>
 </div>
@@ -8443,8 +8437,8 @@ server.connect_handler() { |sock|
 <div class="sect2">
 <h3 id="_writestream">WriteStream</h3>
 <div class="paragraph">
-<p><code>WriteStream</code>（可写流）接口的实现类包括： <code><a href="../../yardoc/Vertx/HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../yardoc/Vertx/HttpServerResponse.html">HttpServerResponse</a></code>
-<code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code>, <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code>, <code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code>,
+<p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="../../yardoc/Vertx/HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../yardoc/Vertx/HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code> , <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> , <code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code> ,
 and <code><a href="../../yardoc/Vertx/MessageProducer.html">MessageProducer</a></code></p>
 </div>
 <div class="paragraph">
@@ -8453,19 +8447,19 @@ and <code><a href="../../yardoc/Vertx/MessageProducer.html">MessageProducer</a><
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../yardoc/Vertx/WriteStream.html#write-instance_method">write</a></code>: 写入一个对象到 <code>WriteStream</code>，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
+<p><code><a href="../../yardoc/Vertx/WriteStream.html#write-instance_method">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/WriteStream.html#set_write_queue_max_size-instance_method">setWriteQueueMaxSize</a></code>: 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../yardoc/Vertx/WriteStream.html#write_queue_full-instance_method">writeQueueFull</a></code> 返回`true`。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../yardoc/Vertx/Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
+<p><code><a href="../../yardoc/Vertx/WriteStream.html#set_write_queue_max_size-instance_method">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../yardoc/Vertx/WriteStream.html#write_queue_full-instance_method">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../yardoc/Vertx/Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/WriteStream.html#write_queue_full-instance_method">writeQueueFull</a></code>: 若写队列被认为已满，则返回`true`。</p>
+<p><code><a href="../../yardoc/Vertx/WriteStream.html#write_queue_full-instance_method">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/WriteStream.html#exception_handler-instance_method">exceptionHandler</a></code>: 若`WriteStream`发生异常，则被调用。</p>
+<p><code><a href="../../yardoc/Vertx/WriteStream.html#exception_handler-instance_method">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/WriteStream.html#drain_handler-instance_method">drainHandler</a></code>: 若`WriteStream`被认为不再满，则处理器将被调用。</p>
+<p><code><a href="../../yardoc/Vertx/WriteStream.html#drain_handler-instance_method">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
 </li>
 </ul>
 </div>
@@ -8478,14 +8472,14 @@ and <code><a href="../../yardoc/Vertx/MessageProducer.html">MessageProducer</a><
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../yardoc/Vertx/Pump.html#start-instance_method">start</a></code>: 启动泵。</p>
+<p><code><a href="../../yardoc/Vertx/Pump.html#start-instance_method">start</a></code> : 启动泵。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/Pump.html#stop-instance_method">stop</a></code>:
+<p><code><a href="../../yardoc/Vertx/Pump.html#stop-instance_method">stop</a></code> :
 停止泵，当泵启动时它要处于停止模式。</p>
 </li>
 <li>
-<p><code><a href="../../yardoc/Vertx/Pump.html#set_write_queue_max_size-instance_method">setWriteQueueMaxSize</a></code>:
+<p><code><a href="../../yardoc/Vertx/Pump.html#set_write_queue_max_size-instance_method">setWriteQueueMaxSize</a></code> :
 与 <code>WriteStream</code> 接口的 <code><a href="../../yardoc/Vertx/WriteStream.html#set_write_queue_max_size-instance_method">setWriteQueueMaxSize</a></code> 方法相同。</p>
 </li>
 </ul>
@@ -8507,7 +8501,7 @@ and <code><a href="../../yardoc/Vertx/MessageProducer.html">MessageProducer</a><
 它将输入缓冲区序列转换为已配置的缓冲区序列（固定大小或带分隔符的记录）。</p>
 </div>
 <div class="paragraph">
-<p>例如，若您使用`\n`分割的简单ASCII文本协议，并输入如下：</p>
+<p>例如，若您使用 <code>\n</code> 分割的简单ASCII文本协议，并输入如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8687,7 +8681,7 @@ parser.exception_handler() { |err|
 <p>大多数Vert.x 对象可以从被不同的线程安全地访问，但在相同的上下文中访问它们时，性能才是最优的。</p>
 </div>
 <div class="paragraph">
-<p>例如，若您部署了一个创建 <code><a href="../../yardoc/Vertx/NetServer.html">NetServer</a></code> 的Verticle，该`NetServer`在处理器中提供了
+<p>例如，若您部署了一个创建 <code><a href="../../yardoc/Vertx/NetServer.html">NetServer</a></code> 的Verticle，该 <code>NetServer</code> 在处理器中提供了
 <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> 实例，则最好始终从该Verticle的Event Loop中访问Socket 实例。</p>
 </div>
 <div class="paragraph">
@@ -8711,7 +8705,7 @@ parser.exception_handler() { |err|
 <h2 id="_osgi">OSGi</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x Core被打包成了 OSGi Bundle，因此可以在任何OSGi R4.2+环境中使用，如 <code>Apache Felix</code> 或 <code>Eclipse Equinox</code>，（这个）Bundle导出`io.vertx.core*`。</p>
+<p>Vert.x Core被打包成了 OSGi Bundle，因此可以在任何OSGi R4.2+环境中使用，如 <code>Apache Felix</code> 或 <code>Eclipse Equinox</code> ，（这个）Bundle导出 <code>io.vertx.core*</code> 。</p>
 </div>
 <div class="paragraph">
 <p>但是 Bundle 对 Jackson 和 Netty 有一些依赖，若部署Vert.x Core Bundle则需要：</p>
@@ -8767,7 +8761,7 @@ parser.exception_handler() { |err|
 </div>
 </div>
 <div class="paragraph">
-<p>在Equinox上，您可能需要使用下边的框架属性禁用ContextFilter：<code>eclipse.bundle.setTCCL=false</code>。</p>
+<p>在Equinox上，您可能需要使用下边的框架属性禁用ContextFilter： <code>eclipse.bundle.setTCCL=false</code> 。</p>
 </div>
 </div>
 </div>
@@ -8776,7 +8770,7 @@ parser.exception_handler() { |err|
 <div class="sectionbody">
 <div class="paragraph">
 <p>vertx 命令行工具用于在终端中与 Vert.x 进行交互。主要用于运行 Vert.x Verticle。
-为此，您需要下载并安装Vert.x 发行版，并将安装目录中的`bin`添加到`PATH`环境变量中，还要确保您的`PATH`上有一个Java 8的JDK。</p>
+为此，您需要下载并安装Vert.x 发行版，并将安装目录中的 <code>bin</code> 添加到 <code>PATH</code> 环境变量中，还要确保您的 <code>PATH</code> 上有一个Java 8的JDK。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -8793,7 +8787,7 @@ JDK需要支持Java代码的快速编译。
 <div class="sect2">
 <h3 id="_运行_verticle">运行 Verticle</h3>
 <div class="paragraph">
-<p>您可以使用 <code>vertx run</code> 从命令行直接运行Vert.x 的 Verticle，以下是`run`命令的几个实例：</p>
+<p>您可以使用 <code>vertx run</code> 从命令行直接运行Vert.x 的 Verticle，以下是 <code>run</code> 命令的几个实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8833,7 +8827,7 @@ vertx run MyVerticle.java                                (6)</code></pre>
 <p>正如您在Java中可看到的，该Verticle的名称要么是Java 完全限定类名，也可以指定Java 源文件，Vert.x会为你编译它。</p>
 </div>
 <div class="paragraph">
-<p>您可以用其他语言的前缀来指定Verticle的名称进行部署。例如：若Verticle是一个编译的Groovy 类，您可以使用语言前缀`groovy:`，因此Vert.x 知道它是一个Groovy 类而不是Java 类。</p>
+<p>您可以用其他语言的前缀来指定Verticle的名称进行部署。例如：若Verticle是一个编译的Groovy 类，您可以使用语言前缀 <code>groovy:</code> ，因此Vert.x 知道它是一个Groovy 类而不是Java 类。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8841,15 +8835,15 @@ vertx run MyVerticle.java                                (6)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>`vertx run`命令可以使用几个可选参数，它们是：</p>
+<p><code>vertx run</code> 命令可以使用几个可选参数，它们是：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>-conf &lt;config_file&gt;</code> - 提供了Verticle的一些配置，`config_file`是包含描述Verticle配置的JSON对象的文本文件的名称，该参数是可选的。</p>
+<p><code>-conf &lt;config_file&gt;</code> - 提供了Verticle的一些配置， <code>config_file</code> 是包含描述Verticle配置的JSON对象的文本文件的名称，该参数是可选的。</p>
 </li>
 <li>
-<p><code>-cp &lt;path&gt;</code> - 搜索Verticle和它使用的其他任何资源的路径，默认为`.<code>（当前目录）。若您的Verticle引用了其他脚本、类或其他资源（例如jar文件），请确保这些脚本、其他资源存在此路径上。该路径可以包含由以下内容分隔的多个路径条目：</code>:`（冒号）或`;`（分号）——这取决于操作系统。每个路径条目可以是包含脚本的目录的绝对路径或相对路径，也可以是`jar`或`zip`文件的绝对或相对文件名。一个示例路径可能是`-cp classes:lib/otherscripts:jars/myjar.jar:jars/otherjar.jar`。始终使用路径引用您的Verticle需要的任何资源，不要将它们放在系统类路径上，因为这会导致部署的Verticle之间的隔离问题。</p>
+<p><code>-cp &lt;path&gt;</code> - 搜索Verticle和它使用的其他任何资源的路径，默认为 <code>.</code> （当前目录）。若您的Verticle引用了其他脚本、类或其他资源（例如jar文件），请确保这些脚本、其他资源存在此路径上。该路径可以包含由以下内容分隔的多个路径条目： <code>:</code> （冒号）或 <code>;</code> （分号）——这取决于操作系统。每个路径条目可以是包含脚本的目录的绝对路径或相对路径，也可以是 <code>jar</code> 或 <code>zip</code> 文件的绝对或相对文件名。一个示例路径可能是 <code>-cp classes:lib/otherscripts:jars/myjar.jar:jars/otherjar.jar</code> 。始终使用路径引用您的Verticle需要的任何资源，不要将它们放在系统类路径上，因为这会导致部署的Verticle之间的隔离问题。</p>
 </li>
 <li>
 <p><code>-instances &lt;instances&gt;</code>  - 要实例化的Verticle实例的数目，每个Verticle实例都是严格单线程（运行）的，以便在可用的核上扩展应用程序，您可能需要部署多个实例。若省略，则部署单个实例。</p>
@@ -8861,24 +8855,24 @@ vertx run MyVerticle.java                                (6)</code></pre>
 <p><code>-cluster</code> -  此选项确定Vert.x实例是否尝试与网络上的其他Vert.x实例形成集群，集群Vert.x实例允许Vert.x与其他节点形成分布式Event Bus。默认为false（非集群模式）。</p>
 </li>
 <li>
-<p><code>-cluster-port</code> - 若指定了`cluster`选项，则可以确定哪个端口将用于与其他Vert.x实例进行集群通信。默认为0——这意味着“选择一个空闲的随机端口”。除非您帧需要绑定特定端口，您通常不需要指定此参数。</p>
+<p><code>-cluster-port</code> - 若指定了 <code>cluster</code> 选项，则可以确定哪个端口将用于与其他Vert.x实例进行集群通信。默认为0——这意味着“选择一个空闲的随机端口”。除非您帧需要绑定特定端口，您通常不需要指定此参数。</p>
 </li>
 <li>
-<p><code>-cluster-host</code> - 若指定了`cluster`选项，则可以确定哪个主机地址将用于其他Vert.x实例进行集群通信。默认情况下，它将尝试从可用的接口中选一个。若您有多个接口而您想要使用指定的一个，就在这里指定。</p>
+<p><code>-cluster-host</code> - 若指定了 <code>cluster</code> 选项，则可以确定哪个主机地址将用于其他Vert.x实例进行集群通信。默认情况下，它将尝试从可用的接口中选一个。若您有多个接口而您想要使用指定的一个，就在这里指定。</p>
 </li>
 <li>
 <p><code>-ha</code> - 若指定，该Verticle将部署为（支持）高可用性（HA）。有关详细信息，请参阅相关章节。</p>
 </li>
 <li>
-<p><code>-quorum</code> - 该参数需要和`-ha`一起使用，它指定集群中所有HA部署ID处于活动状态的最小节点数，默认为0。</p>
+<p><code>-quorum</code> - 该参数需要和 <code>-ha</code> 一起使用，它指定集群中所有HA部署ID处于活动状态的最小节点数，默认为0。</p>
 </li>
 <li>
-<p><code>-hagroup</code> - 该参数需要和`-ha`一起使用，它指定此节点将加入的HA组。集群中可以有多个HA组，节点只会故障转移到同一组中的其他节点。默认为 __DEFAULT__ 。</p>
+<p><code>-hagroup</code> - 该参数需要和 <code>-ha</code> 一起使用，它指定此节点将加入的HA组。集群中可以有多个HA组，节点只会故障转移到同一组中的其他节点。默认为 __DEFAULT__ 。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>您还可以使用下边方式设置系统属性：<code>-Dkey=value</code>。</p>
+<p>您还可以使用下边方式设置系统属性： <code>-Dkey=value</code> 。</p>
 </div>
 <div class="paragraph">
 <p>下面有更多的例子：</p>
@@ -8933,7 +8927,7 @@ vertx run sender.js -cluster</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>其中`my_verticle.conf`也许会包含以下配置：</p>
+<p>其中 <code>my_verticle.conf</code> 也许会包含以下配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8955,7 +8949,7 @@ vertx run sender.js -cluster</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>根据您的集群配置，您可能需要添加`cluster-host`和`cluster-port`参数。</p>
+<p>根据您的集群配置，您可能需要添加 <code>cluster-host</code> 和 <code>cluster-port</code> 参数。</p>
 </div>
 </div>
 <div class="sect2">
@@ -8972,15 +8966,15 @@ vertx run sender.js -cluster</code></pre>
 <p>对于这点，Vert.x 没什么特别的，您可以使用任何Java应用程序。</p>
 </div>
 <div class="paragraph">
-<p>您可以创建自己的主类并在 MANIFEST 中指定，但建议您将代码编写成Verticle，并使用Vert.x中的 <code><a href="unavailable">Launcher</a></code> 类 (<code>io.vertx.core.Launcher</code>) 作为您的主类。这是在命令行中运行Vert.x使用的主类，因此允许您指定命令行参数，如 <code>-instances</code> 以便更轻松地扩展应用程序。</p>
+<p>您可以创建自己的主类并在 MANIFEST 中指定，但建议您将代码编写成Verticle，并使用Vert.x中的 <code><a href="unavailable">Launcher</a></code> 类 ( <code>io.vertx.core.Launcher</code> ) 作为您的主类。这是在命令行中运行Vert.x使用的主类，因此允许您指定命令行参数，如 <code>-instances</code> 以便更轻松地扩展应用程序。</p>
 </div>
 <div class="paragraph">
-<p>要将您的Verticle全部部署在这个`fat-jar`中时，您必须将下边信息写入MANIFEST：</p>
+<p>要将您的Verticle全部部署在这个 <code>fat-jar</code> 中时，您必须将下边信息写入MANIFEST：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Main-Class</code> 设置为`io.vertx.core.Launcher`</p>
+<p><code>Main-Class</code> 设置为 <code>io.vertx.core.Launcher</code></p>
 </li>
 <li>
 <p><code>Main-Verticle</code> 指定要运行的Main Verticle（Java完全限定类名或脚本文件名）</p>
@@ -9026,10 +9020,10 @@ java -jar my-verticle-fat.jar -cluster -conf myconf.json -cp path/to/dir/conf/cl
 <div class="sect2">
 <h3 id="_其他命令">其他命令</h3>
 <div class="paragraph">
-<p>除了`run`和`version`以外，<code>vertx`命令行和 `Launcher</code> 还提供了其他命令：</p>
+<p>除了 <code>run</code> 和 <code>version</code> 以外， <code>vertx</code> 命令行和 <code>Launcher</code> 还提供了其他命令：</p>
 </div>
 <div class="paragraph">
-<p>您可以使用下边命令创建一个`bare`实例：</p>
+<p>您可以使用下边命令创建一个 <code>bare</code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9047,7 +9041,7 @@ java -jar my-verticle-fat.jar bare</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>若`my-app-name`未设置，将生成一个随机的id，并在命令提示符中打印。您可以将`run`选项传递给`start`命令：</p>
+<p>若 <code>my-app-name</code> 未设置，将生成一个随机的id，并在命令提示符中打印。您可以将 <code>run</code> 选项传递给 <code>start</code> 命令：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9055,7 +9049,7 @@ java -jar my-verticle-fat.jar bare</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>一旦在后台启动，可以使用`stop`命令停止它：</p>
+<p>一旦在后台启动，可以使用 <code>stop</code> 命令停止它：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9071,7 +9065,7 @@ java -jar my-verticle-fat.jar bare</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>vertx`工具也可以使用`start</code>、`stop`和`list`命令，`start`命令支持几个选项：</p>
+<p><code>vertx</code> 工具也可以使用 <code>start</code> 、 <code>stop</code> 和 <code>list</code> 命令， <code>start</code> 命令支持几个选项：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -9079,7 +9073,7 @@ java -jar my-verticle-fat.jar bare</code></pre>
 <p><code>vertx-id</code> : 应用程序ID，若未设置，则使用随机UUID</p>
 </li>
 <li>
-<p><code>java-opts</code> : Java虚拟机选项，若未设置，则使用`JAVA_OPTS`环境变量</p>
+<p><code>java-opts</code> : Java虚拟机选项，若未设置，则使用 <code>JAVA_OPTS</code> 环境变量</p>
 </li>
 <li>
 <p><code>redirect-output</code> : 重定向生成的进程输出和错误流到父进程流</p>
@@ -9090,7 +9084,7 @@ java -jar my-verticle-fat.jar bare</code></pre>
 <p>若选项值包含空白，请不要忘记在 {@code ""} （双引号）之间包装值。</p>
 </div>
 <div class="paragraph">
-<p>由于`start`命令产生一个新的进程，传递给JVM的java选项不会被传播，所以您必须使用`java-opts`来配置JVM（<code>-X</code>，<code>-D</code>&#8230;&#8203;）。若您使用 <code>CLASSPATH</code> 环境变量，请确保路径下包含所有需要的jar（vertx-core、您的jar和所有依赖项）。</p>
+<p>由于 <code>start</code> 命令产生一个新的进程，传递给JVM的java选项不会被传播，所以您必须使用 <code>java-opts</code> 来配置JVM（ <code>-X</code> ， <code>-D</code> &#8230;&#8203;）。若您使用 <code>CLASSPATH</code> 环境变量，请确保路径下包含所有需要的jar（vertx-core、您的jar和所有依赖项）。</p>
 </div>
 <div class="paragraph">
 <p>该命令集是可扩展的，请参考 <a href="#Extending_the_vert_x_Launcher">扩展 Vert.x 启动器</a> 部分。</p>
@@ -9099,7 +9093,7 @@ java -jar my-verticle-fat.jar bare</code></pre>
 <div class="sect2">
 <h3 id="_实时重部署">实时重部署</h3>
 <div class="paragraph">
-<p>在开发时，可以方便在文件更改时实时重新部署应用程序。<code>vertx</code> 命令行工具和更普遍的 <code>Launcher</code> 类提供了这个功能。这里有些例子：</p>
+<p>在开发时，可以方便在文件更改时实时重新部署应用程序。 <code>vertx</code> 命令行工具和更普遍的 <code>Launcher</code> 类提供了这个功能。这里有些例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9110,13 +9104,13 @@ java io.vertx.core.Launcher run org.acme.MyVerticle --redeploy="**&amp;#47;*.cla
 </div>
 </div>
 <div class="paragraph">
-<p>重新部署过程如下执行。首先，您的应用程序作为后台应用程序启动（使用`start`命令）。当发现文件更改时，该进程将停止并重新启动该应用。这样可避免泄露。</p>
+<p>重新部署过程如下执行。首先，您的应用程序作为后台应用程序启动（使用 <code>start</code> 命令）。当发现文件更改时，该进程将停止并重新启动该应用。这样可避免泄露。</p>
 </div>
 <div class="paragraph">
-<p>要启用实时重新部署，请将 <code>--redeploy</code> 选项传递给 <code>run</code> 命令。<code>--redeploy</code> 表示要监视的文件集，这个集合可使用 <code>Ant</code> 样式模式（使用 <code><strong>*</code>，<code></strong></code> 和 <code>?</code>），您也可以使用逗号（<code>,</code>）分隔它们来指定多个集合。模式相当于当前工作目录。</p>
+<p>要启用实时重新部署，请将 <code>--redeploy</code> 选项传递给 <code>run</code> 命令。 <code>--redeploy</code> 表示要监视的文件集，这个集合可使用 <code>Ant</code> 样式模式（使用 <code><strong>*</code> ， <code></strong></code> 和 <code>?</code> ），您也可以使用逗号（ <code>,</code> ）分隔它们来指定多个集合。模式相当于当前工作目录。</p>
 </div>
 <div class="paragraph">
-<p>传递给 <code>run</code> 命令的参数最终会传递给应用程序，可使用 <code>--java-opts</code> 配置JVM虚拟机选项。例如，如果想传入一个 <code>conf</code> 参数或是系统属性，您可以使用 <code>--java-opts="-conf=my-conf.json -Dkey=value"</code>。</p>
+<p>传递给 <code>run</code> 命令的参数最终会传递给应用程序，可使用 <code>--java-opts</code> 配置JVM虚拟机选项。例如，如果想传入一个 <code>conf</code> 参数或是系统属性，您可以使用 <code>--java-opts="-conf=my-conf.json -Dkey=value"</code> 。</p>
 </div>
 <div class="paragraph">
 <p><code>--launcher-class</code> 选项确定应用程序的主类启动器。它通常是一个
@@ -9128,15 +9122,15 @@ java io.vertx.core.Launcher run org.acme.MyVerticle --redeploy="**&amp;#47;*.cla
 <div class="ulist">
 <ul>
 <li>
-<p>Eclipse - 创建一个运行配置，使用`io.vertx.core.Launcher`类作为主类。在 <strong>Program Arguments</strong> 区域（参数选项卡中），写入`run your-verticle-fully-qualified-name --redeploy=<strong>*/</strong>.java --launcher-class=io.vertx.core.Launcher`，您还可以添加其他参数。随着 Eclipse 在保存时会增量编译您的文件，重部署工作会顺利进行。</p>
+<p>Eclipse - 创建一个运行配置，使用 <code>io.vertx.core.Launcher</code> 类作为主类。在 <strong>Program Arguments</strong> 区域（参数选项卡中），写入 <code>run your-verticle-fully-qualified-name --redeploy=<strong>*/</strong>.java --launcher-class=io.vertx.core.Launcher</code> ，您还可以添加其他参数。随着 Eclipse 在保存时会增量编译您的文件，重部署工作会顺利进行。</p>
 </li>
 <li>
-<p>IntelliJ - 创建一个运行配置（应用）,将主类设置为`io.vertx.core.Launcher`。在程序参数中写：<code>run your-verticle-fully-qualified-name --redeploy=<strong>*/</strong>.class --launcher-class=io.vertx.core.Launcher</code>。要触发重新部署，您需要显示构造项目或模块（Build &#8594; Make project）。</p>
+<p>IntelliJ - 创建一个运行配置（应用）,将主类设置为 <code>io.vertx.core.Launcher</code> 。在程序参数中写： <code>run your-verticle-fully-qualified-name --redeploy=<strong>*/</strong>.class --launcher-class=io.vertx.core.Launcher</code> 。要触发重新部署，您需要显示构造项目或模块（Build &#8594; Make project）。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>要调试应用程序，请将运行配置创建为远程应用程序，并使用`--java-opts`配置调试器。每次重新部署后，请勿忘记重新插入(re-plug)调试器，因为它每次都会创建一个新进程。</p>
+<p>要调试应用程序，请将运行配置创建为远程应用程序，并使用 <code>--java-opts</code> 配置调试器。每次重新部署后，请勿忘记重新插入(re-plug)调试器，因为它每次都会创建一个新进程。</p>
 </div>
 <div class="paragraph">
 <p>您还可以在重新部署周期中挂接（hook）构建过程：</p>
@@ -9148,7 +9142,7 @@ java -jar build/libs/my-fat-jar.jar --redeploy="src&amp;#47;**&amp;#47;*.java" -
 </div>
 </div>
 <div class="paragraph">
-<p>"on-redeploy"选项指定在应用程序关闭后和重新启动之前调用的命令。因此，如果更新某些运行时工作，则可以钩住构建工具。例如，您可以启动`gulp`或`grunt`来更新您的资源。如果您的应用需要 <code>--java-opts</code>，不要忘记将它添加到命令参数里：</p>
+<p>"on-redeploy"选项指定在应用程序关闭后和重新启动之前调用的命令。因此，如果更新某些运行时工作，则可以钩住构建工具。例如，您可以启动 <code>gulp</code> 或 <code>grunt</code> 来更新您的资源。如果您的应用需要 <code>--java-opts</code> ，不要忘记将它添加到命令参数里：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9212,7 +9206,7 @@ java -jar build/libs/my-fat-jar.jar --redeploy="src&amp;#47;**&amp;#47;*.java" -
 <code><a href="unavailable">ClusterManager</a></code> 的实例。</p>
 </div>
 <div class="paragraph">
-<p>若您在命令行中使用Vert.x并要使用集群，则应确保Vert.x安装的`lib`目录包含您的集群管理器jar。</p>
+<p>若您在命令行中使用Vert.x并要使用集群，则应确保Vert.x安装的 <code>lib</code> 目录包含您的集群管理器jar。</p>
 </div>
 <div class="paragraph">
 <p>若您在 Maven/Gradle 项目使用Vert.x，则只需将集群管理器jar作为项目依赖添加。</p>
@@ -9232,10 +9226,10 @@ java -jar build/libs/my-fat-jar.jar --redeploy="src&amp;#47;**&amp;#47;*.java" -
 <div class="sect2">
 <h3 id="_配置jul日志记录">配置JUL日志记录</h3>
 <div class="paragraph">
-<p>一个JUL日志记录配置文件可以使用普通的JUL方式指定——通过提供一个名为`java.util.logging.config.file`的系统属性值为您的配置文件。更多关于此部分以及JUL配置文件结构的内容，请参阅JUL日志记录文档。</p>
+<p>一个JUL日志记录配置文件可以使用普通的JUL方式指定——通过提供一个名为 <code>java.util.logging.config.file</code> 的系统属性值为您的配置文件。更多关于此部分以及JUL配置文件结构的内容，请参阅JUL日志记录文档。</p>
 </div>
 <div class="paragraph">
-<p>Vert.x还提供了一种更方便的方式指定配置文件，无需设置系统属性。您只需在您的类路径中提供名为`vertx-default-jul-logging.properties`的JUL配置文件（例如在您的fatjar中），Vert.x将使用该配置文件配置JUL。</p>
+<p>Vert.x还提供了一种更方便的方式指定配置文件，无需设置系统属性。您只需在您的类路径中提供名为 <code>vertx-default-jul-logging.properties</code> 的JUL配置文件（例如在您的fatjar中），Vert.x将使用该配置文件配置JUL。</p>
 </div>
 </div>
 <div class="sect2">
@@ -9244,12 +9238,12 @@ java -jar build/libs/my-fat-jar.jar --redeploy="src&amp;#47;**&amp;#47;*.java" -
 <p>如果您不希望Vert.x使用JUL记录日志，您可以为其配置另一个日志记录框架，例如Log4J或SLF4J。</p>
 </div>
 <div class="paragraph">
-<p>为此，您应该设置一个名为`vertx.logger-delegate-factory-class-name`的系统属性，该属性的值是一个实现了 <code><a href="unavailable">LogDelegateFactory</a></code> 接口的Java 类名。
-我们为Log4J（版本1）、Log4J 2和SLF4J提供了预设的实现，类名为：<code>io.vertx.core.logging.Log4jLogDelegateFactory</code>，<code>io.vertx.core.logging.Log4j2LogDelegateFactory`和`io.vertx.core.logging.SLF4JLogDelegateFactory</code>。
+<p>为此，您应该设置一个名为 <code>vertx.logger-delegate-factory-class-name</code> 的系统属性，该属性的值是一个实现了 <code><a href="unavailable">LogDelegateFactory</a></code> 接口的Java 类名。
+我们为Log4J（版本1）、Log4J 2和SLF4J提供了预设的实现，类名为： <code>io.vertx.core.logging.Log4jLogDelegateFactory</code> ， <code>io.vertx.core.logging.Log4j2LogDelegateFactory</code> 和 <code>io.vertx.core.logging.SLF4JLogDelegateFactory</code> 。
 如您要使用这些实现，还应确保相关的Log4J或SLF4J的jar在您的类路径上。</p>
 </div>
 <div class="paragraph">
-<p>请注意，提供的Log4J 1代理不支持参数化消息。Log4J 2的代理使用了像SLF4J代理这样的`{}`语法，JUL代理使用如`{x}`语法。</p>
+<p>请注意，提供的Log4J 1代理不支持参数化消息。Log4J 2的代理使用了像SLF4J代理这样的 <code>{}</code> 语法，JUL代理使用如 <code>{x}</code> 语法。</p>
 </div>
 </div>
 <div class="sect2">
@@ -9300,18 +9294,18 @@ logger.error("oops!", exception)</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>如`SLF4J`可见，则优先使用该库</p>
+<p>如 <code>SLF4J</code> 可见，则优先使用该库</p>
 </li>
 <li>
-<p>否则若`Log4j`可见，再使用该库</p>
+<p>否则若 <code>Log4j</code> 可见，再使用该库</p>
 </li>
 <li>
-<p>否则退回使用`java.util.logging`</p>
+<p>否则退回使用 <code>java.util.logging</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>可通过设置`io.netty.util.internal.logging.InternalLoggerFactory`强制Netty使用某个特定实现。</p>
+<p>可通过设置 <code>io.netty.util.internal.logging.InternalLoggerFactory</code> 强制Netty使用某个特定实现。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9335,10 +9329,10 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 </div>
 </div>
 <div class="paragraph">
-<p>I这意味着您的类路径中有`SLF4J-API`却没绑定。`SLF4J`记录的消息将会丢失。您应该将绑定加入您的类路径。参考 <a href="https://www.slf4j.org/manual.html">SLF4J user manual - Binding with a logging framework at deployment time</a> 选择绑定并配置。</p>
+<p>I这意味着您的类路径中有 <code>SLF4J-API</code> 却没绑定。 <code>SLF4J</code> 记录的消息将会丢失。您应该将绑定加入您的类路径。参考 <a href="https://www.slf4j.org/manual.html">SLF4J user manual - Binding with a logging framework at deployment time</a> 选择绑定并配置。</p>
 </div>
 <div class="paragraph">
-<p>请注意，Netty会寻找`SLF4-API`的jar，并在缺省情况下使用它。</p>
+<p>请注意，Netty会寻找 <code>SLF4-API</code> 的jar，并在缺省情况下使用它。</p>
 </div>
 </div>
 <div class="sect3">
@@ -9391,7 +9385,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>默认情况下，它将使用环境中系统DNS服务器地址的列表，若该列表无法检索，将使用Google的公共DNS服务器 <code>8.8.8.8</code> 和 <code>8.8.4.4</code>。</p>
+<p>默认情况下，它将使用环境中系统DNS服务器地址的列表，若该列表无法检索，将使用Google的公共DNS服务器 <code>8.8.8.8</code> 和 <code>8.8.4.4</code> 。</p>
 </div>
 <div class="paragraph">
 <p>创建 <code><a href="../../yardoc/Vertx/Vertx.html">Vertx</a></code> 实例时也可配置DNS 服务器：</p>
@@ -9410,7 +9404,7 @@ vertx = Vertx::Vertx.vertx({
 </div>
 </div>
 <div class="paragraph">
-<p>DNS 服务器的默认端口为`53`，当服务器使用不同的端口时，可以使用冒号分隔符设置该端口：<code>192.168.0.2:40000</code>。</p>
+<p>DNS 服务器的默认端口为 <code>53</code> ，当服务器使用不同的端口时，可以使用冒号分隔符设置该端口： <code>192.168.0.2:40000</code> 。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9440,7 +9434,7 @@ vertx = Vertx::Vertx.vertx({
 <p>默认情况下，DNS服务器选择使用第一个，其余的服务器用于故障转移。</p>
 </div>
 <div class="paragraph">
-<p>您可以配置 <code><a href="../dataobjects.html#AddressResolverOptions#set_rotate_servers-instance_method">rotateServers</a></code> 为 <code>true</code>，让解析器使用轮询选择。它会在服务器之间传播查询负载，并避免所有的查找都找到列表中的第一个服务器。</p>
+<p>您可以配置 <code><a href="../dataobjects.html#AddressResolverOptions#set_rotate_servers-instance_method">rotateServers</a></code> 为 <code>true</code> ，让解析器使用轮询选择。它会在服务器之间传播查询负载，并避免所有的查找都找到列表中的第一个服务器。</p>
 </div>
 <div class="paragraph">
 <p>故障转移仍然适用，并将使用列表中的下一个服务器。</p>
@@ -9484,7 +9478,7 @@ vertx = Vertx::Vertx.vertx({
 </div>
 </div>
 <div class="paragraph">
-<p>当使用搜索域列表时，点数的阈值为`1`，或从Linux上的`/etc/resolv.conf`加载，也可使用  <code><a href="../dataobjects.html#AddressResolverOptions#set_ndots-instance_method">ndots</a></code> 方法配置特定值。</p>
+<p>当使用搜索域列表时，点数的阈值为 <code>1</code> ，或从Linux上的 <code>/etc/resolv.conf</code> 加载，也可使用  <code><a href="../dataobjects.html#AddressResolverOptions#set_ndots-instance_method">ndots</a></code> 方法配置特定值。</p>
 </div>
 </div>
 </div>
@@ -9501,7 +9495,7 @@ vertx = Vertx::Vertx.vertx({
 <p>当Vert.x启用HA运行时，若一个运行了Verticle的Vert.x 实例失败或挂掉，则此Verticle将自动重新部署到集群中的另一个Vert.x 实例中。我们称这个为 Verticle 故障转移（failover）。</p>
 </div>
 <div class="paragraph">
-<p>若要启用HA模式，在启动 Vert.x 应用的时候需要添加`-ha`参数到命令行：</p>
+<p>若要启用HA模式，在启动 Vert.x 应用的时候需要添加 <code>-ha</code> 参数到命令行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9517,8 +9511,8 @@ vertx = Vertx::Vertx.vertx({
 </div>
 </div>
 <div class="paragraph">
-<p>如果运行了`my-verticle.js`的Vert.x 实例现在死了（您可以通过执行`kill -9`杀死进程来测试），
-运行`my-other-verticle.js`的Vert.x 实例将自动重新部署`my-verticle.js`，所以现在这个Vert.x 实例正在运行两个Verticle。</p>
+<p>如果运行了 <code>my-verticle.js</code> 的Vert.x 实例现在死了（您可以通过执行 <code>kill -9</code> 杀死进程来测试），
+运行 <code>my-other-verticle.js</code> 的Vert.x 实例将自动重新部署 <code>my-verticle.js</code> ，所以现在这个Vert.x 实例正在运行两个Verticle。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9527,7 +9521,7 @@ vertx = Vertx::Vertx.vertx({
 <div class="title">Note</div>
 </td>
 <td class="content">
-只有当第二个Vert.x 实例可访问对应的 verticle 文件（这里是 <code>my-verticle.js</code>）时，迁移才是可能的。
+只有当第二个Vert.x 实例可访问对应的 verticle 文件（这里是 <code>my-verticle.js</code> ）时，迁移才是可能的。
 </td>
 </tr>
 </table>
@@ -9553,7 +9547,7 @@ vertx = Vertx::Vertx.vertx({
 </div>
 </div>
 <div class="paragraph">
-<p>当使用`-ha`开关时，您不需要提供`-cluster`开关，因为若要使用HA就假定是集群。</p>
+<p>当使用 <code>-ha</code> 开关时，您不需要提供 <code>-cluster</code> 开关，因为若要使用HA就假定是集群。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9571,10 +9565,10 @@ vertx = Vertx::Vertx.vertx({
 <div class="sect2">
 <h3 id="_ha组">HA组</h3>
 <div class="paragraph">
-<p>当使用Vert.x运行实例时，还可以选择指定的HA组。HA组表示集群中的逻辑节点组。只有具有相同HA组的节点能执行故障转移。若不指定HA组，则使用默认组`<em>DEFAULT</em>`。</p>
+<p>当使用Vert.x运行实例时，还可以选择指定的HA组。HA组表示集群中的逻辑节点组。只有具有相同HA组的节点能执行故障转移。若不指定HA组，则使用默认组 <code><em>DEFAULT</em></code> 。</p>
 </div>
 <div class="paragraph">
-<p>要指定一个HA组，您可以在运行该Verticle时使用`-hagroup`开关。</p>
+<p>要指定一个HA组，您可以在运行该Verticle时使用 <code>-hagroup</code> 开关。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9621,13 +9615,13 @@ vertx = Vertx::Vertx.vertx({
 <p>高可用HA实现同样支持 Quora（多数派机制）。Quorum 是分布式事务必须获得的最小票数才能被允许在分布式系统中执行操作的一个参数。</p>
 </div>
 <div class="paragraph">
-<p>在启动 Vert.x 实例时，您可以指示它在部署任何HA部署之前需要一个`quorum`。该上下文环境中，一个 quorum 是集群中特定组的最小节点数。通常您选择 quorum 大小为`Q = 1 + N / 2`，其中N是组中节点数。若集群中的Q节点少于HA节点，HA部署将被撤销。如果/当 quorum 重新获取时，他们将重新部署。通过这样做您可以防止网络分区，也就是脑裂（split brain）。</p>
+<p>在启动 Vert.x 实例时，您可以指示它在部署任何HA部署之前需要一个 <code>quorum</code> 。该上下文环境中，一个 quorum 是集群中特定组的最小节点数。通常您选择 quorum 大小为 <code>Q = 1 + N / 2</code> ，其中N是组中节点数。若集群中的Q节点少于HA节点，HA部署将被撤销。如果/当 quorum 重新获取时，他们将重新部署。通过这样做您可以防止网络分区，也就是脑裂（split brain）。</p>
 </div>
 <div class="paragraph">
 <p>更多关于Quorum（多数派机制）的信息，请参考 <a href="http://en.wikipedia.org/wiki/Quorum_(distributed_computing)">这里</a> 。</p>
 </div>
 <div class="paragraph">
-<p>若要使用 quorum 运行Vert.x实例，您可以在命令行中指定`-quorum`，例如：</p>
+<p>若要使用 quorum 运行Vert.x实例，您可以在命令行中指定 <code>-quorum</code> ，例如：</p>
 </div>
 <div class="paragraph">
 <p>在第一个终端：</p>
@@ -9697,7 +9691,7 @@ puts "Running with native: #{usingNative}"</code></pre>
 </td>
 <td class="content">
 preferring native transport will not prevent the application to execute, if your application requires native
-transport, you need to check <code><a href="../../yardoc/Vertx/Vertx.html#is_native_transport_enabled-instance_method">isNativeTransportEnabled</a></code>.
+transport, you need to check <code><a href="../../yardoc/Vertx/Vertx.html#is_native_transport_enabled-instance_method">isNativeTransportEnabled</a></code> .
 </td>
 </tr>
 </table>
@@ -9788,7 +9782,7 @@ vertx.create_http_server({
 <div class="sect2">
 <h3 id="_domain_sockets">Domain sockets</h3>
 <div class="paragraph">
-<p>Natives provide domain sockets support for <code>NetServer</code> and <code>HttpServer</code>:</p>
+<p>Natives provide domain sockets support for <code>NetServer</code> and <code>HttpServer</code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9817,7 +9811,7 @@ vertx.create_http_server().request_handler() { |req|
 </div>
 </div>
 <div class="paragraph">
-<p>As well as <code>NetClient</code>:</p>
+<p>As well as <code>NetClient</code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9904,19 +9898,19 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 <div class="ulist">
 <ul>
 <li>
-<p>类似POSIX选项（即`tar -zxvf foo.tar.gz`）</p>
+<p>类似POSIX选项（即 <code>tar -zxvf foo.tar.gz</code> ）</p>
 </li>
 <li>
-<p>类似GNU选项（即`du --human-readable --max-depth=1`）</p>
+<p>类似GNU选项（即 <code>du --human-readable --max-depth=1</code> ）</p>
 </li>
 <li>
-<p>类似Java属性（即`java -Djava.awt.headless=true -Djava.net.useSystemProxies=true Foo`）</p>
+<p>类似Java属性（即 <code>java -Djava.awt.headless=true -Djava.net.useSystemProxies=true Foo</code> ）</p>
 </li>
 <li>
-<p>具有附加值的短选项（即`gcc -O2 foo.c`）</p>
+<p>具有附加值的短选项（即 <code>gcc -O2 foo.c</code> ）</p>
 </li>
 <li>
-<p>单个连字符的长选项（即`ant -projecthelp`）</p>
+<p>单个连字符的长选项（即 <code>ant -projecthelp</code> ）</p>
 </li>
 </ul>
 </div>
@@ -9961,7 +9955,7 @@ cli = Vertx::CLI.create("copy").set_summary("A command line interface to copy fi
 </div>
 </div>
 <div class="paragraph">
-<p>您可以看到，您可以使用 <code><a href="../../yardoc/Vertx/CLI.html#create-class_method">CLI.create</a></code> 创建一个新的`<a href="../../yardoc/Vertx/CLI.html">CLI</a>` 。
+<p>您可以看到，您可以使用 <code><a href="../../yardoc/Vertx/CLI.html#create-class_method">CLI.create</a></code> 创建一个新的 <code><a href="../../yardoc/Vertx/CLI.html">CLI</a></code> 。
 传递的字符串是 {@code CLI} 的名称。创建后，您可以设置摘要和描述，摘要的目的是简短（一行），而描述可以包含更多细节。每个选项和参数也使用
 <code><a href="../../yardoc/Vertx/CLI.html#add_argument-instance_method">addArgument</a></code> 和
 <code><a href="../../yardoc/Vertx/CLI.html#add_option-instance_method">addOption</a></code> 方法添加到 {@code CLI} 对象上。</p>
@@ -9971,7 +9965,7 @@ cli = Vertx::CLI.create("copy").set_summary("A command line interface to copy fi
 <div class="paragraph">
 <p><code><a href="../dataobjects.html#Option">Option</a></code> 是由用户命令行中存在的 <strong>键</strong> 标识的命令行参数。选项至少必须有一个长名或一个短名。
 长名称通常使用 <code>--</code> 前缀，而短名称与单个 <code>-</code> 一起使用。选项可以获取用法中显示的描述（见下文）。选项可以接受0、1或几个值。
-接受0值的选项是一个标志(<code>flag</code>)，必须使用
+接受0值的选项是一个标志( <code>flag</code> )，必须使用
 <code><a href="../dataobjects.html#Option#set_flag-instance_method">flag</a></code> 声明。默认情况下，选项会接受一个值，但是您可以使用
 <code><a href="../dataobjects.html#Option#set_multi_valued-instance_method">multiValued</a></code> 方法配置该选项接收多个值：</p>
 </div>
@@ -10049,7 +10043,7 @@ cli = Vertx::CLI.create("some-name").add_option({
 <div class="sect3">
 <h4 id="_参数">参数</h4>
 <div class="paragraph">
-<p>和选项不同，参数不具有 <strong>键</strong> 并由其索引标识。例如，在`java com.acme.Foo`中，`com.acme.Foo`是一个参数。</p>
+<p>和选项不同，参数不具有 <strong>键</strong> 并由其索引标识。例如，在 <code>java com.acme.Foo</code> 中， <code>com.acme.Foo</code> 是一个参数。</p>
 </div>
 <div class="paragraph">
 <p>参数没有名称，使用基于 0 的索引进行标识。第一个参数的索引为 0：</p>
@@ -10221,7 +10215,7 @@ end</code></pre>
 <h2 id="_the_vert_x_launcher">The vert.x Launcher</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x <code><a href="unavailable">Launcher</a></code> 在 fat-jar 中作为主类，由 <code>vertx</code> 命令行实用程序调用。它可执行一组命令，如`run`、<code>bare</code> 和 `start`等</p>
+<p>Vert.x <code><a href="unavailable">Launcher</a></code> 在 fat-jar 中作为主类，由 <code>vertx</code> 命令行实用程序调用。它可执行一组命令，如 <code>run</code> 、 <code>bare</code> 和 <code>start</code> 等</p>
 </div>
 <div class="sect2">
 <h3 id="Extending_the_vert_x_Launcher">扩展 Vert.x 启动器</h3>
@@ -10269,10 +10263,10 @@ public class MyCommand extends DefaultCommand {
 </div>
 </div>
 <div class="paragraph">
-<p>构建包含命令的jar。确保包含了SPI文件（<code>META-INF/services/io.vertx.core.spi.launcher.CommandFactory</code>）。</p>
+<p>构建包含命令的jar。确保包含了SPI文件（ <code>META-INF/services/io.vertx.core.spi.launcher.CommandFactory</code> ）。</p>
 </div>
 <div class="paragraph">
-<p>然后，将包含该命令的jar放入fat-jar（或包含在其中）的类路径中，或放在Vert.x发行版的`lib`目录中，您将可以执行：</p>
+<p>然后，将包含该命令的jar放入fat-jar（或包含在其中）的类路径中，或放在Vert.x发行版的 <code>lib</code> 目录中，您将可以执行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10284,11 +10278,11 @@ java -jar my-fat-jar.jar hello vert.x</code></pre>
 <div class="sect2">
 <h3 id="_在_fat_jar_中使用启动器">在 fat-jar 中使用启动器</h3>
 <div class="paragraph">
-<p>要在 fat-jar 中使用 <code><a href="unavailable">Launcher</a></code>  类，只需要将 <strong>MANIFEST</strong> 的 <code>Main-Class</code> 设置为 <code>io.vertx.core.Launcher</code>。
+<p>要在 fat-jar 中使用 <code><a href="unavailable">Launcher</a></code>  类，只需要将 <strong>MANIFEST</strong> 的 <code>Main-Class</code> 设置为 <code>io.vertx.core.Launcher</code> 。
 另外，将 <strong>MANIFEST</strong> 中 <code>Main-Verticle</code> 条目设置为您的Main Verticle的名称。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下，它会执行 <code>run</code> 命令。但是，您可以通过设置 <strong>MANIFEST</strong> 的`Main-Command`条目来配置默认命令。若在没有命令的情况下启动 fat-jar，则使用默认命令。</p>
+<p>默认情况下，它会执行 <code>run</code> 命令。但是，您可以通过设置 <strong>MANIFEST</strong> 的 <code>Main-Command</code> 条目来配置默认命令。若在没有命令的情况下启动 fat-jar，则使用默认命令。</p>
 </div>
 </div>
 <div class="sect2">
@@ -10336,7 +10330,7 @@ java -jar my-fat-jar.jar hello vert.x</code></pre>
 <p>若Vert.x无法初始化： {@code 11}</p>
 </li>
 <li>
-<p>若生成的进程无法启动、发现或停止： {@code 12} ，该错误代码一般由`start`和`stop`命令使用</p>
+<p>若生成的进程无法启动、发现或停止： {@code 12} ，该错误代码一般由 <code>start</code> 和 <code>stop</code> 命令使用</p>
 </li>
 <li>
 <p>若系统配置不符合系统要求（如找不到 <code>java</code> 命令）： {@code 14}</p>
@@ -10385,7 +10379,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
 因此，如果您编辑从类路径提供的文件并刷新浏览器，Vert.x 会从类路径读取它，将其复制到缓存目录并从中提供。不要在生产环境使用这个设置，它很有可能影响性能。</p>
 </div>
 <div class="paragraph">
-<p>最后，您可以使用`-Dvertx.disableFileCPResolving=true`完全禁用高速缓存。这个设置不是没有后果的。Vert.x将无法从类路径中读取任何文件（仅从文件系统）。
+<p>最后，您可以使用 <code>-Dvertx.disableFileCPResolving=true</code> 完全禁用高速缓存。这个设置不是没有后果的。Vert.x将无法从类路径中读取任何文件（仅从文件系统）。
 使用此设置时要非常小心。</p>
 </div>
 </div>
@@ -10397,7 +10391,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:37 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -10414,12 +10408,11 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

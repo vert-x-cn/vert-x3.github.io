@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -131,7 +131,7 @@
 <p>每个Vert.x 实例有一个文件系统对象，您可以使用  <code><a href="../../apidocs/io/vertx/core/Vertx.html#fileSystem--">fileSystem</a></code> 方法获取它。</p>
 </div>
 <div class="paragraph">
-<p>每个操作都提供了阻塞和非阻塞版本，其中非阻塞版本接受一个处理器 <code>Handler</code>，当操作完成或发生错误时调用该处理器。</p>
+<p>每个操作都提供了阻塞和非阻塞版本，其中非阻塞版本接受一个处理器 <code>Handler</code> ，当操作完成或发生错误时调用该处理器。</p>
 </div>
 <div class="paragraph">
 <p>以下是文件异步拷贝的示例：</p>
@@ -151,7 +151,7 @@ fs.copy("foo.txt", "bar.txt", { res -&gt;
 </div>
 </div>
 <div class="paragraph">
-<p>阻塞版本的方法名为 <code>xxxBlocking</code>，它要么返回结果或直接抛出异常。
+<p>阻塞版本的方法名为 <code>xxxBlocking</code> ，它要么返回结果或直接抛出异常。
 很多情况下，一些潜在的阻塞操作可以快速返回（这取决于操作系统和文件系统），这就是我们为什么提供它。
 但是强烈建议您在 Event Loop 中使用它之前测试使用它们究竟需要耗费多长时间，以避免打破黄金法则。</p>
 </div>
@@ -236,7 +236,7 @@ fileSystem.open("myfile.txt", options, { res -&gt;
 </div>
 </div>
 <div class="paragraph">
-<p><code>AsyncFile</code> 实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口，因此您可以将文件和其他流对象配合 <strong>泵</strong> 工作，如 <code>NetSocket</code>、HTTP 请求和响应和 WebSocket 等。</p>
+<p><code>AsyncFile</code> 实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口，因此您可以将文件和其他流对象配合 <strong>泵</strong> 工作，如 <code>NetSocket</code> 、HTTP 请求和响应和 WebSocket 等。</p>
 </div>
 <div class="paragraph">
 <p>它们还允许您直接读写。</p>
@@ -244,7 +244,7 @@ fileSystem.open("myfile.txt", options, { res -&gt;
 <div class="sect3">
 <h4 id="_随机访问写">随机访问写</h4>
 <div class="paragraph">
-<p>要使用`AsyncFile`进行随机访问写，请使用
+<p>要使用 <code>AsyncFile</code> 进行随机访问写，请使用
 <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html#write-io.vertx.core.buffer.Buffer-long-io.vertx.core.Handler-">write</a></code> 方法。</p>
 </div>
 <div class="paragraph">
@@ -253,13 +253,13 @@ fileSystem.open("myfile.txt", options, { res -&gt;
 <div class="ulist">
 <ul>
 <li>
-<p><code>buffer</code>: 要写入的缓冲</p>
+<p><code>buffer</code> : 要写入的缓冲</p>
 </li>
 <li>
-<p><code>position</code>: 一个整数指定在文件中写入缓冲的位置，若位置大于或等于文件大小，文件将被扩展以适应偏移的位置</p>
+<p><code>position</code> : 一个整数指定在文件中写入缓冲的位置，若位置大于或等于文件大小，文件将被扩展以适应偏移的位置</p>
 </li>
 <li>
-<p><code>handler</code>: 结果处理器</p>
+<p><code>handler</code> : 结果处理器</p>
 </li>
 </ul>
 </div>
@@ -295,7 +295,7 @@ vertx.fileSystem().open("target/classes/hello.txt", OpenOptions(), { result -&gt
 <div class="sect3">
 <h4 id="_随机访问读">随机访问读</h4>
 <div class="paragraph">
-<p>要使用`AsyncFile`进行随机访问读，请使用
+<p>要使用 <code>AsyncFile</code> 进行随机访问读，请使用
 <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html#read-io.vertx.core.buffer.Buffer-int-long-int-io.vertx.core.Handler-">read</a></code>
 方法。</p>
 </div>
@@ -305,19 +305,19 @@ vertx.fileSystem().open("target/classes/hello.txt", OpenOptions(), { result -&gt
 <div class="ulist">
 <ul>
 <li>
-<p><code>buffer</code>: 读取数据的 Buffer</p>
+<p><code>buffer</code> : 读取数据的 Buffer</p>
 </li>
 <li>
-<p><code>offset</code>: 读取数据将被放到 Buffer 中的偏移量</p>
+<p><code>offset</code> : 读取数据将被放到 Buffer 中的偏移量</p>
 </li>
 <li>
-<p><code>position</code>: 从文件中读取数据的位置</p>
+<p><code>position</code> : 从文件中读取数据的位置</p>
 </li>
 <li>
-<p><code>length</code>: 要读取的数据的字节数</p>
+<p><code>length</code> : 要读取的数据的字节数</p>
 </li>
 <li>
-<p><code>handler</code>: 结果处理器</p>
+<p><code>handler</code> : 结果处理器</p>
 </li>
 </ul>
 </div>
@@ -353,7 +353,7 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), { re
 <h4 id="_打开选项">打开选项</h4>
 <div class="paragraph">
 <p>打开 <code>AsyncFile</code> 时，您可以传递一个 <code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html">OpenOptions</a></code> 实例，这些选项描述了访问文件的行为。例如：您可使用
-<code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setRead-boolean-">setRead</a></code>, <code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setWrite-boolean-">setWrite</a></code>
+<code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setRead-boolean-">setRead</a></code> , <code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setWrite-boolean-">setWrite</a></code>
 和 <code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setPerms-java.lang.String-">setPerms</a></code> 方法配置文件访问权限。</p>
 </div>
 <div class="paragraph">
@@ -369,7 +369,7 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), { re
 <h4 id="_将数据刷新到底层存储">将数据刷新到底层存储</h4>
 <div class="paragraph">
 <p>在 <code>OpenOptions</code> 中，您可以使用
-<code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setDsync-boolean-">setDsync</a></code>. 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
+<code><a href="../../apidocs/io/vertx/core/file/OpenOptions.html#setDsync-boolean-">setDsync</a></code> . 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
 <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html#flush--">flush</a></code> 方法手动刷新OS缓存中的数据写入。</p>
 </div>
 <div class="paragraph">
@@ -379,7 +379,8 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), { re
 <div class="sect3">
 <h4 id="_将_asyncfile_作为_readstream_和_writestream">将 AsyncFile 作为 ReadStream 和 WriteStream</h4>
 <div class="paragraph">
-<p><code>AsyncFile`实现了 `ReadStream</code> 和 <code>WriteStream</code> 接口。您可以使用泵将数据与其他读取和写入流进行数据*泵*送。例如，这会将内容复制到另外一个`AsyncFile`：</p>
+<p><code>AsyncFile</code> 实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口。您可以使用泵将数据与其他读取和写入流进行数据*泵*送。
+例如，这会将内容复制到另外一个 <code>AsyncFile</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -400,7 +401,7 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), { re
 </div>
 </div>
 <div class="paragraph">
-<p>您还可以使用泵将文件内容写入到HTTP 响应中，或者写入任意 <code>WriteStream</code>。</p>
+<p>您还可以使用泵将文件内容写入到HTTP 响应中，或者写入任意 <code>WriteStream</code> 。</p>
 </div>
 </div>
 <div class="sect3">
@@ -413,13 +414,13 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), { re
 当第二次访问相同资源时，访问的文件直接从（工作线程的）文件系统提供。即使类路径资源发生变化（例如开发系统中），也会提供原始内容。</p>
 </div>
 <div class="paragraph">
-<p>您可以将系统属性`vertx.disableFileCaching`设置为`true`，禁用此（文件）缓存行为。</p>
+<p>您可以将系统属性 <code>vertx.disableFileCaching</code> 设置为 <code>true</code> ，禁用此（文件）缓存行为。</p>
 </div>
 <div class="paragraph">
-<p>文件缓存的路径默认为`.vertx`，它可以通过设置系统属性`vertx.cacheDirBase`进行自定义。</p>
+<p>文件缓存的路径默认为 <code>.vertx</code> ，它可以通过设置系统属性 <code>vertx.cacheDirBase</code> 进行自定义。</p>
 </div>
 <div class="paragraph">
-<p>您还可以通过系统属性`vertx.disableFileCPResolving`设置为`true`来禁用整个类路径解析功能。</p>
+<p>您还可以通过系统属性 <code>vertx.disableFileCPResolving</code> 设置为 <code>true</code> 来禁用整个类路径解析功能。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -428,7 +429,7 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), { re
 <div class="title">Note</div>
 </td>
 <td class="content">
-<strong>当加载`io.vertx.core.impl.FileResolver`类时，这些系统属性将被评估一次，因此，在加载此类之前应该设置这些属性，或者在启动它时作为JVM系统属性来设置。</strong>
+<strong>当加载 <code>io.vertx.core.impl.FileResolver</code> 类时，这些系统属性将被评估一次，因此，在加载此类之前应该设置这些属性，或者在启动它时作为JVM系统属性来设置。</strong>
 </td>
 </tr>
 </table>
@@ -441,7 +442,7 @@ you can do so via the <code><a href="../../apidocs/io/vertx/core/file/FileSystem
 <div class="sect3">
 <h4 id="_关闭_asyncfile">关闭 AsyncFile</h4>
 <div class="paragraph">
-<p>您可调用 <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html#close--">close</a></code> 方法来关闭 <code>AsyncFile</code>。关闭是异步的，如果希望在关闭过后收到通知，您可指定一个处理器作为函数（<code>close</code>）参数传入。</p>
+<p>您可调用 <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html#close--">close</a></code> 方法来关闭 <code>AsyncFile</code> 。关闭是异步的，如果希望在关闭过后收到通知，您可指定一个处理器作为函数（ <code>close</code> ）参数传入。</p>
 </div>
 </div>
 </div>
@@ -454,7 +455,7 @@ you can do so via the <code><a href="../../apidocs/io/vertx/core/file/FileSystem
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:36 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -471,12 +472,11 @@ you can do so via the <code><a href="../../apidocs/io/vertx/core/file/FileSystem
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

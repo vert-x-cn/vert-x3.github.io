@@ -70,12 +70,12 @@
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="http://start.vertx.io">Starter</a></li>
-        <li><a href="https://vertx.tk/download/">Download</a></li>
-        <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-        <li><a href="https://vertx.tk/community/">Community</a></li>
-        <li><a href="https://vertx.tk/materials/">Materials</a></li>
-        <li><a href="https://vertx.tk/blog/">Blog</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
       </ul>
     </nav>
   </div>
@@ -222,7 +222,7 @@ server.listen(1234, "localhost");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认主机名是 <code>0.0.0.0</code>，它表示：监听所有可用地址。默认端口号是 <code>0</code>，这也是一个特殊值，它告诉服务器随机选择并监听一个本地没有被占用的端口。</p>
+<p>默认主机名是 <code>0.0.0.0</code> ，它表示：监听所有可用地址。默认端口号是 <code>0</code> ，这也是一个特殊值，它告诉服务器随机选择并监听一个本地没有被占用的端口。</p>
 </div>
 <div class="paragraph">
 <p>实际的绑定也是异步的，因此服务器在调用了 <code>listen</code> 方法的一段时间之后才会实际开始监听。</p>
@@ -246,7 +246,7 @@ server.listen(1234, "localhost", res -&gt; {
 <div class="sect2">
 <h3 id="_监听随机端口">监听随机端口</h3>
 <div class="paragraph">
-<p>若设置监听端口为`0`，服务器将随机寻找一个没有使用的端口来监听。</p>
+<p>若设置监听端口为 <code>0</code> ，服务器将随机寻找一个没有使用的端口来监听。</p>
 </div>
 <div class="paragraph">
 <p>可以调用 <code><a href="../../apidocs/io/vertx/core/net/NetServer.html#actualPort--">actualPort</a></code> 方法来获得服务器实际监听的端口：</p>
@@ -267,7 +267,7 @@ server.listen(0, "localhost", res -&gt; {
 <div class="sect2">
 <h3 id="_接收传入连接的通知">接收传入连接的通知</h3>
 <div class="paragraph">
-<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../apidocs/io/vertx/core/net/NetServer.html#connectHandler-io.vertx.core.Handler-">connectHandler</a></code>:</p>
+<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../apidocs/io/vertx/core/net/NetServer.html#connectHandler-io.vertx.core.Handler-">connectHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -654,7 +654,7 @@ NetServer server = vertx.createNetServer(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者，您可以自己读取密钥库到一个`Buffer`，并将它直接提供给 <code>JksOptions</code>：</p>
+<p>或者，您可以自己读取密钥库到一个 <code>Buffer</code> ，并将它直接提供给 <code>JksOptions</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -669,7 +669,7 @@ NetServer server = vertx.createNetServer(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -697,7 +697,7 @@ NetServer server = vertx.createNetServer(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>另外一种分别提供服务器私钥和证书的方法是使用`.pem`文件。</p>
+<p>另外一种分别提供服务器私钥和证书的方法是使用 <code>.pem</code> 文件。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -770,7 +770,7 @@ NetServer server = vertx.createNetServer(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者您可以自己读取受信存储到`Buffer`，并将它直接提供：</p>
+<p>或者您可以自己读取受信存储到 <code>Buffer</code> ，并将它直接提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -787,7 +787,7 @@ NetServer server = vertx.createNetServer(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -857,14 +857,14 @@ NetServer server = vertx.createNetServer(options);</code></pre>
 <p>客户端也可以轻松地配置为SSL。使用SSL和使用标准套接字具有完全相同的API。</p>
 </div>
 <div class="paragraph">
-<p>若要启用 <code>NetClient</code> 上的SSL，可调用函数 <code>setSSL(true)</code>。</p>
+<p>若要启用 <code>NetClient</code> 上的SSL，可调用函数 <code>setSSL(true)</code> 。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_客户端受信配置">客户端受信配置</h4>
 <div class="paragraph">
-<p>若客户端将 <code><a href="../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-">trustALl</a></code> 设置为 <code>true</code>，则客户端将信任所有服务端证书。
-连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为`false`。</p>
+<p>若客户端将 <code><a href="../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
+连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为 <code>false</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -912,7 +912,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>它也支持`Buffer`的配置：</p>
+<p>它也支持 <code>Buffer</code> 的配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -928,7 +928,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -959,7 +959,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>另一种提供服务器证书颁发机构的方法是使用一个`.pem`文件列表。</p>
+<p>另一种提供服务器证书颁发机构的方法是使用一个 <code>.pem</code> 文件列表。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1022,7 +1022,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为`.pfx`或`.p12`扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
+<p>PKCS＃12格式的密钥/证书 (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>) ，通常为 <code>.pfx</code> 或 <code>.p12</code> 扩展名）也可以用与JKS密钥存储相似的方式加载：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1173,7 +1173,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>也支持通过`Buffer`来配置：</p>
+<p>也支持通过 <code>Buffer</code> 来配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1296,7 +1296,7 @@ indicated server name.</p>
 <ul>
 <li>
 <p>if <code><a href="../../apidocs/io/vertx/core/net/JksOptions.html">JksOptions</a></code> were used to set the trust options
-(<code><a href="../../apidocs/io/vertx/core/net/NetServerOptions.html#setTrustOptions-io.vertx.core.net.TrustOptions-">options</a></code>) then an exact match with the trust store
+( <code><a href="../../apidocs/io/vertx/core/net/NetServerOptions.html#setTrustOptions-io.vertx.core.net.TrustOptions-">options</a></code> ) then an exact match with the trust store
 alias is done</p>
 </li>
 <li>
@@ -1495,7 +1495,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-04 18:43:36 CST
+                上次更新时间 2018-09-05 15:27:14 CST
               
               
             </div>
@@ -1512,12 +1512,11 @@ NetClient client = vertx.createNetClient(options);</code></pre>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Eclipse Vert.x</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/">Home</a></li>
-          <li><a href="https://vertx.tk/download/">Download</a></li>
-          <li><a href="https://vertx.tk/docs/">Documentation</a></li>
-          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
-          <li><a href="https://vertx.tk/blog/">Blog</a></li>
-          <li><a href="https://vertx.tk/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
