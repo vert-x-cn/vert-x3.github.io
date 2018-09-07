@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -167,6 +223,15 @@
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-core-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_编写_http_服务端和客户端">编写 HTTP 服务端和客户端</h2>
 <div class="sectionbody">
@@ -267,7 +332,7 @@ server = vertx.create_http_server(options)</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../dataobjects.html#Http2Settings#get_max_concurrent_streams-instance_method">getMaxConcurrentStreams</a></code> ：按照 HTTP/2 RFC建议推荐值为 {@code 100}</p>
+<p><code><a href="../dataobjects.html#Http2Settings#get_max_concurrent_streams-instance_method">getMaxConcurrentStreams</a></code> ：按照 HTTP/2 RFC建议推荐值为 <code>100</code></p>
 </li>
 <li>
 <p>其他默认的 HTTP/2 的设置</p>
@@ -2950,14 +3015,13 @@ support them (gopher:// for example).</p>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:14 CST
+                上次更新时间 2018-09-07 11:02:24 CST
               
               
             </div>

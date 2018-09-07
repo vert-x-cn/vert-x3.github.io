@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -135,6 +191,15 @@
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-core-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_buffers">Buffers</h2>
 <div class="sectionbody">
@@ -211,15 +276,15 @@ value buff = buffer.buffer(10000);</code></pre>
 <div class="sect2">
 <h3 id="_向buffer写入数据">向Buffer写入数据</h3>
 <div class="paragraph">
-<p>向 <code>Buffer</code> 写入数据的方式有两种：追加和随机写入。任何一种情况下 <code>Buffer</code> 都会自动进行扩容，所以不可能在使用 <code>Buffer</code> 时遇到 {@code IndexOutOfBoundsException} 。</p>
+<p>向 <code>Buffer</code> 写入数据的方式有两种：追加和随机写入。任何一种情况下 <code>Buffer</code> 都会自动进行扩容，所以不可能在使用 <code>Buffer</code> 时遇到 <code>IndexOutOfBoundsException</code> 。</p>
 </div>
 <div class="sect3">
 <h4 id="_追加到buffer">追加到Buffer</h4>
 <div class="paragraph">
-<p>您可以使用 {@code appendXXX} 方法追加数据到 <code>Buffer</code> 。 <code>Buffer</code> 类提供了追加各种不同类型数据的追加写入方法。</p>
+<p>您可以使用 <code>appendXXX</code> 方法追加数据到 <code>Buffer</code> 。 <code>Buffer</code> 类提供了追加各种不同类型数据的追加写入方法。</p>
 </div>
 <div class="paragraph">
-<p>因为 {@code appendXXX} 方法的返回值就是 Buffer 自身，所以它可以链式地调用:</p>
+<p>因为 <code>appendXXX</code> 方法的返回值就是 Buffer 自身，所以它可以链式地调用:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -238,7 +303,7 @@ socket.write(buff);</code></pre>
 <div class="sect3">
 <h4 id="_随机访问写buffer">随机访问写Buffer</h4>
 <div class="paragraph">
-<p>您还可以指定一个索引值，通过 {@code setXXX} 方法写入数据到 <code>Buffer</code> ，它也存在各种不同数据类型的方法。
+<p>您还可以指定一个索引值，通过 <code>setXXX</code> 方法写入数据到 <code>Buffer</code> ，它也存在各种不同数据类型的方法。
 所有的 set 方法都会将索引值作为第一个参数 —— 这表示 <code>Buffer</code> 中开始写入数据的位置。</p>
 </div>
 <div class="paragraph">
@@ -261,7 +326,7 @@ buff.setString(0, "hello");</code></pre>
 <div class="sect2">
 <h3 id="_从buffer中读取">从Buffer中读取</h3>
 <div class="paragraph">
-<p>可使用 {@code getXXX} 方法从 Buffer 中读取数据，它存在各种不同数据类型的方法，这些方法的第一个参数是从哪里获取数据的索引（获取位置）。</p>
+<p>可使用 <code>getXXX</code> 方法从 Buffer 中读取数据，它存在各种不同数据类型的方法，这些方法的第一个参数是从哪里获取数据的索引（获取位置）。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -280,8 +345,8 @@ while (i &lt; buff.length()) {
 <div class="sect2">
 <h3 id="_使用无符号数">使用无符号数</h3>
 <div class="paragraph">
-<p>可使用 {@code getUnsignedXXX} ,
-{@code appendUnsignedXXX} 和 {@code setUnsignedXXX} 方法将无符号数从 <code>Buffer</code> 中读取或追加/设置到 <code>Buffer</code> 里。这对以优化网络协议和最小化带宽消耗为目的实现的编解码器是很有用的。</p>
+<p>可使用 <code>getUnsignedXXX</code> ,
+<code>appendUnsignedXXX</code> 和 <code>setUnsignedXXX</code> 方法将无符号数从 <code>Buffer</code> 中读取或追加/设置到 <code>Buffer</code> 里。这对以优化网络协议和最小化带宽消耗为目的实现的编解码器是很有用的。</p>
 </div>
 <div class="paragraph">
 <p>下边例子中，值 200 被设置到了仅占用一个字节的特定位置：</p>
@@ -328,14 +393,13 @@ print(buff.getUnsignedByte(pos));</code></pre>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:13 CST
+                上次更新时间 2018-09-07 11:02:25 CST
               
               
             </div>

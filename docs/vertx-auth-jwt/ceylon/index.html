@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -139,17 +195,25 @@
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-auth-jwt-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_the_jwt_auth_provider">The JWT auth provider</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This component contains an out of the box a JWT implementation. To use this project, add the following
-dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>这个组件包含了一个开箱即用的JWT实现。 要使用这个项目，将下面的依赖添加到构建描述符里的`dependencies`部分。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件里):</p>
 </li>
 </ul>
 </div>
@@ -165,7 +229,7 @@ dependency to the <em>dependencies</em> section of your build descriptor:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle ( 在 <code>build.gradle</code> 文件里 ):</p>
 </li>
 </ul>
 </div>
@@ -175,52 +239,48 @@ dependency to the <em>dependencies</em> section of your build descriptor:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>JSON Web Token is a simple way to send information in the clear (usually in a URL) whose contents can be
-verified to
-be trusted. JWT are well suited for scenarios as:</p>
+<p>JSON Web 令牌是一种简单的方法来发送明文信息（通常是URL），其内容可以被验证为是可信的。像下面的这些场景JWT是非常适用的：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>In a Single Sign-On scenario where you want a separate authentication server that can then send user
-information in a trusted way.</p>
+<p>在一个单一的报名场景中，你想要有一个隔离的认证服务用可被信任的方式发送用户信息</p>
 </li>
 <li>
-<p>Stateless API servers, very well suited for single page applications.</p>
+<p>无状态的Server API，非常适用于简单的页面应用</p>
 </li>
 <li>
-<p>etc&#8230;&#8203;</p>
+<p>等等</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Before deciding on using JWT, it&#8217;s important to note that JWT does not encrypt the payload, it only signs it. You
-should not send any secret information using JWT, rather you should send information that is not secret but needs to
-be verified. For instance, sending a signed user id to indicate the user that should be logged in would work great!
-Sending a user&#8217;s password would be very, very bad.</p>
+<p>在决定使用JWT之前，需要重点注意的是JWT并不加密payload，它仅对payload签名。
+你不应该使用JWT发送任何私密信息，相反你应该发送是不是私密的但要被验证的信息。
+举个例子，使用JWT发送一个签名过的用户id来表明这个用户已经登录了的做法非常对的。
+相反发送一个用户的密码的做法是非常非常错误的。</p>
 </div>
 <div class="paragraph">
-<p>Its main advantages are:</p>
+<p>JWT主要的优点有：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>It allows you to verify token authenticity.</p>
+<p>它可以让你验证令牌的真实性</p>
 </li>
 <li>
-<p>It has a json body to contain any variable amount of data you want.</p>
+<p>它有一个JSON结构，可以包含任何你想要的变量和大量的数据</p>
 </li>
 <li>
-<p>It&#8217;s completely stateless.</p>
+<p>它完全是无状态的</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>To create an instance of the provider you use <code><a href="../../ceylondoc/vertx-auth-jwt//JWTAuth.type.html">JWTAuth</a></code>. You specify the configuration
-in a JSON object.</p>
+<p>你可以使用 <code><a href="../../ceylondoc/vertx-auth-jwt//JWTAuth.type.html">JWTAuth</a></code> 来创建一个提供者的实例，并指定一个JSON对象的配置。</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of creating a JWT auth provider:</p>
+<p>这是创建一个JWT auth提供者的示例代码：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -240,9 +300,7 @@ value provider = jwtAuth.create(vertx, config);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A typical flow of JWT usage is that in your application you have one end point that issues tokens, this end point
-should be running in SSL mode, there after you verify the request user, say by its username and password you would
-do:</p>
+<p>JWT用法的典型流程是，在您的应用程序有一个终点颁发令牌，这个终点应在SSL模式下运行，终点这通过用户名和密码验证完请求用户之后，表示你将这样做生成令牌：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -514,14 +572,12 @@ UoTVrHRvnrCNW6x/eqe4U7b/5ccoqG3MRq+8Ux5dFD5lUSozTIY1vTir
 <p>If you prefer to use Java Keystores, then you can do it either.</p>
 </div>
 <div class="paragraph">
-<p>This auth provider requires a keystore in the classpath or in the filesystem with either a
+<p>auth提供者需要在类路径或文件系统上加载一个keystore文件，keystore文件要么有一个
 <code><a href="https://docs.oracle.com/javase/8/docs/api/javax/crypto/Mac.html">javax.crypto.Mac</a></code>
-or a <code><a href="https://docs.oracle.com/javase/8/docs/api/java/security/Signature.html">java.security.Signature</a></code> in order to
-sign and verify the generated tokens.</p>
+要么有一个 <code><a href="https://docs.oracle.com/javase/8/docs/api/java/security/Signature.html">java.security.Signature</a></code> 用于签名和验证生成的令牌。</p>
 </div>
 <div class="paragraph">
-<p>The implementation will, by default, look for the following aliases, however not all are required to be present. As
-a good practice <code>HS256</code> should be present:</p>
+<p>默认的情况下，实践将会查找这些别名，然而并不是所有的算法都需要存在。作为一个好的实践 <code>HS256</code> 应该存在：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -537,14 +593,12 @@ a good practice <code>HS256</code> should be present:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When no keystore is provided the implementation falls back in unsecure mode and signatures will not be verified, this
-is useful for the cases where the payload if signed and or encrypted by external means.</p>
+<p>当keystore没有被提供，执行将会回滚到一个不安全的模式同时签名并不会被验证，如果payload被外部的方法签名或加密后的情况下这是非常有用的。</p>
 </div>
 <div class="sect4">
-<h5 id="_generate_a_new_keystore_file">Generate a new Keystore file</h5>
+<h5 id="_生成一个新的keystore文件">生成一个新的Keystore文件</h5>
 <div class="paragraph">
-<p>The only required tool to generate a keystore file is <code>keytool</code>, you can now specify which algorithms you need by
-running:</p>
+<p>生成keystore文件唯一需要的工具是 <code>keytool</code> ，运行的时候，你可以指定你需要使用的算法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -803,14 +857,13 @@ fields <code>audience</code>, <code>issuer</code> and <code>subject</code> are t
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:12 CST
+                上次更新时间 2018-09-07 11:01:38 CST
               
               
             </div>

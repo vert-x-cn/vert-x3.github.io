@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -104,14 +160,14 @@
           <ul class="sectlevel1">
 <li><a href="#_the_oauth2_auth_provider">The OAuth2 auth provider</a>
 <ul class="sectlevel2">
-<li><a href="#_authorization_code_flow">Authorization Code Flow</a></li>
-<li><a href="#_password_credentials_flow">Password Credentials Flow</a></li>
-<li><a href="#_client_credentials_flow">Client Credentials Flow</a></li>
+<li><a href="#_授权码_authorization_code_flow">授权码——Authorization Code Flow</a></li>
+<li><a href="#_密码证书_password_credentials_flow">密码证书——Password Credentials Flow</a></li>
+<li><a href="#_客户端证书_client_credentials_flow">客户端证书——Client Credentials Flow</a></li>
 <li><a href="#_extensions">Extensions</a></li>
-<li><a href="#_getting_started">Getting Started</a></li>
+<li><a href="#_初探">初探</a></li>
 <li><a href="#_openid_connect_discovery">OpenID Connect Discovery</a></li>
-<li><a href="#_accesstoken_object">AccessToken object</a></li>
-<li><a href="#_example_configuration_for_common_oauth2_providers">Example configuration for common OAuth2 providers</a></li>
+<li><a href="#_访问令牌对象">访问令牌对象</a></li>
+<li><a href="#_其他通用oauth2的provider配置示例">其他通用OAuth2的Provider配置示例</a></li>
 <li><a href="#_token_introspection">Token Introspection</a></li>
 <li><a href="#_verifying_jwt_tokens">Verifying JWT tokens</a></li>
 </ul>
@@ -140,14 +196,14 @@
           <ul class="sectlevel1">
 <li><a href="#_the_oauth2_auth_provider">The OAuth2 auth provider</a>
 <ul class="sectlevel2">
-<li><a href="#_authorization_code_flow">Authorization Code Flow</a></li>
-<li><a href="#_password_credentials_flow">Password Credentials Flow</a></li>
-<li><a href="#_client_credentials_flow">Client Credentials Flow</a></li>
+<li><a href="#_授权码_authorization_code_flow">授权码——Authorization Code Flow</a></li>
+<li><a href="#_密码证书_password_credentials_flow">密码证书——Password Credentials Flow</a></li>
+<li><a href="#_客户端证书_client_credentials_flow">客户端证书——Client Credentials Flow</a></li>
 <li><a href="#_extensions">Extensions</a></li>
-<li><a href="#_getting_started">Getting Started</a></li>
+<li><a href="#_初探">初探</a></li>
 <li><a href="#_openid_connect_discovery">OpenID Connect Discovery</a></li>
-<li><a href="#_accesstoken_object">AccessToken object</a></li>
-<li><a href="#_example_configuration_for_common_oauth2_providers">Example configuration for common OAuth2 providers</a></li>
+<li><a href="#_访问令牌对象">访问令牌对象</a></li>
+<li><a href="#_其他通用oauth2的provider配置示例">其他通用OAuth2的Provider配置示例</a></li>
 <li><a href="#_token_introspection">Token Introspection</a></li>
 <li><a href="#_verifying_jwt_tokens">Verifying JWT tokens</a></li>
 </ul>
@@ -169,17 +225,25 @@
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-auth-oauth2-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_the_oauth2_auth_provider">The OAuth2 auth provider</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This component contains an out of the box OAuth2 (and to some extent OpenID Connect) relying party implementation.
-To use this project, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>Vert.X的这个组件包含了标准的OAuth2的实现。若要在自己的项目中使用它，则需要在构建描述信息的_dependencies_节点中添加如下信息：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -195,7 +259,7 @@ To use this project, add the following dependency to the <em>dependencies</em> s
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -205,22 +269,21 @@ To use this project, add the following dependency to the <em>dependencies</em> s
 </div>
 </div>
 <div class="paragraph">
-<p>OAuth2 lets users grant the access to the desired resources to third party applications, giving them the possibility
-to enable and disable those accesses whenever they want.</p>
+<p>如果用户以第三方应用的方式访问想要的资源，OAuth2可以对这些用户进行授权，任何时候可以根据用户想要都有可能启用或禁用它的访问权限。</p>
 </div>
 <div class="paragraph">
-<p>Vert.x OAuth2 supports the following flows.</p>
+<p>Vert.X中的OAuth2支持下边三种流程：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Authorization Code Flow (for apps with servers that can store persistent information).</p>
+<p>授权码流程（对服务器和App可持久化存储信息）</p>
 </li>
 <li>
-<p>Password Credentials Flow (when previous flow can&#8217;t be used or during development).</p>
+<p>密码证书流程（之前的流程无法使用或开发阶段使用）</p>
 </li>
 <li>
-<p>Client Credentials Flow (the client can request an access token using only its client credentials)</p>
+<p>客户端证书流程（客户端可仅仅可凭借客户端整数申请访问令牌【Access Token】）</p>
 </li>
 </ul>
 </div>
@@ -229,47 +292,41 @@ to enable and disable those accesses whenever they want.</p>
 as specified in <a href="http://openid.net/specs/openid-connect-discovery-1_0.html" class="bare">http://openid.net/specs/openid-connect-discovery-1_0.html</a> .</p>
 </div>
 <div class="sect2">
-<h3 id="_authorization_code_flow">Authorization Code Flow</h3>
+<h3 id="_授权码_authorization_code_flow">授权码——Authorization Code Flow</h3>
 <div class="paragraph">
-<p>The authorization code grant type is used to obtain both access tokens and refresh tokens and is optimized for
-confidential clients. As a redirection-based flow, the client must be capable of interacting with the resource
-owner&#8217;s user-agent (typically a web browser) and capable of receiving incoming requests (via redirection) from the
-authorization server.</p>
+<p>授权码授权类型可以用来获取访问令牌（Access Token）和刷新令牌（Refresh Token），
+对安全性要求高的客户端（Confidential Client）是很不错的（Optimized）一种方式。
+作为一个基于重定向的流程，客户端必须能和资源拥有者的用户代理交互（通常是浏览器），
+同时要能接受从授权服务器（Authorization Server）通过重定向发送过来的请求。</p>
 </div>
 <div class="paragraph">
-<p>For more details see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.1">Oauth2 specification, section 4.1</a>.</p>
+<p>更多信息请参考 <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.1">Oauth2 specification, section 4.1</a> 。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_password_credentials_flow">Password Credentials Flow</h3>
+<h3 id="_密码证书_password_credentials_flow">密码证书——Password Credentials Flow</h3>
 <div class="paragraph">
-<p>The resource owner password credentials grant type is suitable in cases where the resource owner has a trust
-relationship with the client, such as the device operating system or a highly privileged application. The
-authorization server should take special care when enabling this grant type, and only allow it when other flows are
-not viable.</p>
+<p>资源拥有者密码证书授权类型比较适合于这样一种情况：当资源拥有者和客户端之间有可信任的关系时使用，
+如设备操作系统、或高特权应用。授权服务器应该在很特殊的情况时启用这种授权类型，并且仅仅当其他应用都不可见时允许使用这种类型。</p>
 </div>
 <div class="paragraph">
-<p>The grant type is suitable for clients capable of obtaining the resource owner&#8217;s credentials (username and password,
-typically using an interactive form).  It is also used to migrate existing clients using direct authentication
-schemes such as HTTP Basic or Digest authentication to OAuth by converting the stored credentials to an access token.</p>
+<p>这种类型对于客户端要获取资源拥有者证书（用户名和密码，通常使用交互式表单）是合适的。
+它用于从已经存在的直接使用认证模式的如Basic或Digest的客户端向OAuth2认证方式迁移的时候，它会将证书直接转换成OAuth2中的访问令牌。</p>
 </div>
 <div class="paragraph">
-<p>For more details see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.3">Oauth2 specification, section 4.3</a>.</p>
+<p>更多信息请参考 <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.3">Oauth2 specification, section 4.3</a> 。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_client_credentials_flow">Client Credentials Flow</h3>
+<h3 id="_客户端证书_client_credentials_flow">客户端证书——Client Credentials Flow</h3>
 <div class="paragraph">
-<p>The client can request an access token using only its client credentials (or other supported means of authentication)
-when the client is requesting access to the protected resources under its control, or those of another resource owner
-that have been previously arranged with the authorization server (the method of which is beyond the scope of this
-specification).</p>
+<p>当客户端想要申请访问控制之下受保护的资源时，或者其他资源拥有者先前被授权服务器托管时（这种方式超出了本文范畴），客户端仅仅可以使用客户端证书（或者其他表示认证含义的信息）申请访问令牌。</p>
 </div>
 <div class="paragraph">
-<p>The client credentials grant type MUST only be used by confidential clients.</p>
+<p>客户端证书类型必须用于且仅用于机密客户端。</p>
 </div>
 <div class="paragraph">
-<p>For more details see <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.4">Oauth2 specification, section 4.4</a>.</p>
+<p>更多信息请参考 <a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-31#section-4.4">Oauth2 specification, section 4.4</a> 。</p>
 </div>
 </div>
 <div class="sect2">
@@ -279,9 +336,9 @@ specification).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_started">Getting Started</h3>
+<h3 id="_初探">初探</h3>
 <div class="paragraph">
-<p>An example on how to use this provider and authenticate with GitHub can be implemented as:</p>
+<p>下边是基于GitHub中使用Vert.X的OAuth2 Provider的认证示例实现代码：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -318,12 +375,11 @@ oauth2.authenticate(new JsonObject().put("code", code).put("redirect_uri", "http
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authorization_code_flow_2">Authorization Code flow</h4>
+<h4 id="_授权码流程">授权码流程</h4>
 <div class="paragraph">
-<p>The Authorization Code flow is made up from two parts. At first your application asks to the user the permission to
-access their data. If the user approves the OAuth2 server sends to the client an authorization code. In the second
-part, the client POST the authorization code along with its client secret to the authority server in order to get the
-access token.</p>
+<p>授权码流程主要包含两部分内容：
+第一步，你的应用客户端向用户申请允许访问它们的数据，如果用户审批后，OAuth2服务器发送给客户端一个授权码；
+第二步，客户端将这个授权码和客户端密钥放到POST请求中发送给授权服务器（Authority Server）得到访问令牌；</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -365,11 +421,10 @@ oauth2.authenticate(tokenConfig, res -&gt; {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_password_credentials_flow_2">Password Credentials Flow</h4>
+<h4 id="_密码证书流程">密码证书流程</h4>
 <div class="paragraph">
-<p>This flow is suitable when the resource owner has a trust relationship with the client, such as its computer
-operating system or a highly privileged application. Use this flow only when other flows are not viable or when you
-need a fast way to test your application.</p>
+<p>资源拥有者密码证书授权类型比较适合于这样一种情况：当资源拥有者和客户端之间有可信任的关系时使用，
+如设备操作系统、或高特权应用。授权服务器应该在很特殊的情况时启用这种授权类型，并且仅仅当其他应用都不可见时允许使用这种类型。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -397,9 +452,9 @@ oauth2.authenticate(tokenConfig, res -&gt; {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_client_credentials_flow_2">Client Credentials Flow</h4>
+<h4 id="_客户端证书流程">客户端证书流程</h4>
 <div class="paragraph">
-<p>This flow is suitable when client is requesting access to the protected resources under its control.</p>
+<p>这种类型对于客户端要获取资源拥有者证书是合适的。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -495,10 +550,9 @@ auth module into a single line of code, for example, consider setting up your au
 </div>
 </div>
 <div class="sect2">
-<h3 id="_accesstoken_object">AccessToken object</h3>
+<h3 id="_访问令牌对象">访问令牌对象</h3>
 <div class="paragraph">
-<p>When a token expires we need to refresh it. OAuth2 offers the AccessToken class that add a couple of useful methods
-to refresh the access token when it is expired.</p>
+<p>当一个令牌过期后你需要刷新令牌，OAuth2提供了访问令牌类AccessToken，它包含了很多实用的方法可以在令牌过期过后对令牌进行刷新。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -515,7 +569,7 @@ to refresh the access token when it is expired.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you&#8217;ve done with the token or you want to log out, you can revoke the access token and refresh token.</p>
+<p>当你使用令牌访问完成过后想要注销，你可以撤销（Revoke）访问令牌和刷新令牌。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -529,7 +583,7 @@ to refresh the access token when it is expired.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example_configuration_for_common_oauth2_providers">Example configuration for common OAuth2 providers</h3>
+<h3 id="_其他通用oauth2的provider配置示例">其他通用OAuth2的Provider配置示例</h3>
 <div class="paragraph">
 <p>For convenience there are several helpers to assist your with your configuration. Currently we provide:</p>
 </div>
@@ -978,14 +1032,13 @@ user this is as simple as:</p>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:12 CST
+                上次更新时间 2018-09-07 11:01:45 CST
               
               
             </div>

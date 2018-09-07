@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Using the asynchronous SQL client</h2><p class=blog-post-meta>19th October 2015 by <a href=http://github.com/cescoffier>cescoffier</a></p><article><p>Finally, back… This post is the fifth post of the introduction to vert.x blog series, after a not-that-small break. In this post we are going to see how we can use JDBC in a vert.x application, and this, using the asynchronous API provided by the <a href="http://vertx.io/docs/vertx-jdbc-client/java/">vertx-jdbc-client</a>.</p><h2 id=previously-in-the-introduction-to-vert-x-series>Previously in the introduction to vert.x series</h2><p>As it was quite some time since the last post, let’s start by refreshing our mind about the four previous posts:</p><ol><li>The <a href="https://vertx.tk/blog/my-first-vert-x-3-application/">first post</a> has described how to build a vert.x application with Maven and execute unit tests.</li><li>The <a href="https://vertx.tk/blog/vert-x-application-configuration/">second post</a> has described how this application can become configurable.</li><li>The <a href="https://vertx.tk/blog/some-rest-with-vert-x/">third post</a> has introduced <a href="http://vertx.io/docs/vertx-web/java/">vertx-web</a>, and a small collection management application has been developed. This application offers a REST API used by a HTML/JavaScript frontend.</li><li>The <a href="https://vertx.tk/blog/unit-and-integration-tests/">previous post</a> has presented how you can run integration tests to ensure the behavior of your application.</li></ol><p>In this post, back to code. The current application uses an in-memory map to store the products. It’s time to use a database. In this post we are going to use <a href="http://hsqldb.org/">HSQL</a>, but you can use any database providing a JDBC driver. Interactions with the database will be asynchronous and made using the <a href="http://vertx.io/docs/vertx-jdbc-client/java/">vertx-jdbc-client</a>.</p><p>The code of this post are available on this Github <a href=https://github.com/cescoffier/my-vertx-first-app>project</a>, in the <a href=https://github.com/cescoffier/my-vertx-first-app/tree/post-5>post-5 branch</a> branch.</p><h2 id=asynchronous->Asynchronous?</h2><p>One of the vert.x characteristics is being asynchronous. With an asynchronous API, you don’t wait for a result, but you are notified when this result is ready. Just to illustrate this, let’s take a very simple example.</p><p>Let’s imagine an <code>add</code> method. Traditionally, you would use it like this: <code>int r = add(1, 1)</code>. This is a synchronous API as you are waiting for the result. An asynchronous version of this API would be: <code>add(1, 1, r -&gt; { /* do something with the result */ })</code>. In this version, you pass a <code>Handler</code> called when the result has been computed. The method does not return anything, and could be implemented as:</p><pre><code class=hljs><span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-keyword>void</span> <span class=hljs-title>add</span><span class=hljs-params>(<span class=hljs-keyword>int</span> a, <span class=hljs-keyword>int</span> b, Handler&lt;Integer&gt; resultHandler)</span> </span>{
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Using the asynchronous SQL client</h2><p class=blog-post-meta>19th October 2015 by <a href=http://github.com/cescoffier>cescoffier</a></p><article><p>Finally, back… This post is the fifth post of the introduction to vert.x blog series, after a not-that-small break. In this post we are going to see how we can use JDBC in a vert.x application, and this, using the asynchronous API provided by the <a href="http://vertx.io/docs/vertx-jdbc-client/java/">vertx-jdbc-client</a>.</p><h2 id=previously-in-the-introduction-to-vert-x-series>Previously in the introduction to vert.x series</h2><p>As it was quite some time since the last post, let’s start by refreshing our mind about the four previous posts:</p><ol><li>The <a href="https://vertx.tk/blog/my-first-vert-x-3-application/">first post</a> has described how to build a vert.x application with Maven and execute unit tests.</li><li>The <a href="https://vertx.tk/blog/vert-x-application-configuration/">second post</a> has described how this application can become configurable.</li><li>The <a href="https://vertx.tk/blog/some-rest-with-vert-x/">third post</a> has introduced <a href="http://vertx.io/docs/vertx-web/java/">vertx-web</a>, and a small collection management application has been developed. This application offers a REST API used by a HTML/JavaScript frontend.</li><li>The <a href="https://vertx.tk/blog/unit-and-integration-tests/">previous post</a> has presented how you can run integration tests to ensure the behavior of your application.</li></ol><p>In this post, back to code. The current application uses an in-memory map to store the products. It’s time to use a database. In this post we are going to use <a href="http://hsqldb.org/">HSQL</a>, but you can use any database providing a JDBC driver. Interactions with the database will be asynchronous and made using the <a href="http://vertx.io/docs/vertx-jdbc-client/java/">vertx-jdbc-client</a>.</p><p>The code of this post are available on this Github <a href=https://github.com/cescoffier/my-vertx-first-app>project</a>, in the <a href=https://github.com/cescoffier/my-vertx-first-app/tree/post-5>post-5 branch</a> branch.</p><h2 id=asynchronous->Asynchronous?</h2><p>One of the vert.x characteristics is being asynchronous. With an asynchronous API, you don’t wait for a result, but you are notified when this result is ready. Just to illustrate this, let’s take a very simple example.</p><p>Let’s imagine an <code>add</code> method. Traditionally, you would use it like this: <code>int r = add(1, 1)</code>. This is a synchronous API as you are waiting for the result. An asynchronous version of this API would be: <code>add(1, 1, r -&gt; { /* do something with the result */ })</code>. In this version, you pass a <code>Handler</code> called when the result has been computed. The method does not return anything, and could be implemented as:</p><pre><code class=hljs><span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-keyword>void</span> <span class=hljs-title>add</span><span class=hljs-params>(<span class=hljs-keyword>int</span> a, <span class=hljs-keyword>int</span> b, Handler&lt;Integer&gt; resultHandler)</span> </span>{
     <span class=hljs-keyword>int</span> r = a + b;
     resultHandler.handle(r);
 }</code></pre><p>Just to avoid misconceptions, asynchronous API are not about threads. As we can see in the <code>add</code> example, there are no threads involved.</p><h2 id=jdbc-yes-but-asynchronous>JDBC yes, but asynchronous</h2><p>So, now that we have seen some basics about asynchronous API, let’s have a look to the vertx-jdbc-client. This component lets us interact with a database through a JDBC driver. These interactions are asynchronous, so when you were doing:</p><pre><code class=hljs><span class=hljs-built_in>String</span> sql <span class=hljs-subst>=</span> <span class=hljs-string>"SELECT * FROM Products"</span>;

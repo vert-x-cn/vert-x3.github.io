@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,25 +158,26 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_the_vert_x_kafka_client">Using the Vert.x Kafka client</a></li>
-<li><a href="#_creating_kafka_clients">Creating Kafka clients</a></li>
-<li><a href="#_receiving_messages_from_a_topic_joining_a_consumer_group">Receiving messages from a topic joining a consumer group</a></li>
-<li><a href="#_receiving_messages_from_a_topic_requesting_specific_partitions">Receiving messages from a topic requesting specific partitions</a></li>
+<li><a href="#_使用_vert_x_kafka_client">使用 Vert.x Kafka Client</a></li>
+<li><a href="#_创建_kafka_client">创建 Kafka Client</a></li>
+<li><a href="#_消费感兴趣_topic_的消息并加入消费组">消费感兴趣 Topic 的消息并加入消费组</a></li>
+<li><a href="#_从_topic_的特定分区里接收消息">从 Topic 的特定分区里接收消息</a></li>
 <li><a href="#_receiving_messages_with_explicit_polling">Receiving messages with explicit polling</a></li>
 <li><a href="#_changing_the_subscription_or_assignment">Changing the subscription or assignment</a></li>
-<li><a href="#_getting_topic_partition_information">Getting topic partition information</a></li>
-<li><a href="#_manual_offset_commit">Manual offset commit</a></li>
-<li><a href="#_seeking_in_a_topic_partition">Seeking in a topic partition</a></li>
-<li><a href="#_offset_lookup">Offset lookup</a></li>
-<li><a href="#_message_flow_control">Message flow control</a></li>
-<li><a href="#_closing_a_consumer">Closing a consumer</a></li>
-<li><a href="#_sending_messages_to_a_topic">Sending messages to a topic</a></li>
-<li><a href="#_sharing_a_producer">Sharing a producer</a></li>
-<li><a href="#_closing_a_producer">Closing a producer</a></li>
-<li><a href="#_getting_topic_partition_information_2">Getting topic partition information</a></li>
-<li><a href="#_handling_errors">Handling errors</a></li>
-<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
-<li><a href="#_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</a></li>
+<li><a href="#_获取_topic_以及分区信息">获取 Topic 以及分区信息</a></li>
+<li><a href="#_手动提交偏移量">手动提交偏移量</a></li>
+<li><a href="#_分区偏移量定位">分区偏移量定位</a></li>
+<li><a href="#_偏移量查询">偏移量查询</a></li>
+<li><a href="#_流量控制">流量控制</a></li>
+<li><a href="#_关闭_consumer">关闭 Consumer</a></li>
+<li><a href="#_发送消息到某个_topic">发送消息到某个 Topic</a></li>
+<li><a href="#_共享_producer">共享 Producer</a></li>
+<li><a href="#_关闭_producer">关闭 Producer</a></li>
+<li><a href="#_获取_topic_partition_的相关信息">获取 Topic Partition 的相关信息</a></li>
+<li><a href="#_错误处理">错误处理</a></li>
+<li><a href="#_随_verticle_自动关闭">随 Verticle 自动关闭</a></li>
+<li><a href="#_使用_vert_x_自带的序列化与反序列化机制">使用 Vert.x 自带的序列化与反序列化机制</a></li>
+<li><a href="#_rxjava_api">RxJava API</a></li>
 <li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
 <ul class="sectlevel1">
 <li><a href="#_using_the_adminutils">Using the AdminUtils</a>
@@ -140,25 +197,26 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_the_vert_x_kafka_client">Using the Vert.x Kafka client</a></li>
-<li><a href="#_creating_kafka_clients">Creating Kafka clients</a></li>
-<li><a href="#_receiving_messages_from_a_topic_joining_a_consumer_group">Receiving messages from a topic joining a consumer group</a></li>
-<li><a href="#_receiving_messages_from_a_topic_requesting_specific_partitions">Receiving messages from a topic requesting specific partitions</a></li>
+<li><a href="#_使用_vert_x_kafka_client">使用 Vert.x Kafka Client</a></li>
+<li><a href="#_创建_kafka_client">创建 Kafka Client</a></li>
+<li><a href="#_消费感兴趣_topic_的消息并加入消费组">消费感兴趣 Topic 的消息并加入消费组</a></li>
+<li><a href="#_从_topic_的特定分区里接收消息">从 Topic 的特定分区里接收消息</a></li>
 <li><a href="#_receiving_messages_with_explicit_polling">Receiving messages with explicit polling</a></li>
 <li><a href="#_changing_the_subscription_or_assignment">Changing the subscription or assignment</a></li>
-<li><a href="#_getting_topic_partition_information">Getting topic partition information</a></li>
-<li><a href="#_manual_offset_commit">Manual offset commit</a></li>
-<li><a href="#_seeking_in_a_topic_partition">Seeking in a topic partition</a></li>
-<li><a href="#_offset_lookup">Offset lookup</a></li>
-<li><a href="#_message_flow_control">Message flow control</a></li>
-<li><a href="#_closing_a_consumer">Closing a consumer</a></li>
-<li><a href="#_sending_messages_to_a_topic">Sending messages to a topic</a></li>
-<li><a href="#_sharing_a_producer">Sharing a producer</a></li>
-<li><a href="#_closing_a_producer">Closing a producer</a></li>
-<li><a href="#_getting_topic_partition_information_2">Getting topic partition information</a></li>
-<li><a href="#_handling_errors">Handling errors</a></li>
-<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
-<li><a href="#_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</a></li>
+<li><a href="#_获取_topic_以及分区信息">获取 Topic 以及分区信息</a></li>
+<li><a href="#_手动提交偏移量">手动提交偏移量</a></li>
+<li><a href="#_分区偏移量定位">分区偏移量定位</a></li>
+<li><a href="#_偏移量查询">偏移量查询</a></li>
+<li><a href="#_流量控制">流量控制</a></li>
+<li><a href="#_关闭_consumer">关闭 Consumer</a></li>
+<li><a href="#_发送消息到某个_topic">发送消息到某个 Topic</a></li>
+<li><a href="#_共享_producer">共享 Producer</a></li>
+<li><a href="#_关闭_producer">关闭 Producer</a></li>
+<li><a href="#_获取_topic_partition_的相关信息">获取 Topic Partition 的相关信息</a></li>
+<li><a href="#_错误处理">错误处理</a></li>
+<li><a href="#_随_verticle_自动关闭">随 Verticle 自动关闭</a></li>
+<li><a href="#_使用_vert_x_自带的序列化与反序列化机制">使用 Vert.x 自带的序列化与反序列化机制</a></li>
+<li><a href="#_rxjava_api">RxJava API</a></li>
 <li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
 <ul class="sectlevel1">
 <li><a href="#_using_the_adminutils">Using the AdminUtils</a>
@@ -173,17 +231,26 @@
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-kafka-client-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This component provides a Kafka client for reading and sending messages from/to an <a href="https://kafka.apache.org/">Apache Kafka</a> cluster.</p>
+<p>此组件提供了 Kafka Client 的集成，可以以 Vert.x 的方式从 <a href="https://kafka.apache.org/">Apache Kafka</a> 集群上消费或者发送消息。</p>
 </div>
 <div class="paragraph">
-<p>As consumer, the API provides methods for subscribing to a topic partition receiving
-messages asynchronously or reading them as a stream (even with the possibility to pause/resume the stream).</p>
+<p>对于消费者(consumer)，API以异步的方式订阅消费指定的 topic 以及相关的分区(partition)，
+或者将消息以 Vert.x Stream 的方式读取（甚至可以支持暂停(pause)和恢复(resume)操作）。</p>
 </div>
 <div class="paragraph">
-<p>As producer, the API provides methods for sending message to a topic partition like writing on a stream.</p>
+<p>对于生产者(producer)，API提供发送信息到指定 topic 以及相关的分区(partition)的方法，类似于向 Vert.x Stream 中写入数据。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -192,7 +259,7 @@ messages asynchronously or reading them as a stream (even with the possibility t
 <div class="title">Warning</div>
 </td>
 <td class="content">
-this module has the tech preview status, this means the API can change between versions.
+此组件处于技术预览阶段，因此在之后版本中API可能还会发生一些变更。
 </td>
 </tr>
 </table>
@@ -200,15 +267,15 @@ this module has the tech preview status, this means the API can change between v
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_vert_x_kafka_client">Using the Vert.x Kafka client</h2>
+<h2 id="_使用_vert_x_kafka_client">使用 Vert.x Kafka Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use this component, add the following dependency to the dependencies section of your build descriptor:</p>
+<p>要使用 Vert.x Kafka Client 组件，需要添加以下依赖：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -224,7 +291,7 @@ this module has the tech preview status, this means the API can change between v
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -236,20 +303,20 @@ this module has the tech preview status, this means the API can change between v
 </div>
 </div>
 <div class="sect1">
-<h2 id="_creating_kafka_clients">Creating Kafka clients</h2>
+<h2 id="_创建_kafka_client">创建 Kafka Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Creating consumers and producers is quite similar and on how it works using the native Kafka client library.</p>
+<p>创建 Consumer 和 Producer 以及使用它们的方法其实与原生的 Kafka Client 库非常相似，Vert.x 只是做了一层异步封装。</p>
 </div>
 <div class="paragraph">
-<p>They need to be configured with a bunch of properties as described in the official
-Apache Kafka documentation, for the <a href="https://kafka.apache.org/documentation/#newconsumerconfigs">consumer</a> and
-for the <a href="https://kafka.apache.org/documentation/#producerconfigs">producer</a>.</p>
+<p>我们需要对 Consumer 与 Producer 进行一些相关的配置，具体可以参考 Apache Kafka 的官方文档：
+<a href="https://kafka.apache.org/documentation/#newconsumerconfigs">consumer</a> 和
+<a href="https://kafka.apache.org/documentation/#producerconfigs">producer</a>.</p>
 </div>
 <div class="paragraph">
-<p>To achieve that, a map can be configured with such properties passing it to one of the
-static creation methods exposed by <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> and
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html">KafkaProducer</a></code></p>
+<p>我们可以通过一个 Map 来包装这些配置，然后将其传入到
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 接口或
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html">KafkaProducer</a></code> 接口中的 <code>create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -267,12 +334,10 @@ var consumer = KafkaConsumer.create(vertx, config)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the above example, a <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> instance is created using
-a map instance in order to specify the Kafka nodes list to connect (just one) and
-the deserializers to use for getting key and value from each received message.</p>
+<p>在上面的例子中，我们在创建 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 实例时传入了一个 Map 实例，用于指定要连接的 Kafka 节点列表（只有一个）以及如何对接收到的消息进行解析以得到 key 与 value。</p>
 </div>
 <div class="paragraph">
-<p>Likewise a producer can be created</p>
+<p>我们可以用类似的方法来创建 Producer：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -290,16 +355,15 @@ var producer = KafkaProducer.create(vertx, config)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_receiving_messages_from_a_topic_joining_a_consumer_group">Receiving messages from a topic joining a consumer group</h2>
+<h2 id="_消费感兴趣_topic_的消息并加入消费组">消费感兴趣 Topic 的消息并加入消费组</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to start receiving messages from Kafka topics, the consumer can use the
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#subscribe(java.util.Set)">subscribe</a></code> method for
-subscribing to a set of topics being part of a consumer group (specified by the properties on creation).</p>
+<p>我们可以通过 <code>KafkaConsumer</code> 的
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#subscribe(java.util.Set)">subscribe</a></code> 方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
 </div>
 <div class="paragraph">
-<p>You also need to register a handler for handling incoming messages using the
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#handler(io.vertx.core.Handler)">handler</a></code>.</p>
+<p>当然你需要通过
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#handler(io.vertx.core.Handler)">handler</a></code> 方法注册一个 <code>Handler</code> 来处理接收的消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -325,8 +389,7 @@ methods have been called. This allows you to call <code>subscribe()</code>, then
 order to only consume messages starting from a particular offset, for example.</p>
 </div>
 <div class="paragraph">
-<p>A handler can also be passed during subscription to be aware of the subscription result and being notified when the operation
-is completed.</p>
+<p>另外如果想知道消息是否成功被消费掉，可以在调用 <code>subscribe</code> 方法时绑定一个 <code>Handler</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -361,18 +424,16 @@ consumer.subscribeFuture("a-single-topic").onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>Using the consumer group way, the Kafka cluster assigns partitions to the consumer taking into account other connected
-consumers in the same consumer group, so that partitions can be spread across them.</p>
+<p>由于Kafka的消费者会组成一个消费组(consumer group)，同一个组只有一个消费者可以消费特定的 partition，
+同时此消费组也可以接纳其他的消费者，这样可以实现 partition 分配给组内其它消费者继续去消费。</p>
 </div>
 <div class="paragraph">
-<p>The Kafka cluster handles partitions re-balancing when a consumer leaves the group (so assigned partitions are free
-to be assigned to other consumers) or a new consumer joins the group (so it wants partitions to read from).</p>
+<p>如果组内的一个消费者挂了，kafka 集群会自动把 partition 重新分配给组内其他消费者，或者新加入一个消费者去消费对应的 partition。</p>
 </div>
 <div class="paragraph">
-<p>You can register handlers on a <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> to be notified
-of the partitions revocations and assignments by the Kafka cluster using
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsRevokedHandler(io.vertx.core.Handler)">partitionsRevokedHandler</a></code> and
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler(io.vertx.core.Handler)">partitionsAssignedHandler</a></code>.</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsRevokedHandler(io.vertx.core.Handler)">partitionsRevokedHandler</a></code> 和
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler(io.vertx.core.Handler)">partitionsAssignedHandler</a></code> 方法在
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 里注册一个 <code>Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -410,8 +471,9 @@ consumer.subscribeFuture("test").onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>After joining a consumer group for receiving messages, a consumer can decide to leave the consumer group in order to
-not get messages anymore using <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#unsubscribe()">unsubscribe</a></code></p>
+<p>加入某个 consumer group 的消费者，可以通过
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#unsubscribe()">unsubscribe</a></code>
+方法退出该消费组，从而不再接受到相关消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -422,7 +484,7 @@ consumer.unsubscribe()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can add an handler to be notified of the result</p>
+<p>当然你也可以在 <code>unsubscribe</code> 方法中传入一个 <code>Handler</code> 用于监听执行结果状态：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -440,16 +502,14 @@ consumer.unsubscribeFuture().onComplete{
 </div>
 </div>
 <div class="sect1">
-<h2 id="_receiving_messages_from_a_topic_requesting_specific_partitions">Receiving messages from a topic requesting specific partitions</h2>
+<h2 id="_从_topic_的特定分区里接收消息">从 Topic 的特定分区里接收消息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Besides being part of a consumer group for receiving messages from a topic, a consumer can ask for a specific
-topic partition. When the consumer is not part part of a consumer group the overall application cannot
-rely on the re-balancing feature.</p>
+<p>消费组内的消费者可以消费某个 topic 指定的 partition。如果某个消费者并不属于任何消费组，那么整个程序就不能依赖 Kafka 的 re-balancing 机制去消费消息。</p>
 </div>
 <div class="paragraph">
-<p>You can use <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assign(java.util.Set,%20io.vertx.core.Handler)">assign</a></code>
-in order to ask for specific partitions.</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assign(java.util.Set,%20io.vertx.core.Handler)">assign</a></code>
+方法请求分配指定的分区：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -493,8 +553,7 @@ messages won&#8217;t be consumed until both methods have been called. This allow
 order to only consume messages starting from a particular offset, for example.</p>
 </div>
 <div class="paragraph">
-<p>Calling <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assignment(io.vertx.core.Handler)">assignment</a></code> provides
-the list of the current assigned partitions.</p>
+<p>上面的 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assignment(io.vertx.core.Handler)">assignment</a></code> 方法可以列出当前分配的 topic partition。</p>
 </div>
 </div>
 </div>
@@ -559,11 +618,10 @@ Once the completion handler has been called it will only observe messages read f
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_topic_partition_information">Getting topic partition information</h2>
+<h2 id="_获取_topic_以及分区信息">获取 Topic 以及分区信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can call the <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsFor(java.lang.String,%20io.vertx.core.Handler)">partitionsFor</a></code> to get information about
-partitions for a specified topic</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsFor(java.lang.String,%20io.vertx.core.Handler)">partitionsFor</a></code> 方法获取指定 topic 的 partition 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -581,8 +639,7 @@ consumer.partitionsForFuture("test").onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>In addition <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#listTopics(io.vertx.core.Handler)">listTopics</a></code> provides all available topics
-with related partitions</p>
+<p>另外， <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#listTopics(io.vertx.core.Handler)">listTopics</a></code> 方法可以列出消费者下的所有 topic 以及对应的 partition 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -604,20 +661,17 @@ consumer.listTopicsFuture().onComplete{
 </div>
 </div>
 <div class="sect1">
-<h2 id="_manual_offset_commit">Manual offset commit</h2>
+<h2 id="_手动提交偏移量">手动提交偏移量</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Apache Kafka the consumer is in charge to handle the offset of the last read message.</p>
+<p>在 Apache Kafka 中，消费者负责处理最新读取消息的偏移量（offset）。</p>
 </div>
 <div class="paragraph">
-<p>This is executed by the commit operation executed automatically every time a bunch of messages are read
-from a topic partition. The configuration parameter <code>enable.auto.commit</code> must be set to <code>true</code> when the
-consumer is created.</p>
+<p>Consumer 会在每次从某个 topic partition 中读取一批消息的时候自动执行提交偏移量的操作。需要在创建 <code>KafkaConsumer</code> 时将 <code>enable.auto.commit</code> 配置项设为 <code>true</code> 来开启自动提交。</p>
 </div>
 <div class="paragraph">
-<p>Manual offset commit, can be achieved with <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#commit(io.vertx.core.Handler)">commit</a></code>.
-It can be used to achieve <em>at least once</em> delivery to be sure that the read messages are processed before committing
-the offset.</p>
+<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#commit(io.vertx.core.Handler)">commit</a></code>
+方法进行手动提交。手动提交偏移量通常用于确保消息分发的 <strong>at least once</strong> 语义，以确保消息没有被消费前不会执行提交。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -635,15 +689,14 @@ consumer.commitFuture().onComplete{
 </div>
 </div>
 <div class="sect1">
-<h2 id="_seeking_in_a_topic_partition">Seeking in a topic partition</h2>
+<h2 id="_分区偏移量定位">分区偏移量定位</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Apache Kafka can retain messages for a long period of time and the consumer can seek inside a topic partition
-and obtain arbitrary access to the messages.</p>
+<p>Apache Kafka 中的消息是按顺序持久化在磁盘上的，所以消费者可以在某个 partition 内部进行偏移量定位(seek)操作，
+并从任意指定的 topic 以及 partition 位置开始消费消息。</p>
 </div>
 <div class="paragraph">
-<p>You can use <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seek(io.vertx.kafka.client.common.TopicPartition,%20long)">seek</a></code> to change the offset for reading at a specific
-position</p>
+<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seek(io.vertx.kafka.client.common.TopicPartition,%20long)">seek</a></code> 方法来更改读取位置对应的偏移量：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -662,7 +715,7 @@ consumer.seekFuture(topicPartition, 10).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>When the consumer needs to re-read the stream from the beginning, it can use <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning(io.vertx.kafka.client.common.TopicPartition)">seekToBeginning</a></code></p>
+<p>当消费者需要从 Stream 的起始位置读取消息时，可以使用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning(io.vertx.kafka.client.common.TopicPartition)">seekToBeginning</a></code> 方法将 <code>offset</code> 位置设置到 partition 的起始端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -681,7 +734,7 @@ consumer.seekToBeginningFuture(java.util.Collections.singleton(topicPartition)).
 </div>
 </div>
 <div class="paragraph">
-<p>Finally <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd(io.vertx.kafka.client.common.TopicPartition)">seekToEnd</a></code> can be used to come back at the end of the partition</p>
+<p>最后我们也可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd(io.vertx.kafka.client.common.TopicPartition)">seekToEnd</a></code> 方法将 <code>offset</code> 位置设置到 partition 的末端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -708,12 +761,13 @@ handler has been called. This is not the case for messages observed by the batch
 </div>
 </div>
 <div class="sect1">
-<h2 id="_offset_lookup">Offset lookup</h2>
+<h2 id="_偏移量查询">偏移量查询</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can use the beginningOffsets API introduced in Kafka 0.10.1.1 to get the first offset
-for a given partition. In contrast to <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning(io.vertx.kafka.client.common.TopicPartition)">seekToBeginning</a></code>,
-it does not change the consumer&#8217;s offset.</p>
+<p>你可以利用 Kafka 0.10.1.1 引入的新的API <code>beginningOffsets</code> 来获取给定分区的起始偏移量。这个跟上面的
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning(io.vertx.kafka.client.common.TopicPartition)">seekToBeginning</a></code> 方法有一个地方不同：
+beginningOffsets
+方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -746,9 +800,8 @@ consumer.beginningOffsetsFuture(topicPartition).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>You can use the endOffsets API introduced in Kafka 0.10.1.1 to get the last offset
-for a given partition. In contrast to <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd(io.vertx.kafka.client.common.TopicPartition)">seekToEnd</a></code>,
-it does not change the consumer&#8217;s offset.</p>
+<p>与此对应的API还有 <code>endOffsets</code> 方法，用于获取给定分区末端的偏移量值。与 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd(io.vertx.kafka.client.common.TopicPartition)">seekToEnd</a></code> 方法相比，
+<code>endOffsets</code> 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -781,9 +834,7 @@ consumer.endOffsetsFuture(topicPartition).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>You can use the offsetsForTimes API introduced in Kafka 0.10.1.1 to look up an offset by
-timestamp, i.e. search parameter is an epoch timestamp and the call returns the lowest offset
-with ingestion timestamp &gt;= given timestamp.</p>
+<p>Kafka 0.10.1.1 还提供了一个根据时间戳(timestamp)来定位 offset 的API方法 <code>offsetsForTimes</code>，调用此API可以返回大于等于给定时间戳的 offset。因为 Kafka 的 offset 低位就是时间戳，所以 Kafka 很容易定位此类offset。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -793,16 +844,15 @@ with ingestion timestamp &gt;= given timestamp.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_message_flow_control">Message flow control</h2>
+<h2 id="_流量控制">流量控制</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A consumer can control the incoming message flow and pause/resume the read operation from a topic, e.g it
-can pause the message flow when it needs more time to process the actual messages and then resume
-to continue message processing.</p>
+<p>Consumer 可以对消息流进行流量控制。如果我们读到一批消息，需要花点时间进行处理则可以暂时暂停（<code>pause</code>）消息的流入（这里实际上是把消息全部缓存到内存里了）；
+等我们处理了差不多了，可以再继续消费缓存起来的消息（<code>resume</code>）。</p>
 </div>
 <div class="paragraph">
-<p>To achieve that you can use <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#pause()">pause</a></code> and
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#resume()">resume</a></code>.</p>
+<p>我们可以利用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#pause()">pause</a></code> 方法和
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#resume()">resume</a></code> 方法来进行流量控制：</p>
 </div>
 <div class="paragraph">
 <p>In the case of the partition-specific pause and resume it is possible that the record handler will continue to
@@ -847,17 +897,16 @@ consumer.handler((record: io.vertx.scala.kafka.client.consumer.KafkaConsumerReco
 </div>
 </div>
 <div class="sect1">
-<h2 id="_closing_a_consumer">Closing a consumer</h2>
+<h2 id="_关闭_consumer">关闭 Consumer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Call close to close the consumer. Closing the consumer closes any open connections and releases all consumer resources.</p>
+<p>关闭 Consumer 只需要调用 <code>close</code> 方法就可以了，它会自动的关闭与 Kafka 的连接，同时释放相关资源。</p>
 </div>
 <div class="paragraph">
-<p>The close is actually asynchronous and might not complete until some time after the call has returned. If you want to be notified
-when the actual close has completed then you can pass in a handler.</p>
+<p>由于 <code>close</code> 方法是异步的，你并不知道关闭操作什么时候完成或失败，这时你需要注册一个处理器(<code>Handler</code>)来监听关闭完成的消息。</p>
 </div>
 <div class="paragraph">
-<p>This handler will then be called when the close has fully completed.</p>
+<p>当关闭操作彻底完成以后，注册的 <code>Handler</code> 将会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -874,14 +923,14 @@ when the actual close has completed then you can pass in a handler.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sending_messages_to_a_topic">Sending messages to a topic</h2>
+<h2 id="_发送消息到某个_topic">发送消息到某个 Topic</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can use  <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#write(io.vertx.kafka.client.producer.KafkaProducerRecord)">write</a></code> to send messages (records) to a topic.</p>
+<p>您可以利用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#write(io.vertx.kafka.client.producer.KafkaProducerRecord)">write</a></code> 方法来向某个 topic 发送消息(records)。</p>
 </div>
 <div class="paragraph">
-<p>The simplest way to send a message is to specify only the destination topic and the related value, omitting its key
-or partition, in this case the messages are sent in a round robin fashion across all the partitions of the topic.</p>
+<p>最简单的发送消息的方式是仅仅指定目的 topic 以及相应的值而省略消息的 key 以及分区。在这种情况下，
+消息会以轮询(round robin)的方式发送到对应 topic 的所有分区上。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -895,7 +944,8 @@ or partition, in this case the messages are sent in a round robin fashion across
 </div>
 </div>
 <div class="paragraph">
-<p>You can receive message sent metadata like its topic, its destination partition and its assigned offset.</p>
+<p>您可以通过绑定 <code>Handler</code> 来接受发送的结果。这个结果其实就是一些元数据(metadata)，
+包含消息的 topic、目的分区 (destination partition) 以及分配的偏移量 (assigned offset)。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -916,8 +966,7 @@ or partition, in this case the messages are sent in a round robin fashion across
 </div>
 </div>
 <div class="paragraph">
-<p>When you need to assign a partition to a message, you can specify its partition identifier
-or its key</p>
+<p>如果希望将消息发送到指定的分区，你可以指定分区的标识(identifier)或者设定消息的 key：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -931,8 +980,7 @@ or its key</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Since the producers identifies the destination using key hashing, you can use that to guarantee that all
-messages with the same key are sent to the same partition and retain the order.</p>
+<p>因为 Producer 可以使用消息的 key 作为 hash 值来确定 partition，所以我们可以保证所有的消息被发送到同样的 partition 中，并且是有序的。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -955,8 +1003,7 @@ messages with the same key are sent to the same partition and retain the order.<
 <div class="title">Note</div>
 </td>
 <td class="content">
-the shared producer is created on the first <code>createShared</code> call and its configuration is defined at this moment,
-shared producer usage must use the same configuration.
+可共享的 Producer 通过 <code>createShared</code> 方法创建。它可以在多个 Verticle 实例之间共享，所以相关的配置必须在创建 Producer 的时候定义。
 </td>
 </tr>
 </table>
@@ -964,14 +1011,14 @@ shared producer usage must use the same configuration.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sharing_a_producer">Sharing a producer</h2>
+<h2 id="_共享_producer">共享 Producer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Sometimes you want to share the same producer from within several verticles or contexts.</p>
+<p>有时候您希望在多个 Verticle 或者 Vert.x Context 下共用一个 Producer。</p>
 </div>
 <div class="paragraph">
-<p>Calling <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#createShared(io.vertx.core.Vertx,%20java.lang.String,%20java.util.Map)">KafkaProducer.createShared</a></code>
-returns a producer that can be shared safely.</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#createShared(io.vertx.core.Vertx,%20java.lang.String,%20java.util.Map)">KafkaProducer.createShared</a></code>
+方法来创建可以在 Verticle 之间安全共享的 <code>KafkaProducer</code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -983,26 +1030,24 @@ producer1.close()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The same resources (thread, connection) will be shared between the producer returned by this method.</p>
+<p>返回的 <code>KafkaProducer</code> 实例将复用相关的资源（如线程、连接等）。</p>
 </div>
 <div class="paragraph">
-<p>When you are done with the producer, just close it, when all shared producers are closed, the resources will
-be released for you.</p>
+<p>使用完 <code>KafkaProducer</code> 后，直接调用 <code>close</code> 方法关闭即可，相关的资源会自动释放。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_closing_a_producer">Closing a producer</h2>
+<h2 id="_关闭_producer">关闭 Producer</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Call close to close the producer. Closing the producer closes any open connections and releases all producer resources.</p>
+<p>与关闭 Consumer 类似，关闭 Producer 只需要调用 <code>close</code> 方法就可以了，它会自动的关闭与 Kafka 的连接，同时释放所有相关资源。</p>
 </div>
 <div class="paragraph">
-<p>The close is actually asynchronous and might not complete until some time after the call has returned. If you want to be notified
-when the actual close has completed then you can pass in a handler.</p>
+<p>由于 <code>close</code> 方法是异步的，你并不知道关闭操作什么时候完成或失败，这时你需要注册一个处理器(<code>Handler</code>)来监听关闭完成的消息。</p>
 </div>
 <div class="paragraph">
-<p>This handler will then be called when the close has fully completed.</p>
+<p>当关闭操作彻底完成以后，注册的 <code>Handler</code> 将会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1019,11 +1064,10 @@ when the actual close has completed then you can pass in a handler.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_topic_partition_information_2">Getting topic partition information</h2>
+<h2 id="_获取_topic_partition_的相关信息">获取 Topic Partition 的相关信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can call the <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#partitionsFor(java.lang.String,%20io.vertx.core.Handler)">partitionsFor</a></code> to get information about
-partitions for a specified topic:</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#partitionsFor(java.lang.String,%20io.vertx.core.Handler)">partitionsFor</a></code> 方法获取指定 topic 的分区信息。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1043,12 +1087,13 @@ producer.partitionsForFuture("test").onComplete{
 </div>
 </div>
 <div class="sect1">
-<h2 id="_handling_errors">Handling errors</h2>
+<h2 id="_错误处理">错误处理</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Errors handling (e.g timeout) between a Kafka client (consumer or producer) and the Kafka cluster is done using
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> or
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code></p>
+<p>您可以利用
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> 方法和
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> 方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
+比如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1061,23 +1106,21 @@ consumer.exceptionHandler((e: java.lang.Throwable) =&gt; {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_automatic_clean_up_in_verticles">Automatic clean-up in verticles</h2>
+<h2 id="_随_verticle_自动关闭">随 Verticle 自动关闭</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you’re creating consumers and producer from inside verticles, those consumers and producers will be automatically
-closed when the verticle is undeployed.</p>
+<p>如果您是在 Verticle 内部创建的 Consumer 和 Producer，那么当对应 Verticle 被卸载(undeploy)的时候，相关的 Consumer 和 Producer 会自动关闭。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</h2>
+<h2 id="_使用_vert_x_自带的序列化与反序列化机制">使用 Vert.x 自带的序列化与反序列化机制</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x Kafka client comes out of the box with serializers and deserializers for buffers, json object
-and json array.</p>
+<p>Vert.x Kafka Client 自带现成的序列化与反序列化机制，可以处理 <code>Buffer</code>、<code>JsonObject</code> 和 <code>JsonArray</code> 等类型。</p>
 </div>
 <div class="paragraph">
-<p>In a consumer you can use buffers</p>
+<p>在 <code>KafkaConsumer</code> 里您可以使用 <code>Buffer</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1110,7 +1153,7 @@ config + ("enable.auto.commit" -&gt; "false")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Or in a producer</p>
+<p>同样在 <code>KafkaProducer</code> 中也可以：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1136,8 +1179,18 @@ config + ("value.serializer" -&gt; "io.vertx.kafka.client.serialization.JsonArra
 config + ("acks" -&gt; "1")</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rxjava_api">RxJava API</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved directive in index.adoc - include::override/rxjava.adoc[]</p>
+<p>Vert.x Kafka Client 组件也提供Rx风格的API。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-scala" data-lang="scala">Code not translatable</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1244,14 +1297,13 @@ adminUtils.topicExistsFuture("myNewTopic").onComplete{
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:21 CST
+                上次更新时间 2018-09-07 11:02:54 CST
               
               
             </div>

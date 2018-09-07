@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,25 +158,25 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_this_cluster_manager">Using this cluster manager</a></li>
-<li><a href="#configcluster">Configuring this cluster manager</a></li>
-<li><a href="#_using_an_existing_hazelcast_cluster">Using an existing Hazelcast cluster</a>
+<li><a href="#_使用_hazelcast_cluster_manager">使用 Hazelcast cluster manager</a></li>
+<li><a href="#configcluster">配置 Hazelcast cluster manager</a></li>
+<li><a href="#_使用已存在的_hazelcast_集群">使用已存在的 Hazelcast 集群</a>
 <ul class="sectlevel2">
 <li><a href="#_changing_timeout_for_failed_nodes">Changing timeout for failed nodes</a></li>
 </ul>
 </li>
-<li><a href="#_using_hazelcast_async_methods">Using Hazelcast async methods</a></li>
-<li><a href="#_trouble_shooting_clustering">Trouble shooting clustering</a>
+<li><a href="#_使用_hazelcast_async_methods">使用 Hazelcast async methods</a></li>
+<li><a href="#_故障排除">故障排除</a>
 <ul class="sectlevel2">
-<li><a href="#_multicast_not_enabled_on_the_machine">Multicast not enabled on the machine.</a></li>
-<li><a href="#_using_wrong_network_interface">Using wrong network interface</a></li>
-<li><a href="#_using_a_vpn">Using a VPN</a></li>
-<li><a href="#_when_multicast_is_not_available">When multicast is not available</a></li>
-<li><a href="#_enabling_logging">Enabling logging</a></li>
+<li><a href="#_机器禁用组播">机器禁用组播</a></li>
+<li><a href="#_使用错误的网络接口">使用错误的网络接口</a></li>
+<li><a href="#_使用vpn">使用VPN</a></li>
+<li><a href="#_组播不可用">组播不可用</a></li>
+<li><a href="#_开启日志">开启日志</a></li>
 </ul>
 </li>
-<li><a href="#_hazelcast_logging">Hazelcast logging</a></li>
-<li><a href="#_using_a_different_hazelcast_version">Using a different Hazelcast version</a></li>
+<li><a href="#_hazelcast_日志配置">Hazelcast 日志配置</a></li>
+<li><a href="#_使用其他_hazelcast_版本">使用其他 Hazelcast 版本</a></li>
 <li><a href="#_configuring_for_kubernetes">Configuring for Kubernetes</a>
 <ul class="sectlevel2">
 <li><a href="#_rolling_updates">Rolling updates</a></li>
@@ -133,25 +189,25 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_this_cluster_manager">Using this cluster manager</a></li>
-<li><a href="#configcluster">Configuring this cluster manager</a></li>
-<li><a href="#_using_an_existing_hazelcast_cluster">Using an existing Hazelcast cluster</a>
+<li><a href="#_使用_hazelcast_cluster_manager">使用 Hazelcast cluster manager</a></li>
+<li><a href="#configcluster">配置 Hazelcast cluster manager</a></li>
+<li><a href="#_使用已存在的_hazelcast_集群">使用已存在的 Hazelcast 集群</a>
 <ul class="sectlevel2">
 <li><a href="#_changing_timeout_for_failed_nodes">Changing timeout for failed nodes</a></li>
 </ul>
 </li>
-<li><a href="#_using_hazelcast_async_methods">Using Hazelcast async methods</a></li>
-<li><a href="#_trouble_shooting_clustering">Trouble shooting clustering</a>
+<li><a href="#_使用_hazelcast_async_methods">使用 Hazelcast async methods</a></li>
+<li><a href="#_故障排除">故障排除</a>
 <ul class="sectlevel2">
-<li><a href="#_multicast_not_enabled_on_the_machine">Multicast not enabled on the machine.</a></li>
-<li><a href="#_using_wrong_network_interface">Using wrong network interface</a></li>
-<li><a href="#_using_a_vpn">Using a VPN</a></li>
-<li><a href="#_when_multicast_is_not_available">When multicast is not available</a></li>
-<li><a href="#_enabling_logging">Enabling logging</a></li>
+<li><a href="#_机器禁用组播">机器禁用组播</a></li>
+<li><a href="#_使用错误的网络接口">使用错误的网络接口</a></li>
+<li><a href="#_使用vpn">使用VPN</a></li>
+<li><a href="#_组播不可用">组播不可用</a></li>
+<li><a href="#_开启日志">开启日志</a></li>
 </ul>
 </li>
-<li><a href="#_hazelcast_logging">Hazelcast logging</a></li>
-<li><a href="#_using_a_different_hazelcast_version">Using a different Hazelcast version</a></li>
+<li><a href="#_hazelcast_日志配置">Hazelcast 日志配置</a></li>
+<li><a href="#_使用其他_hazelcast_版本">使用其他 Hazelcast 版本</a></li>
 <li><a href="#_configuring_for_kubernetes">Configuring for Kubernetes</a>
 <ul class="sectlevel2">
 <li><a href="#_rolling_updates">Rolling updates</a></li>
@@ -159,14 +215,32 @@
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-hazelcast-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is a cluster manager implementation for Vert.x that uses <a href="http://hazelcast.com">Hazelcast</a>.</p>
+<p><code>HazelcastClusterManager</code> 是基于 <a href="http://hazelcast.org">Hazelcast</a> 实现 。</p>
 </div>
 <div class="paragraph">
-<p>It is the default cluster manager used in the Vert.x distribution, but it can be replaced with another implementation as Vert.x
-cluster managers are pluggable.  This implementation is packaged inside:</p>
+<p>它是Vert.x 中集群管理器中的默认实现。由于 Vert.x 集群管理的可插拔性，也可轻易切换至其它的集群管理器。</p>
+</div>
+<div class="paragraph">
+<p>This implementation is packaged inside:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -177,52 +251,59 @@ cluster managers are pluggable.  This implementation is packaged inside:</p>
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-hazelcast:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>In Vert.x a cluster manager is used for various functions including:</p>
+<p>Vert.x 集群管理器包含以下几个功能：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Discovery and group membership of Vert.x nodes in a cluster</p>
+<p>发现并管理集群中的节点</p>
 </li>
 <li>
-<p>Maintaining cluster wide topic subscriber lists (so we know which nodes are interested in which event bus addresses)</p>
+<p>管理集群端的主题订阅清单（这样就可以轻松得知集群中的那些节点订阅了那些 EventBus 地址）</p>
 </li>
 <li>
-<p>Distributed Map support</p>
+<p>分布式 Map 支持</p>
 </li>
 <li>
-<p>Distributed Locks</p>
+<p>分布式锁</p>
 </li>
 <li>
-<p>Distributed Counters</p>
+<p>分布式计数器</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Cluster managersdo not* handle the event bus inter-node transport, this is done directly by Vert.x with TCP connections.</p>
+<p>Vert.x 集群器并不处理节点之间的通信，在 Vert.x 中节点中的通信是直接由 TCP 链接处理的。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_this_cluster_manager">Using this cluster manager</h2>
+<h2 id="_使用_hazelcast_cluster_manager">使用 Hazelcast cluster manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you are using Vert.x from the command line, the jar corresponding to this cluster manager (it will be named <code>vertx-hazelcast-3.6.0-SNAPSHOT.jar</code>
-should be in the <code>lib</code> directory of the Vert.x installation.</p>
+<p>如果通过命令行来使用 Vert.x，对应集群管理器 <code>jar</code> 包( <code>vertx-hazelcast-3.6.0-SNAPSHOT</code> )应该在 Vert.x 中安装包中。</p>
 </div>
 <div class="paragraph">
-<p>If you want clustering with this cluster manager in your Vert.x Maven or Gradle project then just add a dependency to
-the artifact: <code>io.vertx:vertx-hazelcast:3.6.0-SNAPSHOT</code> in your project.</p>
+<p>如果在 <code>Maven</code> 或者 <code>Gradle</code> 工程中使用 Vert.x ，只需要在工程依赖中加上相应的 <code>ClusterManager</code> 实现依赖：<code>io.vertx:vertx-hazelcast:3.6.0-SNAPSHOT</code>。</p>
 </div>
 <div class="paragraph">
-<p>If the jar is on your classpath as above then Vert.x will automatically detect this and use it as the cluster manager.
-Please make sure you don&#8217;t have any other cluster managers on your classpath or Vert.x might
-choose the wrong one.</p>
+<p>如果 <code>HazelcastClusterManager</code> 在 <code>classpath</code> 中，Vert.x将自动检测到，并将其作为集群管理。需要注意的是，要确保 Vert.x 的 <code>classpath</code> 中没有其它的 <code>ClusterManager</code> 实现 <code>jar</code> 包。</p>
 </div>
 <div class="paragraph">
-<p>You can also specify the cluster manager programmatically if you are embedding Vert.x by specifying it on the options
-when you are creating your Vert.x instance, for example:</p>
+<p>当然在内嵌 Vert.x 时，通过编程的方式创建 Vert.x 集群模式实例，调用 <code>setClusterManager</code> 方法显式指定集群管理器。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -242,46 +323,42 @@ Vertx.clusteredVertx(options, res -&gt; {
 </div>
 </div>
 <div class="sect1">
-<h2 id="configcluster">Configuring this cluster manager</h2>
+<h2 id="configcluster">配置 Hazelcast cluster manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Usually the cluster manager is configured by a file
+<p>通常情况下，集群管理器的相关配置是由打包的jar中的默认配置文件
 <a href="https://github.com/vert-x3/vertx-hazelcast/blob/master/src/main/resources/default-cluster.xml"><code>default-cluster.xml</code></a>
-which is packaged inside the jar.</p>
+决定的。</p>
 </div>
 <div class="paragraph">
-<p>If you want to override this configuration you can provide a file called <code>cluster.xml</code> on your classpath and this
-will be used instead. If you want to embed the <code>cluster.xml</code> file in a fat jar, it must be located at the root of the
-fat jar. If it&#8217;s an external file, the*directory** containing the file must be added to the classpath. For
-example, if you are using the <em>launcher</em> class from Vert.x, the classpath enhancement can be done as follows:</p>
+<p>如果要覆盖此配置，可以在 <code>classpath</code> 中添加一个 <code>cluster.xml</code> 文件。如果想在 fat jar 中内嵌 <code>cluster.xml</code> ，
+此文件必须在 fat jar 的根目录中。如果此文件是一个外部文件，则必须将其添加至 <code>classpath</code> 中。举个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># If the cluster.xml is in the current directory:
+<pre class="highlight"><code># cluster.xml 在当前路径中
 java -jar ... -cp . -cluster
 vertx run MyVerticle -cp . -cluster
 
-# If the cluster.xml is in the conf directory
+# cluster.xml 在 conf 目录中
 java -jar ... -cp conf -cluster</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Another way to override the configuration is by providing the system property <code>vertx.hazelcast.config</code> with a
-location:</p>
+<p>还有一种方式来覆盖默认的配置文件，那就是利用系统配置 <code>vertx.hazelcast.config</code> 来实现：</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># Use a cluster configuration located in an external file
+<pre class="highlight"><code># 指定一个外部文件为自定义配置文件
 java -Dvertx.hazelcast.config=./config/my-cluster-config.xml -jar ... -cluster
 
-# Or use a custom configuration from the classpath
+# 从 classpath 中加载一个文件为自定义配置文件
 java -Dvertx.hazelcast.config=classpath:my/package/config/my-cluster-config.xml -jar ... -cluster</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>vertx.hazelcast.config</code> system property, when present, overrides any <code>cluster.xml</code> on the classpath, but if
-loading
-from this system property fails, then loading falls back to either <code>cluster.xml</code> or the Hazelcast default configuration.</p>
+<p>如果 <code>vertx.hazelcast.config</code> 值不为空时，将覆盖 <code>classpath</code> 中所有的 <code>cluster.xml</code> 文件，
+但是如果加载 <code>vertx.hazelcast.config</code> 失败时，系统将选取 <code>classpath</code> 任意一个 <code>cluster.xml</code> ，甚至直接使用默认配置。</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -290,8 +367,7 @@ from this system property fails, then loading falls back to either <code>cluster
 <div class="title">Caution</div>
 </td>
 <td class="content">
-Configuration of Hazelcast the <code>-Dhazelcast.config</code> system property is not supported by Vert.x and should
-not be used.
+Vert.x 并不支持 -Dhazelcast.config 设置方式，请不要使用。
 </td>
 </tr>
 </table>
@@ -301,7 +377,7 @@ not be used.
 web-site.</p>
 </div>
 <div class="paragraph">
-<p>You can also specify configuration programmatically if embedding:</p>
+<p>同时也可以通过编程的形式达到配置的目的：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -323,20 +399,20 @@ Vertx.clusteredVertx(options, res -&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>Hazelcast supports several different transports including multicast and TCP. The default configuration uses
-multicast so you must have multicast enabled on your network for this to work.</p>
+<p>Hazelcast支持多种不同的传输协议，包括组播和TCP。默认配置中采用组播传输协议，因此您必须在网络上启用组播才能使其工作。</p>
 </div>
 <div class="paragraph">
-<p>For full documentation on how to configure the transport differently or use a different transport please consult the
+<p>具体详细配置，请参阅 <a href="http://hazelcast.org">Hazelcast 文档</a> 。
+For full documentation on how to configure the transport differently or use a different transport please consult the
 Hazelcast documentation.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_an_existing_hazelcast_cluster">Using an existing Hazelcast cluster</h2>
+<h2 id="_使用已存在的_hazelcast_集群">使用已存在的 Hazelcast 集群</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can pass an existing <code>HazelcastInstance</code> in the cluster manager to reuse an existing cluster:</p>
+<p>可以在集群管理器通过设置 <code>HazelcastInstance</code> 来复用现有集群：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -352,10 +428,10 @@ Vertx.clusteredVertx(options, res -&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>In this case, vert.x is not the cluster owner and so do not shutdown the cluster on close.</p>
+<p>在这种情况下，Vert.x不是 Hazelcast 群集的所有者，所以不要关闭 Vert.x 时关闭 Hazlecast 集群。</p>
 </div>
 <div class="paragraph">
-<p>Notice that the custom Hazelcast instance need to be configured with:</p>
+<p>请注意，自定义 Hazelcast 实例需要配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -379,13 +455,10 @@ Vertx.clusteredVertx(options, res -&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p><strong>IMPORTANT</strong> Do not use Hazelcast clients or smart clients when using high-availability (HA, or fail-over) in your
-cluster as they do not notify when they leave the cluster and you may loose data, or leave the cluster in an
-inconsistent state. See <a href="https://github.com/vert-x3/vertx-hazelcast/issues/24" class="bare">https://github.com/vert-x3/vertx-hazelcast/issues/24</a> for more details.</p>
+<p><strong>IMPORTANT</strong> 当 Vert.x 集群使用 HA（高可用或故障转移）时，请不要使用 Hazelcast 客户端，因为他们不会通知他们何时离开集群，同时有可能丢失数据，还有可能将集群置于不一致的状态。更多情况请翻阅 <a href="https://github.com/vert-x3/vertx-hazelcast/issues/24">Issue 24</a></p>
 </div>
 <div class="paragraph">
-<p><strong>IMPORTANT</strong> Make sure Hazelcast is started before and shut down after Vert.x.
-Also, the Hazelcast shutdown hook should be disabled (see xml example, or via system property).</p>
+<p><strong>IMPORTANT</strong> 同时要确保 Hazelcast 集群 先于 Vert.x 集群启动，后于 Vert.x 集群关闭。同时需要禁用 <code>shutdownhook</code> 。参考上述的 xml 配置，或者通过 系统变量来实现。</p>
 </div>
 <div class="sect2">
 <h3 id="_changing_timeout_for_failed_nodes">Changing timeout for failed nodes</h3>
@@ -411,44 +484,40 @@ with system properties</a> for the other properties you can configure.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_hazelcast_async_methods">Using Hazelcast async methods</h2>
+<h2 id="_使用_hazelcast_async_methods">使用 Hazelcast async methods</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Hazelcast&#8217;s <code>IMap</code> and <code>IAtomicLong</code> interfaces can be used with async methods returning <code>ICompletableFuture&lt;V&gt;</code>,
-a natural fit for Vert.x threading model. Even though these interfaces have been available for a long time, they are not
-provided by the public <code>HazelcastInstance</code> API.</p>
+<p>Hazelcast 中的 <code>IMap</code> 、 <code>IAtomicLong</code> 接口(数据结构) 均有异步调用方法，
+其返回值为 <code>ICompletableFuture&lt;V&gt;</code>，这与 Vert.x 的线程模型完美契合。
+但是即使这些接口已经存在一段时间，却没有通过 <code>HazelcastInstance</code> 公共 API 暴露。</p>
 </div>
 <div class="paragraph">
-<p>The default behavior of the <code>HazelcastClusterManager</code> is to use the public API. Supplying the option
-<code>-Dvertx.hazelcast.async-api=true</code> on JVM startup, will indicate that the async Hazelcast API methods will be used to
-communicate with the hazelcast cluster. Effectively, this means that when this option is enabled,
-execution of all <code>Counter</code> operations and <code>AsyncMap.get</code>,<code>AsyncMap.put</code> and <code>AsyncMap.remove</code> operations will
-occur in the calling thread (the event loop), instead of a worker thread with <code>vertx.executeBlocking</code>.</p>
+<p>默认情况下，<code>HazelcastClusterManager</code> 使用公共 API。当在程序启动时，设置选项`-Dvertx.hazelcast.async-api=true` ，
+将代表系统在与 Hazelcast 集群通讯交互时，将采用 Hazelcast async API 。
+这意味着，<code>Counter</code> 计数操作、<code>AsyncMap`的 `get</code> <code>put</code> <code>remove</code> 操作都将通过 Vert.x EventLoop 线程来执行，
+而不是通过 Woker 线程的 <code>vertx.executeBlocking</code> 执行。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_trouble_shooting_clustering">Trouble shooting clustering</h2>
+<h2 id="_故障排除">故障排除</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If the default multicast configuration is not working here are some common causes:</p>
+<p>如果默认的组播配置不能正常运行，通常有以下原因：</p>
 </div>
 <div class="sect2">
-<h3 id="_multicast_not_enabled_on_the_machine">Multicast not enabled on the machine.</h3>
+<h3 id="_机器禁用组播">机器禁用组播</h3>
 <div class="paragraph">
-<p>It is quite common in particular on OSX machines for multicast to be disabled by default. Please google for
-information on how to enable this.</p>
+<p>MacOS 默认禁用组播。Google一下启用组播。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_wrong_network_interface">Using wrong network interface</h3>
+<h3 id="_使用错误的网络接口">使用错误的网络接口</h3>
 <div class="paragraph">
-<p>If you have more than one network interface on your machine (and this can also be the case if you are running
-VPN software on your machine), then Hazelcast may be using the wrong one.</p>
+<p>如果机器上有多个网络接口（也有可能是在运行 VPN 的情况下），那么 Hazelcast 很有可能是使用了错误的网络接口。</p>
 </div>
 <div class="paragraph">
-<p>To tell Hazelcast to use a specific interface you can provide the IP address of the interface in the <code>interfaces</code>
-element of the configuration. Make sure you set the <code>enabled</code> attribute to <code>true</code>. For example:</p>
+<p>为了确保 Hazelcast 使用正确的网络接口，在配置文件中将 <code>interface</code> 设置为指定IP地址，同时确保 enabled 属性设置为 true 。 例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -458,8 +527,8 @@ element of the configuration. Make sure you set the <code>enabled</code> attribu
 </div>
 </div>
 <div class="paragraph">
-<p>When running Vert.x is in clustered mode, you should also make sure that Vert.x knows about the correct interface.
-When running at the command line this is done by specifying the <code>cluster-host</code> option:</p>
+<p>当运行集群模式时，需要确保 Vert.x 使用正确的网络接口。
+当通过命令行模式时，可以设置 <code>cluster-host</code> 参数：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -467,43 +536,36 @@ When running at the command line this is done by specifying the <code>cluster-ho
 </div>
 </div>
 <div class="paragraph">
-<p>Where <code>your-ip-address</code> is the same IP address you specified in the Hazelcast configuration.</p>
+<p>其中 <code>your-ip-address</code> 必须与 Hazelcast 中的配置保持一致。</p>
 </div>
 <div class="paragraph">
-<p>If using Vert.x programmatically you can specify this using
-<code><a href="../../apidocs/io/vertx/core/VertxOptions.html#setClusterHost-java.lang.String-">setClusterHost</a></code>.</p>
+<p>当通过编程模式使用 Vert.x 时，可以调用方法
+<code><a href="../../apidocs/io/vertx/core/VertxOptions.html#setClusterHost-java.lang.String-">setClusterHost</a></code> 来设置参数</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_a_vpn">Using a VPN</h3>
+<h3 id="_使用vpn">使用VPN</h3>
 <div class="paragraph">
-<p>This is a variation of the above case. VPN software often works by creating a virtual network interface which often
-doesn&#8217;t support multicast. If you have a VPN running and you do not specify the correct interface to use in both the
-hazelcast configuration and to Vert.x then the VPN interface may be chosen instead of the correct interface.</p>
+<p>VPN 软件通常通过创建不支持组播的虚拟网络接口来进行工作。在 VPN 环境中，如果 Hazelcast 与 Vert.x 不正确配置的话，VPN 接口将被选择，而不是正确的接口。</p>
 </div>
 <div class="paragraph">
-<p>So, if you have a VPN running you may have to configure both the Hazelcast and Vert.x to use the correct interface as
-described in the previous section.</p>
+<p>所以，如果你的软件运行在 VPN 环境中，参考上述章节，设置正确的网络接口。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_when_multicast_is_not_available">When multicast is not available</h3>
+<h3 id="_组播不可用">组播不可用</h3>
 <div class="paragraph">
-<p>In some cases you may not be able to use multicast as it might not be available in your environment. In that case
-you should configure another transport, e.g. TCP  to use TCP sockets, or AWS when running on Amazon EC2.</p>
+<p>在某些情况下，因为特殊的运行环境，可能无法使用组播。在这种情况下，应该配置其他网络传输，例如在 TCP 上使用 TCP 套接字，在亚马逊云上使用 EC2 。</p>
 </div>
 <div class="paragraph">
-<p>For more information on available Hazelcast transports and how to configure them please consult the Hazelcast
-documentation.</p>
+<p>有关 Hazelcast 更多传输方式，以及如何配置它们，请咨询 Hazelcast 文档。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_enabling_logging">Enabling logging</h3>
+<h3 id="_开启日志">开启日志</h3>
 <div class="paragraph">
-<p>When trouble-shooting clustering issues with Hazelcast it&#8217;s often useful to get some logging output from Hazelcast
-to see if it&#8217;s forming a cluster properly. You can do this (when using the default JUL logging) by adding a file
-called <code>vertx-default-jul-logging.properties</code> on your classpath. This is a standard java.util.logging (JUL)
-configuration file. Inside it set:</p>
+<p>在排除故障时，开启 Hazelcast 日志，将会给予很大的帮助。在 <code>classpath</code> 中添加 <code>vertx-default-jul-logging.properties</code> 文件（默认的JUL记录时），
+这是一个标准 java.util.loging（JUL） 配置文件。具体配置如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -511,7 +573,7 @@ configuration file. Inside it set:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>and also</p>
+<p>或者</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -523,11 +585,10 @@ java.util.logging.FileHandler.level=INFO</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_hazelcast_logging">Hazelcast logging</h2>
+<h2 id="_hazelcast_日志配置">Hazelcast 日志配置</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The logging backend used by Hazelcast is <code>jdk</code> by default (understand JUL). If you want to redirect the logging to
-another library, you need to set the <code>hazelcast.logging.type</code> system property such as in:</p>
+<p>Hazelcast 的日志默认采用 JDK 实现（参考 JUL）。如果想切换至其他日志库，通过设置 <code>azelcast.logging.type</code> 即可达到目的。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -535,24 +596,23 @@ another library, you need to set the <code>hazelcast.logging.type</code> system 
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="http://docs.hazelcast.org/docs/3.6.1/manual/html-single/index.html#logging-configuration">hazelcast documentation</a> for more details.</p>
+<p>详细文档请参考 <a href="http://docs.hazelcast.org/docs/3.6.1/manual/html-single/index.html#logging-configuration">hazelcast documentation</a> 。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_a_different_hazelcast_version">Using a different Hazelcast version</h2>
+<h2 id="_使用其他_hazelcast_版本">使用其他 Hazelcast 版本</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You may want to use a different version of Hazelcast. The default version is <code>${hazelcast.version}</code>. To do so, you
-need to:</p>
+<p>当前的 Vert.x HazelcastClusterManager 使用的 Hazelcast 版本为 <code>3.8.2</code> 。如果开发者想使用其他版本的 Hazelcast，需要做以下工作：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>put the version you want in the application classpath</p>
+<p>将目标版本的 Hazelcast 依赖添加至 classpath 中</p>
 </li>
 <li>
-<p>if you are running a fat jar, configure your build manager to use the right version</p>
+<p>如果是 fat jar 的形式，在构建工具中使用正确的版本</p>
 </li>
 </ul>
 </div>
@@ -618,7 +678,7 @@ dependencies to your project. With Maven it looks like:</p>
 </div>
 <div class="paragraph">
 <p>The second step is to configure the discovery plugin inside of your Hazelcast configuration, by either providing a custom
-<code>cluster.xml</code> file or programmatically, as described in <a href="#configcluster">Configuring this cluster manager</a>.</p>
+<code>cluster.xml</code> file or programmatically, as described in <a href="#configcluster">配置 Hazelcast cluster manager</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following properties have to be changed / added:</p>
@@ -762,14 +822,13 @@ router.get("/readiness").handler(HealthCheckHandler.createWithHealthChecks(check
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:20 CST
+                上次更新时间 2018-09-07 11:02:38 CST
               
               
             </div>

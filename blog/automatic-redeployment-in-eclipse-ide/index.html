@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Automatic redeployment in Eclipse IDE</h2><p class=blog-post-meta>20th December 2015 by <a href=http://github.com/cescoffier>cescoffier</a></p><article><p>Vert.x 3.1 has (re-) introduced the <em>redeploy</em> feature. This blog post explains how to use this feature in the Eclipse IDE. However, you can easily adapt the content to your IDE.</p><h2 id=how-does-redeploy-work>How does redeploy work</h2><p>How is implemented the <code>redeploy</code> is not as you may expect. First, the redeploy does not rely on a build tool, but is integrated in vert.x. However you can plug your build tools with the redeploy feature. This feature is offered by the <code>io.vertx.core.Launcher</code> class. The redeployment process is actually very simple:</p><ol><li>the application is launched in <em>redeploy mode</em>.</li><li>it listens for file changes</li><li>when a <em>matching</em> file is changed, it stops the application</li><li>it executes the <code>on-redeploy</code> actions if any</li><li>it restarts the application</li><li>back to (2)</li></ol><p>Initially the application is launched in <em>redeploy mode</em>. The application is actually launched in background, in a separated process. Vert.x listens for file changes. You give it a set of (Ant-style) patterns and every time a matching file changes, Vert.x stops the whole application and restarts it. Optionally you can configure a <code>on-redeploy</code> action to plug in your build tools.</p><p>To integrate this process in Eclipse (or in your IDE), you just need to configure the set of listened files, and let the <code>Launcher</code> class starts and stops your application.</p><h2 id=redeploy-in-eclipse>Redeploy in Eclipse</h2><p>The following screencast explains how you configure a vert.x application to be run in Eclipse and how to configure the redeploy:</p><iframe width=420 height=315 src=https://www.youtube.com/embed/iyZwAzEVX-o frameborder=0 allowfullscreen></iframe><p>To summarize the last configuration:</p><ul><li>it’s a Java application configuration</li><li>it uses <code>io.vertx.core.Launcher</code> as main class</li><li>In the <em>Program arguments</em> (<em>Arguments</em> tab), write: <code>run org.acme.verticle.MyMainVerticle --redeploy=&quot;src/**/*.java&quot; --launcher-class=io.vertx.core.Launcher</code></li></ul><h2 id=redeploy-with-your-own-main-class>Redeploy with your own Main class</h2><p>Let’s now imagine that you have your own <code>Main</code> class, starting your application. For instance, it can be something like:</p><pre><code class=hljs><span class=hljs-keyword>package</span> org.acme.vertx;
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Automatic redeployment in Eclipse IDE</h2><p class=blog-post-meta>20th December 2015 by <a href=http://github.com/cescoffier>cescoffier</a></p><article><p>Vert.x 3.1 has (re-) introduced the <em>redeploy</em> feature. This blog post explains how to use this feature in the Eclipse IDE. However, you can easily adapt the content to your IDE.</p><h2 id=how-does-redeploy-work>How does redeploy work</h2><p>How is implemented the <code>redeploy</code> is not as you may expect. First, the redeploy does not rely on a build tool, but is integrated in vert.x. However you can plug your build tools with the redeploy feature. This feature is offered by the <code>io.vertx.core.Launcher</code> class. The redeployment process is actually very simple:</p><ol><li>the application is launched in <em>redeploy mode</em>.</li><li>it listens for file changes</li><li>when a <em>matching</em> file is changed, it stops the application</li><li>it executes the <code>on-redeploy</code> actions if any</li><li>it restarts the application</li><li>back to (2)</li></ol><p>Initially the application is launched in <em>redeploy mode</em>. The application is actually launched in background, in a separated process. Vert.x listens for file changes. You give it a set of (Ant-style) patterns and every time a matching file changes, Vert.x stops the whole application and restarts it. Optionally you can configure a <code>on-redeploy</code> action to plug in your build tools.</p><p>To integrate this process in Eclipse (or in your IDE), you just need to configure the set of listened files, and let the <code>Launcher</code> class starts and stops your application.</p><h2 id=redeploy-in-eclipse>Redeploy in Eclipse</h2><p>The following screencast explains how you configure a vert.x application to be run in Eclipse and how to configure the redeploy:</p><iframe width=420 height=315 src=https://www.youtube.com/embed/iyZwAzEVX-o frameborder=0 allowfullscreen></iframe><p>To summarize the last configuration:</p><ul><li>it’s a Java application configuration</li><li>it uses <code>io.vertx.core.Launcher</code> as main class</li><li>In the <em>Program arguments</em> (<em>Arguments</em> tab), write: <code>run org.acme.verticle.MyMainVerticle --redeploy=&quot;src/**/*.java&quot; --launcher-class=io.vertx.core.Launcher</code></li></ul><h2 id=redeploy-with-your-own-main-class>Redeploy with your own Main class</h2><p>Let’s now imagine that you have your own <code>Main</code> class, starting your application. For instance, it can be something like:</p><pre><code class=hljs><span class=hljs-keyword>package</span> org.acme.vertx;
 
 <span class=hljs-keyword>import</span> io.vertx.core.Vertx;
 

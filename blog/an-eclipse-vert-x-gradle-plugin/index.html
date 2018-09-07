@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>An Eclipse Vert.x Gradle Plugin</h2><p class=blog-post-meta>28th September 2017 by <a href=http://github.com/jponge>jponge</a></p><article><p>Eclipse Vert.x is a versatile toolkit, and as such it does not have any strong opinion on the tools that you should be using.</p><p>Gradle is a popular build tool in the JVM ecosystem, and it is quite easy to use for building Vert.x project as <a href=https://github.com/vert-x3/vertx-examples/blob/master/gradle-verticles/gradle-verticle/build.gradle>show in one of the <code>vertx-examples</code> samples</a> where a so-called <em>fat Jar</em> is being produced.</p><p>The new <a href=https://plugins.gradle.org/plugin/io.vertx.vertx-plugin>Vert.x Gradle plugin</a> offers an <em>opinionated</em> plugin for building Vert.x applications with Gradle.</p><p>It automatically applies the following plugins:</p><ul><li><code>java</code> (and sets the source compatibility to Java 8),</li><li><code>application</code> + <code>shadow</code> to generate fat Jars with all dependencies bundled,</li><li><code>nebula-dependency-recommender-plugin</code> so that you can omit versions from modules from the the Vert.x stack.</li></ul><p>The plugin automatically adds <code>io.vertx:vertx-core</code> as a <code>compile</code> dependency, so you don’t need to do it.</p><p>The plugin provides a <code>vertxRun</code> task that can take advantage of the Vert.x auto-reloading capabilities, so you can just run it then have your code being automatically compiled and reloaded as you make changes.</p><h2 id=getting-started>Getting started</h2><p>A minimal <code>build.gradle</code> looks like:</p><pre><code class="hljs groovy">plugins {
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>An Eclipse Vert.x Gradle Plugin</h2><p class=blog-post-meta>28th September 2017 by <a href=http://github.com/jponge>jponge</a></p><article><p>Eclipse Vert.x is a versatile toolkit, and as such it does not have any strong opinion on the tools that you should be using.</p><p>Gradle is a popular build tool in the JVM ecosystem, and it is quite easy to use for building Vert.x project as <a href=https://github.com/vert-x3/vertx-examples/blob/master/gradle-verticles/gradle-verticle/build.gradle>show in one of the <code>vertx-examples</code> samples</a> where a so-called <em>fat Jar</em> is being produced.</p><p>The new <a href=https://plugins.gradle.org/plugin/io.vertx.vertx-plugin>Vert.x Gradle plugin</a> offers an <em>opinionated</em> plugin for building Vert.x applications with Gradle.</p><p>It automatically applies the following plugins:</p><ul><li><code>java</code> (and sets the source compatibility to Java 8),</li><li><code>application</code> + <code>shadow</code> to generate fat Jars with all dependencies bundled,</li><li><code>nebula-dependency-recommender-plugin</code> so that you can omit versions from modules from the the Vert.x stack.</li></ul><p>The plugin automatically adds <code>io.vertx:vertx-core</code> as a <code>compile</code> dependency, so you don’t need to do it.</p><p>The plugin provides a <code>vertxRun</code> task that can take advantage of the Vert.x auto-reloading capabilities, so you can just run it then have your code being automatically compiled and reloaded as you make changes.</p><h2 id=getting-started>Getting started</h2><p>A minimal <code>build.gradle</code> looks like:</p><pre><code class="hljs groovy">plugins {
   id <span class=hljs-string>'io.vertx.vertx-plugin'</span> version <span class=hljs-string>'0.0.4'</span>
 }
 

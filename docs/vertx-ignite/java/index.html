@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,27 +158,27 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_ignite_cluster_manager">Using Ignite cluster manager</a>
+<li><a href="#_使用_ignite_cluster_manager">使用 Ignite cluster manager</a>
 <ul class="sectlevel2">
-<li><a href="#_using_vert_x_from_command_line">Using Vert.x from command line</a></li>
-<li><a href="#_using_vert_x_in_maven_or_gradle_project">Using Vert.x in Maven or Gradle project</a></li>
-<li><a href="#_programmatically_specifying_cluster_manager">Programmatically specifying cluster manager</a></li>
+<li><a href="#_通过命令行使用">通过命令行使用</a></li>
+<li><a href="#_通过_maven_或_gradle_构建工具使用">通过 Maven 或 Gradle 构建工具使用</a></li>
+<li><a href="#_编程形式调用">编程形式调用</a></li>
 </ul>
 </li>
-<li><a href="#_configuring_cluster_manager">Configuring cluster manager</a>
+<li><a href="#_配置_ignite_cluster_manager">配置 Ignite cluster manager</a>
 <ul class="sectlevel2">
-<li><a href="#_using_configuration_file">Using configuration file</a></li>
-<li><a href="#_configuring_programmatically">Configuring programmatically</a></li>
-<li><a href="#_discovery_and_network_transport_configuration">Discovery and network transport configuration</a></li>
+<li><a href="#_使用配置文件">使用配置文件</a></li>
+<li><a href="#_编程配置">编程配置</a></li>
+<li><a href="#_自动发现及网络传输配置">自动发现及网络传输配置</a></li>
 </ul>
 </li>
-<li><a href="#_trouble_shooting_clustering">Trouble shooting clustering</a>
+<li><a href="#_故障排除">故障排除</a>
 <ul class="sectlevel2">
-<li><a href="#_multicast_not_enabled_on_the_machine">Multicast not enabled on the machine.</a></li>
-<li><a href="#_using_wrong_network_interface">Using wrong network interface</a></li>
-<li><a href="#_using_a_vpn">Using a VPN</a></li>
-<li><a href="#_when_multicast_is_not_available">When multicast is not available</a></li>
-<li><a href="#_enabling_logging">Enabling logging</a></li>
+<li><a href="#_组播未正常开启">组播未正常开启</a></li>
+<li><a href="#_使用错误的网络接口">使用错误的网络接口</a></li>
+<li><a href="#_使用vpn">使用VPN</a></li>
+<li><a href="#_组播被禁用">组播被禁用</a></li>
+<li><a href="#_开启日志">开启日志</a></li>
 </ul>
 </li>
 </ul>
@@ -132,62 +188,69 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_ignite_cluster_manager">Using Ignite cluster manager</a>
+<li><a href="#_使用_ignite_cluster_manager">使用 Ignite cluster manager</a>
 <ul class="sectlevel2">
-<li><a href="#_using_vert_x_from_command_line">Using Vert.x from command line</a></li>
-<li><a href="#_using_vert_x_in_maven_or_gradle_project">Using Vert.x in Maven or Gradle project</a></li>
-<li><a href="#_programmatically_specifying_cluster_manager">Programmatically specifying cluster manager</a></li>
+<li><a href="#_通过命令行使用">通过命令行使用</a></li>
+<li><a href="#_通过_maven_或_gradle_构建工具使用">通过 Maven 或 Gradle 构建工具使用</a></li>
+<li><a href="#_编程形式调用">编程形式调用</a></li>
 </ul>
 </li>
-<li><a href="#_configuring_cluster_manager">Configuring cluster manager</a>
+<li><a href="#_配置_ignite_cluster_manager">配置 Ignite cluster manager</a>
 <ul class="sectlevel2">
-<li><a href="#_using_configuration_file">Using configuration file</a></li>
-<li><a href="#_configuring_programmatically">Configuring programmatically</a></li>
-<li><a href="#_discovery_and_network_transport_configuration">Discovery and network transport configuration</a></li>
+<li><a href="#_使用配置文件">使用配置文件</a></li>
+<li><a href="#_编程配置">编程配置</a></li>
+<li><a href="#_自动发现及网络传输配置">自动发现及网络传输配置</a></li>
 </ul>
 </li>
-<li><a href="#_trouble_shooting_clustering">Trouble shooting clustering</a>
+<li><a href="#_故障排除">故障排除</a>
 <ul class="sectlevel2">
-<li><a href="#_multicast_not_enabled_on_the_machine">Multicast not enabled on the machine.</a></li>
-<li><a href="#_using_wrong_network_interface">Using wrong network interface</a></li>
-<li><a href="#_using_a_vpn">Using a VPN</a></li>
-<li><a href="#_when_multicast_is_not_available">When multicast is not available</a></li>
-<li><a href="#_enabling_logging">Enabling logging</a></li>
+<li><a href="#_组播未正常开启">组播未正常开启</a></li>
+<li><a href="#_使用错误的网络接口">使用错误的网络接口</a></li>
+<li><a href="#_使用vpn">使用VPN</a></li>
+<li><a href="#_组播被禁用">组播被禁用</a></li>
+<li><a href="#_开启日志">开启日志</a></li>
 </ul>
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-ignite-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is a cluster manager implementation for Vert.x that uses <a href="http://ignite.apache.org/index.html">Apache Ignite</a>.</p>
+<p><code>IgniteClusterManager</code> 是基于 <a href="http://ignite.apache.org/index.html">Apache Ignite</a> 实现。</p>
 </div>
 <div class="paragraph">
-<p>In Vert.x a cluster manager is used for various functions including:</p>
+<p>Vert.x 集群管理器包含以下几个功能：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Discovery and group membership of Vert.x nodes in a cluster</p>
+<p>发现并管理集群中的节点</p>
 </li>
 <li>
-<p>Maintaining cluster wide topic subscriber lists (so we know which nodes are interested in which event bus
-addresses)</p>
+<p>管理集群端的主题订阅清单（这样就可以轻松得知集群中的那些节点订阅了那些 EventBus 地址）</p>
 </li>
 <li>
-<p>Distributed Map support</p>
+<p>分布式 Map 支持</p>
 </li>
 <li>
-<p>Distributed Locks</p>
+<p>分布式锁</p>
 </li>
 <li>
-<p>Distributed Counters</p>
+<p>分布式计数器</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Cluster managersdo not* handle the event bus inter-node transport, this is done directly by Vert.x with TCP
-connections.</p>
+<p>Vert.x 集群器并不处理节点之间的通信，在 Vert.x 中节点中的通信是直接由 TCP 链接处理的。</p>
 </div>
 <div class="paragraph">
 <p>Vert.x cluster manager is a pluggable component, so you can pick the one you want, or the one that is the most
@@ -196,31 +259,29 @@ adapted to your environment. So you can replace default Vert.x cluster manager b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_ignite_cluster_manager">Using Ignite cluster manager</h2>
+<h2 id="_使用_ignite_cluster_manager">使用 Ignite cluster manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If the jar is on your classpath then Vert.x will automatically detect this and use it as the cluster manager.
-Please make sure you don’t have any other cluster managers on your classpath or Vert.x might choose the wrong one.</p>
+<p>Vert.x 能够从 classpath 路径的 jar 自动检测并使用出 <code>ClusterManager</code> 的实现。不过需要确保在 classpath 没有其他的 <code>ClusterManager</code> 实现。</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can configure the following system property to instruct vert.x to use this cluster manager:
-<code>-Dvertx.clusterManagerFactory=io.vertx.spi.cluster.ignite.IgniteClusterManager</code></p>
+<p>另外 Vert.x 可以通过设置 <code>-Dvertx.clusterManagerFactory=io.vertx.spi.cluster.ignite.IgniteClusterManager</code> 来使用指定的 集群管理器实现。</p>
 </div>
 <div class="sect2">
-<h3 id="_using_vert_x_from_command_line">Using Vert.x from command line</h3>
+<h3 id="_通过命令行使用">通过命令行使用</h3>
 <div class="paragraph">
-<p><code>vertx-ignite-3.6.0-SNAPSHOT.jar</code> should be in the <code>lib</code> directory of the Vert.x installation.</p>
+<p>确保 <code>vertx-ignite-3.6.0-SNAPSHOT.jar</code> 在 Vert.x 的安装路径中的 lib 目录下。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_vert_x_in_maven_or_gradle_project">Using Vert.x in Maven or Gradle project</h3>
+<h3 id="_通过_maven_或_gradle_构建工具使用">通过 Maven 或 Gradle 构建工具使用</h3>
 <div class="paragraph">
 <p>Add a dependency to the artifact.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -236,7 +297,7 @@ Please make sure you don’t have any other cluster managers on your classpath o
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -247,10 +308,9 @@ Please make sure you don’t have any other cluster managers on your classpath o
 </div>
 </div>
 <div class="sect2">
-<h3 id="_programmatically_specifying_cluster_manager">Programmatically specifying cluster manager</h3>
+<h3 id="_编程形式调用">编程形式调用</h3>
 <div class="paragraph">
-<p>You can also specify the cluster manager programmatically. In order to do this just specify it on the options
-when you are creating your Vert.x instance, for example:</p>
+<p>通过编码的形式，设置集群管理器实现，例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -270,7 +330,7 @@ Vertx.clusteredVertx(options, res -&gt; {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuring_cluster_manager">Configuring cluster manager</h2>
+<h2 id="_配置_ignite_cluster_manager">配置 Ignite cluster manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Note: Starting with version 2.0, Apache Ignite has introduced a new off-heap memory architecture. All caches use
@@ -278,23 +338,22 @@ off-heap memory by default. New memory architecture is described in
 <a href="https://apacheignite.readme.io/docs/page-memory">Ignite Virtual Memory</a> article.</p>
 </div>
 <div class="sect2">
-<h3 id="_using_configuration_file">Using configuration file</h3>
+<h3 id="_使用配置文件">使用配置文件</h3>
 <div class="paragraph">
-<p>The cluster manager is configured by a file <code>default-ignite.xml</code> which is packaged inside the jar.</p>
+<p>在 <code>vertx-ignite</code> jar 中内嵌了一个默认配置文件 <code>default-ignite.xml</code>。</p>
 </div>
 <div class="paragraph">
-<p>If you want to override this configuration you can provide <code>ignite.xml</code> file on your classpath and this will be
-used instead.</p>
+<p>如果需要覆盖此配置文件，需要在 classpath 路径中添加 <code>ignite.xml</code></p>
 </div>
 <div class="paragraph">
-<p>The xml file is a Ignite configuration file and is described in details in
-<a href="https://apacheignite.readme.io/docs">Apache Ignite documentation</a>.</p>
+<p><code>default-ignite.xml</code> 与 <code>ignite.xml</code> 必须是一个 <code>Apache Ignite</code> 配置文件，在
+<a href="https://apacheignite.readme.io/docs">Apache Ignite documentation</a> 的官方中文文档中，可以找到具体的配置描述。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuring_programmatically">Configuring programmatically</h3>
+<h3 id="_编程配置">编程配置</h3>
 <div class="paragraph">
-<p>You can also specify configuration programmatically:</p>
+<p>您还可以以编程方式指定配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -315,24 +374,23 @@ Vertx.clusteredVertx(options, res -&gt; {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_discovery_and_network_transport_configuration">Discovery and network transport configuration</h3>
+<h3 id="_自动发现及网络传输配置">自动发现及网络传输配置</h3>
 <div class="paragraph">
-<p>The default configuration uses <code>TcpDiscoveryMulticastIpFinder</code> so you must have multicast enabled on your network.
-For cases when multicast is disabled <code>TcpDiscoveryVmIpFinder</code> should be used with pre-configured list of IP addresses.
-Please see <a href="http://apacheignite.readme.io/docs/cluster-config">Cluster Configuration</a> section
-at Apache Ignite documentation for details.</p>
+<p>在默认配置中使用 <code>TcpDiscoveryMulticastIpFinder</code> 实现，这网络发现实现，需要开启组播。
+如果组播被禁用，可以采用 <code>TcpDiscoveryVmIpFinder</code> 替代，前提是在 <code>ignite.xml</code> 事先配置好 IP 地址列表。
+具体 Ignite 集群配置，可以参考文档 <a href="http://apacheignite.readme.io/docs/cluster-config">Cluster Configuration</a> 。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_trouble_shooting_clustering">Trouble shooting clustering</h2>
+<h2 id="_故障排除">故障排除</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If the default multicast configuration is not working here are some common causes:</p>
 </div>
 <div class="sect2">
-<h3 id="_multicast_not_enabled_on_the_machine">Multicast not enabled on the machine.</h3>
+<h3 id="_组播未正常开启">组播未正常开启</h3>
 <div class="paragraph">
 <p>By default the cluster manager is using <code>TcpDiscoveryMulticastIpFinder</code>, so IP multicasting is required,
 on some systems, multicast route(s) need to be added to the routing table otherwise, the default route will be used.</p>
@@ -357,14 +415,12 @@ sudo route add -net 232.0.0.0/5 192.168.1.3</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_wrong_network_interface">Using wrong network interface</h3>
+<h3 id="_使用错误的网络接口">使用错误的网络接口</h3>
 <div class="paragraph">
-<p>If you have more than one network interface on your machine (and this can also be the case if you are running
-VPN software on your machine), then Apache Ignite may be using the wrong one.</p>
+<p>如果机器上有多个网络接口（也有可能是在运行 VPN 的情况下），那么 Ignite 很有可能是使用了错误的网络接口。</p>
 </div>
 <div class="paragraph">
-<p>To tell Ignite to use a specific interface you can provide the IP address of the interface to the
-bean of <code>IgniteConfiguration</code> type using <code>localHost</code> property. For example:</p>
+<p>为了确保 Ignite 使用正确的网络接口，在配置文件中将 <code>IgniteConfiguration</code> 设置为指定IP地址。 例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -374,8 +430,8 @@ bean of <code>IgniteConfiguration</code> type using <code>localHost</code> prope
 </div>
 </div>
 <div class="paragraph">
-<p>When running Vert.x is in clustered mode, you should also make sure that Vert.x knows about the correct interface.
-When running at the command line this is done by specifying the <code>cluster-host</code> option:</p>
+<p>当运行集群模式时，需要确保 Vert.x 使用正确的网络接口。
+当通过命令行模式时，可以设置 <code>cluster-host</code> 参数：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -383,43 +439,35 @@ When running at the command line this is done by specifying the <code>cluster-ho
 </div>
 </div>
 <div class="paragraph">
-<p>Where <code>your-ip-address</code> is the same IP address you specified in the Apache Ignite configuration.</p>
+<p>其中 <code>your-ip-address</code> 必须与 Ignite 中的配置保持一致。</p>
 </div>
 <div class="paragraph">
-<p>If using Vert.x programmatically you can specify this using <code><a href="../../apidocs/io/vertx/core/VertxOptions.html#setClusterHost-java.lang.String-">setClusterHost</a></code>.</p>
+<p>当通过编程模式使用 Vert.x 时，可以调用方法 <code><a href="../../apidocs/io/vertx/core/VertxOptions.html#setClusterHost-java.lang.String-">setClusterHost</a></code> 来设置参数</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_a_vpn">Using a VPN</h3>
+<h3 id="_使用vpn">使用VPN</h3>
 <div class="paragraph">
-<p>This is a variation of the above case. VPN software often works by creating a virtual network interface which often
-doesn&#8217;t support multicast. If you have a VPN running and you do not specify the correct interface to use in both the
-Ignite configuration and to Vert.x then the VPN interface may be chosen instead of the correct interface.</p>
+<p>VPN 软件通常通过创建不支持组播的虚拟网络接口来进行工作。在 VPN 环境中，如果 Ignite 与 Vert.x 不正确配置的话，VPN 接口将被选择，而不是正确的接口。</p>
 </div>
 <div class="paragraph">
-<p>So, if you have a VPN running you may have to configure both the Ignite and Vert.x to use the correct interface as
-described in the previous section.</p>
+<p>所以，如果你的软件运行在 VPN 环境中，参考上述章节，设置正确的网络接口。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_when_multicast_is_not_available">When multicast is not available</h3>
+<h3 id="_组播被禁用">组播被禁用</h3>
 <div class="paragraph">
-<p>In some cases you may not be able to use multicast as it might not be available in your environment. In that case
-you should configure another transport using corresponding IP finder, e.g. <code>TcpDiscoveryVmIpFinder</code> to use TCP sockets,
-or <code>TcpDiscoveryS3IpFinder</code> to use Amazon S3.</p>
+<p>在一些情况下，运行环境中，无法开启组播。在这种情况下，需要配置合适的 <code>IP finder</code>。TCP sockets 发现器  <code>TcpDiscoveryVmIpFinder</code> ，或者 Amazon S3 发现器 <code>TcpDiscoveryS3IpFinder</code> 。</p>
 </div>
 <div class="paragraph">
-<p>For more information on available Ignite transports and how to configure them please consult the
-<a href="https://apacheignite.readme.io/docs/clustering">Ignite Clustering</a> documentation.</p>
+<p>具体 Ignite 集群配置，可以参考文档
+<a href="https://apacheignite.readme.io/docs/clustering">Ignite Clustering</a> 。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_enabling_logging">Enabling logging</h3>
+<h3 id="_开启日志">开启日志</h3>
 <div class="paragraph">
-<p>When trouble-shooting clustering issues it&#8217;s often useful to get some logging output from Ignite
-to see if it&#8217;s forming a cluster properly. You can do this (when using the default JUL logging) by adding a file
-called <code>vertx-default-jul-logging.properties</code> on your classpath. This is a standard java.util.loging (JUL)
-configuration file. Inside it set:</p>
+<p>在排除故障时，开启 Ignite 日志，将会给予很大的帮助。在 <code>classpath</code> 中添加 <code>vertx-default-jul-logging.properties</code> 文件（默认的JUL记录时），这是一个标准 java.util.loging（JUL） 配置文件。具体配置如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -427,7 +475,7 @@ configuration file. Inside it set:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>and also</p>
+<p>或者</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -438,14 +486,13 @@ java.util.logging.FileHandler.level=INFO</pre>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:20 CST
+                上次更新时间 2018-09-07 11:02:43 CST
               
               
             </div>

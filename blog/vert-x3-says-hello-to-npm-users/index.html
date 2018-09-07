@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Vert.x3 says &quot;hello&quot; to NPM users</h2><p class=blog-post-meta>13th July 2015 by <a href=http://github.com/pmlopes>pmlopes</a></p><article><p>In programming literature it has become the standard to create a hello world program as the first example. In this article I’ll be demonstrating how <code>NPM</code> users can quickly get started with <code>vert.x</code>. You will see that it is not that different and in fact it can be done using the tools you’re used to. Note that although we are using <code>NPM</code> we are not relying on <code>node.js</code>, all <code>javascript</code> code runs on the <code>JVM</code>.</p><h2 id=hello-world-examples>Hello World Examples</h2><p>Here are four simple hello world examples. The comments in the code explain how the code works and the text around it explain what it does and how to test it.</p><h2 id=hello-console>Hello Console</h2><p>This example is about as plain as it can get. It prints the words “<code>Hello World</code>“ to the terminal. If you’re a javascript developer you should be already used to <code>npm</code> and know that you always start a project with the file <code>package.json</code>:</p><pre><code class="hljs javascript">{
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Vert.x3 says &quot;hello&quot; to NPM users</h2><p class=blog-post-meta>13th July 2015 by <a href=http://github.com/pmlopes>pmlopes</a></p><article><p>In programming literature it has become the standard to create a hello world program as the first example. In this article I’ll be demonstrating how <code>NPM</code> users can quickly get started with <code>vert.x</code>. You will see that it is not that different and in fact it can be done using the tools you’re used to. Note that although we are using <code>NPM</code> we are not relying on <code>node.js</code>, all <code>javascript</code> code runs on the <code>JVM</code>.</p><h2 id=hello-world-examples>Hello World Examples</h2><p>Here are four simple hello world examples. The comments in the code explain how the code works and the text around it explain what it does and how to test it.</p><h2 id=hello-console>Hello Console</h2><p>This example is about as plain as it can get. It prints the words “<code>Hello World</code>“ to the terminal. If you’re a javascript developer you should be already used to <code>npm</code> and know that you always start a project with the file <code>package.json</code>:</p><pre><code class="hljs javascript">{
   <span class=hljs-string>"name"</span>: <span class=hljs-string>"vertx3-hello-console"</span>,
   <span class=hljs-string>"private"</span>: <span class=hljs-literal>true</span>,
   <span class=hljs-string>"dependencies"</span>: {

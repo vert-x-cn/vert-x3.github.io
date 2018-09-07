@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -104,8 +160,8 @@
           <ul class="sectlevel1">
 <li><a href="#_mongo_auth_provider_implementation">Mongo Auth Provider implementation</a></li>
 <li><a href="#_vertx_auth_jdbc_and_gdpr">Vertx Auth JDBC and GDPR</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_authorisation_permission_role_model">Authorisation - Permission-Role Model</a></li>
+<li><a href="#_认证">认证</a></li>
+<li><a href="#_授权_permission_role模型">授权 - Permission/Role模型</a></li>
 </ul>
         </div>
       </div>
@@ -115,25 +171,33 @@
           <ul class="sectlevel1">
 <li><a href="#_mongo_auth_provider_implementation">Mongo Auth Provider implementation</a></li>
 <li><a href="#_vertx_auth_jdbc_and_gdpr">Vertx Auth JDBC and GDPR</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_authorisation_permission_role_model">Authorisation - Permission-Role Model</a></li>
+<li><a href="#_认证">认证</a></li>
+<li><a href="#_授权_permission_role模型">授权 - Permission/Role模型</a></li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-auth-mongo-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_mongo_auth_provider_implementation">Mongo Auth Provider implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We provide an implementation of <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code> which uses the Vert.x <code><a href="../../scaladocs/io/vertx/scala/ext/mongo/MongoClient.html">MongoClient</a></code>
-to perform authentication and authorisation against a MongoDb.</p>
+<p>Vert.X中提供了一个 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code> 的实现，它可以让你使用 <code><a href="../../scaladocs/io/vertx/scala/ext/mongo/MongoClient.html">MongoClient</a></code>
+针对MongoDb数据库执行认证和授权。</p>
 </div>
 <div class="paragraph">
-<p>To use this project, add the following
-dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>若要在自己的项目中使用它，则需要在构建描述信息的_dependencies_节点中添加如下信息：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -149,7 +213,7 @@ dependency to the <em>dependencies</em> section of your build descriptor:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -159,11 +223,10 @@ dependency to the <em>dependencies</em> section of your build descriptor:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To create an instance you first need an instance of <code><a href="../../scaladocs/io/vertx/scala/ext/mongo/MongoClient.html">MongoClient</a></code>. To learn how to create one
-of those please consult the documentation for the MongoClient.</p>
+<p>如果要创建一个客户端实例，你首先需要一个 <code><a href="../../scaladocs/io/vertx/scala/ext/mongo/MongoClient.html">MongoClient</a></code> 的实例，要知道如何创建这个实例可按照文档中的内容实施。</p>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve got one of those you can create a <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html">MongoAuth</a></code> instance as follows:</p>
+<p>一旦你创建了一个 <code><a href="../../scaladocs/io/vertx/scala/ext/mongo/MongoClient.html">MongoClient</a></code> 实例后，就可以按照下边的代码创建 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html">MongoAuth</a></code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -173,15 +236,13 @@ var authProvider = MongoAuth.create(client, authProperties)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve got your instance you can authenticate and authorise with it just like any <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code>.</p>
+<p>创建好上边的实例过后，你就可以使用任何 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/AuthProvider.html">AuthProvider</a></code> 针对MongoDB执行认证和授权功能了。</p>
 </div>
 <div class="paragraph">
-<p>The out of the box config assumes the usage of the collection with name "user", the username stored and read by field "username"
-some others.</p>
+<p>Vert.X的默认标准配置（Out Of the Box）中包含了"user"集合（Collection），用户名字段使用"username"进行存储和读取。</p>
 </div>
 <div class="paragraph">
-<p>In order to avoid duplicates of user names your "user" collection should have a unique index on "username". In order
-to do this you should run the following snippet on your mongo server:</p>
+<p>为了避免在"user"集合中出现重复的用户名，应该在"user"集合中给"username"添加唯一索引（Unique Index），你可以在MongoDB服务器中运行下边的片段来完成此操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -189,38 +250,36 @@ to do this you should run the following snippet on your mongo server:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The reason you should add the index is that due to the nature of mongo doing a query first to verify if a username is
-already taken and then insert a document cannot be run as an atomic action. Using the index the code will try to
-insert the row and fail if duplicate.</p>
+<p>MongoDB的特性是先查询username字段中的值是否已经存在，然后会插入一个Document，并不能作为一个原子性操作，
+基于这个原因你需要添加上边的唯一索引，使用了这个索引过后你的代码会尝试先插入一行数据，如果出现了重复记录则会失败。</p>
 </div>
 <div class="paragraph">
-<p>You can also change all the defaults for the mongo collection and column names using any of the methods:</p>
+<p>根据你自己的需要，你同样可以使用下边的方法改变MongoDB中使用的默认集合（Collection）和列（Column）名称等信息：</p>
 </div>
 <div class="paragraph">
 <p><code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setCollectionName(java.lang.String)">setCollectionName</a></code>
 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameField(java.lang.String)">setUsernameField</a></code>
 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordField(java.lang.String)">setPasswordField</a></code>
 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPermissionField(java.lang.String)">setPermissionField</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setRoleField(java.lang.String)">setRoleField</a></code>
-if you want to adapt that to your needs.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setRoleField(java.lang.String)">setRoleField</a></code></p>
 </div>
 <div class="paragraph">
-<p>The default implementation assumes that the password is stored in the database as a SHA-512 hash after being
-concatenated with a salt. It also assumes the salt is stored in the table too. The field, where the salt is
-stored can be set by <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setSaltField(java.lang.String)">setSaltField</a></code>, the default is "salt".
-You are able to change this behaviour by using <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setSaltStyle(io.vertx.ext.auth.mongo.HashSaltStyle)">setSaltStyle</a></code>.
-The HashStrategy you can retrieve by  <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#getHashStrategy()">getHashStrategy</a></code>.
-By using this, you are able to set:
-<code><a href="todo">NO_SALT</a></code> by which passwords are not crypted and stored
-in cleartext. ( see the warning below! )
-<code><a href="todo">COLUMN</a></code>, which will create a salt per user and store this
-inside the defined column of the user. ( see the warning below! )
-<code><a href="todo">EXTERNAL</a></code>, which will store only the crypted password in the
-database and will use a salt from external, which you will have to set by <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setExternalSalt(java.lang.String)">setExternalSalt</a></code></p>
+<p>Vert.X默认实现中的密码在数据库中使用了SHA-512算法加密后进行存储，之后会连接对应的`salt`值，这个`salt`值和密码存储在同一个表里。
+你可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setSaltField(java.lang.String)">setSaltField</a></code> 方法来改变存储`salt`值的字段名称，它的默认值是"salt"，
+你同样可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setSaltStyle(io.vertx.ext.auth.mongo.HashSaltStyle)">setSaltStyle</a></code> 来改变一些行为。
+通过调用  <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#getHashStrategy()">getHashStrategy</a></code> 方法还可以读取Hash策略设置。</p>
 </div>
 <div class="paragraph">
-<p>If you want to override this behaviour you can do so by providing an alternative hash strategy and setting it with
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setHashStrategy(io.vertx.ext.auth.mongo.HashStrategy)">setHashStrategy</a></code></p>
+<p>MongoDB中可以设置下边几种`SALT`的值：</p>
+</div>
+<div class="paragraph">
+<p><code><a href="todo">NO_SALT</a></code> ：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
+<code><a href="todo">COLUMN</a></code> ：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
+<code><a href="todo">EXTERNAL</a></code> ：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setExternalSalt(java.lang.String)">setExternalSalt</a></code> 方法进行设置。</p>
+</div>
+<div class="paragraph">
+<p>如果你想要重写上述行为，则你可以调用
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setHashStrategy(io.vertx.ext.auth.mongo.HashStrategy)">setHashStrategy</a></code> 方法设置新的Hash策略，并且提供变更过的Hash策略及配置信息。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -229,9 +288,7 @@ database and will use a salt from external, which you will have to set by <code>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-It is strongly advised to use the <code><a href="todo">EXTERNAL</a></code> option.
-The NO_SALT option is existing for development phase only and even the COLUMN option is not recommended, cause
-salt and password are stored inside the same place!
+<em>强烈建议在设置"salt"值时候使用 <code><a href="todo">EXTERNAL</a></code> 选项。 <code>NO_SALT</code> 选项仅仅推荐在开发阶段中使用，不仅仅如此， <code>COLUMN</code> 方式也不推荐，因为它会导致 <code>salt</code> 和密码都存储在了同一个地方！</em>
 </td>
 </tr>
 </table>
@@ -346,11 +403,10 @@ they can be replayed individually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_authentication">Authentication</h2>
+<h2 id="_认证">认证</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When authenticating using this implementation, it assumes <code>username</code> and <code>password</code> fields are present in the
-authentication info:</p>
+<p>如果认证使用了默认的MongoDB实现，认证信息中用了 <code>username</code> 和 <code>password</code> 字段：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -366,23 +422,21 @@ authProvider.authenticateFuture(authInfo).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>Instead of the <code>username</code> and <code>password</code> field names used in the previous snippet, you should use:
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameCredentialField(java.lang.String)">setUsernameCredentialField</a></code> and
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordCredentialField(java.lang.String)">setPasswordCredentialField</a></code></p>
+<p>如果想要替换上边的 <code>username</code> 和 <code>password</code> 两个默认字段名，你可以使用
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameCredentialField(java.lang.String)">setUsernameCredentialField</a></code> 和
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordCredentialField(java.lang.String)">setPasswordCredentialField</a></code> 方法。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_authorisation_permission_role_model">Authorisation - Permission-Role Model</h2>
+<h2 id="_授权_permission_role模型">授权 - Permission/Role模型</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Although Vert.x auth itself does not mandate any specific model of permissions (they are just opaque strings), this
-implementation assumes a familiar user/role/permission model, where a user can have zero or more roles and a role
-can have zero or more permissions.</p>
+<p>尽管Vert.X自身并不要求使用特定的许可模型（它本身只是使用了不透明的字符串），但MongoDB认证中的实现使用了比较熟悉的：用户/角色/许可模型，这样在应用里你可以使用一个或者多个角色，而一个角色也可以拥有一个或者多个许可。</p>
 </div>
 <div class="paragraph">
-<p>If validating if a user has a particular permission simply pass the permission into.
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String,%20io.vertx.core.Handler)">isAuthorised</a></code> as follows:</p>
+<p>如果要验证一个用户是否拥有特定的许可，则要将许可信息传递到
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String,%20io.vertx.core.Handler)">isAuthorised</a></code> 中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -397,7 +451,7 @@ can have zero or more permissions.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If validating that a user has a particular <em>role</em> then you should prefix the argument with the role prefix.</p>
+<p>如果要验证一个用户是否属于特定角色，则可以使用MongoDB认证前缀（MongoAuth.ROLE_PREFIX）法给角色带上前缀表示：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -413,14 +467,13 @@ can have zero or more permissions.</p>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:12 CST
+                上次更新时间 2018-09-07 11:01:42 CST
               
               
             </div>

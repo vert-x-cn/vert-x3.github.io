@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Building services and APIs with AMQP 1.0</h2><p class=blog-post-meta>25th January 2017 by <a href=http://github.com/scholzj>scholzj</a></p><article><p>Microservices and APIs are everywhere. Everyone talks about them, presentation slides are full of them … some people are actually even building them. Microservices and APIs are of course not completely new concepts and they are a bit over-hyped. But in general the ideas behind them are not bad. Unfortunately, many people seem to believe that the only way how to implement an API in microservice is to use HTTP and REST. That is of course not true. Microservices and APIs can be based on many different protocols and technologies. My favorite one is of course <a href=http://www.amqp.org>AMQP</a>. Don’t take me wrong, HTTP and REST is not necessarily bad. But in some cases AMQP is simply better and creating AMQP based APIs does not need to be complicated.</p><p><div class="admonition-block note"><table><tbody><tr><td class=admonition-icon><i class="admonition-icon fa fa-comment"></i></td><td class=content><span class=content>this is a re-publication of the following <a href=http://blog.effectivemessaging.com/2017/01/building-services-and-apis-with-amqp-10.html>blog post</a></span></td></tr></tbody></table></div></p><h2 id=livescore-service>LiveScore service</h2><p>For demonstration, I will use a very simple service for keeping scores of football games. It has very basic API. It has only three calls:</p><ul><li>Add a new game</li><li>Update a score of existing game</li><li>List the scores The AMQP variants will be additionally able to push live updates to the clients.</li></ul><p>The demo is using Java and Vert.x toolkit. <a href="http://vertx.io/">Vert.x</a> is cool and I definitely recommend it to everyone. But most of the stuff from the demo should be possible also in any other programming languages and/or framework.</p><h2 id=http-api>HTTP API</h2><p>HTTP implementation of my service is a typical REST API. Since it is very simple, it accepts requests only on one endpoint – /api/v1.0/scores. New games are added as POST operations, scores are updated with PUT operations and list of all scores can be obtained with GET.</p><p>With Vert.x, creating HTTP/REST API is very easy. First the web router has to be created with all planned API calls:</p><pre><code class="hljs java">router = Router.router(vertx);  
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Building services and APIs with AMQP 1.0</h2><p class=blog-post-meta>25th January 2017 by <a href=http://github.com/scholzj>scholzj</a></p><article><p>Microservices and APIs are everywhere. Everyone talks about them, presentation slides are full of them … some people are actually even building them. Microservices and APIs are of course not completely new concepts and they are a bit over-hyped. But in general the ideas behind them are not bad. Unfortunately, many people seem to believe that the only way how to implement an API in microservice is to use HTTP and REST. That is of course not true. Microservices and APIs can be based on many different protocols and technologies. My favorite one is of course <a href=http://www.amqp.org>AMQP</a>. Don’t take me wrong, HTTP and REST is not necessarily bad. But in some cases AMQP is simply better and creating AMQP based APIs does not need to be complicated.</p><p><div class="admonition-block note"><table><tbody><tr><td class=admonition-icon><i class="admonition-icon fa fa-comment"></i></td><td class=content><span class=content>this is a re-publication of the following <a href=http://blog.effectivemessaging.com/2017/01/building-services-and-apis-with-amqp-10.html>blog post</a></span></td></tr></tbody></table></div></p><h2 id=livescore-service>LiveScore service</h2><p>For demonstration, I will use a very simple service for keeping scores of football games. It has very basic API. It has only three calls:</p><ul><li>Add a new game</li><li>Update a score of existing game</li><li>List the scores The AMQP variants will be additionally able to push live updates to the clients.</li></ul><p>The demo is using Java and Vert.x toolkit. <a href="http://vertx.io/">Vert.x</a> is cool and I definitely recommend it to everyone. But most of the stuff from the demo should be possible also in any other programming languages and/or framework.</p><h2 id=http-api>HTTP API</h2><p>HTTP implementation of my service is a typical REST API. Since it is very simple, it accepts requests only on one endpoint – /api/v1.0/scores. New games are added as POST operations, scores are updated with PUT operations and list of all scores can be obtained with GET.</p><p>With Vert.x, creating HTTP/REST API is very easy. First the web router has to be created with all planned API calls:</p><pre><code class="hljs java">router = Router.router(vertx);  
 router.route(<span class=hljs-string>"/api/v1.0/*"</span>).handler(BodyHandler.create());  
 router.get(<span class=hljs-string>"/api/v1.0/scores"</span>).handler(<span class=hljs-keyword>this</span>::getScores);  
 router.post(<span class=hljs-string>"/api/v1.0/scores"</span>).handler(<span class=hljs-keyword>this</span>::addGame);  

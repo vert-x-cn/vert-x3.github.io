@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -121,6 +177,15 @@
 <li><a href="#_使用注解">使用注解</a></li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-core-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -194,9 +259,9 @@
 </div>
 <div class="paragraph">
 <p>您可以看到，您可以使用 <code><a href="../../apidocs/io/vertx/core/cli/CLI.html#create-java.lang.String-">CLI.create</a></code> 创建一个新的 <code><a href="../../apidocs/io/vertx/core/cli/CLI.html">CLI</a></code> 。
-传递的字符串是 {@code CLI} 的名称。创建后，您可以设置摘要和描述，摘要的目的是简短（一行），而描述可以包含更多细节。每个选项和参数也使用
+传递的字符串是 <code>CLI</code> 的名称。创建后，您可以设置摘要和描述，摘要的目的是简短（一行），而描述可以包含更多细节。每个选项和参数也使用
 <code><a href="../../apidocs/io/vertx/core/cli/CLI.html#addArgument-io.vertx.core.cli.Argument-">addArgument</a></code> 和
-<code><a href="../../apidocs/io/vertx/core/cli/CLI.html#addOption-io.vertx.core.cli.Option-">addOption</a></code> 方法添加到 {@code CLI} 对象上。</p>
+<code><a href="../../apidocs/io/vertx/core/cli/CLI.html#addOption-io.vertx.core.cli.Option-">addOption</a></code> 方法添加到 <code>CLI</code> 对象上。</p>
 </div>
 <div class="sect3">
 <h4 id="_选项">选项</h4>
@@ -553,14 +618,13 @@ CLIConfigurator.inject(commandLine, instance);</code></pre>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:14 CST
+                上次更新时间 2018-09-07 11:02:25 CST
               
               
             </div>

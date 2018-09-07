@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -104,20 +160,20 @@
           <ul class="sectlevel1">
 <li><a href="#_vert_x_common_sql_interface">Vert.x Common SQL interface</a></li>
 <li><a href="#_simple_sql_operations">Simple SQL Operations</a></li>
-<li><a href="#_the_sql_connection">The SQL Connection</a>
+<li><a href="#_sql_连接">SQL 连接</a>
 <ul class="sectlevel2">
-<li><a href="#_auto_commit">Auto-commit</a></li>
-<li><a href="#_executing_queries">Executing queries</a></li>
-<li><a href="#_prepared_statement_queries">Prepared statement queries</a></li>
-<li><a href="#_executing_insert_update_or_delete">Executing INSERT, UPDATE or DELETE</a></li>
-<li><a href="#_prepared_statement_updates">Prepared statement updates</a></li>
-<li><a href="#_callable_statements">Callable statements</a></li>
-<li><a href="#_batch_operations">Batch operations</a></li>
-<li><a href="#_executing_other_operations">Executing other operations</a></li>
-<li><a href="#_multiple_resultset_responses">Multiple ResultSet responses</a></li>
+<li><a href="#_自动提交">自动提交</a></li>
+<li><a href="#_执行查询">执行查询</a></li>
+<li><a href="#_预编译查询">预编译查询</a></li>
+<li><a href="#_执行_insert_update_delete_语句">执行 INSERT/UPDATE/DELETE 语句</a></li>
+<li><a href="#_预编译更新">预编译更新</a></li>
+<li><a href="#_可调用语句">可调用语句</a></li>
+<li><a href="#_批量操作">批量操作</a></li>
+<li><a href="#_执行其他操作">执行其他操作</a></li>
+<li><a href="#_返回多个结果集">返回多个结果集</a></li>
 <li><a href="#_streaming">Streaming</a></li>
-<li><a href="#_using_transactions">Using transactions</a></li>
-<li><a href="#_closing_connections">Closing connections</a></li>
+<li><a href="#_使用事务">使用事务</a></li>
+<li><a href="#_关闭连接">关闭连接</a></li>
 </ul>
 </li>
 </ul>
@@ -129,41 +185,49 @@
           <ul class="sectlevel1">
 <li><a href="#_vert_x_common_sql_interface">Vert.x Common SQL interface</a></li>
 <li><a href="#_simple_sql_operations">Simple SQL Operations</a></li>
-<li><a href="#_the_sql_connection">The SQL Connection</a>
+<li><a href="#_sql_连接">SQL 连接</a>
 <ul class="sectlevel2">
-<li><a href="#_auto_commit">Auto-commit</a></li>
-<li><a href="#_executing_queries">Executing queries</a></li>
-<li><a href="#_prepared_statement_queries">Prepared statement queries</a></li>
-<li><a href="#_executing_insert_update_or_delete">Executing INSERT, UPDATE or DELETE</a></li>
-<li><a href="#_prepared_statement_updates">Prepared statement updates</a></li>
-<li><a href="#_callable_statements">Callable statements</a></li>
-<li><a href="#_batch_operations">Batch operations</a></li>
-<li><a href="#_executing_other_operations">Executing other operations</a></li>
-<li><a href="#_multiple_resultset_responses">Multiple ResultSet responses</a></li>
+<li><a href="#_自动提交">自动提交</a></li>
+<li><a href="#_执行查询">执行查询</a></li>
+<li><a href="#_预编译查询">预编译查询</a></li>
+<li><a href="#_执行_insert_update_delete_语句">执行 INSERT/UPDATE/DELETE 语句</a></li>
+<li><a href="#_预编译更新">预编译更新</a></li>
+<li><a href="#_可调用语句">可调用语句</a></li>
+<li><a href="#_批量操作">批量操作</a></li>
+<li><a href="#_执行其他操作">执行其他操作</a></li>
+<li><a href="#_返回多个结果集">返回多个结果集</a></li>
 <li><a href="#_streaming">Streaming</a></li>
-<li><a href="#_using_transactions">Using transactions</a></li>
-<li><a href="#_closing_connections">Closing connections</a></li>
+<li><a href="#_使用事务">使用事务</a></li>
+<li><a href="#_关闭连接">关闭连接</a></li>
 </ul>
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-sql-common-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_vert_x_common_sql_interface">Vert.x Common SQL interface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The common SQL interface is used to interact with Vert.x SQL services.</p>
+<p>Vert.x Common SQL Interface组件定义了 Vert.x 与各种 SQL 服务交互的方法。</p>
 </div>
 <div class="paragraph">
-<p>You obtain a connection to the database via the service interface for the specific SQL service that
-you are using (e.g. JDBC/MySQL/PostgreSQL).</p>
+<p>您必须通过使用特定的 SQL 服务（例如 JDBC/MySQL/PostgreSQL）的接口来获取数据库连接。</p>
 </div>
 <div class="paragraph">
-<p>To use this project, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>要使用此组件，需要添加下列依赖：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 `pom.xml`文件中):</p>
 </li>
 </ul>
 </div>
@@ -179,7 +243,7 @@ you are using (e.g. JDBC/MySQL/PostgreSQL).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -269,23 +333,22 @@ perform the following steps for you:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_sql_connection">The SQL Connection</h2>
+<h2 id="_sql_连接">SQL 连接</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A connection to the database is represented by <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html">SQLConnection</a></code>.</p>
+<p>我们用 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html">SQLConnection</a></code> 接口来表示数据库连接（译者注：此接口中包含各种基本的操作方法）。</p>
 </div>
 <div class="sect2">
-<h3 id="_auto_commit">Auto-commit</h3>
+<h3 id="_自动提交">自动提交</h3>
 <div class="paragraph">
-<p>When you obtain a connection auto commit is set to <code>true</code>. This means that each operation you perform will effectively
-execute in its own transaction.</p>
+<p>当您获取的数据库连接，其自动提交选项（auto commit）默认设置为 <code>true</code>。这意味着您的每个操作都将在单独的事务中有效执行。</p>
 </div>
 <div class="paragraph">
-<p>If you wish to perform multiple operations in a single transaction you should set auto commit to false with
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#setAutoCommit-boolean-io.vertx.core.Handler-">setAutoCommit</a></code>.</p>
+<p>如果您希望在同一个事务中执行多个操作，就应该使用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#setAutoCommit-boolean-io.vertx.core.Handler-">setAutoCommit</a></code> 方法设置自动提交为`false`。</p>
 </div>
 <div class="paragraph">
-<p>When the operation is complete, the handler will be called:</p>
+<p>当操作完成时，回调方法将会被执行：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -300,16 +363,15 @@ execute in its own transaction.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_executing_queries">Executing queries</h3>
+<h3 id="_执行查询">执行查询</h3>
 <div class="paragraph">
-<p>To execute a query use <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#query-java.lang.String-io.vertx.core.Handler-">query</a></code></p>
+<p>您可以使用 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#query-java.lang.String-io.vertx.core.Handler-">query</a></code> 方法执行查询操作。</p>
 </div>
 <div class="paragraph">
-<p>The query string is raw SQL that is passed through without changes to the actual database.</p>
+<p>查询语句（原生SQL）传给数据库时，不会经过任何修改。</p>
 </div>
 <div class="paragraph">
-<p>The handler will be called with the results, represented by <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html">ResultSet</a></code> when the query has
-been run.</p>
+<p>当查询结束时，将执行回调方法处理结果。查询结果包装在 <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html">ResultSet</a></code> 中。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -324,14 +386,14 @@ been run.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html">ResultSet</a></code> instance represents the results of a query.</p>
+<p><code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html">ResultSet</a></code> 类代表查询结果。</p>
 </div>
 <div class="paragraph">
-<p>The list of column names are available with <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getColumnNames--">getColumnNames</a></code>, and the actual results
-available with <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getResults--">getResults</a></code></p>
+<p>您可以通过 <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getColumnNames--">getColumnNames</a></code> 方法获得查询结果的列名 List 集合，实际的结果集可以通过
+<code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getResults--">getResults</a></code> 方法获得。</p>
 </div>
 <div class="paragraph">
-<p>The results are a list of <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> instances, one for each row of the results.</p>
+<p>结果集被包装成了一组 <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 列表，其中的每个元素代表一行结果。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -350,12 +412,13 @@ results.each { row -&gt;
 </div>
 </div>
 <div class="paragraph">
-<p>You can also retrieve the rows as a list of Json object instances with <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getRows--">getRows</a></code> -
-this can give you a somewhat simpler API to work with, but please be aware that SQL results can contain duplicate
-column names - if that&#8217;s the case you should use <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getResults--">getResults</a></code> instead.</p>
+<p>您还可以使用 <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getRows--">getRows</a></code> -
+方法来获得被包装成了 JSON 对象列表（<code>List&lt;JsonObject&gt; `）的结果集，这样能让 API 的操作更简单些。
+但要注意的是，查询出的结果集中可能会出现重复的列名。
+若遇到这样的情况，您应该选择使用 `<a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getResults--">getResults</a></code> 方法。</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of iterating through the results as Json object instances:</p>
+<p>下面是将结果集作为 <code>JsonObject</code> 进行迭代的例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -373,14 +436,14 @@ rows.each { row -&gt;
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prepared_statement_queries">Prepared statement queries</h3>
+<h3 id="_预编译查询">预编译查询</h3>
 <div class="paragraph">
-<p>To execute a prepared statement query you can use
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#queryWithParams-java.lang.String-io.vertx.core.json.JsonArray-io.vertx.core.Handler-">queryWithParams</a></code>.</p>
+<p>您可以使用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#queryWithParams-java.lang.String-io.vertx.core.json.JsonArray-io.vertx.core.Handler-">queryWithParams</a></code>
+方法执行预编译查询（prepared statement queries）。</p>
 </div>
 <div class="paragraph">
-<p>This takes the query, containing the parameter place holders, and a <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> or parameter
-values.</p>
+<p>此方法接受含参数占位符的SQL查询语句以及 <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 对象（用于传递参数）或参数值。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -403,20 +466,18 @@ connection.queryWithParams(query, params, { res -&gt;
 </div>
 </div>
 <div class="sect2">
-<h3 id="_executing_insert_update_or_delete">Executing INSERT, UPDATE or DELETE</h3>
+<h3 id="_执行_insert_update_delete_语句">执行 INSERT/UPDATE/DELETE 语句</h3>
 <div class="paragraph">
-<p>To execute an operation which updates the database use <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#update-java.lang.String-io.vertx.core.Handler-">update</a></code>.</p>
+<p>您可以使用 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#update-java.lang.String-io.vertx.core.Handler-">update</a></code> 方法来执行更新数据库的操作（包括增、删、改）。</p>
 </div>
 <div class="paragraph">
-<p>The update string is raw SQL that is passed through without changes to the actual database.</p>
+<p>更新语句（原生SQL）传给数据库时，不会经过任何处理。</p>
 </div>
 <div class="paragraph">
-<p>The handler will be called with the results, represented by <code><a href="../../apidocs/io/vertx/ext/sql/UpdateResult.html">UpdateResult</a></code> when the update has
-been run.</p>
+<p>当更新结束时，将执行回调方法处理结果。更新结果包装在 <code><a href="../../apidocs/io/vertx/ext/sql/UpdateResult.html">UpdateResult</a></code> 对象中。</p>
 </div>
 <div class="paragraph">
-<p>The update result holds the number of rows updated with <code><a href="../../apidocs/io/vertx/ext/sql/UpdateResult.html#getUpdated--">getUpdated</a></code>, and
-if the update generated keys, they are available with <code><a href="../../apidocs/io/vertx/ext/sql/UpdateResult.html#getKeys--">getKeys</a></code>.</p>
+<p>您可以通过 <code><a href="../../apidocs/io/vertx/ext/sql/UpdateResult.html#getUpdated--">getUpdated</a></code> 方法获得更新的数据条数，并且如果更新操作有生成主键，可以通过 <code><a href="../../apidocs/io/vertx/ext/sql/UpdateResult.html#getKeys--">getKeys</a></code> 方法获得对应的主键。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -435,14 +496,15 @@ if the update generated keys, they are available with <code><a href="../../apido
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prepared_statement_updates">Prepared statement updates</h3>
+<h3 id="_预编译更新">预编译更新</h3>
 <div class="paragraph">
-<p>To execute a prepared statement update you can use
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#updateWithParams-java.lang.String-io.vertx.core.json.JsonArray-io.vertx.core.Handler-">updateWithParams</a></code>.</p>
+<p>您可以使用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#updateWithParams-java.lang.String-io.vertx.core.json.JsonArray-io.vertx.core.Handler-">updateWithParams</a></code>
+方法来执行预编译更新（prepared statement updates）。</p>
 </div>
 <div class="paragraph">
-<p>This takes the update, containing the parameter place holders, and a <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> or parameter
-values.</p>
+<p>此方法接受含参数占位符的SQL更新语句以及 <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code>
+对象（用于传递参数）或参数值。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -469,23 +531,22 @@ connection.updateWithParams(update, params, { res -&gt;
 </div>
 </div>
 <div class="sect2">
-<h3 id="_callable_statements">Callable statements</h3>
+<h3 id="_可调用语句">可调用语句</h3>
 <div class="paragraph">
-<p>To execute a callable statement (either SQL functions or SQL procedures) you can use
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#callWithParams-java.lang.String-io.vertx.core.json.JsonArray-io.vertx.core.json.JsonArray-io.vertx.core.Handler-">callWithParams</a></code>.</p>
+<p>您可以使用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#callWithParams-java.lang.String-io.vertx.core.json.JsonArray-io.vertx.core.json.JsonArray-io.vertx.core.Handler-">callWithParams</a></code>
+方法来执行可调用语句（callable statements），例如 SQL 函数或者存储过程。</p>
 </div>
 <div class="paragraph">
-<p>This takes the callable statement using the standard JDBC format <code>{ call func_proc_name() }</code>, optionally including
-parameter place holders e.g.: <code>{ call func_proc_name(?, ?) }</code>, a <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> containing the
-parameter values and finally a <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> containing the
-output types e.g.: <code>[null, 'VARCHAR']</code>.</p>
+<p>可调用语句。可以使用标准 JDBC 格式 <code>{ call func_proc_name() }</code>, 也可以选择使用占位符传参数的形式，例如： <code>{ call func_proc_name(?, ?) }</code>, 输入参数集（<code>params</code>）， <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 类型，
+包含输出类型的输出结果集（<code>output</code>）， <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 类型，例如：<code>[null, 'VARCHAR']</code>， 对应的回调函数（<code>resultHandler</code>）</p>
 </div>
 <div class="paragraph">
-<p>Note that the index of the output type is as important as the params array. If the return value is the second
-argument then the output array must contain a null value as the first element.</p>
+<p>请注意，输出结果集的 <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 的下标和输入参数的  <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 同样重要。
+如果第二个参数代表输出结果集，那么应该设置结果集的  <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 的第一个元素为 null。</p>
 </div>
 <div class="paragraph">
-<p>A SQL function returns some output using the <code>return</code> keyword, and in this case one can call it like this:</p>
+<p>有些 SQL 函数只使用 <code>return</code> 关键字返回输出结果集，这时可以这样调用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -508,8 +569,7 @@ connection.call(func, { res -&gt;
 </div>
 </div>
 <div class="paragraph">
-<p>When working with Procedures you and still return values from your procedures via its arguments, in the case you do
-not return anything the usage is as follows:</p>
+<p>但是当您使用存储过程时，还是需要使用它的参数来返回结果集。如果一个存储过程没有返回值的话，可以像下面这样调用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -535,7 +595,7 @@ connection.callWithParams(func, [
 </div>
 </div>
 <div class="paragraph">
-<p>However you can also return values like this:</p>
+<p>但是如果存储过程有返回值的话，需要像下面这样调用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -563,48 +623,47 @@ connection.callWithParams(func, [
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the index of the arguments matches the index of the <code>?</code> and that the output parameters expect to be a
-String describing the type you want to receive.</p>
+<p>请注意：输入输出参数的下标必须匹配 <code>?</code> 的下标，并且输出结果集元素的值必须是结果集类型的字符串表示。</p>
 </div>
 <div class="paragraph">
-<p>To avoid ambiguation the implementations are expected to follow the following rules:</p>
+<p>为避免歧义，实现类需要遵循以下规则（译者注：可参考 Vert.x JDBC Client 的实现源码 [<code>JDBCStatementHelper.fillStatement(statement, in, out)</code>](<a href="https://github.com/vert-x3/vertx-jdbc-client/blob/master/src/main/java/io/vertx/ext/jdbc/impl/actions/JDBCStatementHelper.java#L97)）：" class="bare">https://github.com/vert-x3/vertx-jdbc-client/blob/master/src/main/java/io/vertx/ext/jdbc/impl/actions/JDBCStatementHelper.java#L97)）：</a></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>When a place holder in the <code>IN</code> array is <code>NOT NULL</code> it will be taken</p>
+<p>当 <code>IN</code> 参数的元素是 <code>NOT NULL</code> 时，此元素将被注册为输入参数</p>
 </li>
 <li>
-<p>When the <code>IN</code> value is NULL a check is performed on the OUT
-When the <code>OUT</code> value is not null it will be registered as a output parameter
-When the <code>OUT</code> is also null it is expected that the IN value is the <code>NULL</code> value.</p>
+<p>当 <code>IN</code> 参数的元素是 null 时，将进一步去检查 <code>OUT</code> 参数的元素值，再做判断
+若当 <code>IN</code> 参数的元素是 null，且 <code>OUT</code> 参数的元素值不是 null 时，<code>OUT</code> 参数的元素值将被注册为输出参数
+若当 <code>IN</code> 参数的元素是 null，且 <code>OUT</code> 参数的元素值也是 null 时， <code>IN</code> 参数的元素将被当作 <code>NULL</code> 值传入存储过程</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The registered <code>OUT</code> parameters will be available as an array in the result set under the output property.</p>
+<p>注册为 <code>OUT</code> 的参数，设置成了 <code>ResultSet</code> 的 <code>output</code> 属性。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_batch_operations">Batch operations</h3>
+<h3 id="_批量操作">批量操作</h3>
 <div class="paragraph">
-<p>The SQL common interface also defines how to execute batch operations. There are 3 types of batch operations:</p>
+<p>Vert.x SQL 公共接口定义了3种批量操作的方法：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Batched statements <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#batch-java.util.List-io.vertx.core.Handler-">batch</a></code></p>
+<p>批量操作 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#batch-java.util.List-io.vertx.core.Handler-">batch</a></code></p>
 </li>
 <li>
-<p>Batched prepared statements <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#batchWithParams-java.lang.String-java.util.List-io.vertx.core.Handler-">batchWithParams</a></code></p>
+<p>批量预编译操作 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#batchWithParams-java.lang.String-java.util.List-io.vertx.core.Handler-">batchWithParams</a></code></p>
 </li>
 <li>
-<p>Batched callable statements <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#batchCallableWithParams-java.lang.String-java.util.List-java.util.List-io.vertx.core.Handler-">batchCallableWithParams</a></code></p>
+<p>批量调用语句 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#batchCallableWithParams-java.lang.String-java.util.List-java.util.List-io.vertx.core.Handler-">batchCallableWithParams</a></code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>A batches statement will exeucte a list of sql statements as for example:</p>
+<p>批量操作能执行一组 SQL 语句（<code>List</code> 类型），例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -623,7 +682,7 @@ connection.batch(batch, { res -&gt;
 </div>
 </div>
 <div class="paragraph">
-<p>While a prepared or callable statement batch will reuse the sql statement and take an list of arguments as for example:</p>
+<p>预编译或者调用语句将会根据参数列表，来重复使用 SQL 语句，例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -647,14 +706,13 @@ connection.batchWithParams("INSERT INTO emp (name) VALUES (?)", batch, { res -&g
 </div>
 </div>
 <div class="sect2">
-<h3 id="_executing_other_operations">Executing other operations</h3>
+<h3 id="_执行其他操作">执行其他操作</h3>
 <div class="paragraph">
-<p>To execute any other database operation, e.g. a <code>CREATE TABLE</code> you can use
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#execute-java.lang.String-io.vertx.core.Handler-">execute</a></code>.</p>
+<p>若需要执行其他数据库操作，例如您可以使用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#execute-java.lang.String-io.vertx.core.Handler-">execute</a></code> 方法来执行 <code>CREATE TABLE</code> 语句。</p>
 </div>
 <div class="paragraph">
-<p>The string is passed through without changes to the actual database. The handler is called when the operation
-is complete</p>
+<p>SQL语句传给数据库时，不会经过任何处理。操作结束时将调用回调方法。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -671,11 +729,10 @@ connection.execute(sql, { execute -&gt;
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multiple_resultset_responses">Multiple ResultSet responses</h3>
+<h3 id="_返回多个结果集">返回多个结果集</h3>
 <div class="paragraph">
-<p>In some cases your query might return more than one result set, in this case and to preserve the compatibility when
-the returned result set object is converted to pure json, the next result sets are chained to the current result set
-under the property <code>next</code>. A simple walk of all result sets can be achieved like this:</p>
+<p>某些情况下，您的查询语句可能返回多个结果集 <code>ResultSet</code>，
+此时，返回的结果集会被转成纯 JSON，并且为了保持稳定性，下一个 <code>ResultSet</code> 被作为当前 <code>ResultSet</code> 的 <code>next</code> 属性链接着。一种简单的遍历所有结果集的方式如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -689,8 +746,7 @@ rs = rs.next</code></pre>
 <div class="sect2">
 <h3 id="_streaming">Streaming</h3>
 <div class="paragraph">
-<p>When dealing with large data sets, it is not advised to use API just described but to stream data since it avoids
-inflating the whole response into memory and JSON and data is just processed on a row by row basis, for example:</p>
+<p>在处理大数据结果集时，不建议使用上面提到的API，而是使用数据流（stream data）的方式。因为它能够避免把所有的返回值加载到内存中，而且得到的 JSON 格式的数据也能够一行行的处理，例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -704,9 +760,7 @@ inflating the whole response into memory and JSON and data is just processed on 
 </div>
 </div>
 <div class="paragraph">
-<p>You still have full control on when the stream is pauses, resumed and ended. For cases where your query returns
-multiple result sets you should use the result set ended event to fetch the next one if available. If there is more
-data the stream handler will receive the new data, otherwise the end handler is invoked.</p>
+<p>您还可以控制 Stream 何时停止，何时恢复，何时结束。对于查询返回多个结果集的情况，您应该使用 ended event 来获得下一个结果集。如果有，Stream 将会得到新的结果集，若没有，将会调用结束方法。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -728,17 +782,17 @@ data the stream handler will receive the new data, otherwise the end handler is 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_transactions">Using transactions</h3>
+<h3 id="_使用事务">使用事务</h3>
 <div class="paragraph">
-<p>To use transactions first set auto-commit to false with <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#setAutoCommit-boolean-io.vertx.core.Handler-">setAutoCommit</a></code>.</p>
+<p>要使用事务，首先要用 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#setAutoCommit-boolean-io.vertx.core.Handler-">setAutoCommit</a></code> 方法设置 auto-commit 为 <code>false</code>。</p>
 </div>
 <div class="paragraph">
-<p>You then do your transactional operations and when you want to commit or rollback use
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#commit-io.vertx.core.Handler-">commit</a></code> or
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#rollback-io.vertx.core.Handler-">rollback</a></code>.</p>
+<p>然后您就可以执行在同一个事务中的操作，在需要提交事务时，调用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#commit-io.vertx.core.Handler-">commit</a></code> 方法；在需要回滚时，调用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#rollback-io.vertx.core.Handler-">rollback</a></code> 方法。</p>
 </div>
 <div class="paragraph">
-<p>Once the commit/rollback is complete the handler will be called and the next transaction will be automatically started.</p>
+<p>一旦 <code>commit</code>/<code>rollback</code> 方法执行结束，将会调用回调方法。然后下一个事务也将自动开始。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -757,21 +811,20 @@ connection.commit({ res -&gt;
 </div>
 </div>
 <div class="sect2">
-<h3 id="_closing_connections">Closing connections</h3>
+<h3 id="_关闭连接">关闭连接</h3>
 <div class="paragraph">
-<p>When you&#8217;ve done with the connection you should return it to the pool with <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#close-io.vertx.core.Handler-">close</a></code>.</p>
+<p>您在用完连接后，必须使用 <code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#close-io.vertx.core.Handler-">close</a></code> 方法把连接返回给连接池。</p>
 </div>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:23 CST
+                上次更新时间 2018-09-07 11:03:50 CST
               
               
             </div>

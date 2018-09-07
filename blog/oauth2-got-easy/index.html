@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>OAuth2 got easy</h2><p class=blog-post-meta>2nd December 2016 by <a href=http://github.com/pmlopes>pmlopes</a></p><article><p><code>Oauth2</code> support exists in Eclipse Vert.x since version 3.2.0. The implementation follows the principles that rule the whole vert.x ecosystem: unopinionated, it does what you want it to do, simple but not too simple.</p><p>This works fine because <code>OAuth2</code> is a widely spread standard and vendors adhere to it quite well. However due to the API and the details of the specification it requires some knowledge on what kind of <em>flow</em> your application needs to support, what are the endpoints for authorizing and getting tokens. This information, even though easily accessible to anyone who’s got the time and will, to read the vendor documentation is easy to find, but it means that developers would need to spend time in a non-project problem-related task.</p><p>Vert.x thrives for being fast and productive, so what if we could help you focusing on your development tasks rather than reading Oauth2 provider documentation? This is what you can expect for the next release.</p><p>Out of the box you will find out that you can instantiate an OAuth2 provider as easy as:</p><pre><code class=hljs>Provider.<span class=hljs-function><span class=hljs-title>create</span><span class=hljs-params>(vertx, clientId, clientSecret)</span></span></code></pre><p>That’s it! simple, to the point, sure it makes some assumptions, it assumes that you want to use the “<code>AUTH_CODE</code>“ flow which is what you normally do for web applications with a backend.</p><p>The supported <code>Provider</code> implementations will configure the base API (which will be still available) with the correct URLs, scope encoding scheme or extra configuration such as “<code>shopId</code>“/“<code>GUID</code>“ for <code>Shopify</code>/<code>Azure AD</code>.</p><p>So what supported <code>Provider</code>s can you already find?</p><ul><li><a href="https://app.net/">App.net</a></li><li><a href="https://azure.microsoft.com/en-us/">Azure</a></li><li><a href=https://box.com>Box.com</a></li><li><a href=https://dropbox.com>Dropbox</a></li><li><a href=https://facebook.com>Facebook</a></li><li><a href=https://foursquare.com>Foursquare</a></li><li><a href=http://github.com>Github</a></li><li><a href=https://google.com>Google</a> (either <code>AUTH_CODE</code> flow or <code>Server to Server</code> flow)</li><li><a href=https://instagram.com>Instagram</a></li><li><a href=https://keycloak.org>Keycloak</a></li><li><a href=https://linkedin.com>LinkedIn</a></li><li><a href=https://mailchimp.com>Mailchimp</a></li><li><a href=https://salesforce.com>Salesforce</a></li><li><a href=https://shopify.com>Shopify</a></li><li><a href=https://soundcloud.com>Soundcloud</a></li><li><a href=https://stripe.com>Stripe</a></li><li><a href=https://twitter.com>Twitter</a></li></ul><p>That’s a handful of <code>Provider</code>s, but there is more. Say that you want to ensure that your SSL connections are valid and want to control the certificate validation. Every provider also accepts a HttpClientOptions object that will be used internally when contacting your provider, so in this case, you have full security control of your connection, not just defaults.</p><p>You can expect this new code to land for 3.4 as it is not available in the current release (3.3.3).</p></article></article></div><div class=row><div class=col-xs-12 id=disqus_thread></div></div><script>var disqus_config = function () {
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>OAuth2 got easy</h2><p class=blog-post-meta>2nd December 2016 by <a href=http://github.com/pmlopes>pmlopes</a></p><article><p><code>Oauth2</code> support exists in Eclipse Vert.x since version 3.2.0. The implementation follows the principles that rule the whole vert.x ecosystem: unopinionated, it does what you want it to do, simple but not too simple.</p><p>This works fine because <code>OAuth2</code> is a widely spread standard and vendors adhere to it quite well. However due to the API and the details of the specification it requires some knowledge on what kind of <em>flow</em> your application needs to support, what are the endpoints for authorizing and getting tokens. This information, even though easily accessible to anyone who’s got the time and will, to read the vendor documentation is easy to find, but it means that developers would need to spend time in a non-project problem-related task.</p><p>Vert.x thrives for being fast and productive, so what if we could help you focusing on your development tasks rather than reading Oauth2 provider documentation? This is what you can expect for the next release.</p><p>Out of the box you will find out that you can instantiate an OAuth2 provider as easy as:</p><pre><code class=hljs>Provider.<span class=hljs-function><span class=hljs-title>create</span><span class=hljs-params>(vertx, clientId, clientSecret)</span></span></code></pre><p>That’s it! simple, to the point, sure it makes some assumptions, it assumes that you want to use the “<code>AUTH_CODE</code>“ flow which is what you normally do for web applications with a backend.</p><p>The supported <code>Provider</code> implementations will configure the base API (which will be still available) with the correct URLs, scope encoding scheme or extra configuration such as “<code>shopId</code>“/“<code>GUID</code>“ for <code>Shopify</code>/<code>Azure AD</code>.</p><p>So what supported <code>Provider</code>s can you already find?</p><ul><li><a href="https://app.net/">App.net</a></li><li><a href="https://azure.microsoft.com/en-us/">Azure</a></li><li><a href=https://box.com>Box.com</a></li><li><a href=https://dropbox.com>Dropbox</a></li><li><a href=https://facebook.com>Facebook</a></li><li><a href=https://foursquare.com>Foursquare</a></li><li><a href=http://github.com>Github</a></li><li><a href=https://google.com>Google</a> (either <code>AUTH_CODE</code> flow or <code>Server to Server</code> flow)</li><li><a href=https://instagram.com>Instagram</a></li><li><a href=https://keycloak.org>Keycloak</a></li><li><a href=https://linkedin.com>LinkedIn</a></li><li><a href=https://mailchimp.com>Mailchimp</a></li><li><a href=https://salesforce.com>Salesforce</a></li><li><a href=https://shopify.com>Shopify</a></li><li><a href=https://soundcloud.com>Soundcloud</a></li><li><a href=https://stripe.com>Stripe</a></li><li><a href=https://twitter.com>Twitter</a></li></ul><p>That’s a handful of <code>Provider</code>s, but there is more. Say that you want to ensure that your SSL connections are valid and want to control the certificate validation. Every provider also accepts a HttpClientOptions object that will be used internally when contacting your provider, so in this case, you have full security control of your connection, not just defaults.</p><p>You can expect this new code to land for 3.4 as it is not available in the current release (3.3.3).</p></article></article></div><div class=row><div class=col-xs-12 id=disqus_thread></div></div><script>var disqus_config = function () {
   this.page.url = "https://vertx.tk/blog/oauth2-got-easy/";
   this.page.identifier = "/blog/oauth2-got-easy/";
   };

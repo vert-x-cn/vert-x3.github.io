@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,21 +158,21 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_vert_x_redis">Using Vert.x-Redis</a></li>
-<li><a href="#_connecting_to_redis">Connecting to Redis</a></li>
-<li><a href="#_running_commands">Running commands</a></li>
-<li><a href="#_pub_sub_mode">Pub/Sub mode</a></li>
-<li><a href="#_friendlier_hash_commands">Friendlier hash commands</a>
+<li><a href="#_使用_vert_x_redis">使用 Vert.x Redis</a></li>
+<li><a href="#_连接_redis_服务器">连接 Redis 服务器</a></li>
+<li><a href="#_执行命令">执行命令</a></li>
+<li><a href="#_发布_订阅模式">发布／订阅模式</a></li>
+<li><a href="#_更简洁的_hash_命令">更简洁的 hash 命令</a>
 <ul class="sectlevel2">
-<li><a href="#_command_hgetall">Command hgetall</a></li>
-<li><a href="#_command_mset">command mset</a></li>
-<li><a href="#_command_msetnx">command msetnx</a></li>
-<li><a href="#_command_hmset">command hmset</a></li>
-<li><a href="#_command_zadd">command zadd</a></li>
+<li><a href="#_hgetall_命令">hgetall 命令</a></li>
+<li><a href="#_mset_命令">mset 命令</a></li>
+<li><a href="#_msetnx_命令">msetnx 命令</a></li>
+<li><a href="#_hmset_命令">hmset 命令</a></li>
+<li><a href="#_zadd_命令">zadd 命令</a></li>
 </ul>
 </li>
-<li><a href="#_server_info">Server Info</a></li>
-<li><a href="#_eval_and_evalsha">Eval and Evalsha</a></li>
+<li><a href="#_服务器信息">服务器信息</a></li>
+<li><a href="#_eval_和_evalsha_命令">Eval 和 Evalsha 命令</a></li>
 <li><a href="#_redis_sentinel">Redis Sentinel</a></li>
 </ul>
         </div>
@@ -125,93 +181,102 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_vert_x_redis">Using Vert.x-Redis</a></li>
-<li><a href="#_connecting_to_redis">Connecting to Redis</a></li>
-<li><a href="#_running_commands">Running commands</a></li>
-<li><a href="#_pub_sub_mode">Pub/Sub mode</a></li>
-<li><a href="#_friendlier_hash_commands">Friendlier hash commands</a>
+<li><a href="#_使用_vert_x_redis">使用 Vert.x Redis</a></li>
+<li><a href="#_连接_redis_服务器">连接 Redis 服务器</a></li>
+<li><a href="#_执行命令">执行命令</a></li>
+<li><a href="#_发布_订阅模式">发布／订阅模式</a></li>
+<li><a href="#_更简洁的_hash_命令">更简洁的 hash 命令</a>
 <ul class="sectlevel2">
-<li><a href="#_command_hgetall">Command hgetall</a></li>
-<li><a href="#_command_mset">command mset</a></li>
-<li><a href="#_command_msetnx">command msetnx</a></li>
-<li><a href="#_command_hmset">command hmset</a></li>
-<li><a href="#_command_zadd">command zadd</a></li>
+<li><a href="#_hgetall_命令">hgetall 命令</a></li>
+<li><a href="#_mset_命令">mset 命令</a></li>
+<li><a href="#_msetnx_命令">msetnx 命令</a></li>
+<li><a href="#_hmset_命令">hmset 命令</a></li>
+<li><a href="#_zadd_命令">zadd 命令</a></li>
 </ul>
 </li>
-<li><a href="#_server_info">Server Info</a></li>
-<li><a href="#_eval_and_evalsha">Eval and Evalsha</a></li>
+<li><a href="#_服务器信息">服务器信息</a></li>
+<li><a href="#_eval_和_evalsha_命令">Eval 和 Evalsha 命令</a></li>
 <li><a href="#_redis_sentinel">Redis Sentinel</a></li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-redis-client-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-redis is redis client to be used with Vert.x.</p>
+<p>Vert.x Redis Client 是 Vert.x 配套的 Redis 客户端实现。</p>
 </div>
 <div class="paragraph">
-<p>This module allows data to be saved, retrieved, searched for, and deleted in a Redis. Redis is an open source, BSD
-licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain
-strings, hashes, lists, sets and sorted sets. To use this module you must have a Redis server instance running on
-your network.</p>
+<p>您可以通过 Vert.x Redis Client 来对 Redis 中的数据进行保存、获取、搜索和删除。
+Redis 是一个基于BSD协议开源的高性能Key-Value数据库。
+它可以存储字符串、哈希(hashes)、列表、无序集合(sets)和有序集合(sorted sets)，
+所以通常被用做结构化数据存储服务器。要使用本组件，您必须有一个运行中的 Redis 实例。</p>
 </div>
 <div class="paragraph">
-<p>Redis has a rich API and it can be organized in the following groups:</p>
+<p>Redis 有着丰富的 API，总结如下：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Cluster - Commands related to cluster management, note that using most of these commands you will need a redis server with version &gt;=3.0.0</p>
+<p>Cluster - 与集群相关的命令。要使用这些命令，Redis 服务器的版本必须 &gt;=3.0.0</p>
 </li>
 <li>
-<p>Connection - Commands that allow you to switch DBs, connect, disconnect and authenticate to a server.</p>
+<p>Connection - 切换 DB、建立连接、断开连接、授权相关的命令</p>
 </li>
 <li>
-<p>Hashes - Commands that allow operations on hashes.</p>
+<p>Hashes - 操作 hash 相关的命令</p>
 </li>
 <li>
-<p>HyperLogLog - Commands to approximating the number of distinct elements in a multiset, a HyperLogLog.</p>
+<p>HyperLogLog - 使用 HyperLogLog 算法来快速计算元素基数的相关命令</p>
 </li>
 <li>
-<p>Keys - Commands to work with Keys.</p>
+<p>Keys - 操作 Redis key 的相关命令</p>
 </li>
 <li>
-<p>List - Commands to work with Lists.</p>
+<p>List - 操作 List 的相关命令</p>
 </li>
 <li>
-<p>Pub/Sub - Commands to create queues and pub/sub clients.</p>
+<p>Pub/Sub - 发布／订阅模式的消息队列相关命令</p>
 </li>
 <li>
-<p>Scripting - Commands to run Lua Scripts in redis.</p>
+<p>Scripting - 解释运行 Lua 脚本的相关命令</p>
 </li>
 <li>
-<p>Server - Commands to manage and get server configurations.</p>
+<p>Server - 管理 Redis 服务器的相关命令</p>
 </li>
 <li>
-<p>Sets - Commands to work with un ordered sets.</p>
+<p>Sets - 操作无序集合的相关命令</p>
 </li>
 <li>
-<p>Sorted Sets - Commands to work with sorted sets.</p>
+<p>Sorted Sets - 操作有序集合的相关命令</p>
 </li>
 <li>
-<p>Strings - Commands to work with Strings.</p>
+<p>Strings - 操作字符串的相关命令</p>
 </li>
 <li>
-<p>Transactions - Commands to handle transaction lifecycle.</p>
+<p>Transactions - 处理事务的相关命令</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_vert_x_redis">Using Vert.x-Redis</h2>
+<h2 id="_使用_vert_x_redis">使用 Vert.x Redis</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use the Vert.x Redis client, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>要使用 Vert.x Redis 客户端，需要添加下列依赖：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -227,7 +292,7 @@ your network.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -239,47 +304,45 @@ your network.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_connecting_to_redis">Connecting to Redis</h2>
+<h2 id="_连接_redis_服务器">连接 Redis 服务器</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to connect to Redis there is a config required. This config is provided in the form of <code><a href="../../apidocs/io/vertx/redis/RedisOptions.html">RedisOptions</a></code>
-containing the following values:</p>
+<p>要连接到 Redis 服务器，需要配置一些参数。配置参数包装在 <code><a href="../../apidocs/io/vertx/redis/RedisOptions.html">RedisOptions</a></code>
+对象中，有以下这些参数：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>host</code>: default is <code>localhost</code></p>
+<p><code>host</code>: 默认是 <code>localhost</code></p>
 </li>
 <li>
-<p><code>port</code>: default is <code>6379</code></p>
+<p><code>port</code>: 默认是 <code>6379</code></p>
 </li>
 <li>
-<p><code>encoding</code>: default is <code>UTF-8</code></p>
+<p><code>encoding</code>: 默认是 <code>UTF-8</code></p>
 </li>
 <li>
-<p><code>tcpKeepAlive</code>: default <code>true</code></p>
+<p><code>tcpKeepAlive</code>: 默认是 <code>true</code></p>
 </li>
 <li>
-<p><code>tcpNoDelay</code>: default <code>true</code></p>
+<p><code>tcpNoDelay</code>: 默认是 <code>true</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>An connection example can then be:</p>
+<p>例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">def config = [
- host:"127.0.0.1"
-]
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var config = RedisOptions(
+  host = "127.0.0.1")
 
-def redis = RedisClient.create(vertx, config)</code></pre>
+var redis = RedisClient.create(vertx, config)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The client attempts to reconnect to the server on connection errors, for this reason if you are connecting to a server
-that requires authentication and/or you are not using the default database you must provide the authentication
-password and/or database id to the config object, the properties names are:</p>
+<p>Vert.x Redis 客户端在连接 Redis 服务器失败时，会尝试重连。所以，如果您连接的 Redis 服务器需要授权，
+或者您连接的 Redis 服务器的 DB 不是默认 DB，您需要提供授权的密码，或者 DB 的 ID，配置参数如下：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -292,102 +355,98 @@ password and/or database id to the config object, the properties names are:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If you do not do this and manually call the <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#auth-java.lang.String-io.vertx.core.Handler-">auth</a></code>
-or <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#select-int-io.vertx.core.Handler-">select</a></code> then the client will not know how to recover
-the connection in case of socket error.</p>
+<p>如果您不这样做，而是手动调用 <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#auth-java.lang.String-io.vertx.core.Handler-">auth</a></code>
+或者 <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#select-int-io.vertx.core.Handler-">select</a></code> 方法，
+那么当出现 socket 错误的时候，Vert.x Redis 客户端将不知道如何修复错误。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_running_commands">Running commands</h2>
+<h2 id="_执行命令">执行命令</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Given that the redis client is connected to the server, all commands are now possible to execute using this module.
-The module offers a clean API for executing commands without the need to hand write the command itself, for example
-if one wants to get a value of a key it can be done as:</p>
+<p>当使用 Vert.x Redis 客户端连接到 Redis 服务器后，就可以使用 Vert.x Redis 客户端执行 Redis 命令。
+Vert.x Redis 客户端为执行 Redis 命令提供了一套十分简洁的 API，省去了手写命令的麻烦。例如，如果想通过 key 获得 value的话，可以这样：</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">def redis = RedisClient.create(vertx, [:])
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var redis = RedisClient.create(vertx, RedisOptions())
 
 redis.get("mykey", { res -&gt;
- if (res.succeeded()) {
-   // so something...
- }
+  if (res.succeeded()) {
+    // so something...
+  }
 })</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In order to know more about the commands available you should look at: &lt;a href="http://redis.io/commands"&gt;redis documentation&lt;/a&gt;.</p>
+<p>要想了解更多 Redis 命令，请参考 <a href="http://redis.io/commands">Redis 官方文档</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pub_sub_mode">Pub/Sub mode</h2>
+<h2 id="_发布_订阅模式">发布／订阅模式</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Redis supports queues and pub/sub mode, when operated in this mode once a connection invokes a subscriber mode then
-it cannot be used for running other commands than the command to leave that mode.</p>
+<p>Redis 支持发布／订阅模式的消息队列。需要注意，一旦一个 Redis 连接被注册为订阅者时，此连接将不能再执行其他命令，直到这个连接使用取消订阅者的命令。</p>
 </div>
 <div class="paragraph">
-<p>To start a subscriber one would do:</p>
+<p>可以这样注册一个订阅者：</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">// register a handler for the incoming message the naming the Redis module will use is base address + '.' + redis channel
-vertx.eventBus().consumer("io.vertx.redis.channel1", { received -&gt;
- // do whatever you need to do with your message
- def value = received.body().value
- // the value is a JSON doc with the following properties
- // channel - The channel to which this message was sent
- // pattern - Pattern is present if you use psubscribe command and is the pattern that matched this message channel
- // message - The message payload
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// register a handler for the incoming message the naming the Redis module will use is base address + '.' + redis channel
+vertx.eventBus().consumer&lt;JsonObject&gt;("io.vertx.redis.channel1", { received -&gt;
+  // do whatever you need to do with your message
+  var value = received.body().getJsonObject("value")
+  // the value is a JSON doc with the following properties
+  // channel - The channel to which this message was sent
+  // pattern - Pattern is present if you use psubscribe command and is the pattern that matched this message channel
+  // message - The message payload
 })
 
-def redis = RedisClient.create(vertx, [:])
+var redis = RedisClient.create(vertx, RedisOptions())
 
 redis.subscribe("channel1", { res -&gt;
- if (res.succeeded()) {
-   // so something...
- }
+  if (res.succeeded()) {
+    // so something...
+  }
 })</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And from another place in the code publish messages to the queue:</p>
+<p>发布消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">def redis = RedisClient.create(vertx, [:])
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var redis = RedisClient.create(vertx, RedisOptions())
 
 redis.publish("channel1", "Hello World!", { res -&gt;
- if (res.succeeded()) {
-   // so something...
- }
+  if (res.succeeded()) {
+    // so something...
+  }
 })</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_friendlier_hash_commands">Friendlier hash commands</h2>
+<h2 id="_更简洁的_hash_命令">更简洁的 hash 命令</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Most Redis commands take a single String or an Array of Strings as arguments, and replies are sent back as a single
-String or an Array of Strings. When dealing with hash values, there are a couple of useful exceptions to this.</p>
+<p>大部分 Redis 命令使用单个字符串或者字符串数组来作为参数，
+并且返回的也是单个字符串或者字符串数组。不过在处理 hash 值时，有其他一些更简洁的方式。</p>
 </div>
 <div class="sect2">
-<h3 id="_command_hgetall">Command hgetall</h3>
+<h3 id="_hgetall_命令">hgetall 命令</h3>
 <div class="paragraph">
-<p>The reply from an hgetall command will be converted into a JSON Object. That way you can interact with the responses
-using JSON syntax which is handy for the EventBus communication.</p>
+<p><code>hgetall</code> 命令返回的结果将被转换成 JSON 对象。这样，您就可以使用 JSON 的语法来进行交互，这在与 Event Bus 通信时十分方便。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_command_mset">command mset</h3>
+<h3 id="_mset_命令">mset 命令</h3>
 <div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
+<p>您可以向 <code>mset</code> 命令传入一个 JSON 对象以在 hash 中设置多个值。需要注意 key 和 value 都将被转换成字符串。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -399,10 +458,9 @@ otherKeyName: "other value"
 </div>
 </div>
 <div class="sect2">
-<h3 id="_command_msetnx">command msetnx</h3>
+<h3 id="_msetnx_命令">msetnx 命令</h3>
 <div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
+<p>您可以向 <code>msetnx</code> 命令传入一个 JSON 对象以在 hash 中设置多个值（译者注：msetnx 命令，必须当且仅当所有给定 key 都不存在）。需要注意 key 和 value 都将被转换成字符串。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -414,10 +472,9 @@ otherKeyName: "other value"
 </div>
 </div>
 <div class="sect2">
-<h3 id="_command_hmset">command hmset</h3>
+<h3 id="_hmset_命令">hmset 命令</h3>
 <div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
+<p>您可以向 <code>hmset</code> 命令传入一个 JSON 对象以在 hash 中设置多个值（译者注：hmset 命令，如果给定 key 不存在，将创建新的 key）。需要注意 key 和 value 都将被转换成字符串。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -429,10 +486,9 @@ otherKeyName: "other value"
 </div>
 </div>
 <div class="sect2">
-<h3 id="_command_zadd">command zadd</h3>
+<h3 id="_zadd_命令">zadd 命令</h3>
 <div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
+<p>调用 <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#zaddMany-java.lang.String-java.util.Map-io.vertx.core.Handler-">zaddMany</a></code> 方法可以同时向有序集合中添加多个member。需要注意 key 和 value 都将被转换成字符串。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -446,13 +502,11 @@ otherScore: "other member"
 </div>
 </div>
 <div class="sect1">
-<h2 id="_server_info">Server Info</h2>
+<h2 id="_服务器信息">服务器信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to make it easier to work with the info response you don&#8217;t need to parse the data yourself and the module
-will return it in a easy to understand JSON format. The format is as follows: A JSON object for each section filled
-with properties that belong to that section. If for some reason there is no section the properties will be visible
-at the top level object.</p>
+<p>为让返回的服务器信息易于操作，Vert.x Redis 客户端将会把服务器信息转换成利于理解的 JSON 格式。
+格式为：JSON 对象的每个部分都包装着属于着这部分的属性。不在这个部分的属性，将会以其他的顶级对象部分展现：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -477,14 +531,14 @@ client: {...},
 </div>
 </div>
 <div class="sect1">
-<h2 id="_eval_and_evalsha">Eval and Evalsha</h2>
+<h2 id="_eval_和_evalsha_命令">Eval 和 Evalsha 命令</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Eval and Evalsha commands are special due to its return value can be any type. Vert.x is built on top of Java and the
-language adheres to strong typing so returning any type turns to be problematic since we want to avoid having <code>Object</code>
-type being used. The reason to avoid the type <code>Object</code> is that we also are polyglot and the conversion between
-languages would become rather complicated and hard to implement. For all these reasons the commands eval and evalsha
-will always return a JsonArray, even for example for scripts such as:</p>
+<p><code>eval</code> 和 <code>evalsha</code> 命令十分特殊，因为它们可以返回任意类型。
+Vert.x 基于 Java 语言，而 Java 是强类型语言，并且我们又要避免使用 <code>Object</code> 类型，
+这使得返回任意类型变得比较困难。避免使用 <code>Object</code> 类型的原因是因为 Vert.x 也是多语言的，
+而不同语言之间的类型转换实现起来十分的复杂和困难。
+所以，我们会用 <code>JsonArray</code> 来包装 <code>eval</code> 和 <code>evalsha</code> 命令的返回值，即便是像下面这样简单的脚本：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -492,7 +546,7 @@ will always return a JsonArray, even for example for scripts such as:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In this case the return value will be a json array with the value 10 on index 0.</p>
+<p>执行上面的脚本，将返回一个 <code>JsonArray</code> 对象，且下标为 0 的值为 10。</p>
 </div>
 </div>
 </div>
@@ -542,14 +596,13 @@ will always return a JsonArray, even for example for scripts such as:</p>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:22 CST
+                上次更新时间 2018-09-07 11:03:21 CST
               
               
             </div>

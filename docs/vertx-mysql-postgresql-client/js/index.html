@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,30 +158,30 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_the_mysql_and_postgresql_client">Using the MySQL and PostgreSQL client</a>
+<li><a href="#_使用_vert_x_mysql_postgresql_客户端">使用 Vert.x MySQL/PostgreSQL 客户端</a>
 <ul class="sectlevel2">
-<li><a href="#_in_a_regular_application">In a regular application</a></li>
-<li><a href="#_in_an_application_packaged_in_a_fat_jar">In an application packaged in a fat jar</a></li>
-<li><a href="#_in_an_application_using_a_vert_x_distributions">In an application using a vert.x distributions</a></li>
+<li><a href="#_在常规应用中">在常规应用中</a></li>
+<li><a href="#_在打包成_fat_jar_的应用中">在打包成 fat jar 的应用中</a></li>
+<li><a href="#_在使用_vert_x_环境的应用中">在使用 Vert.x 环境的应用中</a></li>
 </ul>
 </li>
-<li><a href="#_creating_a_client">Creating a client</a>
+<li><a href="#_创建客户端对象">创建客户端对象</a>
 <ul class="sectlevel2">
-<li><a href="#_using_default_shared_pool">Using default shared pool</a></li>
-<li><a href="#_specifying_a_pool_name">Specifying a pool name</a></li>
-<li><a href="#_creating_a_client_with_a_non_shared_data_source">Creating a client with a non shared data source</a></li>
+<li><a href="#_使用默认共享连接池">使用默认共享连接池</a></li>
+<li><a href="#_指定数据源名称">指定数据源名称</a></li>
+<li><a href="#_创建不共享数据源的客户端对象">创建不共享数据源的客户端对象</a></li>
 </ul>
 </li>
-<li><a href="#_closing_the_client">Closing the client</a></li>
-<li><a href="#_getting_a_connection">Getting a connection</a>
+<li><a href="#_关闭客户端">关闭客户端</a></li>
+<li><a href="#_获取数据库连接">获取数据库连接</a>
 <ul class="sectlevel2">
 <li><a href="#_configuring_reconnections">Configuring reconnections</a></li>
-<li><a href="#_note_about_date_and_timestamps">Note about date and timestamps</a></li>
-<li><a href="#_note_about_last_inserted_ids">Note about last inserted ids</a></li>
-<li><a href="#_note_about_stored_procedures">Note about stored procedures</a></li>
+<li><a href="#_日期和时间戳">日期和时间戳</a></li>
+<li><a href="#_最后插入的数据id">最后插入的数据id</a></li>
+<li><a href="#_存储过程">存储过程</a></li>
 </ul>
 </li>
-<li><a href="#_configuration">Configuration</a></li>
+<li><a href="#_配置参数">配置参数</a></li>
 </ul>
         </div>
       </div>
@@ -133,66 +189,73 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_the_mysql_and_postgresql_client">Using the MySQL and PostgreSQL client</a>
+<li><a href="#_使用_vert_x_mysql_postgresql_客户端">使用 Vert.x MySQL/PostgreSQL 客户端</a>
 <ul class="sectlevel2">
-<li><a href="#_in_a_regular_application">In a regular application</a></li>
-<li><a href="#_in_an_application_packaged_in_a_fat_jar">In an application packaged in a fat jar</a></li>
-<li><a href="#_in_an_application_using_a_vert_x_distributions">In an application using a vert.x distributions</a></li>
+<li><a href="#_在常规应用中">在常规应用中</a></li>
+<li><a href="#_在打包成_fat_jar_的应用中">在打包成 fat jar 的应用中</a></li>
+<li><a href="#_在使用_vert_x_环境的应用中">在使用 Vert.x 环境的应用中</a></li>
 </ul>
 </li>
-<li><a href="#_creating_a_client">Creating a client</a>
+<li><a href="#_创建客户端对象">创建客户端对象</a>
 <ul class="sectlevel2">
-<li><a href="#_using_default_shared_pool">Using default shared pool</a></li>
-<li><a href="#_specifying_a_pool_name">Specifying a pool name</a></li>
-<li><a href="#_creating_a_client_with_a_non_shared_data_source">Creating a client with a non shared data source</a></li>
+<li><a href="#_使用默认共享连接池">使用默认共享连接池</a></li>
+<li><a href="#_指定数据源名称">指定数据源名称</a></li>
+<li><a href="#_创建不共享数据源的客户端对象">创建不共享数据源的客户端对象</a></li>
 </ul>
 </li>
-<li><a href="#_closing_the_client">Closing the client</a></li>
-<li><a href="#_getting_a_connection">Getting a connection</a>
+<li><a href="#_关闭客户端">关闭客户端</a></li>
+<li><a href="#_获取数据库连接">获取数据库连接</a>
 <ul class="sectlevel2">
 <li><a href="#_configuring_reconnections">Configuring reconnections</a></li>
-<li><a href="#_note_about_date_and_timestamps">Note about date and timestamps</a></li>
-<li><a href="#_note_about_last_inserted_ids">Note about last inserted ids</a></li>
-<li><a href="#_note_about_stored_procedures">Note about stored procedures</a></li>
+<li><a href="#_日期和时间戳">日期和时间戳</a></li>
+<li><a href="#_最后插入的数据id">最后插入的数据id</a></li>
+<li><a href="#_存储过程">存储过程</a></li>
 </ul>
 </li>
-<li><a href="#_configuration">Configuration</a></li>
+<li><a href="#_配置参数">配置参数</a></li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-mysql-postgresql-client-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Async MySQL / PostgreSQL Client is responsible for providing an
-interface for Vert.x applications that need to interact with a MySQL or PostgreSQL database.</p>
+<p>此异步 MySQL/PostgreSQL 客户端给需要与 MySQL 或 PostgreSQL 数据库交互的 Vert.x 应用提供了相应的接口。</p>
 </div>
 <div class="paragraph">
-<p>It uses Mauricio Linhares <a href="https://github.com/mauricio/postgresql-async">async driver</a> to interact with the MySQL
-or PostgreSQL databases in a non blocking way.</p>
+<p>Vert.x MySQL/PostgreSQL Client（以下简称客户端）底层实现基于 Mauricio Linhares 写的异步驱动 <a href="https://github.com/mauricio/postgresql-async">async driver</a> 。
+此组件让 Vert.x 应用能够以异步、非阻塞的方式访问 MySQL 或者 PostgreSQL 数据库。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_mysql_and_postgresql_client">Using the MySQL and PostgreSQL client</h2>
+<h2 id="_使用_vert_x_mysql_postgresql_客户端">使用 Vert.x MySQL/PostgreSQL 客户端</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes how to configure your project to be able to use the MySQL / PostgreSQL client in your
-application.</p>
+<p>这部分内容阐述了如何在您的应用中配置 Vert.x MySQL/PostgreSQL 客户端。</p>
 </div>
 <div class="sect2">
-<h3 id="_in_a_regular_application">In a regular application</h3>
+<h3 id="_在常规应用中">在常规应用中</h3>
 <div class="paragraph">
-<p>To use this client, you need to add the following jar to your <code>CLASSPATH</code>:</p>
+<p>要使用 Vert.x MySQL / PostgreSQL 客户端，您需要把下面的 jar 包加入 <code>CLASSPATH</code>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>vertx-mysql-postgresql-client 3.6.0-SNAPSHOT (the client)</p>
+<p>vertx-mysql-postgresql-client 3.6.0-SNAPSHOT (此客户端)</p>
 </li>
 <li>
 <p>scala-library 2.11.4</p>
 </li>
 <li>
-<p>the postgress-async-2.11 and mysdql-async-2.11 from <a href="https://github.com/mauricio/postgresql-async" class="bare">https://github.com/mauricio/postgresql-async</a></p>
+<p>the postgress-async-2.11 和 mysdql-async-2.11 ，来自 <a href="https://github.com/mauricio/postgresql-async" class="bare">https://github.com/mauricio/postgresql-async</a></p>
 </li>
 <li>
 <p>joda time</p>
@@ -200,18 +263,18 @@ application.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>All these jars are downloadable from Maven Central.</p>
+<p>所有这些都可以从 Maven 中心库下载。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_in_an_application_packaged_in_a_fat_jar">In an application packaged in a fat jar</h3>
+<h3 id="_在打包成_fat_jar_的应用中">在打包成 fat jar 的应用中</h3>
 <div class="paragraph">
-<p>If you are building a <em>Fat-jar</em> using Maven or Gradle, just add the following dependencies:</p>
+<p>如果您使用 Maven 或者 Gradle 构建 <em>Fat-jar</em> 应用，只需要加入下面的依赖：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -227,7 +290,7 @@ application.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -238,35 +301,35 @@ application.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_in_an_application_using_a_vert_x_distributions">In an application using a vert.x distributions</h3>
+<h3 id="_在使用_vert_x_环境的应用中">在使用 Vert.x 环境的应用中</h3>
 <div class="paragraph">
-<p>If you are using a vert.x distribution, add the jar files listed above to the <code>$VERTX_HOME/lib</code> directory.</p>
+<p>如果您使用 Vert.x 环境，需要把上面列出的 jar 包加入到  <code>$VERTX_HOME/lib</code>  路径下。</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can edit the <code>vertx-stack.json</code> file located in <code>$VERTX_HOME</code>, and set <code>"included": true</code>
-for the <code>vertx-mysql-postgresql-client</code> dependency. Once done, launch: <code>vertx resolve --dir=lib --stack=
-./vertx-stack.json</code>. It downloads the client and its dependencies.</p>
+<p>或者，您可以编辑位于 <code>$VERTX_HOME</code> 路径下的`vertx-stack.json` 文件，
+并且设置 <code>vertx-mysql-postgresql-client</code> 的依赖为 <code>"included": true</code>。
+完成后，执行命令：<code>vertx resolve --dir=lib --stack= ./vertx-stack.json</code>，就会下载此客户端及它的依赖。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_creating_a_client">Creating a client</h2>
+<h2 id="_创建客户端对象">创建客户端对象</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are several ways to create a client. Let&#8217;s go through them all.</p>
+<p>有几种方式来创建客户端，我们一起来看下。</p>
 </div>
 <div class="sect2">
-<h3 id="_using_default_shared_pool">Using default shared pool</h3>
+<h3 id="_使用默认共享连接池">使用默认共享连接池</h3>
 <div class="paragraph">
-<p>In most cases you will want to share a pool between different client instances.</p>
+<p>大部分情况下，您都将希望不同的客户端实例（<code>AsyncSQLClient</code>）共享一个连接池。</p>
 </div>
 <div class="paragraph">
-<p>E.g. you scale your application by deploying multiple instances of your verticle and you want each verticle instance
-to share the same pool so you don&#8217;t end up with multiple pools</p>
+<p>考虑这样一种情况：您在部署 Verticle 时，设置了 Verticle 拥有多个实例化的对象，
+但是您希望每个 Verticle 实例能够共享同一个数据源，而不是单独为每个 Verticle 实例设置不同的数据源。</p>
 </div>
 <div class="paragraph">
-<p>You do this as follows:</p>
+<p>要解决上面的问题，您可以这么做：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -289,18 +352,18 @@ var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConf
 </div>
 </div>
 <div class="paragraph">
-<p>The first call to <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createShared">MySQLClient.createShared</a></code>
-or <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createShared">PostgreSQLClient.createShared</a></code>
-will actually create the data source, and the specified config will be used.</p>
+<p>只有在第一次调用 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createShared">MySQLClient.createShared</a></code>
+或者 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createShared">PostgreSQLClient.createShared</a></code>
+方法的时候，才会真正地根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
-<p>Subsequent calls will return a new client instance that uses the same data source, so the configuration won&#8217;t be used.</p>
+<p>之后再调用此方法，只会返回一个新的客户端实例，但使用的是相同的数据源。这时 <code>config</code> 参数也就不再有作用。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_specifying_a_pool_name">Specifying a pool name</h3>
+<h3 id="_指定数据源名称">指定数据源名称</h3>
 <div class="paragraph">
-<p>You can create a client specifying a pool name as follows</p>
+<p>您还可以像下面这样，在创建一个客户端实例的时候指定数据源的名称：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -323,31 +386,28 @@ var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConf
 </div>
 </div>
 <div class="paragraph">
-<p>If different clients are created using the same Vert.x instance and specifying the same pool name, they will
-share the same data source.</p>
+<p>如果不同的客户端对象使用了相同的 Vert.x 对象和相同的数据源名称，那么它们将共享数据源。</p>
 </div>
 <div class="paragraph">
-<p>The first call to <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createShared">MySQLClient.createShared</a></code>
-or <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createShared">PostgreSQLClient.createShared</a></code>
-will actually create the data source, and the specified config will be used.</p>
+<p>只有在第一次调用 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createShared">MySQLClient.createShared</a></code>
+或者 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createShared">PostgreSQLClient.createShared</a></code>
+方法的时候，才会真正的根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
-<p>Subsequent calls will return a new client instance that uses the same pool, so the configuration won&#8217;t be used.</p>
+<p>之后再调用此方法，只会返回一个新的客户端对象，但使用的是相同的数据源。这时 <code>config</code> 参数也就不再有作用。</p>
 </div>
 <div class="paragraph">
-<p>Use this way of creating if you wish different groups of clients to have different pools, e.g. they&#8217;re
-interacting with different databases.</p>
+<p>当我们希望不同含义的客户端对象拥有不同的数据源时，可以采用这种方式来创建它的对象，比如它们要与不同的数据库进行交互。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creating_a_client_with_a_non_shared_data_source">Creating a client with a non shared data source</h3>
+<h3 id="_创建不共享数据源的客户端对象">创建不共享数据源的客户端对象</h3>
 <div class="paragraph">
-<p>In most cases you will want to share a pool between different client instances.
-However, it&#8217;s possible you want to create a client instance that doesn&#8217;t share its pool with any other client.</p>
+<p>在大部分情况下，我们会希望在不同的客户端实例之间共享数据源。但有时候，却恰恰相反。</p>
 </div>
 <div class="paragraph">
-<p>In that case you can use <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createNonShared">MySQLClient.createNonShared</a></code>
-or <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createNonShared">PostgreSQLClient.createNonShared</a></code></p>
+<p>这时，可以调用 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createNonShared">MySQLClient.createNonShared</a></code>
+或者 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createNonShared">PostgreSQLClient.createNonShared</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -370,31 +430,31 @@ var postgreSQLClient = PostgreSQLClient.createNonShared(vertx, postgreSQLClientC
 </div>
 </div>
 <div class="paragraph">
-<p>This is equivalent to calling <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createShared">MySQLClient.createShared</a></code>
-or <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createShared">PostgreSQLClient.createShared</a></code>
-with a unique pool name each time.</p>
+<p>每次调用此方法，就相当于在调用 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_my_sql_client-MySQLClient.html#createShared">MySQLClient.createShared</a></code>
+或者 <code><a href="../../jsdoc/module-vertx-mysql-postgresql-js_postgre_sql_client-PostgreSQLClient.html#createShared">PostgreSQLClient.createShared</a></code>
+方法时加上了具有唯一名称的数据源参数。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_closing_the_client">Closing the client</h2>
+<h2 id="_关闭客户端">关闭客户端</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can hold on to the client for a long time (e.g. the life-time of your verticle), but once you have finished with
-it, you should close it using <code><a href="../../jsdoc/module-vertx-sql-js_sql_client-SQLClient.html#close">close</a></code> or
-<code><a href="../../jsdoc/module-vertx-sql-js_sql_client-SQLClient.html#close">close</a></code></p>
+<p>您可以较长时间的持有客户端对象（比如在 Verticle 的整个生命周期里），可一旦不再使用，就应该使用
+<code><a href="../../jsdoc/module-vertx-sql-js_sql_client-SQLClient.html#close">close</a></code> 或者
+<code><a href="../../jsdoc/module-vertx-sql-js_sql_client-SQLClient.html#close">close</a></code> 方法来关闭它。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_a_connection">Getting a connection</h2>
+<h2 id="_获取数据库连接">获取数据库连接</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Use <code><a href="../../jsdoc/module-vertx-sql-js_sql_client-SQLClient.html#getConnection">getConnection</a></code> to get a connection.</p>
+<p>您可以使用 <code><a href="../../jsdoc/module-vertx-sql-js_sql_client-SQLClient.html#getConnection">getConnection</a></code> 方法来获得数据库连接。</p>
 </div>
 <div class="paragraph">
-<p>This will return the connection in the handler when one is ready from the pool.</p>
+<p>此方法从连接池中获取一个数据库连接，并返回给回调方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -414,14 +474,13 @@ client.getConnection(function (res, res_err) {
 </div>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve finished with the connection make sure you close it afterwards.</p>
+<p><strong>一旦您用完一个数据库连接后，请确保关闭它。</strong></p>
 </div>
 <div class="paragraph">
-<p>The connection is an instance of <code><a href="../../jsdoc/module-vertx-sql-js_sql_connection-SQLConnection.html">SQLConnection</a></code> which is a common interface used by
-other SQL clients.</p>
+<p>获取的连接，是接口 <code><a href="../../jsdoc/module-vertx-sql-js_sql_connection-SQLConnection.html">SQLConnection</a></code> 的一个实现。但是 <code><a href="../../jsdoc/module-vertx-sql-js_sql_connection-SQLConnection.html">SQLConnection</a></code> 是一个通用接口，不只是在此客户端中有用到。</p>
 </div>
 <div class="paragraph">
-<p>You can learn how to use it in the <a href="http://vertx.io/docs/vertx-sql-common/js/">common sql interface</a> documentation.</p>
+<p>您可以在 <code><a href="../../vertx-sql-common/js/">Vert.x Common SQL Interface 文档</a></code> 中了解如何去使用它。</p>
 </div>
 <div class="sect2">
 <h3 id="_configuring_reconnections">Configuring reconnections</h3>
@@ -463,49 +522,47 @@ detected and purged lazily, when the pool attempts to reuse them.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_note_about_date_and_timestamps">Note about date and timestamps</h3>
+<h3 id="_日期和时间戳">日期和时间戳</h3>
 <div class="paragraph">
-<p>Whenever you get dates back from the database, this service will implicitly convert them into ISO 8601
-(<code>yyyy-MM-ddTHH:mm:ss.SSS</code>) formatted strings. MySQL usually discards milliseconds, so you will regularly see <code>.000</code>.</p>
+<p>只要您从数据库从获取时间格式的数据，此客户端都将会隐式将它们转换成 ISO 8601（ <code>yyyy-MM-ddTHH:mm:ss.SSS</code> ）格式的字符串。MySQL 会舍弃毫秒项，所以您会看到 <code>.000</code>。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_note_about_last_inserted_ids">Note about last inserted ids</h3>
+<h3 id="_最后插入的数据id">最后插入的数据id</h3>
 <div class="paragraph">
-<p>When inserting new rows into a table, you might want to retrieve auto-incremented ids from the database. The JDBC API
-usually lets you retrieve the last inserted id from a connection. If you use MySQL, it will work the way it does like
-the JDBC API. In PostgreSQL you can add the
-<a href="http://www.postgresql.org/docs/current/static/sql-insert.html">"RETURNING" clause</a> to get the latest inserted ids. Use
-one of the <code>query</code> methods to get access to the returned columns.</p>
+<p>在表中插入新数据时，您也许希望获得数据库的自增长id。JDBC API 通常都会让您从数据库连接中得到最后一个插入的 id。在 MySQL 中，
+可以按照 JDBC API 描述的方式获得最后插入的 id，而在 PostgreSQL 中，您可以使用
+<a href="http://www.postgresql.org/docs/current/static/sql-insert.html">"RETURNING" clause</a> 。
+您可以选择使用其中的一个 <code>query</code> 方法来获取返回的列。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_note_about_stored_procedures">Note about stored procedures</h3>
+<h3 id="_存储过程">存储过程</h3>
 <div class="paragraph">
-<p>The <code>call</code> and <code>callWithParams</code> methods are not implemented currently.</p>
+<p><code>call</code> 和 <code>callWithParams</code> 方法目前暂未实现。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration">Configuration</h2>
+<h2 id="_配置参数">配置参数</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Both the PostgreSql and MySql clients take the same configuration:</p>
+<p>PostgreSql 和 MySql 客户端的配置参数一样：</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>{
- "host" : &lt;your-host&gt;,
- "port" : &lt;your-port&gt;,
- "maxPoolSize" : &lt;maximum-number-of-open-connections&gt;,
- "username" : &lt;your-username&gt;,
- "password" : &lt;your-password&gt;,
- "database" : &lt;name-of-your-database&gt;,
- "charset" : &lt;name-of-the-character-set&gt;,
+ "host" : &lt;主机地址&gt;,
+ "port" : &lt;端口&gt;,
+ "maxPoolSize" : &lt;最大连接数&gt;,
+ "username" : &lt;用户名&gt;,
+ "password" : &lt;密码&gt;,
+ "database" : &lt;数据库名称&gt;,
+ "charset" : &lt;编码&gt;,
  "connectTimeout" : &lt;timeout-in-milliseconds&gt;,
  "testTimeout" : &lt;timeout-in-milliseconds&gt;,
- "queryTimeout" : &lt;timeout-in-milliseconds&gt;,
+ "queryTimeout" : &lt;查询超时时间-毫秒&gt;,
  "maxConnectionRetries" : &lt;maximum-number-of-connection-retries&gt;,
  "connectionRetryDelay" : &lt;delay-in-milliseconds&gt;,
  "sslMode" : &lt;"disable"|"prefer"|"require"|"verify-ca"|"verify-full"&gt;,
@@ -517,31 +574,31 @@ one of the <code>query</code> methods to get access to the returned columns.</p>
 <dl>
 <dt class="hdlist1"><code>host</code></dt>
 <dd>
-<p>The host of the database. Defaults to <code>localhost</code>.</p>
+<p>数据库主机地址，默认为 <code>localhost</code>。</p>
 </dd>
 <dt class="hdlist1"><code>port</code></dt>
 <dd>
-<p>The port of the database. Defaults to <code>5432</code> for PostgreSQL and <code>3306</code> for MySQL.</p>
+<p>数据库端口，PostgreSQL 默认为 <code>5432</code>，MySQL 默认为 <code>3306</code> 。</p>
 </dd>
 <dt class="hdlist1"><code>maxPoolSize</code></dt>
 <dd>
-<p>The number of connections that may be kept open. Defaults to <code>10</code>.</p>
+<p>最大连接数。默认为  <code>10</code>。</p>
 </dd>
 <dt class="hdlist1"><code>username</code></dt>
 <dd>
-<p>The username to connect to the database. Defaults to <code>vertx</code>.</p>
+<p>数据库用户名，PostgreSQL 默认为 <code>postgres</code> ，MySQL 默认为 <code>root</code> 。</p>
 </dd>
 <dt class="hdlist1"><code>password</code></dt>
 <dd>
-<p>The password to connect to the database. Defaults to <code>password</code>.</p>
+<p>数据库密码，默认不设置。</p>
 </dd>
 <dt class="hdlist1"><code>database</code></dt>
 <dd>
-<p>The name of the database you want to connect to. Defaults to <code>testdb</code>.</p>
+<p>数据库名称，默认为 <code>testdb</code>。</p>
 </dd>
 <dt class="hdlist1"><code>charset</code></dt>
 <dd>
-<p>The name of the character set you want to use for the connection. Defaults to <code>UTF-8</code>.</p>
+<p>编码格式，默认为 <code>UTF-8</code>。</p>
 </dd>
 <dt class="hdlist1"><code>connectTimeout</code></dt>
 <dd>
@@ -553,7 +610,7 @@ one of the <code>query</code> methods to get access to the returned columns.</p>
 </dd>
 <dt class="hdlist1"><code>queryTimeout</code></dt>
 <dd>
-<p>The timeout to wait for a query in milliseconds. Default is not set.</p>
+<p>查询超时时间（毫秒），默认为 <code>10000</code> (= 10秒)。</p>
 </dd>
 <dt class="hdlist1"><code>maxConnectionRetries</code></dt>
 <dd>
@@ -616,14 +673,13 @@ Refer to <a href="https://github.com/mauricio/postgresql-async">postgresql-async
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:21 CST
+                上次更新时间 2018-09-07 11:03:13 CST
               
               
             </div>

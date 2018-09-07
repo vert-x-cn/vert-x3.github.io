@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,24 +158,24 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_introduction">Introduction</a></li>
-<li><a href="#_the_base_image">The base image</a>
+<li><a href="#_简介">简介</a></li>
+<li><a href="#_基础镜像">基础镜像</a>
 <ul class="sectlevel2">
-<li><a href="#_deploying_a_javascript_verticle_in_a_docker_container">Deploying a JavaScript verticle in a docker container</a></li>
-<li><a href="#_deploying_a_groovy_verticle_in_a_docker_container">Deploying a Groovy verticle in a docker container</a></li>
-<li><a href="#_deploying_a_ruby_verticle_in_a_docker_container">Deploying a Ruby verticle in a docker container</a></li>
-<li><a href="#_deploying_a_java_verticle_in_a_docker_container">Deploying a Java verticle in a docker container</a></li>
-<li><a href="#_configuration">Configuration</a></li>
-<li><a href="#_build_docker_images_with_maven">Build Docker Images with Maven</a></li>
-<li><a href="#_build_docker_images_for_fabric_8">Build Docker Images for Fabric 8</a></li>
+<li><a href="#_在_docker_容器中部署_javascript_verticle">在 Docker 容器中部署 JavaScript Verticle</a></li>
+<li><a href="#_在_docker_容器中部署_groovy_verticle">在 Docker 容器中部署 Groovy Verticle</a></li>
+<li><a href="#_在_docker_容器中部署_ruby_verticle">在 Docker 容器中部署 Ruby Verticle</a></li>
+<li><a href="#_在_docker_容器中部署_java_verticle">在 Docker 容器中部署 Java Verticle</a></li>
+<li><a href="#_配置">配置</a></li>
+<li><a href="#_通过_maven_构建镜像">通过 Maven 构建镜像</a></li>
+<li><a href="#_构建_fabric_8_平台使用的镜像">构建 Fabric 8 平台使用的镜像</a></li>
 </ul>
 </li>
-<li><a href="#_the_executable_image">The executable image</a>
+<li><a href="#_可执行镜像">可执行镜像</a>
 <ul class="sectlevel2">
-<li><a href="#_customizing_the_stack">Customizing the stack</a></li>
+<li><a href="#_自定义技术栈">自定义技术栈</a></li>
 </ul>
 </li>
-<li><a href="#_deploying_a_fat_jar">Deploying a fat jar</a></li>
+<li><a href="#_部署_fat_jar">部署 fat jar</a></li>
 </ul>
         </div>
       </div>
@@ -127,26 +183,35 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_introduction">Introduction</a></li>
-<li><a href="#_the_base_image">The base image</a>
+<li><a href="#_简介">简介</a></li>
+<li><a href="#_基础镜像">基础镜像</a>
 <ul class="sectlevel2">
-<li><a href="#_deploying_a_javascript_verticle_in_a_docker_container">Deploying a JavaScript verticle in a docker container</a></li>
-<li><a href="#_deploying_a_groovy_verticle_in_a_docker_container">Deploying a Groovy verticle in a docker container</a></li>
-<li><a href="#_deploying_a_ruby_verticle_in_a_docker_container">Deploying a Ruby verticle in a docker container</a></li>
-<li><a href="#_deploying_a_java_verticle_in_a_docker_container">Deploying a Java verticle in a docker container</a></li>
-<li><a href="#_configuration">Configuration</a></li>
-<li><a href="#_build_docker_images_with_maven">Build Docker Images with Maven</a></li>
-<li><a href="#_build_docker_images_for_fabric_8">Build Docker Images for Fabric 8</a></li>
+<li><a href="#_在_docker_容器中部署_javascript_verticle">在 Docker 容器中部署 JavaScript Verticle</a></li>
+<li><a href="#_在_docker_容器中部署_groovy_verticle">在 Docker 容器中部署 Groovy Verticle</a></li>
+<li><a href="#_在_docker_容器中部署_ruby_verticle">在 Docker 容器中部署 Ruby Verticle</a></li>
+<li><a href="#_在_docker_容器中部署_java_verticle">在 Docker 容器中部署 Java Verticle</a></li>
+<li><a href="#_配置">配置</a></li>
+<li><a href="#_通过_maven_构建镜像">通过 Maven 构建镜像</a></li>
+<li><a href="#_构建_fabric_8_平台使用的镜像">构建 Fabric 8 平台使用的镜像</a></li>
 </ul>
 </li>
-<li><a href="#_the_executable_image">The executable image</a>
+<li><a href="#_可执行镜像">可执行镜像</a>
 <ul class="sectlevel2">
-<li><a href="#_customizing_the_stack">Customizing the stack</a></li>
+<li><a href="#_自定义技术栈">自定义技术栈</a></li>
 </ul>
 </li>
-<li><a href="#_deploying_a_fat_jar">Deploying a fat jar</a></li>
+<li><a href="#_部署_fat_jar">部署 fat jar</a></li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-docker-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -155,46 +220,42 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_introduction">Introduction</h2>
+<h2 id="_简介">简介</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://www.docker.com/">Docker</a> lets you deploy applications inside lightweight and isolated software containers.
-Applications run side by side in isolated Linux containers. If you never used Docker before check this online <a href="https://docs.docker.com/get-started/">tutorial</a>.</p>
+<p><a href="https://www.docker.com/">Docker</a> 是一个可以将应用部署在其中的轻量级、隔离的容器。应用程序并行运行在隔离的 Linux 容器中。如果从未使用过 Docker ，可以根据 <a href="https://docs.docker.com/get-started/">官方教程</a> ，轻松入门</p>
 </div>
 <div class="paragraph">
-<p>Vert.x provides Docker images that you can use to run your applications. Two Docker images are provided:</p>
+<p>Vert.x 提供两个 Docker 镜像给开发人员运行部署程序，分别是：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>vertx/vertx3</code> is the base image you need to extend to run your own application</p>
+<p><code>vertx/vertx3</code> 基础镜像，需要进行一些扩展才可以运行程序</p>
 </li>
 <li>
-<p><code>vertx/vertx3-exec</code> is providing the <code>vertx</code> command to your system without having to install <code>vert.x</code> yourself.</p>
+<p><code>vertx/vertx3-exec</code> 给宿主系统提供 <code>vertx</code> 命令行</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The images are available from <a href="https://hub.docker.com/u/vertx/">Docker Hub</a>.</p>
+<p>这两个 Docker 镜像均发布在 <a href="https://hub.docker.com/u/vertx/">Docker Hub</a> 中。</p>
 </div>
 <div class="paragraph">
-<p>This guide presents how to use these two images but also how to automate Docker image creation using Maven, generate
-Fabric8 metadata and use <em>fat jars</em>.</p>
+<p>本指南将介绍如何使用这 Docker 镜像，以及如何使用 Maven 自动生成 Docker 镜像，生成 Fabric8 元数据并使用 <code>fat jar</code> 。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_base_image">The base image</h2>
+<h2 id="_基础镜像">基础镜像</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The base image (<code>vertx/vertx3</code>) lets you run your vert.x application in a Docker container. For this, you must
-<em>extend</em> the image to deploy your own application - <em>i.e.</em> create your own <code>Dockerfile</code> inheriting from
-<code>vertx/vertx3</code>. Your application is then  launched using the <code>vertx</code> command (but in the container).</p>
+<p><code>vertx/vertx3</code> 能让开发人员轻松的在 Docker 容器中运行 Vert.x 应用。为实现该目的，开发人员须通过创建自定义 <code>Dockerfile</code> 的形式，继承 <code>vertx/vertx3</code> 。这样便可以通过容器中的 <code>vertx</code> 命令启动应用程序。</p>
 </div>
 <div class="sect2">
-<h3 id="_deploying_a_javascript_verticle_in_a_docker_container">Deploying a JavaScript verticle in a docker container</h3>
+<h3 id="_在_docker_容器中部署_javascript_verticle">在 Docker 容器中部署 JavaScript Verticle</h3>
 <div class="paragraph">
-<p>Let&#8217;s start with a simple JavaScript verticle such as:</p>
+<p>编写一个简单的 JS Verticle ，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="title">hello-verticle.js</div>
@@ -205,23 +266,23 @@ Fabric8 metadata and use <em>fat jars</em>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Create in the same directory a <code>Dockerfile</code> with the following content:</p>
+<p>在同一目录，创建一个 Dockerfile ，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="title">Dockerfile</div>
 <div class="content">
-<pre class="highlight"><code># Extend vert.x image                       <b class="conum">(1)</b>
+<pre class="highlight"><code># 继承 vert.x 镜像                       <b class="conum">(1)</b>
 FROM vertx/vertx3
 
-# Set the name of the verticle to deploy    <b class="conum">(2)</b>
+# 设置要部署的 verticle 名字    <b class="conum">(2)</b>
 ENV VERTICLE_NAME hello-verticle.js
 
-# Set the location of the verticles         <b class="conum">(3)</b>
+# 设置 verticles 存放路径         <b class="conum">(3)</b>
 ENV VERTICLE_HOME /usr/verticles
 
 EXPOSE 8080
 
-# Copy your verticle to the container       <b class="conum">(4)</b>
+# 拷贝 verticle 至容器中       <b class="conum">(4)</b>
 COPY $VERTICLE_NAME $VERTICLE_HOME/
 
 # Launch the verticle                       <b class="conum">(5)</b>
@@ -233,24 +294,24 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 <div class="colist arabic">
 <ol>
 <li>
-<p>First extend the image provided by vert.x</p>
+<p>继承 vert.x 镜像</p>
 </li>
 <li>
-<p>Set the name of the verticle</p>
+<p>设置要部署的 verticle 名字</p>
 </li>
 <li>
-<p>It sets the location in the container where the verticle file is placed</p>
+<p>设置 verticles 存放路径</p>
 </li>
 <li>
-<p>Copy the verticle files</p>
+<p>拷贝 verticle 至容器中</p>
 </li>
 <li>
-<p>Instructions to launch the verticle</p>
+<p>启动 verticle</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Then do build the image, just launch:</p>
+<p>接下来就可以构建 Docker 镜像了：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -258,7 +319,7 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then, run it with:</p>
+<p>最后执行下面脚本便可以启动应用了。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -266,7 +327,7 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To see the result, open a browser to <a href="http://localhost:8080" class="bare">http://localhost:8080</a> or <a href="http://192.168.59.103:8080" class="bare">http://192.168.59.103:8080</a> if your are using boot2docker.</p>
+<p>这时候可以打开浏览器验证成果了，在浏览器输入地址 <a href="http://localhost:8080" class="bare">http://localhost:8080</a> （如果是 docker 引擎是 boot2docker 的话，则输入 <a href="http://192.168.59.103:8080" class="bare">http://192.168.59.103:8080</a> ）。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -275,16 +336,13 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-The container is launched with the '-t -i` flags meaning <em>interactive</em>. Stop the container by hitting <code>CTRL+C</code>
-. More details about the Docker <code>run</code> command are available <a href="http://docs.docker.com/reference/run/">here</a>.
+'-t -i' 参数意味着是互动模式。按 <code>CTRL + C</code> 可以停止容器。点击 <a href="http://docs.docker.com/reference/run/">这里</a> 查阅 Docker <code>run</code> 命令详细信息。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You may have noticed the <code>EXPOSE 8080</code> in the <code>Dockerfile</code> and the <code>-p 8080:8080</code> in the <code>run</code> command. The first one
-is an optional information telling that the application wants to listen the port 8080. The second one is
-<strong>mandatory</strong> and instructs docker to forward the port 8080 from the host to the 8080 of the container.</p>
+<p>可能已经注意到 <code>Dockerfile</code> 中的 <code>EXPOSE 8080</code> 和运行命令中的 <code>-p 8080:8080</code> 。第一个是可选的信息，告诉应用程序想要监听8080端口。第二个是强制性的，并指示码头工具将8080端口从主机转发到容器的8080端口。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -293,22 +351,19 @@ is an optional information telling that the application wants to listen the port
 <div class="title">Note</div>
 </td>
 <td class="content">
-You may also have noticed the convoluted way to launch the application. Instead of calling <code>vertx</code> directly, it
- uses <code>sh -c</code> along with <code>exec</code>. <code>sh -c</code> is to turn around a Docker limitation not expanding variables in <code>CMD</code>.
- This way the launched shell does. More details on the Docker <a href="http://docs.docker.com/reference/builder/#cmd">builder documentation</a>.
- <code>exec</code> is to make the <code>vertx</code> command process replace the shell, so that it gets pid 1 and receives signals,
- like <code>SIGTERM</code> when running <code>docker stop</code>. Without <code>exec</code> the shell keeps running along with the <code>vertx</code> command process,
- and the <code>vertx</code> command does not get signals, thus preventing graceful shutdown.
+可能还注意到复杂且令人费解的应用程序的启动方式。不是直接调用 <code>vertx</code>，而是与 <code>exec</code> 一起使用 <code>sh -c</code>。 <code>sh -c</code> 是转向Docker限制，而不是在 <code>CMD</code> 中扩展变量。
+关于 <code>Docker</code> 构建器文档的更多细节，查阅 <a href="http://docs.docker.com/reference/builder/#cmd">文档</a> 。
+<code>exec</code> 是使 <code>vertx</code> 命令进程替换 <code>shell</code> ，以便获取pid 1并接收信号，比如在运行 <code>docker stop</code> 时，获取 <code>SIGTERM</code> 。
+如果没有 <code>exec</code> ，那么 <code>shell `会随着 `vertx</code> 命令进程一直运行，而且 <code>vertx</code> 命令难以得到信号，从而阻止正常关闭。
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploying_a_groovy_verticle_in_a_docker_container">Deploying a Groovy verticle in a docker container</h3>
+<h3 id="_在_docker_容器中部署_groovy_verticle">在 Docker 容器中部署 Groovy Verticle</h3>
 <div class="paragraph">
-<p>Running a groovy verticle in a docker container is not much different. Instead of the <code>hello-verticle.js</code> from the
-previous example, we now have a <code>hello-verticle.groovy</code>:</p>
+<p>同部署 JavaScript Verticle，区别在与 Verticle 代码及文件后缀名。在上述例子中，<code>hello_verticle.js</code> 在此则是 <code>hello_verticle.groovy</code> ，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="title">hello-verticle.groovy</div>
@@ -319,23 +374,23 @@ previous example, we now have a <code>hello-verticle.groovy</code>:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>So, in the <code>Dockerfile</code> we just change the verticle file name:</p>
+<p>所以，在`Dockerfile`中我们只需更改verticle文件名：</p>
 </div>
 <div class="listingblock">
 <div class="title">Dockerfile</div>
 <div class="content">
-<pre class="highlight"><code># Extend vert.x image
+<pre class="highlight"><code># 继承 vert.x 镜像
 FROM vertx/vertx3
 
-# Set the name of the verticle to deploy
+# 设置要部署的 verticle 名字
 ENV VERTICLE_NAME hello-verticle.groovy
 
-# Set the location of the verticles
+# 设置 verticles 存放路径
 ENV VERTICLE_HOME /usr/verticles
 
 EXPOSE 8080
 
-# Copy your verticle to the container
+# 拷贝 verticle 至容器中
 COPY $VERTICLE_NAME $VERTICLE_HOME/
 
 # Launch the verticle
@@ -356,10 +411,9 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploying_a_ruby_verticle_in_a_docker_container">Deploying a Ruby verticle in a docker container</h3>
+<h3 id="_在_docker_容器中部署_ruby_verticle">在 Docker 容器中部署 Ruby Verticle</h3>
 <div class="paragraph">
-<p>Running a groovy verticle in a docker container is not much different. Instead of the <code>hello-verticle.js/groovy</code> from
- the previous examples, we now have a <code>hello-verticle.rb</code>:</p>
+<p>同部署 JavaScript Verticle，区别在与 Verticle 代码及文件后缀名。在上述例子中，<code>hello_verticle.js</code> 在此则是 <code>hello_verticle.rb</code> ，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="title">hello-verticle.rb</div>
@@ -370,23 +424,23 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So, in the <code>Dockerfile</code> we just change the verticle file name:</p>
+<p>所以，在`Dockerfile`中我们只需更改verticle文件名：</p>
 </div>
 <div class="listingblock">
 <div class="title">Dockerfile</div>
 <div class="content">
-<pre class="highlight"><code># Extend vert.x image
+<pre class="highlight"><code># 继承 vert.x 镜像
 FROM vertx/vertx3
 
-# Set the name of the verticle to deploy
+# 设置要部署的 verticle 名字
 ENV VERTICLE_NAME hello-verticle.rb
 
-# Set the location of the verticles
+# 设置 verticles 存放路径
 ENV VERTICLE_HOME /usr/verticles
 
 EXPOSE 8080
 
-# Copy your verticle to the container
+# 拷贝 verticle 至容器中
 COPY $VERTICLE_NAME $VERTICLE_HOME/
 
 # Launch the verticle
@@ -407,10 +461,9 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploying_a_java_verticle_in_a_docker_container">Deploying a Java verticle in a docker container</h3>
+<h3 id="_在_docker_容器中部署_java_verticle">在 Docker 容器中部署 Java Verticle</h3>
 <div class="paragraph">
-<p>So, now let&#8217;s see how to deploy a Java verticle. Again it&#8217;s not different from the previous examples, except that we
-copy the verticle <em>jar</em> file to the container. Let&#8217;s take the following verticle:</p>
+<p>同样，部署 Java Verticle 与前面的例子依然差不多，区别在于将 <code>verticle jar</code> 文件复制到容器。先看 Java 代码：</p>
 </div>
 <div class="listingblock">
 <div class="title">io.vertx.sample.hello.HelloVerticle</div>
@@ -431,25 +484,24 @@ public class HelloVerticle extends AbstractVerticle {
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s now imagine that this verticle is packaged into the <code>target/hello-verticle-1.0.-SNAPSHOT.jar</code> jar file. So the
-<code>Dockerfile</code> needs to copy this file but also gives to vert.x the verticle class name:</p>
+<p>显而易见，本 <code>verticle</code> 被打包到 <code>target/hello-verticle-1.0.-SNAPSHOT.jar</code> 文件中。所以 <code>Dockerfile</code> 需要复制这个文件，同时也必须告知 <code>vertx</code> 需要执行的 <code>verticle</code> 类名：</p>
 </div>
 <div class="listingblock">
 <div class="title">Dockerfile</div>
 <div class="content">
-<pre># Extend vert.x image
+<pre># 继承 vert.x 镜像
 FROM vertx/vertx3
 
 #                                                       <b class="conum">(1)</b>
 ENV VERTICLE_NAME io.vertx.sample.hello.HelloVerticle
 ENV VERTICLE_FILE target/hello-verticle-1.0-SNAPSHOT.jar
 
-# Set the location of the verticles
+# 设置 verticles 存放路径
 ENV VERTICLE_HOME /usr/verticles
 
 EXPOSE 8080
 
-# Copy your verticle to the container                   <b class="conum">(2)</b>
+# 拷贝 verticle 至容器中                   <b class="conum">(2)</b>
 COPY $VERTICLE_FILE $VERTICLE_HOME/
 
 # Launch the verticle
@@ -461,15 +513,15 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</pre>
 <div class="colist arabic">
 <ol>
 <li>
-<p>Unlike the previous examples, here we set the verticle class name and the jar file</p>
+<p>同前面的例子不一样，需要设置 verticle 类名及对应的文件名</p>
 </li>
 <li>
-<p>The jar file is copied.</p>
+<p>拷贝 jar 文件至 <code>$VERTICLE_HOME</code></p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Build and run instructions do not change:</p>
+<p>同理，执行命令依然没有什么变化：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -480,14 +532,14 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuration">Configuration</h3>
+<h3 id="_配置">配置</h3>
 <div class="paragraph">
-<p>The previous `Dockerfile`s did not configure vert.x. Let&#8217;s see how such configuration can be added.</p>
+<p>在前面所提到的 <code>Dockerfile</code> 并没有对 Vert.x 进行相关配置。下面的几个章节，从下面几个方面着重介绍如何配置。</p>
 </div>
 <div class="sect3">
-<h4 id="_configuring_the_java_virtual_machine">Configuring the Java Virtual Machine</h4>
+<h4 id="_配置_jvm_参数">配置 JVM 参数</h4>
 <div class="paragraph">
-<p>You can configure the Java Virtual Machine using the <code>JAVA_OPTS</code> environment variable. So in the <code>Dockerfile</code> adds:</p>
+<p>可以通过设置 JAVA_OPTS 环境变量来配置 Java 虚拟机，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -496,9 +548,9 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_vertx_opts">VERTX_OPTS</h4>
+<h4 id="_配置_vertx_参数">配置 vertx 参数</h4>
 <div class="paragraph">
-<p>System variables specific to vert.x can be configured using the <code>VERTX_OPTS</code> environment variable:</p>
+<p>可以使用 <code>VERTX_OPTS</code> 环境变量配置 Vert.x 特定的系统变量：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -509,8 +561,7 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</pre>
 <div class="sect3">
 <h4 id="_classpath">Classpath</h4>
 <div class="paragraph">
-<p>You can configure the classpath of the application using either the <code>-cp</code> parameter of the vert.x command or the
-<code>CLASSPATH</code> environment variable:</p>
+<p>使用 Vert.x 命令的 <code>-cp</code> 参数或 设置 <code>CLASSPATH</code> 环境变量来配置应用程序的类路径：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -519,10 +570,9 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logging">Logging</h4>
+<h4 id="_日志">日志</h4>
 <div class="paragraph">
-<p>To configure the <code>logging.properties</code> file (that let you customize JUL loggers`), set the <code>VERTX_JUL_CONFIG</code>
-environment variables:</p>
+<p>要配置 <code>logging.properties</code> 文件（自定义 JUL 日志记录器），请设置 <code>VERTX_JUL_CONFIG</code> 环境变量：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -533,19 +583,18 @@ ENV VERTX_JUL_CONFIG $VERTICLE_HOME/logging.properties          <b class="conum"
 <div class="colist arabic">
 <ol>
 <li>
-<p>Copy your <code>logging.properties</code> file</p>
+<p>拷贝 <code>logging.properties</code> 日志配置文件</p>
 </li>
 <li>
-<p>Set the <code>VERTX_JUL_CONFIG</code> environment variable</p>
+<p>设置 <code>VERTX_JUL_CONFIG</code> 环境变量</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_clustering">Clustering</h4>
+<h4 id="_集群">集群</h4>
 <div class="paragraph">
-<p>You can provide your own <code>cluster.xml</code> file, and add it to the classpath. To build a dynamic classpath from all the
-file contained in <code>$VERTICLE_HOME</code> you can use:</p>
+<p>可以提供自定义的 <code>cluster.xml `文件，并将其添加到类路径中。要从 `$VERTICLE_HOME</code> 中包含的所有文件构建动态类路径，可以使用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -555,20 +604,18 @@ CMD [export CLASSPATH=`find $VERTICLE_HOME -printf '%p:' | sed 's/:$//'`; exec v
 </div>
 </div>
 <div class="paragraph">
-<p>Notice the <code>export CLASSPATH=&#8230;&#8203;;</code> part in the <code>CMD</code> instruction. It builds the value of the <code>CLASSPATH</code> variable from
-the content of the <code>$VERTICLE_HOME</code> directory. This tricks is useful to compute large and dynamic classpath.</p>
+<p>注意导出 <code>CLASSPATH = &#8230;&#8203;;</code> 部分在 <code>CMD</code> 指令中。它从 <code>$VERTICLE_HOME</code> 目录的内容构建 <code>CLASSPATH</code> 变量。这种技巧对于计算大型和动态类路径非常有用。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_build_docker_images_with_maven">Build Docker Images with Maven</h3>
+<h3 id="_通过_maven_构建镜像">通过 Maven 构建镜像</h3>
 <div class="paragraph">
-<p>There are a couple of Maven plugins to build your Docker images during your Maven build process. This example uses the
-<a href="https://github.com/spotify/docker-maven-plugin">docker-maven-plugin</a> from Spotify.</p>
+<p>在Maven构建过程中，有几个 <code>Maven`插件来构建 `Docker</code> 映像。此示例采用来自 Spotify 的
+<a href="https://github.com/spotify/docker-maven-plugin">docker-maven-plugin</a> 。</p>
 </div>
 <div class="paragraph">
-<p>First, create your Java project as usual. So your sources are located in <code>src/main/java</code>&#8230;&#8203; Then create a
-<code>src/main/docker</code> directory and create a <code>Dockerfile</code> inside:</p>
+<p>首先，同往常一样创建 Java 项目。源代码位于 <code>src/main/java</code> ，然后创建一个 <code>src/main/docker</code> 目录，并在其中创建一个 <code>Dockerfile</code> ，目录结构如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -587,7 +634,7 @@ the content of the <code>$VERTICLE_HOME</code> directory. This tricks is useful 
 </div>
 </div>
 <div class="paragraph">
-<p>In the <code>pom.xml</code> file add the following plugin configuration</p>
+<p>然后在 <code>pom.xml</code> 文件增加相应的配置，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -622,8 +669,7 @@ the content of the <code>$VERTICLE_HOME</code> directory. This tricks is useful 
 </div>
 </div>
 <div class="paragraph">
-<p>The plugin copies the listed content into <code>target/docker</code>. Each resource is copied into the set <code>targetPath</code>. So edit
- the <code>src/main/docker/Dockerfile</code> and add the following content:</p>
+<p>该插件会将列出的内容复制到 <code>target/docker</code> 中。所有的资源文件 都被复制到 <code>targetPath</code> 中。所以编辑 <code>src /main/docker/Dockerfile</code> 并添加以下内容：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -639,23 +685,22 @@ CMD ["exec vertx run $VERTICLE_NAME -cp $VERTICLE_HOME/*"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It&#8217;s basically the same content as we saw above. The copy is a bit different as the plugin have placed
-files in the same directory as the <code>Dockerfile</code>.</p>
+<p>这和上面的例子中的 <code>Dockerfile</code> 文件内容基本相同。稍微有点区别的是，插件已将文件拷贝至 <code>Dockerfile</code> 所在的目录中。</p>
 </div>
 <div class="paragraph">
-<p>Once configured the image is built using: <code>mvn clean package</code></p>
+<p>通过命令 <code>mvn clean package</code> 便可构建 Docker 镜像了。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_build_docker_images_for_fabric_8">Build Docker Images for Fabric 8</h3>
+<h3 id="_构建_fabric_8_平台使用的镜像">构建 Fabric 8 平台使用的镜像</h3>
 <div class="paragraph">
-<p><a href="http://fabric8.io/">Fabric 8</a> is an open source set of micro-services that run on top of Kubernetes and OpenShift V3 to
- provide management, continuous delivery and iPaas facilities. You can execute vert.x application on top of Fabric 8
- by packaging them into a Docker image. However, additional metadata is required. In this example, we are going to
- use the <a href="https://github.com/rhuss/docker-maven-plugin">docker-maven-plugin</a> from Roland Huß.</p>
+<p><a href="http://fabric8.io/">Fabric 8</a> 是一个开源集成开发平台，
+为基于 Kubernetes 和 OpenShift V3 的微服务提供管理、持续发布、 iPaas 设施。
+可以在 Fabric 8 执行 包含 Vert.x 应用程序的 Docker 镜像。不过需要做一些额外工作，添加额外的元数据。在这个例子中，将使用 RolandHuß 的
+<a href="https://github.com/rhuss/docker-maven-plugin">docker-maven-plugin</a> 。</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s set up the following structure:</p>
+<p>首先来看目录结构：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -674,8 +719,7 @@ files in the same directory as the <code>Dockerfile</code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Unlike the maven plugin from Spotify, this plugin takes an <code>assembly.xml</code> as input. The file lists all the files that
- need to be copied to the docker container such as:</p>
+<p>与 Spotify 的 maven 插件不同，此插件以一个 <code>assembly.xml</code> 作为打包描述文件。该文件列出了需要复制到 docker 容器的所有文件，如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -692,8 +736,7 @@ files in the same directory as the <code>Dockerfile</code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The rest of the <code>Dockerfile configuration is given in the `pom.xml</code> file. Add the following plugin to the <code>pom.xml</code>
- file:</p>
+<p><code>Dockerfile在</code> 其余部分的配置在 <code>pom.xml</code> 文件中进行配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -738,9 +781,9 @@ files in the same directory as the <code>Dockerfile</code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To configure the container more finely, check the
-<a href="https://github.com/rhuss/docker-maven-plugin/blob/master/doc/manual.md">manual</a>. All the <em>instructions</em> we put in the
-<code>Dockerfile</code> can be set from the plugin.</p>
+<p>如需更精细地配置容器，请参考
+<a href="https://github.com/rhuss/docker-maven-plugin/blob/master/doc/manual.md">手册</a> 。
+<code>Dockerfile</code> 中的所有指令都可以在插件中进行设置。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -749,14 +792,13 @@ files in the same directory as the <code>Dockerfile</code>.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-The previous <code>pom.xml</code> file use a properties called <code>docker.image</code> setting the image name. Don&#8217;t forget to set
-it in your pom.xml` file.
+在上面的 <code>pom.xml</code> 文件使用名为 <code>docker.image</code> 的属性来设置镜像名称。不要忘记将它添加至 <code>pom.xml</code> 文件中
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Once you have this configuration in place, we need a second plugin to generate the metadata required by Fabric8:</p>
+<p>一旦有了这个配置，便需要 <a href="https://github.com/fabric8io/fabric8-maven-plugin"><code>fabric8-maven-plugin</code></a> 插件来生成 Fabric8 所需的元数据：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -784,8 +826,8 @@ it in your pom.xml` file.
 </div>
 </div>
 <div class="paragraph">
-<p>Once set up, you can build your docker image with: <code>mvn clean package</code>. It creates the <code>kubernates.json</code> file
-required by Fabric8. Then push your image on the Docker Registry provided by Fabric8:</p>
+<p>一旦设置，就可以使用：<code>mvn clean package</code> 指令来构建 <code>docker</code> 映像。它将创建 Fabric8 所需的 <code>kubernates.json</code> 文件。
+通过下面指令就可以将创建的镜像推送到由 Fabric8 提供的 Docker 注册表上。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -793,8 +835,7 @@ required by Fabric8. Then push your image on the Docker Registry provided by Fab
 </div>
 </div>
 <div class="paragraph">
-<p>Don&#8217;t forget to set the <code>DOCKER_REGISTRY</code> url to point on the registry managed by Fabric8. The last step is to
-<em>apply</em> it with:</p>
+<p>同时不要忘记将 <code>DOCKER_REGISTRY</code> 的 URL 设置为指向由 Fabric8 管理的注册表。最后一步是应用它：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -805,14 +846,13 @@ required by Fabric8. Then push your image on the Docker Registry provided by Fab
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_executable_image">The executable image</h2>
+<h2 id="_可执行镜像">可执行镜像</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>vertx/vertx3-exec</code> image provides the <code>vertx</code> command to the host. So no need to install vert.x on your machine,
- you can just use this docker image.</p>
+<p><code>vertx/vertx3-exec</code> 镜像为其容器提供了 <code>vertx</code> 命令行功能，因此在机器上不需要安装 Vert.x ，只需要使用本 docker 镜像即可。</p>
 </div>
 <div class="paragraph">
-<p>For instance:</p>
+<p>举个栗子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -821,7 +861,7 @@ required by Fabric8. Then push your image on the Docker Registry provided by Fab
 </div>
 </div>
 <div class="paragraph">
-<p>To run a verticle:</p>
+<p>运行 verticle ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -836,10 +876,9 @@ required by Fabric8. Then push your image on the Docker Registry provided by Fab
 <code>-cp</code> parameter reusing the <code>/verticles</code> directory.</p>
 </div>
 <div class="sect2">
-<h3 id="_customizing_the_stack">Customizing the stack</h3>
+<h3 id="_自定义技术栈">自定义技术栈</h3>
 <div class="paragraph">
-<p>The <code>vertx/vertx3-exec</code> image provides the default "full" Vert.x stack. You may want to customize this stack and create
- your own exec image. First, create a <code>vertx-stack.json</code> file:</p>
+<p><code>vertx/vertx3-exec</code> 镜像提供默认的完整的 Vert.x 堆栈。如果需要自定义此堆栈，并创建自己的 <code>exec</code> 映像。首先，创建一个 <code>vertx-stack.json</code> 文件：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -865,11 +904,10 @@ required by Fabric8. Then push your image on the Docker Registry provided by Fab
 </div>
 </div>
 <div class="paragraph">
-<p>You can list any dependency you need, not just the Vert.x artifacts
-(refer to the <a href="http://vertx.io/docs/vertx-stack-manager/stack-manager/">Stack Manager documentation</a> for details).</p>
+<p>可以在文件中列出所需的任何依赖关系，而不仅仅是 Vert.x 组件（有关详细信息，请参阅 <code><a href="../../vertx-stack-manager/stack-manager/">Stack Manager documentation</a></code> 文档）。</p>
 </div>
 <div class="paragraph">
-<p>Then write a <code>Dockerfile</code> for your custom executable image:</p>
+<p>最后编写 <code>Dockerfile</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -883,18 +921,18 @@ RUN vertx resolve &amp;&amp; rm -rf ${HOME}/.m2                    <b class="con
 <div class="colist arabic">
 <ol>
 <li>
-<p>Extend the Vert.x executable image</p>
+<p>继承 <code>vertx/vertx3-exec</code> 镜像</p>
 </li>
 <li>
-<p>Replace the stack file in the Vert.x command installation</p>
+<p>替换 <code>vertx-stack.json</code></p>
 </li>
 <li>
-<p>Resolve dependencies</p>
+<p>解析依赖</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>You should know be able to build your custom executable image:</p>
+<p>构建 Docker 镜像：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -902,7 +940,7 @@ RUN vertx resolve &amp;&amp; rm -rf ${HOME}/.m2                    <b class="con
 </div>
 </div>
 <div class="paragraph">
-<p>And run your verticle:</p>
+<p>执行 Verticle ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -916,11 +954,10 @@ RUN vertx resolve &amp;&amp; rm -rf ${HOME}/.m2                    <b class="con
 </div>
 </div>
 <div class="sect1">
-<h2 id="_deploying_a_fat_jar">Deploying a fat jar</h2>
+<h2 id="_部署_fat_jar">部署 fat jar</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is also possible to deploy a Vert.x application packaged as a <em>fat jar</em> into a docker container. For this you
-don&#8217;t need the images provided by Vert.x, you can directly use a base <em>Java</em> image. Let&#8217;s have a look.</p>
+<p>可以将一个打包成 <code>Fat jar</code> 的 Vert.x 应用程序部署到 docker 容器中。为此，不需要 Vert.x 提供的镜像，直接使用基本的 Java 镜像即可。举个栗子：</p>
 </div>
 <div class="paragraph">
 <p>First, be sure your application is packaged as a <em>fat jar</em>. Then, use the following <code>Dockerfile</code>:</p>
@@ -931,7 +968,7 @@ don&#8217;t need the images provided by Vert.x, you can directly use a base <em>
 
 ENV VERTICLE_FILE hello-verticle-fatjar-3.0.0-SNAPSHOT-fat.jar      <b class="conum">(2)</b>
 
-# Set the location of the verticles
+# 设置 verticles 存放路径
 ENV VERTICLE_HOME /usr/verticles
 
 EXPOSE 8080
@@ -948,26 +985,24 @@ CMD ["exec java -jar $VERTICLE_FILE"]                               <b class="co
 <div class="colist arabic">
 <ol>
 <li>
-<p>Extend the image providing OpenJDK 8, use the one you want</p>
+<p>扩展 OpenJDK 8 镜像</p>
 </li>
 <li>
-<p>Set the <code>VERTICLE_FILE</code> to point on the <em>fat jar</em></p>
+<p>将 <code>VERTICLE_FILE</code> 设置为指向 <strong>fat jar</strong></p>
 </li>
 <li>
-<p>Copy the <em>Fat jar</em> from <em>target</em>. Change it if you don&#8217;t use Maven.</p>
+<p>从 target 目录中复制 <strong>fat jar</strong> 。如果不使用 Maven ，请根据实际情况修改</p>
 </li>
 <li>
-<p>Launch the application using the <code>java</code> executable (instead of <code>vertx</code></p>
+<p>使用 <code>java</code> 指令启动应用程序</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>It&#8217;s basically the same <code>Dockerfile</code> as before. However, this time we extend <code>java:8</code> instead of the <code>vertx/vertx3</code>
-image. Then we copy the fat jar to the container, and launch it with the <code>java</code> executable. All the configuration
-settings presented above are still valid.</p>
+<p>它基本上是与以前的 <code>Dockerfile</code> 类似。区别在于，这次我们扩展的是 <code>java:8</code> 而不是 <code>vertx/vertx3</code> 镜像。 然后我们将 <strong>fat jar</strong> 复制到容器中，并使用 <code>java</code> 指令来启动。当然，上述所有配置设置仍然有效的。</p>
 </div>
 <div class="paragraph">
-<p>Build and run the container with:</p>
+<p>最后构建并启动容器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -978,14 +1013,13 @@ settings presented above are still valid.</p>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:15 CST
+                上次更新时间 2018-09-07 11:02:33 CST
               
               
             </div>

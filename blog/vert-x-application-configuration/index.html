@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Vert.x Application Configuration</h2><p class=blog-post-meta>20th July 2015 by <a href=http://github.com/cescoffier>cescoffier</a></p><article><h2 id=previously-in-introduction-to-vert-x->Previously in ‘Introduction to Vert.x’</h2><p>In <a href="https://vertx.tk/blog/my-first-vert-x-3-application/">this post</a>, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. That was nice, isn’t it ? Well, ok, that was only the beginning. In this post, we are going to enhance our application to support <em>external</em> configuration.</p><p>So just to remind you, we have an application starting a HTTP server on the port 8080 and replying a polite “Hello” message to all HTTP requests. The previous code is available <a href=https://github.com/cescoffier/my-vertx-first-app/tree/post-1>here</a>. The code developed in this post is in the <a href=https://github.com/cescoffier/my-vertx-first-app/tree/post-2>post-2 branch</a>.</p><h2 id=so-why-do-we-need-configuration->So, why do we need configuration?</h2><p>That’s a good question. The application works right now, but well, let’s say you want to deploy it on a machine where the port 8080 is already taken. We would need to change the port in the application code and in the test, just for this machine. That would be sad. Fortunately, Vert.x applications are configurable.</p><p>Vert.x configurations are using the JSON format, so don’t expect anything complicated. They can be passed to verticle either from the command line, or using an API. Let’s have a look.</p><h2 id=no-8080-anymore>No ‘8080’ anymore</h2><p>The first step is to modify the <code>io.vertx.blog.first.MyFirstVerticle</code> class to not bind to the port 8080, but to read it from the configuration:</p><pre><code class="hljs java"><span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-keyword>void</span> <span class=hljs-title>start</span><span class=hljs-params>(Future&lt;Void&gt; fut)</span> </span>{
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Vert.x Application Configuration</h2><p class=blog-post-meta>20th July 2015 by <a href=http://github.com/cescoffier>cescoffier</a></p><article><h2 id=previously-in-introduction-to-vert-x->Previously in ‘Introduction to Vert.x’</h2><p>In <a href="https://vertx.tk/blog/my-first-vert-x-3-application/">this post</a>, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. That was nice, isn’t it ? Well, ok, that was only the beginning. In this post, we are going to enhance our application to support <em>external</em> configuration.</p><p>So just to remind you, we have an application starting a HTTP server on the port 8080 and replying a polite “Hello” message to all HTTP requests. The previous code is available <a href=https://github.com/cescoffier/my-vertx-first-app/tree/post-1>here</a>. The code developed in this post is in the <a href=https://github.com/cescoffier/my-vertx-first-app/tree/post-2>post-2 branch</a>.</p><h2 id=so-why-do-we-need-configuration->So, why do we need configuration?</h2><p>That’s a good question. The application works right now, but well, let’s say you want to deploy it on a machine where the port 8080 is already taken. We would need to change the port in the application code and in the test, just for this machine. That would be sad. Fortunately, Vert.x applications are configurable.</p><p>Vert.x configurations are using the JSON format, so don’t expect anything complicated. They can be passed to verticle either from the command line, or using an API. Let’s have a look.</p><h2 id=no-8080-anymore>No ‘8080’ anymore</h2><p>The first step is to modify the <code>io.vertx.blog.first.MyFirstVerticle</code> class to not bind to the port 8080, but to read it from the configuration:</p><pre><code class="hljs java"><span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-keyword>void</span> <span class=hljs-title>start</span><span class=hljs-params>(Future&lt;Void&gt; fut)</span> </span>{
   vertx
       .createHttpServer()
       .requestHandler(r -&gt; {

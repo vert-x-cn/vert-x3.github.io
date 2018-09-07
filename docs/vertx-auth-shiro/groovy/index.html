@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -103,12 +159,12 @@
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
 <li><a href="#_the_apache_shiro_auth_provider_implementation">The Apache Shiro Auth provider implementation</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_authorisation_permission_role_model">Authorisation - Permission-Role Model</a>
+<li><a href="#_验证">验证</a></li>
+<li><a href="#_授权_权限_角色模型">授权-权限-角色模型</a>
 <ul class="sectlevel2">
 <li><a href="#_the_shiro_properties_auth_provider">The Shiro properties auth provider</a></li>
 <li><a href="#_the_shiro_ldap_auth_provider">The Shiro LDAP auth provider</a></li>
-<li><a href="#_using_another_shiro_realm">Using another Shiro Realm</a></li>
+<li><a href="#_使用另一个shiro_realm">使用另一个Shiro Realm</a></li>
 </ul>
 </li>
 </ul>
@@ -119,27 +175,35 @@
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
 <li><a href="#_the_apache_shiro_auth_provider_implementation">The Apache Shiro Auth provider implementation</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_authorisation_permission_role_model">Authorisation - Permission-Role Model</a>
+<li><a href="#_验证">验证</a></li>
+<li><a href="#_授权_权限_角色模型">授权-权限-角色模型</a>
 <ul class="sectlevel2">
 <li><a href="#_the_shiro_properties_auth_provider">The Shiro properties auth provider</a></li>
 <li><a href="#_the_shiro_ldap_auth_provider">The Shiro LDAP auth provider</a></li>
-<li><a href="#_using_another_shiro_realm">Using another Shiro Realm</a></li>
+<li><a href="#_使用另一个shiro_realm">使用另一个Shiro Realm</a></li>
 </ul>
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-auth-shiro-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_the_apache_shiro_auth_provider_implementation">The Apache Shiro Auth provider implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is an auth provider implementation that uses <a href="http://shiro.apache.org/">Apache Shiro</a>.  To use this
-project, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>这是一个使用 <a href="http://shiro.apache.org/">Apache Shiro</a> 的auth提供者的实现。  要使用这个项目，将下面的依赖添加到构建描述符里的 <em>dependencies</em> 部分。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件里):</p>
 </li>
 </ul>
 </div>
@@ -155,7 +219,7 @@ project, add the following dependency to the <em>dependencies</em> section of yo
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件里):</p>
 </li>
 </ul>
 </div>
@@ -165,16 +229,13 @@ project, add the following dependency to the <em>dependencies</em> section of yo
 </div>
 </div>
 <div class="paragraph">
-<p>We provide out of the box support for properties and LDAP based auth using Shiro, and you can also plugin in any
-other Shiro Realm which expects username and password for credentials.</p>
+<p>我们使用Shiro提供基于身份认证属性和LDAP开箱即用的支持，你也可以使用插件，在任何其他的期望用户名和密码作为凭据的Shiro Realm里。</p>
 </div>
 <div class="paragraph">
-<p>To create an instance of the provider you use <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuth.html">ShiroAuth</a></code>. You specify the type of
-Shiro auth provider that you want with <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuthRealmType.html">ShiroAuthRealmType</a></code>, and you specify the
-configuration in a JSON object.</p>
+<p>使用 <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuth.html">ShiroAuth</a></code> 创建提供者的实例。使用 <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuthRealmType.html">ShiroAuthRealmType</a></code> 指定Shiro auth提供者的类型，并且也可以指定一个JSON对象的配置。</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of creating a Shiro auth provider by specifying the type:</p>
+<p>这是通过指定类型创建Shiro auth提供者的示例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -191,11 +252,10 @@ def provider = ShiroAuth.create(vertx, [
 </div>
 </div>
 <div class="sect1">
-<h2 id="_authentication">Authentication</h2>
+<h2 id="_验证">验证</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When authenticating using this implementation, it assumes <code>username</code> and <code>password</code> fields are present in the
-authentication info:</p>
+<p>当使用这种实现作为认证时，它需要在认证信息里获取 <code>username</code> 和 <code>password</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -216,16 +276,14 @@ authProvider.authenticate(authInfo, { res -&gt;
 </div>
 </div>
 <div class="sect1">
-<h2 id="_authorisation_permission_role_model">Authorisation - Permission-Role Model</h2>
+<h2 id="_授权_权限_角色模型">授权-权限-角色模型</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Although Vert.x auth itself does not mandate any specific model of permissions (they are just opaque strings), this
-implementation uses a familiar user/role/permission model, where a user can have zero or more roles and a role
-can have zero or more permissions.</p>
+<p>尽管Vert.x auth本身并没有授权任何特定的许可（它们仅是不透明的字符串）模型，这个的实现和 用户/角色/权限 模型类似，一个用户可以有0到多个角色，一个角色可以有0到多个权限。</p>
 </div>
 <div class="paragraph">
-<p>If validating if a user has a particular permission simply pass the permission into.
-<code><a href="../../apidocs/io/vertx/ext/auth/User.html#isAuthorised-java.lang.String-io.vertx.core.Handler-">isAuthorised</a></code> as follows:</p>
+<p>要验证一个用户是否有一个特定的权限，只需要简单的将权限传入到
+<code><a href="../../apidocs/io/vertx/ext/auth/User.html#isAuthorised-java.lang.String-io.vertx.core.Handler-">isAuthorised</a></code> 像接下来这样做：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -239,7 +297,7 @@ can have zero or more permissions.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If validating that a user has a particular <em>role</em> then you should prefix the argument with the role prefix.</p>
+<p>要验证一个用户是否有一个特定的角色，你需要在参数前面加上角色前缀。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -253,57 +311,55 @@ can have zero or more permissions.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The default role prefix is <code>role:</code>. You can change this with <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuth.html#setRolePrefix-java.lang.String-">setRolePrefix</a></code>.</p>
+<p>默认的角色前缀是 <code>role:</code> 。你可以设置 <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuth.html#setRolePrefix-java.lang.String-">setRolePrefix</a></code> 改变默认的。</p>
 </div>
 <div class="sect2">
 <h3 id="_the_shiro_properties_auth_provider">The Shiro properties auth provider</h3>
 <div class="paragraph">
-<p>This auth provider implementation uses Apache Shiro to get user/role/permission information from a properties file.</p>
+<p>这个auth提供者的实现是使用Apache Shiro从一个配置文件里获取 用户/角色/权限 信息。</p>
 </div>
 <div class="paragraph">
-<p>Note that roles are not available directly on the API due to the fact that vertx-auth tries to be as portable as
-possible. However one can run assertions on role by using the prefix <code>role:</code> or by specifying the prefered prefix
-with <code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuth.html#setRolePrefix-java.lang.String-">setRolePrefix</a></code>.</p>
+<p>注意，角色在API里并不是直接可用的，因为这个事实，vertx-auth尽可能的尝试轻便。然而，可以通过使用前缀 <code>role:</code> 或者通过
+<code><a href="../../apidocs/io/vertx/ext/auth/shiro/ShiroAuth.html#setRolePrefix-java.lang.String-">setRolePrefix</a></code> 指定你想要的前缀在一个角色上执行断言。</p>
 </div>
 <div class="paragraph">
-<p>The implementation will, by default, look for a file called <code>vertx-users.properties</code> on the classpath.</p>
+<p>默认的情况下，这个实现将会在类路径里查找一个名为 <code>vertx-users.properties</code> 的文件。</p>
 </div>
 <div class="paragraph">
-<p>If you want to change this, you can use the <code>properties_path</code> configuration element to define how the properties
-file is found.</p>
+<p>如果你想要改变这个，你可以使用 <code>properties_path</code> 配置元素来定义属性文件的路径。</p>
 </div>
 <div class="paragraph">
-<p>The default value is <code>classpath:vertx-users.properties</code>.</p>
+<p>默认的值是 <code>classpath:vertx-users.properties</code> 。</p>
 </div>
 <div class="paragraph">
-<p>If the value is prefixed with <code>classpath:</code> then the classpath will be searched for a properties file of that name.</p>
+<p>如果这个值得前缀是 <code>classpath:</code> ，将会在类路径查找那个名字的属性文件。</p>
 </div>
 <div class="paragraph">
-<p>If the value is prefixed with <code>file:</code> then it specifies a file on the file system.</p>
+<p>如果这个值的前缀是 <code>file:</code> ，将在文件系统上指定一个具体的文件。</p>
 </div>
 <div class="paragraph">
-<p>If the value is prefixed with <code>url:</code> then it specifies a URL from where to load the properties.</p>
+<p>如果这个值得前缀是 <code>url:</code> ，将会指定一个具体的URL来加载这个属性文件。</p>
 </div>
 <div class="paragraph">
-<p>The properties file should have the following structure:</p>
+<p>这个属性文件应该遵从下面的结构：</p>
 </div>
 <div class="paragraph">
-<p>Each line should either contain the username, password and roles for a user or the permissions in a role.</p>
+<p>每一行应该要么包含一个用户的用户名、密码和角色，要么包含角色的权限。</p>
 </div>
 <div class="paragraph">
-<p>For a user line it should be of the form:</p>
+<p>一个用户的行应该是这样的结构：</p>
 </div>
 <div class="paragraph">
 <p>user.{username}={password},{roleName1},{roleName2},&#8230;&#8203;,{roleNameN}</p>
 </div>
 <div class="paragraph">
-<p>For a role line it should be of the form:</p>
+<p>一个角色行应该是这样的结构：</p>
 </div>
 <div class="paragraph">
 <p>role.{roleName}={permissionName1},{permissionName2},&#8230;&#8203;,{permissionNameN}</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example:</p>
+<p>这是示例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -316,29 +372,26 @@ role.developer=do_actual_work</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When describing roles a wildcard <code>*</code> can be used to indicate that the role has all permissions.</p>
+<p>当描述一个角色使用通配符 <code>*</code> 时，说明这个角色拥有所有的权限。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_the_shiro_ldap_auth_provider">The Shiro LDAP auth provider</h3>
 <div class="paragraph">
-<p>The LDAP auth realm gets user/role/permission information from an LDAP server.</p>
+<p>LDAP auth realm从一个LDAP服务器上获取 用户/角色/权限 信息。</p>
 </div>
 <div class="paragraph">
-<p>The following configuration properties are used to configure the LDAP realm:</p>
+<p>接下来的这些配置属性是用来配置一个LDAP realm：</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>ldap_user_dn_template</code></dt>
 <dd>
-<p>this is used to determine the actual lookup to use when looking up a user with a particular
-id. An example is <code>uid={0},ou=users,dc=foo,dc=com</code> - the element <code>{0}</code> is substituted with the user id to create the
-actual lookup. This setting is mandatory.</p>
+<p>这是用来决定实际的查找使用当通过一个特定的id来查找一个用户的时候。一个例子是 <code>uid={0},ou=users,dc=foo,dc=com</code> -这个元素 <code>{0}</code> 是创建实际的查找时替换成用户的id。这个设置是强制的。</p>
 </dd>
 <dt class="hdlist1"><code>ldap_url</code></dt>
 <dd>
-<p>the url to the LDAP server. The url must start with <code>ldap://</code> and a port must be specified.
-An example is <code>ldap://myldapserver.mycompany.com:10389</code></p>
+<p>这个url是设置LDAP服务器。这个url必须以 <code>ldap://</code> 开头，端口也必须要指定。这是一个示例 <code>ldap://myldapserver.mycompany.com:10389</code></p>
 </dd>
 <dt class="hdlist1"><code>ldap_authentication_mechanism</code></dt>
 <dd>
@@ -355,7 +408,7 @@ but can be overridden to use custom LDAP factories.</p>
 </dd>
 <dt class="hdlist1"><code>ldap_referral</code></dt>
 <dd>
-<p>Sets the LDAP referral behavior when creating a connection.  Defaults to {@code follow}.  See the Sun/Oracle LDAP
+<p>Sets the LDAP referral behavior when creating a connection.  Defaults to <code>follow</code>.  See the Sun/Oracle LDAP
 referral documentation for more: <a href="http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html" class="bare">http://java.sun.com/products/jndi/tutorial/ldap/referral/jndi.html</a></p>
 </dd>
 <dt class="hdlist1"><code>ldap_system_username</code></dt>
@@ -377,12 +430,12 @@ Note that setting this property is not required if the calling LDAP Realm does n
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_another_shiro_realm">Using another Shiro Realm</h3>
+<h3 id="_使用另一个shiro_realm">使用另一个Shiro Realm</h3>
 <div class="paragraph">
-<p>It&#8217;s also possible to create an auth provider instance using a pre-created Apache Shiro Realm object.</p>
+<p>使用一个预先创建的Apache Shiro Realm对象创建一个auth提供者的示例是可以的。</p>
 </div>
 <div class="paragraph">
-<p>This is done as follows:</p>
+<p>像下面这样做的：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -390,19 +443,18 @@ Note that setting this property is not required if the calling LDAP Realm does n
 </div>
 </div>
 <div class="paragraph">
-<p>The implementation currently assumes that user/password based authentication is used.</p>
+<p>这个实现当前假定了在基本的验证中使用了用户名和密码。</p>
 </div>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:13 CST
+                上次更新时间 2018-09-07 11:01:48 CST
               
               
             </div>

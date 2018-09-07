@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -102,25 +158,25 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_the_web_client">Using the web client</a></li>
-<li><a href="#_re_cap_on_vert_x_core_http_client">Re-cap on Vert.x core HTTP client</a></li>
-<li><a href="#_creating_a_web_client">Creating a web client</a></li>
-<li><a href="#_making_requests">Making requests</a>
+<li><a href="#_使用web_client">使用Web Client</a></li>
+<li><a href="#_对vert_x_core_http_client的回顾">对Vert.x Core HTTP Client的回顾</a></li>
+<li><a href="#_创建web_client">创建Web Client</a></li>
+<li><a href="#_发送请求">发送请求</a>
 <ul class="sectlevel2">
-<li><a href="#_simple_requests_with_no_body">Simple requests with no body</a></li>
-<li><a href="#_writing_request_bodies">Writing request bodies</a></li>
-<li><a href="#_writing_request_headers">Writing request headers</a></li>
-<li><a href="#_reusing_requests">Reusing requests</a></li>
-<li><a href="#_timeouts">Timeouts</a></li>
+<li><a href="#_无请求体的简单请求">无请求体的简单请求</a></li>
+<li><a href="#_填充请求体">填充请求体</a></li>
+<li><a href="#_填充请求头">填充请求头</a></li>
+<li><a href="#_重用请求">重用请求</a></li>
+<li><a href="#_超时">超时</a></li>
 </ul>
 </li>
-<li><a href="#_handling_http_responses">Handling http responses</a>
+<li><a href="#_处理http响应">处理HTTP响应</a>
 <ul class="sectlevel2">
-<li><a href="#_decoding_responses">Decoding responses</a></li>
-<li><a href="#_handling_30x_redirections">Handling 30x redirections</a></li>
+<li><a href="#_响应编解码器">响应编解码器</a></li>
+<li><a href="#_处理30x重定向">处理30x重定向</a></li>
 </ul>
 </li>
-<li><a href="#_using_https">Using HTTPS</a></li>
+<li><a href="#_使用https">使用HTTPS</a></li>
 </ul>
         </div>
       </div>
@@ -128,77 +184,84 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_the_web_client">Using the web client</a></li>
-<li><a href="#_re_cap_on_vert_x_core_http_client">Re-cap on Vert.x core HTTP client</a></li>
-<li><a href="#_creating_a_web_client">Creating a web client</a></li>
-<li><a href="#_making_requests">Making requests</a>
+<li><a href="#_使用web_client">使用Web Client</a></li>
+<li><a href="#_对vert_x_core_http_client的回顾">对Vert.x Core HTTP Client的回顾</a></li>
+<li><a href="#_创建web_client">创建Web Client</a></li>
+<li><a href="#_发送请求">发送请求</a>
 <ul class="sectlevel2">
-<li><a href="#_simple_requests_with_no_body">Simple requests with no body</a></li>
-<li><a href="#_writing_request_bodies">Writing request bodies</a></li>
-<li><a href="#_writing_request_headers">Writing request headers</a></li>
-<li><a href="#_reusing_requests">Reusing requests</a></li>
-<li><a href="#_timeouts">Timeouts</a></li>
+<li><a href="#_无请求体的简单请求">无请求体的简单请求</a></li>
+<li><a href="#_填充请求体">填充请求体</a></li>
+<li><a href="#_填充请求头">填充请求头</a></li>
+<li><a href="#_重用请求">重用请求</a></li>
+<li><a href="#_超时">超时</a></li>
 </ul>
 </li>
-<li><a href="#_handling_http_responses">Handling http responses</a>
+<li><a href="#_处理http响应">处理HTTP响应</a>
 <ul class="sectlevel2">
-<li><a href="#_decoding_responses">Decoding responses</a></li>
-<li><a href="#_handling_30x_redirections">Handling 30x redirections</a></li>
+<li><a href="#_响应编解码器">响应编解码器</a></li>
+<li><a href="#_处理30x重定向">处理30x重定向</a></li>
 </ul>
 </li>
-<li><a href="#_using_https">Using HTTPS</a></li>
+<li><a href="#_使用https">使用HTTPS</a></li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-web-client-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x Web Client is an asynchronous HTTP and HTTP/2 client.</p>
+<p>Vert.x Web Client（Web客户端）是一个异步的 HTTP 和 HTTP/2 客户端。</p>
 </div>
 <div class="paragraph">
-<p>The Web Client makes easy to do HTTP request/response interactions with a web server, and provides advanced
-features like:</p>
+<p>Web Client使得发送 HTTP 请求以及从 Web 服务器接收 HTTP 响应变得更加便捷，同时提供了额外的高级功能，例如：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Json body encoding / decoding</p>
+<p>JSON体的编码和解码</p>
 </li>
 <li>
-<p>request/response pumping</p>
+<p>请求和响应泵</p>
 </li>
 <li>
-<p>request parameters</p>
+<p>请求参数的处理</p>
 </li>
 <li>
-<p>unified error handling</p>
+<p>统一的错误处理</p>
 </li>
 <li>
-<p>form submissions</p>
+<p>提交表单</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The web client does not deprecate the Vert.x Core <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code>, indeed it is based on
-this client and inherits its configuration and great features like pooling, HTTP/2 support, pipelining support, etc&#8230;&#8203;
-The <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> should be used when fine grained control over the HTTP
-requests/responses is necessary.</p>
+<p>制作Web Client的目的并非为了替换Vert.x Core中的 <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> ，
+而是基于该客户端，扩展并保留其便利的设置和特性，例如请求连接池（Pooling），HTTP/2的支持，
+流水线／管线的支持等。当您需要对 HTTP 请求和响应做细微粒度控制时，您应当使用
+<code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>The web client does not provide a WebSocket API, the Vert.x Core <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> should
-be used. It also does not handle cookies at the moment.</p>
+<p>另外Web Client并未提供 WebSocket API，此时您应当使用 <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> 。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_web_client">Using the web client</h2>
+<h2 id="_使用web_client">使用Web Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use Vert.x Web Client, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+<p>如需使用Vert.x Web Client，请先加入以下依赖：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -214,7 +277,7 @@ be used. It also does not handle cookies at the moment.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -228,19 +291,19 @@ be used. It also does not handle cookies at the moment.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_re_cap_on_vert_x_core_http_client">Re-cap on Vert.x core HTTP client</h2>
+<h2 id="_对vert_x_core_http_client的回顾">对Vert.x Core HTTP Client的回顾</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x Web Client uses the API from Vert.x core, so it&#8217;s well worth getting familiar with the basic concepts of using
-<code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> using Vert.x core, if you&#8217;re not already.</p>
+<p>Vert.x Web Client使用Vert.x Core的API，如您对此还不熟悉，请先熟悉
+<code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> 的一些基本概念。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_creating_a_web_client">Creating a web client</h2>
+<h2 id="_创建web_client">创建Web Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You create an <code><a href="../../jsdoc/module-vertx-web-client-js_web_client-WebClient.html">WebClient</a></code> instance with default options as follows</p>
+<p>您可使用缺省设置创建一个 <code><a href="../../jsdoc/module-vertx-web-client-js_web_client-WebClient.html">WebClient</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -249,7 +312,7 @@ var client = WebClient.create(vertx);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you want to configure options for the client, you create it as follows</p>
+<p>您亦可使用配置选项来创建客户端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -262,10 +325,10 @@ var client = WebClient.create(vertx, options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Web Client options inherit Http Client options so you can set any one of them.</p>
+<p>Web Client配置选项继承自 <code>HttpClient</code> 配置选项，使用时可根据实际情况选择。</p>
 </div>
 <div class="paragraph">
-<p>If your already have an HTTP Client in your application you can also reuse it</p>
+<p>如已在程序中创建 <code>HttpClient</code>，可用以下方式复用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -276,13 +339,12 @@ var client = WebClient.wrap(httpClient);</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_making_requests">Making requests</h2>
+<h2 id="_发送请求">发送请求</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_simple_requests_with_no_body">Simple requests with no body</h3>
+<h3 id="_无请求体的简单请求">无请求体的简单请求</h3>
 <div class="paragraph">
-<p>Often, you’ll want to make HTTP requests with no request body. This is usually the case with HTTP GET, OPTIONS
-and HEAD requests</p>
+<p>一般情况下，HTTP GET，OPTIONS以及HEAD请求没有请求体，可用以下方式发送无请求体的HTTP Requests（HTTP请求）：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -316,7 +378,7 @@ client.head(8080, "myserver.mycompany.com", "/some-uri").send(function (ar, ar_e
 </div>
 </div>
 <div class="paragraph">
-<p>You can add query parameters to the request URI in a fluent fashion</p>
+<p>您可用以下链式方式向请求URI添加查询参数</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -333,7 +395,7 @@ client.head(8080, "myserver.mycompany.com", "/some-uri").send(function (ar, ar_e
 </div>
 </div>
 <div class="paragraph">
-<p>Any request URI parameter will pre-populate the request</p>
+<p>在请求URI中的参数将会被预填充</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -347,7 +409,7 @@ request.setQueryParam("param2", "another_param2_value");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Setting a request URI discards existing query parameters</p>
+<p>设置请求URI将会自动清除已有的查询参数</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -362,13 +424,12 @@ request.uri("/some-uri?param1=param1_value&amp;param2=param2_value");</code></pr
 </div>
 </div>
 <div class="sect2">
-<h3 id="_writing_request_bodies">Writing request bodies</h3>
+<h3 id="_填充请求体">填充请求体</h3>
 <div class="paragraph">
-<p>When you need to make a request with a body, you use the same API and call then <code>sendXXX</code> methods
-that expects a body to send.</p>
+<p>如需要发送请求体，可使用相同的API并在最后加上 <code>sendXXX</code> 方法发送相应的请求体。</p>
 </div>
 <div class="paragraph">
-<p>Use <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendBuffer">sendBuffer</a></code> to send a buffer body</p>
+<p>例如用 <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendBuffer">sendBuffer</a></code> 方法发送一个缓冲体：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -381,10 +442,9 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendBuffer(buffer, func
 </div>
 </div>
 <div class="paragraph">
-<p>Sending a single buffer is useful but often you don&#8217;t want to load fully the content in memory because
-it may be too large or you want to handle many concurrent requests and want to use just the minimum
-for each request. For this purpose the web client can send <code>ReadStream&lt;Buffer&gt;</code> (e.g a
-<code><a href="../../jsdoc/module-vertx-js_async_file-AsyncFile.html">AsyncFile</a></code> is a ReadStream&lt;Buffer&gt;`) with the <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendStream">sendStream</a></code> method</p>
+<p>有时候我们并不希望将所有数据一次性全部读入内存，因为文件太大或希望同时处理多个请求，希望每个请求仅使用最小的内存。出于此目的，Web Client可用
+<code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendStream">sendStream</a></code> 方法发送流式数据 <code>ReadStream&lt;Buffer&gt;</code>
+（例如 <code><a href="../../jsdoc/module-vertx-js_async_file-AsyncFile.html">AsyncFile</a></code> 便是一个 <code>ReadStream&lt;Buffer&gt;</code>）：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -397,11 +457,10 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendStream(stream, func
 </div>
 </div>
 <div class="paragraph">
-<p>The web client takes care of setting up the transfer pump for you. Since the length of the stream is not know
-the request will use chunked transfer encoding .</p>
+<p>Web Client会为您设置好传输泵以平滑传输流。如果流长度未知则使用分块传输（chunked transfer）。</p>
 </div>
 <div class="paragraph">
-<p>When you know the size of the stream, you shall specify before using the <code>content-length</code> header</p>
+<p>如已知流的大小，可在HTTP协议头中设置 <code>content-length</code> 属性</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -423,13 +482,12 @@ the request will use chunked transfer encoding .</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The POST will not be chunked.</p>
+<p>此时POST方法不会使用分块传输。</p>
 </div>
 <div class="sect3">
-<h4 id="_json_bodies">Json bodies</h4>
+<h4 id="_json体">JSON体</h4>
 <div class="paragraph">
-<p>Often you’ll want to send Json body requests, to send a <code>JsonObject</code>
-use the <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendJsonObject">sendJsonObject</a></code></p>
+<p>有时您需要在请求体中使用JSON格式，可使用 <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendJsonObject">sendJsonObject</a></code> 方法发送 <code>JsonObject</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -444,9 +502,8 @@ use the <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpR
 </div>
 </div>
 <div class="paragraph">
-<p>In Java, Groovy or Kotlin, you can use the <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendJson">sendJson</a></code> method that maps
-a POJO (Plain Old Java Object) to a Json object using <code>Json.encode</code>
-method</p>
+<p>在Java，Groovy以及Kotlin语言中，您亦可使用 <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendJson">sendJson</a></code> 方法发送POJO（Plain Old Java Object），该方法会自动调用 <code>Json.encode</code>
+方法将 POJO 映射为 JSON：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -464,18 +521,17 @@ method</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-the <code>Json.encode</code> uses the Jackson mapper to encode the object
-to Json.
+<code>Json.encode</code> 方法使用Jackson的 mapper将 POJO 映射成 JSON。
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_form_submissions">Form submissions</h4>
+<h4 id="_表单提交">表单提交</h4>
 <div class="paragraph">
-<p>You can send http form submissions bodies with the <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendForm">sendForm</a></code>
-variant.</p>
+<p>您可使用 <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#sendForm">sendForm</a></code>
+方法发送HTTP表单。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -493,8 +549,7 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendForm(form, function
 </div>
 </div>
 <div class="paragraph">
-<p>By default the form is submitted with the <code>application/x-www-form-urlencoded</code> content type header. You can set
-the <code>content-type</code> header to <code>multipart/form-data</code> instead</p>
+<p>缺省情况下，提交表单的请求头中的 <code>content-type</code> 属性值为 <code>application/x-www-form-urlencoded</code>，您亦可将其设置为 <code>multipart/form-data</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -531,9 +586,9 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendMultipartForm(form,
 </div>
 </div>
 <div class="sect2">
-<h3 id="_writing_request_headers">Writing request headers</h3>
+<h3 id="_填充请求头">填充请求头</h3>
 <div class="paragraph">
-<p>You can write headers to a request using the headers multi-map as follows:</p>
+<p>您可使用以下方式填充请求头：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -544,11 +599,10 @@ headers.set("other-header", "foo");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The headers are an instance of <code><a href="../../jsdoc/module-vertx-js_multi_map-MultiMap.html">MultiMap</a></code> which provides operations for adding,
-setting and removing entries. Http headers allow more than one value for a specific key.</p>
+<p>此处 Headers 是一个 <code><a href="../../jsdoc/module-vertx-js_multi_map-MultiMap.html">MultiMap</a></code> 对象，提供了增加、设置以及删除头属性操作的入口。HTTP头的某些特定属性允许设置多个值。</p>
 </div>
 <div class="paragraph">
-<p>You can also write headers using putHeader</p>
+<p>您亦可通过 <code>putHeader</code> 方法写入头属性：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -559,10 +613,10 @@ request.putHeader("other-header", "foo");</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reusing_requests">Reusing requests</h3>
+<h3 id="_重用请求">重用请求</h3>
 <div class="paragraph">
-<p>The <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#send">send</a></code> method can be called multiple times
-safely, making it very easy to configure and reuse <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html">HttpRequest</a></code> objects</p>
+<p><code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#send">send</a></code> 方法可被重复多次调用，这使得配置以及重用
+<code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html">HttpRequest</a></code> 对象变得更加便捷：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -582,8 +636,8 @@ get.send(function (ar, ar_err) {
 </div>
 </div>
 <div class="paragraph">
-<p>Beware though that <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html">HttpRequest</a></code> instances are mutable.
-Therefore you should call the <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#copy">copy</a></code> method before modifying a cached instance.</p>
+<p>请注意， <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html">HttpRequest</a></code> 对象是可变的。
+所以在修改缓存中的对象之前，您应当使用 <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#copy">copy</a></code> 方法先复制一份拷贝：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -604,9 +658,9 @@ get.copy().putHeader("a-header", "with-some-value").send(function (ar, ar_err) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_timeouts">Timeouts</h3>
+<h3 id="_超时">超时</h3>
 <div class="paragraph">
-<p>You can set a timeout for a specific http request using <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#timeout">timeout</a></code>.</p>
+<p>您可通过 <code><a href="../../jsdoc/module-vertx-web-client-js_http_request-HttpRequest.html#timeout">timeout</a></code> 方法设置超时时间。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -620,20 +674,19 @@ get.copy().putHeader("a-header", "with-some-value").send(function (ar, ar_err) {
 </div>
 </div>
 <div class="paragraph">
-<p>If the request does not return any data within the timeout period an exception will be passed to the response
-handler.</p>
+<p>若请求在设定时间内没返回任何数据，则一个超时异常将会传递给响应处理代码。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_handling_http_responses">Handling http responses</h2>
+<h2 id="_处理http响应">处理HTTP响应</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When the web client sends a request you always deal with a single async result <code><a href="../../jsdoc/module-vertx-web-client-js_http_response-HttpResponse.html">HttpResponse</a></code>.</p>
+<p>Web Client请求发送之后，返回的结果将会被包装在异步结果 <code><a href="../../jsdoc/module-vertx-web-client-js_http_response-HttpResponse.html">HttpResponse</a></code> 中。</p>
 </div>
 <div class="paragraph">
-<p>On a success result the callback happens after the response has been received</p>
+<p>当响应被成功接收到之后，相应的回调函数将会被触发。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -656,31 +709,29 @@ handler.</p>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-responses are fully buffered, use <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#pipe">BodyCodec.pipe</a></code>
-to pipe the response to a write stream
+缺省状况下，响应会被完全缓冲读入内存，请用 <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#pipe">BodyCodec.pipe</a></code> 方法将响应写入流。
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_decoding_responses">Decoding responses</h3>
+<h3 id="_响应编解码器">响应编解码器</h3>
 <div class="paragraph">
-<p>By default the web client provides an http response body as a {@code Buffer} and does not apply
-any decoding.</p>
+<p>缺省状况下，响应以缓冲形式提供，并不提供任何形式的解码。</p>
 </div>
 <div class="paragraph">
-<p>Custom response body decoding can be achieved using <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html">BodyCodec</a></code>:</p>
+<p>可用 <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html">BodyCodec</a></code> 将响应定制成以下类型：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Plain String</p>
+<p>普通字符串</p>
 </li>
 <li>
-<p>Json object</p>
+<p>JSON对象</p>
 </li>
 <li>
-<p>Json mapped POJO</p>
+<p>将JSON映射成POJO</p>
 </li>
 <li>
 <p><code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code></p>
@@ -688,11 +739,10 @@ any decoding.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>A body codec can decode an arbitrary binary data stream into a specific object instance, saving you the decoding
-step in your response handlers.</p>
+<p>响应体编解码器对二进制数据流解码，以节省您在响应处理中的代码。</p>
 </div>
 <div class="paragraph">
-<p>Use <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#jsonObject">BodyCodec.jsonObject</a></code> To decode a Json object:</p>
+<p>使用 <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#jsonObject">BodyCodec.jsonObject</a></code> 将结果解码为JSON对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -711,7 +761,7 @@ client.get(8080, "myserver.mycompany.com", "/some-uri").as(BodyCodec.jsonObject(
 </div>
 </div>
 <div class="paragraph">
-<p>In Java, Groovy or Kotlin, custom Json mapped POJO can be decoded</p>
+<p>在Java，Groovy以及Kotlin语言中，JSON对象可被解码映射成POJO：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -730,9 +780,9 @@ client.get(8080, "myserver.mycompany.com", "/some-uri").as(BodyCodec.json(Java.t
 </div>
 </div>
 <div class="paragraph">
-<p>When large response are expected, use the <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#pipe">BodyCodec.pipe</a></code>.
-This body codec pumps the response body buffers to a <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code>
-and signals the success or the failure of the operation in the async result response</p>
+<p>当响应结果较大时，请使用 <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#pipe">BodyCodec.pipe</a></code>
+方法。响应体编解码器将响应结果压入 <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code>
+并在最后发出成功或失败的信号。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -750,8 +800,8 @@ client.get(8080, "myserver.mycompany.com", "/some-uri").as(BodyCodec.pipe(writeS
 </div>
 </div>
 <div class="paragraph">
-<p>Finally if you are not interested at all by the response content, the <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#none">BodyCodec.none</a></code>
-simply discards the entire response body</p>
+<p>最后，如您对响应结果不感兴趣，可用 <code><a href="../../jsdoc/module-vertx-web-common-js_body_codec-BodyCodec.html#none">BodyCodec.none</a></code>
+废弃响应体。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -769,8 +819,7 @@ client.get(8080, "myserver.mycompany.com", "/some-uri").as(BodyCodec.none()).sen
 </div>
 </div>
 <div class="paragraph">
-<p>When you don&#8217;t know in advance the content type of the http response, you can still use the {@code bodyAsXXX()} methods
-that decode the response to a specific type</p>
+<p>若无法预知响应内容类型，您依旧可以在获取结果之后，用 <code>bodyAsXXX()</code> 方法将其转换成特定的类型</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -796,16 +845,16 @@ that decode the response to a specific type</p>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-this is only valid for the response decoded as a buffer.
+这种方式仅对响应结果为缓冲体有效。
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_handling_30x_redirections">Handling 30x redirections</h3>
+<h3 id="_处理30x重定向">处理30x重定向</h3>
 <div class="paragraph">
-<p>By default the client follows redirections, you can configure the default behavior in the <code><a href="../../vertx-web-client/dataobjects.html#WebClientOptions">WebClientOptions</a></code>:</p>
+<p>缺省状况下，客户端将会依照30x状态码自动重定向，您可使用 <code><a href="../../vertx-web-client/dataobjects.html#WebClientOptions">WebClientOptions</a></code> 予以配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -818,7 +867,7 @@ var client = WebClient.create(vertx, {
 </div>
 </div>
 <div class="paragraph">
-<p>The client will follow at most <code>16</code> requests redirections, it can be changed in the same options:</p>
+<p>客户端将会执行最多达`16`次重定向，该参数亦可在 <code><a href="../../vertx-web-client/dataobjects.html#WebClientOptions">WebClientOptions</a></code> 配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -834,13 +883,13 @@ var client = WebClient.create(vertx, {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_https">Using HTTPS</h2>
+<h2 id="_使用https">使用HTTPS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x web client can be configured to use HTTPS in exactly the same way as the Vert.x <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code>.</p>
+<p>Vert.x Web Client可用与 <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> 相同方式配置HTTPS协议。</p>
 </div>
 <div class="paragraph">
-<p>You can specify the behavior per request</p>
+<p>您可对每个请求单独设置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -857,7 +906,7 @@ var client = WebClient.create(vertx, {
 </div>
 </div>
 <div class="paragraph">
-<p>Or using create methods with absolute URI argument</p>
+<p>或使用绝对路径：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -875,14 +924,13 @@ var client = WebClient.create(vertx, {
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:23 CST
+                上次更新时间 2018-09-07 11:04:11 CST
               
               
             </div>

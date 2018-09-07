@@ -46,6 +46,62 @@
     ga('send', 'pageview');
     ga('tracker.send', 'pageview');
   </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
 </head>
 <body>
 
@@ -104,12 +160,12 @@
           <ul class="sectlevel1">
 <li><a href="#_stack_manager">Stack Manager</a>
 <ul class="sectlevel2">
-<li><a href="#_adding_artifacts">Adding artifacts</a></li>
-<li><a href="#_removing_artifacts">Removing artifacts</a></li>
-<li><a href="#_launching_the_resolution">Launching the resolution</a></li>
-<li><a href="#_exclusions_and_transitives">Exclusions and Transitives</a></li>
-<li><a href="#_using_variables">Using variables</a></li>
-<li><a href="#_a_note_about_the_json_format">A note about the JSON format</a></li>
+<li><a href="#_添加组件">添加组件</a></li>
+<li><a href="#_删除组件">删除组件</a></li>
+<li><a href="#_执行解析操作">执行解析操作</a></li>
+<li><a href="#_排除与消除传递">排除与消除传递</a></li>
+<li><a href="#_使用变量">使用变量</a></li>
+<li><a href="#_json_格式说明">JSON 格式说明</a></li>
 </ul>
 </li>
 </ul>
@@ -121,37 +177,41 @@
           <ul class="sectlevel1">
 <li><a href="#_stack_manager">Stack Manager</a>
 <ul class="sectlevel2">
-<li><a href="#_adding_artifacts">Adding artifacts</a></li>
-<li><a href="#_removing_artifacts">Removing artifacts</a></li>
-<li><a href="#_launching_the_resolution">Launching the resolution</a></li>
-<li><a href="#_exclusions_and_transitives">Exclusions and Transitives</a></li>
-<li><a href="#_using_variables">Using variables</a></li>
-<li><a href="#_a_note_about_the_json_format">A note about the JSON format</a></li>
+<li><a href="#_添加组件">添加组件</a></li>
+<li><a href="#_删除组件">删除组件</a></li>
+<li><a href="#_执行解析操作">执行解析操作</a></li>
+<li><a href="#_排除与消除传递">排除与消除传递</a></li>
+<li><a href="#_使用变量">使用变量</a></li>
+<li><a href="#_json_格式说明">JSON 格式说明</a></li>
 </ul>
 </li>
 </ul>
         </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-stack-manager-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_stack_manager">Stack Manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The stack manager is a tool to manage your vert.x distribution.</p>
+<p>Stack Manager 是一个管理 Vert.x 发行包的工具。</p>
 </div>
 <div class="paragraph">
-<p>It maintains the set of jar files contained in the
-<code>lib</code> directory. The stack manager takes as input a YAML file describing the <em>dependencies</em> that should be
-included in the stack. Then, during the resolution it resolves new dependencies and delete the files that are not
-used anymore.</p>
+<p>此工具管理维护 <code>lib</code> 目录中 jar 文件，同时采用 <code>YAML</code> 文件来描述应包含的组件依赖关系。它能自行解决了新的依赖关系，并删除了不再使用的文件。</p>
 </div>
 <div class="paragraph">
-<p>If you have downloaded a vert.x distribution, it comes with a <code>vertx-stack.json</code> in the root directory. This file
-contains all the official dependencies you can add. By default it <em>includes</em> only the minimal stack.</p>
+<p>在已经下载了一个 Vert.x 发行包中，根目录中有一个 <code>vertx-stack.json</code> ，此文件中囊括了所有官方组件。默认情况下，它只包括最小集合。</p>
 </div>
 <div class="sect2">
-<h3 id="_adding_artifacts">Adding artifacts</h3>
+<h3 id="_添加组件">添加组件</h3>
 <div class="paragraph">
-<p>To add an artifact to your stack, just add the dependency if not there already, and set the <code>included</code> value to
-<code>true</code>:</p>
+<p>如果要增加一个组件，对于文件 <code>vertx-stack.json</code> 中不存在的，将其增加至文件中，然后将描述代码中的 <code>included</code> 设置为 <code>true</code> 。代码片段例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -164,14 +224,13 @@ contains all the official dependencies you can add. By default it <em>includes</
 </div>
 </div>
 <div class="paragraph">
-<p>The dependency is described using the Maven coordinates. The <code>groupId</code>, <code>artifactId</code> and <code>versions</code> attributes are
-mandatory. You can also set the <code>type</code> (<code>jar</code> by default) and <code>classifier</code> (none by default).</p>
+<p>此工具用 Maven 坐标来描述依赖。 其中 <code>groupId</code> 、<code>artifactId</code> 、版本属性是必需的。当然，也可以设置类型 <code>type</code>（默认为 <code>jar</code> ）和分类器 <code>classifier</code>（默认情况下为 none ）。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_removing_artifacts">Removing artifacts</h3>
+<h3 id="_删除组件">删除组件</h3>
 <div class="paragraph">
-<p>To remove an artifact, remove the dependency or set the <code>included</code> attribute to <code>false</code>:</p>
+<p>在 <code>vertx-stack.json</code> 删除依赖描述，或者将其 <code>included</code> 设置为 <code>false</code> 便可以轻松实现删除组件。代码片段：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -184,14 +243,13 @@ mandatory. You can also set the <code>type</code> (<code>jar</code> by default) 
 </div>
 </div>
 <div class="paragraph">
-<p>During the resolution, all files that are not associated to a dependency (or a transitive dependency) are removed.
-That means don&#8217;t add files manually, they are going to be deleted.</p>
+<p>在此操作之后，所有与依赖关系（或传递依赖关系）无关的文件都将被删除。这意味着不要手动删除文件，它们将被删除。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_launching_the_resolution">Launching the resolution</h3>
+<h3 id="_执行解析操作">执行解析操作</h3>
 <div class="paragraph">
-<p>To launch the resolution, launch:</p>
+<p>执行下面命令便可以处理添加、删除操作。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -199,49 +257,48 @@ That means don&#8217;t add files manually, they are going to be deleted.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>resolve</code> command supports a set of options:</p>
+<p>命令 <code>resolve</code> 的执行参数或选项有：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>--dir &lt;value&gt;</code> - The directory containing the artifacts composing the stack. Defaults to the <code>./lib</code>
-directory</p>
+<p><code>--dir &lt;value&gt;</code> - 包含组件的目录。默认为 <code>./lib</code> 目录</p>
 </li>
 <li>
-<p><code>--fail-on-conflict</code>  - Set whether or not the resolver should fail or conflict or just log a warning. Disabled by default.</p>
+<p><code>--fail-on-conflict</code>  - 设置解析器是否失败或冲突，或仅记录警告。默认禁用</p>
 </li>
 <li>
-<p><code>--http-proxy &lt;value&gt;</code> - Set the HTTP proxy address if any.</p>
+<p><code>--http-proxy &lt;value&gt;</code> - HTTP 代理地址</p>
 </li>
 <li>
-<p><code>--https-proxy &lt;value&gt;</code> - Set the HTTPS proxy address if any.</p>
+<p><code>--https-proxy &lt;value&gt;</code> - HTTPS 代理地址</p>
 </li>
 <li>
-<p><code>--local-repo &lt;value&gt;</code> - Set the path to the local Maven repository. Defaults to <code>~/.m2/repository</code></p>
+<p><code>--local-repo &lt;value&gt;</code> - 本地 Maven 仓库目录。默认是 <code>~/.m2/repository</code></p>
 </li>
 <li>
-<p><code>--remote-repo &lt;value&gt;</code> -  Set the path to a remote Maven repository. Can be set multiple times</p>
+<p><code>--remote-repo &lt;value&gt;</code> -  远程 Maven 仓库地址。可以设置多个值</p>
 </li>
 <li>
-<p><code>&lt;vertx-stack.json&gt;</code> - The path to the stack descriptor. Defaults to <code>vertx-stack.json</code>.</p>
+<p><code>&lt;vertx-stack.json&gt;</code> - 工具描述文件路径。 默认为 <code>vertx-stack.json</code></p>
 </li>
 <li>
-<p><code>--no-cache</code> -  Disable the resolver cache</p>
+<p><code>--no-cache</code> -  禁用缓存</p>
 </li>
 <li>
-<p><code>--no-cache-for-snapshots</code> - Disable the caching of snapshot resolution</p>
+<p><code>--no-cache-for-snapshots</code> - 禁用 <code>snapshots</code> 版本缓存</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If you have set <code>VERTX_HOME</code> as environment variable (or system variable), it uses: <code>$VERTX_HOME/lib</code> and
-<code>$VERTX_HOME/vertx-stack.json</code>.</p>
+<p>如果配置 <code>VERTX_HOME</code> 为环境变量（或系统变量），则： <code>$VERTX_HOME/lib</code> 作为 <code>lib</code> 目录地址
+<code>$VERTX_HOME/vertx-stack.json</code> 作为工具描述文件路径</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exclusions_and_transitives">Exclusions and Transitives</h3>
+<h3 id="_排除与消除传递">排除与消除传递</h3>
 <div class="paragraph">
-<p>Each dependency can declare a set of exclusions that won&#8217;t be resolved during the resolution process:</p>
+<p>同 Maven，每个依赖描述，都可以添加多个排除项。代码片段：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -258,8 +315,7 @@ directory</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also set the <code>transitive</code> attribute to <code>false</code> on a dependency to not resolve the transitive dependencies.
-This is useful when using fat jars or shaded artifacts:</p>
+<p>同时可以将依赖关系的 <code>transitive</code> 属性设置为 <code>false</code> ，以解析传递依赖关系。当使用 <code>fat jars</code> or <code>shaded</code> 组件时，是非常有用的。代码片段为：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -275,9 +331,9 @@ This is useful when using fat jars or shaded artifacts:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_variables">Using variables</h3>
+<h3 id="_使用变量">使用变量</h3>
 <div class="paragraph">
-<p>The stack definition allows you to declare variables:</p>
+<p>工具描述文件中，允许自定义并使用变量。代码片段：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -288,41 +344,40 @@ This is useful when using fat jars or shaded artifacts:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Then your dependency can uses this variable using the <code>${}</code> notation.</p>
+<p>在依赖描述中可以 <code>${}</code> 符号来引用变量。</p>
 </div>
 <div class="paragraph">
-<p>Variables can be set or overridden using system variables. System variables can be set with <code>-D</code></p>
+<p>同时变量就可以用 <code>-D</code> 设置系统变量，以便于覆盖。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_a_note_about_the_json_format">A note about the JSON format</h3>
+<h3 id="_json_格式说明">JSON 格式说明</h3>
 <div class="paragraph">
-<p>The descriptor format supports:</p>
+<p><code>vertx-stack.json</code> 中的格式支持以下三项：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>comments using <code>//</code></p>
+<p>使用 <code>//</code> 注释</p>
 </li>
 <li>
-<p>non quoted keys (such as <code>groupId : "org.acme"</code>)</p>
+<p>无引号 <code>key</code> ， eg:`groupId : "org.acme"`</p>
 </li>
 <li>
-<p>single quotes for values (such as <code>groupId : 'org.acme'</code>)</p>
+<p>单引号 <code>value</code> ， eg:`groupId : 'org.acme'`</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-05 15:27:23 CST
+                上次更新时间 2018-09-07 11:03:52 CST
               
               
             </div>

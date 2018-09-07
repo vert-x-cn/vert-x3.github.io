@@ -5,7 +5,59 @@
     ga('create', 'UA-30144458-1', 'auto');
     ga('create', 'UA-71153120-1', 'auto', 'tracker');
     ga('send', 'pageview');
-    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Contract Driven REST Services with Vert.x3</h2><p class=blog-post-meta>17th September 2015 by <a href=http://github.com/pmlopes>pmlopes</a></p><article><p>We see a new trend in development where we are shifting from developing applications to develop APIs. More and more we see services being offered as REST APIs that we are allowed to consume and we already see this trend from the big names in the industry, e.g.: <a href="https://developers.facebook.com/">Facebook</a>, <a href=https://www.mediawiki.org/wiki/API:Main_page>Wikipedia</a>, <a href=https://developer.amazon.com/public/apis>Amazon</a>, <a href=https://dev.twitter.com/overview/documentation>Twitter</a>, <a href="https://developers.google.com/apis-explorer/#p/">Google</a> and <a href=https://www.reddit.com/dev/api>Reddit</a> they all offer APIs.</p><p>Of course making an REST API using Vert.x is quite simple, just use <a href=http://vertx.io/docs/#web>Vert.x Web</a> and you can start writing your API in seconds, however an API without documentation is not an API since no developer will know how to use it. However this is one of the most sensitive issues to tackle in software development, nobody likes to write documentation. However, in the REST age where REST-based web-services are ubiquitous, documentation for public web-services is a necessity. There are a lot of tools out there, two of the most popular are without a doubt:</p><ul><li><a href=http://swagger.io>Swagger</a></li><li><a href=http://raml.org>RAML</a></li></ul><p>Both frameworks have a large ecosystem of tools and tooling around but they tackle the documentation from two different perspectives. While Swagger is purely a documentation tool it tackles the problem from bottom up and RAML does document top down. They both rely on a document (<code>JSON</code> for Swagger, <code>YAML</code> for RAML).</p><p>I’ll now go over building a simple Hello World API, document it and test it. For this example I’ll choose RAML since it feels more natural to the way we code with Vert.x Web.</p><h2 id=define-the-hello-world-api>Define the Hello World API</h2><p>We need a contract and as with any other development we need some specification, You can learn about RAML in its <a href=http://raml.org>website</a> and quickly see how easy it is to get started. So we start with the following specification:</p><pre><code><span class=hljs-preprocessor>#%RAML 0.8</span>
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
+      background-repeat: no-repeat;
+      /*background-position: -50px 0*/
+      background-position: 0 0
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -50px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Contract Driven REST Services with Vert.x3</h2><p class=blog-post-meta>17th September 2015 by <a href=http://github.com/pmlopes>pmlopes</a></p><article><p>We see a new trend in development where we are shifting from developing applications to develop APIs. More and more we see services being offered as REST APIs that we are allowed to consume and we already see this trend from the big names in the industry, e.g.: <a href="https://developers.facebook.com/">Facebook</a>, <a href=https://www.mediawiki.org/wiki/API:Main_page>Wikipedia</a>, <a href=https://developer.amazon.com/public/apis>Amazon</a>, <a href=https://dev.twitter.com/overview/documentation>Twitter</a>, <a href="https://developers.google.com/apis-explorer/#p/">Google</a> and <a href=https://www.reddit.com/dev/api>Reddit</a> they all offer APIs.</p><p>Of course making an REST API using Vert.x is quite simple, just use <a href=http://vertx.io/docs/#web>Vert.x Web</a> and you can start writing your API in seconds, however an API without documentation is not an API since no developer will know how to use it. However this is one of the most sensitive issues to tackle in software development, nobody likes to write documentation. However, in the REST age where REST-based web-services are ubiquitous, documentation for public web-services is a necessity. There are a lot of tools out there, two of the most popular are without a doubt:</p><ul><li><a href=http://swagger.io>Swagger</a></li><li><a href=http://raml.org>RAML</a></li></ul><p>Both frameworks have a large ecosystem of tools and tooling around but they tackle the documentation from two different perspectives. While Swagger is purely a documentation tool it tackles the problem from bottom up and RAML does document top down. They both rely on a document (<code>JSON</code> for Swagger, <code>YAML</code> for RAML).</p><p>I’ll now go over building a simple Hello World API, document it and test it. For this example I’ll choose RAML since it feels more natural to the way we code with Vert.x Web.</p><h2 id=define-the-hello-world-api>Define the Hello World API</h2><p>We need a contract and as with any other development we need some specification, You can learn about RAML in its <a href=http://raml.org>website</a> and quickly see how easy it is to get started. So we start with the following specification:</p><pre><code><span class=hljs-preprocessor>#%RAML 0.8</span>
 <span class=hljs-label>title:</span> Hello world REST API
 <span class=hljs-label>baseUri:</span> http://localhost:<span class=hljs-number>8080</span>/
 <span class=hljs-label>version:</span> v1
