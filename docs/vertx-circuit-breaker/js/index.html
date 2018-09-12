@@ -70,22 +70,20 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      background-image: url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite.png');
-      background-repeat: no-repeat;
       /*background-position: -50px 0*/
-      background-position: 0 0
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
     }
 
     @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
       .page-link-to-github .github-icon {
-        background-image:url('https://www.kotlincn.net/0_assets/static/css/com/layout/images/main-sprite@2x.png');
+        background-image:url('https://vertx.tk/assets/github@2x.png');
         background-size: 150px auto
       }
     }
 
     .page-link-to-github:hover .github-icon {
       /*background-position: 0 0*/
-      background-position: -50px 0
+      background-position: -100px 0
     }
     .text {
       text-decoration: underline
@@ -151,87 +149,86 @@
   </div>
 
 
-
-<div id="content">
-  <div class="container docs-content">
-    <div class="row">
-      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
-        <div id="sidebar" data-spy="affix">
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
 <li><a href="#_vert_x_circuit_breaker">Vert.x Circuit Breaker</a></li>
-<li><a href="#_using_the_vert_x_circuit_breaker">Using the vert.x circuit breaker</a></li>
-<li><a href="#_using_the_circuit_breaker">Using the circuit breaker</a></li>
-<li><a href="#_callbacks">Callbacks</a></li>
-<li><a href="#_event_bus_notification">Event bus notification</a></li>
-<li><a href="#_the_half_open_state">The half-open state</a></li>
+<li><a href="#_使用_vert_x_熔断器">使用 Vert.x 熔断器</a></li>
+<li><a href="#_使用熔断器">使用熔断器</a></li>
+<li><a href="#_回调">回调</a></li>
+<li><a href="#_event_bus_通知">Event Bus 通知</a></li>
+<li><a href="#_半开启状态">半开启状态</a></li>
 <li><a href="#_reported_exceptions">Reported exceptions</a></li>
-<li><a href="#_pushing_circuit_breaker_metrics_to_the_hystrix_dashboard">Pushing circuit breaker metrics to the Hystrix Dashboard</a></li>
-</ul>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-pull-3 col-md-9">
-        <div class="toc hidden-md hidden-lg">
-          <h2>Table of Contents</h2>
+<li><a href="#_将熔断器指标推送到hystrix_dashboard">将熔断器指标推送到Hystrix Dashboard</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
           <ul class="sectlevel1">
 <li><a href="#_vert_x_circuit_breaker">Vert.x Circuit Breaker</a></li>
-<li><a href="#_using_the_vert_x_circuit_breaker">Using the vert.x circuit breaker</a></li>
-<li><a href="#_using_the_circuit_breaker">Using the circuit breaker</a></li>
-<li><a href="#_callbacks">Callbacks</a></li>
-<li><a href="#_event_bus_notification">Event bus notification</a></li>
-<li><a href="#_the_half_open_state">The half-open state</a></li>
+<li><a href="#_使用_vert_x_熔断器">使用 Vert.x 熔断器</a></li>
+<li><a href="#_使用熔断器">使用熔断器</a></li>
+<li><a href="#_回调">回调</a></li>
+<li><a href="#_event_bus_通知">Event Bus 通知</a></li>
+<li><a href="#_半开启状态">半开启状态</a></li>
 <li><a href="#_reported_exceptions">Reported exceptions</a></li>
-<li><a href="#_pushing_circuit_breaker_metrics_to_the_hystrix_dashboard">Pushing circuit breaker metrics to the Hystrix Dashboard</a></li>
-</ul>
-        </div>
-
-  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/stack-refactor/vertx-translation-stack/vertx-circuit-breaker-translation"
-     class="page-link-to-github"
-     target="_blank"
-     title="Edit this page on GitHub">
-    <i class="github-icon"></i>
-    <span class="text">编辑本页</span>
-  </a>
-
+<li><a href="#_将熔断器指标推送到hystrix_dashboard">将熔断器指标推送到Hystrix Dashboard</a></li>
+</ul>
+        </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/master/vertx-translation-stack/vertx-circuit-breaker-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
         <div class="sect1">
 <h2 id="_vert_x_circuit_breaker">Vert.x Circuit Breaker</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x Circuit Breaker is an implementation of the Circuit Breaker <em>pattern</em> for Vert.x. It keeps track of the
-number of failures and <em>opens the circuit</em> when a threshold is reached. Optionally, a fallback is executed.</p>
+<p>Vert.x Circuit Breaker是 <a href="https://martinfowler.com/bliki/CircuitBreaker.html">熔断器模式</a> 的Vert.x实现。
+熔断器用来追踪故障次数，当失败次数达到阈值时触发熔断，并且可选择性提供失败回调。</p>
 </div>
 <div class="paragraph">
-<p>Supported failures are:</p>
+<p>熔断器支持以下的故障：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>failures reported by your code in a <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code></p>
+<p>使用 <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code> 时失败</p>
 </li>
 <li>
-<p>exception thrown by your code</p>
+<p>运行时抛出异常</p>
 </li>
 <li>
-<p>uncompleted futures (timeout)</p>
+<p>没有完成的 <code>Future</code>(超时)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Operations guarded by a circuit breaker are intended to be non-blocking and asynchronous in order to benefit from
-the Vert.x execution model.</p>
+<p>熔断器要旨是保护 Vert.x 的 <strong>非阻塞</strong> 和 <strong>异步</strong> 的行为，以便受益于Vert.x 执行模型。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_vert_x_circuit_breaker">Using the vert.x circuit breaker</h2>
+<h2 id="_使用_vert_x_熔断器">使用 Vert.x 熔断器</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use the Vert.x Circuit Breaker, add the following dependency to the <em>dependencies</em> section of your build
-descriptor:</p>
+<p>要使用 Vert.x 熔断器，只需要在依赖中增加以下代码片段：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -247,7 +244,7 @@ descriptor:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -259,23 +256,23 @@ descriptor:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_circuit_breaker">Using the circuit breaker</h2>
+<h2 id="_使用熔断器">使用熔断器</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use the circuit breaker you need to:</p>
+<p>为了使用熔断器我们需要以下的步骤：</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a circuit breaker, with the configuration you want (timeout, number of failure before opening the circuit)</p>
+<p>创建一个熔断器，并配置成你所需要的(超时，最大故障次数)</p>
 </li>
 <li>
-<p>Execute some code using the breaker</p>
+<p>使用熔断器执行代码</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Here is an example:</p>
+<p>以下是例子:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -298,9 +295,7 @@ breaker.execute(function (future) {
 </div>
 </div>
 <div class="paragraph">
-<p>The executed block receives a <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code> object as parameter, to denote the
-success or failure of the operation as well as the result. For example in the following example, the result is the
-output of a REST endpoint invocation:</p>
+<p>执行块中接收 <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code> 作为参数，以表示操作和结果的成功或失败。 例如在下面的例子中，对应的结果就是REST调用的输出：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -326,20 +321,20 @@ breaker.execute(function (future) {
 </div>
 </div>
 <div class="paragraph">
-<p>The result of the operation is provided using the:</p>
+<p>操作的结果以下面的方式提供：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>returned <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code> when calling <code>execute</code> methods</p>
+<p>调用 <code>execute</code> 方式返回 <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code></p>
 </li>
 <li>
-<p>provided <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code> when calling the <code>executeAndReport</code> methods</p>
+<p>调用 <code>executeAndReport</code> 时作为参数提供的 <code><a href="../../jsdoc/module-vertx-js_future-Future.html">Future</a></code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Optionally, you can provide a fallback which is executed when the circuit is open:</p>
+<p>也可以提供一个失败时回调方法(fallback)：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -368,13 +363,12 @@ breaker.executeWithFallback(function (future) {
 </div>
 </div>
 <div class="paragraph">
-<p>The fallback is called whenever the circuit is open, or if the
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#isFallbackOnFailure">isFallbackOnFailure</a></code> is enabled. When a fallback is
-set, the result is using the output of the fallback function. The fallback function takes as parameter a
-<code>Throwable</code> object and returns an object of the expected type.</p>
+<p>熔断状态中都会调用失败回调（fallback），或者设置
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#isFallbackOnFailure">isFallbackOnFailure</a></code> ，其结果是失败回调函数的输出。失败回调函数将
+<code>Throwable</code> 对象作为参数，并返回预期类型的​​对象。</p>
 </div>
 <div class="paragraph">
-<p>The fallback can also be set on the <code><a href="../../jsdoc/module-vertx-circuit-breaker-js_circuit_breaker-CircuitBreaker.html">CircuitBreaker</a></code> object directly:</p>
+<p>失败回调可以直接设置在 <code><a href="../../jsdoc/module-vertx-circuit-breaker-js_circuit_breaker-CircuitBreaker.html">CircuitBreaker</a></code> 上：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -401,11 +395,9 @@ breaker.execute(function (future) {
 </div>
 </div>
 <div class="paragraph">
-<p>You can also specify how often the circuit breaker should try your code before failing with
+<p>可以指定熔断器在生效之前的尝试次数，使用
 <code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setMaxRetries">maxRetries</a></code>.
-If you set this to something higher than 0 your code gets executed several times before finally failing
-in the last execution. If the code succeeded in one of the retries your handler gets notified and any
-retries left are skipped. Retries are only supported when the circuit is closed.</p>
+。如果将其设置为高于0的值，则您的代码在最终失败之前进行尝试多次执行。如果代码在其中一个重试中成功，则处理程序将得到通知，并且跳过剩余的重试。此配置仅当熔断器未生效时工作。</p>
 </div>
 <div class="paragraph">
 <p>Notice that is you set <code>maxRetries</code> to 2 for instance, your operation may be called 3 times: the initial attempt
@@ -414,10 +406,10 @@ and 2 retries.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_callbacks">Callbacks</h2>
+<h2 id="_回调">回调</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can also configures callbacks invoked when the circuit is opened or closed:</p>
+<p>你能够配置熔断生效/关闭时回调。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -444,52 +436,48 @@ breaker.execute(function (future) {
 </div>
 </div>
 <div class="paragraph">
-<p>You can also be notified when the circuit breaker decides to attempt to reset (half-open state). You can register
-such a callback with <code><a href="../../jsdoc/module-vertx-circuit-breaker-js_circuit_breaker-CircuitBreaker.html#halfOpenHandler">halfOpenHandler</a></code>.</p>
+<p>当熔断器决定尝试复位的时候（ half-open 状态），我们也可以注册
+<code><a href="../../jsdoc/module-vertx-circuit-breaker-js_circuit_breaker-CircuitBreaker.html#halfOpenHandler">halfOpenHandler</a></code> 的回调从而得到回调通知。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_event_bus_notification">Event bus notification</h2>
+<h2 id="_event_bus_通知">Event Bus 通知</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Every time the circuit state changes, an event is published on the event bus. The address on which the events are
-sent is configurable with
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setNotificationAddress">notificationAddress</a></code>. If <code>null</code> is
-passed to this method, the notifications are disabled. By default, the used address is <code>vertx.circuit-breaker</code>.</p>
+<p>每次熔断器状态发生变化时，会在Event Bus上发布事件。事件发送的地址可以使用
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setNotificationAddress">notificationAddress</a></code>
+进行配置。如果将  <code>null</code> 传递给此方法，则通知将被禁用。默认情况下，使用的地址是 <code>vertx.circuit-breaker</code>。</p>
 </div>
 <div class="paragraph">
-<p>Each event contains a Json Object with:</p>
+<p>每次事件信息包含以下：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>state</code> : the new circuit breaker state (<code>OPEN</code>, <code>CLOSED</code>, <code>HALF_OPEN</code>)</p>
+<p><code>state</code> : 熔断器的新状态 （ <code>OPEN</code> ， <code>CLOSED</code> ， <code>HALF_OPEN</code> ）</p>
 </li>
 <li>
-<p><code>name</code> : the name of the circuit breaker</p>
+<p><code>name</code> : 熔断器的名字</p>
 </li>
 <li>
-<p><code>failures</code> : the number of failures</p>
+<p><code>failures</code> : 故障的数量</p>
 </li>
 <li>
-<p><code>node</code> : the identifier of the node (<code>local</code> if Vert.x is not running in cluster mode)</p>
+<p><code>node</code> : 节点的标志符（如果运行在单节点模式是 <code>local</code> ）</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_half_open_state">The half-open state</h2>
+<h2 id="_半开启状态">半开启状态</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When the circuit is "open", calls to the circuit breaker fail immediately, without any attempt to execute the real
-operation. After a suitable amount of time (configured from
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setResetTimeout">resetTimeout</a></code>, the circuit breaker decides that the
-operation has a chance of succeeding, so it goes into the {@code half-open} state. In this state, the next call to the
-circuit breaker is allowed to execute the dangerous operation. Should the call succeed, the circuit breaker resets
-and returns to the {@code closed} state, ready for more routine operation. If this trial call fails, however, the circuit
-breaker returns to the {@code open} state until another timeout elapses.</p>
+<p>当熔断器在熔断状态中，对其调用会立即失败，不会执行实际操作。经过适当的时间（
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setResetTimeout">resetTimeout</a></code>
+设置），熔断器决定是否恢复状态，此时进入半开启状态（half-open state）。
+在这种状态下，允许下一次熔断器的调用实际调用如果成功，熔断器将复位并返回到关闭状态，回归正常的模式；但是如果这次调用失败，则熔断器返回到熔断状态，直到下次半开状态。</p>
 </div>
 </div>
 </div>
@@ -512,13 +500,12 @@ breaker returns to the {@code open} state until another timeout elapses.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pushing_circuit_breaker_metrics_to_the_hystrix_dashboard">Pushing circuit breaker metrics to the Hystrix Dashboard</h2>
+<h2 id="_将熔断器指标推送到hystrix_dashboard">将熔断器指标推送到Hystrix Dashboard</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Netflix Hystrix comes with a dashboard to present the current state of the circuit breakers. The Vert.x circuit
-breakers can publish their metrics in order to be consumed by this Hystrix Dashboard. The Hystrix dashboard requires
-a SSE stream sending the metrics. This stream is provided by the
-<code><a href="../../jsdoc/module-vertx-circuit-breaker-js_hystrix_metric_handler-HystrixMetricHandler.html">HystrixMetricHandler</a></code> Vert.x Web Handler:</p>
+<p><a href="https://github.com/Netflix/Hystrix">Netflix Hystrix</a>
+带有一个仪表板（dashboard），用于显示熔断器的当前状态。 Vert.x 熔断器可以发布其指标（metric），以供Hystrix 仪表板使用。 Hystrix 仪表板需要一个发送指标的SSE流，此流由
+<code><a href="../../jsdoc/module-vertx-circuit-breaker-js_hystrix_metric_handler-HystrixMetricHandler.html">HystrixMetricHandler</a></code> 这个 Vert.x Web Handler 提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -539,30 +526,28 @@ vertx.createHttpServer().requestHandler(router.accept).listen(8080);</code></pre
 </div>
 </div>
 <div class="paragraph">
-<p>In the Hystrix Dashboard, configure the stream url like: <code><a href="http://localhost:8080/metrics" class="bare">http://localhost:8080/metrics</a></code>. The dashboard now consumes
-the metrics from the Vert.x circuit breakers.</p>
+<p>在Hystrix 仪表板中，配置流网址（stream url），如： <code><a href="http://localhost:8080/metrics" class="bare">http://localhost:8080/metrics</a></code> 。仪表板将使用Vert.x熔断器的指标。</p>
 </div>
 <div class="paragraph">
-<p>Notice that the metrics are collected by the Vert.x Web handler using the event bus notifications. If you don&#8217;t use
-the default notification address, you need to pass it when creating the metrics handler.</p>
+<p>请注意，这些指标量是由 Vert.x Web Handler 使用 Event Bus 事件通知收集的。如果您不使用默认通知地址，则需要在创建时指定。</p>
 </div>
 </div>
-</div>
-        
-
-        
-          <div id="footer">
-            <div id="footer-text">
-              
-                上次更新时间 2018-09-07 11:01:54 CST
-              
-              
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  </div>
+</div>
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-09-12 23:35:41 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 <footer>
