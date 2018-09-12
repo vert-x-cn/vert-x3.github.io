@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Docker Links bridge - Vert.x</title>
+  <title>Docker Links 桥接器 - Vert.x</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -141,7 +141,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Docker Links bridge</h1>
+          <h1>Docker Links 桥接器</h1>
           
         </div>
       </div>
@@ -157,7 +157,7 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel2">
-<li><a href="#_docker_links_bridge">Docker Links bridge</a></li>
+<li><a href="#_docker_links_桥接器">Docker Links 桥接器</a></li>
 </ul>
         </div>
       </div>
@@ -165,7 +165,7 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel2">
-<li><a href="#_docker_links_bridge">Docker Links bridge</a></li>
+<li><a href="#_docker_links_桥接器">Docker Links 桥接器</a></li>
 </ul>
         </div>
 
@@ -178,27 +178,22 @@
   </a>
 
         <div class="sect2">
-<h3 id="_docker_links_bridge">Docker Links bridge</h3>
+<h3 id="_docker_links_桥接器">Docker Links 桥接器</h3>
 <div class="paragraph">
-<p>This discovery bridge imports services from Docker Links into the Vert.x service discovery. When you link a Docker
-container to another Docker container, Docker injects a set of environment variables. This bridge analyzes these
-environment variables and imports service record for each link. The service type is deduced from the <code>service.type</code>
-label. If not set, the service is imported as <code>unknown</code>. Only <code>http-endpoint</code> are supported for now.</p>
+<p>Docker Links 桥接器可以从 Docker Links 中导入服务到 Vert.x 的服务发现组件中。当你将一个Docker容器与另外一个Docker容器链接在一起(link)的时候，Docker将会注入一组环境变量。该桥接器将分析这些环境变量，并且针对每个链接(link)，生成一个服务记录。服务记录的类型从`service.type.lable`属性中推断；如果没有设置，那么服务类型将被设置为`unknown`。目前暂时只支持 <code>http-endpoint</code> 服务类型。</p>
 </div>
 <div class="paragraph">
-<p>As the links are created when the container starts, the imported records are created when the bridge starts and
-do not change afterwards.</p>
+<p>由于Docker容器只在启动的时候创建链接，所以这个桥接器只会在启动的时候导入服务记录，然后此后就都不改变了。</p>
 </div>
 <div class="sect3">
-<h4 id="_using_the_bridge">Using the bridge</h4>
+<h4 id="_桥接器的使用">桥接器的使用</h4>
 <div class="paragraph">
-<p>To use this Vert.x discovery bridge, add the following dependency to the <em>dependencies</em> section of your build
-descriptor:</p>
+<p>要使用该服务发现桥接器，需要将如下的依赖包加入到依赖配置文件中：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pox.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -214,7 +209,7 @@ descriptor:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -224,7 +219,7 @@ descriptor:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Then, when creating the service discovery, registers this bridge as follows:</p>
+<p>然后，在创建服务发现对象的时候，像下面这样注册桥接器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -233,7 +228,7 @@ descriptor:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The bridge does not need any further configuration.</p>
+<p>这种桥接器不需要任何进一步的配置。</p>
 </div>
 </div>
 </div>
@@ -243,7 +238,7 @@ descriptor:</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:21 CST
+                上次更新时间 2018-09-13 01:42:51 CST
               
               
             </div>
