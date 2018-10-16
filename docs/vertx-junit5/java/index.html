@@ -303,15 +303,18 @@ Also:</p>
 class BTest {
 
   @Test
-  void start_http_server() throws InterruptedException {
+  void start_http_server() throws Throwable {
     VertxTestContext testContext = new VertxTestContext();
 
     Vertx vertx = Vertx.vertx();
     vertx.createHttpServer()
       .requestHandler(req -&gt; req.response().end())
-      .listen(16969, testContext.succeeding(ar -&gt; testContext.completeNow())); <b class="conum">(1)</b>
+      .listen(16969, testContext.completing()); <b class="conum">(1)</b>
 
     assertThat(testContext.awaitCompletion(5, TimeUnit.SECONDS)).isTrue(); <b class="conum">(2)</b>
+    if (testContext.failed()) {  <b class="conum">(3)</b>
+      throw testContext.causeOfFailure();
+    }
   }
 }</code></pre>
 </div>
@@ -319,10 +322,13 @@ class BTest {
 <div class="colist arabic">
 <ol>
 <li>
-<p><code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#succeeding--">succeeding</a></code> returns an asynchronous result handler that is expected to succeed, and <code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#completeNow--">completeNow</a></code> makes the test pass.</p>
+<p><code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#completing--">completing</a></code> returns an asynchronous result handler that is expected to succeed and then make the test context pass.</p>
 </li>
 <li>
 <p><code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#awaitCompletion-long-java.util.concurrent.TimeUnit-">awaitCompletion</a></code> has the semantics of a <code>java.util.concurrent.CountDownLatch</code>, and returns <code>false</code> if the waiting delay expired before the test passed.</p>
+</li>
+<li>
+<p>If the context captures a (potentially asynchronous) error, then after completion we must throw the failure exception to make the test fail.</p>
 </li>
 </ol>
 </div>
@@ -359,6 +365,9 @@ client.get(8080, "localhost", "/")
 <p><code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#completeNow--">completeNow</a></code> and <code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#failNow-java.lang.Throwable-">failNow</a></code> to notify of a success or failure</p>
 </li>
 <li>
+<p><code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#completing--">completing</a></code> to provide <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code> handlers that expect a success and then completes the test context</p>
+</li>
+<li>
 <p><code><a href="../../apidocs/io/vertx/junit5/VertxTestContext.html#succeeding--">succeeding</a></code> to provide <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code> handlers that expect a success, and optionally pass the result to another callback</p>
 </li>
 <li>
@@ -376,7 +385,7 @@ client.get(8080, "localhost", "/")
 <div class="title">Warning</div>
 </td>
 <td class="content">
-Calling <code>succeeding</code> and <code>failing</code> methods can only make a test fail (e.g., <code>succeeding</code> gets a failed asynchronous result).
+Unlike <code>completing()</code>, calling <code>succeeding</code> and <code>failing</code> methods can only make a test fail (e.g., <code>succeeding</code> gets a failed asynchronous result).
 To make a test pass you still need to call <code>completeNow</code>, or use checkpoints as explained below.
 </td>
 </tr>
@@ -515,7 +524,7 @@ class SomeTest {
   // Deploy the verticle and execute the test methods when the verticle is successfully deployed
   @BeforeEach
   void deploy_verticle(Vertx vertx, VertxTestContext testContext) {
-    vertx.deployVerticle(new HttpServerVerticle(), testContext.succeeding());
+    vertx.deployVerticle(new HttpServerVerticle(), testContext.completing());
   }
 
   // Repeat this test 3 times
@@ -569,7 +578,7 @@ class LifecycleExampleTest {
   @BeforeEach
   @DisplayName("Deploy a verticle")
   void prepare(Vertx vertx, VertxTestContext testContext) {
-    vertx.deployVerticle(new SomeVerticle(), testContext.succeeding(id -&gt; testContext.completeNow()));
+    vertx.deployVerticle(new SomeVerticle(), testContext.completing());
   }
 
   @Test
@@ -672,7 +681,7 @@ class RxJava2Test {
   @Test
   @DisplayName("🚀 Start a server and perform requests")
   void server_test(Vertx vertx, VertxTestContext testContext) {
-    Checkpoint checkpoints = testContext.strictCheckpoint(10);
+    Checkpoint checkpoints = testContext.checkpoint(10);
 
     HttpRequest&lt;String&gt; request = WebClient
       .create(vertx)
@@ -716,7 +725,7 @@ class RxJava2Test {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:42 CST
+                上次更新时间 2018-10-16 18:24:45 CST
               
               
             </div>
@@ -747,6 +756,7 @@ class RxJava2Test {
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

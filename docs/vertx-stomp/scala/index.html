@@ -302,7 +302,7 @@ descriptor:</p>
 <p>This creates a STOMP server listening on <code>localhost:61613</code> that is compliant with the STOMP specification.</p>
 </div>
 <div class="paragraph">
-<p>You can configure the port and host in the <code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServer.html#listen(int,%20java.lang.String)">listen</a></code>
+<p>You can configure the port and host in the <code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServer.html#listen(int)">listen</a></code>
 method:</p>
 </div>
 <div class="listingblock">
@@ -368,7 +368,7 @@ bridge. To be notified when the server is ready, use a handler as follows:</p>
 <p>First, the STOMP server is based on a
 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html">NetServer</a></code>, so you can configure the underlying <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html">NetServer</a></code> from
 the <code><a href="../../vertx-stomp/dataobjects.html#StompServerOptions">StompServerOptions</a></code>. Alternatively you can also pass the
-<code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html">NetServer</a></code> you want to use:</p>
+`<a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html">NetServer</a>`you want to use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -406,7 +406,7 @@ the <code><a href="../../vertx-stomp/dataobjects.html#StompServerOptions">StompS
 </li>
 <li>
 <p>the size of the transaction chunk - defaults to 1000 (see
-<code><a href="../../vertx-stomp/dataobjects.html#StompServerOptions#setTransactionChunkSize(int)">transactionChunkSize</a></code>)</p>
+<code><a href="../../vertx-stomp/dataobjects.html#StompServerOptions#setTransactionChunkSize()">transactionChunkSize</a></code>)</p>
 </li>
 <li>
 <p>the maximum number of subscriptions a client can handle - defaults to 1000</p>
@@ -514,9 +514,9 @@ providing your own <code><a href="../../scaladocs/io/vertx/scala/ext/stomp/Desti
 <p>The custom destination should call the</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServerHandler.html#onAck(io.vertx.ext.stomp.StompServerConnection,%20io.vertx.ext.stomp.Frame,%20java.util.List)">onAck</a></code>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServerHandler.html#onAck(io.vertx.ext.stomp.StompServerConnection,%20io.vertx.ext.stomp.Frame)">onAck</a></code>
 and
-<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServerHandler.html#onNack(io.vertx.ext.stomp.StompServerConnection,%20io.vertx.ext.stomp.Frame,%20java.util.List)">onNack</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServerHandler.html#onNack(io.vertx.ext.stomp.StompServerConnection,%20io.vertx.ext.stomp.Frame)">onNack</a></code>
 method in order to let the <code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServerHandler.html">StompServerHandler</a></code> customizes the behavior:</p>
 </div>
 <div class="listingblock">
@@ -582,7 +582,7 @@ at the default implementations.</p>
 </div>
 <div class="paragraph">
 <p>The previous snippet creates a STOMP client connecting to "0.0.0.0:61613". Once connected, you get a
-<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClientConnection.html">StompClientConnection</a></code> that let you interact with the server. You can
+`<a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClientConnection.html">StompClientConnection</a>`that let you interact with the server. You can
 configure the host and port as follows:</p>
 </div>
 <div class="listingblock">
@@ -715,7 +715,7 @@ frames sent by the server. Notice that the server closes the connection with the
 <p>The client can also be notified when a connection drop has been detected. Connection failures are detected using the
 STOMP heartbeat mechanism. When the server has not sent a message in the heartbeat time window, the connection is
 closed and the <code>connectionDroppedHandler</code> is called (if set). To configure a <code>connectionDroppedHandler</code>, call
-<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClientConnection.html#connectionDroppedHandler(io.vertx.core.Handler)">connectionDroppedHandler</a></code>. The handler can
+<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClientConnection.html#connectionDroppedHandler()">connectionDroppedHandler</a></code>. The handler can
 for instance tries to reconnect to the server:</p>
 </div>
 <div class="listingblock">
@@ -743,11 +743,11 @@ for instance tries to reconnect to the server:</p>
 <h3 id="_configuration_2">Configuration</h3>
 <div class="paragraph">
 <p>You can configure various aspect by passing a
-<code><a href="../../vertx-stomp/dataobjects.html#StompClientOptions">StompClientOptions</a></code> when creating the <code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClient.html">StompClient</a></code>. As the
+<code><a href="../../vertx-stomp/dataobjects.html#StompClientOptions">StompClientOptions</a>`when creating the `<a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClient.html">StompClient</a></code>. As the
 STOMP client relies on a <code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html">NetClient</a></code>, you can configure the underlying Net Client from
 the <code><a href="../../vertx-stomp/dataobjects.html#StompClientOptions">StompClientOptions</a></code>. Alternatively, you can pass the <code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html">NetClient</a></code>
 you want to use in the
-<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClient.html#connect(io.vertx.core.net.NetClient,%20io.vertx.core.Handler)">connect</a></code> method:</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/stomp/StompClient.html#connect(io.vertx.core.net.NetClient)">connect</a>`method:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1021,8 +1021,8 @@ HTML page, or as an npm module (<a href="https://www.npmjs.com/package/stompjs" 
 </div>
 <div class="paragraph">
 <p>To achieve the first step, you would need a HTTP server, and pass the
-<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServer.html#webSocketHandler()">webSocketHandler</a></code> result to
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#websocketHandler(io.vertx.core.Handler)">websocketHandler</a></code>:</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/stomp/StompServer.html#webSocketHandler()">webSocketHandler</a>`result to
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#websocketHandler()">websocketHandler</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1064,7 +1064,7 @@ var subscription = client.subscribe("foo", callback);
 <div class="sectionbody">
 <div class="paragraph">
 <p>STOMP clients, client&#8217;s connections and server handlers support registering a received
-<code><a href="../../vertx-stomp/dataobjects.html#Frame">Frame</a></code> handler that would be notified every time a frame is received from the wire. It lets
+`<a href="../../vertx-stomp/dataobjects.html#Frame">Frame</a>`handler that would be notified every time a frame is received from the wire. It lets
 you log the frames, or implement custom behavior. The handler is already called for {@code PING}
 frames, and <em>illegal / unknown</em> frames:</p>
 </div>
@@ -1108,7 +1108,7 @@ var client = StompClient.create(vertx).writingFrameHandler((frame: io.vertx.scal
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:43 CST
+                上次更新时间 2018-10-16 18:26:02 CST
               
               
             </div>
@@ -1139,6 +1139,7 @@ var client = StompClient.create(vertx).writingFrameHandler((frame: io.vertx.scal
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

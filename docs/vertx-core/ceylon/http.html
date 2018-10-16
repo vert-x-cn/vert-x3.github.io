@@ -442,12 +442,12 @@ server.requestHandler((HttpServerRequest request) {
 </div>
 <div class="paragraph">
 <p>服务请求对象允许您检索 <code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#uri()">uri</a></code> ,
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#path()">path</a></code> , <code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#params()">params</a></code> 和
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#headers()">headers</a></code> 等其他信息。</p>
+<code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#path()">path</a></code>, <code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#params()">params</a></code> 和
+`<a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#headers()">headers</a>`等其他信息。</p>
 </div>
 <div class="paragraph">
 <p>每一个服务请求对象和一个服务响应对象绑定，您可以用
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#response()">response</a></code> 方法获取一个 <code><a href="../../ceylondoc/vertx-core//http/HttpServerResponse.type.html">HttpServerResponse</a></code>
+<code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#response()">response</a>`方法获取一个 `<a href="../../ceylondoc/vertx-core//http/HttpServerResponse.type.html">HttpServerResponse</a></code>
 对象的引用。</p>
 </div>
 <div class="paragraph">
@@ -661,7 +661,7 @@ request.endHandler(() {
 <h4 id="_pumping_请求">Pumping 请求</h4>
 <div class="paragraph">
 <p>请求对象实现了 <code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-<code><a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code>  实例中。</p>
+<code><a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code> 实例中。</p>
 </div>
 <div class="paragraph">
 <p>详细请参阅 <a href="#streams">流和管道</a> 章节。</p>
@@ -705,7 +705,7 @@ request.endHandler(() {
 </div>
 <div class="paragraph">
 <p>要接收文件，您可以告诉 Vert.x 使用 multipart 表单，并对请求设置
-<code>link:../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#uploadHandler@io.vertx.codegen.annotations.Nullable :: io.vertx.core.Handler[uploadHandler]</code> 。</p>
+<code>link:../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#uploadHandler@io.vertx.codegen.annotations.Nullable :: io.vertx.core.Handler[uploadHandler]</code>。</p>
 </div>
 <div class="paragraph">
 <p>当服务器每次接收到上传请求时，该处理器将被调用一次。</p>
@@ -737,7 +737,7 @@ request.endHandler(() {
 </div>
 <div class="paragraph">
 <p>上传对象实现了 <code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-<code><a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code> 实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
+`<a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a>`实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
 </div>
 <div class="paragraph">
 <p>若您只是想将文件上传到服务器的某个磁盘，可以使用 <code><a href="../../ceylondoc/vertx-core//http/HttpServerFileUpload.type.html#streamToFileSystem(java.lang.String)">streamToFileSystem</a></code> 方法：</p>
@@ -798,7 +798,7 @@ request.endHandler(() {
 <h4 id="_非标准的_http_方法">非标准的 HTTP 方法</h4>
 <div class="paragraph">
 <p><code><a href="todo">OTHER</a></code> HTTP 方法可用于非标准方法，在这种情况下，
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#rawMethod()">rawMethod</a></code> 方法返回客户端发送的实际 HTTP 方法。</p>
+`<a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#rawMethod()">rawMethod</a>`方法返回客户端发送的实际 HTTP 方法。</p>
 </div>
 </div>
 </div>
@@ -930,7 +930,7 @@ response.end("hello world!");</code></pre>
 <h4 id="_设置响应头">设置响应头</h4>
 <div class="paragraph">
 <p>HTTP 响应头可直接添加到 HTTP 响应中，通常直接操作
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerResponse.type.html#headers()">headers</a></code> ：</p>
+<code><a href="../../ceylondoc/vertx-core//http/HttpServerResponse.type.html#headers()">headers</a></code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1118,8 +1118,8 @@ response.putTrailer("X-wibble", "woobble").putTrailer("X-quux", "flooble");</cod
 <h4 id="_pumping_响应">Pumping 响应</h4>
 <div class="paragraph">
 <p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code> 实例，因此您可以从任何
-<code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../ceylondoc/vertx-core//file/AsyncFile.type.html">AsyncFile</a></code> , <code><a href="../../ceylondoc/vertx-core//net/NetSocket.type.html">NetSocket</a></code> ,
-<code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html">WebSocket</a></code> 或 <code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html">HttpServerRequest</a></code> 。</p>
+<code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a>`向其泵送数据，如 `<a href="../../ceylondoc/vertx-core//file/AsyncFile.type.html">AsyncFile</a></code> , <code><a href="../../ceylondoc/vertx-core//net/NetSocket.type.html">NetSocket</a></code> ,
+<code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html">WebSocket</a>`或 `<a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html">HttpServerRequest</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一个例子，它回应了任何 PUT 方法的响应中的请求体，它为请求体使用了 Pump，所以即使 HTTP 请求体很大并填满了内存，任何时候它依旧会工作：</p>
@@ -1199,7 +1199,7 @@ request.response().reset(8);</code></pre>
 </div>
 <div class="paragraph">
 <p>若使用了 <code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#exceptionHandler(io.vertx.core.Handler)">request handler</a></code> 和
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerResponse.type.html#exceptionHandler(io.vertx.core.Handler)">response handler</a></code> 两个处理器过后，在流重置完成时您将会收到通知：</p>
+`<a href="../../ceylondoc/vertx-core//http/HttpServerResponse.type.html#exceptionHandler(io.vertx.core.Handler)">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1383,7 +1383,7 @@ value client = vertx.createHttpClient(options);</code></pre>
 </div>
 <div class="paragraph">
 <p><code>h2c</code> 连接也可以直接建立，如连接可以使用前文提到的方式创建，当
-<code><a href="../../ceylondoc/vertx-core//http/HttpClientOptions.type.html#setHttp2ClearTextUpgrade(boolean)">http2ClearTextUpgrade</a></code> 选项设置为 <code>false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
+<code><a href="../../ceylondoc/vertx-core//http/HttpClientOptions.type.html#setHttp2ClearTextUpgrade(boolean)">http2ClearTextUpgrade</a>`选项设置为 `false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
 </div>
 <div class="paragraph">
 <p>HTTP 服务端可能不支持 HTTP/2，当响应到达时，可以使用 <code><a href="../../ceylondoc/vertx-core//http/HttpClientResponse.type.html#version()">version</a></code> 方法检查响应实际HTTP版本。</p>
@@ -1459,7 +1459,7 @@ client.getNow("foo.othercompany.com", "/other-uri", (HttpClientResponse response
 </div>
 <div class="paragraph">
 <p>使用 Vert.x HTTP Client 执行这种请求最简单的方式是使用加了 <code>Now</code> 后缀的请求方法，如
-<code><a href="../../ceylondoc/vertx-core//http/HttpClient.type.html#getNow(io.vertx.core.http.RequestOptions,%20io.vertx.core.Handler)">getNow</a></code> 。</p>
+<code><a href="../../ceylondoc/vertx-core//http/HttpClient.type.html#getNow(io.vertx.core.http.RequestOptions,%20io.vertx.core.Handler)">getNow</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>这些方法会创建HTTP 请求，并在单个方法调用中发送它，而且允许您提供一个处理器，当HTTP 响应发送回来时调用该处理器来处理响应结果。</p>
@@ -1765,7 +1765,7 @@ request.end();</code></pre>
 <h4 id="_客户端请求中指定处理器">客户端请求中指定处理器</h4>
 <div class="paragraph">
 <p>不像在调用中提供响应处理器来创建客户端请求对象，相反您可以当请求创建时不提供处理器、稍后在请求对象中调用
-<code><a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html#handler(io.vertx.core.Handler)">handler</a></code> 来设置。如：</p>
+`<a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html#handler(io.vertx.core.Handler)">handler</a>`来设置。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1779,7 +1779,7 @@ request.handler((HttpClientResponse response) {
 <div class="sect3">
 <h4 id="_使用流式请求">使用流式请求</h4>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html">HttpClientRequest</a></code> 实例实现了 <code><a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
+<p><code><a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html">HttpClientRequest</a>`实例实现了 `<a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
 </div>
 <div class="paragraph">
 <p>例如，您可以将磁盘上的文件直接泵送到HTTP 请求体中，如下所示：</p>
@@ -1848,7 +1848,7 @@ request.writeCustomFrame(frameType, frameStatus, payload);</code></pre>
 </div>
 <div class="paragraph">
 <p>若使用了 <code><a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html#exceptionHandler(io.vertx.core.Handler)">request handler</a></code> 和
-<code><a href="../../ceylondoc/vertx-core//http/HttpClientResponse.type.html#exceptionHandler(io.vertx.core.Handler)">response handler</a></code> 两个处理器过后，在流重置完成时您将会收到通知。</p>
+`<a href="../../ceylondoc/vertx-core//http/HttpClientResponse.type.html#exceptionHandler(io.vertx.core.Handler)">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2400,7 +2400,7 @@ value client = vertx.createHttpClient(clientOptions);</code></pre>
 <div class="sect2">
 <h3 id="_http_连接">HTTP 连接</h3>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/HttpConnection.type.html">HttpConnection</a></code> 接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
+<p>`<a href="../../ceylondoc/vertx-core//http/HttpConnection.type.html">HttpConnection</a>`接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
 </div>
 <div class="paragraph">
 <p>HTTP/2 实现了完整的 <code><a href="../../ceylondoc/vertx-core//http/HttpConnection.type.html">HttpConnection</a></code> API。</p>
@@ -2411,7 +2411,7 @@ value client = vertx.createHttpClient(clientOptions);</code></pre>
 <div class="sect3">
 <h4 id="_服务端连接">服务端连接</h4>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#connection()">connection</a></code> 方法会返回服务器上的请求连接：</p>
+<p>`<a href="../../ceylondoc/vertx-core//http/HttpServerRequest.type.html#connection()">connection</a>`方法会返回服务器上的请求连接：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2434,7 +2434,7 @@ server.connectionHandler((HttpConnection connection) {
 <div class="sect3">
 <h4 id="_客户端连接">客户端连接</h4>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html#connection()">connection</a></code> 方法会返回客户端上的连接请求：</p>
+<p>`<a href="../../ceylondoc/vertx-core//http/HttpClientRequest.type.html#connection()">connection</a>`方法会返回客户端上的连接请求：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2462,7 +2462,7 @@ server.connectionHandler((HttpConnection connection) {
 </div>
 <div class="paragraph">
 <p>当建立连接时，客户端和服务器交换初始配置，初始设置由客户端上的 <code><a href="../../ceylondoc/vertx-core//http/HttpClientOptions.type.html#setInitialSettings(io.vertx.core.http.Http2Settings)">initialSettings</a></code> 和服务器上的
-<code><a href="../../ceylondoc/vertx-core//http/HttpServerOptions.type.html#setInitialSettings(io.vertx.core.http.Http2Settings)">initialSettings</a></code> 方法配置。</p>
+`<a href="../../ceylondoc/vertx-core//http/HttpServerOptions.type.html#setInitialSettings(io.vertx.core.http.Http2Settings)">initialSettings</a>`方法配置。</p>
 </div>
 <div class="paragraph">
 <p>连接建立后可随时更改设置：</p>
@@ -2571,7 +2571,7 @@ connection.ping(data, (Buffer|Throwable pong) {
 <dl>
 <dt class="hdlist1">`link:../../ceylondoc/vertx-core//http/HttpConnection.type.html#shutdownHandler((@io.vertx.codegen.annotations.Nullable </dt>
 <dd>
-<p>io.vertx.core.Handler))[shutdownHandler]` 通知何时关闭所有流，连接尚未关闭。</p>
+<p>io.vertx.core.Handler))[shutdownHandler]`通知何时关闭所有流，连接尚未关闭。</p>
 </dd>
 </dl>
 </div>
@@ -2748,10 +2748,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/HttpClientOptions.type.html#setSsl(boolean)">ssl</a></code> 设置将用作客户端默认配置。</p>
+<p>`<a href="../../ceylondoc/vertx-core//http/HttpClientOptions.type.html#setSsl(boolean)">ssl</a>`设置将用作客户端默认配置。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/RequestOptions.type.html#setSsl(boolean)">ssl</a></code> 将覆盖默认客户端设置：</p>
+<p>`<a href="../../ceylondoc/vertx-core//http/RequestOptions.type.html#setSsl(boolean)">ssl</a>`将覆盖默认客户端设置：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2796,7 +2796,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 <div class="paragraph">
 <p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler</code> 传入一个
-<code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
+`<a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html">ServerWebSocket</a>`实例，在其中去处理它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2844,9 +2844,9 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_服务端_websocket_2">服务端 WebSocket</h5>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#headers()">headers</a></code> ,
-<code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#path()">path</a></code> , <code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#query()">query</a></code> 和
-<code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#uri()">URI</a></code> 。</p>
+<p><code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html">ServerWebSocket</a>`实例能够让您读取在WebSocket 握手中的HTTP 请求的 `<a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#headers()">headers</a></code> ,
+<code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#path()">path</a></code>, <code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#query()">query</a></code> 和
+<code><a href="../../ceylondoc/vertx-core//http/ServerWebSocket.type.html#uri()">URI</a></code>。</p>
 </div>
 </div>
 </div>
@@ -2873,8 +2873,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <h4 id="_向_websocket_写入消息">向 WebSocket 写入消息</h4>
 <div class="paragraph">
 <p>若您想将一个 WebSocket 消息写入 WebSocket，可使用
-<code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html#writeBinaryMessage(io.vertx.core.buffer.Buffer)">writeBinaryMessage</a></code> 方法或
-<code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html#writeTextMessage(java.lang.String)">writeTextMessage</a></code> 方法来执行该操作：</p>
+`<a href="../../ceylondoc/vertx-core//http/WebSocket.type.html#writeBinaryMessage(io.vertx.core.buffer.Buffer)">writeBinaryMessage</a>`方法或
+`<a href="../../ceylondoc/vertx-core//http/WebSocket.type.html#writeTextMessage(java.lang.String)">writeTextMessage</a>`方法来执行该操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2909,7 +2909,7 @@ websocket.writeTextMessage(message);</code></pre>
 <p>要发送多个帧组成的消息，请使用
 <code><a href="../../ceylondoc/vertx-core//http/WebSocketFrame.object.html#binaryFrame(io.vertx.core.buffer.Buffer,%20boolean)">WebSocketFrame.binaryFrame</a></code>
 , <code><a href="../../ceylondoc/vertx-core//http/WebSocketFrame.object.html#textFrame(java.lang.String,%20boolean)">WebSocketFrame.textFrame</a></code> 或
-<code><a href="../../ceylondoc/vertx-core//http/WebSocketFrame.object.html#continuationFrame(io.vertx.core.buffer.Buffer,%20boolean)">WebSocketFrame.continuationFrame</a></code> 方法创建帧，并使用 <code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html#writeFrame(io.vertx.core.http.WebSocketFrame)">writeFrame</a></code> 方法将其写入WebSocket。</p>
+<code><a href="../../ceylondoc/vertx-core//http/WebSocketFrame.object.html#continuationFrame(io.vertx.core.buffer.Buffer,%20boolean)">WebSocketFrame.continuationFrame</a>`方法创建帧，并使用 `<a href="../../ceylondoc/vertx-core//http/WebSocket.type.html#writeFrame(io.vertx.core.http.WebSocketFrame)">writeFrame</a></code> 方法将其写入WebSocket。</p>
 </div>
 <div class="paragraph">
 <p>以下是二进制帧的示例：</p>
@@ -2983,8 +2983,8 @@ websocket.writeFinalBinaryFrame(buff);</code></pre>
 <div class="sect3">
 <h4 id="_流式_websocket">流式 WebSocket</h4>
 <div class="paragraph">
-<p><code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html">WebSocket</a></code> 实例也是 <code><a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 和
-<code><a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a></code> 的实现类，因此可以和泵(pump)一起使用。</p>
+<p><code><a href="../../ceylondoc/vertx-core//http/WebSocket.type.html">WebSocket</a>`实例也是 `<a href="../../ceylondoc/vertx-core//streams/ReadStream.type.html">ReadStream</a></code> 和
+`<a href="../../ceylondoc/vertx-core//streams/WriteStream.type.html">WriteStream</a>`的实现类，因此可以和泵(pump)一起使用。</p>
 </div>
 <div class="paragraph">
 <p>当使用 WebSocket 作为可写流或可读流时，它只能用于不分割多个帧的二进制帧一起使用的 WebSocket 连接。</p>
@@ -3001,7 +3001,7 @@ websocket.writeFinalBinaryFrame(buff);</code></pre>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../../ceylondoc/vertx-core//http/HttpClientOptions.type.html">HttpClientOptions</a></code> 中的
-<code><a href="../../ceylondoc/vertx-core//net/ProxyOptions.type.html">ProxyOptions</a></code> 对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
+`<a href="../../ceylondoc/vertx-core//net/ProxyOptions.type.html">ProxyOptions</a>`对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
 </div>
 <div class="paragraph">
 <p>以下是使用 HTTP 代理的例子：</p>
@@ -3100,7 +3100,7 @@ support them (gopher:// for example).</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:15 CST
+                上次更新时间 2018-10-16 18:24:16 CST
               
               
             </div>
@@ -3131,6 +3131,7 @@ support them (gopher:// for example).</p>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

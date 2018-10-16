@@ -315,7 +315,7 @@
 <div class="paragraph">
 <p>我们可以通过一个 Map 来包装这些配置，然后将其传入到
 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 接口或
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html">KafkaProducer</a></code> 接口中的 <code>create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html">KafkaProducer</a>`接口中的 `create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -358,11 +358,11 @@ var producer = KafkaProducer.create(vertx, config)</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>我们可以通过 <code>KafkaConsumer</code> 的
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#subscribe(java.util.Set)">subscribe</a></code> 方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
+`<a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#subscribe()">subscribe</a>`方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
 </div>
 <div class="paragraph">
 <p>当然你需要通过
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#handler(io.vertx.core.Handler)">handler</a></code> 方法注册一个 <code>Handler</code> 来处理接收的消息：</p>
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#handler()">handler</a>`方法注册一个 `Handler</code> 来处理接收的消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -430,9 +430,9 @@ consumer.subscribeFuture("a-single-topic").onComplete{
 <p>如果组内的一个消费者挂了，kafka 集群会自动把 partition 重新分配给组内其他消费者，或者新加入一个消费者去消费对应的 partition。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsRevokedHandler(io.vertx.core.Handler)">partitionsRevokedHandler</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler(io.vertx.core.Handler)">partitionsAssignedHandler</a></code> 方法在
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 里注册一个 <code>Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsRevokedHandler()">partitionsRevokedHandler</a></code> 和
+<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler()">partitionsAssignedHandler</a>`方法在
+`<a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a>`里注册一个 `Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -507,7 +507,7 @@ consumer.unsubscribeFuture().onComplete{
 <p>消费组内的消费者可以消费某个 topic 指定的 partition。如果某个消费者并不属于任何消费组，那么整个程序就不能依赖 Kafka 的 re-balancing 机制去消费消息。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assign(java.util.Set,%20io.vertx.core.Handler)">assign</a></code>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assign(java.util.Set)">assign</a></code>
 方法请求分配指定的分区：</p>
 </div>
 <div class="listingblock">
@@ -552,7 +552,7 @@ messages won&#8217;t be consumed until both methods have been called. This allow
 order to only consume messages starting from a particular offset, for example.</p>
 </div>
 <div class="paragraph">
-<p>上面的 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assignment(io.vertx.core.Handler)">assignment</a></code> 方法可以列出当前分配的 topic partition。</p>
+<p>上面的 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#assignment()">assignment</a></code> 方法可以列出当前分配的 topic partition。</p>
 </div>
 </div>
 </div>
@@ -561,7 +561,7 @@ order to only consume messages starting from a particular offset, for example.</
 <div class="sectionbody">
 <div class="paragraph">
 <p>Other than using the internal polling mechanism in order to receive messages from Kafka, the client can subscribe to a
-topic, avoiding to register the handler for getting the messages and then using the <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#poll(long,%20io.vertx.core.Handler)">poll</a></code> method.</p>
+topic, avoiding to register the handler for getting the messages and then using the <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#poll(long)">poll</a></code> method.</p>
 </div>
 <div class="paragraph">
 <p>In this way, the user application is in charge to execute the poll for getting messages when it needs, for example after processing
@@ -620,7 +620,7 @@ Once the completion handler has been called it will only observe messages read f
 <h2 id="_获取_topic_以及分区信息">获取 Topic 以及分区信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsFor(java.lang.String,%20io.vertx.core.Handler)">partitionsFor</a></code> 方法获取指定 topic 的 partition 信息：</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#partitionsFor(java.lang.String)">partitionsFor</a></code> 方法获取指定 topic 的 partition 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -638,7 +638,7 @@ consumer.partitionsForFuture("test").onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>另外， <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#listTopics(io.vertx.core.Handler)">listTopics</a></code> 方法可以列出消费者下的所有 topic 以及对应的 partition 信息：</p>
+<p>另外， <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#listTopics()">listTopics</a></code> 方法可以列出消费者下的所有 topic 以及对应的 partition 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -669,7 +669,7 @@ consumer.listTopicsFuture().onComplete{
 <p>Consumer 会在每次从某个 topic partition 中读取一批消息的时候自动执行提交偏移量的操作。需要在创建 <code>KafkaConsumer</code> 时将 <code>enable.auto.commit</code> 配置项设为 <code>true</code> 来开启自动提交。</p>
 </div>
 <div class="paragraph">
-<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#commit(io.vertx.core.Handler)">commit</a></code>
+<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#commit()">commit</a></code>
 方法进行手动提交。手动提交偏移量通常用于确保消息分发的 <strong>at least once</strong> 语义，以确保消息没有被消费前不会执行提交。</p>
 </div>
 <div class="listingblock">
@@ -695,7 +695,7 @@ consumer.commitFuture().onComplete{
 并从任意指定的 topic 以及 partition 位置开始消费消息。</p>
 </div>
 <div class="paragraph">
-<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seek(io.vertx.kafka.client.common.TopicPartition,%20long)">seek</a></code> 方法来更改读取位置对应的偏移量：</p>
+<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seek(io.vertx.kafka.client.common.TopicPartition)">seek</a></code> 方法来更改读取位置对应的偏移量：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -714,7 +714,7 @@ consumer.seekFuture(topicPartition, 10).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>当消费者需要从 Stream 的起始位置读取消息时，可以使用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning(io.vertx.kafka.client.common.TopicPartition)">seekToBeginning</a></code> 方法将 <code>offset</code> 位置设置到 partition 的起始端：</p>
+<p>当消费者需要从 Stream 的起始位置读取消息时，可以使用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning()">seekToBeginning</a></code> 方法将 <code>offset</code> 位置设置到 partition 的起始端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -733,7 +733,7 @@ consumer.seekToBeginningFuture(java.util.Collections.singleton(topicPartition)).
 </div>
 </div>
 <div class="paragraph">
-<p>最后我们也可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd(io.vertx.kafka.client.common.TopicPartition)">seekToEnd</a></code> 方法将 <code>offset</code> 位置设置到 partition 的末端：</p>
+<p>最后我们也可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd()">seekToEnd</a></code> 方法将 <code>offset</code> 位置设置到 partition 的末端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -764,7 +764,7 @@ handler has been called. This is not the case for messages observed by the batch
 <div class="sectionbody">
 <div class="paragraph">
 <p>你可以利用 Kafka 0.10.1.1 引入的新的API <code>beginningOffsets</code> 来获取给定分区的起始偏移量。这个跟上面的
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning(io.vertx.kafka.client.common.TopicPartition)">seekToBeginning</a></code> 方法有一个地方不同：
+`<a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToBeginning()">seekToBeginning</a>`方法有一个地方不同：
 beginningOffsets
 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
@@ -799,7 +799,7 @@ consumer.beginningOffsetsFuture(topicPartition).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>与此对应的API还有 <code>endOffsets</code> 方法，用于获取给定分区末端的偏移量值。与 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd(io.vertx.kafka.client.common.TopicPartition)">seekToEnd</a></code> 方法相比，
+<p>与此对应的API还有 <code>endOffsets</code> 方法，用于获取给定分区末端的偏移量值。与 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#seekToEnd()">seekToEnd</a></code> 方法相比，
 <code>endOffsets</code> 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
 <div class="listingblock">
@@ -851,7 +851,7 @@ consumer.endOffsetsFuture(topicPartition).onComplete{
 </div>
 <div class="paragraph">
 <p>我们可以利用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#pause()">pause</a></code> 方法和
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#resume()">resume</a></code> 方法来进行流量控制：</p>
+`<a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#resume()">resume</a>`方法来进行流量控制：</p>
 </div>
 <div class="paragraph">
 <p>In the case of the partition-specific pause and resume it is possible that the record handler will continue to
@@ -925,7 +925,7 @@ consumer.handler((record: io.vertx.scala.kafka.client.consumer.KafkaConsumerReco
 <h2 id="_发送消息到某个_topic">发送消息到某个 Topic</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以利用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#write(io.vertx.kafka.client.producer.KafkaProducerRecord)">write</a></code> 方法来向某个 topic 发送消息(records)。</p>
+<p>您可以利用 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#write()">write</a></code> 方法来向某个 topic 发送消息(records)。</p>
 </div>
 <div class="paragraph">
 <p>最简单的发送消息的方式是仅仅指定目的 topic 以及相应的值而省略消息的 key 以及分区。在这种情况下，
@@ -1016,7 +1016,7 @@ consumer.handler((record: io.vertx.scala.kafka.client.consumer.KafkaConsumerReco
 <p>有时候您希望在多个 Verticle 或者 Vert.x Context 下共用一个 Producer。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#createShared(io.vertx.core.Vertx,%20java.lang.String,%20java.util.Map)">KafkaProducer.createShared</a></code>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#createShared(io.vertx.core.Vertx,%20java.lang.String)">KafkaProducer.createShared</a></code>
 方法来创建可以在 Verticle 之间安全共享的 <code>KafkaProducer</code> 实例：</p>
 </div>
 <div class="listingblock">
@@ -1066,7 +1066,7 @@ producer1.close()</code></pre>
 <h2 id="_获取_topic_partition_的相关信息">获取 Topic Partition 的相关信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#partitionsFor(java.lang.String,%20io.vertx.core.Handler)">partitionsFor</a></code> 方法获取指定 topic 的分区信息。</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#partitionsFor(java.lang.String)">partitionsFor</a></code> 方法获取指定 topic 的分区信息。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1090,8 +1090,8 @@ producer.partitionsForFuture("test").onComplete{
 <div class="sectionbody">
 <div class="paragraph">
 <p>您可以利用
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> 方法和
-<code><a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> 方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
+`<a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#exceptionHandler()">exceptionHandler</a>`方法和
+`<a href="../../scaladocs/io/vertx/scala/kafka/client/producer/KafkaProducer.html#exceptionHandler()">exceptionHandler</a>`方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
 比如：</p>
 </div>
 <div class="listingblock">
@@ -1207,7 +1207,7 @@ but not this wrapper, includes Partition Management, Broker Configuration manage
 <div class="sect2">
 <h3 id="_create_a_topic">Create a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#createTopic(java.lang.String,%20int,%20int,%20io.vertx.core.Handler)">createTopic</a></code> to create a topic.
+<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#createTopic(java.lang.String,%20int,%20int)">createTopic</a></code> to create a topic.
 Parameters are: topic name, number of partitions, number of replicas, and the usual callback to handle the result.
 It might return an error, e.g. if the number of requested replicas is greater than the number of brokers.</p>
 </div>
@@ -1228,7 +1228,7 @@ adminUtils.createTopicFuture("myNewTopic", 2, 1).onComplete{
 <div class="sect2">
 <h3 id="_delete_a_topic">Delete a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#deleteTopic(java.lang.String,%20io.vertx.core.Handler)">deleteTopic</a></code> to delete a topic.
+<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#deleteTopic(java.lang.String)">deleteTopic</a></code> to delete a topic.
 Parameters are: topic name, and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
 </div>
@@ -1250,7 +1250,7 @@ adminUtils.deleteTopicFuture("myNewTopic").onComplete{
 <h3 id="_change_a_topic_s_configuration">Change a topic&#8217;s configuration</h3>
 <div class="paragraph">
 <p>If you need to update the configuration of a topic, e.g., you want to update the retention policy,
-you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#changeTopicConfig(java.lang.String,%20java.util.Map,%20io.vertx.core.Handler)">changeTopicConfig</a></code> to update a topic.
+you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#changeTopicConfig(java.lang.String,%20java.util.Map)">changeTopicConfig</a></code> to update a topic.
 Parameters are: topic name, a Map (String &#8594; String) with parameters to be changed,
 and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
@@ -1276,7 +1276,7 @@ adminUtils.changeTopicConfigFuture("myNewTopic", properties).onComplete{
 <div class="sect2">
 <h3 id="_check_if_a_topic_exists">Check if a topic exists</h3>
 <div class="paragraph">
-<p>If you want to check if a topic exists, you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#topicExists(java.lang.String,%20io.vertx.core.Handler)">topicExists</a></code>.
+<p>If you want to check if a topic exists, you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#topicExists(java.lang.String)">topicExists</a></code>.
 Parameters are: topic name, and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
 </div>
@@ -1302,7 +1302,7 @@ adminUtils.topicExistsFuture("myNewTopic").onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:46 CST
+                上次更新时间 2018-10-16 18:24:52 CST
               
               
             </div>
@@ -1333,6 +1333,7 @@ adminUtils.topicExistsFuture("myNewTopic").onComplete{
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

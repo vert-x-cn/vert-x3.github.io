@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb</dd>
+    <dd class="r2 last">/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -182,6 +182,138 @@
 
   
     <span class="summary_desc"><div class='inline'>Create a session handler.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_COOKIE_HTTP_ONLY_FLAG-class_method" title="DEFAULT_COOKIE_HTTP_ONLY_FLAG (class method)">+ (Object) <strong>DEFAULT_COOKIE_HTTP_ONLY_FLAG</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Default of whether the cookie has the HttpOnly flag set  More info: https://www.owasp.org/index.php/HttpOnly.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_COOKIE_SECURE_FLAG-class_method" title="DEFAULT_COOKIE_SECURE_FLAG (class method)">+ (Object) <strong>DEFAULT_COOKIE_SECURE_FLAG</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Default of whether the cookie has the 'secure' flag set to allow transmission over https only.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_NAG_HTTPS-class_method" title="DEFAULT_NAG_HTTPS (class method)">+ (Object) <strong>DEFAULT_NAG_HTTPS</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Default of whether a nagging log warning should be written if the session handler is accessed over HTTP, not  HTTPS.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_SESSION_COOKIE_NAME-class_method" title="DEFAULT_SESSION_COOKIE_NAME (class method)">+ (Object) <strong>DEFAULT_SESSION_COOKIE_NAME</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Default name of session cookie.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_SESSION_TIMEOUT-class_method" title="DEFAULT_SESSION_TIMEOUT (class method)">+ (Object) <strong>DEFAULT_SESSION_TIMEOUT</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Default time, in ms, that a session lasts for without being accessed before expiring.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_SESSIONID_MIN_LENGTH-class_method" title="DEFAULT_SESSIONID_MIN_LENGTH (class method)">+ (Object) <strong>DEFAULT_SESSIONID_MIN_LENGTH</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Default min length for a session id.</div></span>
   
 </li>
 
@@ -488,7 +620,7 @@
 28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 26</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_accept?'>accept?</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>SessionHandler</span>
@@ -579,13 +711,251 @@
 58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 53</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_sessionStore'>sessionStore</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sessionStore'>sessionStore</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
     <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebSstore</span><span class='op'>::</span><span class='const'>SessionStore</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_sessionStore'>sessionStore</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxWeb</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling create(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sessionStore'>sessionStore</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_COOKIE_HTTP_ONLY_FLAG-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_COOKIE_HTTP_ONLY_FLAG</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Default of whether the cookie has the HttpOnly flag set
+ More info: https://www.owasp.org/index.php/HttpOnly
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_COOKIE_HTTP_ONLY_FLAG</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='const'>DEFAULT_COOKIE_HTTP_ONLY_FLAG</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_COOKIE_SECURE_FLAG-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_COOKIE_SECURE_FLAG</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Default of whether the cookie has the 'secure' flag set to allow transmission over https only.
+ More info: https://www.owasp.org/index.php/SecureFlag
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_COOKIE_SECURE_FLAG</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='const'>DEFAULT_COOKIE_SECURE_FLAG</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_NAG_HTTPS-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_NAG_HTTPS</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Default of whether a nagging log warning should be written if the session handler is accessed over HTTP, not
+ HTTPS
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 132</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_NAG_HTTPS</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='const'>DEFAULT_NAG_HTTPS</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_SESSION_COOKIE_NAME-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_SESSION_COOKIE_NAME</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Default name of session cookie
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 123</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_SESSION_COOKIE_NAME</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='const'>DEFAULT_SESSION_COOKIE_NAME</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_SESSION_TIMEOUT-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_SESSION_TIMEOUT</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Default time, in ms, that a session lasts for without being accessed before expiring.
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_SESSION_TIMEOUT</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='const'>DEFAULT_SESSION_TIMEOUT</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_SESSIONID_MIN_LENGTH-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_SESSIONID_MIN_LENGTH</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Default min length for a session id.
+ More info: https://www.owasp.org/index.php/Session_Management_Cheat_Sheet
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_SESSIONID_MIN_LENGTH</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='const'>DEFAULT_SESSIONID_MIN_LENGTH</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -612,7 +982,7 @@
 37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 35</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_api_type'>j_api_type</span>
   <span class='cvar'>@@j_api_type</span>
@@ -642,7 +1012,7 @@
 40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 38</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_class'>j_class</span>
   <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtWebHandler</span><span class='op'>::</span><span class='const'>SessionHandler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span>
@@ -672,7 +1042,7 @@
 34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 32</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_unwrap'>unwrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span>
@@ -702,7 +1072,7 @@
 31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 29</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='const'>SessionHandler</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
@@ -783,7 +1153,7 @@
 49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 44</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_handle'>handle</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -876,7 +1246,7 @@
 101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 95</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_cookie_http_only_flag'>set_cookie_http_only_flag</span><span class='lparen'>(</span><span class='id identifier rubyid_httpOnly'>httpOnly</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_httpOnly'>httpOnly</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>TrueClass</span> <span class='op'>||</span> <span class='id identifier rubyid_httpOnly'>httpOnly</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>FalseClass</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -970,7 +1340,7 @@
 90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 84</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_cookie_secure_flag'>set_cookie_secure_flag</span><span class='lparen'>(</span><span class='id identifier rubyid_secure'>secure</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_secure'>secure</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>TrueClass</span> <span class='op'>||</span> <span class='id identifier rubyid_secure'>secure</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>FalseClass</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1063,7 +1433,7 @@
 121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 115</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_min_length'>set_min_length</span><span class='lparen'>(</span><span class='id identifier rubyid_minLength'>minLength</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_minLength'>minLength</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1157,7 +1527,7 @@
 79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 73</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_nag_https'>set_nag_https</span><span class='lparen'>(</span><span class='id identifier rubyid_nag'>nag</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_nag'>nag</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>TrueClass</span> <span class='op'>||</span> <span class='id identifier rubyid_nag'>nag</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>FalseClass</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1250,7 +1620,7 @@
 111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 105</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_session_cookie_name'>set_session_cookie_name</span><span class='lparen'>(</span><span class='id identifier rubyid_sessionCookieName'>sessionCookieName</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sessionCookieName'>sessionCookieName</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1343,7 +1713,7 @@
 68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 62</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-web/session_handler.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_session_timeout'>set_session_timeout</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1362,7 +1732,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Aug 21 15:09:45 2018 by
+  Generated on Tue Oct 16 00:46:28 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

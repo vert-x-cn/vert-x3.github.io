@@ -96,7 +96,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb</dd>
+    <dd class="r2 last">/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -199,6 +199,50 @@
 
   
     <span class="summary_desc"><div class='inline'>Create a JDBC client which shares its data source with any other JDBC clients created with the same  data source name.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_DS_NAME-class_method" title="DEFAULT_DS_NAME (class method)">+ (Object) <strong>DEFAULT_DS_NAME</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The name of the default data source.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#DEFAULT_PROVIDER_CLASS-class_method" title="DEFAULT_PROVIDER_CLASS (class method)">+ (Object) <strong>DEFAULT_PROVIDER_CLASS</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>The default data source provider is C3P0.</div></span>
   
 </li>
 
@@ -627,7 +671,7 @@
 23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 21</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_accept?'>accept?</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>JDBCClient</span>
@@ -734,7 +778,7 @@
 200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 195</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_non_shared'>create_non_shared</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_config'>config</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -863,7 +907,7 @@
 214</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 207</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_shared'>create_shared</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_config'>config</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_dataSourceName'>dataSourceName</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_dataSourceName'>dataSourceName</span> <span class='op'>==</span> <span class='kw'>nil</span>
@@ -872,6 +916,84 @@
     <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtJdbc</span><span class='op'>::</span><span class='const'>JDBCClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:createShared</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCoreJson</span><span class='op'>::</span><span class='const'>JsonObject</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_dataSourceName'>dataSourceName</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxJdbc</span><span class='op'>::</span><span class='const'>JDBCClient</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling create_shared(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_config'>config</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_dataSourceName'>dataSourceName</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_DS_NAME-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_DS_NAME</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    The name of the default data source
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 220</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_DS_NAME</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtJdbc</span><span class='op'>::</span><span class='const'>JDBCClient</span><span class='period'>.</span><span class='const'>DEFAULT_DS_NAME</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="DEFAULT_PROVIDER_CLASS-class_method">
+  
+    + (<tt>Object</tt>) <strong>DEFAULT_PROVIDER_CLASS</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    The default data source provider is C3P0
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216
+217
+218</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_PROVIDER_CLASS</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtJdbc</span><span class='op'>::</span><span class='const'>JDBCClient</span><span class='period'>.</span><span class='const'>DEFAULT_PROVIDER_CLASS</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -898,7 +1020,7 @@
 32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 30</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_api_type'>j_api_type</span>
   <span class='cvar'>@@j_api_type</span>
@@ -928,7 +1050,7 @@
 35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 33</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_class'>j_class</span>
   <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtJdbc</span><span class='op'>::</span><span class='const'>JDBCClient</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span>
@@ -958,7 +1080,7 @@
 29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 27</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_unwrap'>unwrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span>
@@ -988,7 +1110,7 @@
 26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 24</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='const'>JDBCClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
@@ -1099,7 +1221,7 @@
 169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 163</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1248,7 +1370,7 @@
 190</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 184</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call_with_params'>call_with_params</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_outputs'>outputs</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_outputs'>outputs</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1326,7 +1448,7 @@
 85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 78</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1417,7 +1539,7 @@
 73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 67</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_connection'>get_connection</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1527,7 +1649,7 @@
 97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 91</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1638,7 +1760,7 @@
 48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 42</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_single'>query_single</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1765,7 +1887,7 @@
 62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_single_with_params'>query_single_with_params</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_arguments'>arguments</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1874,7 +1996,7 @@
 108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 102</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_stream'>query_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1999,7 +2121,7 @@
 120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 114</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_stream_with_params'>query_stream_with_params</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2125,7 +2247,7 @@
 133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 127</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_with_params'>query_with_params</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_arguments'>arguments</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2235,7 +2357,7 @@
 145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 139</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2361,7 +2483,7 @@
 158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-stack-generation/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 152</span>
+      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx-jdbc/jdbc_client.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_with_params'>update_with_params</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Array</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2380,7 +2502,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Aug 21 15:09:41 2018 by
+  Generated on Tue Oct 16 00:46:21 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

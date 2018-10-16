@@ -446,8 +446,8 @@ socket.write("some data", "UTF-16");</code></pre>
 <div class="sect2">
 <h3 id="_流式的socket">流式的Socket</h3>
 <div class="paragraph">
-<p><code><a href="../../apidocs/io/vertx/core/net/NetSocket.html">NetSocket</a></code> 接口继承了 <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> 和
-<code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> 接口，因此您可以将它套用（pump）到其他的读写流上。</p>
+<p><code><a href="../../apidocs/io/vertx/core/net/NetSocket.html">NetSocket</a>`接口继承了 `<a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> 和
+`<a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
 </div>
 <div class="paragraph">
 <p>有关更多信息，请参阅 <a href="#streams">流和管道</a>  章节。</p>
@@ -583,7 +583,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 <div class="paragraph">
 <p>您可以使用 <code><a href="../../apidocs/io/vertx/core/net/NetClient.html#connect-int-java.lang.String-io.vertx.core.Handler-">connect</a></code> ,
 方法创建到服务器的连接。请指定服务器的端口和主机，以及用于处理
-<code><a href="../../apidocs/io/vertx/core/net/NetSocket.html">NetSocket</a></code> 的处理器。当连接成功或失败时处理器会被调用。</p>
+`<a href="../../apidocs/io/vertx/core/net/NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -605,7 +605,7 @@ client.connect(4321, "localhost", res -&gt; {
 <div class="paragraph">
 <p>可以将客户端配置为在无法连接的情况下自动重试。
 这是通过 <code><a href="../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectInterval-long-">setReconnectInterval</a></code> 和
-<code><a href="../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectAttempts-int-">setReconnectAttempts</a></code> 方法配置的。</p>
+`<a href="../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectAttempts-int-">setReconnectAttempts</a>`方法配置的。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -960,7 +960,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 </div>
 <div class="paragraph">
 <p>它只是一个标准的Java密钥存储，与服务器端的密钥存储相同。通过在
-<code><a href="../../apidocs/io/vertx/core/net/JksOptions.html">jks options</a></code> 上使用 <code><a href="../../apidocs/io/vertx/core/net/JksOptions.html#setPath-java.lang.String-">path</a></code>
+<code><a href="../../apidocs/io/vertx/core/net/JksOptions.html">jks options</a>`上使用 `<a href="../../apidocs/io/vertx/core/net/JksOptions.html#setPath-java.lang.String-">path</a></code>
 设置客户端受信存储位置。如果服务器在连接期间提供不在客户端受信存储中的证书，则尝试连接将不会成功。</p>
 </div>
 <div class="listingblock">
@@ -1164,8 +1164,8 @@ NetClient client = vertx.createNetClient(options);</code></pre>
 <p>在运行单元/集成测试或是运行开发版的应用程序时都经常需要自签名证书。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../apidocs/io/vertx/core/net/SelfSignedCertificate.html">SelfSignedCertificate</a></code> 可用于提供自签名PEM证书，并可以提供
-give <code><a href="../../apidocs/io/vertx/core/net/KeyCertOptions.html">KeyCertOptions</a></code> 和 <code><a href="../../apidocs/io/vertx/core/net/TrustOptions.html">TrustOptions</a></code> configurations 配置：</p>
+<p><code><a href="../../apidocs/io/vertx/core/net/SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
+give `<a href="../../apidocs/io/vertx/core/net/KeyCertOptions.html">KeyCertOptions</a></code> 和 <code><a href="../../apidocs/io/vertx/core/net/TrustOptions.html">TrustOptions</a></code> configurations 配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1387,7 +1387,7 @@ NetServer netServer = vertx.createNetServer(new NetServerOptions()
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../../apidocs/io/vertx/core/net/PemKeyCertOptions.html">PemKeyCertOptions</a></code> can be configured to hold multiple entries:</p>
+<p>`<a href="../../apidocs/io/vertx/core/net/PemKeyCertOptions.html">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1528,11 +1528,11 @@ client.connect(1234, "localhost", "server.name", res -&gt; {
 <div class="sect2">
 <h3 id="_客户端连接使用代理">客户端连接使用代理</h3>
 <div class="paragraph">
-<p><code><a href="../../apidocs/io/vertx/core/net/NetClient.html">NetClient</a></code> 支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
+<p>`<a href="../../apidocs/io/vertx/core/net/NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
 </div>
 <div class="paragraph">
 <p>代理可以在 <code><a href="../../apidocs/io/vertx/core/net/NetClientOptions.html">NetClientOptions</a></code> 内设置
-<code><a href="../../apidocs/io/vertx/core/net/ProxyOptions.html">ProxyOptions</a></code> 来配置代理类型、主机名、端口、可选的用户名和密码。</p>
+`<a href="../../apidocs/io/vertx/core/net/ProxyOptions.html">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -1558,7 +1558,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:17 CST
+                上次更新时间 2018-10-16 18:24:17 CST
               
               
             </div>
@@ -1589,6 +1589,7 @@ NetClient client = vertx.createNetClient(options);</code></pre>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

@@ -171,8 +171,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Vert.x AMQP Bridge. Facilitates sending and receiving AMQP 1.0 messages.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Vert.x AMQP Bridge. Facilitates sending and receiving AMQP 1.0 messages.</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -367,7 +366,8 @@
         <span class="name">close</span><span class="params">(<span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Shuts the bridge down, closing the underlying connection.</p><div class="fullcomment"><div class="comment cmt"><p>Shuts the bridge down, closing the underlying connection.</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Shuts the bridge down, closing the underlying connection.</p><div class="fullcomment"><div class="comment cmt"><p>Shuts the bridge down, closing the underlying connection.   * @param resultHandler the result handler
+</p></div></div>
     </li><li name="io.vertx.scala.amqpbridge.AmqpBridge#closeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="closeFuture():scala.concurrent.Future[Unit]"></a><a id="closeFuture():Future[Unit]"></a>
       <span class="permalink">
@@ -400,7 +400,7 @@
       </span>
       
       <p class="shortcomment cmt">Creates a consumer on the given AMQP address.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a consumer on the given AMQP address.</p><p>This method MUST be called from the bridge Context thread, as used in the result handler callback from the start
-methods. The bridge MUST be successfully started before the method is called.</p></div><dl class="paramcmts block"><dt class="param">amqpAddress</dt><dd class="cmt"><p>the address to consume from</p></dd><dt>returns</dt><dd class="cmt"><p>the consumer</p></dd></dl></div>
+methods. The bridge MUST be successfully started before the method is called.   * @param amqpAddress the address to consume from</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the consumer</p></dd></dl></div>
     </li><li name="io.vertx.scala.amqpbridge.AmqpBridge#createProducer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="createProducer[T](amqpAddress:String)(implicitevidence$2:reflect.runtime.universe.TypeTag[T]):io.vertx.scala.core.eventbus.MessageProducer[T]"></a><a id="createProducer[T](String)(scala.reflect.api.JavaUniverse.TypeTag[T]):MessageProducer[T]"></a>
       <span class="permalink">
@@ -417,7 +417,7 @@ methods. The bridge MUST be successfully started before the method is called.</p
       </span>
       
       <p class="shortcomment cmt">Creates a producer to the given AMQP address.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a producer to the given AMQP address.</p><p>This method MUST be called from the bridge Context thread, as used in the result handler callback from the start
-methods. The bridge MUST be successfully started before the method is called.</p></div><dl class="paramcmts block"><dt class="param">amqpAddress</dt><dd class="cmt"><p>the address to produce to</p></dd><dt>returns</dt><dd class="cmt"><p>the producer</p></dd></dl></div>
+methods. The bridge MUST be successfully started before the method is called.   * @param amqpAddress the address to produce to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the producer</p></dd></dl></div>
     </li><li name="io.vertx.scala.amqpbridge.AmqpBridge#endHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="endHandler(endHandler:io.vertx.core.Handler[Unit]):Unit"></a><a id="endHandler(Handler[Unit]):Unit"></a>
       <span class="permalink">
@@ -433,7 +433,8 @@ methods. The bridge MUST be successfully started before the method is called.</p
         <span class="name">endHandler</span><span class="params">(<span name="endHandler">endHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. This will fire if the underlying connection is unexpectedly disconnected or remotely closed.</p></div><dl class="paramcmts block"><dt class="param">endHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. This will fire if the underlying connection is unexpectedly disconnected or remotely closed.   * @param endHandler the handler
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -611,7 +612,7 @@ methods. The bridge MUST be successfully started before the method is called.</p
         <span class="name">start</span><span class="params">(<span name="hostname">hostname: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="" class="extype" name="io.vertx.scala.amqpbridge.AmqpBridge">AmqpBridge</a>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Starts the bridge, establishing the underlying connection.</p><div class="fullcomment"><div class="comment cmt"><p>Starts the bridge, establishing the underlying connection.</p></div><dl class="paramcmts block"><dt class="param">hostname</dt><dd class="cmt"><p>the host name to connect to</p></dd><dt class="param">port</dt><dd class="cmt"><p>the port to connect to</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Starts the bridge, establishing the underlying connection.</p><div class="fullcomment"><div class="comment cmt"><p>Starts the bridge, establishing the underlying connection.   * @param hostname the host name to connect to</p></div><dl class="paramcmts block"><dt class="param">port</dt><dd class="cmt"><p>the port to connect to</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
     </li><li name="io.vertx.scala.amqpbridge.AmqpBridge#start" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="start(hostname:String,port:Int,username:String,password:String,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.amqpbridge.AmqpBridge]]):Unit"></a><a id="start(String,Int,String,String,Handler[AsyncResult[AmqpBridge]]):Unit"></a>
       <span class="permalink">
@@ -627,7 +628,7 @@ methods. The bridge MUST be successfully started before the method is called.</p
         <span class="name">start</span><span class="params">(<span name="hostname">hostname: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>, <span name="username">username: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="" class="extype" name="io.vertx.scala.amqpbridge.AmqpBridge">AmqpBridge</a>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Starts the bridge, establishing the underlying connection.</p><div class="fullcomment"><div class="comment cmt"><p>Starts the bridge, establishing the underlying connection.</p></div><dl class="paramcmts block"><dt class="param">hostname</dt><dd class="cmt"><p>the host name to connect to</p></dd><dt class="param">port</dt><dd class="cmt"><p>the port to connect to</p></dd><dt class="param">username</dt><dd class="cmt"><p>the username</p></dd><dt class="param">password</dt><dd class="cmt"><p>the password</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Starts the bridge, establishing the underlying connection.</p><div class="fullcomment"><div class="comment cmt"><p>Starts the bridge, establishing the underlying connection.   * @param hostname the host name to connect to</p></div><dl class="paramcmts block"><dt class="param">port</dt><dd class="cmt"><p>the port to connect to</p></dd><dt class="param">username</dt><dd class="cmt"><p>the username</p></dd><dt class="param">password</dt><dd class="cmt"><p>the password</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
     </li><li name="io.vertx.scala.amqpbridge.AmqpBridge#startFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="startFuture(hostname:String,port:Int):scala.concurrent.Future[io.vertx.scala.amqpbridge.AmqpBridge]"></a><a id="startFuture(String,Int):Future[AmqpBridge]"></a>
       <span class="permalink">

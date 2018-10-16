@@ -193,43 +193,38 @@ A match for a value.
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
 <col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="alias"></a><code>@alias</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="alias"></a><code>@alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set an alias that would replace the label value when it matches.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="domain"></a><code>@domain</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#MetricsDomain">MetricsDomain</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the label domain, restricting this rule to a single domain.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Set the label domain, restricting this rule to a single domain.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="label"></a><code>@label</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="label"></a><code>@label</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the label name. The match will apply to the values related to this key.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="type"></a><code>@type</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#MatchType">MatchType</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the type of matching to apply.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Set the type of matching to apply.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="value"></a><code>@value</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="value"></a><code>@value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the matched value.</p></td>
 </tr>
 </tbody>
@@ -247,70 +242,61 @@ in order to actually report metrics.
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
 <col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="disabledMetricsCategories"></a><code>@disabledMetricsCategories</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Array of <a href="enums.html#MetricsDomain">MetricsDomain</a></code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="disabledMetricsCategories"></a><code>@disabledMetricsCategories</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="enums.html#MetricsDomain">MetricsDomain</a></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets metrics types that are disabled.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="enabled"></a><code>@enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether metrics will be enabled on the Vert.x instance. Metrics are not enabled by default.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Set whether metrics will be enabled on the Vert.x instance. Metrics are not enabled by default.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="influxDbOptions"></a><code>@influxDbOptions</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code><a href="dataobjects.html#VertxInfluxDbOptions">VertxInfluxDbOptions</a></code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="influxDbOptions"></a><code>@influxDbOptions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#VertxInfluxDbOptions">VertxInfluxDbOptions</a></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set InfluxDB options.
 Setting a registry backend option is mandatory in order to effectively report metrics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="jmxMetricsOptions"></a><code>@jmxMetricsOptions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#VertxJmxMetricsOptions">VertxJmxMetricsOptions</a></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Set JMX metrics options.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set JMX metrics options.
 Setting a registry backend option is mandatory in order to effectively report metrics.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="labelMatches"></a><code>@labelMatches</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#Match">Match</a></code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="labelMatches"></a><code>@labelMatches</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#Match">Match</a></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set a list of rules for label matching.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="labelMatchs"></a><code>@labelMatchs</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#Match">Match</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a rule for label matching.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Add a rule for label matching.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="labels"></a><code>@labels</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Array of <a href="enums.html#Label">Label</a></code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="labels"></a><code>@labels</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="enums.html#Label">Label</a></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets enabled labels. These labels can be fine-tuned later on using Micrometer's Meter filters (see http://micrometer.io/docs/concepts#_meter_filters)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="prometheusOptions"></a><code>@prometheusOptions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#VertxPrometheusOptions">VertxPrometheusOptions</a></code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Set Prometheus options.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set Prometheus options.
 Setting a registry backend option is mandatory in order to effectively report metrics.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="registryName"></a><code>@registryName</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="registryName"></a><code>@registryName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set a name for the metrics registry, so that a new registry will be created and associated with this name.
 If <code>registryName</code> is not provided (or null), a default registry will be used.
 If the same name is given to several Vert.x instances (within the same JVM), they will share the same registry.</p></td>
@@ -327,85 +313,75 @@ Vert.x InfluxDb micrometer configuration.
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
 <col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="batchSize"></a><code>@batchSize</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="batchSize"></a><code>@batchSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of measurements sent per request to the InfluxDB server. When the maximum is reached, several requests are made.
 Default is 10000.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="compressed"></a><code>@compressed</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activate or deactivate GZIP compression. It is activated by default.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Activate or deactivate GZIP compression. It is activated by default.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="connectTimeout"></a><code>@connectTimeout</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="connectTimeout"></a><code>@connectTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Connection timeout for InfluxDB server connections, in seconds. Default is 1 second.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="db"></a><code>@db</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database name used to store metrics. Default is "default".</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Database name used to store metrics. Default is "default".</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="enabled"></a><code>@enabled</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="enabled"></a><code>@enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set true to enable InfluxDB reporting</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="numThreads"></a><code>@numThreads</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of threads to use by the push scheduler. Default is 2.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Number of threads to use by the push scheduler. Default is 2.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="password"></a><code>@password</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="password"></a><code>@password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Password used for authenticated connections</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="readTimeout"></a><code>@readTimeout</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read timeout for InfluxDB server connections, in seconds. Default is 10 seconds.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Read timeout for InfluxDB server connections, in seconds. Default is 10 seconds.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="retentionPolicy"></a><code>@retentionPolicy</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="retentionPolicy"></a><code>@retentionPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">InfluxDB retention policy</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="step"></a><code>@step</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push interval steps, in seconds. Default is 10 seconds.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Push interval steps, in seconds. Default is 10 seconds.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="uri"></a><code>@uri</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="uri"></a><code>@uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI of the InfluxDB server. <i>Example: http://influx:8086</i>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="userName"></a><code>@userName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username used for authenticated connections</p></td>
 </tr>
 </tbody>
 </table>
@@ -419,31 +395,28 @@ Options for Prometheus metrics backend.
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
 <col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="domain"></a><code>@domain</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="domain"></a><code>@domain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the JMX domain under which to publish metrics</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="enabled"></a><code>@enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set true to enable Prometheus reporting</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Set true to enable Prometheus reporting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="step"></a><code>@step</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="step"></a><code>@step</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Push interval steps, in seconds. Default is 10 seconds.</p></td>
 </tr>
 </tbody>
@@ -458,36 +431,34 @@ Options for Prometheus metrics backend.
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
 <col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="embeddedServerEndpoint"></a><code>@embeddedServerEndpoint</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="embeddedServerEndpoint"></a><code>@embeddedServerEndpoint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set metrics endpoint. Use conjointly with the embedded server options. Defaults to <i>/metrics</i>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="embeddedServerOptions"></a><code>@embeddedServerOptions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#HttpServerOptions">HttpServerOptions</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP server options for the embedded server</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">HTTP server options for the embedded server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="enabled"></a><code>@enabled</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="enabled"></a><code>@enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set true to enable Prometheus reporting</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="startEmbeddedServer"></a><code>@startEmbeddedServer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When true, an embedded server will init to expose metrics with Prometheus format.</p></td>
 </tr>
 </tbody>
 </table>
@@ -499,7 +470,7 @@ Options for Prometheus metrics backend.
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:55 CST
+                上次更新时间 2018-10-16 18:25:02 CST
               
               
             </div>
@@ -530,6 +501,7 @@ Options for Prometheus metrics backend.
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

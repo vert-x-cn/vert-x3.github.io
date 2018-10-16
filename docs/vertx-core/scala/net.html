@@ -335,7 +335,7 @@ server.listenFuture(0, "localhost").onComplete{
 <div class="sect2">
 <h3 id="_接收传入连接的通知">接收传入连接的通知</h3>
 <div class="paragraph">
-<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html#connectHandler(io.vertx.core.Handler))">connectHandler</a></code> :</p>
+<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html#connectHandler()">connectHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -355,7 +355,7 @@ server.connectHandler((socket: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="sect2">
 <h3 id="_从socket读取数据">从Socket读取数据</h3>
 <div class="paragraph">
-<p>您可以在Socket上调用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#handler(io.vertx.core.Handler)">handler</a></code> 方法来设置用于读取数据的处理器。</p>
+<p>您可以在Socket上调用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#handler()">handler</a></code> 方法来设置用于读取数据的处理器。</p>
 </div>
 <div class="paragraph">
 <p>每次 Socket 接收到数据时，会以 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> 对象为参数调用处理器。</p>
@@ -374,7 +374,7 @@ server.connectHandler((socket: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="sect2">
 <h3 id="_向socket中写入数据">向Socket中写入数据</h3>
 <div class="paragraph">
-<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#write(io.vertx.core.buffer.Buffer)">write</a></code> 方法写入数据到Socket：</p>
+<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#write()">write</a></code> 方法写入数据到Socket：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -396,7 +396,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_关闭处理器">关闭处理器</h3>
 <div class="paragraph">
-<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#closeHandler(io.vertx.core.Handler))">closeHandler</a></code> :</p>
+<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#closeHandler()">closeHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -409,7 +409,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_处理异常">处理异常</h3>
 <div class="paragraph">
-<p>您可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
+<p>您可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#exceptionHandler()">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
 </div>
 </div>
 <div class="sect2">
@@ -436,7 +436,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_发送文件或_classpath_中的资源">发送文件或 Classpath 中的资源</h3>
 <div class="paragraph">
-<p>您可以直接通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#sendFile(java.lang.String)">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
+<p>您可以直接通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#sendFile()">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
 这种做法是非常高效的，它可以被操作系统内核直接处理。</p>
 </div>
 <div class="paragraph">
@@ -451,8 +451,8 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_流式的socket">流式的Socket</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 接口继承了 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 接口，因此您可以将它套用（pump）到其他的读写流上。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a>`接口继承了 `<a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 和
+`<a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
 </div>
 <div class="paragraph">
 <p>有关更多信息，请参阅 <a href="#streams">流和管道</a>  章节。</p>
@@ -461,7 +461,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_升级到_ssl_tls_连接">升级到 SSL/TLS 连接</h3>
 <div class="paragraph">
-<p>一个非SSL/TLS连接可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#upgradeToSsl(io.vertx.core.Handler)">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
+<p>一个非SSL/TLS连接可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#upgradeToSsl()">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
 </div>
 <div class="paragraph">
 <p>必须为服务器或客户端配置SSL/TLS才能正常工作。请参阅 <a href="#ssl">SSL/TLS</a> 章节来获取详细信息。
@@ -593,9 +593,9 @@ var client = vertx.createNetClient(options)</code></pre>
 <div class="sect2">
 <h3 id="_创建连接">创建连接</h3>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html#connect(int,%20java.lang.String,%20io.vertx.core.Handler)">connect</a></code> ,
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html#connect(int,%20java.lang.String)">connect</a></code> ,
 方法创建到服务器的连接。请指定服务器的端口和主机，以及用于处理
-<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 的处理器。当连接成功或失败时处理器会被调用。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -619,8 +619,8 @@ client.connectFuture(4321, "localhost").onComplete{
 <h3 id="_配置连接重试">配置连接重试</h3>
 <div class="paragraph">
 <p>可以将客户端配置为在无法连接的情况下自动重试。
-这是通过 <code><a href="../dataobjects.html#NetClientOptions#setReconnectInterval(long)">reconnectInterval</a></code> 和
-<code><a href="../dataobjects.html#NetClientOptions#setReconnectAttempts(int)">reconnectAttempts</a></code> 方法配置的。</p>
+这是通过 <code><a href="../dataobjects.html#NetClientOptions#setReconnectInterval()">reconnectInterval</a></code> 和
+`<a href="../dataobjects.html#NetClientOptions#setReconnectAttempts()">reconnectAttempts</a>`方法配置的。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -703,7 +703,7 @@ var client = vertx.createNetClient(options)</code></pre>
 <div class="sect3">
 <h4 id="_在服务端启用ssl_tls">在服务端启用SSL/TLS</h4>
 <div class="paragraph">
-<p>您需要设置 <code><a href="../dataobjects.html#NetServerOptions#setSsl(boolean)">ssl</a></code> 配置项来启用 SSL/TLS。</p>
+<p>您需要设置 <code><a href="../dataobjects.html#NetServerOptions#setSsl()">ssl</a></code> 配置项来启用 SSL/TLS。</p>
 </div>
 <div class="paragraph">
 <p>默认是禁用的。</p>
@@ -959,7 +959,7 @@ var server = vertx.createNetServer(options)</code></pre>
 <div class="sect3">
 <h4 id="_客户端受信配置">客户端受信配置</h4>
 <div class="paragraph">
-<p>若客户端将 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll(boolean)">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
+<p>若客户端将 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll()">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
 连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为 <code>false</code> 。</p>
 </div>
 <div class="listingblock">
@@ -972,7 +972,7 @@ var client = vertx.createNetClient(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>若客户端没有设置 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll(boolean)">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
+<p>若客户端没有设置 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll()">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下，客户端禁用主机验证。要启用主机验证，请在客户端上设置使用的算法（目前仅支持HTTPS和LDAPS）：</p>
@@ -994,7 +994,7 @@ var client = vertx.createNetClient(options)</code></pre>
 </div>
 <div class="paragraph">
 <p>它只是一个标准的Java密钥存储，与服务器端的密钥存储相同。通过在
-<code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上使用 <code><a href="../dataobjects.html#JksOptions#setPath(java.lang.String)">path</a></code>
+<code><a href="../dataobjects.html#JksOptions">jks options</a>`上使用 `<a href="../dataobjects.html#JksOptions#setPath()">path</a></code>
 设置客户端受信存储位置。如果服务器在连接期间提供不在客户端受信存储中的证书，则尝试连接将不会成功。</p>
 </div>
 <div class="listingblock">
@@ -1092,7 +1092,7 @@ var client = vertx.createNetClient(options)</code></pre>
 <p>如果服务器需要客户端认证，那么当连接时，客户端必须向服务器提供自己的证书。可通过以下几种方式配置客户端：</p>
 </div>
 <div class="paragraph">
-<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../dataobjects.html#JksOptions#setPath(java.lang.String)">path</a></code> 。</p>
+<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../dataobjects.html#JksOptions#setPath()">path</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1210,8 +1210,8 @@ var client = vertx.createNetClient(options)</code></pre>
 <p>在运行单元/集成测试或是运行开发版的应用程序时都经常需要自签名证书。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/net/SelfSignedCertificate.html">SelfSignedCertificate</a></code> 可用于提供自签名PEM证书，并可以提供
-give <code>KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/net/SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
+give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1276,7 +1276,7 @@ vertx.createHttpServer(HttpServerOptions()
 <div class="sect3">
 <h4 id="_待撤销证书颁发机构">待撤销证书颁发机构</h4>
 <div class="paragraph">
-<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../dataobjects.html#NetClientOptions#addCrlPath(java.lang.String)">crlPath</a></code> 配置了使用的CRL：
+<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../dataobjects.html#NetClientOptions#addCrlPath()">crlPath</a></code> 配置了使用的CRL：
 the crl list to use:</p>
 </div>
 <div class="listingblock">
@@ -1410,7 +1410,7 @@ indicated server name.</p>
 <ul>
 <li>
 <p>if <code><a href="../dataobjects.html#JksOptions">JksOptions</a></code> were used to set the trust options
-( <code><a href="../dataobjects.html#NetServerOptions#setTrustOptions(io.vertx.core.net.TrustOptions)">options</a></code> ) then an exact match with the trust store
+( <code><a href="../dataobjects.html#NetServerOptions#setTrustOptions()">options</a></code> ) then an exact match with the trust store
 alias is done</p>
 </li>
 <li>
@@ -1419,7 +1419,7 @@ alias is done</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>You can enable SNI on the server by setting <code><a href="../dataobjects.html#NetServerOptions#setSni(boolean)">sni</a></code> to <code>true</code> and
+<p>You can enable SNI on the server by setting <code><a href="../dataobjects.html#NetServerOptions#setSni()">sni</a></code> to <code>true</code> and
 configured the server with multiple key/certificate pairs.</p>
 </div>
 <div class="paragraph">
@@ -1440,7 +1440,7 @@ var netServer = vertx.createNetServer(NetServerOptions()
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> can be configured to hold multiple entries:</p>
+<p>`<a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1544,7 +1544,7 @@ client.connectFuture(1234, "localhost", "server.name").onComplete{
 <p>OpenSSL提供了原生的ALPN支持。</p>
 </div>
 <div class="paragraph">
-<p>OpenSSL需要配置 <code><a href="../dataobjects.html#TCPSSLOptions#setOpenSslEngineOptions(io.vertx.core.net.OpenSSLEngineOptions)">openSslEngineOptions</a></code>
+<p>OpenSSL需要配置 <code><a href="../dataobjects.html#TCPSSLOptions#setOpenSslEngineOptions()">openSslEngineOptions</a></code>
 并在类路径上使用 <a href="http://netty.io/wiki/forked-tomcat-native.html">netty-tcnative</a> 的jar库。依赖于tcnative的实现它需要OpenSSL安装在您的操作系统中。</p>
 </div>
 </div>
@@ -1582,11 +1582,11 @@ client.connectFuture(1234, "localhost", "server.name").onComplete{
 <div class="sect2">
 <h3 id="_客户端连接使用代理">客户端连接使用代理</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html">NetClient</a></code> 支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
 </div>
 <div class="paragraph">
 <p>代理可以在 <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> 内设置
-<code><a href="../dataobjects.html#ProxyOptions">ProxyOptions</a></code> 来配置代理类型、主机名、端口、可选的用户名和密码。</p>
+`<a href="../dataobjects.html#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -1617,7 +1617,7 @@ var client = vertx.createNetClient(options)</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:19 CST
+                上次更新时间 2018-10-16 18:24:18 CST
               
               
             </div>
@@ -1648,6 +1648,7 @@ var client = vertx.createNetClient(options)</code></pre>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

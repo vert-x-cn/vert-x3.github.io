@@ -276,7 +276,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">JDBCClient.createShared</a></code>
+<p>只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createShared(io.vertx.core.Vertx)">JDBCClient.createShared</a></code>
 方法的时候，才会真正的根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
@@ -297,7 +297,7 @@
 <p>如果不同的 Vert.x JDBC client 对象使用了相同的Vert.x 对象和相同的数据源名称，那么它们将共享数据源。</p>
 </div>
 <div class="paragraph">
-<p>同样的（与默认使用共享的数据源），只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">JDBCClient.createShared</a></code>
+<p>同样的（与默认使用共享的数据源），只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createShared(io.vertx.core.Vertx)">JDBCClient.createShared</a></code>
 方法的时候，才会真正的根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
@@ -313,7 +313,7 @@
 <p>在大部分情况下，我们会希望在不同的 Vert.x JDBC Client 对象之间共享数据源。但有时候，却恰恰相反。</p>
 </div>
 <div class="paragraph">
-<p>这时，可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createNonShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">JDBCClient.createNonShared</a></code> 方法：</p>
+<p>这时，可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createNonShared(io.vertx.core.Vertx)">JDBCClient.createNonShared</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -321,7 +321,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>每次调用此方法，就相当于在调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject,%20java.lang.String)">JDBCClient.createShared</a></code>
+<p>每次调用此方法，就相当于在调用 <code><a href="../../scaladocs/io/vertx/scala/ext/jdbc/JDBCClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">JDBCClient.createShared</a></code>
 方法时加上了具有唯一名称的数据源参数。</p>
 </div>
 </div>
@@ -359,7 +359,7 @@
 <h2 id="_获取数据库连接">获取数据库连接</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>在创建 Vert.x JDBC Client 对象后，我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#getConnection(io.vertx.core.Handler)">getConnection</a></code> 方法来获取一个数据库连接。</p>
+<p>在创建 Vert.x JDBC Client 对象后，我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#getConnection()">getConnection</a></code> 方法来获取一个数据库连接。</p>
 </div>
 <div class="paragraph">
 <p>此方法从连接池中获取一个数据库连接，并返回给回调方法：</p>
@@ -585,7 +585,7 @@ var client = JDBCClient.createShared(vertx, config)</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:39 CST
+                上次更新时间 2018-10-16 18:24:44 CST
               
               
             </div>
@@ -616,6 +616,7 @@ var client = JDBCClient.createShared(vertx, config)</code></pre>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

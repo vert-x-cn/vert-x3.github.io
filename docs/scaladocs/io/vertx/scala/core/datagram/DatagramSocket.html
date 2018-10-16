@@ -368,7 +368,7 @@ when sending data.</p><p>You can send data to ipv4 or ipv6 addresses, which also
       
       <p class="shortcomment cmt">Block the given address for the given multicast address on the given network interface and notifies
 the  once the operation completes.</p><div class="fullcomment"><div class="comment cmt"><p>Block the given address for the given multicast address on the given network interface and notifies
-the  once the operation completes.</p></div><dl class="paramcmts block"><dt class="param">multicastAddress</dt><dd class="cmt"><p>the address for which you want to block the source address</p></dd><dt class="param">networkInterface</dt><dd class="cmt"><p>the network interface on which the blocking should occur.</p></dd><dt class="param">sourceToBlock</dt><dd class="cmt"><p>the source address which should be blocked. You will not receive an multicast packets for it anymore.</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+the  once the operation completes.   * @param multicastAddress the address for which you want to block the source address</p></div><dl class="paramcmts block"><dt class="param">networkInterface</dt><dd class="cmt"><p>the network interface on which the blocking should occur.</p></dd><dt class="param">sourceToBlock</dt><dd class="cmt"><p>the source address which should be blocked. You will not receive an multicast packets for it anymore.</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#blockMulticastGroup" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="blockMulticastGroup(multicastAddress:String,sourceToBlock:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="blockMulticastGroup(String,String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -386,7 +386,7 @@ the  once the operation completes.</p></div><dl class="paramcmts block"><dt clas
       
       <p class="shortcomment cmt">Block the given address for the given multicast address and notifies the  once
 the operation completes.</p><div class="fullcomment"><div class="comment cmt"><p>Block the given address for the given multicast address and notifies the  once
-the operation completes.</p></div><dl class="paramcmts block"><dt class="param">multicastAddress</dt><dd class="cmt"><p>the address for which you want to block the source address</p></dd><dt class="param">sourceToBlock</dt><dd class="cmt"><p>the source address which should be blocked. You will not receive an multicast packets for it anymore.</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+the operation completes.   * @param multicastAddress the address for which you want to block the source address</p></div><dl class="paramcmts block"><dt class="param">sourceToBlock</dt><dd class="cmt"><p>the source address which should be blocked. You will not receive an multicast packets for it anymore.</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#blockMulticastGroupFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="blockMulticastGroupFuture(multicastAddress:String,networkInterface:String,sourceToBlock:String):scala.concurrent.Future[io.vertx.scala.core.datagram.DatagramSocket]"></a><a id="blockMulticastGroupFuture(String,String,String):scala.concurrent.Future[DatagramSocket]"></a>
       <span class="permalink">
@@ -477,7 +477,8 @@ the operation completes.</p></div><dl class="paramcmts block"><dt class="param">
       
       <p class="shortcomment cmt">Closes the <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">io.vertx.scala.core.datagram.DatagramSocket</a> implementation asynchronous
 and notifies the handler once done.</p><div class="fullcomment"><div class="comment cmt"><p>Closes the <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">io.vertx.scala.core.datagram.DatagramSocket</a> implementation asynchronous
-and notifies the handler once done.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once complete</p></dd></dl></div>
+and notifies the handler once done.   * @param handler the handler to notify once complete
+</p></div></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#closeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="closeFuture():scala.concurrent.Future[Unit]"></a>
       <span class="permalink">
@@ -509,7 +510,8 @@ and notifies the handler once done.</p></div><dl class="paramcmts block"><dt cla
         <span class="name">endHandler</span><span class="params">(<span name="endHandler">endHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -557,7 +559,26 @@ and notifies the handler once done.</p></div><dl class="paramcmts block"><dt cla
         <span class="name">exceptionHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an exception handler on the read stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the read stream.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the exception handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="../streams/StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an exception handler on the read stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the read stream.   * @param handler the exception handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="../streams/StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.datagram.DatagramSocket#fetch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fetch(amount:Long):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="fetch(Long):DatagramSocket"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/datagram/DatagramSocket.html#fetch(amount:Long):io.vertx.scala.core.datagram.DatagramSocket" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fetch</span><span class="params">(<span name="amount">amount: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Fetch the specified <code>amount</code> of elements.</p><div class="fullcomment"><div class="comment cmt"><p>Fetch the specified <code>amount</code> of elements. If the <code>ReadStream</code> has been paused, reading will
+recommence with the specified <code>amount</code> of items, otherwise the specified <code>amount</code> will
+be added to the current stream demand.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -614,7 +635,8 @@ and notifies the handler once done.</p></div><dl class="paramcmts block"><dt cla
         <span class="name">handler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="DatagramPacket.html" class="extype" name="io.vertx.scala.core.datagram.DatagramPacket">DatagramPacket</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -665,7 +687,9 @@ and notifies the handler once done.</p></div><dl class="paramcmts block"><dt cla
         <span class="name">isMetricsEnabled</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt">Whether the metrics are enabled for this measured object</p><div class="fullcomment"><div class="comment cmt"><p>Whether the metrics are enabled for this measured object</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p><code>true</code> if metrics are enabled</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../metrics/Measured.html" class="extype" name="io.vertx.scala.core.metrics.Measured">Measured</a></dd></dl></div>
+      <p class="shortcomment cmt">Whether the metrics are enabled for this measured object   * @return <code>true</code> if metrics are enabled
+</p><div class="fullcomment"><div class="comment cmt"><p>Whether the metrics are enabled for this measured object   * @return <code>true</code> if metrics are enabled
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../metrics/Measured.html" class="extype" name="io.vertx.scala.core.metrics.Measured">Measured</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#listen" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="listen(port:Int,host:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="listen(Int,String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -681,7 +705,7 @@ and notifies the handler once done.</p></div><dl class="paramcmts block"><dt cla
         <span class="name">listen</span><span class="params">(<span name="port">port: <span class="extype" name="scala.Int">Int</span></span>, <span name="host">host: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Start listening on the given port and host.</p><div class="fullcomment"><div class="comment cmt"><p>Start listening on the given port and host. The handler will be called when the socket is listening.</p></div><dl class="paramcmts block"><dt class="param">port</dt><dd class="cmt"><p>the port to listen on</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host to listen on</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler will be called when listening</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Start listening on the given port and host.</p><div class="fullcomment"><div class="comment cmt"><p>Start listening on the given port and host. The handler will be called when the socket is listening.   * @param port the port to listen on</p></div><dl class="paramcmts block"><dt class="param">host</dt><dd class="cmt"><p>the host to listen on</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler will be called when listening</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#listenFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="listenFuture(port:Int,host:String):scala.concurrent.Future[io.vertx.scala.core.datagram.DatagramSocket]"></a><a id="listenFuture(Int,String):scala.concurrent.Future[DatagramSocket]"></a>
       <span class="permalink">
@@ -714,7 +738,7 @@ and notifies the handler once done.</p></div><dl class="paramcmts block"><dt cla
       </span>
       
       <p class="shortcomment cmt">Joins a multicast group and listens for packets send to it on the given network interface.</p><div class="fullcomment"><div class="comment cmt"><p>Joins a multicast group and listens for packets send to it on the given network interface.
-The  is notified once the operation completes.</p></div><dl class="paramcmts block"><dt class="param">multicastAddress</dt><dd class="cmt"><p>the address of the multicast group to join</p></dd><dt class="param">networkInterface</dt><dd class="cmt"><p>the network interface on which to listen for packets.</p></dd><dt class="param">source</dt><dd class="cmt"><p>the address of the source for which we will listen for multicast packets</p></dd><dt class="param">handler</dt><dd class="cmt"><p>then handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The  is notified once the operation completes.   * @param multicastAddress the address of the multicast group to join</p></div><dl class="paramcmts block"><dt class="param">networkInterface</dt><dd class="cmt"><p>the network interface on which to listen for packets.</p></dd><dt class="param">source</dt><dd class="cmt"><p>the address of the source for which we will listen for multicast packets</p></dd><dt class="param">handler</dt><dd class="cmt"><p>then handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#listenMulticastGroup" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="listenMulticastGroup(multicastAddress:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="listenMulticastGroup(String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -731,7 +755,7 @@ The  is notified once the operation completes.</p></div><dl class="paramcmts blo
       </span>
       
       <p class="shortcomment cmt">Joins a multicast group and listens for packets send to it.</p><div class="fullcomment"><div class="comment cmt"><p>Joins a multicast group and listens for packets send to it.
-The  is notified once the operation completes.</p></div><dl class="paramcmts block"><dt class="param">multicastAddress</dt><dd class="cmt"><p>the address of the multicast group to join</p></dd><dt class="param">handler</dt><dd class="cmt"><p>then handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The  is notified once the operation completes.   * @param multicastAddress the address of the multicast group to join</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>then handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#listenMulticastGroupFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="listenMulticastGroupFuture(multicastAddress:String,networkInterface:String,source:Option[String]):scala.concurrent.Future[io.vertx.scala.core.datagram.DatagramSocket]"></a><a id="listenMulticastGroupFuture(String,String,Option[String]):scala.concurrent.Future[DatagramSocket]"></a>
       <span class="permalink">
@@ -781,7 +805,8 @@ The  is notified once the operation completes.</p></div><dl class="paramcmts blo
       
       <p class="shortcomment cmt">Return the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a> to which
 this <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">io.vertx.scala.core.datagram.DatagramSocket</a> is bound.</p><div class="fullcomment"><div class="comment cmt"><p>Return the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a> to which
-this <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">io.vertx.scala.core.datagram.DatagramSocket</a> is bound.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the socket address</p></dd></dl></div>
+this <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">io.vertx.scala.core.datagram.DatagramSocket</a> is bound.   * @return the socket address
+</p></div></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -851,7 +876,8 @@ this <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket
         <span class="name">pause</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#resume" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resume():io.vertx.scala.core.datagram.DatagramSocket"></a><a id="resume():DatagramSocket"></a>
       <span class="permalink">
@@ -867,7 +893,8 @@ this <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket
         <span class="name">resume</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket">DatagramSocket</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#send" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="send(str:String,enc:String,port:Int,host:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="send(String,String,Int,String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -884,7 +911,7 @@ this <a href="" class="extype" name="io.vertx.scala.core.datagram.DatagramSocket
       </span>
       
       <p class="shortcomment cmt">Write the given String to the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a> using the given encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Write the given String to the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a> using the given encoding.
-The  will be notified once the write completes.</p></div><dl class="paramcmts block"><dt class="param">str</dt><dd class="cmt"><p>the String to write</p></dd><dt class="param">enc</dt><dd class="cmt"><p>the charset used for encoding</p></dd><dt class="param">port</dt><dd class="cmt"><p>the host port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the scala-function to notify once the write completes.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The  will be notified once the write completes.   * @param str the String to write</p></div><dl class="paramcmts block"><dt class="param">enc</dt><dd class="cmt"><p>the charset used for encoding</p></dd><dt class="param">port</dt><dd class="cmt"><p>the host port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the scala-function to notify once the write completes.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#send" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="send(str:String,port:Int,host:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="send(String,Int,String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -901,7 +928,7 @@ The  will be notified once the write completes.</p></div><dl class="paramcmts bl
       </span>
       
       <p class="shortcomment cmt">Write the given String to the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a> using UTF8 encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Write the given String to the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a> using UTF8 encoding.
-The  will be notified once the write completes.</p></div><dl class="paramcmts block"><dt class="param">str</dt><dd class="cmt"><p>the String to write</p></dd><dt class="param">port</dt><dd class="cmt"><p>the host port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the scala-function to notify once the write completes.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The  will be notified once the write completes.   * @param str the String to write</p></div><dl class="paramcmts block"><dt class="param">port</dt><dd class="cmt"><p>the host port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the scala-function to notify once the write completes.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#send" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="send(packet:io.vertx.core.buffer.Buffer,port:Int,host:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="send(Buffer,Int,String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -918,7 +945,7 @@ The  will be notified once the write completes.</p></div><dl class="paramcmts bl
       </span>
       
       <p class="shortcomment cmt">Write the given <span class="extype" name="io.vertx.scala.core.buffer.Buffer">io.vertx.scala.core.buffer.Buffer</span> to the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Write the given <span class="extype" name="io.vertx.scala.core.buffer.Buffer">io.vertx.scala.core.buffer.Buffer</span> to the <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a>.
-The scala-function will be notified once the write completes.</p></div><dl class="paramcmts block"><dt class="param">packet</dt><dd class="cmt"><p>the io.vertx.scala.core.buffer.Buffer to write</p></dd><dt class="param">port</dt><dd class="cmt"><p>the host port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the scala-function to notify once the write completes.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The scala-function will be notified once the write completes.   * @param packet the io.vertx.scala.core.buffer.Buffer to write</p></div><dl class="paramcmts block"><dt class="param">port</dt><dd class="cmt"><p>the host port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the scala-function to notify once the write completes.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#sendFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendFuture(str:String,enc:String,port:Int,host:String):scala.concurrent.Future[io.vertx.scala.core.datagram.DatagramSocket]"></a><a id="sendFuture(String,String,Int,String):scala.concurrent.Future[DatagramSocket]"></a>
       <span class="permalink">
@@ -984,7 +1011,7 @@ The scala-function will be notified once the write completes.</p></div><dl class
       
       <p class="shortcomment cmt">Returns a <code>WriteStream&lt;Buffer&gt;</code> able to send  to the
 <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a <code>WriteStream&lt;Buffer&gt;</code> able to send  to the
-<a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a>.</p></div><dl class="paramcmts block"><dt class="param">port</dt><dd class="cmt"><p>the port of the remote peer</p></dd><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt>returns</dt><dd class="cmt"><p>the write stream for sending packets</p></dd></dl></div>
+<a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">io.vertx.scala.core.net.SocketAddress</a>.   * @param port the port of the remote peer</p></div><dl class="paramcmts block"><dt class="param">host</dt><dd class="cmt"><p>the host address of the remote peer</p></dd><dt>returns</dt><dd class="cmt"><p>the write stream for sending packets</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -1033,7 +1060,7 @@ The scala-function will be notified once the write completes.</p></div><dl class
       </span>
       
       <p class="shortcomment cmt">Leaves a multicast group and stops listening for packets send to it on the given network interface.</p><div class="fullcomment"><div class="comment cmt"><p>Leaves a multicast group and stops listening for packets send to it on the given network interface.
-The  is notified once the operation completes.</p></div><dl class="paramcmts block"><dt class="param">multicastAddress</dt><dd class="cmt"><p>the address of the multicast group to join</p></dd><dt class="param">networkInterface</dt><dd class="cmt"><p>the network interface on which to listen for packets.</p></dd><dt class="param">source</dt><dd class="cmt"><p>the address of the source for which we will listen for multicast packets</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The  is notified once the operation completes.   * @param multicastAddress the address of the multicast group to join</p></div><dl class="paramcmts block"><dt class="param">networkInterface</dt><dd class="cmt"><p>the network interface on which to listen for packets.</p></dd><dt class="param">source</dt><dd class="cmt"><p>the address of the source for which we will listen for multicast packets</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#unlistenMulticastGroup" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="unlistenMulticastGroup(multicastAddress:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.datagram.DatagramSocket]]):io.vertx.scala.core.datagram.DatagramSocket"></a><a id="unlistenMulticastGroup(String,Handler[AsyncResult[DatagramSocket]]):DatagramSocket"></a>
       <span class="permalink">
@@ -1050,7 +1077,7 @@ The  is notified once the operation completes.</p></div><dl class="paramcmts blo
       </span>
       
       <p class="shortcomment cmt">Leaves a multicast group and stops listening for packets send to it.</p><div class="fullcomment"><div class="comment cmt"><p>Leaves a multicast group and stops listening for packets send to it.
-The  is notified once the operation completes.</p></div><dl class="paramcmts block"><dt class="param">multicastAddress</dt><dd class="cmt"><p>the address of the multicast group to leave</p></dd><dt class="param">handler</dt><dd class="cmt"><p>then handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+The  is notified once the operation completes.   * @param multicastAddress the address of the multicast group to leave</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>then handler to notify once the operation completes</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.datagram.DatagramSocket#unlistenMulticastGroupFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="unlistenMulticastGroupFuture(multicastAddress:String,networkInterface:String,source:Option[String]):scala.concurrent.Future[io.vertx.scala.core.datagram.DatagramSocket]"></a><a id="unlistenMulticastGroupFuture(String,String,Option[String]):scala.concurrent.Future[DatagramSocket]"></a>
       <span class="permalink">

@@ -403,7 +403,7 @@
         <span class="name">computeHash</span><span class="params">(<span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="version">version: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the salt</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the salt</p></div><dl class="paramcmts block"><dt class="param">password</dt><dd class="cmt"><p>the unhashed password</p></dd><dt class="param">salt</dt><dd class="cmt"><p>the salt</p></dd><dt class="param">version</dt><dd class="cmt"><p>the nonce version to use</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
+      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the salt   * @param password the unhashed password</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the salt   * @param password the unhashed password</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>the salt</p></dd><dt class="param">version</dt><dd class="cmt"><p>the nonce version to use</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -473,7 +473,8 @@
         <span class="name">generateSalt</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compute a random salt.</p><div class="fullcomment"><div class="comment cmt"><p>Compute a random salt.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a non null salt value</p></dd></dl></div>
+      <p class="shortcomment cmt">Compute a random salt.</p><div class="fullcomment"><div class="comment cmt"><p>Compute a random salt.   * @return a non null salt value
+</p></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -508,7 +509,7 @@
         <span class="name">getHashedStoredPwd</span><span class="params">(<span name="row">row: <span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Retrieve the hashed password from the result of the authentication query</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the hashed password from the result of the authentication query</p></div><dl class="paramcmts block"><dt class="param">row</dt><dd class="cmt"><p>the row</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
+      <p class="shortcomment cmt">Retrieve the hashed password from the result of the authentication query   * @param row the row</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the hashed password from the result of the authentication query   * @param row the row</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.jdbc.JDBCHashStrategy#getSalt" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getSalt(row:io.vertx.core.json.JsonArray):String"></a><a id="getSalt(JsonArray):String"></a>
       <span class="permalink">
@@ -524,7 +525,7 @@
         <span class="name">getSalt</span><span class="params">(<span name="row">row: <span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Retrieve the salt from the result of the authentication query</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the salt from the result of the authentication query</p></div><dl class="paramcmts block"><dt class="param">row</dt><dd class="cmt"><p>the row</p></dd><dt>returns</dt><dd class="cmt"><p>the salt</p></dd></dl></div>
+      <p class="shortcomment cmt">Retrieve the salt from the result of the authentication query   * @param row the row</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the salt from the result of the authentication query   * @param row the row</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the salt</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -635,7 +636,8 @@ to the hash function in order to make breaking the passwords using rainbow table
 or precomputed hashes harder. Leaving the attacker only with the brute force
 approach.</p><p>Nonces are dependent on the implementation. E.g.: for the SHA512 they are extra salt
 used during the hashing, for the PBKDF2 they map the number of iterations the algorithm
-should take</p></div><dl class="paramcmts block"><dt class="param">nonces</dt><dd class="cmt"><p>a json array.</p></dd></dl></div>
+should take   * @param nonces a json array.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

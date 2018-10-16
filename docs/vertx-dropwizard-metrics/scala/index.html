@@ -354,7 +354,7 @@ options must be set to <code>true</code>:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setRegistryName(java.lang.String)">vertx.metrics.options.registryName</a></code>
+<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setRegistryName()">vertx.metrics.options.registryName</a></code>
 configures the <a href="#dropwizard-registry">Dropwizard Registry</a> to use:</p>
 </div>
 <div class="listingblock">
@@ -363,8 +363,8 @@ configures the <a href="#dropwizard-registry">Dropwizard Registry</a> to use:</p
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setJmxEnabled(boolean)">vertx.metrics.options.jmxEnabled</a></code> and
-<code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setJmxDomain(java.lang.String)">vertx.metrics.options.jmxDomain</a></code>
+<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setJmxEnabled()">vertx.metrics.options.jmxEnabled</a></code> and
+<code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setJmxDomain()">vertx.metrics.options.jmxDomain</a></code>
 configures the <a href="#jmx">JMX</a> registration:</p>
 </div>
 <div class="listingblock">
@@ -373,7 +373,7 @@ configures the <a href="#jmx">JMX</a> registration:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setConfigPath(java.lang.String)">vertx.metrics.options.configPath</a></code>
+<p>The <code><a href="../../vertx-dropwizard-metrics/dataobjects.html#DropwizardMetricsOptions#setConfigPath()">vertx.metrics.options.configPath</a></code>
 option allows to reconfigure the metrics from a property file.</p>
 </div>
 </div>
@@ -439,8 +439,8 @@ metricsNames.foreach(metricsName =&gt; {
 <h3 id="_retrieving_metrics">Retrieving metrics</h3>
 <div class="paragraph">
 <p>Once enabled, the <code><a href="../../scaladocs/io/vertx/scala/ext/dropwizard/MetricsService.html">MetricsService</a></code> allows to retrieve metrics snapshots from any
-<code><a href="../../scaladocs/io/vertx/scala/core/metrics/Measured.html">Measured</a></code> object which provides a map of the metric name to the data,
-represented by a <code>JsonObject</code>. So for example if we were to print out all metrics
+<code><a href="../../scaladocs/io/vertx/scala/core/metrics/Measured.html">Measured</a>`object which provides a map of the metric name to the data,
+represented by a `JsonObject</code>. So for example if we were to print out all metrics
 for a particular Vert.x instance:</p>
 </div>
 <div class="listingblock">
@@ -887,7 +887,7 @@ in this case the alias will be used as a part of the registry name instead of ur
 <h3 id="_http_client_metrics">Http client metrics</h3>
 <div class="paragraph">
 <p>Base name: <code>vertx.http.clients</code> (by default) or <code>vertx.http.clients.&lt;id&gt;</code> where <code>&lt;id&gt;</code> is a non empty string
-configured by <code><a href="../dataobjects.html#HttpClientOptions#setMetricsName(java.lang.String)">metricsName</a></code>.</p>
+configured by <code><a href="../dataobjects.html#HttpClientOptions#setMetricsName()">metricsName</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Http client includes all the metrics of a <a href="#http-server-metrics">Http Server</a> plus the following:</p>
@@ -1004,7 +1004,7 @@ a specific hostname match or a regex match:</p>
 <h3 id="_net_client_metrics">Net client metrics</h3>
 <div class="paragraph">
 <p>Base name: <code>vertx.net.clients</code> (by default) or <code>vertx.net.clients.&lt;id&gt;</code> where <code>&lt;id&gt;</code> is a non empty string
-configured by <code><a href="../dataobjects.html#NetClientOptions#setMetricsName(java.lang.String)">metricsName</a></code>.</p>
+configured by <code><a href="../dataobjects.html#NetClientOptions#setMetricsName()">metricsName</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Net client includes all the metrics of a <a href="#net-server-metrics">Net Server</a></p>
@@ -1372,7 +1372,7 @@ details about check configuration.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:28 CST
+                上次更新时间 2018-10-16 18:24:28 CST
               
               
             </div>
@@ -1403,6 +1403,7 @@ details about check configuration.</p>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

@@ -636,7 +636,7 @@ response.</p>
 </div>
 <div class="paragraph">
 <p>A <code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html">Router</a></code> is one of the core concepts of Vert.x-Web. It&#8217;s an object which maintains zero or more
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html">Routes</a></code> .</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html">Routes</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>A router takes an HTTP request and finds the first matching route for that request, and passes the request to that route.</p>
@@ -702,7 +702,7 @@ to <code>handle</code>.</p>
 <div class="paragraph">
 <p>When Vert.x-Web decides to route a request to a matching route, it calls the handler of the route passing in an instance
 of <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html">RoutingContext</a></code>. A route can have different handlers, that you can append using
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#handler(io.vertx.core.Handler)">handler</a></code></p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#handler()">handler</a></code></p>
 </div>
 <div class="paragraph">
 <p>If you don&#8217;t end the response in your handler, you should call <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#next()">next</a></code> so another
@@ -776,7 +776,7 @@ a legacy blocking API or do some intensive calculation.</p>
 not using an event loop.</p>
 </div>
 <div class="paragraph">
-<p>You set a blocking handler on a route with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#blockingHandler(io.vertx.core.Handler)">blockingHandler</a></code>.
+<p>You set a blocking handler on a route with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#blockingHandler()">blockingHandler</a></code>.
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
@@ -796,7 +796,7 @@ Here&#8217;s an example:</p>
 <p>By default, any blocking handlers executed on the same context (e.g. the same verticle instance) are <em>ordered</em> - this
 means the next one won&#8217;t be executed until the previous one has completed. If you don&#8217;t care about orderering and
 don&#8217;t mind your blocking handlers executing in parallel you can set the blocking handler specifying <code>ordered</code> as
-false using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#blockingHandler(io.vertx.core.Handler,%20boolean)">blockingHandler</a></code>.</p>
+false using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#blockingHandler(io.vertx.core.Handler)">blockingHandler</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Note, if you need to process multipart form data from a blocking handler, you MUST use a non-blocking handler
@@ -1036,7 +1036,7 @@ var route = router.routeWithRegex("\\/(?&lt;productType&gt;[^\\/]+)\\/(?&lt;prod
 <p>By default a route will match all HTTP methods.</p>
 </div>
 <div class="paragraph">
-<p>If you want a route to only match for a specific HTTP method you can use <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#method(io.vertx.core.http.HttpMethod)">method</a></code></p>
+<p>If you want a route to only match for a specific HTTP method you can use <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#method()">method</a></code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1065,7 +1065,7 @@ route.handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 </div>
 <div class="paragraph">
 <p>If you want to route for a specific HTTP method you can also use the methods such as <code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#get()">get</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#post()">post</a></code> and <code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#put()">put</a></code> named after the HTTP
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#post()">post</a>`and `<a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#put()">put</a></code> named after the HTTP
 method name. For example:</p>
 </div>
 <div class="listingblock">
@@ -1094,7 +1094,7 @@ router.getWithRegex(".*foo").handler((routingContext: io.vertx.scala.ext.web.Rou
 </div>
 </div>
 <div class="paragraph">
-<p>If you want to specify a route will match for more than HTTP method you can call <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#method(io.vertx.core.http.HttpMethod)">method</a></code>
+<p>If you want to specify a route will match for more than HTTP method you can call <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#method()">method</a></code>
 multiple times:</p>
 </div>
 <div class="listingblock">
@@ -1176,7 +1176,7 @@ route3</pre>
 <p>As the routes have been called in that order for any request that starts with <code>/some/path</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you want to override the default ordering for routes, you can do so using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#order(int)">order</a></code>,
+<p>If you want to override the default ordering for routes, you can do so using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#order()">order</a></code>,
 specifying an integer value.</p>
 </div>
 <div class="paragraph">
@@ -1250,11 +1250,11 @@ route3</pre>
 <h2 id="_routing_based_on_mime_type_of_request">Routing based on MIME type of request</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can specify that a route will match against matching request MIME types using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#consumes(java.lang.String)">consumes</a></code>.</p>
+<p>You can specify that a route will match against matching request MIME types using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#consumes()">consumes</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>In this case, the request will contain a <code>content-type</code> header specifying the MIME type of the request body.
-This will be matched against the value specified in <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#consumes(java.lang.String)">consumes</a></code>.</p>
+This will be matched against the value specified in <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#consumes()">consumes</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Basically, <code>consumes</code> is describing which MIME types the handler can <em>consume</em>.</p>
@@ -1357,7 +1357,7 @@ If omitted it defaults to 1.0.</p>
 <p>If the server can provide both text/plain and text/html it should provide the text/html in this case.</p>
 </div>
 <div class="paragraph">
-<p>By using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#produces(java.lang.String)">produces</a></code> you define which MIME type(s) the route produces, e.g. the
+<p>By using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#produces()">produces</a></code> you define which MIME type(s) the route produces, e.g. the
 following handler produces a response with MIME type <code>application/json</code>.</p>
 </div>
 <div class="listingblock">
@@ -1385,7 +1385,7 @@ Accept: application/json;q=0.7, text/html;q=0.8, text/plain</p>
 </div>
 <div class="paragraph">
 <p>You can also mark your route as producing more than one MIME type. If this is the case, then you use
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#getAcceptableContentType()">getAcceptableContentType</a></code> to find out the actual MIME type that
+`<a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#getAcceptableContentType()">getAcceptableContentType</a>`to find out the actual MIME type that
 was accepted.</p>
 </div>
 <div class="listingblock">
@@ -1458,8 +1458,8 @@ want to share between handlers for the lifetime of the request.</p>
 <p>Here&#8217;s an example where one handler sets some data in the context data and a subsequent handler retrieves it:</p>
 </div>
 <div class="paragraph">
-<p>You can use the <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#put(java.lang.String,%20java.lang.Object)">put</a></code> to put any object, and
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#get(java.lang.String)">get</a></code> to retrieve any object from the context data.</p>
+<p>You can use the <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#put(java.lang.String)">put</a></code> to put any object, and
+`<a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#get()">get</a>`to retrieve any object from the context data.</p>
 </div>
 <div class="paragraph">
 <p>A request sent to path <code>/some/path/other</code> will match both routes.</p>
@@ -1668,7 +1668,7 @@ locale for a client or the sorted list of preferred locales by quality.</p>
 <div class="paragraph">
 <p>The main method <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#acceptableLocales()">acceptableLocales</a></code> will return the ordered list of locales the
 user understands, if you&#8217;re only interested in the user prefered locale then the helper:
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#preferredLocale()">preferredLocale</a></code> will return the 1st element of the list or <code>null</code> if no
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#preferredLocale()">preferredLocale</a>`will return the 1st element of the list or `null</code> if no
 locale was provided by the user.</p>
 </div>
 </div>
@@ -1719,7 +1719,7 @@ route.failureHandler((frc: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 </div>
 <div class="paragraph">
 <p>Failure routing will occur if a handler throws an exception, or if a handler calls
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#fail(int)">fail</a></code> specifying an HTTP status code to deliberately signal a failure.</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#fail()">fail</a>`specifying an HTTP status code to deliberately signal a failure.</p>
 </div>
 <div class="paragraph">
 <p>If an exception is caught from a handler this will result in a failure with status code <code>500</code> being signalled.</p>
@@ -1803,7 +1803,7 @@ retrieve it as a buffer use <code><a href="../../scaladocs/io/vertx/scala/ext/we
 <div class="sect2">
 <h3 id="_limiting_body_size">Limiting body size</h3>
 <div class="paragraph">
-<p>To limit the size of a request body, create the body handler then use <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/BodyHandler.html#setBodyLimit(long)">setBodyLimit</a></code>
+<p>To limit the size of a request body, create the body handler then use <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/BodyHandler.html#setBodyLimit()">setBodyLimit</a></code>
 to specifying the maximum body size, in bytes. This is useful to avoid running out of memory with very large bodies.</p>
 </div>
 <div class="paragraph">
@@ -1818,7 +1818,7 @@ will be sent.</p>
 <h3 id="_merging_form_attributes">Merging form attributes</h3>
 <div class="paragraph">
 <p>By default, the body handler will merge any form attributes into the request parameters. If you don&#8217;t want this behaviour
-you can use disable it with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/BodyHandler.html#setMergeFormAttributes(boolean)">setMergeFormAttributes</a></code>.</p>
+you can use disable it with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/BodyHandler.html#setMergeFormAttributes()">setMergeFormAttributes</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1874,14 +1874,14 @@ router.route().handler(CookieHandler.create())</code></pre>
 <div class="sect2">
 <h3 id="_manipulating_cookies">Manipulating cookies</h3>
 <div class="paragraph">
-<p>You use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#getCookie(java.lang.String)">getCookie</a></code> to retrieve
+<p>You use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#getCookie()">getCookie</a></code> to retrieve
 a cookie by name, or use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#cookies()">cookies</a></code> to retrieve the entire set.</p>
 </div>
 <div class="paragraph">
-<p>To remove a cookie, use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#removeCookie(java.lang.String)">removeCookie</a></code>.</p>
+<p>To remove a cookie, use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#removeCookie()">removeCookie</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>To add a cookie use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#addCookie(io.vertx.ext.web.Cookie)">addCookie</a></code>.</p>
+<p>To add a cookie use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#addCookie()">addCookie</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The set of cookies will be written back in the response automatically when the response headers are written so the
@@ -2105,14 +2105,14 @@ from the session store and set on the routing context before it gets to your app
 <p>In your handlers you can access the session instance with <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#session()">session</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>You put data into the session with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Session.html#put(java.lang.String,%20java.lang.Object)">put</a></code>,
-you get data from the session with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Session.html#get(java.lang.String)">get</a></code>, and you remove
-data from the session with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Session.html#remove(java.lang.String)">remove</a></code>.</p>
+<p>You put data into the session with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Session.html#put(java.lang.String)">put</a></code>,
+you get data from the session with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Session.html#get()">get</a></code>, and you remove
+data from the session with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Session.html#remove()">remove</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The keys for items in the session are always strings. The values can be any type for a local session store, and for
 a clustered session store they can be any basic type, or <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code>, <code>JsonObject</code>,
-<code>JsonArray</code> or a serializable object, as the values have to serialized across the cluster.</p>
+`JsonArray`or a serializable object, as the values have to serialized across the cluster.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of manipulating session data:</p>
@@ -2594,14 +2594,14 @@ with the correct <code>Content-Range</code> header.</p>
 </div>
 <div class="paragraph">
 <p><code>cache-control</code> is set to <code>max-age=86400</code> by default. This corresponds to one day. This can be configured with
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setMaxAgeSeconds(long)">setMaxAgeSeconds</a></code> if required.</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setMaxAgeSeconds()">setMaxAgeSeconds</a>`if required.</p>
 </div>
 <div class="paragraph">
 <p>If a browser sends a GET or a HEAD request with an <code>if-modified-since</code> header and the resource has not been modified
 since that date, a <code>304</code> status is returned which tells the browser to use its locally cached resource.</p>
 </div>
 <div class="paragraph">
-<p>If handling of cache headers is not required, it can be disabled with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setCachingEnabled(boolean)">setCachingEnabled</a></code>.</p>
+<p>If handling of cache headers is not required, it can be disabled with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setCachingEnabled()">setCachingEnabled</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>When cache handling is enabled Vert.x-Web will cache the last modified date of resources in memory, this avoids a disk hit
@@ -2617,28 +2617,28 @@ default.</p>
 </div>
 <div class="paragraph">
 <p>If you know that your files might change on disk when the server is running then you can set files read only to false with
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setFilesReadOnly(boolean)">setFilesReadOnly</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setFilesReadOnly()">setFilesReadOnly</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>To enable the maximum number of entries that can be cached in memory at any one time you can use
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setMaxCacheSize(int)">setMaxCacheSize</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setMaxCacheSize()">setMaxCacheSize</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>To configure the expiry time of cache entries you can use <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setCacheEntryTimeout(long)">setCacheEntryTimeout</a></code>.</p>
+<p>To configure the expiry time of cache entries you can use <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setCacheEntryTimeout()">setCacheEntryTimeout</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_configuring_the_index_page">Configuring the index page</h3>
 <div class="paragraph">
 <p>Any requests to the root path <code>/</code> will cause the index page to be served. By default the index page is <code>index.html</code>.
-This can be configured with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setIndexPage(java.lang.String)">setIndexPage</a></code>.</p>
+This can be configured with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setIndexPage()">setIndexPage</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_changing_the_web_root">Changing the web root</h3>
 <div class="paragraph">
 <p>By default static resources will be served from the directory <code>webroot</code>. To configure this use
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setWebRoot(java.lang.String)">setWebRoot</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setWebRoot()">setWebRoot</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2647,21 +2647,21 @@ This can be configured with <code><a href="../../scaladocs/io/vertx/scala/ext/we
 <p>By default the serve will serve hidden files (files starting with <code>.</code>).</p>
 </div>
 <div class="paragraph">
-<p>If you do not want hidden files to be served you can configure it with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setIncludeHidden(boolean)">setIncludeHidden</a></code>.</p>
+<p>If you do not want hidden files to be served you can configure it with <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setIncludeHidden()">setIncludeHidden</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_directory_listing">Directory listing</h3>
 <div class="paragraph">
 <p>The server can also perform directory listing. By default directory listing is disabled. To enabled it use
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setDirectoryListing(boolean)">setDirectoryListing</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setDirectoryListing()">setDirectoryListing</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>When directory listing is enabled the content returned depends on the content type in the <code>accept</code> header.</p>
 </div>
 <div class="paragraph">
 <p>For <code>text/html</code> directory listing, the template used to render the directory listing page can be configured with
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setDirectoryTemplate(java.lang.String)">setDirectoryTemplate</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/StaticHandler.html#setDirectoryTemplate()">setDirectoryTemplate</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2719,7 +2719,7 @@ engines. You can also easily add your own.</p>
 </div>
 <div class="paragraph">
 <p>Template engines are described by <code><a href="../../scaladocs/io/vertx/scala/ext/web/templ/TemplateEngine.html">TemplateEngine</a></code>. In order to render a template
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/common/template/TemplateEngine.html#render(io.vertx.core.json.JsonObject,%20java.lang.String,%20io.vertx.core.Handler)">render</a></code> is used.</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/web/common/template/TemplateEngine.html#render(io.vertx.core.json.JsonObject,%20java.lang.String)">render</a>`is used.</p>
 </div>
 <div class="paragraph">
 <p>The simplest way to use templates is not to call the template engine directly but to use the
@@ -3128,7 +3128,7 @@ according to browser and network capabilities.</p>
 using SockJS in your Vert.x-Web applications.</p>
 </div>
 <div class="paragraph">
-<p>You should create one handler per SockJS application using <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#create(io.vertx.core.Vertx)">SockJSHandler.create</a></code>.
+<p>You should create one handler per SockJS application using <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#create()">SockJSHandler.create</a></code>.
 You can also specify configuration options when creating the instance. The configuration options are described with
 an instance of <code><a href="../../vertx-web/dataobjects.html#SockJSHandlerOptions">SockJSHandlerOptions</a></code>.</p>
 </div>
@@ -3156,7 +3156,7 @@ this will be called every time a SockJS connection is made from a client:</p>
 <p>The object passed into the handler is a <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSSocket.html">SockJSSocket</a></code>. This has a familiar
 socket-like interface which you can read and write to similarly to a <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> or
 a <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code>. It also implements <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> and
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> so you can pump it to and from other read and write streams.</p>
+`<a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a>`so you can pump it to and from other read and write streams.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of a simple SockJS handler that simply echoes back any back any data that it reads:</p>
@@ -3296,7 +3296,7 @@ handles the SockJS data and bridges it to and from the server side event bus.</p
 </div>
 <div class="paragraph">
 <p>To activate the bridge you simply call
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions)">bridge</a></code> on the
+`<a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#bridge()">bridge</a>`on the
 SockJS handler.</p>
 </div>
 <div class="listingblock">
@@ -3460,24 +3460,24 @@ bridge what messages are ok for it to pass through. (There is an exception for r
 </div>
 <div class="paragraph">
 <p>You can specify which <em>matches</em> you want to allow for inbound and outbound traffic using the
-<code><a href="../../vertx-web/dataobjects.html#BridgeOptions">BridgeOptions</a></code> that you pass in when calling bridge.</p>
+`<a href="../../vertx-web/dataobjects.html#BridgeOptions">BridgeOptions</a>`that you pass in when calling bridge.</p>
 </div>
 <div class="paragraph">
 <p>Each match is a <code><a href="../../vertx-web/dataobjects.html#PermittedOptions">PermittedOptions</a></code> object:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setAddress(java.lang.String)">address</a></code></dt>
+<dt class="hdlist1"><code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setAddress()">address</a></code></dt>
 <dd>
 <p>This represents the exact address the message is being sent to. If you want to allow messages based on
 an exact address you use this field.</p>
 </dd>
-<dt class="hdlist1"><code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setAddressRegex(java.lang.String)">addressRegex</a></code></dt>
+<dt class="hdlist1"><code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setAddressRegex()">addressRegex</a></code></dt>
 <dd>
 <p>This is a regular expression that will be matched against the address. If you want to allow messages
 based on a regular expression you use this field. If the <code>address</code> field is specified this field will be ignored.</p>
 </dd>
-<dt class="hdlist1"><code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setMatch(io.vertx.core.json.JsonObject)">match</a></code></dt>
+<dt class="hdlist1"><code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setMatch()">match</a></code></dt>
 <dd>
 <p>This allows you to allow messages based on their structure. Any fields in the match must exist in the
 message with the same values for them to be allowed. This currently only works with JSON messages.</p>
@@ -3571,7 +3571,7 @@ required for the match.</p>
 </div>
 <div class="paragraph">
 <p>To declare that a specific authority for the logged-in user is required in order to access allow the messages you use the
-<code><a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setRequiredAuthority(java.lang.String)">requiredAuthority</a></code> field.</p>
+`<a href="../../vertx-bridge-common/dataobjects.html#PermittedOptions#setRequiredAuthority()">requiredAuthority</a>`field.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -3631,7 +3631,7 @@ router.route("/eventbus/*").handler(sockJSHandler)</code></pre>
 <h3 id="_handling_event_bus_bridge_events">Handling event bus bridge events</h3>
 <div class="paragraph">
 <p>If you want to be notified when an event occurs on the bridge you can provide a handler when calling
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions,%20io.vertx.core.Handler)">bridge</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions)">bridge</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Whenever an event occurs on the bridge it will be passed to the handler. The event is described by an instance of
@@ -4175,7 +4175,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:54 CST
+                上次更新时间 2018-10-16 18:26:14 CST
               
               
             </div>
@@ -4206,6 +4206,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

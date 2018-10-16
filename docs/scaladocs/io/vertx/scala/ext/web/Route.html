@@ -181,6 +181,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.common" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="common"></a><a id="common:common"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/web/index.html#common" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="common/index.html"><span class="name">common</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handler"></a><a id="handler:handler"></a>
       <span class="permalink">
@@ -501,7 +517,7 @@ This method works just like <a href="#handler(requestHandler:io.vertx.core.Handl
 so that it won't block the event loop. Note that it's safe to call context.next() from the
 blocking handler as it will be executed on the event loop context (and not on the worker thread.</p><p>If the blocking handler is ordered it means that any blocking handlers for the same context are never executed
 concurrently but always in the order they were called. The default value of ordered is true. If you do not want this
-behaviour and don't mind if your blocking handlers are executed in parallel you can set ordered to false.</p></div><dl class="paramcmts block"><dt class="param">requestHandler</dt><dd class="cmt"><p>the blocking request handler</p></dd><dt class="param">ordered</dt><dd class="cmt"><p>if true handlers are executed in sequence, otherwise are run in parallel</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+behaviour and don't mind if your blocking handlers are executed in parallel you can set ordered to false.   * @param requestHandler the blocking request handler</p></div><dl class="paramcmts block"><dt class="param">ordered</dt><dd class="cmt"><p>if true handlers are executed in sequence, otherwise are run in parallel</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.Route#blockingHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="blockingHandler(requestHandler:io.vertx.core.Handler[io.vertx.scala.ext.web.RoutingContext]):io.vertx.scala.ext.web.Route"></a><a id="blockingHandler(Handler[RoutingContext]):Route"></a>
       <span class="permalink">
@@ -558,7 +574,7 @@ behaviour and don't mind if your blocking handlers are executed in parallel you 
         <span class="name">consumes</span><span class="params">(<span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Add a content type consumed by this route.</p><div class="fullcomment"><div class="comment cmt"><p>Add a content type consumed by this route. Used for content based routing.</p></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the content type</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Add a content type consumed by this route.</p><div class="fullcomment"><div class="comment cmt"><p>Add a content type consumed by this route. Used for content based routing.   * @param contentType the content type</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.Route#disable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="disable():io.vertx.scala.ext.web.Route"></a><a id="disable():Route"></a>
       <span class="permalink">
@@ -574,7 +590,8 @@ behaviour and don't mind if your blocking handlers are executed in parallel you 
         <span class="name">disable</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Disable this route.</p><div class="fullcomment"><div class="comment cmt"><p>Disable this route. While disabled the router will not route any requests or failures to it.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Disable this route.</p><div class="fullcomment"><div class="comment cmt"><p>Disable this route. While disabled the router will not route any requests or failures to it.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.Route#enable" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="enable():io.vertx.scala.ext.web.Route"></a><a id="enable():Route"></a>
       <span class="permalink">
@@ -590,7 +607,8 @@ behaviour and don't mind if your blocking handlers are executed in parallel you 
         <span class="name">enable</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Enable this route.</p><div class="fullcomment"><div class="comment cmt"><p>Enable this route.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Enable this route.</p><div class="fullcomment"><div class="comment cmt"><p>Enable this route.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -640,7 +658,7 @@ behaviour and don't mind if your blocking handlers are executed in parallel you 
       
       <p class="shortcomment cmt">Append a failure handler to the route failure handlers list.</p><div class="fullcomment"><div class="comment cmt"><p>Append a failure handler to the route failure handlers list. The router routes failures to failurehandlers depending on whether the various
 criteria such as method, path, etc match. When method, path, etc are the same for different routes, You should add multiple
-failure handlers to the same route object rather than creating two different routes objects with one failure handler for route</p></div><dl class="paramcmts block"><dt class="param">failureHandler</dt><dd class="cmt"><p>the request handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+failure handlers to the same route object rather than creating two different routes objects with one failure handler for route   * @param failureHandler the request handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -715,7 +733,7 @@ failure handlers to the same route object rather than creating two different rou
       
       <p class="shortcomment cmt">Append a request handler to the route handlers list.</p><div class="fullcomment"><div class="comment cmt"><p>Append a request handler to the route handlers list. The router routes requests to handlers depending on whether the various
 criteria such as method, path, etc match. When method, path, etc are the same for different routes, You should add multiple
-handlers to the same route object rather than creating two different routes objects with one handler for route</p></div><dl class="paramcmts block"><dt class="param">requestHandler</dt><dd class="cmt"><p>the request handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+handlers to the same route object rather than creating two different routes objects with one handler for route   * @param requestHandler the request handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -766,7 +784,8 @@ handlers to the same route object rather than creating two different routes obje
         <span class="name">last</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Specify this is the last route for the router.</p><div class="fullcomment"><div class="comment cmt"><p>Specify this is the last route for the router.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Specify this is the last route for the router.</p><div class="fullcomment"><div class="comment cmt"><p>Specify this is the last route for the router.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.Route#method" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="method(method:io.vertx.core.http.HttpMethod):io.vertx.scala.ext.web.Route"></a><a id="method(HttpMethod):Route"></a>
       <span class="permalink">
@@ -783,7 +802,7 @@ handlers to the same route object rather than creating two different routes obje
       </span>
       
       <p class="shortcomment cmt">Add an HTTP method for this route.</p><div class="fullcomment"><div class="comment cmt"><p>Add an HTTP method for this route. By default a route will match all HTTP methods. If any are specified then the route
-will only match any of the specified methods</p></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>the HTTP method to add</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+will only match any of the specified methods   * @param method the HTTP method to add</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -853,7 +872,7 @@ will only match any of the specified methods</p></div><dl class="paramcmts block
         <span class="name">order</span><span class="params">(<span name="order">order: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Specify the order for this route.</p><div class="fullcomment"><div class="comment cmt"><p>Specify the order for this route. The router tests routes in that order.</p></div><dl class="paramcmts block"><dt class="param">order</dt><dd class="cmt"><p>the order</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Specify the order for this route.</p><div class="fullcomment"><div class="comment cmt"><p>Specify the order for this route. The router tests routes in that order.   * @param order the order</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.Route#path" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="path(path:String):io.vertx.scala.ext.web.Route"></a><a id="path(String):Route"></a>
       <span class="permalink">
@@ -870,7 +889,7 @@ will only match any of the specified methods</p></div><dl class="paramcmts block
       </span>
       
       <p class="shortcomment cmt">Set the path prefix for this route.</p><div class="fullcomment"><div class="comment cmt"><p>Set the path prefix for this route. If set then this route will only match request URI paths which start with this
-path prefix. Only a single path or path regex can be set for a route.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path prefix</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+path prefix. Only a single path or path regex can be set for a route.   * @param path the path prefix</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.Route#pathRegex" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pathRegex(path:String):io.vertx.scala.ext.web.Route"></a><a id="pathRegex(String):Route"></a>
       <span class="permalink">
@@ -887,7 +906,7 @@ path prefix. Only a single path or path regex can be set for a route.</p></div><
       </span>
       
       <p class="shortcomment cmt">Set the path prefix as a regular expression.</p><div class="fullcomment"><div class="comment cmt"><p>Set the path prefix as a regular expression. If set then this route will only match request URI paths, the beginning
-of which match the regex. Only a single path or path regex can be set for a route.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path regex</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+of which match the regex. Only a single path or path regex can be set for a route.   * @param path the path regex</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.Route#produces" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="produces(contentType:String):io.vertx.scala.ext.web.Route"></a><a id="produces(String):Route"></a>
       <span class="permalink">
@@ -903,8 +922,8 @@ of which match the regex. Only a single path or path regex can be set for a rout
         <span class="name">produces</span><span class="params">(<span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Add a content type produced by this route.</p><div class="fullcomment"><div class="comment cmt"><p>Add a content type produced by this route. Used for content based routing.</p></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the content type</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
-    </li><li name="io.vertx.scala.ext.web.Route#remove" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">Add a content type produced by this route.</p><div class="fullcomment"><div class="comment cmt"><p>Add a content type produced by this route. Used for content based routing.   * @param contentType the content type</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.Route#remove" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="remove():io.vertx.scala.ext.web.Route"></a><a id="remove():Route"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/ext/web/Route.html#remove():io.vertx.scala.ext.web.Route" title="Permalink">
@@ -919,7 +938,8 @@ of which match the regex. Only a single path or path regex can be set for a rout
         <span class="name">remove</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
       </span>
       
-      <p class="shortcomment cmt">Remove this route from the router</p><div class="fullcomment"><div class="comment cmt"><p>Remove this route from the router</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Remove this route from the router   * @return a reference to this, so the API can be used fluently
+</p>
     </li><li name="io.vertx.scala.ext.web.Route#setRegexGroupsNames" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setRegexGroupsNames(groups:scala.collection.mutable.Buffer[String]):io.vertx.scala.ext.web.Route"></a><a id="setRegexGroupsNames(Buffer[String]):Route"></a>
       <span class="permalink">
@@ -940,7 +960,7 @@ However, if you need more complex parameters names (like &quot;param_name&quot;)
 this function. You have to name capture groups in regex with names: &quot;p0&quot;, &quot;p1&quot;, &quot;p2&quot;, ... <br/>
 <br/>
 For example: If you declare route with regex \/(?&lt;p0&gt;[a-z]*)\/(?&lt;p1&gt;[a-z]*) and group names [&quot;param_a&quot;, &quot;param-b&quot;]
-for uri /hello/world you receive inside pathParams() the parameter param_a = &quot;hello&quot;</p></div><dl class="paramcmts block"><dt class="param">groups</dt><dd class="cmt"><p>group names</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+for uri /hello/world you receive inside pathParams() the parameter param_a = &quot;hello&quot;   * @param groups group names</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -989,7 +1009,7 @@ for uri /hello/world you receive inside pathParams() the parameter param_a = &qu
       </span>
       
       <p class="shortcomment cmt">If true then the normalised request path will be used when routing (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>If true then the normalised request path will be used when routing (e.g. removing duplicate /)
-Default is true</p></div><dl class="paramcmts block"><dt class="param">useNormalisedPath</dt><dd class="cmt"><p>use normalised path for routing?</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+Default is true   * @param useNormalisedPath use normalised path for routing?</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

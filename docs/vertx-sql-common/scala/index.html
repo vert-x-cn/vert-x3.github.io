@@ -302,28 +302,28 @@ perform the following steps for you:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#query(java.lang.String,%20io.vertx.core.Handler)">query</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#query(java.lang.String)">query</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#queryWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">queryWithParams</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#queryWithParams(java.lang.String,%20io.vertx.core.json.JsonArray)">queryWithParams</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLOperations.html#querySingle(java.lang.String,%20io.vertx.core.Handler)">querySingle</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLOperations.html#querySingle(java.lang.String)">querySingle</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLOperations.html#querySingleWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">querySingleWithParams</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLOperations.html#querySingleWithParams(java.lang.String,%20io.vertx.core.json.JsonArray)">querySingleWithParams</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#update(java.lang.String,%20io.vertx.core.Handler)">update</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#update(java.lang.String)">update</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#updateWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">updateWithParams</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#updateWithParams(java.lang.String,%20io.vertx.core.json.JsonArray)">updateWithParams</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#call(java.lang.String,%20io.vertx.core.Handler)">call</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#call(java.lang.String)">call</a></code></p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#callWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">callWithParams</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#callWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.json.JsonArray)">callWithParams</a></code></p>
 </li>
 </ul>
 </div>
@@ -345,7 +345,7 @@ perform the following steps for you:</p>
 </div>
 <div class="paragraph">
 <p>如果您希望在同一个事务中执行多个操作，就应该使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#setAutoCommit(boolean,%20io.vertx.core.Handler)">setAutoCommit</a></code> 方法设置自动提交为`false`。</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#setAutoCommit(boolean)">setAutoCommit</a>`方法设置自动提交为`false</code>。</p>
 </div>
 <div class="paragraph">
 <p>当操作完成时，回调方法将会被执行：</p>
@@ -366,7 +366,7 @@ perform the following steps for you:</p>
 <div class="sect2">
 <h3 id="_执行查询">执行查询</h3>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#query(java.lang.String,%20io.vertx.core.Handler)">query</a></code> 方法执行查询操作。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#query(java.lang.String)">query</a></code> 方法执行查询操作。</p>
 </div>
 <div class="paragraph">
 <p>查询语句（原生SQL）传给数据库时，不会经过任何修改。</p>
@@ -388,11 +388,11 @@ perform the following steps for you:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../../vertx-sql-common/dataobjects.html#ResultSet">ResultSet</a></code> 类代表查询结果。</p>
+<p>`<a href="../../vertx-sql-common/dataobjects.html#ResultSet">ResultSet</a>`类代表查询结果。</p>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../../vertx-sql-common/dataobjects.html#ResultSet#getColumnNames()">getColumnNames</a></code> 方法获得查询结果的列名 List 集合，实际的结果集可以通过
-<code><a href="../../vertx-sql-common/dataobjects.html#ResultSet#getResults()">getResults</a></code> 方法获得。</p>
+`<a href="../../vertx-sql-common/dataobjects.html#ResultSet#getResults()">getResults</a>`方法获得。</p>
 </div>
 <div class="paragraph">
 <p>结果集被包装成了一组 <code>JsonArray</code> 列表，其中的每个元素代表一行结果。</p>
@@ -441,7 +441,7 @@ rows.foreach(row =&gt; {
 <h3 id="_预编译查询">预编译查询</h3>
 <div class="paragraph">
 <p>您可以使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#queryWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">queryWithParams</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#queryWithParams(java.lang.String,%20io.vertx.core.json.JsonArray)">queryWithParams</a></code>
 方法执行预编译查询（prepared statement queries）。</p>
 </div>
 <div class="paragraph">
@@ -467,7 +467,7 @@ connection.queryWithParamsFuture(query, params).onComplete{
 <div class="sect2">
 <h3 id="_执行_insert_update_delete_语句">执行 INSERT/UPDATE/DELETE 语句</h3>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#update(java.lang.String,%20io.vertx.core.Handler)">update</a></code> 方法来执行更新数据库的操作（包括增、删、改）。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#update(java.lang.String)">update</a></code> 方法来执行更新数据库的操作（包括增、删、改）。</p>
 </div>
 <div class="paragraph">
 <p>更新语句（原生SQL）传给数据库时，不会经过任何处理。</p>
@@ -499,7 +499,7 @@ connection.queryWithParamsFuture(query, params).onComplete{
 <h3 id="_预编译更新">预编译更新</h3>
 <div class="paragraph">
 <p>您可以使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#updateWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">updateWithParams</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#updateWithParams(java.lang.String,%20io.vertx.core.json.JsonArray)">updateWithParams</a></code>
 方法来执行预编译更新（prepared statement updates）。</p>
 </div>
 <div class="paragraph">
@@ -530,7 +530,7 @@ connection.updateWithParamsFuture(update, params).onComplete{
 <h3 id="_可调用语句">可调用语句</h3>
 <div class="paragraph">
 <p>您可以使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#callWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.json.JsonArray,%20io.vertx.core.Handler)">callWithParams</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#callWithParams(java.lang.String,%20io.vertx.core.json.JsonArray,%20io.vertx.core.json.JsonArray)">callWithParams</a></code>
 方法来执行可调用语句（callable statements），例如 SQL 函数或者存储过程。</p>
 </div>
 <div class="paragraph">
@@ -640,13 +640,13 @@ connection.callWithParamsFuture(func, new io.vertx.core.json.JsonArray().add("Jo
 <div class="ulist">
 <ul>
 <li>
-<p>批量操作 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#batch(java.util.List,%20io.vertx.core.Handler)">batch</a></code></p>
+<p>批量操作 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#batch(java.util.List)">batch</a></code></p>
 </li>
 <li>
-<p>批量预编译操作 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#batchWithParams(java.lang.String,%20java.util.List,%20io.vertx.core.Handler)">batchWithParams</a></code></p>
+<p>批量预编译操作 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#batchWithParams(java.lang.String,%20java.util.List)">batchWithParams</a></code></p>
 </li>
 <li>
-<p>批量调用语句 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#batchCallableWithParams(java.lang.String,%20java.util.List,%20java.util.List,%20io.vertx.core.Handler)">batchCallableWithParams</a></code></p>
+<p>批量调用语句 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#batchCallableWithParams(java.lang.String,%20java.util.List,%20java.util.List)">batchCallableWithParams</a></code></p>
 </li>
 </ul>
 </div>
@@ -695,7 +695,7 @@ connection.batchWithParamsFuture("INSERT INTO emp (name) VALUES (?)", batch).onC
 <h3 id="_执行其他操作">执行其他操作</h3>
 <div class="paragraph">
 <p>若需要执行其他数据库操作，例如您可以使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#execute(java.lang.String,%20io.vertx.core.Handler)">execute</a></code> 方法来执行 <code>CREATE TABLE</code> 语句。</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#execute(java.lang.String)">execute</a>`方法来执行 `CREATE TABLE</code> 语句。</p>
 </div>
 <div class="paragraph">
 <p>SQL语句传给数据库时，不会经过任何处理。操作结束时将调用回调方法。</p>
@@ -773,12 +773,12 @@ rs = todo-renderDataObjectMemberSelect</code></pre>
 <div class="sect2">
 <h3 id="_使用事务">使用事务</h3>
 <div class="paragraph">
-<p>要使用事务，首先要用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#setAutoCommit(boolean,%20io.vertx.core.Handler)">setAutoCommit</a></code> 方法设置 auto-commit 为 <code>false</code>。</p>
+<p>要使用事务，首先要用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#setAutoCommit(boolean)">setAutoCommit</a></code> 方法设置 auto-commit 为 <code>false</code>。</p>
 </div>
 <div class="paragraph">
 <p>然后您就可以执行在同一个事务中的操作，在需要提交事务时，调用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#commit(io.vertx.core.Handler)">commit</a></code> 方法；在需要回滚时，调用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#rollback(io.vertx.core.Handler)">rollback</a></code> 方法。</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#commit()">commit</a>`方法；在需要回滚时，调用
+`<a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#rollback()">rollback</a>`方法。</p>
 </div>
 <div class="paragraph">
 <p>一旦 <code>commit</code>/<code>rollback</code> 方法执行结束，将会调用回调方法。然后下一个事务也将自动开始。</p>
@@ -803,7 +803,7 @@ connection.commitFuture().onComplete{
 <div class="sect2">
 <h3 id="_关闭连接">关闭连接</h3>
 <div class="paragraph">
-<p>您在用完连接后，必须使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#close(io.vertx.core.Handler)">close</a></code> 方法把连接返回给连接池。</p>
+<p>您在用完连接后，必须使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLConnection.html#close()">close</a></code> 方法把连接返回给连接池。</p>
 </div>
 </div>
 </div>
@@ -814,7 +814,7 @@ connection.commitFuture().onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:39 CST
+                上次更新时间 2018-10-16 18:25:57 CST
               
               
             </div>
@@ -845,6 +845,7 @@ connection.commitFuture().onComplete{
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

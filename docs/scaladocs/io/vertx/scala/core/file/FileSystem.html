@@ -383,7 +383,7 @@ return in your particular application before using them on an event loop.</p><p>
       </span>
       
       <p class="shortcomment cmt">Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously.</p><p>The permission String takes the form rwxr-x--- as
-specified <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path to the file</p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+specified <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.   * @param path the path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#chmodBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="chmodBlocking(path:String,perms:String):io.vertx.scala.core.file.FileSystem"></a><a id="chmodBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -435,7 +435,7 @@ specified <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/at
       <p class="shortcomment cmt">Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously.
 The permission String takes the form rwxr-x--- as
 specified in {<a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a><code>.</code></p><p>If the file is directory then all contents will also have their permissions changed recursively. Any directory permissions will
-be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path to the file</p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">dirPerms</dt><dd class="cmt"><p>the directory permissions</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.   * @param path the path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">dirPerms</dt><dd class="cmt"><p>the directory permissions</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#chmodRecursiveBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="chmodRecursiveBlocking(path:String,perms:String,dirPerms:String):io.vertx.scala.core.file.FileSystem"></a><a id="chmodRecursiveBlocking(String,String,String):FileSystem"></a>
       <span class="permalink">
@@ -451,7 +451,7 @@ be set to <code>dirPerms</code>, whilst any normal file permissions will be set 
         <span class="name">chmodRecursiveBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="dirPerms">dirPerms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#chmodRecursiveFuture(path:String,perms:String,dirPerms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#chmodRecursiveFuture">io.vertx.scala.core.file.FileSystem#chmodRecursiveFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#chmodRecursive(path:String,perms:String,dirPerms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#chmodRecursive">io.vertx.scala.core.file.FileSystem#chmodRecursive</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#chmodRecursiveFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="chmodRecursiveFuture(path:String,perms:String,dirPerms:String):scala.concurrent.Future[Unit]"></a><a id="chmodRecursiveFuture(String,String,String):scala.concurrent.Future[Unit]"></a>
@@ -484,7 +484,7 @@ be set to <code>dirPerms</code>, whilst any normal file permissions will be set 
         <span class="name">chown</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="user">user: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="group">group: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Change the ownership on the file represented by <code>path</code> to <code>user</code> and {code group<code>, asynchronously.</code></p><div class="fullcomment"><div class="comment cmt"><p>Change the ownership on the file represented by <code>path</code> to <code>user</code> and {code group<code>, asynchronously.</code></p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path to the file</p></dd><dt class="param">user</dt><dd class="cmt"><p>the user name, <code>null</code> will not change the user name</p></dd><dt class="param">group</dt><dd class="cmt"><p>the user group, <code>null</code> will not change the user group name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Change the ownership on the file represented by <code>path</code> to <code>user</code> and {code group<code>, asynchronously.   * @param path the path to the file</code></p><div class="fullcomment"><div class="comment cmt"><p>Change the ownership on the file represented by <code>path</code> to <code>user</code> and {code group<code>, asynchronously.   * @param path the path to the file</code></p></div><dl class="paramcmts block"><dt class="param">user</dt><dd class="cmt"><p>the user name, <code>null</code> will not change the user name</p></dd><dt class="param">group</dt><dd class="cmt"><p>the user group, <code>null</code> will not change the user group name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#chownBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="chownBlocking(path:String,user:Option[String],group:Option[String]):io.vertx.scala.core.file.FileSystem"></a><a id="chownBlocking(String,Option[String],Option[String]):FileSystem"></a>
       <span class="permalink">
@@ -556,7 +556,7 @@ be set to <code>dirPerms</code>, whilst any normal file permissions will be set 
         <span class="name">copy</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <a href="CopyOptions.html" class="extype" name="io.vertx.scala.core.file.CopyOptions">CopyOptions</a></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">from</dt><dd class="cmt"><p>the path to copy from</p></dd><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">options</dt><dd class="cmt"><p>options describing how the file should be copiedsee <a href="../../../../../../../cheatsheet/CopyOptions.html">CopyOptions</a></p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.   * @param from the path to copy from</p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">options</dt><dd class="cmt"><p>options describing how the file should be copied see <a href="../../../../../../../cheatsheet/CopyOptions.html">CopyOptions</a></p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copy(from:String,to:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="copy(String,String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -572,7 +572,7 @@ be set to <code>dirPerms</code>, whilst any normal file permissions will be set 
         <span class="name">copy</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><p>The copy will fail if the destination already exists.</p></div><dl class="paramcmts block"><dt class="param">from</dt><dd class="cmt"><p>the path to copy from</p></dd><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><p>The copy will fail if the destination already exists.   * @param from the path to copy from</p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#copyBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="copyBlocking(from:String,to:String):io.vertx.scala.core.file.FileSystem"></a><a id="copyBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -588,7 +588,7 @@ be set to <code>dirPerms</code>, whilst any normal file permissions will be set 
         <span class="name">copyBlocking</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#copyFuture(from:String,to:String,options:io.vertx.scala.core.file.CopyOptions):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#copyFuture">io.vertx.scala.core.file.FileSystem#copyFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#copy(from:String,to:String,options:io.vertx.scala.core.file.CopyOptions,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#copy">io.vertx.scala.core.file.FileSystem#copy</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#copyFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="copyFuture(from:String,to:String,options:io.vertx.scala.core.file.CopyOptions):scala.concurrent.Future[Unit]"></a><a id="copyFuture(String,String,CopyOptions):scala.concurrent.Future[Unit]"></a>
@@ -638,7 +638,7 @@ be set to <code>dirPerms</code>, whilst any normal file permissions will be set 
       </span>
       
       <p class="shortcomment cmt">Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><p>If <code>recursive</code> is <code>true</code> and <code>from</code> represents a directory, then the directory and its contents
-will be copied recursively to the destination <code>to</code>.</p><p>The copy will fail if the destination if the destination already exists.</p></div><dl class="paramcmts block"><dt class="param">from</dt><dd class="cmt"><p>the path to copy from</p></dd><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+will be copied recursively to the destination <code>to</code>.</p><p>The copy will fail if the destination if the destination already exists.   * @param from the path to copy from</p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#copyRecursiveBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="copyRecursiveBlocking(from:String,to:String,recursive:Boolean):io.vertx.scala.core.file.FileSystem"></a><a id="copyRecursiveBlocking(String,String,Boolean):FileSystem"></a>
       <span class="permalink">
@@ -654,7 +654,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">copyRecursiveBlocking</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="recursive">recursive: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#copyRecursiveFuture(from:String,to:String,recursive:Boolean):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#copyRecursiveFuture">io.vertx.scala.core.file.FileSystem#copyRecursiveFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#copyRecursive(from:String,to:String,recursive:Boolean,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#copyRecursive">io.vertx.scala.core.file.FileSystem#copyRecursive</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#copyRecursiveFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="copyRecursiveFuture(from:String,to:String,recursive:Boolean):scala.concurrent.Future[Unit]"></a><a id="copyRecursiveFuture(String,String,Boolean):scala.concurrent.Future[Unit]"></a>
@@ -687,7 +687,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">createFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#createFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="createFile(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="createFile(String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -703,7 +703,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">createFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Creates an empty file with the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an empty file with the specified <code>path</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Creates an empty file with the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an empty file with the specified <code>path</code>, asynchronously.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#createFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="createFileBlocking(path:String,perms:String):io.vertx.scala.core.file.FileSystem"></a><a id="createFileBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -719,7 +719,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">createFileBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#createFileFuture(path:String,perms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createFileFuture">io.vertx.scala.core.file.FileSystem#createFileFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#createFile(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createFile">io.vertx.scala.core.file.FileSystem#createFile</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#createFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="createFileBlocking(path:String):io.vertx.scala.core.file.FileSystem"></a><a id="createFileBlocking(String):FileSystem"></a>
@@ -736,7 +736,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">createFileBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#createFileFuture(path:String,perms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createFileFuture">io.vertx.scala.core.file.FileSystem#createFileFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#createFile(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createFile">io.vertx.scala.core.file.FileSystem#createFile</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#createFileFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="createFileFuture(path:String,perms:String):scala.concurrent.Future[Unit]"></a><a id="createFileFuture(String,String):scala.concurrent.Future[Unit]"></a>
@@ -770,6 +770,333 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
       </span>
       
       <p class="shortcomment cmt">Like <a href="#createFile(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createFile">createFile</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectory" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem"></a><a id="createTempDirectory(String,String,String,Handler[AsyncResult[String]]):FileSystem"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectory</span><span class="params">(<span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Creates a new directory in the directory provided by the path <code>path</code>, using the given
+prefix to generate its name, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new directory in the directory provided by the path <code>path</code>, using the given
+prefix to generate its name, asynchronously.</p><p>The new directory will be created with permissions as specified by <code>perms</code>.</p><p>The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A #addShutdownHook shutdown-hook,
+or the deleteOnExit mechanism may be used to delete the directory automatically.
+   * @param dir the path to directory in which to create the directory</p></div><dl class="paramcmts block"><dt class="param">prefix</dt><dd class="cmt"><p>the prefix string to be used in generating the directory's name; may be <code>null</code></p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectory" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTempDirectory(prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem"></a><a id="createTempDirectory(String,String,Handler[AsyncResult[String]]):FileSystem"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectory(prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectory</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</p><p>The new directory will be created with permissions as specified by <code>perms</code>.</p><p>The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A #addShutdownHook shutdown-hook,
+or the deleteOnExit mechanism may be used to delete the directory automatically.
+   * @param prefix the prefix string to be used in generating the directory's name; may be <code>null</code></p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectory" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTempDirectory(prefix:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem"></a><a id="createTempDirectory(String,Handler[AsyncResult[String]]):FileSystem"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectory(prefix:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectory</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</p><p>As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A #addShutdownHook shutdown-hook,
+or the deleteOnExit mechanism may be used to delete the directory automatically.
+   * @param prefix the prefix string to be used in generating the directory's name; may be <code>null</code></p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectoryBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempDirectoryBlocking(dir:String,prefix:String,perms:String):String"></a><a id="createTempDirectoryBlocking(String,String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectoryBlocking(dir:String,prefix:String,perms:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectoryBlocking</span><span class="params">(<span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Blocking version of <a href="#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempDirectory">io.vertx.scala.core.file.FileSystem#createTempDirectory</a>
+</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectoryBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempDirectoryBlocking(prefix:String,perms:String):String"></a><a id="createTempDirectoryBlocking(String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectoryBlocking(prefix:String,perms:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectoryBlocking</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Blocking version of <a href="#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempDirectory">io.vertx.scala.core.file.FileSystem#createTempDirectory</a>
+</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectoryBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempDirectoryBlocking(prefix:String):String"></a><a id="createTempDirectoryBlocking(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectoryBlocking(prefix:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectoryBlocking</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Blocking version of <a href="#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempDirectory">io.vertx.scala.core.file.FileSystem#createTempDirectory</a>
+</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectoryFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempDirectoryFuture(dir:String,prefix:String,perms:String):scala.concurrent.Future[String]"></a><a id="createTempDirectoryFuture(String,String,String):scala.concurrent.Future[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectoryFuture(dir:String,prefix:String,perms:String):scala.concurrent.Future[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectoryFuture</span><span class="params">(<span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempDirectory">createTempDirectory</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectoryFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempDirectoryFuture(prefix:String,perms:String):scala.concurrent.Future[String]"></a><a id="createTempDirectoryFuture(String,String):scala.concurrent.Future[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectoryFuture(prefix:String,perms:String):scala.concurrent.Future[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectoryFuture</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempDirectory">createTempDirectory</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempDirectoryFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempDirectoryFuture(prefix:String):scala.concurrent.Future[String]"></a><a id="createTempDirectoryFuture(String):scala.concurrent.Future[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempDirectoryFuture(prefix:String):scala.concurrent.Future[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempDirectoryFuture</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#createTempDirectory(dir:String,prefix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempDirectory">createTempDirectory</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem"></a><a id="createTempFile(String,String,String,String,Handler[AsyncResult[String]]):FileSystem"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFile</span><span class="params">(<span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Creates a new file in the directory provided by the path <code>dir</code>, using the given
+prefix and suffix to generate its name, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new file in the directory provided by the path <code>dir</code>, using the given
+prefix and suffix to generate its name, asynchronously.</p><p>The new directory will be created with permissions as specified by <code>perms</code>.</p><p>The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A #addShutdownHook shutdown-hook,
+or the deleteOnExit mechanism may be used to delete the directory automatically.
+   * @param dir the path to directory in which to create the directory</p></div><dl class="paramcmts block"><dt class="param">prefix</dt><dd class="cmt"><p>the prefix string to be used in generating the directory's name; may be <code>null</code></p></dd><dt class="param">suffix</dt><dd class="cmt"><p>the suffix string to be used in generating the file's name; may be <code>null</code>, in which case &quot;<code>.tmp</code>&quot; is used</p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTempFile(prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem"></a><a id="createTempFile(String,String,String,Handler[AsyncResult[String]]):FileSystem"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFile(prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFile</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Creates a new file in the directory provided by the path <code>dir</code>, using the given
+prefix and suffix to generate its name, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new file in the directory provided by the path <code>dir</code>, using the given
+prefix and suffix to generate its name, asynchronously.</p><p>As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A #addShutdownHook shutdown-hook,
+or the deleteOnExit mechanism may be used to delete the directory automatically.
+   * @param prefix the prefix string to be used in generating the directory's name; may be <code>null</code></p></div><dl class="paramcmts block"><dt class="param">suffix</dt><dd class="cmt"><p>the suffix string to be used in generating the file's name; may be <code>null</code>, in which case &quot;<code>.tmp</code>&quot; is used</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTempFile(prefix:String,suffix:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem"></a><a id="createTempFile(String,String,Handler[AsyncResult[String]]):FileSystem"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFile(prefix:String,suffix:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFile</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Creates a new file in the default temporary-file directory, using the given
+prefix and suffix to generate its name, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new file in the default temporary-file directory, using the given
+prefix and suffix to generate its name, asynchronously.</p><p>As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A #addShutdownHook shutdown-hook,
+or the deleteOnExit mechanism may be used to delete the directory automatically.
+   * @param prefix the prefix string to be used in generating the directory's name; may be <code>null</code></p></div><dl class="paramcmts block"><dt class="param">suffix</dt><dd class="cmt"><p>the suffix string to be used in generating the file's name; may be <code>null</code>, in which case &quot;<code>.tmp</code>&quot; is used</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempFileBlocking(dir:String,prefix:String,suffix:String,perms:String):String"></a><a id="createTempFileBlocking(String,String,String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFileBlocking(dir:String,prefix:String,suffix:String,perms:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFileBlocking</span><span class="params">(<span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Blocking version of <a href="#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempFile">io.vertx.scala.core.file.FileSystem#createTempFile</a>
+</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempFileBlocking(prefix:String,suffix:String,perms:String):String"></a><a id="createTempFileBlocking(String,String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFileBlocking(prefix:String,suffix:String,perms:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFileBlocking</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Blocking version of <a href="#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempFile">io.vertx.scala.core.file.FileSystem#createTempFile</a>
+</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempFileBlocking(prefix:String,suffix:String):String"></a><a id="createTempFileBlocking(String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFileBlocking(prefix:String,suffix:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFileBlocking</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Blocking version of <a href="#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempFile">io.vertx.scala.core.file.FileSystem#createTempFile</a>
+</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFileFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempFileFuture(dir:String,prefix:String,suffix:String,perms:String):scala.concurrent.Future[String]"></a><a id="createTempFileFuture(String,String,String,String):scala.concurrent.Future[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFileFuture(dir:String,prefix:String,suffix:String,perms:String):scala.concurrent.Future[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFileFuture</span><span class="params">(<span name="dir">dir: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempFile">createTempFile</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFileFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempFileFuture(prefix:String,suffix:String,perms:String):scala.concurrent.Future[String]"></a><a id="createTempFileFuture(String,String,String):scala.concurrent.Future[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFileFuture(prefix:String,suffix:String,perms:String):scala.concurrent.Future[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFileFuture</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempFile">createTempFile</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.file.FileSystem#createTempFileFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createTempFileFuture(prefix:String,suffix:String):scala.concurrent.Future[String]"></a><a id="createTempFileFuture(String,String):scala.concurrent.Future[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/file/FileSystem.html#createTempFileFuture(prefix:String,suffix:String):scala.concurrent.Future[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTempFileFuture</span><span class="params">(<span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#createTempFile(dir:String,prefix:String,suffix:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#createTempFile">createTempFile</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
     </li><li name="io.vertx.scala.core.file.FileSystem#delete" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="delete(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="delete(String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -785,7 +1112,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">delete</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Deletes the file represented by the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Deletes the file represented by the specified <code>path</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Deletes the file represented by the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Deletes the file represented by the specified <code>path</code>, asynchronously.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#deleteBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="deleteBlocking(path:String):io.vertx.scala.core.file.FileSystem"></a><a id="deleteBlocking(String):FileSystem"></a>
       <span class="permalink">
@@ -801,7 +1128,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
         <span class="name">deleteBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#deleteFuture(path:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#deleteFuture">io.vertx.scala.core.file.FileSystem#deleteFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#delete(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#delete">io.vertx.scala.core.file.FileSystem#delete</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#deleteFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="deleteFuture(path:String):scala.concurrent.Future[Unit]"></a><a id="deleteFuture(String):scala.concurrent.Future[Unit]"></a>
@@ -835,7 +1162,7 @@ will be copied recursively to the destination <code>to</code>.</p><p>The copy wi
       </span>
       
       <p class="shortcomment cmt">Deletes the file represented by the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Deletes the file represented by the specified <code>path</code>, asynchronously.</p><p>If the path represents a directory and <code>recursive = true</code> then the directory and its contents will be
-deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">recursive</dt><dd class="cmt"><p>delete recursively?</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+deleted recursively.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">recursive</dt><dd class="cmt"><p>delete recursively?</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#deleteRecursiveBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="deleteRecursiveBlocking(path:String,recursive:Boolean):io.vertx.scala.core.file.FileSystem"></a><a id="deleteRecursiveBlocking(String,Boolean):FileSystem"></a>
       <span class="permalink">
@@ -851,7 +1178,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">deleteRecursiveBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="recursive">recursive: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#deleteRecursiveFuture(path:String,recursive:Boolean):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#deleteRecursiveFuture">io.vertx.scala.core.file.FileSystem#deleteRecursiveFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#deleteRecursive(path:String,recursive:Boolean,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#deleteRecursive">io.vertx.scala.core.file.FileSystem#deleteRecursive</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#deleteRecursiveFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="deleteRecursiveFuture(path:String,recursive:Boolean):scala.concurrent.Future[Unit]"></a><a id="deleteRecursiveFuture(String,Boolean):scala.concurrent.Future[Unit]"></a>
@@ -916,7 +1243,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">exists</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Boolean">Boolean</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Determines whether the file as specified by the path <code>path</code> exists, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Determines whether the file as specified by the path <code>path</code> exists, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Determines whether the file as specified by the path <code>path</code> exists, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Determines whether the file as specified by the path <code>path</code> exists, asynchronously.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#existsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="existsBlocking(path:String):Boolean"></a><a id="existsBlocking(String):Boolean"></a>
       <span class="permalink">
@@ -932,7 +1259,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">existsBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#existsFuture(path:String):scala.concurrent.Future[Boolean]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#existsFuture">io.vertx.scala.core.file.FileSystem#existsFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#exists(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Boolean]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#exists">io.vertx.scala.core.file.FileSystem#exists</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#existsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="existsFuture(path:String):scala.concurrent.Future[Boolean]"></a><a id="existsFuture(String):scala.concurrent.Future[Boolean]"></a>
@@ -987,7 +1314,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">fsProps</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="FileSystemProps.html" class="extype" name="io.vertx.scala.core.file.FileSystemProps">FileSystemProps</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Returns properties of the file-system being used by the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Returns properties of the file-system being used by the specified <code>path</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to anywhere on the filesystem</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns properties of the file-system being used by the specified <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Returns properties of the file-system being used by the specified <code>path</code>, asynchronously.   * @param path path to anywhere on the filesystem</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#fsPropsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="fsPropsBlocking(path:String):io.vertx.scala.core.file.FileSystemProps"></a><a id="fsPropsBlocking(String):FileSystemProps"></a>
       <span class="permalink">
@@ -1003,7 +1330,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">fsPropsBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="FileSystemProps.html" class="extype" name="io.vertx.scala.core.file.FileSystemProps">FileSystemProps</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#fsPropsFuture(path:String):scala.concurrent.Future[io.vertx.scala.core.file.FileSystemProps]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#fsPropsFuture">io.vertx.scala.core.file.FileSystem#fsPropsFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#fsProps(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.file.FileSystemProps]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#fsProps">io.vertx.scala.core.file.FileSystem#fsProps</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#fsPropsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="fsPropsFuture(path:String):scala.concurrent.Future[io.vertx.scala.core.file.FileSystemProps]"></a><a id="fsPropsFuture(String):scala.concurrent.Future[FileSystemProps]"></a>
@@ -1090,7 +1417,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">link</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="existing">existing: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Create a hard link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a hard link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">link</dt><dd class="cmt"><p>the link</p></dd><dt class="param">existing</dt><dd class="cmt"><p>the link destination</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Create a hard link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a hard link on the file system from <code>link</code> to <code>existing</code>, asynchronously.   * @param link the link</p></div><dl class="paramcmts block"><dt class="param">existing</dt><dd class="cmt"><p>the link destination</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#linkBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="linkBlocking(link:String,existing:String):io.vertx.scala.core.file.FileSystem"></a><a id="linkBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -1106,7 +1433,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">linkBlocking</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="existing">existing: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#linkFuture(link:String,existing:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#linkFuture">io.vertx.scala.core.file.FileSystem#linkFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#link(link:String,existing:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#link">io.vertx.scala.core.file.FileSystem#link</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#linkFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="linkFuture(link:String,existing:String):scala.concurrent.Future[Unit]"></a><a id="linkFuture(String,String):scala.concurrent.Future[Unit]"></a>
@@ -1139,7 +1466,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">lprops</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="FileProps.html" class="extype" name="io.vertx.scala.core.file.FileProps">FileProps</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Obtain properties for the link represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Obtain properties for the link represented by <code>path</code>, asynchronously.</p><p>The link will not be followed.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Obtain properties for the link represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Obtain properties for the link represented by <code>path</code>, asynchronously.</p><p>The link will not be followed.   * @param path the path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#lpropsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="lpropsBlocking(path:String):io.vertx.scala.core.file.FileProps"></a><a id="lpropsBlocking(String):FileProps"></a>
       <span class="permalink">
@@ -1155,7 +1482,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
         <span class="name">lpropsBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="FileProps.html" class="extype" name="io.vertx.scala.core.file.FileProps">FileProps</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#lpropsFuture(path:String):scala.concurrent.Future[io.vertx.scala.core.file.FileProps]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#lpropsFuture">io.vertx.scala.core.file.FileSystem#lpropsFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#lprops(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.file.FileProps]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#lprops">io.vertx.scala.core.file.FileSystem#lprops</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#lpropsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="lpropsFuture(path:String):scala.concurrent.Future[io.vertx.scala.core.file.FileProps]"></a><a id="lpropsFuture(String):scala.concurrent.Future[FileProps]"></a>
@@ -1189,7 +1516,7 @@ deleted recursively.</p></div><dl class="paramcmts block"><dt class="param">path
       </span>
       
       <p class="shortcomment cmt">Create the directory represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code>, asynchronously.</p><p>The new directory will be created with permissions as specified by <code>perms</code>.</p><p>The permission String takes the form rwxr-x--- as specified
-in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>The operation will fail if the directory already exists.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>The operation will fail if the directory already exists.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdir" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mkdir(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="mkdir(String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -1205,7 +1532,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdir</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Create the directory represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code>, asynchronously.</p><p>The operation will fail if the directory already exists.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Create the directory represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code>, asynchronously.</p><p>The operation will fail if the directory already exists.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirBlocking(path:String,perms:String):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -1221,7 +1548,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdirBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#mkdirFuture(path:String,perms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdirFuture">io.vertx.scala.core.file.FileSystem#mkdirFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#mkdir(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdir">io.vertx.scala.core.file.FileSystem#mkdir</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirBlocking(path:String):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirBlocking(String):FileSystem"></a>
@@ -1238,7 +1565,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdirBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#mkdirFuture(path:String,perms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdirFuture">io.vertx.scala.core.file.FileSystem#mkdirFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#mkdir(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdir">io.vertx.scala.core.file.FileSystem#mkdir</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirFuture(path:String,perms:String):scala.concurrent.Future[Unit]"></a><a id="mkdirFuture(String,String):scala.concurrent.Future[Unit]"></a>
@@ -1288,7 +1615,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
       </span>
       
       <p class="shortcomment cmt">Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><p>The new directory will be created with permissions as specified by <code>perms</code>.</p><p>The permission String takes the form rwxr-x--- as specified
-in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>The operation will fail if the directory already exists.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>The operation will fail if the directory already exists.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mkdirs(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirs(String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -1304,7 +1631,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdirs</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><p>The operation will fail if the directory already exists.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><p>The operation will fail if the directory already exists.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirsBlocking(path:String,perms:String):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirsBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -1320,7 +1647,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdirsBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="perms">perms: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#mkdirsFuture(path:String,perms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdirsFuture">io.vertx.scala.core.file.FileSystem#mkdirsFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#mkdirs(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdirs">io.vertx.scala.core.file.FileSystem#mkdirs</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirsBlocking(path:String):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirsBlocking(String):FileSystem"></a>
@@ -1337,7 +1664,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdirsBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#mkdirsFuture(path:String,perms:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdirsFuture">io.vertx.scala.core.file.FileSystem#mkdirsFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#mkdirs(path:String,perms:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#mkdirs">io.vertx.scala.core.file.FileSystem#mkdirs</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirsFuture(path:String,perms:String):scala.concurrent.Future[Unit]"></a><a id="mkdirsFuture(String,String):scala.concurrent.Future[Unit]"></a>
@@ -1386,7 +1713,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">move</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <a href="CopyOptions.html" class="extype" name="io.vertx.scala.core.file.CopyOptions">CopyOptions</a></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">from</dt><dd class="cmt"><p>the path to copy from</p></dd><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">options</dt><dd class="cmt"><p>options describing how the file should be copiedsee <a href="../../../../../../../cheatsheet/CopyOptions.html">CopyOptions</a></p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.   * @param from the path to copy from</p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">options</dt><dd class="cmt"><p>options describing how the file should be copied see <a href="../../../../../../../cheatsheet/CopyOptions.html">CopyOptions</a></p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#move" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="move(from:String,to:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="move(String,String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -1402,7 +1729,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">move</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><p>The move will fail if the destination already exists.</p></div><dl class="paramcmts block"><dt class="param">from</dt><dd class="cmt"><p>the path to copy from</p></dd><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p><p>The move will fail if the destination already exists.   * @param from the path to copy from</p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>the path to copy to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#moveBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="moveBlocking(from:String,to:String):io.vertx.scala.core.file.FileSystem"></a><a id="moveBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -1418,7 +1745,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">moveBlocking</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#moveFuture(from:String,to:String,options:io.vertx.scala.core.file.CopyOptions):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#moveFuture">io.vertx.scala.core.file.FileSystem#moveFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#move(from:String,to:String,options:io.vertx.scala.core.file.CopyOptions,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#move">io.vertx.scala.core.file.FileSystem#move</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#moveFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="moveFuture(from:String,to:String,options:io.vertx.scala.core.file.CopyOptions):scala.concurrent.Future[Unit]"></a><a id="moveFuture(String,String,CopyOptions):scala.concurrent.Future[Unit]"></a>
@@ -1521,7 +1848,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">open</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <a href="OpenOptions.html" class="extype" name="io.vertx.scala.core.file.OpenOptions">OpenOptions</a></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="AsyncFile.html" class="extype" name="io.vertx.scala.core.file.AsyncFile">AsyncFile</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Open the file represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Open the file represented by <code>path</code>, asynchronously.</p><p>The file is opened for both reading and writing. If the file does not already exist it will be created.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">options</dt><dd class="cmt"><p>options describing how the file should be openedsee <a href="../../../../../../../cheatsheet/OpenOptions.html">OpenOptions</a></p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Open the file represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Open the file represented by <code>path</code>, asynchronously.</p><p>The file is opened for both reading and writing. If the file does not already exist it will be created.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">options</dt><dd class="cmt"><p>options describing how the file should be opened see <a href="../../../../../../../cheatsheet/OpenOptions.html">OpenOptions</a></p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#openBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="openBlocking(path:String,options:io.vertx.scala.core.file.OpenOptions):io.vertx.scala.core.file.AsyncFile"></a><a id="openBlocking(String,OpenOptions):AsyncFile"></a>
       <span class="permalink">
@@ -1537,7 +1864,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">openBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <a href="OpenOptions.html" class="extype" name="io.vertx.scala.core.file.OpenOptions">OpenOptions</a></span>)</span><span class="result">: <a href="AsyncFile.html" class="extype" name="io.vertx.scala.core.file.AsyncFile">AsyncFile</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#openFuture(path:String,options:io.vertx.scala.core.file.OpenOptions):scala.concurrent.Future[io.vertx.scala.core.file.AsyncFile]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#openFuture">io.vertx.scala.core.file.FileSystem#openFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#open(path:String,options:io.vertx.scala.core.file.OpenOptions,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.file.AsyncFile]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#open">io.vertx.scala.core.file.FileSystem#open</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#openFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="openFuture(path:String,options:io.vertx.scala.core.file.OpenOptions):scala.concurrent.Future[io.vertx.scala.core.file.AsyncFile]"></a><a id="openFuture(String,OpenOptions):scala.concurrent.Future[AsyncFile]"></a>
@@ -1570,7 +1897,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">props</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="FileProps.html" class="extype" name="io.vertx.scala.core.file.FileProps">FileProps</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Obtain properties for the file represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Obtain properties for the file represented by <code>path</code>, asynchronously.</p><p>If the file is a link, the link will be followed.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Obtain properties for the file represented by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Obtain properties for the file represented by <code>path</code>, asynchronously.</p><p>If the file is a link, the link will be followed.   * @param path the path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#propsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="propsBlocking(path:String):io.vertx.scala.core.file.FileProps"></a><a id="propsBlocking(String):FileProps"></a>
       <span class="permalink">
@@ -1586,7 +1913,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">propsBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="FileProps.html" class="extype" name="io.vertx.scala.core.file.FileProps">FileProps</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#propsFuture(path:String):scala.concurrent.Future[io.vertx.scala.core.file.FileProps]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#propsFuture">io.vertx.scala.core.file.FileSystem#propsFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#props(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.file.FileProps]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#props">io.vertx.scala.core.file.FileSystem#props</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#propsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="propsFuture(path:String):scala.concurrent.Future[io.vertx.scala.core.file.FileProps]"></a><a id="propsFuture(String):scala.concurrent.Future[FileProps]"></a>
@@ -1620,7 +1947,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
       </span>
       
       <p class="shortcomment cmt">Read the contents of the directory specified by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Read the contents of the directory specified by <code>path</code>, asynchronously.</p><p>The parameter <code>filter</code> is a regular expression. If <code>filter</code> is specified then only the paths that
-match  @{filter<code>will be returned.</code></p><p>The result is an array of String representing the paths of the files inside the directory.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the directory</p></dd><dt class="param">filter</dt><dd class="cmt"><p>the filter expression</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+match  @{filter<code>will be returned.</code></p><p>The result is an array of String representing the paths of the files inside the directory.   * @param path path to the directory</p></div><dl class="paramcmts block"><dt class="param">filter</dt><dd class="cmt"><p>the filter expression</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#readDir" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readDir(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[scala.collection.mutable.Buffer[String]]]):io.vertx.scala.core.file.FileSystem"></a><a id="readDir(String,Handler[AsyncResult[Buffer[String]]]):FileSystem"></a>
       <span class="permalink">
@@ -1636,7 +1963,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readDir</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Read the contents of the directory specified by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Read the contents of the directory specified by <code>path</code>, asynchronously.</p><p>The result is an array of String representing the paths of the files inside the directory.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Read the contents of the directory specified by <code>path</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Read the contents of the directory specified by <code>path</code>, asynchronously.</p><p>The result is an array of String representing the paths of the files inside the directory.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#readDirBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readDirBlocking(path:String,filter:String):scala.collection.mutable.Buffer[String]"></a><a id="readDirBlocking(String,String):Buffer[String]"></a>
       <span class="permalink">
@@ -1652,7 +1979,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readDirBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="filter">filter: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#readDirFuture(path:String,filter:String):scala.concurrent.Future[scala.collection.mutable.Buffer[String]]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readDirFuture">io.vertx.scala.core.file.FileSystem#readDirFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#readDir(path:String,filter:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[scala.collection.mutable.Buffer[String]]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readDir">io.vertx.scala.core.file.FileSystem#readDir</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#readDirBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readDirBlocking(path:String):scala.collection.mutable.Buffer[String]"></a><a id="readDirBlocking(String):Buffer[String]"></a>
@@ -1669,7 +1996,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readDirBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#readDirFuture(path:String,filter:String):scala.concurrent.Future[scala.collection.mutable.Buffer[String]]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readDirFuture">io.vertx.scala.core.file.FileSystem#readDirFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#readDir(path:String,filter:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[scala.collection.mutable.Buffer[String]]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readDir">io.vertx.scala.core.file.FileSystem#readDir</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#readDirFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readDirFuture(path:String,filter:String):scala.concurrent.Future[scala.collection.mutable.Buffer[String]]"></a><a id="readDirFuture(String,String):scala.concurrent.Future[Buffer[String]]"></a>
@@ -1718,7 +2045,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Reads the entire file as represented by the path <code>path</code> as a , asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Reads the entire file as represented by the path <code>path</code> as a , asynchronously.</p><p>Do not use this method to read very large files or you risk running out of available RAM.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Reads the entire file as represented by the path <code>path</code> as a , asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Reads the entire file as represented by the path <code>path</code> as a , asynchronously.</p><p>Do not use this method to read very large files or you risk running out of available RAM.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#readFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readFileBlocking(path:String):io.vertx.core.buffer.Buffer"></a><a id="readFileBlocking(String):Buffer"></a>
       <span class="permalink">
@@ -1734,7 +2061,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readFileBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#readFileFuture(path:String):scala.concurrent.Future[io.vertx.core.buffer.Buffer]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readFileFuture">io.vertx.scala.core.file.FileSystem#readFileFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#readFile(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.core.buffer.Buffer]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readFile">io.vertx.scala.core.file.FileSystem#readFile</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#readFileFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readFileFuture(path:String):scala.concurrent.Future[io.vertx.core.buffer.Buffer]"></a><a id="readFileFuture(String):scala.concurrent.Future[Buffer]"></a>
@@ -1767,7 +2094,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readSymlink</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Returns the path representing the file that the symbolic link specified by <code>link</code> points to, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the path representing the file that the symbolic link specified by <code>link</code> points to, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">link</dt><dd class="cmt"><p>the link</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns the path representing the file that the symbolic link specified by <code>link</code> points to, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the path representing the file that the symbolic link specified by <code>link</code> points to, asynchronously.   * @param link the link</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#readSymlinkBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readSymlinkBlocking(link:String):String"></a><a id="readSymlinkBlocking(String):String"></a>
       <span class="permalink">
@@ -1783,7 +2110,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">readSymlinkBlocking</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#readSymlinkFuture(link:String):scala.concurrent.Future[String]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readSymlinkFuture">io.vertx.scala.core.file.FileSystem#readSymlinkFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#readSymlink(link:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[String]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#readSymlink">io.vertx.scala.core.file.FileSystem#readSymlink</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#readSymlinkFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="readSymlinkFuture(link:String):scala.concurrent.Future[String]"></a><a id="readSymlinkFuture(String):scala.concurrent.Future[String]"></a>
@@ -1816,7 +2143,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">symlink</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="existing">existing: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Create a symbolic link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a symbolic link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">link</dt><dd class="cmt"><p>the link</p></dd><dt class="param">existing</dt><dd class="cmt"><p>the link destination</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Create a symbolic link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a symbolic link on the file system from <code>link</code> to <code>existing</code>, asynchronously.   * @param link the link</p></div><dl class="paramcmts block"><dt class="param">existing</dt><dd class="cmt"><p>the link destination</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#symlinkBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="symlinkBlocking(link:String,existing:String):io.vertx.scala.core.file.FileSystem"></a><a id="symlinkBlocking(String,String):FileSystem"></a>
       <span class="permalink">
@@ -1832,7 +2159,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">symlinkBlocking</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="existing">existing: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#linkFuture(link:String,existing:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#linkFuture">io.vertx.scala.core.file.FileSystem#linkFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#link(link:String,existing:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#link">io.vertx.scala.core.file.FileSystem#link</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#symlinkFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="symlinkFuture(link:String,existing:String):scala.concurrent.Future[Unit]"></a><a id="symlinkFuture(String,String):scala.concurrent.Future[Unit]"></a>
@@ -1897,7 +2224,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">truncate</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="len">len: <span class="extype" name="scala.Long">Long</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Truncate the file represented by <code>path</code> to length <code>len</code> in bytes, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Truncate the file represented by <code>path</code> to length <code>len</code> in bytes, asynchronously.</p><p>The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the path to the file</p></dd><dt class="param">len</dt><dd class="cmt"><p>the length to truncate it to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Truncate the file represented by <code>path</code> to length <code>len</code> in bytes, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Truncate the file represented by <code>path</code> to length <code>len</code> in bytes, asynchronously.</p><p>The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.   * @param path the path to the file</p></div><dl class="paramcmts block"><dt class="param">len</dt><dd class="cmt"><p>the length to truncate it to</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#truncateBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="truncateBlocking(path:String,len:Long):io.vertx.scala.core.file.FileSystem"></a><a id="truncateBlocking(String,Long):FileSystem"></a>
       <span class="permalink">
@@ -1913,7 +2240,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">truncateBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="len">len: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#truncateFuture(path:String,len:Long):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#truncateFuture">io.vertx.scala.core.file.FileSystem#truncateFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#truncate(path:String,len:Long,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#truncate">io.vertx.scala.core.file.FileSystem#truncate</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#truncateFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="truncateFuture(path:String,len:Long):scala.concurrent.Future[Unit]"></a><a id="truncateFuture(String,Long):scala.concurrent.Future[Unit]"></a>
@@ -1946,7 +2273,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">unlink</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Unlinks the link on the file system represented by the path <code>link</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Unlinks the link on the file system represented by the path <code>link</code>, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">link</dt><dd class="cmt"><p>the link</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Unlinks the link on the file system represented by the path <code>link</code>, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Unlinks the link on the file system represented by the path <code>link</code>, asynchronously.   * @param link the link</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#unlinkBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="unlinkBlocking(link:String):io.vertx.scala.core.file.FileSystem"></a><a id="unlinkBlocking(String):FileSystem"></a>
       <span class="permalink">
@@ -1962,7 +2289,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
         <span class="name">unlinkBlocking</span><span class="params">(<span name="link">link: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#unlinkFuture(link:String):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#unlinkFuture">io.vertx.scala.core.file.FileSystem#unlinkFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#unlink(link:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#unlink">io.vertx.scala.core.file.FileSystem#unlink</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#unlinkFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="unlinkFuture(link:String):scala.concurrent.Future[Unit]"></a><a id="unlinkFuture(String):scala.concurrent.Future[Unit]"></a>
@@ -2065,7 +2392,7 @@ match  @{filter<code>will be returned.</code></p><p>The result is an array of St
       
       <p class="shortcomment cmt">Creates the file, and writes the specified <code>Buffer data</code> to the file represented by the path <code>path</code>,
 asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Creates the file, and writes the specified <code>Buffer data</code> to the file represented by the path <code>path</code>,
-asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to the file</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+asynchronously.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#writeFileBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="writeFileBlocking(path:String,data:io.vertx.core.buffer.Buffer):io.vertx.scala.core.file.FileSystem"></a><a id="writeFileBlocking(String,Buffer):FileSystem"></a>
       <span class="permalink">
@@ -2081,7 +2408,7 @@ asynchronously.</p></div><dl class="paramcmts block"><dt class="param">path</dt>
         <span class="name">writeFileBlocking</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="data">data: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Blocking version of <a href="#writeFileFuture(path:String,data:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.file.FileSystem#writeFileFuture">io.vertx.scala.core.file.FileSystem#writeFileFuture</a>
+      <p class="shortcomment cmt">Blocking version of <a href="#writeFile(path:String,data:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem" class="extmbr" name="io.vertx.scala.core.file.FileSystem#writeFile">io.vertx.scala.core.file.FileSystem#writeFile</a>
 </p>
     </li><li name="io.vertx.scala.core.file.FileSystem#writeFileFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="writeFileFuture(path:String,data:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]"></a><a id="writeFileFuture(String,Buffer):scala.concurrent.Future[Unit]"></a>

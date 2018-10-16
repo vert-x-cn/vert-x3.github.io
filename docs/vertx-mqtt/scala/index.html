@@ -306,13 +306,13 @@ this module has the tech preview status, this means the API can change between v
 <h3 id="_handling_client_connection_disconnection">Handling client connection/disconnection</h3>
 <div class="paragraph">
 <p>This example shows how it&#8217;s possible to handle the connection request from a remote MQTT client. First, an
-<code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html">MqttServer</a></code> instance is created and the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html#endpointHandler(io.vertx.core.Handler)">endpointHandler</a></code> method is used to specify the handler called
+<code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html">MqttServer</a>`instance is created and the `<a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html#endpointHandler()">endpointHandler</a></code> method is used to specify the handler called
 when a remote client sends a CONNECT message for connecting to the server itself. The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html">MqttEndpoint</a></code>
 instance, provided as parameter to the handler, brings all main information related to the CONNECT message like client identifier,
 username/password, "will" information, clean session flag, protocol version and the "keep alive" timeout.
-Inside that handler, the <em>endpoint</em> instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#accept(boolean)">accept</a></code> method
+Inside that handler, the <em>endpoint</em> instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#accept()">accept</a></code> method
 for replying to the remote client with the corresponding CONNACK message : in this way, the connection is established.
-Finally, the server is started using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html#listen(io.vertx.core.Handler)">listen</a></code> method with
+Finally, the server is started using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html#listen()">listen</a></code> method with
 the default behavior (on localhost and default MQTT port 1883). The same method allows to specify an handler in order
 to check if the server is started properly or not.</p>
 </div>
@@ -322,7 +322,7 @@ to check if the server is started properly or not.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The same <em>endpoint</em> instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#disconnectHandler(io.vertx.core.Handler)">disconnectHandler</a></code>
+<p>The same <em>endpoint</em> instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#disconnectHandler()">disconnectHandler</a></code>
 for specifying the handler called when the remote client sends a DISCONNECT message in order to disconnect from the server;
 this handler takes no parameters.</p>
 </div>
@@ -340,15 +340,15 @@ endpoint.disconnectHandler((v: java.lang.Void) =&gt; {
 <h3 id="_handling_client_connection_disconnection_with_ssl_tls_support">Handling client connection/disconnection with SSL/TLS support</h3>
 <div class="paragraph">
 <p>The server has the support for accepting connection requests through the SSL/TLS protocol for authentication and encryption.
-In order to do that, the <code><a href="../../vertx-mqtt/dataobjects.html#MqttServerOptions">MqttServerOptions</a></code> class provides the <code><a href="../../vertx-mqtt/dataobjects.html#MqttServerOptions#setSsl(boolean)">ssl</a></code> method
+In order to do that, the <code><a href="../../vertx-mqtt/dataobjects.html#MqttServerOptions">MqttServerOptions</a></code> class provides the <code><a href="../../vertx-mqtt/dataobjects.html#MqttServerOptions#setSsl()">ssl</a></code> method
 for setting the usage of SSL/TLS (passing 'true' as value) and some other useful methods for providing server certificate and
 related private key (as Java key store reference, PEM or PFX format). In the following example, the
-<code><a href="../../vertx-mqtt/dataobjects.html#MqttServerOptions#setKeyCertOptions(io.vertx.core.net.KeyCertOptions)">keyCertOptions</a></code> method is used in order to
+<code><a href="../../vertx-mqtt/dataobjects.html#MqttServerOptions#setKeyCertOptions()">keyCertOptions</a>`method is used in order to
 pass the certificates in PEM format. This method requires an instance of the possible implementations of the
-<code>KeyCertOptions</code> interface and in this case the <code><a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> class
+`KeyCertOptions`interface and in this case the `<a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> class
 is used in order to provide the path for the server certificate and the private key with the correspondent
-<code><a href="../dataobjects.html#PemKeyCertOptions#setCertPath(java.lang.String)">certPath</a></code> and
-<code><a href="../dataobjects.html#PemKeyCertOptions#setKeyPath(java.lang.String)">keyPath</a></code> methods.
+`<a href="../dataobjects.html#PemKeyCertOptions#setCertPath()">certPath</a>`and
+`<a href="../dataobjects.html#PemKeyCertOptions#setKeyPath()">keyPath</a>`methods.
 The MQTT server is started passing the Vert.x instance as usual and the above MQTT options instance to the creation method.</p>
 </div>
 <div class="listingblock">
@@ -365,10 +365,10 @@ The MQTT server is started passing the Vert.x instance as usual and the above MQ
 <div class="paragraph">
 <p>After a connection is established between client and server, the client can send a subscription request for a topic
 using the SUBSCRIBE message. The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html">MqttEndpoint</a></code> interface allows to specify an handler for the
-incoming subscription request using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#subscribeHandler(io.vertx.core.Handler)">subscribeHandler</a></code> method.
+incoming subscription request using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#subscribeHandler()">subscribeHandler</a></code> method.
 Such handler receives an instance of the <code><a href="../../scaladocs/io/vertx/scala/mqtt/messages/MqttSubscribeMessage.html">MqttSubscribeMessage</a></code> interface which brings
 the list of topics with related QoS levels as desired by the client.
-Finally, the endpoint instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#subscribeAcknowledge(int,%20java.util.List)">subscribeAcknowledge</a></code> method
+Finally, the endpoint instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#subscribeAcknowledge(int)">subscribeAcknowledge</a></code> method
 for replying to the client with the related SUBACK message containing the granted QoS levels.</p>
 </div>
 <div class="listingblock">
@@ -389,10 +389,10 @@ endpoint.subscribeHandler((subscribe: io.vertx.scala.mqtt.messages.MqttSubscribe
 </div>
 </div>
 <div class="paragraph">
-<p>In the same way, it&#8217;s possible to use the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#unsubscribeHandler(io.vertx.core.Handler)">unsubscribeHandler</a></code> method
+<p>In the same way, it&#8217;s possible to use the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#unsubscribeHandler()">unsubscribeHandler</a></code> method
 on the endpoint in order to specify the handler called when the client sends an UNSUBSCRIBE message. This handler receives
 an instance of the <code><a href="../../scaladocs/io/vertx/scala/mqtt/messages/MqttUnsubscribeMessage.html">MqttUnsubscribeMessage</a></code> interface as parameter with the list of topics to unsubscribe.
-Finally, the endpoint instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#unsubscribeAcknowledge(int)">unsubscribeAcknowledge</a></code> method
+Finally, the endpoint instance provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#unsubscribeAcknowledge()">unsubscribeAcknowledge</a></code> method
 for replying to the client with the related UNSUBACK message.</p>
 </div>
 <div class="listingblock">
@@ -414,7 +414,7 @@ endpoint.unsubscribeHandler((unsubscribe: io.vertx.scala.mqtt.messages.MqttUnsub
 <h3 id="_handling_client_published_message">Handling client published message</h3>
 <div class="paragraph">
 <p>In order to handle incoming messages published by the remote client, the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html">MqttEndpoint</a></code> interface provides
-the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishHandler(io.vertx.core.Handler)">publishHandler</a></code> method for specifying the handler called
+the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishHandler()">publishHandler</a></code> method for specifying the handler called
 when the client sends a PUBLISH message. This handler receives an instance of the <code><a href="../../scaladocs/io/vertx/scala/mqtt/messages/MqttPublishMessage.html">MqttPublishMessage</a></code>
 interface as parameter with the payload, the QoS level, the duplicate and retain flags.</p>
 </div>
@@ -423,14 +423,14 @@ interface as parameter with the payload, the QoS level, the duplicate and retain
 </div>
 <div class="paragraph">
 <p>If the QoS level is 1 (AT_LEAST_ONCE), the endpoind needs to reply with a PUBACK message using the
-available <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishAcknowledge(int)">publishAcknowledge</a></code> method.</p>
+available <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishAcknowledge()">publishAcknowledge</a></code> method.</p>
 </div>
 <div class="paragraph">
 <p>If the QoS level is 2 (EXACTLY_ONCE), the endpoint needs to reply with a PUBREC message using the
-available <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishReceived(int)">publishReceived</a></code> method; in this case the same endpoint should handle
+available <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishReceived()">publishReceived</a></code> method; in this case the same endpoint should handle
 the PUBREL message received from the client as well (the remote client sends it after receiving the PUBREC from the endpoint)
-and it can do that specifying the handler through the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishReleaseHandler(io.vertx.core.Handler)">publishReleaseHandler</a></code> method.
-In order to close the QoS level 2 delivery, the endpoint can use the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishComplete(int)">publishComplete</a></code> method
+and it can do that specifying the handler through the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishReleaseHandler()">publishReleaseHandler</a></code> method.
+In order to close the QoS level 2 delivery, the endpoint can use the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishComplete()">publishComplete</a></code> method
 for sending the PUBCOMP message to the client.</p>
 </div>
 <div class="listingblock">
@@ -457,7 +457,7 @@ endpoint.publishHandler((message: io.vertx.scala.mqtt.messages.MqttPublishMessag
 <h3 id="_publish_message_to_the_client">Publish message to the client</h3>
 <div class="paragraph">
 <p>The endpoint can publish a message to the remote client (sending a PUBLISH message) using the
-<code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publish(java.lang.String,%20io.vertx.core.buffer.Buffer,%20io.netty.handler.codec.mqtt.MqttQoS,%20boolean,%20boolean)">publish</a></code> method
+`<a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publish(java.lang.String,%20io.vertx.core.buffer.Buffer,%20io.netty.handler.codec.mqtt.MqttQoS,%20boolean)">publish</a>`method
 which takes the following input parameters : the topic to publish, the payload, the QoS level, the duplicate and retain flags.</p>
 </div>
 <div class="paragraph">
@@ -465,15 +465,15 @@ which takes the following input parameters : the topic to publish, the payload, 
 </div>
 <div class="paragraph">
 <p>If the QoS level is 1 (AT_LEAST_ONCE), the endpoint needs to handle the PUBACK message received from the client
-in order to receive final acknowledge of delivery. It&#8217;s possible using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishAcknowledgeHandler(io.vertx.core.Handler)">publishAcknowledgeHandler</a></code> method
+in order to receive final acknowledge of delivery. It&#8217;s possible using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishAcknowledgeHandler()">publishAcknowledgeHandler</a></code> method
 specifying such an handler.</p>
 </div>
 <div class="paragraph">
 <p>If the QoS level is 2 (EXACTLY_ONCE), the endpoint needs to handle the PUBREC message received from the client.
-The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishReceivedHandler(io.vertx.core.Handler)">publishReceivedHandler</a></code> method allows to specify
-the handler for that. Inside that handler, the endpoint can use the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishRelease(int)">publishRelease</a></code> method
+The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishReceivedHandler()">publishReceivedHandler</a></code> method allows to specify
+the handler for that. Inside that handler, the endpoint can use the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishRelease()">publishRelease</a></code> method
 for replying to the client with the PUBREL message. The last step is to handle the PUBCOMP message received from the client
-as final acknowledge for the published message; it&#8217;s possible using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishCompletionHandler(io.vertx.core.Handler)">publishCompletionHandler</a></code>
+as final acknowledge for the published message; it&#8217;s possible using the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#publishCompletionHandler()">publishCompletionHandler</a></code>
 for specifying the handler called when the final PUBCOMP message is received.</p>
 </div>
 <div class="listingblock">
@@ -506,7 +506,7 @@ send messages in such timeout. At same time, for every PINGREQ received, the ser
 </div>
 <div class="paragraph">
 <p>Even if there is no need for the high level application to handle that, the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html">MqttEndpoint</a></code> interface
-provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#pingHandler(io.vertx.core.Handler)">pingHandler</a></code> method for specifying an handler
+provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttEndpoint.html#pingHandler()">pingHandler</a></code> method for specifying an handler
 called when a PINGREQ message is received from the client. It&#8217;s just a notification to the application that the client
 isn&#8217;t sending meaningful messages but only pings for keeping alive; in any case the PINGRESP is automatically sent
 by the server internally as described above.</p>
@@ -524,7 +524,7 @@ endpoint.pingHandler((v: java.lang.Void) =&gt; {
 <div class="sect2">
 <h3 id="_closing_the_server">Closing the server</h3>
 <div class="paragraph">
-<p>The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html">MqttServer</a></code> interface provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html#close(io.vertx.core.Handler)">close</a></code> method
+<p>The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html">MqttServer</a></code> interface provides the <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttServer.html#close()">close</a></code> method
 that can be used for closing the server; it stops to listen for incoming connections and closes all the active connections
 with remote clients. This method is asynchronous and one overload provides the possibility to specify a complention handler
 that will be called when the server is really closed.</p>
@@ -620,7 +620,7 @@ to connect to passing instance of <code><a href="../../vertx-mqtt/dataobjects.ht
 </div>
 <div class="paragraph">
 <p>This example shows how you could connect to a server and disconnect from it using Vert.x MQTT client
-and calling <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#connect(int,%20java.lang.String,%20io.vertx.core.Handler)">connect</a></code> and <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#disconnect()">disconnect</a></code> methods.</p>
+and calling <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#connect(int,%20java.lang.String)">connect</a></code> and <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#disconnect()">disconnect</a></code> methods.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -660,15 +660,15 @@ default address of server provided by <code><a href="../../vertx-mqtt/dataobject
 </div>
 </div>
 <div class="paragraph">
-<p>Here we have the example of usage of <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#subscribe(java.lang.String,%20int)">subscribe</a></code> method. In order to receive messages from rpi2/temp topic we call <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#subscribe(java.lang.String,%20int)">subscribe</a></code> method.
+<p>Here we have the example of usage of <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#subscribe(java.lang.String)">subscribe</a></code> method. In order to receive messages from rpi2/temp topic we call <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#subscribe(java.lang.String)">subscribe</a></code> method.
 Although, to handle received messages from server you need to provide a handler, which will be called each time you have a new messages in the topics you subscribe on.
-As this example shows, handler could be provided via <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#publishHandler(io.vertx.core.Handler)">publishHandler</a></code> method.</p>
+As this example shows, handler could be provided via <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#publishHandler()">publishHandler</a></code> method.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_publishing_message_to_a_topic">Publishing message to a topic</h3>
 <div class="paragraph">
-<p>If you would like to publish some message into topic then <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#publish(java.lang.String,%20io.vertx.core.buffer.Buffer,%20io.netty.handler.codec.mqtt.MqttQoS,%20boolean,%20boolean)">publish</a></code> should be called.
+<p>If you would like to publish some message into topic then <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#publish(java.lang.String,%20io.vertx.core.buffer.Buffer,%20io.netty.handler.codec.mqtt.MqttQoS,%20boolean)">publish</a></code> should be called.
 Let&#8217;s take a look at the example:</p>
 </div>
 <div class="listingblock">
@@ -700,7 +700,7 @@ The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html">MqttClie
 </table>
 </div>
 <div class="paragraph">
-<p>If you want to disable this feature then you should call <code><a href="../../vertx-mqtt/dataobjects.html#MqttClientOptions#setAutoKeepAlive(boolean)">autoKeepAlive</a></code> with {@code false} as argument:</p>
+<p>If you want to disable this feature then you should call <code><a href="../../vertx-mqtt/dataobjects.html#MqttClientOptions#setAutoKeepAlive()">autoKeepAlive</a></code> with {@code false} as argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -715,7 +715,7 @@ The <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html">MqttClie
 <li>
 <p>publish is completed</p>
 <div class="paragraph">
-<p>You could provide handler by calling <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#publishCompletionHandler(io.vertx.core.Handler)">publishCompletionHandler</a></code>. The handler will be called each time publish is completed.
+<p>You could provide handler by calling <code><a href="../../scaladocs/io/vertx/scala/mqtt/MqttClient.html#publishCompletionHandler()">publishCompletionHandler</a></code>. The handler will be called each time publish is completed.
 This one is pretty useful because you could see the packetId of just received PUBACK or PUBCOMP packet.</p>
 </div>
 </li>
@@ -803,7 +803,7 @@ The handler WILL NOT BE CALLED if sent publish packet with QoS=0.
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:01 CST
+                上次更新时间 2018-10-16 18:25:10 CST
               
               
             </div>
@@ -834,6 +834,7 @@ The handler WILL NOT BE CALLED if sent publish packet with QoS=0.
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

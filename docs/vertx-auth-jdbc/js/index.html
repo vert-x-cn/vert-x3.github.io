@@ -242,8 +242,8 @@ var authProvider = JDBCAuth.create(vertx, jdbcClient);</code></pre>
 <div class="paragraph">
 <p>Vert.X的默认标准配置（Out Of the Box）中包含了某些针对认证和授权的信息查询， 如果你想要使用不同的数据库模式（Schema），
 这些查询内容可以通过 <code><a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setAuthenticationQuery">setAuthenticationQuery</a></code>,
-<code><a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setPermissionsQuery">setPermissionsQuery</a></code> 和
-<code><a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setRolesQuery">setRolesQuery</a></code> 方法进行更改：</p>
+`<a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setPermissionsQuery">setPermissionsQuery</a>`和
+`<a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setRolesQuery">setRolesQuery</a>`方法进行更改：</p>
 </div>
 <div class="paragraph">
 <p>Vert.X默认实现中的密码在数据库中使用了SHA-512算法加密后进行存储，之后会连接对应的 <code>salt</code> 值，这个 <code>salt</code> 值和密码存储在同一个表里。</p>
@@ -299,7 +299,7 @@ passwords, so you will need to migrate the passwords from one algorithm to the s
 </div>
 <div class="paragraph">
 <p>如果你想要重写这些行为，则可以重写
-<code><a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setHashStrategy">setHashStrategy</a></code> 方法去修改Hash策略的设置。</p>
+`<a href="../../jsdoc/module-vertx-auth-jdbc-js_jdbc_auth-JDBCAuth.html#setHashStrategy">setHashStrategy</a>`方法去修改Hash策略的设置。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -538,7 +538,7 @@ authProvider.authenticate(authInfo, function (res, res_err) {
 </div>
 <div class="paragraph">
 <p>如果要验证一个用户是否拥有特定的许可，则需要将许可信息传递到
-<code><a href="../../jsdoc/module-vertx-auth-common-js_user-User.html#isAuthorised">isAuthorised</a></code> 中：</p>
+`<a href="../../jsdoc/module-vertx-auth-common-js_user-User.html#isAuthorised">isAuthorised</a>`中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -580,7 +580,7 @@ authProvider.authenticate(authInfo, function (res, res_err) {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:15:28 CST
+                上次更新时间 2018-10-16 18:23:29 CST
               
               
             </div>
@@ -611,6 +611,7 @@ authProvider.authenticate(authInfo, function (res, res_err) {
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

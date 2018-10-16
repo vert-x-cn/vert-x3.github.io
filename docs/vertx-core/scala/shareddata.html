@@ -288,8 +288,8 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>这使得它们对于托管Vert.x Web应用程序的服务器场中的会话状态存储非常有用。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getAsyncMap(java.lang.String,%20io.vertx.core.Handler)">getAsyncMap</a></code> 方法获取
-<code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html">AsyncMap</a></code> 的实例。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getAsyncMap(java.lang.String)">getAsyncMap</a></code> 方法获取
+`<a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html">AsyncMap</a>`的实例。</p>
 </div>
 <div class="paragraph">
 <p>获取Map的过程是异步的，返回结果可以传给您指定的处理器中。以下是一个例子：</p>
@@ -311,7 +311,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <div class="sect3">
 <h4 id="_将数据放入map">将数据放入Map</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#put(java.lang.Object,%20java.lang.Object,%20io.vertx.core.Handler)">put</a></code> 方法将数据放入Map。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#put(java.lang.Object,%20java.lang.Object)">put</a></code> 方法将数据放入Map。</p>
 </div>
 <div class="paragraph">
 <p><code>put</code> 方法是异步的，一旦完成它会通知处理器：</p>
@@ -332,7 +332,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <div class="sect3">
 <h4 id="_从map读取数据">从Map读取数据</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#get(java.lang.Object,%20io.vertx.core.Handler)">get</a></code> 方法从Map读取数据。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#get(java.lang.Object)">get</a></code> 方法从Map读取数据。</p>
 </div>
 <div class="paragraph">
 <p><code>get</code> 方法也是异步的，一段时间过后它会通知处理器并传入结果。</p>
@@ -370,7 +370,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <p>集群范围锁具有异步API，它和大多数等待锁释放的阻塞调用线程的API锁不相同。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getLock(java.lang.String,%20io.vertx.core.Handler)">getLock</a></code> 方法获取锁。</p>
+<p>可使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getLock(java.lang.String)">getLock</a></code> 方法获取锁。</p>
 </div>
 <div class="paragraph">
 <p>它不会阻塞，但当锁可用时，将 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/Lock.html">Lock</a></code> 的实例传入处理器并调用它，表示您现在拥有该锁。</p>
@@ -428,7 +428,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <p>您可以用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/Counter.html">Counter</a></code> 来做到这一点。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getCounter(java.lang.String,%20io.vertx.core.Handler)">getCounter</a></code> 方法获取一个实例：</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getCounter(java.lang.String)">getCounter</a></code> 方法获取一个实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -457,7 +457,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:19 CST
+                上次更新时间 2018-10-16 18:24:18 CST
               
               
             </div>
@@ -488,6 +488,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

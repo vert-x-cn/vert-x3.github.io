@@ -287,7 +287,8 @@ to a <a href="WriteStream.html" class="extype" name="io.vertx.scala.core.streams
         <span class="name">endHandler</span><span class="params">(<span name="endHandler">endHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.core.streams.ReadStream#exceptionHandler" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="exceptionHandler(handler:io.vertx.core.Handler[Throwable]):io.vertx.scala.core.streams.ReadStream[T]"></a><a id="exceptionHandler(Handler[Throwable]):ReadStream[T]"></a>
       <span class="permalink">
@@ -303,7 +304,26 @@ to a <a href="WriteStream.html" class="extype" name="io.vertx.scala.core.streams
         <span class="name">exceptionHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Set an exception handler on the read stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the read stream.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the exception handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an exception handler on the read stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the read stream.   * @param handler the exception handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.streams.ReadStream#fetch" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="fetch(amount:Long):io.vertx.scala.core.streams.ReadStream[T]"></a><a id="fetch(Long):ReadStream[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/streams/ReadStream.html#fetch(amount:Long):io.vertx.scala.core.streams.ReadStream[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fetch</span><span class="params">(<span name="amount">amount: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Fetch the specified <code>amount</code> of elements.</p><div class="fullcomment"><div class="comment cmt"><p>Fetch the specified <code>amount</code> of elements. If the <code>ReadStream</code> has been paused, reading will
+recommence with the specified <code>amount</code> of items, otherwise the specified <code>amount</code> will
+be added to the current stream demand.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.core.streams.ReadStream#handler" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="handler(handler:io.vertx.core.Handler[T]):io.vertx.scala.core.streams.ReadStream[T]"></a><a id="handler(Handler[T]):ReadStream[T]"></a>
       <span class="permalink">
@@ -319,7 +339,8 @@ to a <a href="WriteStream.html" class="extype" name="io.vertx.scala.core.streams
         <span class="name">handler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.core.streams.ReadStream#pause" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="pause():io.vertx.scala.core.streams.ReadStream[T]"></a><a id="pause():ReadStream[T]"></a>
       <span class="permalink">
@@ -335,7 +356,8 @@ to a <a href="WriteStream.html" class="extype" name="io.vertx.scala.core.streams
         <span class="name">pause</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.core.streams.ReadStream#resume" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="resume():io.vertx.scala.core.streams.ReadStream[T]"></a><a id="resume():ReadStream[T]"></a>
       <span class="permalink">
@@ -351,7 +373,8 @@ to a <a href="WriteStream.html" class="extype" name="io.vertx.scala.core.streams
         <span class="name">resume</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.scala.core.streams.ReadStream.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li></ol>
             </div>
 

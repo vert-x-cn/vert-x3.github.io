@@ -391,7 +391,7 @@ authentication it is likely to contain a JSON object with the following structur
   `
 </pre>
 For other types of authentication it contain different information - for example a JWT token or OAuth bearer token.</p><p>If the user is successfully authenticated a <a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">io.vertx.scala.ext.auth.User</a> object is passed to the handler in an <span class="extype" name="io.vertx.scala.core.AsyncResult">io.vertx.scala.core.AsyncResult</span>.
-The user object can then be used for authorisation.</p></div><dl class="paramcmts block"><dt class="param">authInfo</dt><dd class="cmt"><p>The auth information</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>The result handler</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
+The user object can then be used for authorisation.   * @param authInfo The auth information</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>The result handler</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]"></a><a id="authenticateFuture(JsonObject):Future[User]"></a>
       <span class="permalink">
@@ -448,7 +448,7 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">computeHash</span><span class="params">(<span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="version">version: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the salt</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the salt</p><p>The implementation relays to the JDBCHashStrategy provided.</p></div><dl class="paramcmts block"><dt class="param">password</dt><dd class="cmt"><p>the unhashed password</p></dd><dt class="param">salt</dt><dd class="cmt"><p>the salt</p></dd><dt class="param">version</dt><dd class="cmt"><p>the nonce version to use</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
+      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the salt</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the salt</p><p>The implementation relays to the JDBCHashStrategy provided.   * @param password the unhashed password</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>the salt</p></dd><dt class="param">version</dt><dd class="cmt"><p>the nonce version to use</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.jdbc.JDBCAuth#computeHash" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="computeHash(password:String,salt:String):String"></a><a id="computeHash(String,String):String"></a>
       <span class="permalink">
@@ -464,7 +464,7 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">computeHash</span><span class="params">(<span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the salt without nonce</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the salt without nonce</p><p>The implementation relays to the JDBCHashStrategy provided.</p></div><dl class="paramcmts block"><dt class="param">password</dt><dd class="cmt"><p>the unhashed password</p></dd><dt class="param">salt</dt><dd class="cmt"><p>the salt</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
+      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the salt without nonce</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the salt without nonce</p><p>The implementation relays to the JDBCHashStrategy provided.   * @param password the unhashed password</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>the salt</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -534,7 +534,8 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">generateSalt</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compute a salt string.</p><div class="fullcomment"><div class="comment cmt"><p>Compute a salt string.</p><p>The implementation relays to the JDBCHashStrategy provided.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a non null salt value</p></dd></dl></div>
+      <p class="shortcomment cmt">Compute a salt string.</p><div class="fullcomment"><div class="comment cmt"><p>Compute a salt string.</p><p>The implementation relays to the JDBCHashStrategy provided.   * @return a non null salt value
+</p></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -658,7 +659,7 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">setAuthenticationQuery</span><span class="params">(<span name="authenticationQuery">authenticationQuery: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.jdbc.JDBCAuth">JDBCAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the authentication query to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the authentication query to use. Use this if you want to override the default authentication query.</p></div><dl class="paramcmts block"><dt class="param">authenticationQuery</dt><dd class="cmt"><p>the authentication query</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the authentication query to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the authentication query to use. Use this if you want to override the default authentication query.   * @param authenticationQuery the authentication query</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.jdbc.JDBCAuth#setNonces" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setNonces(nonces:io.vertx.core.json.JsonArray):io.vertx.scala.ext.auth.jdbc.JDBCAuth"></a><a id="setNonces(JsonArray):JDBCAuth"></a>
       <span class="permalink">
@@ -680,7 +681,7 @@ nonces where each position corresponds to a version.</p><p>The nonces are suppos
 be provided as a application configuration. The idea is to add one extra variable
 to the hash function in order to make breaking the passwords using rainbow tables
 or precomputed hashes harder. Leaving the attacker only with the brute force
-approach.</p><p>The implementation relays to the JDBCHashStrategy provided.</p></div><dl class="paramcmts block"><dt class="param">nonces</dt><dd class="cmt"><p>a List of non null Strings.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
+approach.</p><p>The implementation relays to the JDBCHashStrategy provided.   * @param nonces a List of non null Strings.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.jdbc.JDBCAuth#setPermissionsQuery" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPermissionsQuery(permissionsQuery:String):io.vertx.scala.ext.auth.jdbc.JDBCAuth"></a><a id="setPermissionsQuery(String):JDBCAuth"></a>
       <span class="permalink">
@@ -696,7 +697,7 @@ approach.</p><p>The implementation relays to the JDBCHashStrategy provided.</p><
         <span class="name">setPermissionsQuery</span><span class="params">(<span name="permissionsQuery">permissionsQuery: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.jdbc.JDBCAuth">JDBCAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the permissions query to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the permissions query to use. Use this if you want to override the default permissions query.</p></div><dl class="paramcmts block"><dt class="param">permissionsQuery</dt><dd class="cmt"><p>the permissions query</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the permissions query to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the permissions query to use. Use this if you want to override the default permissions query.   * @param permissionsQuery the permissions query</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.jdbc.JDBCAuth#setRolePrefix" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setRolePrefix(rolePrefix:String):io.vertx.scala.ext.auth.jdbc.JDBCAuth"></a><a id="setRolePrefix(String):JDBCAuth"></a>
       <span class="permalink">
@@ -712,7 +713,7 @@ approach.</p><p>The implementation relays to the JDBCHashStrategy provided.</p><
         <span class="name">setRolePrefix</span><span class="params">(<span name="rolePrefix">rolePrefix: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.jdbc.JDBCAuth">JDBCAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the role prefix to distinguish from permissions when checking for isPermitted requests.</p><div class="fullcomment"><div class="comment cmt"><p>Set the role prefix to distinguish from permissions when checking for isPermitted requests.</p></div><dl class="paramcmts block"><dt class="param">rolePrefix</dt><dd class="cmt"><p>a Prefix e.g.: &quot;role:&quot;</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the role prefix to distinguish from permissions when checking for isPermitted requests.</p><div class="fullcomment"><div class="comment cmt"><p>Set the role prefix to distinguish from permissions when checking for isPermitted requests.   * @param rolePrefix a Prefix e.g.: &quot;role:&quot;</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.jdbc.JDBCAuth#setRolesQuery" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setRolesQuery(rolesQuery:String):io.vertx.scala.ext.auth.jdbc.JDBCAuth"></a><a id="setRolesQuery(String):JDBCAuth"></a>
       <span class="permalink">
@@ -728,7 +729,7 @@ approach.</p><p>The implementation relays to the JDBCHashStrategy provided.</p><
         <span class="name">setRolesQuery</span><span class="params">(<span name="rolesQuery">rolesQuery: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.jdbc.JDBCAuth">JDBCAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the roles query to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the roles query to use. Use this if you want to override the default roles query.</p></div><dl class="paramcmts block"><dt class="param">rolesQuery</dt><dd class="cmt"><p>the roles query</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the roles query to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the roles query to use. Use this if you want to override the default roles query.   * @param rolesQuery the roles query</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this for fluency</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

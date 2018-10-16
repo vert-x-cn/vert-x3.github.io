@@ -244,7 +244,7 @@
 <p>制作Web Client的目的并非为了替换Vert.x Core中的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a></code> ，
 而是基于该客户端，扩展并保留其便利的设置和特性，例如请求连接池（Pooling），HTTP/2的支持，
 流水线／管线的支持等。当您需要对 HTTP 请求和响应做细微粒度控制时，您应当使用
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a></code> 。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>另外Web Client并未提供 WebSocket API，此时您应当使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a></code> 。</p>
@@ -294,7 +294,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x Web Client使用Vert.x Core的API，如您对此还不熟悉，请先熟悉
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a></code> 的一些基本概念。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a>`的一些基本概念。</p>
 </div>
 </div>
 </div>
@@ -426,7 +426,7 @@ request.uri("/some-uri?param1=param1_value&amp;param2=param2_value")</code></pre
 <p>如需要发送请求体，可使用相同的API并在最后加上 <code>sendXXX</code> 方法发送相应的请求体。</p>
 </div>
 <div class="paragraph">
-<p>例如用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendBuffer(io.vertx.core.buffer.Buffer,%20io.vertx.core.Handler)">sendBuffer</a></code> 方法发送一个缓冲体：</p>
+<p>例如用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendBuffer(io.vertx.core.buffer.Buffer)">sendBuffer</a></code> 方法发送一个缓冲体：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -441,7 +441,7 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendBufferFuture(buffer
 </div>
 <div class="paragraph">
 <p>有时候我们并不希望将所有数据一次性全部读入内存，因为文件太大或希望同时处理多个请求，希望每个请求仅使用最小的内存。出于此目的，Web Client可用
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendStream(io.vertx.core.streams.ReadStream,%20io.vertx.core.Handler)">sendStream</a></code> 方法发送流式数据 <code>ReadStream&lt;Buffer&gt;</code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendStream(io.vertx.core.streams.ReadStream)">sendStream</a>`方法发送流式数据 `ReadStream&lt;Buffer&gt;</code>
 （例如 <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> 便是一个 <code>ReadStream&lt;Buffer&gt;</code>）：</p>
 </div>
 <div class="listingblock">
@@ -487,7 +487,7 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendStreamFuture(stream
 <div class="sect3">
 <h4 id="_json体">JSON体</h4>
 <div class="paragraph">
-<p>有时您需要在请求体中使用JSON格式，可使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendJsonObject(io.vertx.core.json.JsonObject,%20io.vertx.core.Handler)">sendJsonObject</a></code> 方法发送 <code>JsonObject</code> ：</p>
+<p>有时您需要在请求体中使用JSON格式，可使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendJsonObject(io.vertx.core.json.JsonObject)">sendJsonObject</a></code> 方法发送 <code>JsonObject</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -500,7 +500,7 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendStreamFuture(stream
 </div>
 </div>
 <div class="paragraph">
-<p>在Java，Groovy以及Kotlin语言中，您亦可使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendJson(java.lang.Object,%20io.vertx.core.Handler)">sendJson</a></code> 方法发送POJO（Plain Old Java Object），该方法会自动调用 <code>Json.encode</code>
+<p>在Java，Groovy以及Kotlin语言中，您亦可使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendJson(java.lang.Object)">sendJson</a></code> 方法发送POJO（Plain Old Java Object），该方法会自动调用 <code>Json.encode</code>
 方法将 POJO 映射为 JSON：</p>
 </div>
 <div class="listingblock">
@@ -529,7 +529,7 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").sendStreamFuture(stream
 <div class="sect3">
 <h4 id="_表单提交">表单提交</h4>
 <div class="paragraph">
-<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendForm(io.vertx.core.MultiMap,%20io.vertx.core.Handler)">sendForm</a></code>
+<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendForm(io.vertx.core.MultiMap)">sendForm</a></code>
 方法发送HTTP表单。</p>
 </div>
 <div class="listingblock">
@@ -567,7 +567,7 @@ client.post(8080, "myserver.mycompany.com", "/some-uri").putHeader("content-type
 </div>
 <div class="paragraph">
 <p>If you want to upload files and send attributes, you can create a <code><a href="../../scaladocs/io/vertx/scala/ext/web/multipart/MultipartForm.html">MultipartForm</a></code> and
-use <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendMultipartForm(io.vertx.ext.web.multipart.MultipartForm,%20io.vertx.core.Handler)">sendMultipartForm</a></code>.</p>
+use <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#sendMultipartForm(io.vertx.ext.web.multipart.MultipartForm)">sendMultipartForm</a></code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -614,8 +614,8 @@ request.putHeader("other-header", "foo")</code></pre>
 <div class="sect2">
 <h3 id="_重用请求">重用请求</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#send(io.vertx.core.Handler)">send</a></code> 方法可被重复多次调用，这使得配置以及重用
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html">HttpRequest</a></code> 对象变得更加便捷：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#send()">send</a>`方法可被重复多次调用，这使得配置以及重用
+`<a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html">HttpRequest</a>`对象变得更加便捷：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -663,7 +663,7 @@ get.copy().putHeader("a-header", "with-some-value").sendFuture().onComplete{
 <div class="sect2">
 <h3 id="_超时">超时</h3>
 <div class="paragraph">
-<p>您可通过 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#timeout(long)">timeout</a></code> 方法设置超时时间。</p>
+<p>您可通过 <code><a href="../../scaladocs/io/vertx/scala/ext/web/client/HttpRequest.html#timeout()">timeout</a></code> 方法设置超时时间。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -714,7 +714,7 @@ get.copy().putHeader("a-header", "with-some-value").sendFuture().onComplete{
 <div class="title">Warning</div>
 </td>
 <td class="content">
-缺省状况下，响应会被完全缓冲读入内存，请用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/codec/BodyCodec.html#pipe(io.vertx.core.streams.WriteStream)">BodyCodec.pipe</a></code> 方法将响应写入流。
+缺省状况下，响应会被完全缓冲读入内存，请用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/codec/BodyCodec.html#pipe()">BodyCodec.pipe</a></code> 方法将响应写入流。
 </td>
 </tr>
 </table>
@@ -785,7 +785,7 @@ get.copy().putHeader("a-header", "with-some-value").sendFuture().onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>当响应结果较大时，请使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/codec/BodyCodec.html#pipe(io.vertx.core.streams.WriteStream)">BodyCodec.pipe</a></code>
+<p>当响应结果较大时，请使用 <code><a href="../../scaladocs/io/vertx/scala/ext/web/codec/BodyCodec.html#pipe()">BodyCodec.pipe</a></code>
 方法。响应体编解码器将响应结果压入 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code>
 并在最后发出成功或失败的信号。</p>
 </div>
@@ -934,7 +934,7 @@ var client = WebClient.create(vertx, WebClientOptions()
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:18:01 CST
+                上次更新时间 2018-10-16 18:26:22 CST
               
               
             </div>
@@ -965,6 +965,7 @@ var client = WebClient.create(vertx, WebClientOptions()
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

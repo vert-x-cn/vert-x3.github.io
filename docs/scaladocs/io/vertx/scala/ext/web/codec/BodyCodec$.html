@@ -391,7 +391,7 @@
         <span class="name">create</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="decode">decode: (<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>) ⇒ <span class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec.create.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec.create.T">T</span>]</span>)</span><span class="result">: <a href="BodyCodec.html" class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec">BodyCodec</a>[<span class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec.create.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Create a codec that buffers the entire body and then apply the <code>decode</code> function and returns the result.</p><div class="fullcomment"><div class="comment cmt"><p>Create a codec that buffers the entire body and then apply the <code>decode</code> function and returns the result.</p></div><dl class="paramcmts block"><dt class="param">decode</dt><dd class="cmt"><p>the decode function</p></dd><dt>returns</dt><dd class="cmt"><p>the created codec</p></dd></dl></div>
+      <p class="shortcomment cmt">Create a codec that buffers the entire body and then apply the <code>decode</code> function and returns the result.</p><div class="fullcomment"><div class="comment cmt"><p>Create a codec that buffers the entire body and then apply the <code>decode</code> function and returns the result.   * @param decode the decode function</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the created codec</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -515,7 +515,8 @@
         <span class="name">json</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="type">type: <span class="extype" name="scala.Predef.Class">Class</span>[<span class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec.json.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec.json.U">U</span>]</span>)</span><span class="result">: <a href="BodyCodec.html" class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec">BodyCodec</a>[<span class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec.json.U">U</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Create and return a codec for Java objects encoded using Jackson mapper.</p><div class="fullcomment"><div class="comment cmt"><p>Create and return a codec for Java objects encoded using Jackson mapper.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a codec for mapping POJO to Json</p></dd></dl></div>
+      <p class="shortcomment cmt">Create and return a codec for Java objects encoded using Jackson mapper.</p><div class="fullcomment"><div class="comment cmt"><p>Create and return a codec for Java objects encoded using Jackson mapper.   * @return a codec for mapping POJO to Json
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.codec.BodyCodec#jsonArray" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jsonArray():io.vertx.scala.ext.web.codec.BodyCodec[io.vertx.core.json.JsonArray]"></a><a id="jsonArray():BodyCodec[JsonArray]"></a>
       <span class="permalink">
@@ -633,7 +634,7 @@
         <span class="name">pipe</span><span class="params">(<span name="stream">stream: <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>)</span><span class="result">: <a href="BodyCodec.html" class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec">BodyCodec</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">A body codec that pipes the body to a write stream.</p><div class="fullcomment"><div class="comment cmt"><p>A body codec that pipes the body to a write stream.</p></div><dl class="paramcmts block"><dt class="param">stream</dt><dd class="cmt"><p>the destination tream</p></dd><dt>returns</dt><dd class="cmt"><p>the body codec for a write stream</p></dd></dl></div>
+      <p class="shortcomment cmt">A body codec that pipes the body to a write stream.</p><div class="fullcomment"><div class="comment cmt"><p>A body codec that pipes the body to a write stream.   * @param stream the destination tream</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the body codec for a write stream</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.codec.BodyCodec#string" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="string(encoding:String):io.vertx.scala.ext.web.codec.BodyCodec[String]"></a><a id="string(String):BodyCodec[String]"></a>
       <span class="permalink">
@@ -649,7 +650,7 @@
         <span class="name">string</span><span class="params">(<span name="encoding">encoding: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="BodyCodec.html" class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec">BodyCodec</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">A codec for strings using a specific <code>encoding</code>.</p><div class="fullcomment"><div class="comment cmt"><p>A codec for strings using a specific <code>encoding</code>.</p></div><dl class="paramcmts block"><dt class="param">encoding</dt><dd class="cmt"><p>the encoding</p></dd><dt>returns</dt><dd class="cmt"><p>the codec</p></dd></dl></div>
+      <p class="shortcomment cmt">A codec for strings using a specific <code>encoding</code>.</p><div class="fullcomment"><div class="comment cmt"><p>A codec for strings using a specific <code>encoding</code>.   * @param encoding the encoding</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the codec</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.codec.BodyCodec#string" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="string():io.vertx.scala.ext.web.codec.BodyCodec[String]"></a><a id="string():BodyCodec[String]"></a>
       <span class="permalink">

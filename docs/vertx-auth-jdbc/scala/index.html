@@ -238,9 +238,9 @@ var authProvider = JDBCAuth.create(vertx, jdbcClient)</code></pre>
 </div>
 <div class="paragraph">
 <p>Vert.X的默认标准配置（Out Of the Box）中包含了某些针对认证和授权的信息查询， 如果你想要使用不同的数据库模式（Schema），
-这些查询内容可以通过 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setAuthenticationQuery(java.lang.String)">setAuthenticationQuery</a></code>,
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setPermissionsQuery(java.lang.String)">setPermissionsQuery</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolesQuery(java.lang.String)">setRolesQuery</a></code> 方法进行更改：</p>
+这些查询内容可以通过 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setAuthenticationQuery()">setAuthenticationQuery</a></code>,
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setPermissionsQuery()">setPermissionsQuery</a>`和
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolesQuery()">setRolesQuery</a>`方法进行更改：</p>
 </div>
 <div class="paragraph">
 <p>Vert.X默认实现中的密码在数据库中使用了SHA-512算法加密后进行存储，之后会连接对应的 <code>salt</code> 值，这个 <code>salt</code> 值和密码存储在同一个表里。</p>
@@ -296,7 +296,7 @@ passwords, so you will need to migrate the passwords from one algorithm to the s
 </div>
 <div class="paragraph">
 <p>如果你想要重写这些行为，则可以重写
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setHashStrategy(io.vertx.ext.auth.jdbc.JDBCHashStrategy)">setHashStrategy</a></code> 方法去修改Hash策略的设置。</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setHashStrategy()">setHashStrategy</a>`方法去修改Hash策略的设置。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -521,7 +521,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
 </div>
 <div class="paragraph">
 <p>如果要验证一个用户是否拥有特定的许可，则需要将许可信息传递到
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String,%20io.vertx.core.Handler)">isAuthorised</a></code> 中：</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String)">isAuthorised</a>`中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -551,7 +551,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>Vert.X中的默认角色前缀使用了 <code>role:</code> ，这个值可通过 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolePrefix(java.lang.String)">setRolePrefix</a></code> 进行更改。</p>
+<p>Vert.X中的默认角色前缀使用了 <code>role:</code> ，这个值可通过 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/jdbc/JDBCAuth.html#setRolePrefix()">setRolePrefix</a></code> 进行更改。</p>
 </div>
 <div class="paragraph">
 <p>@author &lt;a href="mailto:julien@julienviet.com"&gt;Julien Viet&lt;/a&gt;
@@ -565,7 +565,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:15:29 CST
+                上次更新时间 2018-10-16 18:23:30 CST
               
               
             </div>
@@ -596,6 +596,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

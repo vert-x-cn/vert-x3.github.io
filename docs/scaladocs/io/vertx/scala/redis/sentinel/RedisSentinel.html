@@ -183,8 +183,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Interface for sentinel commands
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Interface for sentinel commands</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -358,7 +357,7 @@
       <p class="shortcomment cmt">Check if the current Sentinel configuration is able to reach the quorum needed to failover a master,
 and the majority needed to authorize the failover.</p><div class="fullcomment"><div class="comment cmt"><p>Check if the current Sentinel configuration is able to reach the quorum needed to failover a master,
 and the majority needed to authorize the failover. This command should be used in monitoring systems
-to check if a Sentinel deployment is ok.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>master name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+to check if a Sentinel deployment is ok.   * @param name master name</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#ckquorumFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ckquorumFuture(name:String):scala.concurrent.Future[String]"></a><a id="ckquorumFuture(String):Future[String]"></a>
       <span class="permalink">
@@ -480,9 +479,9 @@ to check if a Sentinel deployment is ok.</p></div><dl class="paramcmts block"><d
       
       <p class="shortcomment cmt">Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
 (however a new version of the configuration will be published so that the other Sentinels
-will update their configurations)</p><div class="fullcomment"><div class="comment cmt"><p>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
+will update their configurations)   * @param name master name</p><div class="fullcomment"><div class="comment cmt"><p>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
 (however a new version of the configuration will be published so that the other Sentinels
-will update their configurations)</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>master name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+will update their configurations)   * @param name master name</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#failoverFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="failoverFuture(name:String):scala.concurrent.Future[String]"></a><a id="failoverFuture(String):Future[String]"></a>
       <span class="permalink">
@@ -542,7 +541,8 @@ Normally Sentinel rewrites the configuration every time something changes in its
 However sometimes it is possible that the configuration file is lost because of operation errors,
 disk failures, package upgrade scripts or configuration managers. In those cases a way to to force Sentinel to
 rewrite the configuration file is handy. This command works even if the previous configuration file
-is completely missing.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+is completely missing.   * @param handler Handler for the result of this call
+</p></div></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#flushConfigFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="flushConfigFuture():scala.concurrent.Future[Unit]"></a><a id="flushConfigFuture():Future[Unit]"></a>
       <span class="permalink">
@@ -595,7 +595,7 @@ is completely missing.</p></div><dl class="paramcmts block"><dt class="param">ha
       
       <p class="shortcomment cmt">Return the ip and port number of the master with that name.</p><div class="fullcomment"><div class="comment cmt"><p>Return the ip and port number of the master with that name.
 If a failover is in progress or terminated successfully for this master
-it returns the address and port of the promoted slave</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>master name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+it returns the address and port of the promoted slave   * @param name master name</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#getMasterAddrByNameFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getMasterAddrByNameFuture(name:String):scala.concurrent.Future[io.vertx.core.json.JsonArray]"></a><a id="getMasterAddrByNameFuture(String):Future[JsonArray]"></a>
       <span class="permalink">
@@ -662,7 +662,7 @@ it returns the address and port of the promoted slave</p></div><dl class="paramc
         <span class="name">master</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.sentinel.RedisSentinel">RedisSentinel</a></span>
       </span>
       
-      <p class="shortcomment cmt">Show the state and info of the specified master</p><div class="fullcomment"><div class="comment cmt"><p>Show the state and info of the specified master</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>master name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+      <p class="shortcomment cmt">Show the state and info of the specified master   * @param name master name</p><div class="fullcomment"><div class="comment cmt"><p>Show the state and info of the specified master   * @param name master name</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#masterFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="masterFuture(name:String):scala.concurrent.Future[io.vertx.core.json.JsonArray]"></a><a id="masterFuture(String):Future[JsonArray]"></a>
       <span class="permalink">
@@ -679,7 +679,7 @@ it returns the address and port of the promoted slave</p></div><dl class="paramc
       </span>
       
       <p class="shortcomment cmt">Like <a href="#master(name:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray]]):io.vertx.scala.redis.sentinel.RedisSentinel" class="extmbr" name="io.vertx.scala.redis.sentinel.RedisSentinel#master">master</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
-    </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#masters" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#masters" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="masters(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray]]):io.vertx.scala.redis.sentinel.RedisSentinel"></a><a id="masters(Handler[AsyncResult[JsonArray]]):RedisSentinel"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/redis/sentinel/RedisSentinel.html#masters(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray]]):io.vertx.scala.redis.sentinel.RedisSentinel" title="Permalink">
@@ -694,7 +694,8 @@ it returns the address and port of the promoted slave</p></div><dl class="paramc
         <span class="name">masters</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.sentinel.RedisSentinel">RedisSentinel</a></span>
       </span>
       
-      <p class="shortcomment cmt">Show a list of monitored masters and their state</p><div class="fullcomment"><div class="comment cmt"><p>Show a list of monitored masters and their state</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+      <p class="shortcomment cmt">Show a list of monitored masters and their state   * @param handler Handler for the result of this call
+</p>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#mastersFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mastersFuture():scala.concurrent.Future[io.vertx.core.json.JsonArray]"></a><a id="mastersFuture():Future[JsonArray]"></a>
       <span class="permalink">
@@ -782,7 +783,7 @@ it returns the address and port of the promoted slave</p></div><dl class="paramc
       
       <p class="shortcomment cmt">Reset all the masters with matching name.</p><div class="fullcomment"><div class="comment cmt"><p>Reset all the masters with matching name.
 The pattern argument is a glob-style pattern.
-The reset process clears any previous state in a master (including a failover in pro</p></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>pattern String</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+The reset process clears any previous state in a master (including a failover in pro   * @param pattern pattern String</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#resetFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="resetFuture(pattern:String):scala.concurrent.Future[Unit]"></a><a id="resetFuture(String):Future[Unit]"></a>
       <span class="permalink">
@@ -814,7 +815,7 @@ The reset process clears any previous state in a master (including a failover in
         <span class="name">sentinels</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.sentinel.RedisSentinel">RedisSentinel</a></span>
       </span>
       
-      <p class="shortcomment cmt">Show a list of sentinel instances for this master, and their state</p><div class="fullcomment"><div class="comment cmt"><p>Show a list of sentinel instances for this master, and their state</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>master name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+      <p class="shortcomment cmt">Show a list of sentinel instances for this master, and their state   * @param name master name</p><div class="fullcomment"><div class="comment cmt"><p>Show a list of sentinel instances for this master, and their state   * @param name master name</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#sentinelsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sentinelsFuture(name:String):scala.concurrent.Future[io.vertx.core.json.JsonArray]"></a><a id="sentinelsFuture(String):Future[JsonArray]"></a>
       <span class="permalink">
@@ -846,7 +847,7 @@ The reset process clears any previous state in a master (including a failover in
         <span class="name">slaves</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.sentinel.RedisSentinel">RedisSentinel</a></span>
       </span>
       
-      <p class="shortcomment cmt">Show a list of slaves for this master, and their state</p><div class="fullcomment"><div class="comment cmt"><p>Show a list of slaves for this master, and their state</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>master name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
+      <p class="shortcomment cmt">Show a list of slaves for this master, and their state   * @param name master name</p><div class="fullcomment"><div class="comment cmt"><p>Show a list of slaves for this master, and their state   * @param name master name</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Handler for the result of this call</p></dd></dl></div>
     </li><li name="io.vertx.scala.redis.sentinel.RedisSentinel#slavesFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="slavesFuture(name:String):scala.concurrent.Future[io.vertx.core.json.JsonArray]"></a><a id="slavesFuture(String):Future[JsonArray]"></a>
       <span class="permalink">

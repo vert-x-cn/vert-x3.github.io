@@ -197,6 +197,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.common" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="common"></a><a id="common:common"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/web/index.html#common" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../common/index.html"><span class="name">common</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handler"></a><a id="handler:handler"></a>
       <span class="permalink">
@@ -341,7 +357,7 @@
       
       <p class="shortcomment cmt">A client-side HTTP request.</p><div class="fullcomment"><div class="comment cmt"><p>A client-side HTTP request.</p><p>Instances are created by an <a href="WebClient.html" class="extype" name="io.vertx.scala.ext.web.client.WebClient">io.vertx.scala.ext.web.client.WebClient</a> instance, via one of the methods corresponding to the specific
 HTTP methods such as <a href="WebClient.html#get(host:String,requestURI:String):io.vertx.scala.ext.web.client.HttpRequest[io.vertx.core.buffer.Buffer]" class="extmbr" name="io.vertx.scala.ext.web.client.WebClient#get">io.vertx.scala.ext.web.client.WebClient#get</a>, etc...</p><p>The request shall be configured prior sending, the request is immutable and when a mutator method
-is called, a new request is returned allowing to expose the request in a public API and apply further customization.</p><p>After the request has been configured, the methods</p><ul><li><a href="HttpRequest.html#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a></li><li><a href="HttpRequest.html#sendStreamFuture(body:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendStreamFuture">io.vertx.scala.ext.web.client.HttpRequest#sendStreamFuture</a></li><li><a href="HttpRequest.html#sendJsonFuture(body:AnyRef):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendJsonFuture">io.vertx.scala.ext.web.client.HttpRequest#sendJsonFuture</a> ()}</li><li><a href="HttpRequest.html#sendFormFuture(body:io.vertx.scala.core.MultiMap):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFormFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFormFuture</a></li></ul><p>can be called.
+is called, a new request is returned allowing to expose the request in a public API and apply further customization.</p><p>After the request has been configured, the methods</p><ul><li><a href="HttpRequest.html#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a></li><li><a href="HttpRequest.html#sendStream(body:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendStream">io.vertx.scala.ext.web.client.HttpRequest#sendStream</a></li><li><a href="HttpRequest.html#sendJson(body:AnyRef,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendJson">io.vertx.scala.ext.web.client.HttpRequest#sendJson</a> ()}</li><li><a href="HttpRequest.html#sendForm(body:io.vertx.scala.core.MultiMap,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendForm">io.vertx.scala.ext.web.client.HttpRequest#sendForm</a></li></ul><p>can be called.
 The <code>sendXXX</code> methods perform the actual request, they can be called multiple times to perform the same HTTP
 request at different points in time.</p><p>The handler is called back with</p><ul><li>an <a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">io.vertx.scala.ext.web.client.HttpResponse</a> instance when the HTTP response has been received</li><li>a failure when the HTTP request failed (like a connection error) or when the HTTP response could
   not be obtained (like connection or unmarshalling errors)</li></ul><p>Most of the time, this client will buffer the HTTP response fully unless a specific  is used

@@ -404,7 +404,7 @@ if (body != null) {
 <div class="paragraph">
 <p>You can create your web service based on OpenAPI3 specification with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code>.
 This class, as name says, is a router factory based on your OpenAPI 3 specification.
-<code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code> is intended to give you a really simple user interface to use OpenAPI 3 support. It includes:</p>
+`<a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a>`is intended to give you a really simple user interface to use OpenAPI 3 support. It includes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -490,46 +490,10 @@ routerFactory.setOptions(options);</code></pre>
 <div class="sect2">
 <h3 id="_mount_the_handlers">Mount the handlers</h3>
 <div class="paragraph">
-<p>Now load your first path. There are two functions to load the handlers:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactory.html#addHandler-io.vertx.core.http.HttpMethod-java.lang.String-io.vertx.core.Handler-">addHandler</a></code></p>
-</li>
-<li>
-<p><code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addHandlerByOperationId</a></code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>And, of course, two functions to load failure handlers</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactory.html#addFailureHandler-io.vertx.core.http.HttpMethod-java.lang.String-io.vertx.core.Handler-">addFailureHandler</a></code></p>
-</li>
-<li>
-<p><code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addFailureHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addFailureHandlerByOperationId</a></code></p>
-</li>
-</ul>
+<p>Now load your first operation handlers. To load an handler use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addHandlerByOperationId</a></code>. To load a failure handler use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addFailureHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addFailureHandlerByOperationId</a></code></p>
 </div>
 <div class="paragraph">
 <p>You can, of course,<strong>add multiple handlers to same operation</strong>*, without overwrite the existing ones.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="title">Path in OpenAPI format</div>
-If you want to use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactory.html#addHandler-io.vertx.core.http.HttpMethod-java.lang.String-io.vertx.core.Handler-">addHandler</a></code> or <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactory.html#addFailureHandler-io.vertx.core.http.HttpMethod-java.lang.String-io.vertx.core.Handler-">addFailureHandler</a></code> pay attention: You can provide a path only in OpenAPI styles (for example path <code>/hello/:param</code> doesn&#8217;t work)
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -631,7 +595,7 @@ server.requestHandler(router).listen();</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:56 CST
+                上次更新时间 2018-10-16 19:27:03 CST
               
               
             </div>
@@ -662,6 +626,7 @@ server.requestHandler(router).listen();</code></pre>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

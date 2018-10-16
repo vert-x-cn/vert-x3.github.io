@@ -492,7 +492,7 @@
       </span>
       
       <p class="shortcomment cmt">Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but wraps the <code>stream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but wraps the <code>stream</code>. The <code>stream</code> handlers will be set/unset
-when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#handler">io.vertx.scala.core.parsetools.RecordParser#handler</a> is set.</p><p>The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.</p></div><dl class="paramcmts block"><dt class="param">delim</dt><dd class="cmt"><p>the initial delimiter buffer</p></dd><dt class="param">stream</dt><dd class="cmt"><p>the wrapped stream</p></dd></dl></div>
+when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#handler">io.vertx.scala.core.parsetools.RecordParser#handler</a> is set.</p><p>The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.   * @param delim the initial delimiter buffer</p></div><dl class="paramcmts block"><dt class="param">stream</dt><dd class="cmt"><p>the wrapped stream</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newDelimited" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newDelimited(delim:io.vertx.core.buffer.Buffer,output:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newDelimited(Buffer,Handler[Buffer]):RecordParser"></a>
       <span class="permalink">
@@ -510,7 +510,7 @@ when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.ver
       
       <p class="shortcomment cmt">Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but set the <code>output</code> that will receive whole records
 which have been parsed.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but set the <code>output</code> that will receive whole records
-which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">delim</dt><dd class="cmt"><p>the initial delimiter buffer</p></dd><dt class="param">output</dt><dd class="cmt"><p>handler that will receive the output</p></dd></dl></div>
+which have been parsed.   * @param delim the initial delimiter buffer</p></div><dl class="paramcmts block"><dt class="param">output</dt><dd class="cmt"><p>handler that will receive the output</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newDelimited" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newDelimited(delim:io.vertx.core.buffer.Buffer):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newDelimited(Buffer):RecordParser"></a>
       <span class="permalink">
@@ -529,7 +529,8 @@ which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">d
       <p class="shortcomment cmt">Create a new <code>RecordParser</code> instance, initially in delimited mode, and where the delimiter can be represented
 by the <code>Buffer</code> delim.</p><div class="fullcomment"><div class="comment cmt"><p>Create a new <code>RecordParser</code> instance, initially in delimited mode, and where the delimiter can be represented
 by the <code>Buffer</code> delim.
-</p></div><dl class="paramcmts block"><dt class="param">delim</dt><dd class="cmt"><p>the initial delimiter buffer</p></dd></dl></div>
+   * @param delim the initial delimiter buffer
+</p></div></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newDelimited" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newDelimited(delim:String):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newDelimited(String):RecordParser"></a>
       <span class="permalink">
@@ -547,7 +548,8 @@ by the <code>Buffer</code> delim.
       
       <p class="shortcomment cmt">Create a new <code>RecordParser</code> instance, initially in delimited mode, and where the delimiter can be represented
 by the String <code><code> delim endcoded in latin-1 . Don't use this if your String contains other than latin-1 characters.</code></code></p><div class="fullcomment"><div class="comment cmt"><p>Create a new <code>RecordParser</code> instance, initially in delimited mode, and where the delimiter can be represented
-by the String <code><code> delim endcoded in latin-1 . Don't use this if your String contains other than latin-1 characters.</code></code></p><p><code>output</code> Will receive whole records which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">delim</dt><dd class="cmt"><p>the initial delimiter string</p></dd></dl></div>
+by the String <code><code> delim endcoded in latin-1 . Don't use this if your String contains other than latin-1 characters.</code></code></p><p><code>output</code> Will receive whole records which have been parsed.   * @param delim the initial delimiter string
+</p></div></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newDelimited" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newDelimited(delim:String,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newDelimited(String,ReadStream[Buffer]):RecordParser"></a>
       <span class="permalink">
@@ -564,7 +566,7 @@ by the String <code><code> delim endcoded in latin-1 . Don't use this if your St
       </span>
       
       <p class="shortcomment cmt">Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but wraps the <code>stream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but wraps the <code>stream</code>. The <code>stream</code> handlers will be set/unset
-when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#handler">io.vertx.scala.core.parsetools.RecordParser#handler</a> is set.</p><p>The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.</p></div><dl class="paramcmts block"><dt class="param">delim</dt><dd class="cmt"><p>the initial delimiter string</p></dd><dt class="param">stream</dt><dd class="cmt"><p>the wrapped stream</p></dd></dl></div>
+when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#handler">io.vertx.scala.core.parsetools.RecordParser#handler</a> is set.</p><p>The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.   * @param delim the initial delimiter string</p></div><dl class="paramcmts block"><dt class="param">stream</dt><dd class="cmt"><p>the wrapped stream</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newDelimited" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newDelimited(delim:String,output:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newDelimited(String,Handler[Buffer]):RecordParser"></a>
       <span class="permalink">
@@ -582,7 +584,7 @@ when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.ver
       
       <p class="shortcomment cmt">Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but set the <code>output</code> that will receive whole records
 which have been parsed.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#newDelimited(delim:io.vertx.core.buffer.Buffer,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newDelimited">io.vertx.scala.core.parsetools.RecordParser#newDelimited</a> but set the <code>output</code> that will receive whole records
-which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">delim</dt><dd class="cmt"><p>the initial delimiter string</p></dd><dt class="param">output</dt><dd class="cmt"><p>handler that will receive the output</p></dd></dl></div>
+which have been parsed.   * @param delim the initial delimiter string</p></div><dl class="paramcmts block"><dt class="param">output</dt><dd class="cmt"><p>handler that will receive the output</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newFixed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newFixed(size:Int,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newFixed(Int,ReadStream[Buffer]):RecordParser"></a>
       <span class="permalink">
@@ -599,7 +601,7 @@ which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">d
       </span>
       
       <p class="shortcomment cmt">Like <a href="#newFixed(size:Int,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newFixed">io.vertx.scala.core.parsetools.RecordParser#newFixed</a> but wraps the <code>stream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#newFixed(size:Int,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newFixed">io.vertx.scala.core.parsetools.RecordParser#newFixed</a> but wraps the <code>stream</code>. The <code>stream</code> handlers will be set/unset
-when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#handler">io.vertx.scala.core.parsetools.RecordParser#handler</a> is set.</p><p>The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.</p></div><dl class="paramcmts block"><dt class="param">size</dt><dd class="cmt"><p>the initial record size</p></dd><dt class="param">stream</dt><dd class="cmt"><p>the wrapped stream</p></dd></dl></div>
+when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#handler">io.vertx.scala.core.parsetools.RecordParser#handler</a> is set.</p><p>The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.   * @param size the initial record size</p></div><dl class="paramcmts block"><dt class="param">stream</dt><dd class="cmt"><p>the wrapped stream</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newFixed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newFixed(size:Int,output:io.vertx.core.Handler[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newFixed(Int,Handler[Buffer]):RecordParser"></a>
       <span class="permalink">
@@ -617,7 +619,7 @@ when the <a href="RecordParser.html#handler(handler:io.vertx.core.Handler[io.ver
       
       <p class="shortcomment cmt">Like <a href="#newFixed(size:Int,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newFixed">io.vertx.scala.core.parsetools.RecordParser#newFixed</a> but set the <code>output</code> that will receive whole records
 which have been parsed.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#newFixed(size:Int,stream:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):io.vertx.scala.core.parsetools.RecordParser" class="extmbr" name="io.vertx.scala.core.parsetools.RecordParser#newFixed">io.vertx.scala.core.parsetools.RecordParser#newFixed</a> but set the <code>output</code> that will receive whole records
-which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">size</dt><dd class="cmt"><p>the initial record size</p></dd><dt class="param">output</dt><dd class="cmt"><p>handler that will receive the output</p></dd></dl></div>
+which have been parsed.   * @param size the initial record size</p></div><dl class="paramcmts block"><dt class="param">output</dt><dd class="cmt"><p>handler that will receive the output</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.parsetools.RecordParser#newFixed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="newFixed(size:Int):io.vertx.scala.core.parsetools.RecordParser"></a><a id="newFixed(Int):RecordParser"></a>
       <span class="permalink">
@@ -635,7 +637,8 @@ which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">s
       
       <p class="shortcomment cmt">Create a new <code>RecordParser</code> instance, initially in fixed size mode, and where the record size is specified
 by the <code>size</code> parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Create a new <code>RecordParser</code> instance, initially in fixed size mode, and where the record size is specified
-by the <code>size</code> parameter.</p><p><code>output</code> Will receive whole records which have been parsed.</p></div><dl class="paramcmts block"><dt class="param">size</dt><dd class="cmt"><p>the initial record size</p></dd></dl></div>
+by the <code>size</code> parameter.</p><p><code>output</code> Will receive whole records which have been parsed.   * @param size the initial record size
+</p></div></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">

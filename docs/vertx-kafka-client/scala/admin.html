@@ -206,7 +206,7 @@ but not this wrapper, includes Partition Management, Broker Configuration manage
 <div class="sect2">
 <h3 id="_create_a_topic">Create a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#createTopic(java.lang.String,%20int,%20int,%20io.vertx.core.Handler)">createTopic</a></code> to create a topic.
+<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#createTopic(java.lang.String,%20int,%20int)">createTopic</a></code> to create a topic.
 Parameters are: topic name, number of partitions, number of replicas, and the usual callback to handle the result.
 It might return an error, e.g. if the number of requested replicas is greater than the number of brokers.</p>
 </div>
@@ -227,7 +227,7 @@ adminUtils.createTopicFuture("myNewTopic", 2, 1).onComplete{
 <div class="sect2">
 <h3 id="_delete_a_topic">Delete a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#deleteTopic(java.lang.String,%20io.vertx.core.Handler)">deleteTopic</a></code> to delete a topic.
+<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#deleteTopic(java.lang.String)">deleteTopic</a></code> to delete a topic.
 Parameters are: topic name, and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
 </div>
@@ -249,7 +249,7 @@ adminUtils.deleteTopicFuture("myNewTopic").onComplete{
 <h3 id="_change_a_topic_s_configuration">Change a topic&#8217;s configuration</h3>
 <div class="paragraph">
 <p>If you need to update the configuration of a topic, e.g., you want to update the retention policy,
-you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#changeTopicConfig(java.lang.String,%20java.util.Map,%20io.vertx.core.Handler)">changeTopicConfig</a></code> to update a topic.
+you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#changeTopicConfig(java.lang.String,%20java.util.Map)">changeTopicConfig</a></code> to update a topic.
 Parameters are: topic name, a Map (String &#8594; String) with parameters to be changed,
 and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
@@ -275,7 +275,7 @@ adminUtils.changeTopicConfigFuture("myNewTopic", properties).onComplete{
 <div class="sect2">
 <h3 id="_check_if_a_topic_exists">Check if a topic exists</h3>
 <div class="paragraph">
-<p>If you want to check if a topic exists, you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#topicExists(java.lang.String,%20io.vertx.core.Handler)">topicExists</a></code>.
+<p>If you want to check if a topic exists, you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#topicExists(java.lang.String)">topicExists</a></code>.
 Parameters are: topic name, and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
 </div>
@@ -301,7 +301,7 @@ adminUtils.topicExistsFuture("myNewTopic").onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:46 CST
+                上次更新时间 2018-10-16 18:24:52 CST
               
               
             </div>
@@ -332,6 +332,7 @@ adminUtils.topicExistsFuture("myNewTopic").onComplete{
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

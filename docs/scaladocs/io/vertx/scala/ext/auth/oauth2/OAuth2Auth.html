@@ -246,7 +246,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">OAuth2Auth</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">OAuth2Auth</span><span class="result"> extends <a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></span>
       </span>
       </h4>
 
@@ -256,7 +256,7 @@
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -282,7 +282,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth"><span>OAuth2Auth</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth"><span>OAuth2Auth</span></li><li class="in" name="io.vertx.scala.ext.auth.AuthProvider"><span>AuthProvider</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -392,7 +392,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#asJava" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.vertx.scala.ext.auth.AuthProvider#asJava" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asJava:Object"></a><a id="asJava:AnyRef"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/auth/oauth2/OAuth2Auth.html#asJava:Object" title="Permalink">
@@ -407,7 +407,50 @@
         <span class="name">asJava</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.auth.AuthProvider#authenticate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit"></a><a id="authenticate(JsonObject,Handler[AsyncResult[User]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/auth/oauth2/OAuth2Auth.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">authenticate</span><span class="params">(<span name="authInfo">authInfo: <span class="extype" name="io.vertx.core.json.JsonObject">JsonObject</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">User</a>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
       
+      <p class="shortcomment cmt">Authenticate a user.</p><div class="fullcomment"><div class="comment cmt"><p>Authenticate a user.</p><p>The first argument is a JSON object containing information for authenticating the user. What this actually contains
+depends on the specific implementation. In the case of a simple username/password based
+authentication it is likely to contain a JSON object with the following structure:
+<pre>
+  {
+    "username": "tim",
+    "password": "mypassword"
+  `
+</pre>
+For other types of authentication it contain different information - for example a JWT token or OAuth bearer token.</p><p>If the user is successfully authenticated a <a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">io.vertx.scala.ext.auth.User</a> object is passed to the handler in an <span class="extype" name="io.vertx.scala.core.AsyncResult">io.vertx.scala.core.AsyncResult</span>.
+The user object can then be used for authorisation.   * @param authInfo The auth information</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>The result handler</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]"></a><a id="authenticateFuture(JsonObject):Future[User]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/auth/oauth2/OAuth2Auth.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">authenticateFuture</span><span class="params">(<span name="authInfo">authInfo: <span class="extype" name="io.vertx.core.json.JsonObject">JsonObject</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">User</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">authenticate</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">authenticate</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#authorizeURL" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="authorizeURL(params:io.vertx.core.json.JsonObject):String"></a><a id="authorizeURL(JsonObject):String"></a>
       <span class="permalink">
@@ -464,7 +507,7 @@
         <span class="name">decodeToken</span><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="AccessToken.html" class="extype" name="io.vertx.scala.ext.auth.oauth2.AccessToken">AccessToken</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth">OAuth2Auth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Decode a token to a <a href="AccessToken.html" class="extype" name="io.vertx.scala.ext.auth.oauth2.AccessToken">io.vertx.scala.ext.auth.oauth2.AccessToken</a> object.</p><div class="fullcomment"><div class="comment cmt"><p>Decode a token to a <a href="AccessToken.html" class="extype" name="io.vertx.scala.ext.auth.oauth2.AccessToken">io.vertx.scala.ext.auth.oauth2.AccessToken</a> object. This is useful to handle bearer JWT tokens.</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>the access token (base64 string)</p></dd><dt class="param">handler</dt><dd class="cmt"><p>A handler to receive the event</p></dd><dt>returns</dt><dd class="cmt"><p>self</p></dd></dl></div>
+      <p class="shortcomment cmt">Decode a token to a <a href="AccessToken.html" class="extype" name="io.vertx.scala.ext.auth.oauth2.AccessToken">io.vertx.scala.ext.auth.oauth2.AccessToken</a> object.</p><div class="fullcomment"><div class="comment cmt"><p>Decode a token to a <a href="AccessToken.html" class="extype" name="io.vertx.scala.ext.auth.oauth2.AccessToken">io.vertx.scala.ext.auth.oauth2.AccessToken</a> object. This is useful to handle bearer JWT tokens.   * @param token the access token (base64 string)</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>A handler to receive the event</p></dd><dt>returns</dt><dd class="cmt"><p>self</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#decodeTokenFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="decodeTokenFuture(token:String):scala.concurrent.Future[io.vertx.scala.ext.auth.oauth2.AccessToken]"></a><a id="decodeTokenFuture(String):Future[AccessToken]"></a>
       <span class="permalink">
@@ -569,7 +612,8 @@
         <span class="name">getFlowType</span><span class="params">()</span><span class="result">: <span class="extype" name="io.vertx.ext.auth.oauth2.OAuth2FlowType">OAuth2FlowType</span></span>
       </span>
       
-      <p class="shortcomment cmt">Returns the configured flow type for the Oauth2 provider.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the configured flow type for the Oauth2 provider.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the flow type.</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns the configured flow type for the Oauth2 provider.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the configured flow type for the Oauth2 provider.   * @return the flow type.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#getScopeSeparator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getScopeSeparator():String"></a>
       <span class="permalink">
@@ -586,7 +630,8 @@
       </span>
       
       <p class="shortcomment cmt">Returns the scope separator.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the scope separator.</p><p>The RFC 6749 states that a scope is expressed as a set of case-sensitive and space-delimited strings, however
-vendors tend not to agree on this and we see the following cases being used: space, plus sign, comma.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>what value was used in the configuration of the object, falling back to the default value which is a space.</p></dd></dl></div>
+vendors tend not to agree on this and we see the following cases being used: space, plus sign, comma.   * @return what value was used in the configuration of the object, falling back to the default value which is a space.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#getToken" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getToken(params:io.vertx.core.json.JsonObject,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.oauth2.AccessToken]]):Unit"></a><a id="getToken(JsonObject,Handler[AsyncResult[AccessToken]]):Unit"></a>
       <span class="permalink">
@@ -602,7 +647,7 @@ vendors tend not to agree on this and we see the following cases being used: spa
         <span class="name">getToken</span><span class="params">(<span name="params">params: <span class="extype" name="io.vertx.core.json.JsonObject">JsonObject</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="AccessToken.html" class="extype" name="io.vertx.scala.ext.auth.oauth2.AccessToken">AccessToken</a>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Returns the Access Token object.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the Access Token object.</p></div><dl class="paramcmts block"><dt class="param">params</dt><dd class="cmt"><p>- JSON with the options, each flow requires different options.</p></dd><dt class="param">handler</dt><dd class="cmt"><p>- The handler returning the results.</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns the Access Token object.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the Access Token object.   * @param params - JSON with the options, each flow requires different options.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>- The handler returning the results.</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#getTokenFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getTokenFuture(params:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.oauth2.AccessToken]"></a><a id="getTokenFuture(JsonObject):Future[AccessToken]"></a>
       <span class="permalink">
@@ -655,7 +700,7 @@ vendors tend not to agree on this and we see the following cases being used: spa
       
       <p class="shortcomment cmt">Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine
 meta-information about this token.</p><div class="fullcomment"><div class="comment cmt"><p>Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine
-meta-information about this token.</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>the access token (base64 string)</p></dd><dt class="param">tokenType</dt><dd class="cmt"><p>hint to the token type e.g.: <code>access_token</code></p></dd><dt class="param">handler</dt><dd class="cmt"><p>A handler to receive the event</p></dd><dt>returns</dt><dd class="cmt"><p>self</p></dd></dl></div>
+meta-information about this token.   * @param token the access token (base64 string)</p></div><dl class="paramcmts block"><dt class="param">tokenType</dt><dd class="cmt"><p>hint to the token type e.g.: <code>access_token</code></p></dd><dt class="param">handler</dt><dd class="cmt"><p>A handler to receive the event</p></dd><dt>returns</dt><dd class="cmt"><p>self</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#introspectToken" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="introspectToken(token:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.oauth2.AccessToken]]):io.vertx.scala.ext.auth.oauth2.OAuth2Auth"></a><a id="introspectToken(String,Handler[AsyncResult[AccessToken]]):OAuth2Auth"></a>
       <span class="permalink">
@@ -673,7 +718,7 @@ meta-information about this token.</p></div><dl class="paramcmts block"><dt clas
       
       <p class="shortcomment cmt">Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine
 meta-information about this token.</p><div class="fullcomment"><div class="comment cmt"><p>Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine
-meta-information about this token.</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>the access token (base64 string)</p></dd><dt class="param">handler</dt><dd class="cmt"><p>A handler to receive the event</p></dd><dt>returns</dt><dd class="cmt"><p>self</p></dd></dl></div>
+meta-information about this token.   * @param token the access token (base64 string)</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>A handler to receive the event</p></dd><dt>returns</dt><dd class="cmt"><p>self</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#introspectTokenFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="introspectTokenFuture(token:String,tokenType:String):scala.concurrent.Future[io.vertx.scala.ext.auth.oauth2.AccessToken]"></a><a id="introspectTokenFuture(String,String):Future[AccessToken]"></a>
       <span class="permalink">
@@ -857,22 +902,6 @@ meta-information about this token.</p></div><dl class="paramcmts block"><dt clas
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#verifyIsUsingPassword" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="verifyIsUsingPassword():Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../../io/vertx/scala/ext/auth/oauth2/OAuth2Auth.html#verifyIsUsingPassword():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">verifyIsUsingPassword</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
@@ -951,7 +980,9 @@ meta-information about this token.</p></div><dl class="paramcmts block"><dt clas
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="io.vertx.scala.ext.auth.AuthProvider">
+              <h3>Inherited from <a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

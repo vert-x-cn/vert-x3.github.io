@@ -286,6 +286,10 @@
         .setResetTimeout(10000) // time spent in open state before attempting to re-try
 );
 
+// ---
+// Store the circuit breaker in a field and access it as follows
+// ---
+
 breaker.execute(future -&gt; {
   // some code executing with the breaker
   // the code reports failures or success on the given future.
@@ -304,6 +308,10 @@ breaker.execute(future -&gt; {
 <pre class="highlight"><code class="language-java" data-lang="java">CircuitBreaker breaker = CircuitBreaker.create("my-circuit-breaker", vertx,
     new CircuitBreakerOptions().setMaxFailures(5).setTimeout(2000)
 );
+
+// ---
+// Store the circuit breaker in a field and access it as follows
+// ---
 
 breaker.&lt;String&gt;execute(future -&gt; {
   vertx.createHttpClient().getNow(8080, "localhost", "/", response -&gt; {
@@ -344,6 +352,10 @@ breaker.&lt;String&gt;execute(future -&gt; {
     new CircuitBreakerOptions().setMaxFailures(5).setTimeout(2000)
 );
 
+// ---
+// Store the circuit breaker in a field and access it as follows
+// ---
+
 breaker.executeWithFallback(
     future -&gt; {
       vertx.createHttpClient().getNow(8080, "localhost", "/", response -&gt; {
@@ -368,8 +380,8 @@ breaker.executeWithFallback(
 </div>
 <div class="paragraph">
 <p>熔断状态中都会调用失败回调（fallback），或者设置
-<code><a href="../../apidocs/io/vertx/circuitbreaker/CircuitBreakerOptions.html#isFallbackOnFailure--">isFallbackOnFailure</a></code> ，其结果是失败回调函数的输出。失败回调函数将
-<code><a href="../../apidocs/java/lang/Throwable.html">Throwable</a></code> 对象作为参数，并返回预期类型的​​对象。</p>
+<code><a href="../../apidocs/io/vertx/circuitbreaker/CircuitBreakerOptions.html#isFallbackOnFailure--">isFallbackOnFailure</a></code>，其结果是失败回调函数的输出。失败回调函数将
+`<a href="../../apidocs/java/lang/Throwable.html">Throwable</a>`对象作为参数，并返回预期类型的​​对象。</p>
 </div>
 <div class="paragraph">
 <p>失败回调可以直接设置在 <code><a href="../../apidocs/io/vertx/circuitbreaker/CircuitBreaker.html">CircuitBreaker</a></code> 上：</p>
@@ -441,7 +453,7 @@ breaker.execute(
 </div>
 <div class="paragraph">
 <p>当熔断器决定尝试复位的时候（ half-open 状态），我们也可以注册
-<code><a href="../../apidocs/io/vertx/circuitbreaker/CircuitBreaker.html#halfOpenHandler-io.vertx.core.Handler-">halfOpenHandler</a></code> 的回调从而得到回调通知。</p>
+`<a href="../../apidocs/io/vertx/circuitbreaker/CircuitBreaker.html#halfOpenHandler-io.vertx.core.Handler-">halfOpenHandler</a>`的回调从而得到回调通知。</p>
 </div>
 </div>
 </div>
@@ -509,7 +521,7 @@ breaker.execute(
 <div class="paragraph">
 <p><a href="https://github.com/Netflix/Hystrix">Netflix Hystrix</a>
 带有一个仪表板（dashboard），用于显示熔断器的当前状态。 Vert.x 熔断器可以发布其指标（metric），以供Hystrix 仪表板使用。 Hystrix 仪表板需要一个发送指标的SSE流，此流由
-<code><a href="../../apidocs/io/vertx/circuitbreaker/HystrixMetricHandler.html">HystrixMetricHandler</a></code> 这个 Vert.x Web Handler 提供：</p>
+`<a href="../../apidocs/io/vertx/circuitbreaker/HystrixMetricHandler.html">HystrixMetricHandler</a>`这个 Vert.x Web Handler 提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -567,8 +579,8 @@ String result = ar.result();
 </div>
 <div class="paragraph">
 <p>如果您使用Hystrix的异步支持，请注意，对应的回调函数不会在Vert.x线程中执行，并且必须在执行前保留对上下文的引用（使用
-<code><a href="../../apidocs/io/vertx/core/Vertx.html#getOrCreateContext--">getOrCreateContext</a></code> )，并且在回调中，执行
-<code><a href="../../apidocs/io/vertx/core/Vertx.html#runOnContext-io.vertx.core.Handler-">runOnContext</a></code> 函数将当前线程切换回Event Loop线程。如果不这样做的话，您将失去Vert.x并发模型的优势，并且必须自行管理线程同步和执行顺序：</p>
+<code><a href="../../apidocs/io/vertx/core/Vertx.html#getOrCreateContext--">getOrCreateContext</a></code>)，并且在回调中，执行
+`<a href="../../apidocs/io/vertx/core/Vertx.html#runOnContext-io.vertx.core.Handler-">runOnContext</a>`函数将当前线程切换回Event Loop线程。如果不这样做的话，您将失去Vert.x并发模型的优势，并且必须自行管理线程同步和执行顺序：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -592,7 +604,7 @@ String r = result;
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 23:35:42 CST
+                上次更新时间 2018-10-16 18:23:46 CST
               
               
             </div>
@@ -623,6 +635,7 @@ String r = result;
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

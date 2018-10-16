@@ -463,7 +463,7 @@
         <span class="name">closeHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set a close handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a close handler. The handler will get notified when the connection is closed.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler to be notified</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set a close handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a close handler. The handler will get notified when the connection is closed.   * @param handler the handler to be notified</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -511,7 +511,7 @@
         <span class="name">exceptionHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an handler called when a connection error happens</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler called when a connection error happens</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an handler called when a connection error happens   * @param handler the handler</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler called when a connection error happens   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -584,7 +584,7 @@
         <span class="name">goAway</span><span class="params">(<span name="errorCode">errorCode: <span class="extype" name="scala.Long">Long</span></span>, <span name="lastStreamId">lastStreamId: <span class="extype" name="scala.Int">Int</span></span>, <span name="debugData">debugData: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Send a go away frame to the remote endpoint of the connection.</p><div class="fullcomment"><div class="comment cmt"><p>Send a go away frame to the remote endpoint of the connection.</p><ul><li>a  frame is sent to the to the remote endpoint with the <code>errorCode</code> and <code>debugData</code></li><li>any stream created after the stream identified by <code>lastStreamId</code> will be closed</li><li>for an  is different than <code>0</code> when all the remaining streams are closed this connection will be closed automatically</li></ul><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">errorCode</dt><dd class="cmt"><p>the <code> GOAWAY</code> error code</p></dd><dt class="param">lastStreamId</dt><dd class="cmt"><p>the last stream id</p></dd><dt class="param">debugData</dt><dd class="cmt"><p>additional debug data sent to the remote endpoint</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Send a go away frame to the remote endpoint of the connection.</p><div class="fullcomment"><div class="comment cmt"><p>Send a go away frame to the remote endpoint of the connection.</p><ul><li>a  frame is sent to the to the remote endpoint with the <code>errorCode</code> and <code>debugData</code></li><li>any stream created after the stream identified by <code>lastStreamId</code> will be closed</li><li>for an  is different than <code>0</code> when all the remaining streams are closed this connection will be closed automatically</li></ul><p>This is not implemented for HTTP/1.x.   * @param errorCode the <code> GOAWAY</code> error code</p></div><dl class="paramcmts block"><dt class="param">lastStreamId</dt><dd class="cmt"><p>the last stream id</p></dd><dt class="param">debugData</dt><dd class="cmt"><p>additional debug data sent to the remote endpoint</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#goAway" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="goAway(errorCode:Long,lastStreamId:Int):io.vertx.scala.core.http.HttpConnection"></a><a id="goAway(Long,Int):HttpConnection"></a>
       <span class="permalink">
@@ -632,7 +632,7 @@
         <span class="name">goAwayHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="GoAway.html" class="extype" name="io.vertx.scala.core.http.GoAway">GoAway</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an handler called when a  frame is received.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler called when a  frame is received.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an handler called when a  frame is received.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler called when a  frame is received.</p><p>This is not implemented for HTTP/1.x.   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -667,7 +667,8 @@
         <span class="name">indicatedServerName</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Returns the SNI server name presented during the SSL handshake by the client.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the SNI server name presented during the SSL handshake by the client.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the indicated server name</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns the SNI server name presented during the SSL handshake by the client.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the SNI server name presented during the SSL handshake by the client.   * @return the indicated server name
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -785,7 +786,7 @@
         <span class="name">ping</span><span class="params">(<span name="data">data: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="pongHandler">pongHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Send a  frame to the remote endpoint.</p><div class="fullcomment"><div class="comment cmt"><p>Send a  frame to the remote endpoint.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">data</dt><dd class="cmt"><p>the 8 bytes data of the frame</p></dd><dt class="param">pongHandler</dt><dd class="cmt"><p>an async result handler notified with pong reply or the failure</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Send a  frame to the remote endpoint.</p><div class="fullcomment"><div class="comment cmt"><p>Send a  frame to the remote endpoint.</p><p>This is not implemented for HTTP/1.x.   * @param data the 8 bytes data of the frame</p></div><dl class="paramcmts block"><dt class="param">pongHandler</dt><dd class="cmt"><p>an async result handler notified with pong reply or the failure</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#pingFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="pingFuture(data:io.vertx.core.buffer.Buffer):scala.concurrent.Future[io.vertx.core.buffer.Buffer]"></a><a id="pingFuture(Buffer):scala.concurrent.Future[Buffer]"></a>
       <span class="permalink">
@@ -817,7 +818,7 @@
         <span class="name">pingHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an handler notified when a  frame is received from the remote endpoint.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler notified when a  frame is received from the remote endpoint.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler to be called when a <code> PING</code> is received</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an handler notified when a  frame is received from the remote endpoint.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler notified when a  frame is received from the remote endpoint.</p><p>This is not implemented for HTTP/1.x.   * @param handler the handler to be called when a <code> PING</code> is received</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#remoteAddress" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="remoteAddress():io.vertx.scala.core.net.SocketAddress"></a><a id="remoteAddress():SocketAddress"></a>
       <span class="permalink">
@@ -865,7 +866,7 @@
         <span class="name">remoteSettingsHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="Http2Settings.html" class="extype" name="io.vertx.scala.core.http.Http2Settings">Http2Settings</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an handler that is called when remote endpoint <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a> are updated.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler that is called when remote endpoint <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a> are updated.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler for remote endpoint settings</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an handler that is called when remote endpoint <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a> are updated.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler that is called when remote endpoint <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a> are updated.</p><p>This is not implemented for HTTP/1.x.   * @param handler the handler for remote endpoint settings</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#setWindowSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWindowSize(windowSize:Int):io.vertx.scala.core.http.HttpConnection"></a><a id="setWindowSize(Int):HttpConnection"></a>
       <span class="permalink">
@@ -881,7 +882,7 @@
         <span class="name">setWindowSize</span><span class="params">(<span name="windowSize">windowSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Update the current connection wide window size to a new size.</p><div class="fullcomment"><div class="comment cmt"><p>Update the current connection wide window size to a new size.</p><p>Increasing this value, gives better performance when several data streams are multiplexed</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">windowSize</dt><dd class="cmt"><p>the new window size</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Update the current connection wide window size to a new size.</p><div class="fullcomment"><div class="comment cmt"><p>Update the current connection wide window size to a new size.</p><p>Increasing this value, gives better performance when several data streams are multiplexed</p><p>This is not implemented for HTTP/1.x.   * @param windowSize the new window size</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#settings" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="settings():io.vertx.scala.core.http.Http2Settings"></a><a id="settings():Http2Settings"></a>
       <span class="permalink">
@@ -915,7 +916,7 @@
       
       <p class="shortcomment cmt">Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current streams
 will be closed or the <code>timeout</code> is fired.</p><div class="fullcomment"><div class="comment cmt"><p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current streams
-will be closed or the <code>timeout</code> is fired.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">timeoutMs</dt><dd class="cmt"><p>the timeout in milliseconds</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+will be closed or the <code>timeout</code> is fired.</p><p>This is not implemented for HTTP/1.x.   * @param timeoutMs the timeout in milliseconds</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#shutdown" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shutdown():io.vertx.scala.core.http.HttpConnection"></a><a id="shutdown():HttpConnection"></a>
       <span class="permalink">
@@ -933,7 +934,8 @@ will be closed or the <code>timeout</code> is fired.</p><p>This is not implement
       
       <p class="shortcomment cmt">Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current active streams
 are closed or after a time out of 30 seconds.</p><div class="fullcomment"><div class="comment cmt"><p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current active streams
-are closed or after a time out of 30 seconds.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+are closed or after a time out of 30 seconds.</p><p>This is not implemented for HTTP/1.x.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#shutdownHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shutdownHandler(handler:io.vertx.core.Handler[Unit]):io.vertx.scala.core.http.HttpConnection"></a><a id="shutdownHandler(Handler[Unit]):HttpConnection"></a>
       <span class="permalink">
@@ -949,7 +951,7 @@ are closed or after a time out of 30 seconds.</p><p>This is not implemented for 
         <span class="name">shutdownHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an handler called when a  frame has been sent or received and all connections are closed.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler called when a  frame has been sent or received and all connections are closed.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an handler called when a  frame has been sent or received and all connections are closed.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler called when a  frame has been sent or received and all connections are closed.</p><p>This is not implemented for HTTP/1.x.   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -997,7 +999,7 @@ are closed or after a time out of 30 seconds.</p><p>This is not implemented for 
         <span class="name">updateSettings</span><span class="params">(<span name="settings">settings: <a href="Http2Settings.html" class="extype" name="io.vertx.scala.core.http.Http2Settings">Http2Settings</a></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Send to the remote endpoint an update of this endpoint settings</p><div class="fullcomment"><div class="comment cmt"><p>Send to the remote endpoint an update of this endpoint settings</p><p>The <code>completionHandler</code> will be notified when the remote endpoint has acknowledged the settings.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">settings</dt><dd class="cmt"><p>the new settingssee <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a></p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler notified when the settings have been acknowledged by the remote endpoint</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Send to the remote endpoint an update of this endpoint settings</p><div class="fullcomment"><div class="comment cmt"><p>Send to the remote endpoint an update of this endpoint settings</p><p>The <code>completionHandler</code> will be notified when the remote endpoint has acknowledged the settings.</p><p>This is not implemented for HTTP/1.x.   * @param settings the new settings see <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a></p></div><dl class="paramcmts block"><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler notified when the settings have been acknowledged by the remote endpoint</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#updateSettings" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateSettings(settings:io.vertx.scala.core.http.Http2Settings):io.vertx.scala.core.http.HttpConnection"></a><a id="updateSettings(Http2Settings):HttpConnection"></a>
       <span class="permalink">
@@ -1013,7 +1015,7 @@ are closed or after a time out of 30 seconds.</p><p>This is not implemented for 
         <span class="name">updateSettings</span><span class="params">(<span name="settings">settings: <a href="Http2Settings.html" class="extype" name="io.vertx.scala.core.http.Http2Settings">Http2Settings</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Send to the remote endpoint an update of the server settings.</p><div class="fullcomment"><div class="comment cmt"><p>Send to the remote endpoint an update of the server settings.</p><p>This is not implemented for HTTP/1.x.</p></div><dl class="paramcmts block"><dt class="param">settings</dt><dd class="cmt"><p>the new settingssee <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a></p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Send to the remote endpoint an update of the server settings.</p><div class="fullcomment"><div class="comment cmt"><p>Send to the remote endpoint an update of the server settings.</p><p>This is not implemented for HTTP/1.x.   * @param settings the new settings see <a href="../../../../../../../cheatsheet/Http2Settings.html">Http2Settings</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#updateSettingsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="updateSettingsFuture(settings:io.vertx.scala.core.http.Http2Settings):scala.concurrent.Future[Unit]"></a><a id="updateSettingsFuture(Http2Settings):scala.concurrent.Future[Unit]"></a>
       <span class="permalink">

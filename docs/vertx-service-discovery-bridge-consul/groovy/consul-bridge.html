@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Consul bridge - Vert.x</title>
+  <title>Consul 桥接器 - Vert.x</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -141,7 +141,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Consul bridge</h1>
+          <h1>Consul 桥接器</h1>
           
         </div>
       </div>
@@ -157,7 +157,7 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel2">
-<li><a href="#_consul_bridge">Consul bridge</a></li>
+<li><a href="#_consul_桥接器">Consul 桥接器</a></li>
 </ul>
         </div>
       </div>
@@ -165,7 +165,7 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel2">
-<li><a href="#_consul_bridge">Consul bridge</a></li>
+<li><a href="#_consul_桥接器">Consul 桥接器</a></li>
 </ul>
         </div>
 
@@ -178,38 +178,36 @@
   </a>
 
         <div class="sect2">
-<h3 id="_consul_bridge">Consul bridge</h3>
+<h3 id="_consul_桥接器">Consul 桥接器</h3>
 <div class="paragraph">
-<p>This discovery bridge imports services from <a href="http://consul.io">Consul</a> into the Vert.x service discovery. The bridge
-connects to a Consul agent (server) and periodically scan for services:</p>
+<p>Consul 桥接器可以将 <a href="http://consul.io">Consul</a> 中的服务导入到Vert.x的服务发现组件中。
+这个桥接器可以连接 Consul agent（服务器），并且会进行周期性的扫描，来更新服务情况：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>new services are imported</p>
+<p>新的服务被导入</p>
 </li>
 <li>
-<p>services in maintenance mode or that has been removed from consul are removed</p>
+<p>维护模式下的服务或已经从 Consul 中移除的服务将会被移除</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This bridge uses the HTTP API for Consul. It does not export to Consul and does not support service modification.</p>
+<p>这个桥接器使用的是 Consul 的HTTP API接口。它不能将服务导出到Consul，并且也不支持服务的修改。</p>
 </div>
 <div class="paragraph">
-<p>The service type is deduced from <code>tags</code>. If a <code>tag</code> matches a known service type, this service type will be used.
-If not, the service is imported as <code>unknown</code>. Only <code>http-endpoint</code> is supported for now.</p>
+<p>服务的类型是通过`tags`推断出来的，如果有一个`tag`和已知的服务类型一样，那么就使用这种服务类型，如果没有匹配的，那么服务导入后将标记为`unknown`类型。目前暂时只支持`http-endpoint`类型。</p>
 </div>
 <div class="sect3">
-<h4 id="_using_the_bridge">Using the bridge</h4>
+<h4 id="_桥接器的使用">桥接器的使用</h4>
 <div class="paragraph">
-<p>To use this Vert.x discovery bridge, add the following dependency to the <em>dependencies</em> section of your build
-descriptor:</p>
+<p>要使用该服务发现桥接器，需要将如下的依赖包加入到依赖配置文件中：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pox.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -225,7 +223,7 @@ descriptor:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -235,7 +233,7 @@ descriptor:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Then, when creating the service discovery registers this bridge as follows:</p>
+<p>然后，在创建服务发现对象的时候，像下面这样注册桥接器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -247,21 +245,21 @@ descriptor:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can configure the:</p>
+<p>你可以做一些配置：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>agent host using the <code>host</code> property, it defaults to <code>localhost</code></p>
+<p><code>host</code> 属性，配置 agent 的地址，默认是`localhost`</p>
 </li>
 <li>
-<p>agent port using the <code>port</code> property, it defaults to 8500</p>
+<p><code>port</code> 属性，配置 agent 的端口，默认的端口是 8500</p>
 </li>
 <li>
-<p>acl token using the <code>acl_token</code> property, it defaults to null</p>
+<p><code>acl_token</code> 属性，配置 agent 的访问控制令牌，默认值是 null</p>
 </li>
 <li>
-<p>scan period using the <code>scan-period</code> property. The time is set in ms, and is 2000 ms by default</p>
+<p><code>scan-period</code> 属性，配置扫描的频率，扫描的单位是毫秒（ms），默认是 2000 ms</p>
 </li>
 </ul>
 </div>
@@ -273,7 +271,7 @@ descriptor:</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:15 CST
+                上次更新时间 2018-10-16 18:25:28 CST
               
               
             </div>
@@ -304,6 +302,7 @@ descriptor:</p>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

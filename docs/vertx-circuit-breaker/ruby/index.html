@@ -284,6 +284,10 @@ breaker = VertxCircuitBreaker::CircuitBreaker.create("my-circuit-breaker", vertx
   'resetTimeout' =&gt; 10000
 })
 
+# ---
+# Store the circuit breaker in a field and access it as follows
+# ---
+
 breaker.execute() { |future|
   # some code executing with the breaker
   # the code reports failures or success on the given future.
@@ -304,6 +308,10 @@ breaker = VertxCircuitBreaker::CircuitBreaker.create("my-circuit-breaker", vertx
   'maxFailures' =&gt; 5,
   'timeout' =&gt; 2000
 })
+
+# ---
+# Store the circuit breaker in a field and access it as follows
+# ---
 
 breaker.execute() { |future|
   vertx.create_http_client().get_now(8080, "localhost", "/") { |response|
@@ -344,6 +352,10 @@ breaker = VertxCircuitBreaker::CircuitBreaker.create("my-circuit-breaker", vertx
   'timeout' =&gt; 2000
 })
 
+# ---
+# Store the circuit breaker in a field and access it as follows
+# ---
+
 breaker.execute_with_fallback(lambda { |future|
   vertx.create_http_client().get_now(8080, "localhost", "/") { |response|
     if (response.status_code() != 200)
@@ -364,8 +376,8 @@ breaker.execute_with_fallback(lambda { |future|
 </div>
 <div class="paragraph">
 <p>熔断状态中都会调用失败回调（fallback），或者设置
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#is_fallback_on_failure-instance_method">isFallbackOnFailure</a></code> ，其结果是失败回调函数的输出。失败回调函数将
-<code><a href="unavailable">Throwable</a></code> 对象作为参数，并返回预期类型的​​对象。</p>
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#is_fallback_on_failure-instance_method">isFallbackOnFailure</a></code>，其结果是失败回调函数的输出。失败回调函数将
+`<a href="unavailable">Throwable</a>`对象作为参数，并返回预期类型的​​对象。</p>
 </div>
 <div class="paragraph">
 <p>失败回调可以直接设置在 <code><a href="../../yardoc/VertxCircuitBreaker/CircuitBreaker.html">CircuitBreaker</a></code> 上：</p>
@@ -437,7 +449,7 @@ breaker.execute() { |future|
 </div>
 <div class="paragraph">
 <p>当熔断器决定尝试复位的时候（ half-open 状态），我们也可以注册
-<code><a href="../../yardoc/VertxCircuitBreaker/CircuitBreaker.html#half_open_handler-instance_method">halfOpenHandler</a></code> 的回调从而得到回调通知。</p>
+`<a href="../../yardoc/VertxCircuitBreaker/CircuitBreaker.html#half_open_handler-instance_method">halfOpenHandler</a>`的回调从而得到回调通知。</p>
 </div>
 </div>
 </div>
@@ -505,7 +517,7 @@ breaker.execute() { |future|
 <div class="paragraph">
 <p><a href="https://github.com/Netflix/Hystrix">Netflix Hystrix</a>
 带有一个仪表板（dashboard），用于显示熔断器的当前状态。 Vert.x 熔断器可以发布其指标（metric），以供Hystrix 仪表板使用。 Hystrix 仪表板需要一个发送指标的SSE流，此流由
-<code><a href="../../yardoc/VertxCircuitBreaker/HystrixMetricHandler.html">HystrixMetricHandler</a></code> 这个 Vert.x Web Handler 提供：</p>
+`<a href="../../yardoc/VertxCircuitBreaker/HystrixMetricHandler.html">HystrixMetricHandler</a>`这个 Vert.x Web Handler 提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -539,7 +551,7 @@ vertx.create_http_server().request_handler(&amp;router.method(:accept)).listen(8
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 23:35:41 CST
+                上次更新时间 2018-10-16 18:23:46 CST
               
               
             </div>
@@ -570,6 +582,7 @@ vertx.create_http_server().request_handler(&amp;router.method(:accept)).listen(8
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

@@ -344,8 +344,8 @@ var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConf
 </div>
 </div>
 <div class="paragraph">
-<p>只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">MySQLClient.createShared</a></code>
-或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">PostgreSQLClient.createShared</a></code>
+<p>只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createShared(io.vertx.core.Vertx)">MySQLClient.createShared</a></code>
+或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createShared(io.vertx.core.Vertx)">PostgreSQLClient.createShared</a></code>
 方法的时候，才会真正地根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
@@ -374,8 +374,8 @@ var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConf
 <p>如果不同的客户端对象使用了相同的 Vert.x 对象和相同的数据源名称，那么它们将共享数据源。</p>
 </div>
 <div class="paragraph">
-<p>只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject,%20java.lang.String)">MySQLClient.createShared</a></code>
-或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject,%20java.lang.String)">PostgreSQLClient.createShared</a></code>
+<p>只有在第一次调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">MySQLClient.createShared</a></code>
+或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">PostgreSQLClient.createShared</a></code>
 方法的时候，才会真正的根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
@@ -391,8 +391,8 @@ var postgreSQLClient = PostgreSQLClient.createShared(vertx, postgreSQLClientConf
 <p>在大部分情况下，我们会希望在不同的客户端实例之间共享数据源。但有时候，却恰恰相反。</p>
 </div>
 <div class="paragraph">
-<p>这时，可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createNonShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">MySQLClient.createNonShared</a></code>
-或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createNonShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">PostgreSQLClient.createNonShared</a></code> 方法：</p>
+<p>这时，可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createNonShared(io.vertx.core.Vertx)">MySQLClient.createNonShared</a></code>
+或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createNonShared(io.vertx.core.Vertx)">PostgreSQLClient.createNonShared</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -408,8 +408,8 @@ var postgreSQLClient = PostgreSQLClient.createNonShared(vertx, postgreSQLClientC
 </div>
 </div>
 <div class="paragraph">
-<p>每次调用此方法，就相当于在调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject,%20java.lang.String)">MySQLClient.createShared</a></code>
-或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject,%20java.lang.String)">PostgreSQLClient.createShared</a></code>
+<p>每次调用此方法，就相当于在调用 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/MySQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">MySQLClient.createShared</a></code>
+或者 <code><a href="../../scaladocs/io/vertx/scala/ext/asyncsql/PostgreSQLClient.html#createShared(io.vertx.core.Vertx,%20io.vertx.core.json.JsonObject)">PostgreSQLClient.createShared</a></code>
 方法时加上了具有唯一名称的数据源参数。</p>
 </div>
 </div>
@@ -420,8 +420,8 @@ var postgreSQLClient = PostgreSQLClient.createNonShared(vertx, postgreSQLClientC
 <div class="sectionbody">
 <div class="paragraph">
 <p>您可以较长时间的持有客户端对象（比如在 Verticle 的整个生命周期里），可一旦不再使用，就应该使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#close(io.vertx.core.Handler)">close</a></code> 或者
-<code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#close()">close</a></code> 方法来关闭它。</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#close()">close</a>`或者
+`<a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#close()">close</a>`方法来关闭它。</p>
 </div>
 </div>
 </div>
@@ -429,7 +429,7 @@ var postgreSQLClient = PostgreSQLClient.createNonShared(vertx, postgreSQLClientC
 <h2 id="_获取数据库连接">获取数据库连接</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#getConnection(io.vertx.core.Handler)">getConnection</a></code> 方法来获得数据库连接。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#getConnection()">getConnection</a></code> 方法来获得数据库连接。</p>
 </div>
 <div class="paragraph">
 <p>此方法从连接池中获取一个数据库连接，并返回给回调方法：</p>
@@ -488,7 +488,7 @@ fail, which may be some time after the initial connection attempt.</p>
 <div class="paragraph">
 <p>If <code>maxConnectionRetries</code> is set to <code>0</code>, the internal connection pool will not perform any reconnection (default). If
 <code>maxConnectionRetries</code> is set to <code>-1</code>, the internal connection pool will attempt to acquire new connections indefinitely,
-so any call to <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#getConnection(io.vertx.core.Handler)">getConnection</a></code>
+so any call to <code><a href="../../scaladocs/io/vertx/scala/ext/sql/SQLClient.html#getConnection()">getConnection</a></code>
 may be indefinitely waiting for a successful acquisition.</p>
 </div>
 <div class="paragraph">
@@ -658,7 +658,7 @@ Refer to <a href="https://github.com/mauricio/postgresql-async">postgresql-async
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:04 CST
+                上次更新时间 2018-10-16 18:25:13 CST
               
               
             </div>
@@ -689,6 +689,7 @@ Refer to <a href="https://github.com/mauricio/postgresql-async">postgresql-async
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

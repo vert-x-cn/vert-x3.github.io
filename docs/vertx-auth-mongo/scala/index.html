@@ -256,29 +256,29 @@ var authProvider = MongoAuth.create(client, authProperties)</code></pre>
 <p>根据你自己的需要，你同样可以使用下边的方法改变MongoDB中使用的默认集合（Collection）和列（Column）名称等信息：</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setCollectionName(java.lang.String)">setCollectionName</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameField(java.lang.String)">setUsernameField</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordField(java.lang.String)">setPasswordField</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPermissionField(java.lang.String)">setPermissionField</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setRoleField(java.lang.String)">setRoleField</a></code></p>
+<p><code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setCollectionName()">setCollectionName</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameField()">setUsernameField</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordField()">setPasswordField</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPermissionField()">setPermissionField</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setRoleField()">setRoleField</a></code></p>
 </div>
 <div class="paragraph">
 <p>Vert.X默认实现中的密码在数据库中使用了SHA-512算法加密后进行存储，之后会连接对应的`salt`值，这个`salt`值和密码存储在同一个表里。
-你可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setSaltField(java.lang.String)">setSaltField</a></code> 方法来改变存储`salt`值的字段名称，它的默认值是"salt"，
-你同样可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setSaltStyle(io.vertx.ext.auth.mongo.HashSaltStyle)">setSaltStyle</a></code> 来改变一些行为。
+你可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setSaltField()">setSaltField</a></code> 方法来改变存储`salt`值的字段名称，它的默认值是"salt"，
+你同样可以使用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setSaltStyle()">setSaltStyle</a></code> 来改变一些行为。
 通过调用  <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#getHashStrategy()">getHashStrategy</a></code> 方法还可以读取Hash策略设置。</p>
 </div>
 <div class="paragraph">
 <p>MongoDB中可以设置下边几种`SALT`的值：</p>
 </div>
 <div class="paragraph">
-<p><code><a href="todo">NO_SALT</a></code> ：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
-<code><a href="todo">COLUMN</a></code> ：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
-<code><a href="todo">EXTERNAL</a></code> ：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setExternalSalt(java.lang.String)">setExternalSalt</a></code> 方法进行设置。</p>
+<p><code><a href="todo">NO_SALT</a></code>：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
+<code><a href="todo">COLUMN</a></code>：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
+<code><a href="todo">EXTERNAL</a></code>：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/HashStrategy.html#setExternalSalt()">setExternalSalt</a></code> 方法进行设置。</p>
 </div>
 <div class="paragraph">
 <p>如果你想要重写上述行为，则你可以调用
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setHashStrategy(io.vertx.ext.auth.mongo.HashStrategy)">setHashStrategy</a></code> 方法设置新的Hash策略，并且提供变更过的Hash策略及配置信息。</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setHashStrategy()">setHashStrategy</a></code> 方法设置新的Hash策略，并且提供变更过的Hash策略及配置信息。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -422,8 +422,8 @@ authProvider.authenticateFuture(authInfo).onComplete{
 </div>
 <div class="paragraph">
 <p>如果想要替换上边的 <code>username</code> 和 <code>password</code> 两个默认字段名，你可以使用
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameCredentialField(java.lang.String)">setUsernameCredentialField</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordCredentialField(java.lang.String)">setPasswordCredentialField</a></code> 方法。</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setUsernameCredentialField()">setUsernameCredentialField</a>`和
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/mongo/MongoAuth.html#setPasswordCredentialField()">setPasswordCredentialField</a>`方法。</p>
 </div>
 </div>
 </div>
@@ -435,7 +435,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
 </div>
 <div class="paragraph">
 <p>如果要验证一个用户是否拥有特定的许可，则要将许可信息传递到
-<code><a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String,%20io.vertx.core.Handler)">isAuthorised</a></code> 中：</p>
+`<a href="../../scaladocs/io/vertx/scala/ext/auth/User.html#isAuthorised(java.lang.String)">isAuthorised</a>`中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -472,7 +472,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:15:35 CST
+                上次更新时间 2018-10-16 18:23:35 CST
               
               
             </div>
@@ -503,6 +503,7 @@ authProvider.authenticateFuture(authInfo).onComplete{
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

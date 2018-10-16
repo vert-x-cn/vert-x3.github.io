@@ -210,8 +210,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A ReadStream of Rows from the underlying RDBMS. This class follows the ReadStream semantics and will automatically
 close the underlying resources if all returned rows are returned. For cases where the results are ignored before the
 full processing of the returned rows is complete the close method **MUST** be called in order to release underlying
-resources.</p><p>The interface is minimal in order to support all SQL clients not just JDBC.
-</p></div><div class="toggleContainer block">
+resources.</p><p>The interface is minimal in order to support all SQL clients not just JDBC.</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -406,7 +405,8 @@ resources.</p><p>The interface is minimal in order to support all SQL clients no
         <span class="name">close</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Closes the stream/underlying cursor(s).</p><div class="fullcomment"><div class="comment cmt"><p>Closes the stream/underlying cursor(s). The actual close happens asynchronously.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>called when the stream/underlying cursor(s) is(are) closed</p></dd></dl></div>
+      <p class="shortcomment cmt">Closes the stream/underlying cursor(s).</p><div class="fullcomment"><div class="comment cmt"><p>Closes the stream/underlying cursor(s). The actual close happens asynchronously.   * @param handler called when the stream/underlying cursor(s) is(are) closed
+</p></div></div>
     </li><li name="io.vertx.scala.ext.sql.SQLRowStream#close" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="close():Unit"></a>
       <span class="permalink">
@@ -455,7 +455,7 @@ resources.</p><p>The interface is minimal in order to support all SQL clients no
         <span class="name">column</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <p class="shortcomment cmt">Will convert the column name to the json array index.</p><div class="fullcomment"><div class="comment cmt"><p>Will convert the column name to the json array index.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the column name</p></dd><dt>returns</dt><dd class="cmt"><p>the json array index</p></dd></dl></div>
+      <p class="shortcomment cmt">Will convert the column name to the json array index.</p><div class="fullcomment"><div class="comment cmt"><p>Will convert the column name to the json array index.   * @param name the column name</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the json array index</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.sql.SQLRowStream#columns" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columns():scala.collection.mutable.Buffer[String]"></a><a id="columns():Buffer[String]"></a>
       <span class="permalink">
@@ -473,7 +473,8 @@ resources.</p><p>The interface is minimal in order to support all SQL clients no
       
       <p class="shortcomment cmt">Returns all column names available in the underlying resultset.</p><div class="fullcomment"><div class="comment cmt"><p>Returns all column names available in the underlying resultset. One needs to carefully use this method since in
 contrast to the singular version it does not perform case insensitive lookups or takes alias in consideration on
-the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the list of columns names returned by the query</p></dd></dl></div>
+the column names.   * @return the list of columns names returned by the query
+</p></div></div>
     </li><li name="io.vertx.scala.ext.sql.SQLRowStream#endHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="endHandler(endHandler:io.vertx.core.Handler[Unit]):io.vertx.scala.ext.sql.SQLRowStream"></a><a id="endHandler(Handler[Unit]):SQLRowStream"></a>
       <span class="permalink">
@@ -489,7 +490,8 @@ the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class
         <span class="name">endHandler</span><span class="params">(<span name="endHandler">endHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -537,7 +539,26 @@ the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class
         <span class="name">exceptionHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an exception handler on the read stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the read stream.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the exception handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="../../core/streams/StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an exception handler on the read stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the read stream.   * @param handler the exception handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="../../core/streams/StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.sql.SQLRowStream#fetch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fetch(arg0:Long):io.vertx.scala.core.streams.ReadStream[io.vertx.core.json.JsonArray]"></a><a id="fetch(Long):ReadStream[JsonArray]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/sql/SQLRowStream.html#fetch(arg0:Long):io.vertx.scala.core.streams.ReadStream[io.vertx.core.json.JsonArray]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fetch</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Fetch the specified <code>amount</code> of elements.</p><div class="fullcomment"><div class="comment cmt"><p>Fetch the specified <code>amount</code> of elements. If the <code>ReadStream</code> has been paused, reading will
+recommence with the specified <code>amount</code> of items, otherwise the specified <code>amount</code> will
+be added to the current stream demand.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -594,7 +615,8 @@ the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class
         <span class="name">handler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.json.JsonArray">JsonArray</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -716,7 +738,8 @@ the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class
         <span class="name">pause</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a></span>
       </span>
       
-      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.sql.SQLRowStream#resultSetClosedHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resultSetClosedHandler(handler:io.vertx.core.Handler[Unit]):io.vertx.scala.ext.sql.SQLRowStream"></a><a id="resultSetClosedHandler(Handler[Unit]):SQLRowStream"></a>
       <span class="permalink">
@@ -732,7 +755,8 @@ the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class
         <span class="name">resultSetClosedHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a></span>
       </span>
       
-      <p class="shortcomment cmt">Event handler when a resultset is closed.</p><div class="fullcomment"><div class="comment cmt"><p>Event handler when a resultset is closed. This is useful to request for more results.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>called when the current result set is closed</p></dd></dl></div>
+      <p class="shortcomment cmt">Event handler when a resultset is closed.</p><div class="fullcomment"><div class="comment cmt"><p>Event handler when a resultset is closed. This is useful to request for more results.   * @param handler called when the current result set is closed
+</p></div></div>
     </li><li name="io.vertx.scala.ext.sql.SQLRowStream#resume" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resume():io.vertx.scala.ext.sql.SQLRowStream"></a><a id="resume():SQLRowStream"></a>
       <span class="permalink">
@@ -748,7 +772,8 @@ the column names.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class
         <span class="name">resume</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a></span>
       </span>
       
-      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.sql.SQLRowStream">SQLRowStream</a> → <a href="../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

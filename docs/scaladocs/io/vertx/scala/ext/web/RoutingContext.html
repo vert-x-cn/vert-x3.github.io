@@ -181,6 +181,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.common" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="common"></a><a id="common:common"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/web/index.html#common" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="common/index.html"><span class="name">common</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler" visbl="pub" class="indented6 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handler"></a><a id="handler:handler"></a>
       <span class="permalink">
@@ -471,7 +487,8 @@ in the application.
       <p class="shortcomment cmt">Returns the languages for the current request.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the languages for the current request. The languages are determined from the <code>Accept-Language</code>
 header and sorted on quality.</p><p>When 2 or more entries have the same quality then the order used to return the best match is based on the lowest
 index on the original list. For example if a user has en-US and en-GB with same quality and this order the best
-match will be en-US because it was declared as first entry by the client.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The best matched language for the request</p></dd></dl></div>
+match will be en-US because it was declared as first entry by the client.   * @return The best matched language for the request
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#acceptableLocales" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="acceptableLocales():scala.collection.mutable.Buffer[io.vertx.scala.ext.web.Locale]"></a><a id="acceptableLocales():Buffer[Locale]"></a>
       <span class="permalink">
@@ -490,7 +507,8 @@ match will be en-US because it was declared as first entry by the client.</p></d
       <p class="shortcomment cmt">Returns the locales for the current request.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the locales for the current request. The locales are determined from the <code>accept-languages</code> header and
 sorted on quality.</p><p>When 2 or more entries have the same quality then the order used to return the best match is based on the lowest
 index on the original list. For example if a user has en-US and en-GB with same quality and this order the best
-match will be en-US because it was declared as first entry by the client.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the best matched locale for the request</p></dd></dl></div>
+match will be en-US because it was declared as first entry by the client.   * @return the best matched locale for the request
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#addBodyEndHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addBodyEndHandler(handler:io.vertx.core.Handler[Unit]):Int"></a><a id="addBodyEndHandler(Handler[Unit]):Int"></a>
       <span class="permalink">
@@ -509,7 +527,7 @@ match will be en-US because it was declared as first entry by the client.</p></d
       <p class="shortcomment cmt">Provides a handler that will be called after the last part of the body is written to the wire.</p><div class="fullcomment"><div class="comment cmt"><p>Provides a handler that will be called after the last part of the body is written to the wire.
 The handler is called asynchronously of when the response has been received by the client.
 This provides a hook allowing you to do more operations once the request has been sent over the wire.
-Do not use this for resource cleanup as this handler might never get called (e.g. if the connection is reset).</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler</p></dd><dt>returns</dt><dd class="cmt"><p>the id of the handler. This can be used if you later want to remove the handler.</p></dd></dl></div>
+Do not use this for resource cleanup as this handler might never get called (e.g. if the connection is reset).   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the id of the handler. This can be used if you later want to remove the handler.</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#addCookie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addCookie(cookie:io.vertx.scala.ext.web.Cookie):io.vertx.scala.ext.web.RoutingContext"></a><a id="addCookie(Cookie):RoutingContext"></a>
       <span class="permalink">
@@ -526,7 +544,7 @@ Do not use this for resource cleanup as this handler might never get called (e.g
       </span>
       
       <p class="shortcomment cmt">Add a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Add a cookie. This will be sent back to the client in the response. The context must have first been routed
-to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> for this to work.</p></div><dl class="paramcmts block"><dt class="param">cookie</dt><dd class="cmt"><p>the cookie</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> for this to work.   * @param cookie the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#addHeadersEndHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addHeadersEndHandler(handler:io.vertx.core.Handler[Unit]):Int"></a><a id="addHeadersEndHandler(Handler[Unit]):Int"></a>
       <span class="permalink">
@@ -543,7 +561,7 @@ to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ex
       </span>
       
       <p class="shortcomment cmt">Add a handler that will be called just before headers are written to the response.</p><div class="fullcomment"><div class="comment cmt"><p>Add a handler that will be called just before headers are written to the response. This gives you a hook where
-you can write any extra headers before the response has been written when it will be too late.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler</p></dd><dt>returns</dt><dd class="cmt"><p>the id of the handler. This can be used if you later want to remove the handler.</p></dd></dl></div>
+you can write any extra headers before the response has been written when it will be too late.   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the id of the handler. This can be used if you later want to remove the handler.</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -714,7 +732,8 @@ current user is unbounded from the routing context.
       </span>
       
       <p class="shortcomment cmt">Fail the context with the specified throwable.</p><div class="fullcomment"><div class="comment cmt"><p>Fail the context with the specified throwable.</p><p>This will cause the router to route the context to any matching failure handlers for the request. If no failure handlers
-match a default failure response with status code 500 will be sent.</p></div><dl class="paramcmts block"><dt class="param">throwable</dt><dd class="cmt"><p>a throwable representing the failure</p></dd></dl></div>
+match a default failure response with status code 500 will be sent.   * @param throwable a throwable representing the failure
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#fail" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fail(statusCode:Int):Unit"></a><a id="fail(Int):Unit"></a>
       <span class="permalink">
@@ -731,7 +750,8 @@ match a default failure response with status code 500 will be sent.</p></div><dl
       </span>
       
       <p class="shortcomment cmt">Fail the context with the specified status code.</p><div class="fullcomment"><div class="comment cmt"><p>Fail the context with the specified status code.</p><p>This will cause the router to route the context to any matching failure handlers for the request. If no failure handlers
-match a default failure response will be sent.</p></div><dl class="paramcmts block"><dt class="param">statusCode</dt><dd class="cmt"><p>the HTTP status code</p></dd></dl></div>
+match a default failure response will be sent.   * @param statusCode the HTTP status code
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#failed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="failed():Boolean"></a>
       <span class="permalink">
@@ -766,7 +786,8 @@ match a default failure response will be sent.</p></div><dl class="paramcmts blo
       <p class="shortcomment cmt">If the context is being routed to failure handlers after a failure has been triggered by calling
 <a href="#fail(throwable:Throwable):Unit" class="extmbr" name="io.vertx.scala.ext.web.RoutingContext#fail">io.vertx.scala.ext.web.RoutingContext#fail</a> then this will return that throwable.</p><div class="fullcomment"><div class="comment cmt"><p>If the context is being routed to failure handlers after a failure has been triggered by calling
 <a href="#fail(throwable:Throwable):Unit" class="extmbr" name="io.vertx.scala.ext.web.RoutingContext#fail">io.vertx.scala.ext.web.RoutingContext#fail</a> then this will return that throwable. It can be used by failure handlers to render a response,
-e.g. create a failure response page.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the throwable used when signalling failure</p></dd></dl></div>
+e.g. create a failure response page.   * @return the throwable used when signalling failure
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#fileUploads" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fileUploads():scala.collection.mutable.Set[io.vertx.scala.ext.web.FileUpload]"></a><a id="fileUploads():Set[FileUpload]"></a>
       <span class="permalink">
@@ -820,7 +841,7 @@ e.g. create a failure response page.</p></div><dl class="paramcmts block"><dt>re
         <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.ext.web.RoutingContext.get.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="io.vertx.scala.ext.web.RoutingContext.get.T">T</span></span>
       </span>
       
-      <p class="shortcomment cmt">Get some data from the context.</p><div class="fullcomment"><div class="comment cmt"><p>Get some data from the context. The data is available in any handlers that receive the context.</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>the key for the data</p></dd><dt>returns</dt><dd class="cmt"><p>the data</p></dd></dl></div>
+      <p class="shortcomment cmt">Get some data from the context.</p><div class="fullcomment"><div class="comment cmt"><p>Get some data from the context. The data is available in any handlers that receive the context.   * @param key the key for the data</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the data</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#getAcceptableContentType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getAcceptableContentType():Option[String]"></a>
       <span class="permalink">
@@ -837,7 +858,8 @@ e.g. create a failure response page.</p></div><dl class="paramcmts block"><dt>re
       </span>
       
       <p class="shortcomment cmt">If the route specifies produces matches, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>If the route specifies produces matches, e.g. produces <code>text/html</code> and <code>text/plain</code>, and the <code>accept</code> header
-matches one or more of these then this returns the most acceptable match.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the most acceptable content type.</p></dd></dl></div>
+matches one or more of these then this returns the most acceptable match.   * @return the most acceptable content type.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#getBody" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getBody():Option[io.vertx.core.buffer.Buffer]"></a><a id="getBody():Option[Buffer]"></a>
       <span class="permalink">
@@ -902,7 +924,7 @@ matches one or more of these then this returns the most acceptable match.</p></d
       </span>
       
       <p class="shortcomment cmt">Get the entire HTTP request body as a string, assuming the specified encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Get the entire HTTP request body as a string, assuming the specified encoding. The context must have first been routed to a
-<a href="handler/BodyHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.BodyHandler">io.vertx.scala.ext.web.handler.BodyHandler</a> for this to be populated.</p></div><dl class="paramcmts block"><dt class="param">encoding</dt><dd class="cmt"><p>the encoding, e.g. &quot;UTF-16&quot;</p></dd><dt>returns</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+<a href="handler/BodyHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.BodyHandler">io.vertx.scala.ext.web.handler.BodyHandler</a> for this to be populated.   * @param encoding the encoding, e.g. &quot;UTF-16&quot;</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the body</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#getBodyAsString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getBodyAsString():Option[String]"></a>
       <span class="permalink">
@@ -954,7 +976,7 @@ matches one or more of these then this returns the most acceptable match.</p></d
       </span>
       
       <p class="shortcomment cmt">Get the cookie with the specified name.</p><div class="fullcomment"><div class="comment cmt"><p>Get the cookie with the specified name. The context must have first been routed to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a>
-for this to work.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the cookie name</p></dd><dt>returns</dt><dd class="cmt"><p>the cookie</p></dd></dl></div>
+for this to work.   * @param name the cookie name</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cookie</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -1061,7 +1083,8 @@ will be sent.
 were encoded in the original URL with <code>%</code> will be returned to their original form. E.g. <code>%20</code> will revert to a space.
 Also <code>+</code> reverts to a space in a query.</p><p>The normalised path will also not contain any <code>..</code> character sequences to prevent resources being accessed outside
 of the permitted area.</p><p>It's recommended to always use the normalised path as opposed to
-if accessing server resources requested by a client.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the normalised path</p></dd></dl></div>
+if accessing server resources requested by a client.   * @return the normalised path
+</p></div></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
@@ -1115,7 +1138,8 @@ if accessing server resources requested by a client.</p></div><dl class="paramcm
         <span class="name">parsedHeaders</span><span class="params">()</span><span class="result">: <a href="ParsedHeaderValues.html" class="extype" name="io.vertx.scala.ext.web.ParsedHeaderValues">ParsedHeaderValues</a></span>
       </span>
       
-      <p class="shortcomment cmt">The headers:</p><div class="fullcomment"><div class="comment cmt"><p>The headers:</p><ul><li>Accept</li><li>Accept-Charset</li><li>Accept-Encoding</li><li>Accept-Language</li><li>Content-Type</li></ul><p>Parsed into <a href="ParsedHeaderValue.html" class="extype" name="io.vertx.scala.ext.web.ParsedHeaderValue">io.vertx.scala.ext.web.ParsedHeaderValue</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A container with the parsed headers.</p></dd></dl></div>
+      <p class="shortcomment cmt">The headers:</p><div class="fullcomment"><div class="comment cmt"><p>The headers:</p><ul><li>Accept</li><li>Accept-Charset</li><li>Accept-Encoding</li><li>Accept-Language</li><li>Content-Type</li></ul><p>Parsed into <a href="ParsedHeaderValue.html" class="extype" name="io.vertx.scala.ext.web.ParsedHeaderValue">io.vertx.scala.ext.web.ParsedHeaderValue</a>   * @return A container with the parsed headers.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#pathParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pathParam(name:String):Option[String]"></a><a id="pathParam(String):Option[String]"></a>
       <span class="permalink">
@@ -1131,8 +1155,8 @@ if accessing server resources requested by a client.</p></div><dl class="paramcm
         <span class="name">pathParam</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Gets the value of a single path parameter</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of a single path parameter</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the name of parameter as defined in path declaration</p></dd><dt>returns</dt><dd class="cmt"><p>the actual value of the parameter or null if it doesn't exist</p></dd></dl></div>
-    </li><li name="io.vertx.scala.ext.web.RoutingContext#pathParams" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">Gets the value of a single path parameter   * @param name the name of parameter as defined in path declaration</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of a single path parameter   * @param name the name of parameter as defined in path declaration</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the actual value of the parameter or null if it doesn't exist</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.RoutingContext#pathParams" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="pathParams():scala.collection.mutable.Map[String,String]"></a><a id="pathParams():Map[String,String]"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/ext/web/RoutingContext.html#pathParams():scala.collection.mutable.Map[String,String]" title="Permalink">
@@ -1147,7 +1171,8 @@ if accessing server resources requested by a client.</p></div><dl class="paramcm
         <span class="name">pathParams</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Returns a map of named parameters as defined in path declaration with their actual values</p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of named parameters as defined in path declaration with their actual values</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the map of named parameters</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns a map of named parameters as defined in path declaration with their actual values   * @return the map of named parameters
+</p>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#preferredLanguage" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="preferredLanguage():io.vertx.scala.ext.web.LanguageHeader"></a><a id="preferredLanguage():LanguageHeader"></a>
       <span class="permalink">
@@ -1164,7 +1189,8 @@ if accessing server resources requested by a client.</p></div><dl class="paramcm
       </span>
       
       <p class="shortcomment cmt">Helper to return the user preferred language.</p><div class="fullcomment"><div class="comment cmt"><p>Helper to return the user preferred language.
-It is the same action as returning the first element of the acceptable languages.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the users preferred locale.</p></dd></dl></div>
+It is the same action as returning the first element of the acceptable languages.   * @return the users preferred locale.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#preferredLocale" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="preferredLocale():io.vertx.scala.ext.web.Locale"></a><a id="preferredLocale():Locale"></a>
       <span class="permalink">
@@ -1181,7 +1207,8 @@ It is the same action as returning the first element of the acceptable languages
       </span>
       
       <p class="shortcomment cmt">Helper to return the user preferred locale.</p><div class="fullcomment"><div class="comment cmt"><p>Helper to return the user preferred locale. It is the same action as returning the first element of the acceptable
-locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the users preferred locale.</p></dd></dl></div>
+locales.   * @return the users preferred locale.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#put" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="put(key:String,obj:AnyRef):io.vertx.scala.ext.web.RoutingContext"></a><a id="put(String,AnyRef):RoutingContext"></a>
       <span class="permalink">
@@ -1197,7 +1224,7 @@ locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p
         <span class="name">put</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="obj">obj: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.RoutingContext">RoutingContext</a></span>
       </span>
       
-      <p class="shortcomment cmt">Put some arbitrary data in the context.</p><div class="fullcomment"><div class="comment cmt"><p>Put some arbitrary data in the context. This will be available in any handlers that receive the context.</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>the key for the data</p></dd><dt class="param">obj</dt><dd class="cmt"><p>the data</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Put some arbitrary data in the context.</p><div class="fullcomment"><div class="comment cmt"><p>Put some arbitrary data in the context. This will be available in any handlers that receive the context.   * @param key the key for the data</p></div><dl class="paramcmts block"><dt class="param">obj</dt><dd class="cmt"><p>the data</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#queryParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="queryParam(query:String):Option[scala.collection.mutable.Buffer[String]]"></a><a id="queryParam(String):Option[Buffer[String]]"></a>
       <span class="permalink">
@@ -1213,8 +1240,8 @@ locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p
         <span class="name">queryParam</span><span class="params">(<span name="query">query: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
       </span>
       
-      <p class="shortcomment cmt">Gets the value of a single query parameter</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of a single query parameter</p></div><dl class="paramcmts block"><dt class="param">query</dt><dd class="cmt"><p>The name of query parameter</p></dd><dt>returns</dt><dd class="cmt"><p>The list of all elements inside query parameter</p></dd></dl></div>
-    </li><li name="io.vertx.scala.ext.web.RoutingContext#queryParams" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">Gets the value of a single query parameter   * @param query The name of query parameter</p><div class="fullcomment"><div class="comment cmt"><p>Gets the value of a single query parameter   * @param query The name of query parameter</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The list of all elements inside query parameter</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.RoutingContext#queryParams" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="queryParams():io.vertx.scala.core.MultiMap"></a><a id="queryParams():MultiMap"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/ext/web/RoutingContext.html#queryParams():io.vertx.scala.core.MultiMap" title="Permalink">
@@ -1229,7 +1256,8 @@ locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p
         <span class="name">queryParams</span><span class="params">()</span><span class="result">: <a href="../../core/MultiMap.html" class="extype" name="io.vertx.scala.core.MultiMap">MultiMap</a></span>
       </span>
       
-      <p class="shortcomment cmt">Returns a map of all query parameters inside the <a href="https://en.wikipedia.org/wiki/Query_string">query string</a></p><div class="fullcomment"><div class="comment cmt"><p>Returns a map of all query parameters inside the <a href="https://en.wikipedia.org/wiki/Query_string">query string</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the multimap of query parameters</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns a map of all query parameters inside the <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>   * @return the multimap of query parameters
+</p>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#remove" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="remove[T](key:String)(implicitevidence$2:reflect.runtime.universe.TypeTag[T]):T"></a><a id="remove[T](String)(scala.reflect.api.JavaUniverse.TypeTag[T]):T"></a>
       <span class="permalink">
@@ -1245,7 +1273,7 @@ locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p
         <span class="name">remove</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.ext.web.RoutingContext.remove.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="io.vertx.scala.ext.web.RoutingContext.remove.T">T</span></span>
       </span>
       
-      <p class="shortcomment cmt">Remove some data from the context.</p><div class="fullcomment"><div class="comment cmt"><p>Remove some data from the context. The data is available in any handlers that receive the context.</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>the key for the data</p></dd><dt>returns</dt><dd class="cmt"><p>the previous data associated with the key</p></dd></dl></div>
+      <p class="shortcomment cmt">Remove some data from the context.</p><div class="fullcomment"><div class="comment cmt"><p>Remove some data from the context. The data is available in any handlers that receive the context.   * @param key the key for the data</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the previous data associated with the key</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#removeBodyEndHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removeBodyEndHandler(handlerID:Int):Boolean"></a><a id="removeBodyEndHandler(Int):Boolean"></a>
       <span class="permalink">
@@ -1261,7 +1289,7 @@ locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p
         <span class="name">removeBodyEndHandler</span><span class="params">(<span name="handlerID">handlerID: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt">Remove a body end handler</p><div class="fullcomment"><div class="comment cmt"><p>Remove a body end handler</p></div><dl class="paramcmts block"><dt class="param">handlerID</dt><dd class="cmt"><p>the id as returned from io.vertx.scala.ext.web.RoutingContext#addBodyEndHandler(Handler).</p></dd><dt>returns</dt><dd class="cmt"><p>true if the handler existed and was removed, false otherwise</p></dd></dl></div>
+      <p class="shortcomment cmt">Remove a body end handler   * @param handlerID the id as returned from io.vertx.scala.ext.web.RoutingContext#addBodyEndHandler(Handler).</p><div class="fullcomment"><div class="comment cmt"><p>Remove a body end handler   * @param handlerID the id as returned from io.vertx.scala.ext.web.RoutingContext#addBodyEndHandler(Handler).</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if the handler existed and was removed, false otherwise</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#removeCookie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removeCookie(name:String,invalidate:Boolean):Option[io.vertx.scala.ext.web.Cookie]"></a><a id="removeCookie(String,Boolean):Option[Cookie]"></a>
       <span class="permalink">
@@ -1279,7 +1307,7 @@ locales.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p
       
       <p class="shortcomment cmt">Remove a cookie from the cookie set.</p><div class="fullcomment"><div class="comment cmt"><p>Remove a cookie from the cookie set. If invalidate is true then it will expire a cookie, notifying a User Agent to
 remove it from its cookie jar. The context must have first been routed to a
-<a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> for this to work.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the name of the cookie</p></dd><dt>returns</dt><dd class="cmt"><p>the cookie, if it existed, or null</p></dd></dl></div>
+<a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> for this to work.   * @param name the name of the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cookie, if it existed, or null</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#removeCookie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removeCookie(name:String):Option[io.vertx.scala.ext.web.Cookie]"></a><a id="removeCookie(String):Option[Cookie]"></a>
       <span class="permalink">
@@ -1296,7 +1324,7 @@ remove it from its cookie jar. The context must have first been routed to a
       </span>
       
       <p class="shortcomment cmt">Expire a cookie, notifying a User Agent to remove it from its cookie jar.</p><div class="fullcomment"><div class="comment cmt"><p>Expire a cookie, notifying a User Agent to remove it from its cookie jar. The context must have first been routed
-to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> for this to work.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the name of the cookie</p></dd><dt>returns</dt><dd class="cmt"><p>the cookie, if it existed, or null</p></dd></dl></div>
+to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> for this to work.   * @param name the name of the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cookie, if it existed, or null</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#removeHeadersEndHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removeHeadersEndHandler(handlerID:Int):Boolean"></a><a id="removeHeadersEndHandler(Int):Boolean"></a>
       <span class="permalink">
@@ -1312,7 +1340,7 @@ to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ex
         <span class="name">removeHeadersEndHandler</span><span class="params">(<span name="handlerID">handlerID: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt">Remove a headers end handler</p><div class="fullcomment"><div class="comment cmt"><p>Remove a headers end handler</p></div><dl class="paramcmts block"><dt class="param">handlerID</dt><dd class="cmt"><p>the id as returned from io.vertx.scala.ext.web.RoutingContext#addHeadersEndHandler(Handler).</p></dd><dt>returns</dt><dd class="cmt"><p>true if the handler existed and was removed, false otherwise</p></dd></dl></div>
+      <p class="shortcomment cmt">Remove a headers end handler   * @param handlerID the id as returned from io.vertx.scala.ext.web.RoutingContext#addHeadersEndHandler(Handler).</p><div class="fullcomment"><div class="comment cmt"><p>Remove a headers end handler   * @param handlerID the id as returned from io.vertx.scala.ext.web.RoutingContext#addHeadersEndHandler(Handler).</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if the handler existed and was removed, false otherwise</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#request" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="request():io.vertx.scala.core.http.HttpServerRequest"></a><a id="request():HttpServerRequest"></a>
       <span class="permalink">
@@ -1345,7 +1373,7 @@ to a <a href="handler/CookieHandler.html" class="extype" name="io.vertx.scala.ex
       </span>
       
       <p class="shortcomment cmt">Restarts the current router with a new method and path.</p><div class="fullcomment"><div class="comment cmt"><p>Restarts the current router with a new method and path. All path parameters are then parsed and available on the
-params list.</p></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>the new http request</p></dd><dt class="param">path</dt><dd class="cmt"><p>the new http path.</p></dd></dl></div>
+params list.   * @param method the new http request</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the new http path.</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#reroute" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reroute(path:String):Unit"></a><a id="reroute(String):Unit"></a>
       <span class="permalink">
@@ -1362,7 +1390,8 @@ params list.</p></div><dl class="paramcmts block"><dt class="param">method</dt><
       </span>
       
       <p class="shortcomment cmt">Restarts the current router with a new path and reusing the original method.</p><div class="fullcomment"><div class="comment cmt"><p>Restarts the current router with a new path and reusing the original method. All path parameters are then parsed
-and available on the params list.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the new http path.</p></dd></dl></div>
+and available on the params list.   * @param path the new http path.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#response" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="response():io.vertx.scala.core.http.HttpServerResponse"></a><a id="response():HttpServerResponse"></a>
       <span class="permalink">
@@ -1396,7 +1425,8 @@ and available on the params list.</p></div><dl class="paramcmts block"><dt class
       
       <p class="shortcomment cmt">Get the session.</p><div class="fullcomment"><div class="comment cmt"><p>Get the session. The context must have first been routed to a <a href="handler/SessionHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">io.vertx.scala.ext.web.handler.SessionHandler</a>
 for this to be populated.
-Sessions live for a browser session, and are maintained by session cookies.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the session.</p></dd></dl></div>
+Sessions live for a browser session, and are maintained by session cookies.   * @return the session.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#setAcceptableContentType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setAcceptableContentType(contentType:Option[String]):Unit"></a><a id="setAcceptableContentType(Option[String]):Unit"></a>
       <span class="permalink">
@@ -1412,7 +1442,8 @@ Sessions live for a browser session, and are maintained by session cookies.</p><
         <span class="name">setAcceptableContentType</span><span class="params">(<span name="contentType">contentType: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set the acceptable content type.</p><div class="fullcomment"><div class="comment cmt"><p>Set the acceptable content type. Used by</p></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the content type</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the acceptable content type.</p><div class="fullcomment"><div class="comment cmt"><p>Set the acceptable content type. Used by   * @param contentType the content type
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#setBody" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setBody(body:io.vertx.core.buffer.Buffer):Unit"></a><a id="setBody(Buffer):Unit"></a>
       <span class="permalink">
@@ -1428,7 +1459,8 @@ Sessions live for a browser session, and are maintained by session cookies.</p><
         <span class="name">setBody</span><span class="params">(<span name="body">body: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set the body.</p><div class="fullcomment"><div class="comment cmt"><p>Set the body. Used by the <a href="handler/BodyHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.BodyHandler">io.vertx.scala.ext.web.handler.BodyHandler</a>. You will not normally call this method.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the body.</p><div class="fullcomment"><div class="comment cmt"><p>Set the body. Used by the <a href="handler/BodyHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.BodyHandler">io.vertx.scala.ext.web.handler.BodyHandler</a>. You will not normally call this method.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#setSession" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setSession(session:io.vertx.scala.ext.web.Session):Unit"></a><a id="setSession(Session):Unit"></a>
       <span class="permalink">
@@ -1444,7 +1476,8 @@ Sessions live for a browser session, and are maintained by session cookies.</p><
         <span class="name">setSession</span><span class="params">(<span name="session">session: <a href="Session.html" class="extype" name="io.vertx.scala.ext.web.Session">Session</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set the session.</p><div class="fullcomment"><div class="comment cmt"><p>Set the session. Used by the <a href="handler/SessionHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">io.vertx.scala.ext.web.handler.SessionHandler</a>. You will not normally call this method.</p></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>the session</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the session.</p><div class="fullcomment"><div class="comment cmt"><p>Set the session. Used by the <a href="handler/SessionHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">io.vertx.scala.ext.web.handler.SessionHandler</a>. You will not normally call this method.   * @param session the session
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#setUser" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setUser(user:io.vertx.scala.ext.auth.User):Unit"></a><a id="setUser(User):Unit"></a>
       <span class="permalink">
@@ -1460,7 +1493,8 @@ Sessions live for a browser session, and are maintained by session cookies.</p><
         <span class="name">setUser</span><span class="params">(<span name="user">user: <a href="../auth/User.html" class="extype" name="io.vertx.scala.ext.auth.User">User</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set the user.</p><div class="fullcomment"><div class="comment cmt"><p>Set the user. Usually used by auth handlers to inject a User. You will not normally call this method.</p></div><dl class="paramcmts block"><dt class="param">user</dt><dd class="cmt"><p>the user</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the user.</p><div class="fullcomment"><div class="comment cmt"><p>Set the user. Usually used by auth handlers to inject a User. You will not normally call this method.   * @param user the user
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#statusCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="statusCode():Int"></a>
       <span class="permalink">
@@ -1479,7 +1513,8 @@ Sessions live for a browser session, and are maintained by session cookies.</p><
       <p class="shortcomment cmt">If the context is being routed to failure handlers after a failure has been triggered by calling
 <a href="#fail(throwable:Throwable):Unit" class="extmbr" name="io.vertx.scala.ext.web.RoutingContext#fail">io.vertx.scala.ext.web.RoutingContext#fail</a>  then this will return that status code.</p><div class="fullcomment"><div class="comment cmt"><p>If the context is being routed to failure handlers after a failure has been triggered by calling
 <a href="#fail(throwable:Throwable):Unit" class="extmbr" name="io.vertx.scala.ext.web.RoutingContext#fail">io.vertx.scala.ext.web.RoutingContext#fail</a>  then this will return that status code.  It can be used by failure handlers to render a response,
-e.g. create a failure response page.</p><p>When the status code has not been set yet (it is undefined) its value will be -1.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the status code used when signalling failure</p></dd></dl></div>
+e.g. create a failure response page.</p><p>When the status code has not been set yet (it is undefined) its value will be -1.   * @return the status code used when signalling failure
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -1527,7 +1562,8 @@ e.g. create a failure response page.</p><p>When the status code has not been set
         <span class="name">user</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../auth/User.html" class="extype" name="io.vertx.scala.ext.auth.User">User</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">Get the authenticated user (if any).</p><div class="fullcomment"><div class="comment cmt"><p>Get the authenticated user (if any). This will usually be injected by an auth handler if authentication if successful.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the user, or null if the current user is not authenticated.</p></dd></dl></div>
+      <p class="shortcomment cmt">Get the authenticated user (if any).</p><div class="fullcomment"><div class="comment cmt"><p>Get the authenticated user (if any). This will usually be injected by an auth handler if authentication if successful.   * @return the user, or null if the current user is not authenticated.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.RoutingContext#vertx" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="vertx():io.vertx.scala.core.Vertx"></a><a id="vertx():Vertx"></a>
       <span class="permalink">

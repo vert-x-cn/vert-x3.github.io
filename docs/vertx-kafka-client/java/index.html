@@ -315,7 +315,7 @@
 <div class="paragraph">
 <p>我们可以通过一个 Map 来包装这些配置，然后将其传入到
 <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 接口或
-<code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html">KafkaProducer</a></code> 接口中的 <code>create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
+<code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html">KafkaProducer</a>`接口中的 `create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -356,11 +356,11 @@ KafkaProducer&lt;String, String&gt; producer = KafkaProducer.create(vertx, confi
 <div class="sectionbody">
 <div class="paragraph">
 <p>我们可以通过 <code>KafkaConsumer</code> 的
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#subscribe-java.util.Set-">subscribe</a></code> 方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
+`<a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#subscribe-java.util.Set-">subscribe</a>`方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
 </div>
 <div class="paragraph">
 <p>当然你需要通过
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#handler-io.vertx.core.Handler-">handler</a></code> 方法注册一个 <code>Handler</code> 来处理接收的消息：</p>
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#handler-io.vertx.core.Handler-">handler</a>`方法注册一个 `Handler</code> 来处理接收的消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -427,8 +427,8 @@ consumer.subscribe("a-single-topic", ar -&gt; {
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#partitionsRevokedHandler-io.vertx.core.Handler-">partitionsRevokedHandler</a></code> 和
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler-io.vertx.core.Handler-">partitionsAssignedHandler</a></code> 方法在
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> 里注册一个 <code>Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler-io.vertx.core.Handler-">partitionsAssignedHandler</a>`方法在
+`<a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a>`里注册一个 `Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -739,7 +739,7 @@ handler has been called. This is not the case for messages observed by the batch
 <div class="sectionbody">
 <div class="paragraph">
 <p>你可以利用 Kafka 0.10.1.1 引入的新的API <code>beginningOffsets</code> 来获取给定分区的起始偏移量。这个跟上面的
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seekToBeginning-io.vertx.kafka.client.common.TopicPartition-">seekToBeginning</a></code> 方法有一个地方不同：
+`<a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seekToBeginning-io.vertx.kafka.client.common.TopicPartition-">seekToBeginning</a>`方法有一个地方不同：
 beginningOffsets
 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
@@ -845,7 +845,7 @@ consumer.offsetsForTimes(topicPartition, timestamp, done -&gt; {
 </div>
 <div class="paragraph">
 <p>我们可以利用 <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#pause--">pause</a></code> 方法和
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#resume--">resume</a></code> 方法来进行流量控制：</p>
+`<a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#resume--">resume</a>`方法来进行流量控制：</p>
 </div>
 <div class="paragraph">
 <p>In the case of the partition-specific pause and resume it is possible that the record handler will continue to
@@ -1086,8 +1086,8 @@ producer1.close();</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>您可以利用
-<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a></code> 方法和
-<code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a></code> 方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
+`<a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a>`方法和
+`<a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a>`方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
 比如：</p>
 </div>
 <div class="listingblock">
@@ -1305,7 +1305,7 @@ adminUtils.topicExists("myNewTopic", result -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:45 CST
+                上次更新时间 2018-10-16 18:24:51 CST
               
               
             </div>
@@ -1336,6 +1336,7 @@ adminUtils.topicExists("myNewTopic", result -&gt; {
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

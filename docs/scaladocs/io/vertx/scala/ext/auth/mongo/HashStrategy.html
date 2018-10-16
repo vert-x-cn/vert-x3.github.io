@@ -404,7 +404,7 @@ strategy to the default.
         <span class="name">computeHash</span><span class="params">(<span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="user">user: <a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">User</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the user</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the user</p></div><dl class="paramcmts block"><dt class="param">password</dt><dd class="cmt"><p>the unhashed password</p></dd><dt class="param">user</dt><dd class="cmt"><p>the user to get the salt for. This paramter is needed, if the HashSaltStyle#COLUMN is declared to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
+      <p class="shortcomment cmt">Compute the hashed password given the unhashed password and the user   * @param password the unhashed password</p><div class="fullcomment"><div class="comment cmt"><p>Compute the hashed password given the unhashed password and the user   * @param password the unhashed password</p></div><dl class="paramcmts block"><dt class="param">user</dt><dd class="cmt"><p>the user to get the salt for. This paramter is needed, if the HashSaltStyle#COLUMN is declared to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the hashed password</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -494,8 +494,8 @@ strategy to the default.
       </span>
       
       <p class="shortcomment cmt">Retrieve the salt.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the salt. The source of the salt can be the external salt or the propriate column of the given user,
-depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span></p></div><dl class="paramcmts block"><dt class="param">user</dt><dd class="cmt"><p>the user to get the salt for. This paramter is needed, if the HashSaltStyle#COLUMN is declared to be used</p></dd><dt>returns</dt><dd class="cmt"><p>null in case of HashSaltStyle#NO_SALT the salt of the user or a defined external salt</p></dd></dl></div>
-    </li><li name="io.vertx.scala.ext.auth.mongo.HashStrategy#getSaltStyle" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span>   * @param user the user to get the salt for. This paramter is needed, if the HashSaltStyle#COLUMN is declared to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>null in case of HashSaltStyle#NO_SALT the salt of the user or a defined external salt</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.auth.mongo.HashStrategy#getSaltStyle" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getSaltStyle():io.vertx.ext.auth.mongo.HashSaltStyle"></a><a id="getSaltStyle():HashSaltStyle"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/auth/mongo/HashStrategy.html#getSaltStyle():io.vertx.ext.auth.mongo.HashSaltStyle" title="Permalink">
@@ -510,7 +510,8 @@ depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.Hash
         <span class="name">getSaltStyle</span><span class="params">()</span><span class="result">: <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">HashSaltStyle</span></span>
       </span>
       
-      <p class="shortcomment cmt">Get the defined <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span> of the current instance</p><div class="fullcomment"><div class="comment cmt"><p>Get the defined <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span> of the current instance</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the saltStyle</p></dd></dl></div>
+      <p class="shortcomment cmt">Get the defined <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span> of the current instance   * @return the saltStyle
+</p>
     </li><li name="io.vertx.scala.ext.auth.mongo.HashStrategy#getStoredPwd" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getStoredPwd(user:io.vertx.scala.ext.auth.User):String"></a><a id="getStoredPwd(User):String"></a>
       <span class="permalink">
@@ -526,7 +527,7 @@ depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.Hash
         <span class="name">getStoredPwd</span><span class="params">(<span name="user">user: <a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">User</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Retrieve the password from the user, or as clear text or as hashed version, depending on the definition</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the password from the user, or as clear text or as hashed version, depending on the definition</p></div><dl class="paramcmts block"><dt class="param">user</dt><dd class="cmt"><p>the user to get the stored password for</p></dd><dt>returns</dt><dd class="cmt"><p>the password, either as hashed version or as cleartext, depending on the preferences</p></dd></dl></div>
+      <p class="shortcomment cmt">Retrieve the password from the user, or as clear text or as hashed version, depending on the definition   * @param user the user to get the stored password for</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the password from the user, or as clear text or as hashed version, depending on the definition   * @param user the user to get the stored password for</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the password, either as hashed version or as cleartext, depending on the preferences</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -631,7 +632,8 @@ depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.Hash
         <span class="name">setAlgorithm</span><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="io.vertx.ext.auth.mongo.HashAlgorithm">HashAlgorithm</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Allows the selection of the hashing algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Allows the selection of the hashing algorithm.</p></div><dl class="paramcmts block"><dt class="param">algorithm</dt><dd class="cmt"><p>the choosen algorithm</p></dd></dl></div>
+      <p class="shortcomment cmt">Allows the selection of the hashing algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>Allows the selection of the hashing algorithm.   * @param algorithm the choosen algorithm
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.HashStrategy#setExternalSalt" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setExternalSalt(salt:String):Unit"></a><a id="setExternalSalt(String):Unit"></a>
       <span class="permalink">
@@ -647,7 +649,8 @@ depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.Hash
         <span class="name">setExternalSalt</span><span class="params">(<span name="salt">salt: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set an external salt.</p><div class="fullcomment"><div class="comment cmt"><p>Set an external salt. This method should be used in case of</p></div><dl class="paramcmts block"><dt class="param">salt</dt><dd class="cmt"><p>the salt, which shall be used</p></dd></dl></div>
+      <p class="shortcomment cmt">Set an external salt.</p><div class="fullcomment"><div class="comment cmt"><p>Set an external salt. This method should be used in case of    * @param salt the salt, which shall be used
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.HashStrategy#setSaltStyle" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setSaltStyle(saltStyle:io.vertx.ext.auth.mongo.HashSaltStyle):Unit"></a><a id="setSaltStyle(HashSaltStyle):Unit"></a>
       <span class="permalink">
@@ -663,7 +666,8 @@ depending on the defined <span class="extype" name="io.vertx.ext.auth.mongo.Hash
         <span class="name">setSaltStyle</span><span class="params">(<span name="saltStyle">saltStyle: <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">HashSaltStyle</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Set the saltstyle as defined by <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the saltstyle as defined by <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span>.</p></div><dl class="paramcmts block"><dt class="param">saltStyle</dt><dd class="cmt"><p>the HashSaltStyle to be used</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the saltstyle as defined by <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the saltstyle as defined by <span class="extype" name="io.vertx.ext.auth.mongo.HashSaltStyle">io.vertx.ext.auth.mongo.HashSaltStyle</span>.   * @param saltStyle the HashSaltStyle to be used
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

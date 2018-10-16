@@ -809,7 +809,7 @@ project descriptor to access the Vert.x Core API and enable the Scala support:</
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#VertxOptions">VertxOptions</a></code> 对象有很多配置，包括集群、高可用、池大小等。在Javadoc中描述了所有配置的细节。</p>
+<p>`<a href="../dataobjects.html#VertxOptions">VertxOptions</a>`对象有很多配置，包括集群、高可用、池大小等。在Javadoc中描述了所有配置的细节。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1093,7 +1093,7 @@ server.requestHandler((request: io.vertx.scala.core.http.HttpServerRequest) =&gt
 <p>如之前讨论，您不能在 Event Loop 中直接调用阻塞式操作，因为这样做会阻止 Event Loop 执行其他有用的任务。那您该怎么做？</p>
 </div>
 <div class="paragraph">
-<p>可以通过调用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#executeBlocking(io.vertx.core.Handler,%20boolean,%20io.vertx.core.Handler)">executeBlocking</a></code> 方法来指定阻塞式代码的执行以及阻塞式代码执行后处理结果的异步回调。</p>
+<p>可以通过调用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#executeBlocking(io.vertx.core.Handler,%20boolean)">executeBlocking</a></code> 方法来指定阻塞式代码的执行以及阻塞式代码执行后处理结果的异步回调。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1111,7 +1111,7 @@ server.requestHandler((request: io.vertx.scala.core.http.HttpServerRequest) =&gt
 <p>默认情况下，如果 <code>executeBlocking</code> 在同一个上下文环境中（如：同一个 Verticle 实例）被调用了多次，那么这些不同的 <code>executeBlocking</code> 代码块会 <strong>顺序执行</strong> （一个接一个）。</p>
 </div>
 <div class="paragraph">
-<p>若您不需要关心您调用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#executeBlocking(io.vertx.core.Handler,%20boolean,%20io.vertx.core.Handler)">executeBlocking</a></code>
+<p>若您不需要关心您调用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#executeBlocking(io.vertx.core.Handler,%20boolean)">executeBlocking</a></code>
 的顺序，可以将 <code>ordered</code> 参数的值设为 <code>false</code> 。这样任何 <code>executeBlocking</code> 都会在 Worker Pool 中并行执行。</p>
 </div>
 <div class="paragraph">
@@ -1121,7 +1121,7 @@ server.requestHandler((request: io.vertx.scala.core.http.HttpServerRequest) =&gt
 <p>一个 Worker Verticle 始终会使用 Worker Pool 中的某个线程来执行。</p>
 </div>
 <div class="paragraph">
-<p>默认的阻塞式代码会在 Vert.x 的 Worker Pool 中执行，通过 <code><a href="../dataobjects.html#VertxOptions#setWorkerPoolSize(int)">workerPoolSize</a></code> 配置。</p>
+<p>默认的阻塞式代码会在 Vert.x 的 Worker Pool 中执行，通过 <code><a href="../dataobjects.html#VertxOptions#setWorkerPoolSize()">workerPoolSize</a></code> 配置。</p>
 </div>
 <div class="paragraph">
 <p>可以为不同的用途创建不同的池：</p>
@@ -1204,7 +1204,7 @@ var executor = vertx.createSharedWorkerExecutor("my-worker-pool", poolSize, maxE
 <div class="sect2">
 <h3 id="_并发合并">并发合并</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/CompositeFuture.html#all(io.vertx.core.Future,%20io.vertx.core.Future)">CompositeFuture.all</a></code> 方法接受多个 <code>Future</code> 对象作为参数（最多6个，或者传入 <code>List</code> ）。当所有的 <code>Future</code> 都成功完成，该方法将返回一个 <strong>成功的</strong> <code>Future</code> ；当任一个 <code>Future</code> 执行失败，则返回一个 <strong>失败的</strong> <code>Future</code> ：</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/CompositeFuture.html#all(io.vertx.core.Future)">CompositeFuture.all</a>`方法接受多个 `Future</code> 对象作为参数（最多6个，或者传入 <code>List</code> ）。当所有的 <code>Future</code> 都成功完成，该方法将返回一个 <strong>成功的</strong> <code>Future</code> ；当任一个 <code>Future</code> 执行失败，则返回一个 <strong>失败的</strong> <code>Future</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1239,7 +1239,7 @@ CompositeFuture.all(httpServerFuture, netServerFuture).setHandlerFuture().onComp
 </div>
 </div>
 <div class="paragraph">
-<p>不同于 <code>all</code> 方法的合并会等待所有的 Future 成功执行（或任一失败）， <code>any</code> 方法的合并会等待第一个成功执行的Future。 <code><a href="../../scaladocs/io/vertx/scala/core/CompositeFuture.html#any(io.vertx.core.Future,%20io.vertx.core.Future)">CompositeFuture.any</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个，或传入 <code>List</code> ）。当任意一个 <code>Future</code> 成功得到结果，则该 <code>Future</code> 成功；当所有的 <code>Future</code> 都执行失败，则该 <code>Future</code> 失败。</p>
+<p>不同于 <code>all</code> 方法的合并会等待所有的 Future 成功执行（或任一失败）， <code>any</code> 方法的合并会等待第一个成功执行的Future。 <code><a href="../../scaladocs/io/vertx/scala/core/CompositeFuture.html#any(io.vertx.core.Future)">CompositeFuture.any</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个，或传入 <code>List</code> ）。当任意一个 <code>Future</code> 成功得到结果，则该 <code>Future</code> 成功；当所有的 <code>Future</code> 都执行失败，则该 <code>Future</code> 失败。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1263,7 +1263,7 @@ CompositeFuture.all(httpServerFuture, netServerFuture).setHandlerFuture().onComp
 </div>
 <div class="paragraph">
 <p><code>join</code> 方法的合并会等待所有的 <code>Future</code> 完成，无论成败。
-<code><a href="../../scaladocs/io/vertx/scala/core/CompositeFuture.html#join(io.vertx.core.Future,%20io.vertx.core.Future)">CompositeFuture.join</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个），并将结果归并成一个 <code>Future</code> 。
+<code><a href="../../scaladocs/io/vertx/scala/core/CompositeFuture.html#join(io.vertx.core.Future)">CompositeFuture.join</a>`方法接受多个 `Future</code> 作为参数（最多6个），并将结果归并成一个 <code>Future</code> 。
 当全部 <code>Future</code> 成功执行完成，得到的 <code>Future</code> 是成功状态的；当至少一个 <code>Future</code> 执行失败时，得到的 <code>Future</code> 是失败状态的。</p>
 </div>
 <div class="listingblock">
@@ -1290,7 +1290,7 @@ CompositeFuture.all(httpServerFuture, netServerFuture).setHandlerFuture().onComp
 <div class="sect2">
 <h3 id="_顺序合并">顺序合并</h3>
 <div class="paragraph">
-<p>和 <code>all</code> 以及 <code>any</code> 实现的并发组合不同， <code><a href="../../scaladocs/io/vertx/scala/core/Future.html#compose(io.vertx.core.Handler,%20io.vertx.core.Future)">compose</a></code> 方法作用于顺序组合 <code>Future</code> 。</p>
+<p>和 <code>all</code> 以及 <code>any</code> 实现的并发组合不同， <code><a href="../../scaladocs/io/vertx/scala/core/Future.html#compose(io.vertx.core.Handler)">compose</a></code> 方法作用于顺序组合 <code>Future</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1336,10 +1336,10 @@ fut1.compose((v: java.lang.Void) =&gt; {
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/Future.html#compose(java.util.function.Function)">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并返回 <code>Future</code> 。当返回的 <code>Future</code> 完成时，组合完成。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/Future.html#compose()">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并返回 <code>Future</code> 。当返回的 <code>Future</code> 完成时，组合完成。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/Future.html#compose(io.vertx.core.Handler,%20io.vertx.core.Future)">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并完成下一个 <code>Future</code> 的处理。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/Future.html#compose(io.vertx.core.Handler)">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并完成下一个 <code>Future</code> 的处理。</p>
 </li>
 </ul>
 </div>
@@ -1570,7 +1570,7 @@ Vert.x will automatically undeploy any child verticles when the parent is undepl
 <p>如果您不想使用 Worker Verticle 来运行阻塞式代码，您还可以在一个Event Loop中直接使用 [内联阻塞式代码](#运行阻塞式代码)。</p>
 </div>
 <div class="paragraph">
-<p>若您想要将 Verticle 部署成一个 Worker Verticle，您可以通过 <code><a href="../dataobjects.html#DeploymentOptions#setWorker(boolean)">worker</a></code> 方法来设置：</p>
+<p>若您想要将 Verticle 部署成一个 Worker Verticle，您可以通过 <code><a href="../dataobjects.html#DeploymentOptions#setWorker()">worker</a></code> 方法来设置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1605,7 +1605,7 @@ vertx.deployVerticle("com.mycompany.MyOrderProcessorVerticle", options)</code></
 <div class="sect2">
 <h3 id="_编程方式部署verticle">编程方式部署Verticle</h3>
 <div class="paragraph">
-<p>您可以指定一个 Verticle 名称或传入您已经创建好的 Verticle 实例，使用任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#deployVerticle(io.vertx.core.Verticle)">deployVerticle</a></code> 方法来部署Verticle。</p>
+<p>您可以指定一个 Verticle 名称或传入您已经创建好的 Verticle 实例，使用任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#deployVerticle()">deployVerticle</a></code> 方法来部署Verticle。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1702,8 +1702,8 @@ vertx.deployVerticle("verticles/my_verticle.rb")</code></pre>
 <p>大部分Verticle Factory会从 classpath 中加载，并在 Vert.x 启动时注册。</p>
 </div>
 <div class="paragraph">
-<p>您同样可以使用编程的方式去注册或注销Verticle Factory：通过 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#registerVerticleFactory(io.vertx.core.spi.VerticleFactory)">registerVerticleFactory</a></code>
-方法和 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#unregisterVerticleFactory(io.vertx.core.spi.VerticleFactory)">unregisterVerticleFactory</a></code> 方法。</p>
+<p>您同样可以使用编程的方式去注册或注销Verticle Factory：通过 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#registerVerticleFactory()">registerVerticleFactory</a></code>
+方法和 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#unregisterVerticleFactory()">unregisterVerticleFactory</a></code> 方法。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1736,7 +1736,7 @@ vertx.deployVerticle("verticles/my_verticle.rb")</code></pre>
 <div class="sect2">
 <h3 id="_撤销verticle">撤销Verticle</h3>
 <div class="paragraph">
-<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#undeploy(java.lang.String)">undeploy</a></code> 方法来撤销部署好的 Verticle。</p>
+<p>我们可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#undeploy()">undeploy</a></code> 方法来撤销部署好的 Verticle。</p>
 </div>
 <div class="paragraph">
 <p>撤销操作也是异步的，因此若您想要在撤销完成过后收到通知则可以指定另一个完成处理器：</p>
@@ -1817,13 +1817,13 @@ println System.getenv("HOME")</code></pre>
 </div>
 <div class="paragraph">
 <p>当使用隔离组时，您需要用
-<code><a href="../dataobjects.html#DeploymentOptions#setIsolatedClasses(java.util.List)">isolatedClasses</a></code>  方法来提供一个您想隔离的类名列表。列表项可以是一个Java 限定类全名，如 <code>com.mycompany.myproject.engine.MyClass</code> ；也可以是包含通配符的可匹配某个包或子包的任何类，例如 <code>com.mycompany.myproject.*</code> 将会匹配所有 <code>com.mycompany.myproject</code> 包或任意子包中的任意类名。</p>
+<code><a href="../dataobjects.html#DeploymentOptions#setIsolatedClasses()">isolatedClasses</a></code> 方法来提供一个您想隔离的类名列表。列表项可以是一个Java 限定类全名，如 <code>com.mycompany.myproject.engine.MyClass</code> ；也可以是包含通配符的可匹配某个包或子包的任何类，例如 <code>com.mycompany.myproject.*</code> 将会匹配所有 <code>com.mycompany.myproject</code> 包或任意子包中的任意类名。</p>
 </div>
 <div class="paragraph">
 <p>请注意仅仅只有匹配的类会被隔离，其他任意类会被当前类加载器加载。</p>
 </div>
 <div class="paragraph">
-<p>若您想要加载的类和资源不存在于主类路径（main classpath），您可使用 <code><a href="../dataobjects.html#DeploymentOptions#setExtraClasspath(java.util.List)">extraClasspath</a></code> 方法将额外的类路径添加到这里。</p>
+<p>若您想要加载的类和资源不存在于主类路径（main classpath），您可使用 <code><a href="../dataobjects.html#DeploymentOptions#setExtraClasspath()">extraClasspath</a></code> 方法将额外的类路径添加到这里。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1989,7 +1989,7 @@ if (context.isEventLoopContext()) {
 </div>
 <div class="paragraph">
 <p>当在同一个 <code>Context</code> 中运行了多个处理函数时，可能需要在它们之间共享数据。 <code>Context</code> 对象提供了存储和读取共享数据的方法。举例来说，它允许您将数据传递到
-<code><a href="../../scaladocs/io/vertx/scala/core/Context.html#runOnContext(io.vertx.core.Handler)">runOnContext</a></code> 方法运行的某些操作中：</p>
+`<a href="../../scaladocs/io/vertx/scala/core/Context.html#runOnContext()">runOnContext</a>`方法运行的某些操作中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2021,7 +2021,7 @@ context.runOnContext((v: java.lang.Void) =&gt; {
 <p>一次性计时器会在一定延迟后调用一个 Event Handler，以毫秒为单位计时。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#setTimer(long,%20io.vertx.core.Handler)">setTimer</a></code> 方法传递延迟时间和一个处理器来设置计时器的触发。</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#setTimer(long)">setTimer</a></code> 方法传递延迟时间和一个处理器来设置计时器的触发。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2039,7 +2039,7 @@ println("First this is printed")</code></pre>
 <div class="sect3">
 <h4 id="_周期性计时器">周期性计时器</h4>
 <div class="paragraph">
-<p>您同样可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#setPeriodic(long,%20io.vertx.core.Handler)">setPeriodic</a></code> 方法设置一个周期性触发的计时器。</p>
+<p>您同样可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#setPeriodic(long)">setPeriodic</a></code> 方法设置一个周期性触发的计时器。</p>
 </div>
 <div class="paragraph">
 <p>第一次触发之前同样会有一段设置的延时时间。</p>
@@ -2054,7 +2054,7 @@ println("First this is printed")</code></pre>
 <p>请记住这个计时器将会定期触发。如果您的定时任务会花费大量的时间，则您的计时器事件可能会连续执行甚至发生更坏的情况：重叠。</p>
 </div>
 <div class="paragraph">
-<p>这种情况，您应考虑使用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#setTimer(long,%20io.vertx.core.Handler)">setTimer</a></code> 方法，当任务执行完成时设置下一个计时器。</p>
+<p>这种情况，您应考虑使用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#setTimer(long)">setTimer</a></code> 方法，当任务执行完成时设置下一个计时器。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2069,7 +2069,7 @@ println("First this is printed")</code></pre>
 <div class="sect3">
 <h4 id="_取消计时器">取消计时器</h4>
 <div class="paragraph">
-<p>指定一个计时器id并调用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#cancelTimer(long)">cancelTimer</a></code> 方法来取消一个周期性计时器。如：</p>
+<p>指定一个计时器id并调用 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#cancelTimer()">cancelTimer</a></code> 方法来取消一个周期性计时器。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2087,7 +2087,7 @@ println("First this is printed")</code></pre>
 <div class="sect2">
 <h3 id="_verticle_worker_pool">Verticle worker pool</h3>
 <div class="paragraph">
-<p>Verticle 使用 Vert.x 中的 Worker Pool 来执行阻塞式行为，例如 <code><a href="../../scaladocs/io/vertx/scala/core/Context.html#executeBlocking(io.vertx.core.Handler,%20boolean,%20io.vertx.core.Handler)">executeBlocking</a></code> 或 Worker Verticle。</p>
+<p>Verticle 使用 Vert.x 中的 Worker Pool 来执行阻塞式行为，例如 <code><a href="../../scaladocs/io/vertx/scala/core/Context.html#executeBlocking(io.vertx.core.Handler,%20boolean)">executeBlocking</a></code> 或 Worker Verticle。</p>
 </div>
 <div class="paragraph">
 <p>可以在部署配置项中指定不同的Worker 线程池：</p>
@@ -2106,7 +2106,7 @@ println("First this is printed")</code></pre>
 <h2 id="event_bus">The Event Bus</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html">Event Bus</a></code> 是 Vert.x 的神经系统。</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html">Event Bus</a>`是 Vert.x 的神经系统。</p>
 </div>
 <div class="paragraph">
 <p>每一个 Vert.x 实例都有一个单独的 Event Bus 实例。您可以通过 <code>Vertx</code> 实例的 <code><a href="../../scaladocs/io/vertx/scala/core/Vertx.html#eventBus()">eventBus</a></code> 方法来获得对应的 <code>EventBus</code> 实例。</p>
@@ -2256,7 +2256,7 @@ println("First this is printed")</code></pre>
 <div class="sect3">
 <h4 id="_注册处理器">注册处理器</h4>
 <div class="paragraph">
-<p>最简单的注册处理器的方式是使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#consumer(java.lang.String,%20io.vertx.core.Handler)">consumer</a></code> 方法，
+<p>最简单的注册处理器的方式是使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#consumer(java.lang.String)">consumer</a></code> 方法，
 这儿有个例子：</p>
 </div>
 <div class="listingblock">
@@ -2278,7 +2278,7 @@ eb.consumer("news.uk.sport", (message: io.vertx.scala.core.eventbus.Message&lt;j
 <p>该对象随后可用于撤销处理器、或将处理器用作流式处理。</p>
 </div>
 <div class="paragraph">
-<p>您也可以不设置处理器而使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#consumer(java.lang.String,%20io.vertx.core.Handler)">consumer</a></code> 方法直接返回一个 <code>MessageConsumer</code>，之后再来设置处理器。如：</p>
+<p>您也可以不设置处理器而使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#consumer(java.lang.String)">consumer</a></code> 方法直接返回一个 <code>MessageConsumer</code>，之后再来设置处理器。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2294,7 +2294,7 @@ consumer.handler((message: io.vertx.scala.core.eventbus.Message&lt;java.lang.Str
 <p>在集群模式下的Event Bus上注册处理器时，注册信息会花费一些时间才能传播到集群中的所有节点。</p>
 </div>
 <div class="paragraph">
-<p>若您希望在完成注册后收到通知，您可以在 <code>MessageConsumer</code> 对象上注册一个 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html#completionHandler(io.vertx.core.Handler)">completion handler</a></code> 。</p>
+<p>若您希望在完成注册后收到通知，您可以在 <code>MessageConsumer</code> 对象上注册一个 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html#completionHandler()">completion handler</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2315,7 +2315,7 @@ consumer.handler((message: io.vertx.scala.core.eventbus.Message&lt;java.lang.Str
 <p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html#unregister()">unregister</a></code> 方法来注销处理器。</p>
 </div>
 <div class="paragraph">
-<p>若您在集群模式下的 Event Bus 中撤销处理器，则同样会花费一些时间在节点中传播。若您想在完成后收到通知，可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html#unregister(io.vertx.core.Handler)">unregister</a></code> 方法注册处理器：</p>
+<p>若您在集群模式下的 Event Bus 中撤销处理器，则同样会花费一些时间在节点中传播。若您想在完成后收到通知，可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html#unregister()">unregister</a></code> 方法注册处理器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2333,7 +2333,7 @@ consumer.handler((message: io.vertx.scala.core.eventbus.Message&lt;java.lang.Str
 <div class="sect3">
 <h4 id="_发布消息">发布消息</h4>
 <div class="paragraph">
-<p>发布消息很简单，只需使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#publish(java.lang.String,%20java.lang.Object)">publish</a></code> 方法指定一个地址去发布即可。</p>
+<p>发布消息很简单，只需使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#publish(java.lang.String)">publish</a></code> 方法指定一个地址去发布即可。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2350,7 +2350,7 @@ consumer.handler((message: io.vertx.scala.core.eventbus.Message&lt;java.lang.Str
 <p>与发布消息的不同之处在于，发送(<code>send</code>)的消息只会传递给在该地址注册的其中一个处理器，这就是点对点模式。Vert.x 使用不严格的轮询算法来选择绑定的处理器。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#send(java.lang.String,%20java.lang.Object)">send</a></code> 方法来发送消息：</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#send(java.lang.String)">send</a></code> 方法来发送消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2379,14 +2379,14 @@ consumer.handler((message: io.vertx.scala.core.eventbus.Message&lt;java.lang.Str
 <div class="sect3">
 <h4 id="_应答消息_发送回复">应答消息/发送回复</h4>
 <div class="paragraph">
-<p>当使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#send(java.lang.String,%20java.lang.Object)">send</a></code> 方法发送消息时，Event Bus会尝试将消息传递到注册在Event Bus上的
-<code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> 中。</p>
+<p>当使用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/EventBus.html#send(java.lang.String)">send</a></code> 方法发送消息时，Event Bus会尝试将消息传递到注册在Event Bus上的
+`<a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html">MessageConsumer</a>`中。</p>
 </div>
 <div class="paragraph">
 <p>在某些情况下，发送者需要知道消费者何时收到消息并 <strong>处理</strong> 了消息。</p>
 </div>
 <div class="paragraph">
-<p>消费者可以通过调用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/Message.html#reply(java.lang.Object)">reply</a></code> 方法来应答这个消息。</p>
+<p>消费者可以通过调用 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/Message.html#reply()">reply</a></code> 方法来应答这个消息。</p>
 </div>
 <div class="paragraph">
 <p>当这种情况发生时，它会将消息回复给发送者并且在发送者中调用应答处理器来处理回复的消息。</p>
@@ -2465,7 +2465,7 @@ consumer.handler((message: io.vertx.scala.core.eventbus.Message&lt;java.lang.Str
 <p>没有可用的处理器来接收消息</p>
 </li>
 <li>
-<p>接收者调用了 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/Message.html#fail(int,%20java.lang.String)">fail</a></code> 方法显式声明失败</p>
+<p>接收者调用了 <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/Message.html#fail(int)">fail</a></code> 方法显式声明失败</p>
 </li>
 </ul>
 </div>
@@ -2526,8 +2526,8 @@ Vertx.clusteredVertx(options, {
 <div class="sectionbody">
 <div class="paragraph">
 <p>Event Bus 是可以配置的，这对于以集群模式运行的 Event Bus 是非常有用的。Event Bus 使用 TCP 连接发送和接收消息，因此可以通过
-<code><a href="../dataobjects.html#EventBusOptions">EventBusOptions</a></code> 对TCP连接进行全面的配置。由于 Event Bus 同时用作客户端和服务器，因此这些配置近似于
-<code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> 和 <code><a href="../dataobjects.html#NetServerOptions">NetServerOptions</a></code> 。</p>
+<code><a href="../dataobjects.html#EventBusOptions">EventBusOptions</a>`对TCP连接进行全面的配置。由于 Event Bus 同时用作客户端和服务器，因此这些配置近似于
+`<a href="../dataobjects.html#NetClientOptions">NetClientOptions</a>`和 `<a href="../dataobjects.html#NetServerOptions">NetServerOptions</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2568,8 +2568,8 @@ Vertx.clusteredVertx(options, {
 <p>Event Bus 的配置需要在所有集群节点中保持一致性。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#EventBusOptions">EventBusOptions</a></code> 还允许您指定 Event Bus 是否运行在集群模式下，以及它的主机信息和端口。您可使用
-<code><a href="../dataobjects.html#VertxOptions#setClustered(boolean)">clustered</a></code> 、
+<p><code><a href="../dataobjects.html#EventBusOptions">EventBusOptions</a>`还允许您指定 Event Bus 是否运行在集群模式下，以及它的主机信息和端口。您可使用
+`<a href="../dataobjects.html#VertxOptions#setClustered()">clustered</a></code>、
 <code><a href="../dataobjects.html#VertxOptions#getClusterHost()">getClusterHost</a></code> 和 <code><a href="../dataobjects.html#VertxOptions#getClusterPort()">getClusterPort</a></code> 方法来设置。</p>
 </div>
 <div class="paragraph">
@@ -3018,7 +3018,7 @@ server.listenFuture(0, "localhost").onComplete{
 <div class="sect2">
 <h3 id="_接收传入连接的通知">接收传入连接的通知</h3>
 <div class="paragraph">
-<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html#connectHandler(io.vertx.core.Handler))">connectHandler</a></code> :</p>
+<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html#connectHandler()">connectHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3038,7 +3038,7 @@ server.connectHandler((socket: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="sect2">
 <h3 id="_从socket读取数据">从Socket读取数据</h3>
 <div class="paragraph">
-<p>您可以在Socket上调用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#handler(io.vertx.core.Handler)">handler</a></code> 方法来设置用于读取数据的处理器。</p>
+<p>您可以在Socket上调用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#handler()">handler</a></code> 方法来设置用于读取数据的处理器。</p>
 </div>
 <div class="paragraph">
 <p>每次 Socket 接收到数据时，会以 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> 对象为参数调用处理器。</p>
@@ -3057,7 +3057,7 @@ server.connectHandler((socket: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="sect2">
 <h3 id="_向socket中写入数据">向Socket中写入数据</h3>
 <div class="paragraph">
-<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#write(io.vertx.core.buffer.Buffer)">write</a></code> 方法写入数据到Socket：</p>
+<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#write()">write</a></code> 方法写入数据到Socket：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3079,7 +3079,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_关闭处理器">关闭处理器</h3>
 <div class="paragraph">
-<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#closeHandler(io.vertx.core.Handler))">closeHandler</a></code> :</p>
+<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#closeHandler()">closeHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3092,7 +3092,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_处理异常">处理异常</h3>
 <div class="paragraph">
-<p>您可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
+<p>您可以设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#exceptionHandler()">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
 </div>
 </div>
 <div class="sect2">
@@ -3119,7 +3119,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_发送文件或_classpath_中的资源">发送文件或 Classpath 中的资源</h3>
 <div class="paragraph">
-<p>您可以直接通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#sendFile(java.lang.String)">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
+<p>您可以直接通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#sendFile()">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
 这种做法是非常高效的，它可以被操作系统内核直接处理。</p>
 </div>
 <div class="paragraph">
@@ -3134,8 +3134,8 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_流式的socket">流式的Socket</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 接口继承了 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 接口，因此您可以将它套用（pump）到其他的读写流上。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a>`接口继承了 `<a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 和
+`<a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
 </div>
 <div class="paragraph">
 <p>有关更多信息，请参阅 <a href="#streams">流和管道</a>  章节。</p>
@@ -3144,7 +3144,7 @@ socket.write("some data", "UTF-16")</code></pre>
 <div class="sect2">
 <h3 id="_升级到_ssl_tls_连接">升级到 SSL/TLS 连接</h3>
 <div class="paragraph">
-<p>一个非SSL/TLS连接可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#upgradeToSsl(io.vertx.core.Handler)">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
+<p>一个非SSL/TLS连接可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html#upgradeToSsl()">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
 </div>
 <div class="paragraph">
 <p>必须为服务器或客户端配置SSL/TLS才能正常工作。请参阅 <a href="#ssl">SSL/TLS</a> 章节来获取详细信息。
@@ -3276,9 +3276,9 @@ var client = vertx.createNetClient(options)</code></pre>
 <div class="sect2">
 <h3 id="_创建连接">创建连接</h3>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html#connect(int,%20java.lang.String,%20io.vertx.core.Handler)">connect</a></code> ,
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html#connect(int,%20java.lang.String)">connect</a></code> ,
 方法创建到服务器的连接。请指定服务器的端口和主机，以及用于处理
-<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 的处理器。当连接成功或失败时处理器会被调用。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3302,8 +3302,8 @@ client.connectFuture(4321, "localhost").onComplete{
 <h3 id="_配置连接重试">配置连接重试</h3>
 <div class="paragraph">
 <p>可以将客户端配置为在无法连接的情况下自动重试。
-这是通过 <code><a href="../dataobjects.html#NetClientOptions#setReconnectInterval(long)">reconnectInterval</a></code> 和
-<code><a href="../dataobjects.html#NetClientOptions#setReconnectAttempts(int)">reconnectAttempts</a></code> 方法配置的。</p>
+这是通过 <code><a href="../dataobjects.html#NetClientOptions#setReconnectInterval()">reconnectInterval</a></code> 和
+`<a href="../dataobjects.html#NetClientOptions#setReconnectAttempts()">reconnectAttempts</a>`方法配置的。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3386,7 +3386,7 @@ var client = vertx.createNetClient(options)</code></pre>
 <div class="sect3">
 <h4 id="_在服务端启用ssl_tls">在服务端启用SSL/TLS</h4>
 <div class="paragraph">
-<p>您需要设置 <code><a href="../dataobjects.html#NetServerOptions#setSsl(boolean)">ssl</a></code> 配置项来启用 SSL/TLS。</p>
+<p>您需要设置 <code><a href="../dataobjects.html#NetServerOptions#setSsl()">ssl</a></code> 配置项来启用 SSL/TLS。</p>
 </div>
 <div class="paragraph">
 <p>默认是禁用的。</p>
@@ -3642,7 +3642,7 @@ var server = vertx.createNetServer(options)</code></pre>
 <div class="sect3">
 <h4 id="_客户端受信配置">客户端受信配置</h4>
 <div class="paragraph">
-<p>若客户端将 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll(boolean)">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
+<p>若客户端将 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll()">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
 连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为 <code>false</code> 。</p>
 </div>
 <div class="listingblock">
@@ -3655,7 +3655,7 @@ var client = vertx.createNetClient(options)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>若客户端没有设置 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll(boolean)">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
+<p>若客户端没有设置 <code><a href="../dataobjects.html#ClientOptionsBase#setTrustAll()">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下，客户端禁用主机验证。要启用主机验证，请在客户端上设置使用的算法（目前仅支持HTTPS和LDAPS）：</p>
@@ -3677,7 +3677,7 @@ var client = vertx.createNetClient(options)</code></pre>
 </div>
 <div class="paragraph">
 <p>它只是一个标准的Java密钥存储，与服务器端的密钥存储相同。通过在
-<code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上使用 <code><a href="../dataobjects.html#JksOptions#setPath(java.lang.String)">path</a></code>
+<code><a href="../dataobjects.html#JksOptions">jks options</a>`上使用 `<a href="../dataobjects.html#JksOptions#setPath()">path</a></code>
 设置客户端受信存储位置。如果服务器在连接期间提供不在客户端受信存储中的证书，则尝试连接将不会成功。</p>
 </div>
 <div class="listingblock">
@@ -3775,7 +3775,7 @@ var client = vertx.createNetClient(options)</code></pre>
 <p>如果服务器需要客户端认证，那么当连接时，客户端必须向服务器提供自己的证书。可通过以下几种方式配置客户端：</p>
 </div>
 <div class="paragraph">
-<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../dataobjects.html#JksOptions#setPath(java.lang.String)">path</a></code> 。</p>
+<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../dataobjects.html#JksOptions#setPath()">path</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3893,8 +3893,8 @@ var client = vertx.createNetClient(options)</code></pre>
 <p>在运行单元/集成测试或是运行开发版的应用程序时都经常需要自签名证书。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/net/SelfSignedCertificate.html">SelfSignedCertificate</a></code> 可用于提供自签名PEM证书，并可以提供
-give <code>KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/net/SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
+give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3959,7 +3959,7 @@ vertx.createHttpServer(HttpServerOptions()
 <div class="sect3">
 <h4 id="_待撤销证书颁发机构">待撤销证书颁发机构</h4>
 <div class="paragraph">
-<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../dataobjects.html#NetClientOptions#addCrlPath(java.lang.String)">crlPath</a></code> 配置了使用的CRL：
+<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../dataobjects.html#NetClientOptions#addCrlPath()">crlPath</a></code> 配置了使用的CRL：
 the crl list to use:</p>
 </div>
 <div class="listingblock">
@@ -4093,7 +4093,7 @@ indicated server name.</p>
 <ul>
 <li>
 <p>if <code><a href="../dataobjects.html#JksOptions">JksOptions</a></code> were used to set the trust options
-( <code><a href="../dataobjects.html#NetServerOptions#setTrustOptions(io.vertx.core.net.TrustOptions)">options</a></code> ) then an exact match with the trust store
+( <code><a href="../dataobjects.html#NetServerOptions#setTrustOptions()">options</a></code> ) then an exact match with the trust store
 alias is done</p>
 </li>
 <li>
@@ -4102,7 +4102,7 @@ alias is done</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>You can enable SNI on the server by setting <code><a href="../dataobjects.html#NetServerOptions#setSni(boolean)">sni</a></code> to <code>true</code> and
+<p>You can enable SNI on the server by setting <code><a href="../dataobjects.html#NetServerOptions#setSni()">sni</a></code> to <code>true</code> and
 configured the server with multiple key/certificate pairs.</p>
 </div>
 <div class="paragraph">
@@ -4123,7 +4123,7 @@ var netServer = vertx.createNetServer(NetServerOptions()
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> can be configured to hold multiple entries:</p>
+<p>`<a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4227,7 +4227,7 @@ client.connectFuture(1234, "localhost", "server.name").onComplete{
 <p>OpenSSL提供了原生的ALPN支持。</p>
 </div>
 <div class="paragraph">
-<p>OpenSSL需要配置 <code><a href="../dataobjects.html#TCPSSLOptions#setOpenSslEngineOptions(io.vertx.core.net.OpenSSLEngineOptions)">openSslEngineOptions</a></code>
+<p>OpenSSL需要配置 <code><a href="../dataobjects.html#TCPSSLOptions#setOpenSslEngineOptions()">openSslEngineOptions</a></code>
 并在类路径上使用 <a href="http://netty.io/wiki/forked-tomcat-native.html">netty-tcnative</a> 的jar库。依赖于tcnative的实现它需要OpenSSL安装在您的操作系统中。</p>
 </div>
 </div>
@@ -4265,11 +4265,11 @@ client.connectFuture(1234, "localhost", "server.name").onComplete{
 <div class="sect2">
 <h3 id="_客户端连接使用代理">客户端连接使用代理</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html">NetClient</a></code> 支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/net/NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
 </div>
 <div class="paragraph">
 <p>代理可以在 <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> 内设置
-<code><a href="../dataobjects.html#ProxyOptions">ProxyOptions</a></code> 来配置代理类型、主机名、端口、可选的用户名和密码。</p>
+`<a href="../dataobjects.html#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -4349,7 +4349,7 @@ var server = vertx.createHttpServer(options)</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>要处理 h2 请求，你必须调用 <code><a href="../dataobjects.html#HttpServerOptions#setUseAlpn(boolean)">useAlpn</a></code> 方法来启用TLS：</p>
+<p>要处理 h2 请求，你必须调用 <code><a href="../dataobjects.html#HttpServerOptions#setUseAlpn()">useAlpn</a></code> 方法来启用TLS：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4482,7 +4482,7 @@ server.listenFuture(8080, "myhost.com").onComplete{
 <div class="sect2">
 <h3 id="_收到传入请求的通知">收到传入请求的通知</h3>
 <div class="paragraph">
-<p>若您需要在收到请求时收到通知，则需要设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#requestHandler(io.vertx.core.Handler)">requestHandler</a></code> ：</p>
+<p>若您需要在收到请求时收到通知，则需要设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#requestHandler()">requestHandler</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4506,12 +4506,12 @@ server.requestHandler((request: io.vertx.scala.core.http.HttpServerRequest) =&gt
 </div>
 <div class="paragraph">
 <p>服务请求对象允许您检索 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#uri()">uri</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#path()">path</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#params()">params</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#headers()">headers</a></code> 等其他信息。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#path()">path</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#params()">params</a></code> 和
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#headers()">headers</a>`等其他信息。</p>
 </div>
 <div class="paragraph">
 <p>每一个服务请求对象和一个服务响应对象绑定，您可以用
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#response()">response</a></code> 方法获取一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#response()">response</a>`方法获取一个 `<a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html">HttpServerResponse</a></code>
 对象的引用。</p>
 </div>
 <div class="paragraph">
@@ -4658,7 +4658,7 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_结束处理器">结束处理器</h4>
 <div class="paragraph">
-<p>当整个请求（包括任何正文）已经被完全读取时，请求中的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#endHandler(io.vertx.core.Handler)">endHandler</a></code> 方法会被调用。</p>
+<p>当整个请求（包括任何正文）已经被完全读取时，请求中的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#endHandler()">endHandler</a></code> 方法会被调用。</p>
 </div>
 </div>
 <div class="sect3">
@@ -4670,7 +4670,7 @@ param2: 'xyz</pre>
 <p>这是因为请求体可能非常大（如文件上传），并且我们不会在内容发送给您之前将其全部缓冲存储在内存中，这可能会导致服务器耗尽可用内存。</p>
 </div>
 <div class="paragraph">
-<p>要接收请求体，您可在请求中调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#handler(io.vertx.core.Handler)">handler</a></code> 方法设置一个处理器，每次请求体的一小块数据收到时，该处理器都会被调用。以下是一个例子：</p>
+<p>要接收请求体，您可在请求中调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#handler()">handler</a></code> 方法设置一个处理器，每次请求体的一小块数据收到时，该处理器都会被调用。以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4701,7 +4701,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#bodyHandler(io.vertx.core.Handler))">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时， <code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
+<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#bodyHandler()">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时， <code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4715,7 +4715,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <h4 id="_pumping_请求">Pumping 请求</h4>
 <div class="paragraph">
 <p>请求对象实现了 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code>  实例中。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 实例中。</p>
 </div>
 <div class="paragraph">
 <p>详细请参阅 <a href="#streams">流和管道</a> 章节。</p>
@@ -4736,7 +4736,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <p>Multipart 表单还可以包含文件上传。</p>
 </div>
 <div class="paragraph">
-<p>若您想要读取 multipart 表单的属性，您应该告诉 Vert.x 您会在读取任何正文 <strong>之前</strong> 调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#setExpectMultipart(boolean)">setExpectMultipart</a></code>
+<p>若您想要读取 multipart 表单的属性，您应该告诉 Vert.x 您会在读取任何正文 <strong>之前</strong> 调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#setExpectMultipart()">setExpectMultipart</a></code>
 方法，然后在整个请求体都被读取后，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#formAttributes()">formAttributes</a></code>
 方法来读取实际的表单属性。</p>
 </div>
@@ -4759,7 +4759,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 </div>
 <div class="paragraph">
 <p>要接收文件，您可以告诉 Vert.x 使用 multipart 表单，并对请求设置
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#uploadHandler(io.vertx.core.Handler))">uploadHandler</a></code> 。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#uploadHandler()">uploadHandler</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>当服务器每次接收到上传请求时，该处理器将被调用一次。</p>
@@ -4791,10 +4791,10 @@ request.endHandler((v: java.lang.Void) =&gt; {
 </div>
 <div class="paragraph">
 <p>上传对象实现了 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a>`实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
 </div>
 <div class="paragraph">
-<p>若您只是想将文件上传到服务器的某个磁盘，可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerFileUpload.html#streamToFileSystem(java.lang.String)">streamToFileSystem</a></code> 方法：</p>
+<p>若您只是想将文件上传到服务器的某个磁盘，可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerFileUpload.html#streamToFileSystem()">streamToFileSystem</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4822,7 +4822,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <p>Vert.x 可以处理在客户端通过 <strong>deflate</strong> 或 <strong>gzip</strong> 算法压缩过的请求体信息。</p>
 </div>
 <div class="paragraph">
-<p>若要启用解压缩功能则您要在创建服务器时调用 <code><a href="../dataobjects.html#HttpServerOptions#setDecompressionSupported(boolean)">decompressionSupported</a></code> 方法设置配置项。</p>
+<p>若要启用解压缩功能则您要在创建服务器时调用 <code><a href="../dataobjects.html#HttpServerOptions#setDecompressionSupported()">decompressionSupported</a></code> 方法设置配置项。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下解压缩是被禁用的。</p>
@@ -4834,7 +4834,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <p>HTTP/2 是用于 HTTP 请求/响应模型的包含各种帧的一种帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>若要接收自定义帧(frame)，您可以在请求中使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#customFrameHandler(io.vertx.core.Handler)">customFrameHandler</a></code> ，每次当自定义的帧数据到达时，这个处理器会被调用。这而是一个例子：</p>
+<p>若要接收自定义帧(frame)，您可以在请求中使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#customFrameHandler()">customFrameHandler</a></code> ，每次当自定义的帧数据到达时，这个处理器会被调用。这而是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4852,7 +4852,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <h4 id="_非标准的_http_方法">非标准的 HTTP 方法</h4>
 <div class="paragraph">
 <p><code><a href="todo">OTHER</a></code> HTTP 方法可用于非标准方法，在这种情况下，
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#rawMethod()">rawMethod</a></code> 方法返回客户端发送的实际 HTTP 方法。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#rawMethod()">rawMethod</a>`方法返回客户端发送的实际 HTTP 方法。</p>
 </div>
 </div>
 </div>
@@ -4871,10 +4871,10 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <p>默认的 HTTP 状态响应码为 <code>200</code> ，表示 <code>OK</code> 。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#setStatusCode(int)">setStatusCode</a></code> 方法设置不同状态代码。</p>
+<p>可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#setStatusCode()">setStatusCode</a></code> 方法设置不同状态代码。</p>
 </div>
 <div class="paragraph">
-<p>您还可用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#setStatusMessage(java.lang.String)">setStatusMessage</a></code> 方法指定自定义状态消息。</p>
+<p>您还可用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#setStatusMessage()">setStatusMessage</a></code> 方法指定自定义状态消息。</p>
 </div>
 <div class="paragraph">
 <p>若您不指定状态信息，将会使用默认的状态码响应。</p>
@@ -4895,7 +4895,7 @@ request.endHandler((v: java.lang.Void) =&gt; {
 <div class="sect3">
 <h4 id="_向_http_响应写入数据">向 HTTP 响应写入数据</h4>
 <div class="paragraph">
-<p>想要将数据写入 HTTP Response，您可使用任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#write(io.vertx.core.buffer.Buffer)">write</a></code> 方法。</p>
+<p>想要将数据写入 HTTP Response，您可使用任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#write()">write</a></code> 方法。</p>
 </div>
 <div class="paragraph">
 <p>它们可以在响应结束之前被多次调用，它们可以通过以下几种方式调用：</p>
@@ -4931,7 +4931,7 @@ response.write("hello world!", "UTF-16")</code></pre>
 <p>响应写入是异步的，并且在写操作进入队列之后会立即返回。</p>
 </div>
 <div class="paragraph">
-<p>若您只需要将单个字符串或 <code>Buffer</code> 写入到HTTP 响应，则可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#end(java.lang.String)">end</a></code> 方法将其直接写入响应中并发回到客户端。</p>
+<p>若您只需要将单个字符串或 <code>Buffer</code> 写入到HTTP 响应，则可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#end()">end</a></code> 方法将其直接写入响应中并发回到客户端。</p>
 </div>
 <div class="paragraph">
 <p>第一次写入操作会触发响应头的写入，因此，若您不使用HTTP 分块，那么必须在写入响应之前设置 <code>Content-Length</code> 头，否则会太迟。若您使用 HTTP 分块则不需要担心这点。</p>
@@ -4940,7 +4940,7 @@ response.write("hello world!", "UTF-16")</code></pre>
 <div class="sect3">
 <h4 id="_完成_http_响应">完成 HTTP 响应</h4>
 <div class="paragraph">
-<p>一旦您完成了 HTTP 响应，可调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#end(java.lang.String)">end</a></code> 将其发回客户端。</p>
+<p>一旦您完成了 HTTP 响应，可调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#end()">end</a></code> 将其发回客户端。</p>
 </div>
 <div class="paragraph">
 <p>这可以通过几种方式完成：</p>
@@ -4974,7 +4974,7 @@ response.end("hello world!")</code></pre>
 <p>当响应结束时，Vert.x 将自动关闭非 keep-alive 的连接。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下，Vert.x 不会自动关闭 keep-alive 的连接，若您想要在一段空闲时间之后让 Vert.x 自动关闭 keep-alive 的连接，则使用 <code><a href="../dataobjects.html#HttpServerOptions#setIdleTimeout(int)">idleTimeout</a></code> 方法进行配置。</p>
+<p>默认情况下，Vert.x 不会自动关闭 keep-alive 的连接，若您想要在一段空闲时间之后让 Vert.x 自动关闭 keep-alive 的连接，则使用 <code><a href="../dataobjects.html#HttpServerOptions#setIdleTimeout()">idleTimeout</a></code> 方法进行配置。</p>
 </div>
 <div class="paragraph">
 <p>HTTP/2 连接在关闭响应之前会发送 <code>GOAWAY</code> 帧。</p>
@@ -4984,7 +4984,7 @@ response.end("hello world!")</code></pre>
 <h4 id="_设置响应头">设置响应头</h4>
 <div class="paragraph">
 <p>HTTP 响应头可直接添加到 HTTP 响应中，通常直接操作
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#headers()">headers</a></code> ：</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#headers()">headers</a></code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4995,7 +4995,7 @@ headers.set("other-header", "wibble")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#putHeader(java.lang.String,%20java.lang.String)">putHeader</a></code> 方法：</p>
+<p>或您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#putHeader(java.lang.String)">putHeader</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5025,7 +5025,7 @@ response.setChunked(true)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认是不分块的，当处于分块模式，每次调用任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#write(io.vertx.core.buffer.Buffer)">write</a></code>
+<p>默认是不分块的，当处于分块模式，每次调用任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#write()">write</a></code>
 方法将导致新的 HTTP 块被写出。</p>
 </div>
 <div class="paragraph">
@@ -5055,7 +5055,7 @@ trailers.set("X-wibble", "woobble").set("X-quux", "flooble")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#putTrailer(java.lang.String,%20java.lang.String)">putTrailer</a></code> 方法：</p>
+<p>或者调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#putTrailer(java.lang.String)">putTrailer</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5072,13 +5072,13 @@ response.putTrailer("X-wibble", "woobble").putTrailer("X-quux", "flooble")</code
 对象打开并其传送到HTTP 响应中。</p>
 </div>
 <div class="paragraph">
-<p>或您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/file/FileSystem.html#readFile(java.lang.String,%20io.vertx.core.Handler)">readFile</a></code> 方法一次性加载它，并直接将其写入响应。</p>
+<p>或您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/file/FileSystem.html#readFile(java.lang.String)">readFile</a></code> 方法一次性加载它，并直接将其写入响应。</p>
 </div>
 <div class="paragraph">
 <p>或者，Vert.x 提供了一种方法，允许您在一个操作中将文件从磁盘或文件系统中读取并提供给HTTP 响应。若底层操作系统支持，这会导致操作系统不通过用户空间复制而直接将文件内容中字节数据从文件传输到Socket。</p>
 </div>
 <div class="paragraph">
-<p>这是使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#sendFile(java.lang.String)">sendFile</a></code> 方法完成的，对于大文件处理通常更有效，而这个方法对于小文件可能很慢。</p>
+<p>这是使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#sendFile()">sendFile</a></code> 方法完成的，对于大文件处理通常更有效，而这个方法对于小文件可能很慢。</p>
 </div>
 <div class="paragraph">
 <p>这儿是一个非常简单的 Web 服务器，它使用 <code>sendFile</code> 方法从文件系统中读取并提供文件：</p>
@@ -5097,7 +5097,7 @@ response.putTrailer("X-wibble", "woobble").putTrailer("X-quux", "flooble")</code
 </div>
 </div>
 <div class="paragraph">
-<p>发送文件是异步的，可能在调用返回一段时间后才能完成。如果要在文件写入时收到通知，可以在 <code>sendFile</code> 方法中设置一个处理器。 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#sendFile(java.lang.String,%20io.vertx.core.Handler)">sendFile</a></code></p>
+<p>发送文件是异步的，可能在调用返回一段时间后才能完成。如果要在文件写入时收到通知，可以在 <code>sendFile</code> 方法中设置一个处理器。 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#sendFile(java.lang.String)">sendFile</a></code></p>
 </div>
 <div class="paragraph">
 <p>请阅读 <a href="#classpath">从 Classpath 访问文件</a> 章节了解类路径的限制或禁用它。</p>
@@ -5175,8 +5175,8 @@ response.putTrailer("X-wibble", "woobble").putTrailer("X-quux", "flooble")</code
 <h4 id="_pumping_响应">Pumping 响应</h4>
 <div class="paragraph">
 <p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 实例，因此您可以从任何
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> 或 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a>`向其泵送数据，如 `<a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a>`或 `<a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一个例子，它回应了任何 PUT 方法的响应中的请求体，它为请求体使用了 Pump，所以即使 HTTP 请求体很大并填满了内存，任何时候它依旧会工作：</p>
@@ -5204,7 +5204,7 @@ response.putTrailer("X-wibble", "woobble").putTrailer("X-quux", "flooble")</code
 <p>HTTP/2 是用于 HTTP 请求/响应模型的包含各种帧的一种帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>要发送这样的帧，您可以在响应中使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#writeCustomFrame(int,%20int,%20io.vertx.core.buffer.Buffer)">writeCustomFrame</a></code> 方法，以下是一个例子：</p>
+<p>要发送这样的帧，您可以在响应中使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#writeCustomFrame(int,%20int)">writeCustomFrame</a></code> 方法，以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5247,8 +5247,8 @@ request.response().reset(8)</code></pre>
 <p>HTTP/2 规范中定义了可用的 <a href="http://httpwg.org/specs/rfc7540.html#ErrorCodes">错误码</a> 列表：</p>
 </div>
 <div class="paragraph">
-<p>若使用了 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#exceptionHandler(io.vertx.core.Handler)">request handler</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#exceptionHandler(io.vertx.core.Handler)">response handler</a></code> 两个处理器过后，在流重置完成时您将会收到通知：</p>
+<p>若使用了 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#exceptionHandler()">request handler</a></code> 和
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#exceptionHandler()">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5299,15 +5299,15 @@ response.sendFile("&lt;html&gt;&lt;head&gt;&lt;script src=\"/main.js\"&gt;&lt;/s
 <p>推送响应处理器客户能会接收到失败，如：客户端可能取消推送，因为它已经在缓存中包含了 <code>main.js</code> ，并不在需要它。</p>
 </div>
 <div class="paragraph">
-<p>您必须在响应结束之前调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#push(io.vertx.core.http.HttpMethod,%20java.lang.String,%20java.lang.String,%20io.vertx.core.Handler)">push</a></code> 方法，但是在推送响应过后依然可以写响应。</p>
+<p>您必须在响应结束之前调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#push(io.vertx.core.http.HttpMethod,%20java.lang.String,%20java.lang.String)">push</a></code> 方法，但是在推送响应过后依然可以写响应。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_handling_exceptions">Handling exceptions</h4>
 <div class="paragraph">
-<p>You can set an <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> to receive any
-exceptions that happens before the connection is passed to the <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#requestHandler(io.vertx.core.Handler)">requestHandler</a></code>
-or to the <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#websocketHandler(io.vertx.core.Handler)">websocketHandler</a></code> , e.g during the TLS handshake.</p>
+<p>You can set an <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#exceptionHandler()">exceptionHandler</a></code> to receive any
+exceptions that happens before the connection is passed to the <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#requestHandler()">requestHandler</a></code>
+or to the <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#websocketHandler()">websocketHandler</a></code> , e.g during the TLS handshake.</p>
 </div>
 </div>
 </div>
@@ -5326,7 +5326,7 @@ or to the <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.htm
 <p>这允许它同时处理支持HTTP 压缩的客户端和不支持的客户端。</p>
 </div>
 <div class="paragraph">
-<p>要启用压缩，可以使用 <code><a href="../dataobjects.html#HttpServerOptions#setCompressionSupported(boolean)">compressionSupported</a></code> 方法进行配置。默认情况下，未启用压缩。</p>
+<p>要启用压缩，可以使用 <code><a href="../dataobjects.html#HttpServerOptions#setCompressionSupported()">compressionSupported</a></code> 方法进行配置。默认情况下，未启用压缩。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下，未启用压缩。</p>
@@ -5362,7 +5362,7 @@ request.response().putHeader(io.vertx.core.http.HttpHeaders.CONTENT_ENCODING, io
 <p>使用高于 1-2 的压缩级别通常允许仅仅保存一些字节大小 —— 它的增益不是线性的，并取决于要压缩的特定数据 —— 但它可以满足服务器所要求的CPU周期的不可控的成本（注意现在Vert.x不支持任何缓存形式的响应数据，如静态文件，因此压缩是在每个请求体生成时进行的）,它可生成压缩过的响应数据、并对接收的响应解码（膨胀）—— 和客户端使用的方式一致，这种操作随着压缩级别的增长会变得更加倾向于CPU密集型。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下 —— 如果通过 <code><a href="../dataobjects.html#HttpServerOptions#setCompressionSupported(boolean)">compressionSupported</a></code> 方法启用压缩，Vert.x 将使用 <strong>6</strong> 作为压缩级别，但是该参数可通过 <code><a href="../dataobjects.html#HttpServerOptions#setCompressionLevel(int)">compressionLevel</a></code> 方法来更改。</p>
+<p>默认情况下 —— 如果通过 <code><a href="../dataobjects.html#HttpServerOptions#setCompressionSupported()">compressionSupported</a></code> 方法启用压缩，Vert.x 将使用 <strong>6</strong> 作为压缩级别，但是该参数可通过 <code><a href="../dataobjects.html#HttpServerOptions#setCompressionLevel()">compressionLevel</a></code> 方法来更改。</p>
 </div>
 </div>
 <div class="sect2">
@@ -5390,7 +5390,7 @@ var client = vertx.createHttpClient(options)</code></pre>
 <p>Vert.x 支持基于 TLS <code>h2</code> 和 TCP <code>h2c</code> 的 HTTP/2 协议。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下，HTTP 客户端会发送 HTTP/1.1 请求。若要执行 HTTP/2 请求，则必须调用 <code><a href="../dataobjects.html#HttpClientOptions#setProtocolVersion(io.vertx.core.http.HttpVersion)">protocolVersion</a></code>
+<p>默认情况下，HTTP 客户端会发送 HTTP/1.1 请求。若要执行 HTTP/2 请求，则必须调用 <code><a href="../dataobjects.html#HttpClientOptions#setProtocolVersion()">protocolVersion</a></code>
 方法将版本设置成 <code><a href="todo">HTTP_2</a></code> 。</p>
 </div>
 <div class="paragraph">
@@ -5422,7 +5422,7 @@ var client = vertx.createHttpClient(options)</code></pre>
 </div>
 <div class="paragraph">
 <p><code>h2c</code> 连接也可以直接建立，如连接可以使用前文提到的方式创建，当
-<code><a href="../dataobjects.html#HttpClientOptions#setHttp2ClearTextUpgrade(boolean)">http2ClearTextUpgrade</a></code> 选项设置为 <code>false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
+<code><a href="../dataobjects.html#HttpClientOptions#setHttp2ClearTextUpgrade()">http2ClearTextUpgrade</a>`选项设置为 `false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
 </div>
 <div class="paragraph">
 <p>HTTP 服务端可能不支持 HTTP/2，当响应到达时，可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#version()">version</a></code> 方法检查响应实际HTTP版本。</p>
@@ -5498,7 +5498,7 @@ client.getNow("foo.othercompany.com", "/other-uri", (response: io.vertx.scala.co
 </div>
 <div class="paragraph">
 <p>使用 Vert.x HTTP Client 执行这种请求最简单的方式是使用加了 <code>Now</code> 后缀的请求方法，如
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#getNow(io.vertx.core.http.RequestOptions,%20io.vertx.core.Handler)">getNow</a></code> 。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#getNow(io.vertx.core.http.RequestOptions)">getNow</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>这些方法会创建HTTP 请求，并在单个方法调用中发送它，而且允许您提供一个处理器，当HTTP 响应发送回来时调用该处理器来处理响应结果。</p>
@@ -5522,7 +5522,7 @@ client.headNow("/other-uri", (response: io.vertx.scala.core.http.HttpClientRespo
 <div class="sect3">
 <h4 id="_发送通用请求">发送通用请求</h4>
 <div class="paragraph">
-<p>有时您在运行时不知道发送请求的 HTTP 方法，对于这种情况，我们提供通用请求方法 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#request(io.vertx.core.http.HttpMethod,%20io.vertx.core.http.RequestOptions)">request</a></code> ，允许您在运行时指定 HTTP 方法：</p>
+<p>有时您在运行时不知道发送请求的 HTTP 方法，对于这种情况，我们提供通用请求方法 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#request(io.vertx.core.http.HttpMethod)">request</a></code> ，允许您在运行时指定 HTTP 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5544,7 +5544,7 @@ client.request(HttpMethod.POST, "foo-uri", (response: io.vertx.scala.core.http.H
 <p>有时您想要发送一个包含了请求体的请求，或者也许您想要在发送请求之前写入头部到请求中。</p>
 </div>
 <div class="paragraph">
-<p>为此，您可以调用其中一个指定的请求方法，如 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#post(io.vertx.core.http.RequestOptions)">post</a></code> 或一个其他通用请求方法，如 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#request(io.vertx.core.http.HttpMethod,%20io.vertx.core.http.RequestOptions)">request</a></code> 。</p>
+<p>为此，您可以调用其中一个指定的请求方法，如 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#post()">post</a></code> 或一个其他通用请求方法，如 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#request(io.vertx.core.http.HttpMethod)">request</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这些方法都不会立即发送请求，而是返回一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code>
@@ -5648,7 +5648,7 @@ headers.set("content-type", "application/json").set("other-header", "foo")</code
 <p>这个headers是一个 <code><a href="../../scaladocs/io/vertx/scala/core/MultiMap.html">MultiMap</a></code> 的实例，它提供了添加、设置、删除条目的操作。HTTP Header允许一个特定的键包含多个值。</p>
 </div>
 <div class="paragraph">
-<p>您也可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#putHeader(java.lang.String,%20java.lang.String)">putHeader</a></code> 方法编写头文件：</p>
+<p>您也可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#putHeader(java.lang.String)">putHeader</a></code> 方法编写头文件：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5665,14 +5665,14 @@ request.putHeader("content-type", "application/json").putHeader("other-header", 
 <h4 id="_非标准的http_方法">非标准的HTTP 方法</h4>
 <div class="paragraph">
 <p>The <code><a href="todo">OTHER</a></code> HTTP method is used for non standard methods, when this method
-is used, <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setRawMethod(java.lang.String)">setRawMethod</a></code> must be used to
+is used, <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setRawMethod()">setRawMethod</a></code> must be used to
 set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_发送_http_请求">发送 HTTP 请求</h4>
 <div class="paragraph">
-<p>一旦完成了 HTTP 请求的准备工作，您必须调用其中一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#end(java.lang.String)">end</a></code> 方法来发送该请求（结束请求）。</p>
+<p>一旦完成了 HTTP 请求的准备工作，您必须调用其中一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#end()">end</a></code> 方法来发送该请求（结束请求）。</p>
 </div>
 <div class="paragraph">
 <p>结束一个请求时，若请求头尚未被写入，会导致它们被写入，并且请求被标记成完成的。</p>
@@ -5708,7 +5708,7 @@ request.end(buffer)</code></pre>
 <p>这允许使用块方式写入HTTP 请求体，这个在请求体比较大需要流式发送到服务器，或预先不知道大小时很常用。</p>
 </div>
 <div class="paragraph">
-<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setChunked(boolean)">setChunked</a></code> 将HTTP 请求设置成分块模式。</p>
+<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setChunked()">setChunked</a></code> 将HTTP 请求设置成分块模式。</p>
 </div>
 <div class="paragraph">
 <p>在分块模式下，每次调用 <code>write</code> 方法将导致新的块被写入到报文，这种模式中，无需先设置请求头中的 <code>Content-Length</code> 。</p>
@@ -5730,7 +5730,7 @@ request.end()</code></pre>
 <div class="sect3">
 <h4 id="_请求超时">请求超时</h4>
 <div class="paragraph">
-<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setTimeout(long)">setTimeout</a></code> 设置一个特定 HTTP 请求的超时时间。</p>
+<p>您可使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setTimeout()">setTimeout</a></code> 设置一个特定 HTTP 请求的超时时间。</p>
 </div>
 <div class="paragraph">
 <p>若请求在超时期限内未返回任何数据，则异常将会被传给异常处理器（若提供），并且请求将会被关闭。</p>
@@ -5787,7 +5787,7 @@ request.end()</code></pre>
 <h4 id="_客户端请求中指定处理器">客户端请求中指定处理器</h4>
 <div class="paragraph">
 <p>不像在调用中提供响应处理器来创建客户端请求对象，相反您可以当请求创建时不提供处理器、稍后在请求对象中调用
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#handler(io.vertx.core.Handler)">handler</a></code> 来设置。如：</p>
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#handler()">handler</a>`来设置。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5801,7 +5801,7 @@ request.handler((response: io.vertx.scala.core.http.HttpClientResponse) =&gt; {
 <div class="sect3">
 <h4 id="_使用流式请求">使用流式请求</h4>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code> 实例实现了 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a>`实例实现了 `<a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
 </div>
 <div class="paragraph">
 <p>例如，您可以将磁盘上的文件直接泵送到HTTP 请求体中，如下所示：</p>
@@ -5823,7 +5823,7 @@ pump.start()</code></pre>
 <p>HTTP/2 是用于 HTTP 请求/响应模型的具有各种帧的一个帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>要发送这样的帧，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#write(io.vertx.core.buffer.Buffer)">write</a></code> 方法写入请求，以下是一个例子：</p>
+<p>要发送这样的帧，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#write()">write</a></code> 方法写入请求，以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5861,8 +5861,8 @@ request.writeCustomFrame(frameType, frameStatus, payload)</code></pre>
 <p>HTTP/2规范定义了可使用的 <a href="http://httpwg.org/specs/rfc7540.html#ErrorCodes">错误码</a> 列表。</p>
 </div>
 <div class="paragraph">
-<p>若使用了 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#exceptionHandler(io.vertx.core.Handler)">request handler</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#exceptionHandler(io.vertx.core.Handler)">response handler</a></code> 两个处理器过后，在流重置完成时您将会收到通知。</p>
+<p>若使用了 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#exceptionHandler()">request handler</a></code> 和
+`<a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#exceptionHandler()">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5932,7 +5932,7 @@ var contentLength = response.headers().get("content-lengh")</code></pre>
 <p>如果收到的HTTP 响应包含响应体（正文），它可能会在响应头被读取后的某个时间以分片的方式到达。在调用响应处理器之前，我们不要等待所有的响应体到达，因为它可能非常大而要等待很长时间、又或者会花费大量内存。</p>
 </div>
 <div class="paragraph">
-<p>当响应体的某部分（数据）到达时，<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#handler(io.vertx.core.Handler)">handler</a></code>
+<p>当响应体的某部分（数据）到达时，<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#handler()">handler</a></code>
 方法绑定的回调函数将会被调用，其中传入的 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> 中包含了响应体的这一分片（部分）内容：</p>
 </div>
 <div class="listingblock">
@@ -5969,7 +5969,7 @@ var contentLength = response.headers().get("content-lengh")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者当响应已被完全读取时，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#bodyHandler(io.vertx.core.Handler)">bodyHandler</a></code> 方法以便读取整个响应体：</p>
+<p>或者当响应已被完全读取时，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#bodyHandler()">bodyHandler</a></code> 方法以便读取整个响应体：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5986,7 +5986,7 @@ var contentLength = response.headers().get("content-lengh")</code></pre>
 <div class="sect3">
 <h4 id="_响应完成处理器">响应完成处理器</h4>
 <div class="paragraph">
-<p>当整个响应体被完全读取或者无响应体的响应头被完全读取时，响应的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#endHandler(io.vertx.core.Handler)">endHandler</a></code> 就会被调用。</p>
+<p>当整个响应体被完全读取或者无响应体的响应头被完全读取时，响应的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html#endHandler()">endHandler</a></code> 就会被调用。</p>
 </div>
 </div>
 <div class="sect3">
@@ -6039,7 +6039,7 @@ var contentLength = response.headers().get("content-lengh")</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>默认情况最大的重定向数为 <code>16</code> ，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#setMaxRedirects(int)">maxRedirects</a></code> 方法设置。</p>
+<p>默认情况最大的重定向数为 <code>16</code> ，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#setMaxRedirects()">maxRedirects</a></code> 方法设置。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6102,7 +6102,7 @@ client.get("some-uri", (response: io.vertx.scala.core.http.HttpClientResponse) =
 <div class="ulist">
 <ul>
 <li>
-<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setHost(java.lang.String)">setHost</a></code> ）</p>
+<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#setHost()">setHost</a></code> ）</p>
 </li>
 <li>
 <p>请求体，除非返回的请求使用了 <code>GET</code> 方法</p>
@@ -6131,7 +6131,7 @@ client.get("some-uri", (response: io.vertx.scala.core.http.HttpClientResponse) =
 <p>这里的想法是允许服务器在发送大量数据之前授权、接收/拒绝请求，若请求不能被接收，则发送大量数据信息会浪费带宽，并将服务器绑定在读取即将丢弃的无用数据中。</p>
 </div>
 <div class="paragraph">
-<p>Vert.x 允许您在客户端请求对象中设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#continueHandler(io.vertx.core.Handler))">continueHandler</a></code> 。</p>
+<p>Vert.x 允许您在客户端请求对象中设置一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#continueHandler()">continueHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>它将在服务器发回一个状态 <code>Status: 100 (Continue)</code> 时被调用, 同时也表示（客户端）可以发送请求的剩余部分。</p>
@@ -6162,7 +6162,7 @@ request.continueHandler((v: java.lang.Void) =&gt; {
 <p>在服务端，Vert.x HTTP Server可配置成接收到 <code>Expect: 100-Continue</code> 头时自动发回 <code>100 Continue</code> 临时响应信息。</p>
 </div>
 <div class="paragraph">
-<p>这个可通过 <code><a href="../dataobjects.html#HttpServerOptions#setHandle100ContinueAutomatically(boolean)">handle100ContinueAutomatically</a></code> 方法来设置。</p>
+<p>这个可通过 <code><a href="../dataobjects.html#HttpServerOptions#setHandle100ContinueAutomatically()">handle100ContinueAutomatically</a></code> 方法来设置。</p>
 </div>
 <div class="paragraph">
 <p>若您想要决定是否手动发送持续响应，那么此属性可设置成 <code>false</code> （默认值），然后您可以通过检查头信息并且调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html#writeContinue()">writeContinue</a></code>
@@ -6307,7 +6307,7 @@ request.end()</code></pre>
 <p>Content-Encoding: gzip</p>
 </div>
 <div class="paragraph">
-<p>创建客户端时可使用 <code><a href="../dataobjects.html#HttpClientOptions#setTryUseCompression(boolean)">tryUseCompression</a></code> 设置配置项启用压缩。</p>
+<p>创建客户端时可使用 <code><a href="../dataobjects.html#HttpClientOptions#setTryUseCompression()">tryUseCompression</a></code> 设置配置项启用压缩。</p>
 </div>
 <div class="paragraph">
 <p>默认情况压缩被禁用。</p>
@@ -6322,7 +6322,7 @@ request.end()</code></pre>
 <p>对于 HTTP/1.x 版本，HTTP 客户端支持连接池，它允许您重用请求之间的连接。</p>
 </div>
 <div class="paragraph">
-<p>为了连接池（能）工作，配置客户端时，keep alive 必须通过 <code><a href="../dataobjects.html#HttpClientOptions#setKeepAlive(boolean)">keepAlive</a></code>
+<p>为了连接池（能）工作，配置客户端时，keep alive 必须通过 <code><a href="../dataobjects.html#HttpClientOptions#setKeepAlive()">keepAlive</a></code>
 方法设置成 <code>true</code> 。默认值为 <code>true</code> 。</p>
 </div>
 <div class="paragraph">
@@ -6330,7 +6330,7 @@ request.end()</code></pre>
 当 keep alive 禁用时，Vert.x 将为每一个 HTTP/1.1 请求添加一个 <code>Connection: Close</code> 头 —— 表示在响应完成后连接将被关闭。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="../dataobjects.html#HttpClientOptions#setMaxPoolSize(int)">maxPoolSize</a></code> 方法为每个服务器配置连接池的最大连接数。</p>
+<p>可使用 <code><a href="../dataobjects.html#HttpClientOptions#setMaxPoolSize()">maxPoolSize</a></code> 方法为每个服务器配置连接池的最大连接数。</p>
 </div>
 <div class="paragraph">
 <p>当启用连接池创建请求时，若存在少于已经为服务器创建的最大连接数，Vert.x 将创建一个新连接，否则直接将请求添加到队列中。</p>
@@ -6344,7 +6344,7 @@ request.end()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#setKeepAliveTimeout(int)">keepAliveTimeout</a></code> 设置空闲时间——在设置的时间内然后没使用的连接将被关闭。请注意空闲超时值以秒为单位而不是毫秒。</p>
+<p>或者，您可使用 <code><a href="../dataobjects.html#HttpClientOptions#setKeepAliveTimeout()">keepAliveTimeout</a></code> 设置空闲时间——在设置的时间内然后没使用的连接将被关闭。请注意空闲超时值以秒为单位而不是毫秒。</p>
 </div>
 </div>
 <div class="sect2">
@@ -6356,13 +6356,13 @@ request.end()</code></pre>
 <p>管道意味着在返回一个响应之前，在同一个连接上发送另一个请求，管道不适合所有请求。</p>
 </div>
 <div class="paragraph">
-<p>若要启用管道，必须调用 <code><a href="../dataobjects.html#HttpClientOptions#setPipelining(boolean)">pipelining</a></code> 方法，默认管道是禁止的。</p>
+<p>若要启用管道，必须调用 <code><a href="../dataobjects.html#HttpClientOptions#setPipelining()">pipelining</a></code> 方法，默认管道是禁止的。</p>
 </div>
 <div class="paragraph">
 <p>当启用管道时，请求可以不等待以前的响应返回而写入到连接。</p>
 </div>
 <div class="paragraph">
-<p>单个连接的管道请求限制数由 <code><a href="../dataobjects.html#HttpClientOptions#setPipeliningLimit(int)">pipeliningLimit</a></code>
+<p>单个连接的管道请求限制数由 <code><a href="../dataobjects.html#HttpClientOptions#setPipeliningLimit()">pipeliningLimit</a></code>
 方法设置，此选项定义了发送到服务器的等待响应的最大请求数。这个限制可以确保和同一个服务器的连接分发到客户端的公平性。</p>
 </div>
 </div>
@@ -6372,11 +6372,11 @@ request.end()</code></pre>
 <p>HTTP/2 提倡使用服务器的单一连接，默认情况下，HTTP 客户端针对每个服务器都使用单一连接，同样服务器上的所有流都会复用到对应连接中。</p>
 </div>
 <div class="paragraph">
-<p>当客户端需要使用连接池并使用超过一个连接时，则可使用 <code><a href="../dataobjects.html#HttpClientOptions#setHttp2MaxPoolSize(int)">http2MaxPoolSize</a></code>
+<p>当客户端需要使用连接池并使用超过一个连接时，则可使用 <code><a href="../dataobjects.html#HttpClientOptions#setHttp2MaxPoolSize()">http2MaxPoolSize</a></code>
 设置。</p>
 </div>
 <div class="paragraph">
-<p>当您希望限制每个连接的多路复用流数量而使用连接池而不是单个连接时，可使用 <code><a href="../dataobjects.html#HttpClientOptions#setHttp2MultiplexingLimit(int)">http2MultiplexingLimit</a></code>
+<p>当您希望限制每个连接的多路复用流数量而使用连接池而不是单个连接时，可使用 <code><a href="../dataobjects.html#HttpClientOptions#setHttp2MultiplexingLimit()">http2MultiplexingLimit</a></code>
 设置。</p>
 </div>
 <div class="listingblock">
@@ -6391,20 +6391,20 @@ var client = vertx.createHttpClient(clientOptions)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>连接的复用限制是在客户端上设置限制单个连接的流数量，如果服务器使用 <code><a href="../dataobjects.html#Http2Settings#setMaxConcurrentStreams(long)">SETTINGS_MAX_CONCURRENT_STREAMS</a></code> 设置了下限，则有效值可以更低。</p>
+<p>连接的复用限制是在客户端上设置限制单个连接的流数量，如果服务器使用 <code><a href="../dataobjects.html#Http2Settings#setMaxConcurrentStreams()">SETTINGS_MAX_CONCURRENT_STREAMS</a></code> 设置了下限，则有效值可以更低。</p>
 </div>
 <div class="paragraph">
 <p>HTTP/2 连接不会被客户端自动关闭，若要关闭它们，可以调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#close()">close</a></code>
 来关闭客户端实例。</p>
 </div>
 <div class="paragraph">
-<p>或者，您可以使用 <code><a href="../dataobjects.html#HttpClientOptions#setIdleTimeout(int)">idleTimeout</a></code> 设置空闲时间——这个时间内没有使用的任何连接将被关闭，注意，空闲时间以秒为单位，不是毫秒。</p>
+<p>或者，您可以使用 <code><a href="../dataobjects.html#HttpClientOptions#setIdleTimeout()">idleTimeout</a></code> 设置空闲时间——这个时间内没有使用的任何连接将被关闭，注意，空闲时间以秒为单位，不是毫秒。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_http_连接">HTTP 连接</h3>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html">HttpConnection</a></code> 接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html">HttpConnection</a>`接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
 </div>
 <div class="paragraph">
 <p>HTTP/2 实现了完整的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html">HttpConnection</a></code> API。</p>
@@ -6415,7 +6415,7 @@ var client = vertx.createHttpClient(clientOptions)</code></pre>
 <div class="sect3">
 <h4 id="_服务端连接">服务端连接</h4>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#connection()">connection</a></code> 方法会返回服务器上的请求连接：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html#connection()">connection</a>`方法会返回服务器上的请求连接：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6438,7 +6438,7 @@ server.connectionHandler((connection: io.vertx.scala.core.http.HttpConnection) =
 <div class="sect3">
 <h4 id="_客户端连接">客户端连接</h4>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#connection()">connection</a></code> 方法会返回客户端上的连接请求：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html#connection()">connection</a>`方法会返回客户端上的连接请求：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6465,8 +6465,8 @@ server.connectionHandler((connection: io.vertx.scala.core.http.HttpConnection) =
 <p>每个 Endpoint 都必须遵守连接另一端的发送设置。</p>
 </div>
 <div class="paragraph">
-<p>当建立连接时，客户端和服务器交换初始配置，初始设置由客户端上的 <code><a href="../dataobjects.html#HttpClientOptions#setInitialSettings(io.vertx.core.http.Http2Settings)">initialSettings</a></code> 和服务器上的
-<code><a href="../dataobjects.html#HttpServerOptions#setInitialSettings(io.vertx.core.http.Http2Settings)">initialSettings</a></code> 方法配置。</p>
+<p>当建立连接时，客户端和服务器交换初始配置，初始设置由客户端上的 <code><a href="../dataobjects.html#HttpClientOptions#setInitialSettings()">initialSettings</a></code> 和服务器上的
+`<a href="../dataobjects.html#HttpServerOptions#setInitialSettings()">initialSettings</a>`方法配置。</p>
 </div>
 <div class="paragraph">
 <p>连接建立后可随时更改设置：</p>
@@ -6494,7 +6494,7 @@ server.connectionHandler((connection: io.vertx.scala.core.http.HttpConnection) =
 </div>
 </div>
 <div class="paragraph">
-<p>相反，在收到新的远程设置时会通知 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#remoteSettingsHandler(io.vertx.core.Handler)">remoteSettingsHandler</a></code> ：</p>
+<p>相反，在收到新的远程设置时会通知 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#remoteSettingsHandler()">remoteSettingsHandler</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6519,7 +6519,7 @@ server.connectionHandler((connection: io.vertx.scala.core.http.HttpConnection) =
 <div class="sect3">
 <h4 id="_连接_ping">连接 Ping</h4>
 <div class="paragraph">
-<p>HTTP/2 连接 ping 对于确定连接往返时间或检查连接有效性很有用： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#ping(io.vertx.core.buffer.Buffer,%20io.vertx.core.Handler)">ping</a></code> 发送 {@literal PING} 帧到远端：</p>
+<p>HTTP/2 连接 ping 对于确定连接往返时间或检查连接有效性很有用： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#ping(io.vertx.core.buffer.Buffer)">ping</a></code> 发送 {@literal PING} 帧到远端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6571,7 +6571,7 @@ connection.pingFuture(data).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#shutdownHandler(io.vertx.core.Handler))">shutdownHandler</a></code> 通知何时关闭所有流，连接尚未关闭。</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#shutdownHandler()">shutdownHandler</a>`通知何时关闭所有流，连接尚未关闭。</p>
 </div>
 <div class="paragraph">
 <p>有可能只需发送 {@literal GOAWAY} 帧，和关闭主要的区别在于它将只是告诉远程连接停止创建新流，而没有计划关闭连接：</p>
@@ -6592,7 +6592,7 @@ connection.pingFuture(data).onComplete{
 </div>
 </div>
 <div class="paragraph">
-<p>当所有当前流已经关闭并且可关闭连接时， <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#shutdownHandler(io.vertx.core.Handler))">shutdownHandler</a></code> 将被调用：</p>
+<p>当所有当前流已经关闭并且可关闭连接时， <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#shutdownHandler()">shutdownHandler</a></code> 将被调用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6636,7 +6636,7 @@ connection.shutdownHandler((v: java.lang.Void) =&gt; {
 </ul>
 </div>
 <div class="paragraph">
-<p>连接关闭时 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#closeHandler(io.vertx.core.Handler)">closeHandler</a></code> 将发出通知。</p>
+<p>连接关闭时 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpConnection.html#closeHandler()">closeHandler</a></code> 将发出通知。</p>
 </div>
 </div>
 </div>
@@ -6726,7 +6726,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <p>有关详细信息，请参阅 <a href="#ssl">配置网络服务器以使用 SSL</a> 章节。</p>
 </div>
 <div class="paragraph">
-<p>SSL可以通过每个请求的 <code><a href="../dataobjects.html#RequestOptions">RequestOptions</a></code> 来启用/禁用，或在指定模式时调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#requestAbs(io.vertx.core.http.HttpMethod,%20java.lang.String)">requestAbs</a></code> ：</p>
+<p>SSL可以通过每个请求的 <code><a href="../dataobjects.html#RequestOptions">RequestOptions</a></code> 来启用/禁用，或在指定模式时调用 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#requestAbs(io.vertx.core.http.HttpMethod)">requestAbs</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6741,10 +6741,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#HttpClientOptions#setSsl(boolean)">ssl</a></code> 设置将用作客户端默认配置。</p>
+<p>`<a href="../dataobjects.html#HttpClientOptions#setSsl()">ssl</a>`设置将用作客户端默认配置。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#RequestOptions#setSsl(boolean)">ssl</a></code> 将覆盖默认客户端设置：</p>
+<p>`<a href="../dataobjects.html#RequestOptions#setSsl()">ssl</a>`将覆盖默认客户端设置：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6757,7 +6757,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </ul>
 </div>
 <div class="paragraph">
-<p>同样， <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#requestAbs(io.vertx.core.http.HttpMethod,%20java.lang.String)">requestAbs</a></code> 方法也会（在调用时）覆盖默认客户端设置。</p>
+<p>同样， <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#requestAbs(io.vertx.core.http.HttpMethod)">requestAbs</a></code> 方法也会（在调用时）覆盖默认客户端设置。</p>
 </div>
 <div class="sect3">
 <h4 id="_server_name_indication_sni_2">Server Name Indication (SNI)</h4>
@@ -6785,11 +6785,11 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_websocket_handler">WebSocket handler</h5>
 <div class="paragraph">
-<p>第一种方法需要在服务端实例上提供一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#websocketHandler(io.vertx.core.Handler)">websocketHandler</a></code> 。</p>
+<p>第一种方法需要在服务端实例上提供一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServer.html#websocketHandler()">websocketHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler</code> 传入一个
-<code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html">ServerWebSocket</a>`实例，在其中去处理它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6837,9 +6837,9 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_服务端_websocket_2">服务端 WebSocket</h5>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#headers()">headers</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#path()">path</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#query()">query</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#uri()">URI</a></code> 。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html">ServerWebSocket</a>`实例能够让您读取在WebSocket 握手中的HTTP 请求的 `<a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#headers()">headers</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#path()">path</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#query()">query</a></code> 和
+<code><a href="../../scaladocs/io/vertx/scala/core/http/ServerWebSocket.html#uri()">URI</a></code>。</p>
 </div>
 </div>
 </div>
@@ -6849,7 +6849,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <p>Vert.x 的 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html">HttpClient</a></code> 支持 WebSocket。</p>
 </div>
 <div class="paragraph">
-<p>您可以调用其中任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#websocket(io.vertx.core.http.RequestOptions,%20io.vertx.core.Handler)">websocket</a></code> 方法创建 WebSocket 连接到服务端，并提供回调函数。</p>
+<p>您可以调用其中任意一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClient.html#websocket(io.vertx.core.http.RequestOptions)">websocket</a></code> 方法创建 WebSocket 连接到服务端，并提供回调函数。</p>
 </div>
 <div class="paragraph">
 <p>当连接建立时，处理器将被调用并且传入 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> 实例：</p>
@@ -6866,8 +6866,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <h4 id="_向_websocket_写入消息">向 WebSocket 写入消息</h4>
 <div class="paragraph">
 <p>若您想将一个 WebSocket 消息写入 WebSocket，可使用
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeBinaryMessage(io.vertx.core.buffer.Buffer)">writeBinaryMessage</a></code> 方法或
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeTextMessage(java.lang.String)">writeTextMessage</a></code> 方法来执行该操作：</p>
+`<a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeBinaryMessage()">writeBinaryMessage</a>`方法或
+`<a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeTextMessage()">writeTextMessage</a>`方法来执行该操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6882,7 +6882,7 @@ websocket.writeTextMessage(message)</code></pre>
 </div>
 <div class="paragraph">
 <p>若WebSocket 消息大于使用
-<code><a href="../dataobjects.html#HttpClientOptions#setMaxWebsocketFrameSize(int)">maxWebsocketFrameSize</a></code>
+<code><a href="../dataobjects.html#HttpClientOptions#setMaxWebsocketFrameSize()">maxWebsocketFrameSize</a></code>
 设置的WebSocket 的帧的最大值，则Vert.x在将其发送到报文之前将其拆分为多个WebSocket 帧。</p>
 </div>
 </div>
@@ -6896,9 +6896,9 @@ websocket.writeTextMessage(message)</code></pre>
 </div>
 <div class="paragraph">
 <p>要发送多个帧组成的消息，请使用
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html#binaryFrame(io.vertx.core.buffer.Buffer,%20boolean)">WebSocketFrame.binaryFrame</a></code>
-, <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html#textFrame(java.lang.String,%20boolean)">WebSocketFrame.textFrame</a></code> 或
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html#continuationFrame(io.vertx.core.buffer.Buffer,%20boolean)">WebSocketFrame.continuationFrame</a></code> 方法创建帧，并使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeFrame(io.vertx.core.http.WebSocketFrame)">writeFrame</a></code> 方法将其写入WebSocket。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html#binaryFrame(io.vertx.core.buffer.Buffer)">WebSocketFrame.binaryFrame</a></code>
+, <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html#textFrame(java.lang.String)">WebSocketFrame.textFrame</a></code> 或
+<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html#continuationFrame(io.vertx.core.buffer.Buffer)">WebSocketFrame.continuationFrame</a>`方法创建帧，并使用 `<a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeFrame()">writeFrame</a></code> 方法将其写入WebSocket。</p>
 </div>
 <div class="paragraph">
 <p>以下是二进制帧的示例：</p>
@@ -6917,8 +6917,8 @@ websocket.writeFrame(frame3)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>许多情况下，您只需要发送一个包含了单个最终帧的 WebSocket 消息，因此我们提供了 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeFinalBinaryFrame(io.vertx.core.buffer.Buffer)">writeFinalBinaryFrame</a></code>
-和 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeFinalTextFrame(java.lang.String)">writeFinalTextFrame</a></code> 这两个快捷方法。</p>
+<p>许多情况下，您只需要发送一个包含了单个最终帧的 WebSocket 消息，因此我们提供了 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeFinalBinaryFrame()">writeFinalBinaryFrame</a></code>
+和 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#writeFinalTextFrame()">writeFinalTextFrame</a></code> 这两个快捷方法。</p>
 </div>
 <div class="paragraph">
 <p>下边是示例：</p>
@@ -6940,7 +6940,7 @@ websocket.writeFinalBinaryFrame(buff)</code></pre>
 <div class="sect3">
 <h4 id="_从_websocket_读取帧">从 WebSocket 读取帧</h4>
 <div class="paragraph">
-<p>要 从WebSocket 读取帧，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#frameHandler(io.vertx.core.Handler)">frameHandler</a></code> 方法。</p>
+<p>要 从WebSocket 读取帧，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html#frameHandler()">frameHandler</a></code> 方法。</p>
 </div>
 <div class="paragraph">
 <p>当帧到达时，会传入一个 <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocketFrame.html">WebSocketFrame</a></code> 实例给帧处理器，并调用它，例如：</p>
@@ -6962,8 +6962,8 @@ websocket.writeFinalBinaryFrame(buff)</code></pre>
 <div class="sect3">
 <h4 id="_流式_websocket">流式 WebSocket</h4>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> 实例也是 <code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a></code> 的实现类，因此可以和泵(pump)一起使用。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a>`实例也是 `<a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html">ReadStream</a></code> 和
+`<a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html">WriteStream</a>`的实现类，因此可以和泵(pump)一起使用。</p>
 </div>
 <div class="paragraph">
 <p>当使用 WebSocket 作为可写流或可读流时，它只能用于不分割多个帧的二进制帧一起使用的 WebSocket 连接。</p>
@@ -6980,7 +6980,7 @@ websocket.writeFinalBinaryFrame(buff)</code></pre>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../dataobjects.html#HttpClientOptions">HttpClientOptions</a></code> 中的
-<code><a href="../dataobjects.html#ProxyOptions">ProxyOptions</a></code> 对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
+`<a href="../dataobjects.html#ProxyOptions">ProxyOptions</a>`对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
 </div>
 <div class="paragraph">
 <p>以下是使用 HTTP 代理的例子：</p>
@@ -7155,8 +7155,8 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>这使得它们对于托管Vert.x Web应用程序的服务器场中的会话状态存储非常有用。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getAsyncMap(java.lang.String,%20io.vertx.core.Handler)">getAsyncMap</a></code> 方法获取
-<code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html">AsyncMap</a></code> 的实例。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getAsyncMap(java.lang.String)">getAsyncMap</a></code> 方法获取
+`<a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html">AsyncMap</a>`的实例。</p>
 </div>
 <div class="paragraph">
 <p>获取Map的过程是异步的，返回结果可以传给您指定的处理器中。以下是一个例子：</p>
@@ -7178,7 +7178,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <div class="sect3">
 <h4 id="_将数据放入map">将数据放入Map</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#put(java.lang.Object,%20java.lang.Object,%20io.vertx.core.Handler)">put</a></code> 方法将数据放入Map。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#put(java.lang.Object,%20java.lang.Object)">put</a></code> 方法将数据放入Map。</p>
 </div>
 <div class="paragraph">
 <p><code>put</code> 方法是异步的，一旦完成它会通知处理器：</p>
@@ -7199,7 +7199,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <div class="sect3">
 <h4 id="_从map读取数据">从Map读取数据</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#get(java.lang.Object,%20io.vertx.core.Handler)">get</a></code> 方法从Map读取数据。</p>
+<p>您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/AsyncMap.html#get(java.lang.Object)">get</a></code> 方法从Map读取数据。</p>
 </div>
 <div class="paragraph">
 <p><code>get</code> 方法也是异步的，一段时间过后它会通知处理器并传入结果。</p>
@@ -7237,7 +7237,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <p>集群范围锁具有异步API，它和大多数等待锁释放的阻塞调用线程的API锁不相同。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getLock(java.lang.String,%20io.vertx.core.Handler)">getLock</a></code> 方法获取锁。</p>
+<p>可使用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getLock(java.lang.String)">getLock</a></code> 方法获取锁。</p>
 </div>
 <div class="paragraph">
 <p>它不会阻塞，但当锁可用时，将 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/Lock.html">Lock</a></code> 的实例传入处理器并调用它，表示您现在拥有该锁。</p>
@@ -7295,7 +7295,7 @@ sd.getAsyncMapFuture("mymap").onComplete{
 <p>您可以用 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/Counter.html">Counter</a></code> 来做到这一点。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getCounter(java.lang.String,%20io.vertx.core.Handler)">getCounter</a></code> 方法获取一个实例：</p>
+<p>您可以通过 <code><a href="../../scaladocs/io/vertx/scala/core/shareddata/SharedData.html#getCounter(java.lang.String)">getCounter</a></code> 方法获取一个实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7442,7 +7442,7 @@ fileSystem.openFuture("myfile.txt", options).onComplete{
 <h4 id="_随机访问写">随机访问写</h4>
 <div class="paragraph">
 <p>要使用 <code>AsyncFile</code> 进行随机访问写，请使用
-<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html#write(io.vertx.core.buffer.Buffer,%20long,%20io.vertx.core.Handler)">write</a></code> 方法。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html#write(io.vertx.core.buffer.Buffer,%20long)">write</a>`方法。</p>
 </div>
 <div class="paragraph">
 <p>这个方法的参数有：</p>
@@ -7494,7 +7494,7 @@ vertx.fileSystem().openFuture("target/classes/hello.txt", OpenOptions()).onCompl
 <h4 id="_随机访问读">随机访问读</h4>
 <div class="paragraph">
 <p>要使用 <code>AsyncFile</code> 进行随机访问读，请使用
-<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html#read(io.vertx.core.buffer.Buffer,%20int,%20long,%20int,%20io.vertx.core.Handler)">read</a></code>
+<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html#read(io.vertx.core.buffer.Buffer,%20int,%20long,%20int)">read</a></code>
 方法。</p>
 </div>
 <div class="paragraph">
@@ -7552,23 +7552,23 @@ vertx.fileSystem().openFuture("target/classes/les_miserables.txt", OpenOptions()
 <h4 id="_打开选项">打开选项</h4>
 <div class="paragraph">
 <p>打开 <code>AsyncFile</code> 时，您可以传递一个 <code><a href="../dataobjects.html#OpenOptions">OpenOptions</a></code> 实例，这些选项描述了访问文件的行为。例如：您可使用
-<code><a href="../dataobjects.html#OpenOptions#setRead(boolean)">read</a></code> , <code><a href="../dataobjects.html#OpenOptions#setWrite(boolean)">write</a></code>
-和 <code><a href="../dataobjects.html#OpenOptions#setPerms(java.lang.String)">perms</a></code> 方法配置文件访问权限。</p>
+<code><a href="../dataobjects.html#OpenOptions#setRead()">read</a></code>, <code><a href="../dataobjects.html#OpenOptions#setWrite()">write</a></code>
+和 <code><a href="../dataobjects.html#OpenOptions#setPerms()">perms</a></code> 方法配置文件访问权限。</p>
 </div>
 <div class="paragraph">
 <p>若打开的文件已经存在，则可以使用
-<code><a href="../dataobjects.html#OpenOptions#setCreateNew(boolean)">createNew</a></code> 和
-<code><a href="../dataobjects.html#OpenOptions#setTruncateExisting(boolean)">truncateExisting</a></code> 配置对应行为。</p>
+`<a href="../dataobjects.html#OpenOptions#setCreateNew()">createNew</a>`和
+`<a href="../dataobjects.html#OpenOptions#setTruncateExisting()">truncateExisting</a>`配置对应行为。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../dataobjects.html#OpenOptions#setDeleteOnClose(boolean)">deleteOnClose</a></code> 标记在关闭时或JVM停止时要删除的文件。</p>
+<p>您可以使用 <code><a href="../dataobjects.html#OpenOptions#setDeleteOnClose()">deleteOnClose</a></code> 标记在关闭时或JVM停止时要删除的文件。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_将数据刷新到底层存储">将数据刷新到底层存储</h4>
 <div class="paragraph">
 <p>在 <code>OpenOptions</code> 中，您可以使用
-<code><a href="../dataobjects.html#OpenOptions#setDsync(boolean)">dsync</a></code> . 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
+<code><a href="../dataobjects.html#OpenOptions#setDsync()">dsync</a></code>. 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
 <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html#flush()">flush</a></code> 方法手动刷新OS缓存中的数据写入。</p>
 </div>
 <div class="paragraph">
@@ -7636,7 +7636,7 @@ vertx.fileSystem().openFuture("target/classes/les_miserables.txt", OpenOptions()
 </div>
 <div class="paragraph">
 <p>If you want to disable classpath resolving for a particular application but keep it enabled by default system-wide,
-you can do so via the <code><a href="../dataobjects.html#FileSystemOptions#setClassPathResolvingEnabled(boolean)">classPathResolvingEnabled</a></code> option.</p>
+you can do so via the <code><a href="../dataobjects.html#FileSystemOptions#setClassPathResolvingEnabled()">classPathResolvingEnabled</a></code> option.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7735,7 +7735,7 @@ socket.sendFuture("A string used as content", 1234, "10.0.0.1").onComplete{
 <p>除此之外，您还要设置一个 <code>Handler</code> ，每接收到一个 <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramPacket.html">DatagramPacket</a></code> 有以下方法：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramPacket.html">DatagramPacket</a>`有以下方法：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7809,13 +7809,13 @@ socket.sendFuture(buffer, 1234, "230.0.0.1").onComplete{
 </div>
 <div class="paragraph">
 <p>这样，您将能够接收到被发送到
-<code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html">DatagramSocket</a></code> 所监听的地址和端口的数据报，同时也可以接收被发送到该多播组的数据报。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html">DatagramSocket</a>`所监听的地址和端口的数据报，同时也可以接收被发送到该多播组的数据报。</p>
 </div>
 <div class="paragraph">
 <p>除此之外，您还可设置一个处理器，它在每次接收到 <code>DatagramPacket</code> 时会被调用。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramPacket.html">DatagramPacket</a></code> 有以下方法：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramPacket.html">DatagramPacket</a>`有以下方法：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7934,25 +7934,25 @@ socket.blockMulticastGroupFuture("230.0.0.1", "10.0.0.2").onComplete{
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setSendBufferSize(int)">sendBufferSize</a></code> 以字节为单位设置发送缓冲区的大小。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setSendBufferSize()">sendBufferSize</a></code> 以字节为单位设置发送缓冲区的大小。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setReceiveBufferSize(int)">receiveBufferSize</a></code> 设置TCP接收缓冲区大小（以字节为单位）。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setReceiveBufferSize()">receiveBufferSize</a></code> 设置TCP接收缓冲区大小（以字节为单位）。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setReuseAddress(boolean)">reuseAddress</a></code> 若为 <code>true</code> ，则 <code>TIME_WAIT</code> 状态中的地址在关闭后可重用。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setReuseAddress()">reuseAddress</a></code> 若为 <code>true</code> ，则 <code>TIME_WAIT</code> 状态中的地址在关闭后可重用。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setTrafficClass(int)">trafficClass</a></code></p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setTrafficClass()">trafficClass</a></code></p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setBroadcast(boolean)">broadcast</a></code> 设置或清除 <code>SO_BROADCAST</code> 套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setBroadcast()">broadcast</a></code> 设置或清除 <code>SO_BROADCAST</code> 套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastNetworkInterface(java.lang.String)">multicastNetworkInterface</a></code> 设置或清除 <code>IP_MULTICAST_LOOP</code> 套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastNetworkInterface()">multicastNetworkInterface</a></code> 设置或清除 <code>IP_MULTICAST_LOOP</code> 套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
 </li>
 <li>
-<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastTimeToLive(int)">multicastTimeToLive</a></code> 设置 <code>IP_MULTICAST_TTL</code> 套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
+<p><code><a href="../dataobjects.html#DatagramSocketOptions#setMulticastTimeToLive()">multicastTimeToLive</a></code> 设置 <code>IP_MULTICAST_TTL</code> 套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
 </li>
 </ul>
 </div>
@@ -7962,13 +7962,13 @@ socket.blockMulticastGroupFuture("230.0.0.1", "10.0.0.2").onComplete{
 <div class="paragraph">
 <p>Y若您在调用 <code>listen(&#8230;&#8203;)</code> 之前已经绑定了
 bound the <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
-<code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html#localAddress()">localAddress</a></code> 来查找套接字的本地地址（即UDP Socket这边的地址，它将返回一个InetSocketAddress，否则返回null。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html#localAddress()">localAddress</a>`来查找套接字的本地地址（即UDP Socket这边的地址，它将返回一个InetSocketAddress，否则返回null。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_关闭datagramsocket">关闭DatagramSocket</h4>
 <div class="paragraph">
-<p>您可以通过调用 <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html#close(io.vertx.core.Handler)">close</a></code> 方法来关闭Socket，它将关闭Socket并释放所有资源。</p>
+<p>您可以通过调用 <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html#close()">close</a></code> 方法来关闭Socket，它将关闭Socket并释放所有资源。</p>
 </div>
 </div>
 </div>
@@ -8191,7 +8191,7 @@ client.resolveMXFuture("vertx.io").onComplete{
 <p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../scaladocs/io/vertx/scala/core/dns/MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/dns/MxRecord.html">MxRecord</a></code> 允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/dns/MxRecord.html">MxRecord</a>`允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8281,7 +8281,7 @@ client.resolveSRVFuture("vertx.io").onComplete{
 <p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../scaladocs/io/vertx/scala/core/dns/SrvRecord.html">SrvRecord</a></code> ，这意味着优先级低的记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/dns/SrvRecord.html">SrvRecord</a></code> 允许您访问SRV记录本身中包含的所有信息：</p>
+<p>`<a href="../../scaladocs/io/vertx/scala/core/dns/SrvRecord.html">SrvRecord</a>`允许您访问SRV记录本身中包含的所有信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8458,7 +8458,7 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler(io.vertx.core.Handler))">drainHandler</a></code>
+<p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler()">drainHandler</a></code>
 事件处理器将被调用，它会恢复 <code>NetSocket</code> 的状态，允许读取更多的数据。</p>
 </div>
 <div class="paragraph">
@@ -8486,10 +8486,10 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <h3 id="_readstream">ReadStream</h3>
 <div class="paragraph">
 <p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/datagram/DatagramSocket.html">DatagramSocket</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html">HttpServerRequest</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/TimeoutStream.html">TimeoutStream</a></code> ,
-<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> .</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/TimeoutStream.html">TimeoutStream</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -8497,7 +8497,7 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#handler(io.vertx.core.Handler))">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#handler()">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
 </li>
 <li>
 <p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#pause()">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
@@ -8506,10 +8506,10 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#resume()">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#exceptionHandler()">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#endHandler(io.vertx.core.Handler))">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/ReadStream.html#endHandler()">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
 </li>
 </ul>
 </div>
@@ -8518,7 +8518,7 @@ server.connectHandler((sock: io.vertx.scala.core.net.NetSocket) =&gt; {
 <h3 id="_writestream">WriteStream</h3>
 <div class="paragraph">
 <p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/http/HttpServerResponse.html">HttpServerResponse</a></code>
-<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> ,
+<code><a href="../../scaladocs/io/vertx/scala/core/http/WebSocket.html">WebSocket</a></code>, <code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> , <code><a href="../../scaladocs/io/vertx/scala/core/file/AsyncFile.html">AsyncFile</a></code> ,
 and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.html">MessageProducer</a></code></p>
 </div>
 <div class="paragraph">
@@ -8527,19 +8527,19 @@ and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#write(java.lang.Object)">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#write()">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize()">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../scaladocs/io/vertx/scala/core/buffer/Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
 </li>
 <li>
 <p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#writeQueueFull()">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#exceptionHandler(io.vertx.core.Handler)">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#exceptionHandler()">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler(io.vertx.core.Handler))">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#drainHandler()">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
 </li>
 </ul>
 </div>
@@ -8559,8 +8559,8 @@ and <code><a href="../../scaladocs/io/vertx/scala/core/eventbus/MessageProducer.
 停止泵，当泵启动时它要处于停止模式。</p>
 </li>
 <li>
-<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code> :
-与 <code>WriteStream</code> 接口的 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize(int)">setWriteQueueMaxSize</a></code> 方法相同。</p>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/streams/Pump.html#setWriteQueueMaxSize()">setWriteQueueMaxSize</a></code> :
+与 <code>WriteStream</code> 接口的 <code><a href="../../scaladocs/io/vertx/scala/core/streams/WriteStream.html#setWriteQueueMaxSize()">setWriteQueueMaxSize</a></code> 方法相同。</p>
 </li>
 </ul>
 </div>
@@ -8754,7 +8754,7 @@ parser.exceptionHandler((err: java.lang.Throwable) =&gt; {
 </div>
 <div class="paragraph">
 <p>例如，若您部署了一个创建 <code><a href="../../scaladocs/io/vertx/scala/core/net/NetServer.html">NetServer</a></code> 的Verticle，该 <code>NetServer</code> 在处理器中提供了
-<code><a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a></code> 实例，则最好始终从该Verticle的Event Loop中访问Socket 实例。</p>
+`<a href="../../scaladocs/io/vertx/scala/core/net/NetSocket.html">NetSocket</a>`实例，则最好始终从该Verticle的Event Loop中访问Socket 实例。</p>
 </div>
 <div class="paragraph">
 <p>如您坚持使用标准的Vert.x Verticle部署模型，避免在 Verticle 之间分享对象，那这种情况您无需考虑。</p>
@@ -8766,10 +8766,10 @@ parser.exceptionHandler((err: java.lang.Throwable) =&gt; {
 <div class="sectionbody">
 <div class="paragraph">
 <p>默认情况下，Vert.x不会记录任何指标。相反，它为其他人提供了一个SPI，可以将其添加到类路径中。SPI是一项高级功能，允许实施者从Vert.x捕获事件以收集指标。有关详细信息，请参阅
-<code>API 文档</code> 。</p>
+<code>API 文档</code>。</p>
 </div>
 <div class="paragraph">
-<p>若使用 <code><a href="../dataobjects.html#MetricsOptions#setFactory(io.vertx.core.spi.VertxMetricsFactory)">factory</a></code> 嵌入了Vert.x实例，也可以用编程方式指定度量工厂。</p>
+<p>若使用 <code><a href="../dataobjects.html#MetricsOptions#setFactory()">factory</a></code> 嵌入了Vert.x实例，也可以用编程方式指定度量工厂。</p>
 </div>
 </div>
 </div>
@@ -9186,7 +9186,7 @@ java io.vertx.core.Launcher run org.acme.MyVerticle --redeploy="**&amp;#47;*.cla
 </div>
 <div class="paragraph">
 <p><code>--launcher-class</code> 选项确定应用程序的主类启动器。它通常是一个
-<code>Launcher</code> ，单您已使用了您自己的主类。</p>
+<code>Launcher</code>，单您已使用了您自己的主类。</p>
 </div>
 <div class="paragraph">
 <p>也可以在IDE中使用重部署功能：</p>
@@ -9285,7 +9285,7 @@ java -jar build/libs/my-fat-jar.jar --redeploy="src&amp;#47;**&amp;#47;*.java" -
 </div>
 <div class="paragraph">
 <p>您也可以以编程的方式在嵌入Vert.x 时使用
-<code><a href="../dataobjects.html#VertxOptions#setClusterManager(io.vertx.core.spi.cluster.ClusterManager)">clusterManager</a></code> 指定集群管理器。</p>
+`<a href="../dataobjects.html#VertxOptions#setClusterManager()">clusterManager</a>`指定集群管理器。</p>
 </div>
 </div>
 </div>
@@ -9489,11 +9489,11 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 <div class="sect2">
 <h3 id="_故障转移">故障转移</h3>
 <div class="paragraph">
-<p>当服务器没有及时回应时，尝试从列表中选择下一个解析器，搜索（数量）的限制由 <code><a href="../dataobjects.html#AddressResolverOptions#setMaxQueries(int)">maxQueries</a></code> 设置（默认值是4个查询）</p>
+<p>当服务器没有及时回应时，尝试从列表中选择下一个解析器，搜索（数量）的限制由 <code><a href="../dataobjects.html#AddressResolverOptions#setMaxQueries()">maxQueries</a></code> 设置（默认值是4个查询）</p>
 </div>
 <div class="paragraph">
 <p>若解析器在
-<code><a href="../dataobjects.html#AddressResolverOptions#getQueryTimeout()">getQueryTimeout</a></code> 毫秒内没有收到正确答案（默认为5秒），DNS查询被视为失败。</p>
+`<a href="../dataobjects.html#AddressResolverOptions#getQueryTimeout()">getQueryTimeout</a>`毫秒内没有收到正确答案（默认为5秒），DNS查询被视为失败。</p>
 </div>
 </div>
 <div class="sect2">
@@ -9502,7 +9502,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 <p>默认情况下，DNS服务器选择使用第一个，其余的服务器用于故障转移。</p>
 </div>
 <div class="paragraph">
-<p>您可以配置 <code><a href="../dataobjects.html#AddressResolverOptions#setRotateServers(boolean)">rotateServers</a></code> 为 <code>true</code> ，让解析器使用轮询选择。它会在服务器之间传播查询负载，并避免所有的查找都找到列表中的第一个服务器。</p>
+<p>您可以配置 <code><a href="../dataobjects.html#AddressResolverOptions#setRotateServers()">rotateServers</a></code> 为 <code>true</code> ，让解析器使用轮询选择。它会在服务器之间传播查询负载，并避免所有的查找都找到列表中的第一个服务器。</p>
 </div>
 <div class="paragraph">
 <p>故障转移仍然适用，并将使用列表中的下一个服务器。</p>
@@ -9541,7 +9541,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>当使用搜索域列表时，点数的阈值为 <code>1</code> ，或从Linux上的 <code>/etc/resolv.conf</code> 加载，也可使用  <code><a href="../dataobjects.html#AddressResolverOptions#setNdots(int)">ndots</a></code> 方法配置特定值。</p>
+<p>当使用搜索域列表时，点数的阈值为 <code>1</code> ，或从Linux上的 <code>/etc/resolv.conf</code> 加载，也可使用  <code><a href="../dataobjects.html#AddressResolverOptions#setNdots()">ndots</a></code> 方法配置特定值。</p>
 </div>
 </div>
 </div>
@@ -10015,19 +10015,19 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 </div>
 </div>
 <div class="paragraph">
-<p>您可以看到，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#create(java.lang.String)">CLI.create</a></code> 创建一个新的 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html">CLI</a></code> 。
+<p>您可以看到，您可以使用 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#create()">CLI.create</a></code> 创建一个新的 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html">CLI</a></code> 。
 传递的字符串是 <code>CLI</code> 的名称。创建后，您可以设置摘要和描述，摘要的目的是简短（一行），而描述可以包含更多细节。每个选项和参数也使用
-<code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#addArgument(io.vertx.core.cli.Argument)">addArgument</a></code> 和
-<code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#addOption(io.vertx.core.cli.Option)">addOption</a></code> 方法添加到 <code>CLI</code> 对象上。</p>
+<code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#addArgument()">addArgument</a>`和
+`<a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#addOption()">addOption</a>`方法添加到 `CLI</code> 对象上。</p>
 </div>
 <div class="sect3">
 <h4 id="_选项">选项</h4>
 <div class="paragraph">
-<p><code><a href="../dataobjects.html#Option">Option</a></code> 是由用户命令行中存在的 <strong>键</strong> 标识的命令行参数。选项至少必须有一个长名或一个短名。
-长名称通常使用 <code>--</code> 前缀，而短名称与单个 <code>-</code> 一起使用。选项可以获取用法中显示的描述（见下文）。选项可以接受0、1或几个值。
+<p><code><a href="../dataobjects.html#Option">Option</a>`是由用户命令行中存在的 <strong>键</strong> 标识的命令行参数。选项至少必须有一个长名或一个短名。
+长名称通常使用 `--</code> 前缀，而短名称与单个 <code>-</code> 一起使用。选项可以获取用法中显示的描述（见下文）。选项可以接受0、1或几个值。
 接受0值的选项是一个标志( <code>flag</code> )，必须使用
-<code><a href="../dataobjects.html#Option#setFlag(boolean)">flag</a></code> 声明。默认情况下，选项会接受一个值，但是您可以使用
-<code><a href="../dataobjects.html#Option#setMultiValued(boolean)">multiValued</a></code> 方法配置该选项接收多个值：</p>
+<code><a href="../dataobjects.html#Option#setFlag()">flag</a>`声明。默认情况下，选项会接受一个值，但是您可以使用
+`<a href="../dataobjects.html#Option#setMultiValued()">multiValued</a></code> 方法配置该选项接收多个值：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10073,7 +10073,7 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 </div>
 </div>
 <div class="paragraph">
-<p>可以使用 <code><a href="../dataobjects.html#Option#setHidden(boolean)">hidden</a></code> 方法隐藏选项，隐藏选项不在用法中列出，但仍可在用户命令行中使用（针对高级用户）。</p>
+<p>可以使用 <code><a href="../dataobjects.html#Option#setHidden()">hidden</a></code> 方法隐藏选项，隐藏选项不在用法中列出，但仍可在用户命令行中使用（针对高级用户）。</p>
 </div>
 <div class="paragraph">
 <p>如果选项值被限制为一个固定集合，您可以设置不同的可接受选项：</p>
@@ -10136,16 +10136,16 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 <div class="ulist">
 <ul>
 <li>
-<p>使用 <code><a href="../dataobjects.html#Argument#setHidden(boolean)">hidden</a></code> 隐藏</p>
+<p>使用 <code><a href="../dataobjects.html#Argument#setHidden()">hidden</a></code> 隐藏</p>
 </li>
 <li>
-<p>使用 <code><a href="../dataobjects.html#Argument#setRequired(boolean)">required</a></code> 设置必填</p>
+<p>使用 <code><a href="../dataobjects.html#Argument#setRequired()">required</a></code> 设置必填</p>
 </li>
 <li>
-<p>使用 <code><a href="../dataobjects.html#Argument#setDefaultValue(java.lang.String)">defaultValue</a></code> 设置默认值</p>
+<p>使用 <code><a href="../dataobjects.html#Argument#setDefaultValue()">defaultValue</a></code> 设置默认值</p>
 </li>
 <li>
-<p>使用 <code><a href="../dataobjects.html#Argument#setMultiValued(boolean)">multiValued</a></code> 设置接收多个值——只有最后一个参数可以是多值的。</p>
+<p>使用 <code><a href="../dataobjects.html#Argument#setMultiValued()">multiValued</a></code> 设置接收多个值——只有最后一个参数可以是多值的。</p>
 </li>
 </ul>
 </div>
@@ -10207,9 +10207,9 @@ A command line interface to copy files.
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#parse(java.util.List)">parse</a></code> 解析方法返回包含值的 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CommandLine.html">CommandLine</a></code>
+<p><code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#parse()">parse</a>`解析方法返回包含值的 `<a href="../../scaladocs/io/vertx/scala/core/cli/CommandLine.html">CommandLine</a></code>
 对象。默认情况下，它验证用户命令行，并检查每个必填选项和参数的设置以及每个选项接收的值的数量。
-您可以通过传递 <code>false</code> 作为 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#parse(java.util.List,%20boolean)">parse</a></code> 的第二个参数来禁用验证。
+您可以通过传递 <code>false</code> 作为 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#parse(java.util.List)">parse</a></code> 的第二个参数来禁用验证。
 如果要检查参数或选项，即使解析的命令行无效，这也是有用的。</p>
 </div>
 <div class="paragraph">
@@ -10220,8 +10220,8 @@ A command line interface to copy files.
 <div class="sect2">
 <h3 id="_查询_审问阶段">查询/审问阶段</h3>
 <div class="paragraph">
-<p>解析后，您可以从 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#parse(java.util.List)">parse</a></code> 方法返回的
-<code><a href="../../scaladocs/io/vertx/scala/core/cli/CommandLine.html">CommandLine</a></code> 对象中读取选项和参数的值：</p>
+<p>解析后，您可以从 <code><a href="../../scaladocs/io/vertx/scala/core/cli/CLI.html#parse()">parse</a></code> 方法返回的
+`<a href="../../scaladocs/io/vertx/scala/core/cli/CommandLine.html">CommandLine</a>`对象中读取选项和参数的值：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10351,8 +10351,8 @@ java -jar my-fat-jar.jar hello vert.x</code></pre>
 </li>
 <li>
 <p>使用
-<code>getMainVerticle</code> 和
-<code>getDefaultCommand</code></p>
+<code>getMainVerticle`和
+`getDefaultCommand</code></p>
 </li>
 <li>
 <p>使用 <code>register</code> 方法配置默认的Verticle和命令
@@ -10438,7 +10438,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:16:19 CST
+                上次更新时间 2018-10-16 18:24:18 CST
               
               
             </div>
@@ -10469,6 +10469,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

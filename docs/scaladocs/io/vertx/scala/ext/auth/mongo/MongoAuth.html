@@ -389,7 +389,7 @@ authentication it is likely to contain a JSON object with the following structur
   `
 </pre>
 For other types of authentication it contain different information - for example a JWT token or OAuth bearer token.</p><p>If the user is successfully authenticated a <a href="../User.html" class="extype" name="io.vertx.scala.ext.auth.User">io.vertx.scala.ext.auth.User</a> object is passed to the handler in an <span class="extype" name="io.vertx.scala.core.AsyncResult">io.vertx.scala.core.AsyncResult</span>.
-The user object can then be used for authorisation.</p></div><dl class="paramcmts block"><dt class="param">authInfo</dt><dd class="cmt"><p>The auth information</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>The result handler</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
+The user object can then be used for authorisation.   * @param authInfo The auth information</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>The result handler</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]"></a><a id="authenticateFuture(JsonObject):Future[User]"></a>
       <span class="permalink">
@@ -519,8 +519,9 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">getCollectionName</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">The name of the collection used to store User objects inside.</p><div class="fullcomment"><div class="comment cmt"><p>The name of the collection used to store User objects inside. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the collectionName</p></dd></dl></div>
-    </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getHashStrategy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">The name of the collection used to store User objects inside.</p><div class="fullcomment"><div class="comment cmt"><p>The name of the collection used to store User objects inside. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @return the collectionName
+</p></div></div>
+    </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getHashStrategy" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getHashStrategy():io.vertx.scala.ext.auth.mongo.HashStrategy"></a><a id="getHashStrategy():HashStrategy"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/auth/mongo/MongoAuth.html#getHashStrategy():io.vertx.scala.ext.auth.mongo.HashStrategy" title="Permalink">
@@ -535,7 +536,8 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">getHashStrategy</span><span class="params">()</span><span class="result">: <a href="HashStrategy.html" class="extype" name="io.vertx.scala.ext.auth.mongo.HashStrategy">HashStrategy</a></span>
       </span>
       
-      <p class="shortcomment cmt">The HashStrategy which is used by the current instance</p><div class="fullcomment"><div class="comment cmt"><p>The HashStrategy which is used by the current instance</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the defined instance of HashStrategy</p></dd></dl></div>
+      <p class="shortcomment cmt">The HashStrategy which is used by the current instance   * @return the defined instance of HashStrategy
+</p>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getPasswordCredentialField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPasswordCredentialField():String"></a>
       <span class="permalink">
@@ -552,9 +554,10 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
       </span>
       
       <p class="shortcomment cmt">Get the name of the field to be used as property for the password of credentials in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used as property for the password of credentials in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the passwordCredentialField</p></dd></dl></div>
-    </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getPasswordField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used as property for the password of credentials in the method
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @return the passwordCredentialField
+</p></div></div>
+    </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getPasswordField" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getPasswordField():String"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/auth/mongo/MongoAuth.html#getPasswordField():String" title="Permalink">
@@ -569,7 +572,8 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
         <span class="name">getPasswordField</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Get the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the passwordField</p></dd></dl></div>
+      <p class="shortcomment cmt">Get the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @return the passwordField
+</p>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getPermissionField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPermissionField():String"></a>
       <span class="permalink">
@@ -586,7 +590,8 @@ The user object can then be used for authorisation.</p></div><dl class="paramcmt
       </span>
       
       <p class="shortcomment cmt">Get the name of the field to be used for the permissions.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used for the permissions. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>.
-Permissions are expected to be saved as JsonArray</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the permissionField</p></dd></dl></div>
+Permissions are expected to be saved as JsonArray   * @return the permissionField
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getRoleField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getRoleField():String"></a>
       <span class="permalink">
@@ -603,7 +608,8 @@ Permissions are expected to be saved as JsonArray</p></div><dl class="paramcmts 
       </span>
       
       <p class="shortcomment cmt">Get the name of the field to be used for the roles.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used for the roles. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>. Roles are expected to
-be saved as JsonArray</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the roleField</p></dd></dl></div>
+be saved as JsonArray   * @return the roleField
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getSaltField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getSaltField():String"></a>
       <span class="permalink">
@@ -620,7 +626,8 @@ be saved as JsonArray</p></div><dl class="paramcmts block"><dt>returns</dt><dd c
       </span>
       
       <p class="shortcomment cmt">Get the name of the field to be used for the salt.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used for the salt. Only used when <a href="HashStrategy.html#setSaltStyle(saltStyle:io.vertx.ext.auth.mongo.HashSaltStyle):Unit" class="extmbr" name="io.vertx.scala.ext.auth.mongo.HashStrategy#setSaltStyle">io.vertx.scala.ext.auth.mongo.HashStrategy#setSaltStyle</a> is
-set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the saltField</p></dd></dl></div>
+set to    * @return the saltField
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getUsernameCredentialField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getUsernameCredentialField():String"></a>
       <span class="permalink">
@@ -637,8 +644,9 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
       </span>
       
       <p class="shortcomment cmt">Get the name of the field to be used as property for the username in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used as property for the username in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the usernameCredentialField</p></dd></dl></div>
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used as property for the username in the method
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @return the usernameCredentialField
+</p></div></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#getUsernameField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getUsernameField():String"></a>
       <span class="permalink">
@@ -654,7 +662,8 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
         <span class="name">getUsernameField</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Get the name of the field to be used for the username.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used for the username. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the usernameField</p></dd></dl></div>
+      <p class="shortcomment cmt">Get the name of the field to be used for the username.</p><div class="fullcomment"><div class="comment cmt"><p>Get the name of the field to be used for the username. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @return the usernameField
+</p></div></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -689,7 +698,7 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
         <span class="name">insertUser</span><span class="params">(<span name="username">username: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="roles">roles: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="permissions">permissions: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Insert a new user into mongo in the convenient way</p><div class="fullcomment"><div class="comment cmt"><p>Insert a new user into mongo in the convenient way</p></div><dl class="paramcmts block"><dt class="param">username</dt><dd class="cmt"><p>the username to be set</p></dd><dt class="param">password</dt><dd class="cmt"><p>the passsword in clear text, will be adapted following the definitions of the defined HashStrategy</p></dd><dt class="param">roles</dt><dd class="cmt"><p>a list of roles to be set</p></dd><dt class="param">permissions</dt><dd class="cmt"><p>a list of permissions to be set</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the ResultHandler will be provided with the id of the generated record</p></dd></dl></div>
+      <p class="shortcomment cmt">Insert a new user into mongo in the convenient way   * @param username the username to be set</p><div class="fullcomment"><div class="comment cmt"><p>Insert a new user into mongo in the convenient way   * @param username the username to be set</p></div><dl class="paramcmts block"><dt class="param">password</dt><dd class="cmt"><p>the passsword in clear text, will be adapted following the definitions of the defined HashStrategy</p></dd><dt class="param">roles</dt><dd class="cmt"><p>a list of roles to be set</p></dd><dt class="param">permissions</dt><dd class="cmt"><p>a list of permissions to be set</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the ResultHandler will be provided with the id of the generated record</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#insertUserFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="insertUserFuture(username:String,password:String,roles:scala.collection.mutable.Buffer[String],permissions:scala.collection.mutable.Buffer[String]):scala.concurrent.Future[String]"></a><a id="insertUserFuture(String,String,Buffer[String],Buffer[String]):Future[String]"></a>
       <span class="permalink">
@@ -791,7 +800,7 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
         <span class="name">setCollectionName</span><span class="params">(<span name="collectionName">collectionName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">MongoAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the name of the collection to be used.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the collection to be used. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt class="param">collectionName</dt><dd class="cmt"><p>the name of the collection to be used for storing and reading user data</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the name of the collection to be used.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the collection to be used. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @param collectionName the name of the collection to be used for storing and reading user data</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setHashAlgorithm" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setHashAlgorithm(hashAlgorithm:io.vertx.ext.auth.mongo.HashAlgorithm):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setHashAlgorithm(HashAlgorithm):MongoAuth"></a>
       <span class="permalink">
@@ -807,7 +816,7 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
         <span class="name">setHashAlgorithm</span><span class="params">(<span name="hashAlgorithm">hashAlgorithm: <span class="extype" name="io.vertx.ext.auth.mongo.HashAlgorithm">HashAlgorithm</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">MongoAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">The Hash Algorithm which is used by the current instance</p><div class="fullcomment"><div class="comment cmt"><p>The Hash Algorithm which is used by the current instance</p></div><dl class="paramcmts block"><dt class="param">hashAlgorithm</dt><dd class="cmt"><p>the HashAlgorithm to be set</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+      <p class="shortcomment cmt">The Hash Algorithm which is used by the current instance   * @param hashAlgorithm the HashAlgorithm to be set</p><div class="fullcomment"><div class="comment cmt"><p>The Hash Algorithm which is used by the current instance   * @param hashAlgorithm the HashAlgorithm to be set</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setHashStrategy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setHashStrategy(hashStrategy:io.vertx.scala.ext.auth.mongo.HashStrategy):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setHashStrategy(HashStrategy):MongoAuth"></a>
       <span class="permalink">
@@ -823,7 +832,7 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
         <span class="name">setHashStrategy</span><span class="params">(<span name="hashStrategy">hashStrategy: <a href="HashStrategy.html" class="extype" name="io.vertx.scala.ext.auth.mongo.HashStrategy">HashStrategy</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">MongoAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">The HashStrategy which is used by the current instance</p><div class="fullcomment"><div class="comment cmt"><p>The HashStrategy which is used by the current instance</p></div><dl class="paramcmts block"><dt class="param">hashStrategy</dt><dd class="cmt"><p>the HashStrategy to be set</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+      <p class="shortcomment cmt">The HashStrategy which is used by the current instance   * @param hashStrategy the HashStrategy to be set</p><div class="fullcomment"><div class="comment cmt"><p>The HashStrategy which is used by the current instance   * @param hashStrategy the HashStrategy to be set</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setPasswordCredentialField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPasswordCredentialField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setPasswordCredentialField(String):MongoAuth"></a>
       <span class="permalink">
@@ -840,8 +849,8 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
       </span>
       
       <p class="shortcomment cmt">Set the name of the field to be used as property for the password of credentials in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used as property for the password of credentials in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used as property for the password of credentials in the method
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setPasswordField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPasswordField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setPasswordField(String):MongoAuth"></a>
       <span class="permalink">
@@ -857,7 +866,7 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
         <span class="name">setPasswordField</span><span class="params">(<span name="fieldName">fieldName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">MongoAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @param fieldName the name of the field to be used</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the password Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setPermissionField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPermissionField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setPermissionField(String):MongoAuth"></a>
       <span class="permalink">
@@ -874,7 +883,7 @@ set to</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>t
       </span>
       
       <p class="shortcomment cmt">Set the name of the field to be used for the permissions.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the permissions. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>.
-Permissions are expected to be saved as JsonArray</p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+Permissions are expected to be saved as JsonArray   * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setRoleField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setRoleField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setRoleField(String):MongoAuth"></a>
       <span class="permalink">
@@ -891,7 +900,7 @@ Permissions are expected to be saved as JsonArray</p></div><dl class="paramcmts 
       </span>
       
       <p class="shortcomment cmt">Set the name of the field to be used for the roles.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the roles. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>. Roles are expected to
-be saved as JsonArray</p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+be saved as JsonArray   * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setSaltField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setSaltField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setSaltField(String):MongoAuth"></a>
       <span class="permalink">
@@ -908,7 +917,7 @@ be saved as JsonArray</p></div><dl class="paramcmts block"><dt class="param">fie
       </span>
       
       <p class="shortcomment cmt">Set the name of the field to be used for the salt.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the salt. Only used when <a href="HashStrategy.html#setSaltStyle(saltStyle:io.vertx.ext.auth.mongo.HashSaltStyle):Unit" class="extmbr" name="io.vertx.scala.ext.auth.mongo.HashStrategy#setSaltStyle">io.vertx.scala.ext.auth.mongo.HashStrategy#setSaltStyle</a> is
-set to</p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+set to    * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setUsernameCredentialField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setUsernameCredentialField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setUsernameCredentialField(String):MongoAuth"></a>
       <span class="permalink">
@@ -925,8 +934,8 @@ set to</p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd 
       </span>
       
       <p class="shortcomment cmt">Set the name of the field to be used as property for the username in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used as property for the username in the method
-<a href="../AuthProvider.html#authenticateFuture(authInfo:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.auth.User]" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticateFuture">io.vertx.scala.ext.auth.AuthProvider#authenticateFuture</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used as property for the username in the method
+<a href="../AuthProvider.html#authenticate(authInfo:io.vertx.core.json.JsonObject,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.auth.User]]):Unit" class="extmbr" name="io.vertx.scala.ext.auth.AuthProvider#authenticate">io.vertx.scala.ext.auth.AuthProvider#authenticate</a>. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.auth.mongo.MongoAuth#setUsernameField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setUsernameField(fieldName:String):io.vertx.scala.ext.auth.mongo.MongoAuth"></a><a id="setUsernameField(String):MongoAuth"></a>
       <span class="permalink">
@@ -942,7 +951,7 @@ set to</p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd 
         <span class="name">setUsernameField</span><span class="params">(<span name="fieldName">fieldName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">MongoAuth</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the name of the field to be used for the username.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the username. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a></p></div><dl class="paramcmts block"><dt class="param">fieldName</dt><dd class="cmt"><p>the name of the field to be used</p></dd><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
+      <p class="shortcomment cmt">Set the name of the field to be used for the username.</p><div class="fullcomment"><div class="comment cmt"><p>Set the name of the field to be used for the username. Defaults to <a href="" class="extype" name="io.vertx.scala.ext.auth.mongo.MongoAuth">io.vertx.scala.ext.auth.mongo.MongoAuth</a>   * @param fieldName the name of the field to be used</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current instance itself for fluent calls</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

@@ -275,9 +275,9 @@ var authProvider = MongoAuth.create(client, authProperties);</code></pre>
 <p>MongoDB中可以设置下边几种`SALT`的值：</p>
 </div>
 <div class="paragraph">
-<p><code><a href="todo">NO_SALT</a></code> ：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
-<code><a href="todo">COLUMN</a></code> ：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
-<code><a href="todo">EXTERNAL</a></code> ：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../jsdoc/module-vertx-auth-mongo-js_hash_strategy-HashStrategy.html#setExternalSalt">setExternalSalt</a></code> 方法进行设置。</p>
+<p><code><a href="todo">NO_SALT</a></code>：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
+<code><a href="todo">COLUMN</a></code>：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
+<code><a href="todo">EXTERNAL</a></code>：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../jsdoc/module-vertx-auth-mongo-js_hash_strategy-HashStrategy.html#setExternalSalt">setExternalSalt</a></code> 方法进行设置。</p>
 </div>
 <div class="paragraph">
 <p>如果你想要重写上述行为，则你可以调用
@@ -430,8 +430,8 @@ authProvider.authenticate(authInfo, function (res, res_err) {
 </div>
 <div class="paragraph">
 <p>如果想要替换上边的 <code>username</code> 和 <code>password</code> 两个默认字段名，你可以使用
-<code><a href="../../jsdoc/module-vertx-auth-mongo-js_mongo_auth-MongoAuth.html#setUsernameCredentialField">setUsernameCredentialField</a></code> 和
-<code><a href="../../jsdoc/module-vertx-auth-mongo-js_mongo_auth-MongoAuth.html#setPasswordCredentialField">setPasswordCredentialField</a></code> 方法。</p>
+`<a href="../../jsdoc/module-vertx-auth-mongo-js_mongo_auth-MongoAuth.html#setUsernameCredentialField">setUsernameCredentialField</a>`和
+`<a href="../../jsdoc/module-vertx-auth-mongo-js_mongo_auth-MongoAuth.html#setPasswordCredentialField">setPasswordCredentialField</a>`方法。</p>
 </div>
 </div>
 </div>
@@ -443,7 +443,7 @@ authProvider.authenticate(authInfo, function (res, res_err) {
 </div>
 <div class="paragraph">
 <p>如果要验证一个用户是否拥有特定的许可，则要将许可信息传递到
-<code><a href="../../jsdoc/module-vertx-auth-common-js_user-User.html#isAuthorised">isAuthorised</a></code> 中：</p>
+`<a href="../../jsdoc/module-vertx-auth-common-js_user-User.html#isAuthorised">isAuthorised</a>`中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -480,7 +480,7 @@ user.isAuthorized(MongoAuth.ROLE_PREFIX + "manager", function (res, res_err) {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:15:34 CST
+                上次更新时间 2018-10-16 18:23:35 CST
               
               
             </div>
@@ -511,6 +511,7 @@ user.isAuthorized(MongoAuth.ROLE_PREFIX + "manager", function (res, res_err) {
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

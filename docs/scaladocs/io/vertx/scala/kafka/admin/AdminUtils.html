@@ -356,7 +356,7 @@
       </span>
       
       <p class="shortcomment cmt">Updates the configuration of the topic given by topicName.</p><div class="fullcomment"><div class="comment cmt"><p>Updates the configuration of the topic given by topicName. Configuration parameters
-are passed in as a Map (Key -&gt; Value) of Strings.</p></div><dl class="paramcmts block"><dt class="param">topicName</dt><dd class="cmt"><p>topic to be configured</p></dd><dt class="param">topicConfig</dt><dd class="cmt"><p>Map with configuration items</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
+are passed in as a Map (Key -&gt; Value) of Strings.   * @param topicName topic to be configured</p></div><dl class="paramcmts block"><dt class="param">topicConfig</dt><dd class="cmt"><p>Map with configuration items</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.admin.AdminUtils#changeTopicConfigFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="changeTopicConfigFuture(topicName:String,topicConfig:scala.collection.mutable.Map[String,String]):scala.concurrent.Future[Unit]"></a><a id="changeTopicConfigFuture(String,Map[String,String]):Future[Unit]"></a>
       <span class="permalink">
@@ -413,7 +413,8 @@ are passed in as a Map (Key -&gt; Value) of Strings.</p></div><dl class="paramcm
       </span>
       
       <p class="shortcomment cmt">Closes the underlying connection to Zookeeper.</p><div class="fullcomment"><div class="comment cmt"><p>Closes the underlying connection to Zookeeper. It is required to call the method for cleanup
-purposes if AdminUtils was not created with autoClose set to true.</p></div><dl class="paramcmts block"><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
+purposes if AdminUtils was not created with autoClose set to true.   * @param completionHandler vert.x callback
+</p></div></div>
     </li><li name="io.vertx.scala.kafka.admin.AdminUtils#closeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="closeFuture():scala.concurrent.Future[Unit]"></a><a id="closeFuture():Future[Unit]"></a>
       <span class="permalink">
@@ -446,8 +447,8 @@ purposes if AdminUtils was not created with autoClose set to true.</p></div><dl 
       </span>
       
       <p class="shortcomment cmt">Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s). In contrast
-to @see <a href="#createTopicFuture(topicName:String,partitionCount:Int,replicationFactor:Int,topicConfig:scala.collection.mutable.Map[String,String]):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.kafka.admin.AdminUtils#createTopicFuture">io.vertx.scala.kafka.admin.AdminUtils#createTopicFuture</a>, one can pass in additional configuration
-parameters as a map (String -&gt; String).</p></div><dl class="paramcmts block"><dt class="param">topicName</dt><dd class="cmt"><p>Name of the to-be-created topic</p></dd><dt class="param">partitionCount</dt><dd class="cmt"><p>Number of partitions</p></dd><dt class="param">replicationFactor</dt><dd class="cmt"><p>Number of replicates. Must be lower or equal to the number of available Brokers</p></dd><dt class="param">topicConfig</dt><dd class="cmt"><p>map with additional topic configuration parameters</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
+to @see <a href="#createTopic(topicName:String,partitionCount:Int,replicationFactor:Int,topicConfig:scala.collection.mutable.Map[String,String],completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.kafka.admin.AdminUtils#createTopic">io.vertx.scala.kafka.admin.AdminUtils#createTopic</a>, one can pass in additional configuration
+parameters as a map (String -&gt; String).   * @param topicName Name of the to-be-created topic</p></div><dl class="paramcmts block"><dt class="param">partitionCount</dt><dd class="cmt"><p>Number of partitions</p></dd><dt class="param">replicationFactor</dt><dd class="cmt"><p>Number of replicates. Must be lower or equal to the number of available Brokers</p></dd><dt class="param">topicConfig</dt><dd class="cmt"><p>map with additional topic configuration parameters</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.admin.AdminUtils#createTopic" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="createTopic(topicName:String,partitionCount:Int,replicationFactor:Int,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="createTopic(String,Int,Int,Handler[AsyncResult[Unit]]):Unit"></a>
       <span class="permalink">
@@ -463,7 +464,7 @@ parameters as a map (String -&gt; String).</p></div><dl class="paramcmts block">
         <span class="name">createTopic</span><span class="params">(<span name="topicName">topicName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="partitionCount">partitionCount: <span class="extype" name="scala.Int">Int</span></span>, <span name="replicationFactor">replicationFactor: <span class="extype" name="scala.Int">Int</span></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)</p></div><dl class="paramcmts block"><dt class="param">topicName</dt><dd class="cmt"><p>Name of the to-be-created topic</p></dd><dt class="param">partitionCount</dt><dd class="cmt"><p>Number of partitions</p></dd><dt class="param">replicationFactor</dt><dd class="cmt"><p>Number of replicates. Must be lower or equal to the number of available Brokers</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
+      <p class="shortcomment cmt">Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)   * @param topicName Name of the to-be-created topic</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)   * @param topicName Name of the to-be-created topic</p></div><dl class="paramcmts block"><dt class="param">partitionCount</dt><dd class="cmt"><p>Number of partitions</p></dd><dt class="param">replicationFactor</dt><dd class="cmt"><p>Number of replicates. Must be lower or equal to the number of available Brokers</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.admin.AdminUtils#createTopicFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="createTopicFuture(topicName:String,partitionCount:Int,replicationFactor:Int,topicConfig:scala.collection.mutable.Map[String,String]):scala.concurrent.Future[Unit]"></a><a id="createTopicFuture(String,Int,Int,Map[String,String]):Future[Unit]"></a>
       <span class="permalink">
@@ -511,7 +512,7 @@ parameters as a map (String -&gt; String).</p></div><dl class="paramcmts block">
         <span class="name">deleteTopic</span><span class="params">(<span name="topicName">topicName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Delete the Kafka topic given by the topicName.</p><div class="fullcomment"><div class="comment cmt"><p>Delete the Kafka topic given by the topicName.</p></div><dl class="paramcmts block"><dt class="param">topicName</dt><dd class="cmt"><p>Name of the topic to be deleted</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
+      <p class="shortcomment cmt">Delete the Kafka topic given by the topicName.</p><div class="fullcomment"><div class="comment cmt"><p>Delete the Kafka topic given by the topicName.   * @param topicName Name of the topic to be deleted</p></div><dl class="paramcmts block"><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.admin.AdminUtils#deleteTopicFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="deleteTopicFuture(topicName:String):scala.concurrent.Future[Unit]"></a><a id="deleteTopicFuture(String):Future[Unit]"></a>
       <span class="permalink">
@@ -737,7 +738,7 @@ parameters as a map (String -&gt; String).</p></div><dl class="paramcmts block">
         <span class="name">topicExists</span><span class="params">(<span name="topicName">topicName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Boolean">Boolean</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Checks if the Kafka topic given by topicName does exist.</p><div class="fullcomment"><div class="comment cmt"><p>Checks if the Kafka topic given by topicName does exist.</p></div><dl class="paramcmts block"><dt class="param">topicName</dt><dd class="cmt"><p>Name of the topic</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
+      <p class="shortcomment cmt">Checks if the Kafka topic given by topicName does exist.</p><div class="fullcomment"><div class="comment cmt"><p>Checks if the Kafka topic given by topicName does exist.   * @param topicName Name of the topic</p></div><dl class="paramcmts block"><dt class="param">completionHandler</dt><dd class="cmt"><p>vert.x callback</p></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.admin.AdminUtils#topicExistsFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="topicExistsFuture(topicName:String):scala.concurrent.Future[Boolean]"></a><a id="topicExistsFuture(String):Future[Boolean]"></a>
       <span class="permalink">

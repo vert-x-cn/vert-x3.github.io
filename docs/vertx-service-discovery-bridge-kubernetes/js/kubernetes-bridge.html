@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kubernetes bridge - Vert.x</title>
+  <title>Kubernetes 桥接器 - Vert.x</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -141,7 +141,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Kubernetes bridge</h1>
+          <h1>Kubernetes 桥接器</h1>
           
         </div>
       </div>
@@ -157,7 +157,7 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel2">
-<li><a href="#_kubernetes_bridge">Kubernetes bridge</a></li>
+<li><a href="#_kubernetes_桥接器">Kubernetes 桥接器</a></li>
 </ul>
         </div>
       </div>
@@ -165,7 +165,7 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel2">
-<li><a href="#_kubernetes_bridge">Kubernetes bridge</a></li>
+<li><a href="#_kubernetes_桥接器">Kubernetes 桥接器</a></li>
 </ul>
         </div>
 
@@ -178,25 +178,24 @@
   </a>
 
         <div class="sect2">
-<h3 id="_kubernetes_bridge">Kubernetes bridge</h3>
+<h3 id="_kubernetes_桥接器">Kubernetes 桥接器</h3>
 <div class="paragraph">
-<p>This discovery bridge imports services from Kubernetes (or Openshift v3) into the Vert.x service discovery.
-Kubernetes services are mapped to <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code>. This bridge only
-supports the importation of services from kubernetes in vert.x (and not the opposite).</p>
+<p>Kubernetes 桥接器可以从Kubernetes（或者 Openshift v3）中导入服务到Vert.x的服务发现组件中。
+Kubernetes的所有服务，都将映射为一条 <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> 。目前桥接器只支持将服务从Kubernetes中导入到Vert.x中（反过来不行）。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> are created from Kubernetes Service. The service type is deduced from the <code>service-type</code> label or from the port exposed by the service.</p>
+<p>Kubernetes中的服务，在导入到Vert.x后都会创建对应的服务记录（ <code><a href="../../vertx-service-discovery/dataobjects.html#Record">Record</a></code> ）。
+服务类型是通过 <code>service.type.lable</code> 推断出来的。如果该属性没有设置，那么服务类型被设置为`unknown`。目前暂时只支持 <code>http-endpoint</code> 服务类型。</p>
 </div>
 <div class="sect3">
-<h4 id="_using_the_bridge">Using the bridge</h4>
+<h4 id="_桥接器的使用">桥接器的使用</h4>
 <div class="paragraph">
-<p>To use this Vert.x discovery bridge, add the following dependency to the <em>dependencies</em> section of your build
-descriptor:</p>
+<p>要使用该服务发现桥接器，需要将如下的依赖包加入到依赖配置文件中：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Maven (in your <code>pom.xml</code>):</p>
+<p>Maven (在 <code>pox.xml</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -212,7 +211,7 @@ descriptor:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle (in your <code>build.gradle</code> file):</p>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
 </li>
 </ul>
 </div>
@@ -223,57 +222,56 @@ descriptor:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuring_the_bridge">Configuring the bridge</h4>
+<h4 id="_桥接器的配置">桥接器的配置</h4>
 <div class="paragraph">
-<p>The bridge is configured using:</p>
+<p>桥接器的配置项有：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the oauth token (using the content of <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code> by default)</p>
+<p>OAuth token（默认是使用`/var/run/secrets/kubernetes.io/serviceaccount/token`中的内容）</p>
 </li>
 <li>
-<p>the namespace in which the service are searched (defaults to <code>default</code>).</p>
+<p>服务搜索的命名空间（默认是`default`）</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Be aware that the application must have access to Kubernetes and must be able to read the chosen namespace.</p>
+<p>请注意，应用程序必须能够访问 Kubernetes 并且能够读取所选择的命名空间。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_service_to_record_mapping">The Service to Record mapping</h4>
+<h4 id="_服务记录的映射">服务记录的映射</h4>
 <div class="paragraph">
-<p>The record is created as follows:</p>
+<p>服务记录按照如下的步骤进行创建：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the service type is deduced from the <code>service.type</code> label. If this label is not set the service type is set to
-<code>unknown</code></p>
+<p>从 <code>service.type</code> 中推断出服务类型；如果没有设置，那么服务类型被设置为`unknown`</p>
 </li>
 <li>
-<p>the record&#8217;s name is the service&#8217;s name</p>
+<p>服务记录的名称就是服务的名称</p>
 </li>
 <li>
-<p>the labels of the service are mapped to metadata</p>
+<p>服务的标签（label）都被映射为服务记录的元数据</p>
 </li>
 <li>
-<p>in addition are added: <code>kubernetes.uuid</code>, <code>kubernetes.namespace</code>, <code>kubernetes.name</code></p>
+<p>此外还会加上：<code>kubernetes.uuid, kubernetes.namespace, kubernetes.name</code></p>
 </li>
 <li>
-<p>the location is deduced from the*first** port of the service</p>
+<p>`location`信息将从服务的第一个端口推断出来</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>For HTTP endpoints, the <code>ssl</code> (<code>https</code>) attribute is set to <code>true</code> if the service has the <code>ssl</code> label set to <code>true</code>.</p>
+<p>对于 HTTP 端点，如果服务带有`ssl`标签的话，那么服务记录的`ssl`(<code>https</code>)属性将被设置为`true`。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_dynamics">Dynamics</h4>
+<h4 id="_动态性">动态性</h4>
 <div class="paragraph">
-<p>The bridge imports all services on <code>start</code> and removes them on <code>stop</code>. In between it watches the Kubernetes services and add the new ones and removes the deleted ones.</p>
+<p>Kubernetes 桥接器将会在启动(<code>start</code>)的时候导入所有的服务，在停止(<code>stop</code>)的时候移除所有的服务。在运行期间，它将监听 Kubernetes 的服务，并且动态地导入新加入的服务，移除被删除的服务。</p>
 </div>
 </div>
 <div class="sect3">
@@ -311,7 +309,7 @@ descriptor:</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 21:17:15 CST
+                上次更新时间 2018-10-16 18:25:26 CST
               
               
             </div>
@@ -342,6 +340,7 @@ descriptor:</p>
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

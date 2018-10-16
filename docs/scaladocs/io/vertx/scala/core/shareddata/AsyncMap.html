@@ -356,7 +356,7 @@
       </span>
       
       
-    </li><li name="io.vertx.scala.core.shareddata.AsyncMap#clear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.vertx.scala.core.shareddata.AsyncMap#clear" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="clear(resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="clear(Handler[AsyncResult[Unit]]):Unit"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/core/shareddata/AsyncMap.html#clear(resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
@@ -371,7 +371,8 @@
         <span class="name">clear</span><span class="params">(<span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Clear all entries in the map</p><div class="fullcomment"><div class="comment cmt"><p>Clear all entries in the map</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>called on completion</p></dd></dl></div>
+      <p class="shortcomment cmt">Clear all entries in the map   * @param resultHandler called on completion
+</p>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#clearFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="clearFuture():scala.concurrent.Future[Unit]"></a>
       <span class="permalink">
@@ -481,7 +482,7 @@
         <span class="name">get</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Get a value from the map, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value from the map, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>- this will be called some time later with the async result.</p></dd></dl></div>
+      <p class="shortcomment cmt">Get a value from the map, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value from the map, asynchronously.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>- this will be called some time later with the async result.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -621,8 +622,8 @@
         <span class="name">put</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="v">v: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="ttl">ttl: <span class="extype" name="scala.Long">Long</span></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#putFuture(k:K,v:V,ttl:Long):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#putFuture">io.vertx.scala.core.shareddata.AsyncMap#putFuture</a> but specifying a time to live for the entry.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#putFuture(k:K,v:V,ttl:Long):scala.concurrent.Future[Unit]" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#putFuture">io.vertx.scala.core.shareddata.AsyncMap#putFuture</a> but specifying a time to live for the entry. Entry will expire and get evicted after the
-ttl.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">ttl</dt><dd class="cmt"><p>The time to live (in ms) for the entry</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#put(k:K,v:V,ttl:Long,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#put">io.vertx.scala.core.shareddata.AsyncMap#put</a> but specifying a time to live for the entry.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#put(k:K,v:V,ttl:Long,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#put">io.vertx.scala.core.shareddata.AsyncMap#put</a> but specifying a time to live for the entry. Entry will expire and get evicted after the
+ttl.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">ttl</dt><dd class="cmt"><p>The time to live (in ms) for the entry</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#put" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="put(k:K,v:V,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="put(K,V,Handler[AsyncResult[Unit]]):Unit"></a>
       <span class="permalink">
@@ -638,7 +639,7 @@ ttl.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt
         <span class="name">put</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="v">v: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Put a value in the map, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Put a value in the map, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>- this will be called some time later to signify the value has been put</p></dd></dl></div>
+      <p class="shortcomment cmt">Put a value in the map, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Put a value in the map, asynchronously.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>- this will be called some time later to signify the value has been put</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#putFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="putFuture(k:K,v:V,ttl:Long):scala.concurrent.Future[Unit]"></a><a id="putFuture(K,V,Long):scala.concurrent.Future[Unit]"></a>
       <span class="permalink">
@@ -686,8 +687,8 @@ ttl.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt
         <span class="name">putIfAbsent</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="v">v: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="ttl">ttl: <span class="extype" name="scala.Long">Long</span></span>, <span name="completionHandler">completionHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Link <a href="#putIfAbsentFuture(k:K,v:V,ttl:Long):scala.concurrent.Future[Option[V]]" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#putIfAbsentFuture">io.vertx.scala.core.shareddata.AsyncMap#putIfAbsentFuture</a> but specifying a time to live for the entry.</p><div class="fullcomment"><div class="comment cmt"><p>Link <a href="#putIfAbsentFuture(k:K,v:V,ttl:Long):scala.concurrent.Future[Option[V]]" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#putIfAbsentFuture">io.vertx.scala.core.shareddata.AsyncMap#putIfAbsentFuture</a> but specifying a time to live for the entry. Entry will expire and get evicted
-after the ttl.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">ttl</dt><dd class="cmt"><p>The time to live (in ms) for the entry</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Link <a href="#putIfAbsent(k:K,v:V,ttl:Long,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Option[V]]]):Unit" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#putIfAbsent">io.vertx.scala.core.shareddata.AsyncMap#putIfAbsent</a> but specifying a time to live for the entry.</p><div class="fullcomment"><div class="comment cmt"><p>Link <a href="#putIfAbsent(k:K,v:V,ttl:Long,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Option[V]]]):Unit" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#putIfAbsent">io.vertx.scala.core.shareddata.AsyncMap#putIfAbsent</a> but specifying a time to live for the entry. Entry will expire and get evicted
+after the ttl.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">ttl</dt><dd class="cmt"><p>The time to live (in ms) for the entry</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#putIfAbsent" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="putIfAbsent(k:K,v:V,completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Option[V]]]):Unit"></a><a id="putIfAbsent(K,V,Handler[AsyncResult[Option[V]]]):Unit"></a>
       <span class="permalink">
@@ -704,7 +705,7 @@ after the ttl.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd 
       </span>
       
       <p class="shortcomment cmt">Put the entry only if there is no entry with the key already present.</p><div class="fullcomment"><div class="comment cmt"><p>Put the entry only if there is no entry with the key already present. If key already present then the existing
-value will be returned to the handler, otherwise null.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
+value will be returned to the handler, otherwise null.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">completionHandler</dt><dd class="cmt"><p>the handler</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#putIfAbsentFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="putIfAbsentFuture(k:K,v:V,ttl:Long):scala.concurrent.Future[Option[V]]"></a><a id="putIfAbsentFuture(K,V,Long):scala.concurrent.Future[Option[V]]"></a>
       <span class="permalink">
@@ -752,7 +753,7 @@ value will be returned to the handler, otherwise null.</p></div><dl class="param
         <span class="name">remove</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Remove a value from the map, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Remove a value from the map, asynchronously.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>- this will be called some time later to signify the value has been removed</p></dd></dl></div>
+      <p class="shortcomment cmt">Remove a value from the map, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Remove a value from the map, asynchronously.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>- this will be called some time later to signify the value has been removed</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#removeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="removeFuture(k:K):scala.concurrent.Future[Option[V]]"></a><a id="removeFuture(K):scala.concurrent.Future[Option[V]]"></a>
       <span class="permalink">
@@ -784,7 +785,7 @@ value will be returned to the handler, otherwise null.</p></div><dl class="param
         <span class="name">removeIfPresent</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="v">v: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Boolean">Boolean</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Remove a value from the map, only if entry already exists with same value.</p><div class="fullcomment"><div class="comment cmt"><p>Remove a value from the map, only if entry already exists with same value.</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>- this will be called some time later to signify the value has been removed</p></dd></dl></div>
+      <p class="shortcomment cmt">Remove a value from the map, only if entry already exists with same value.</p><div class="fullcomment"><div class="comment cmt"><p>Remove a value from the map, only if entry already exists with same value.   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the value</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>- this will be called some time later to signify the value has been removed</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#removeIfPresentFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="removeIfPresentFuture(k:K,v:V):scala.concurrent.Future[Boolean]"></a><a id="removeIfPresentFuture(K,V):scala.concurrent.Future[Boolean]"></a>
       <span class="permalink">
@@ -816,7 +817,7 @@ value will be returned to the handler, otherwise null.</p></div><dl class="param
         <span class="name">replace</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="v">v: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Replace the entry only if it is currently mapped to some value</p><div class="fullcomment"><div class="comment cmt"><p>Replace the entry only if it is currently mapped to some value</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">v</dt><dd class="cmt"><p>the new value</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler will be passed the previous value</p></dd></dl></div>
+      <p class="shortcomment cmt">Replace the entry only if it is currently mapped to some value   * @param k the key</p><div class="fullcomment"><div class="comment cmt"><p>Replace the entry only if it is currently mapped to some value   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the new value</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler will be passed the previous value</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#replaceFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="replaceFuture(k:K,v:V):scala.concurrent.Future[Option[V]]"></a><a id="replaceFuture(K,V):scala.concurrent.Future[Option[V]]"></a>
       <span class="permalink">
@@ -848,7 +849,7 @@ value will be returned to the handler, otherwise null.</p></div><dl class="param
         <span class="name">replaceIfPresent</span><span class="params">(<span name="k">k: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.K">K</span></span>, <span name="oldValue">oldValue: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="newValue">newValue: <span class="extype" name="io.vertx.scala.core.shareddata.AsyncMap.V">V</span></span>, <span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Boolean">Boolean</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Replace the entry only if it is currently mapped to a specific value</p><div class="fullcomment"><div class="comment cmt"><p>Replace the entry only if it is currently mapped to a specific value</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"><p>the key</p></dd><dt class="param">oldValue</dt><dd class="cmt"><p>the existing value</p></dd><dt class="param">newValue</dt><dd class="cmt"><p>the new value</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
+      <p class="shortcomment cmt">Replace the entry only if it is currently mapped to a specific value   * @param k the key</p><div class="fullcomment"><div class="comment cmt"><p>Replace the entry only if it is currently mapped to a specific value   * @param k the key</p></div><dl class="paramcmts block"><dt class="param">oldValue</dt><dd class="cmt"><p>the existing value</p></dd><dt class="param">newValue</dt><dd class="cmt"><p>the new value</p></dd><dt class="param">resultHandler</dt><dd class="cmt"><p>the result handler</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#replaceIfPresentFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="replaceIfPresentFuture(k:K,oldValue:V,newValue:V):scala.concurrent.Future[Boolean]"></a><a id="replaceIfPresentFuture(K,V,V):scala.concurrent.Future[Boolean]"></a>
       <span class="permalink">
@@ -865,7 +866,7 @@ value will be returned to the handler, otherwise null.</p></div><dl class="param
       </span>
       
       <p class="shortcomment cmt">Like <a href="#replaceIfPresent(k:K,oldValue:V,newValue:V,resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Boolean]]):Unit" class="extmbr" name="io.vertx.scala.core.shareddata.AsyncMap#replaceIfPresent">replaceIfPresent</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
-    </li><li name="io.vertx.scala.core.shareddata.AsyncMap#size" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.vertx.scala.core.shareddata.AsyncMap#size" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="size(resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):Unit"></a><a id="size(Handler[AsyncResult[Int]]):Unit"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/core/shareddata/AsyncMap.html#size(resultHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):Unit" title="Permalink">
@@ -880,7 +881,8 @@ value will be returned to the handler, otherwise null.</p></div><dl class="param
         <span class="name">size</span><span class="params">(<span name="resultHandler">resultHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Int">Int</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Provide the number of entries in the map</p><div class="fullcomment"><div class="comment cmt"><p>Provide the number of entries in the map</p></div><dl class="paramcmts block"><dt class="param">resultHandler</dt><dd class="cmt"><p>handler which will receive the number of entries</p></dd></dl></div>
+      <p class="shortcomment cmt">Provide the number of entries in the map   * @param resultHandler handler which will receive the number of entries
+</p>
     </li><li name="io.vertx.scala.core.shareddata.AsyncMap#sizeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sizeFuture():scala.concurrent.Future[Int]"></a>
       <span class="permalink">

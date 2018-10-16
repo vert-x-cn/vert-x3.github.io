@@ -283,6 +283,10 @@
   .setResetTimeout(10000)
 )
 
+// ---
+// Store the circuit breaker in a field and access it as follows
+// ---
+
 breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&gt; {
   // some code executing with the breaker
   // the code reports failures or success on the given future.
@@ -303,6 +307,10 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&g
   .setMaxFailures(5)
   .setTimeout(2000)
 )
+
+// ---
+// Store the circuit breaker in a field and access it as follows
+// ---
 
 breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.String&gt;) =&gt; {
   vertx.createHttpClient().getNow(8080, "localhost", "/", (response: io.vertx.scala.core.http.HttpClientResponse) =&gt; {
@@ -343,6 +351,10 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.String&gt;) =&g
   .setTimeout(2000)
 )
 
+// ---
+// Store the circuit breaker in a field and access it as follows
+// ---
+
 breaker.executeWithFallback((future: io.vertx.scala.core.Future&lt;java.lang.String&gt;) =&gt; {
   vertx.createHttpClient().getNow(8080, "localhost", "/", (response: io.vertx.scala.core.http.HttpClientResponse) =&gt; {
     if (response.statusCode() != 200) {
@@ -364,8 +376,8 @@ breaker.executeWithFallback((future: io.vertx.scala.core.Future&lt;java.lang.Str
 </div>
 <div class="paragraph">
 <p>熔断状态中都会调用失败回调（fallback），或者设置
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#isFallbackOnFailure()">isFallbackOnFailure</a></code> ，其结果是失败回调函数的输出。失败回调函数将
-<code>Throwable</code> 对象作为参数，并返回预期类型的​​对象。</p>
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#isFallbackOnFailure()">isFallbackOnFailure</a></code>，其结果是失败回调函数的输出。失败回调函数将
+`Throwable`对象作为参数，并返回预期类型的​​对象。</p>
 </div>
 <div class="paragraph">
 <p>失败回调可以直接设置在 <code><a href="../../scaladocs/io/vertx/scala/circuitbreaker/CircuitBreaker.html">CircuitBreaker</a></code> 上：</p>
@@ -395,7 +407,7 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&g
 </div>
 <div class="paragraph">
 <p>可以指定熔断器在生效之前的尝试次数，使用
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setMaxRetries(int)">maxRetries</a></code>.
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setMaxRetries()">maxRetries</a></code>.
 。如果将其设置为高于0的值，则您的代码在最终失败之前进行尝试多次执行。如果代码在其中一个重试中成功，则处理程序将得到通知，并且跳过剩余的重试。此配置仅当熔断器未生效时工作。</p>
 </div>
 <div class="paragraph">
@@ -435,7 +447,7 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&g
 </div>
 <div class="paragraph">
 <p>当熔断器决定尝试复位的时候（ half-open 状态），我们也可以注册
-<code><a href="../../scaladocs/io/vertx/scala/circuitbreaker/CircuitBreaker.html#halfOpenHandler(io.vertx.core.Handler)">halfOpenHandler</a></code> 的回调从而得到回调通知。</p>
+`<a href="../../scaladocs/io/vertx/scala/circuitbreaker/CircuitBreaker.html#halfOpenHandler()">halfOpenHandler</a>`的回调从而得到回调通知。</p>
 </div>
 </div>
 </div>
@@ -444,7 +456,7 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&g
 <div class="sectionbody">
 <div class="paragraph">
 <p>每次熔断器状态发生变化时，会在Event Bus上发布事件。事件发送的地址可以使用
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setNotificationAddress(java.lang.String)">notificationAddress</a></code>
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setNotificationAddress()">notificationAddress</a></code>
 进行配置。如果将  <code>null</code> 传递给此方法，则通知将被禁用。默认情况下，使用的地址是 <code>vertx.circuit-breaker</code>。</p>
 </div>
 <div class="paragraph">
@@ -473,7 +485,7 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&g
 <div class="sectionbody">
 <div class="paragraph">
 <p>当熔断器在熔断状态中，对其调用会立即失败，不会执行实际操作。经过适当的时间（
-<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setResetTimeout(long)">resetTimeout</a></code>
+<code><a href="../../vertx-circuit-breaker/dataobjects.html#CircuitBreakerOptions#setResetTimeout()">resetTimeout</a></code>
 设置），熔断器决定是否恢复状态，此时进入半开启状态（half-open state）。
 在这种状态下，允许下一次熔断器的调用实际调用如果成功，熔断器将复位并返回到关闭状态，回归正常的模式；但是如果这次调用失败，则熔断器返回到熔断状态，直到下次半开状态。</p>
 </div>
@@ -503,7 +515,7 @@ breaker.execute((future: io.vertx.scala.core.Future&lt;java.lang.Object&gt;) =&g
 <div class="paragraph">
 <p><a href="https://github.com/Netflix/Hystrix">Netflix Hystrix</a>
 带有一个仪表板（dashboard），用于显示熔断器的当前状态。 Vert.x 熔断器可以发布其指标（metric），以供Hystrix 仪表板使用。 Hystrix 仪表板需要一个发送指标的SSE流，此流由
-<code><a href="../../scaladocs/io/vertx/scala/circuitbreaker/HystrixMetricHandler.html">HystrixMetricHandler</a></code> 这个 Vert.x Web Handler 提供：</p>
+`<a href="../../scaladocs/io/vertx/scala/circuitbreaker/HystrixMetricHandler.html">HystrixMetricHandler</a>`这个 Vert.x Web Handler 提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -534,7 +546,7 @@ vertx.createHttpServer().requestHandler(router.accept _).listen(8080)</code></pr
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-09-12 23:35:43 CST
+                上次更新时间 2018-10-16 18:23:47 CST
               
               
             </div>
@@ -565,6 +577,7 @@ vertx.createHttpServer().requestHandler(router.accept _).listen(8080)</code></pr
           <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
         </ul>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">

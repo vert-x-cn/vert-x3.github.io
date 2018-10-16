@@ -213,7 +213,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A client-side HTTP request.</p><p>Instances are created by an <a href="WebClient.html" class="extype" name="io.vertx.scala.ext.web.client.WebClient">io.vertx.scala.ext.web.client.WebClient</a> instance, via one of the methods corresponding to the specific
 HTTP methods such as <a href="WebClient.html#get(host:String,requestURI:String):io.vertx.scala.ext.web.client.HttpRequest[io.vertx.core.buffer.Buffer]" class="extmbr" name="io.vertx.scala.ext.web.client.WebClient#get">io.vertx.scala.ext.web.client.WebClient#get</a>, etc...</p><p>The request shall be configured prior sending, the request is immutable and when a mutator method
-is called, a new request is returned allowing to expose the request in a public API and apply further customization.</p><p>After the request has been configured, the methods</p><ul><li><a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a></li><li><a href="#sendStreamFuture(body:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendStreamFuture">io.vertx.scala.ext.web.client.HttpRequest#sendStreamFuture</a></li><li><a href="#sendJsonFuture(body:AnyRef):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendJsonFuture">io.vertx.scala.ext.web.client.HttpRequest#sendJsonFuture</a> ()}</li><li><a href="#sendFormFuture(body:io.vertx.scala.core.MultiMap):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFormFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFormFuture</a></li></ul><p>can be called.
+is called, a new request is returned allowing to expose the request in a public API and apply further customization.</p><p>After the request has been configured, the methods</p><ul><li><a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a></li><li><a href="#sendStream(body:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendStream">io.vertx.scala.ext.web.client.HttpRequest#sendStream</a></li><li><a href="#sendJson(body:AnyRef,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendJson">io.vertx.scala.ext.web.client.HttpRequest#sendJson</a> ()}</li><li><a href="#sendForm(body:io.vertx.scala.core.MultiMap,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendForm">io.vertx.scala.ext.web.client.HttpRequest#sendForm</a></li></ul><p>can be called.
 The <code>sendXXX</code> methods perform the actual request, they can be called multiple times to perform the same HTTP
 request at different points in time.</p><p>The handler is called back with</p><ul><li>an <a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">io.vertx.scala.ext.web.client.HttpResponse</a> instance when the HTTP response has been received</li><li>a failure when the HTTP request failed (like a connection error) or when the HTTP response could
   not be obtained (like connection or unmarshalling errors)</li></ul><p>Most of the time, this client will buffer the HTTP response fully unless a specific  is used
@@ -357,7 +357,7 @@ such as .
         <span class="name">addQueryParam</span><span class="params">(<span name="paramName">paramName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="paramValue">paramValue: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Add a query parameter to the request.</p><div class="fullcomment"><div class="comment cmt"><p>Add a query parameter to the request.</p></div><dl class="paramcmts block"><dt class="param">paramName</dt><dd class="cmt"><p>the param name</p></dd><dt class="param">paramValue</dt><dd class="cmt"><p>the param value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Add a query parameter to the request.</p><div class="fullcomment"><div class="comment cmt"><p>Add a query parameter to the request.   * @param paramName the param name</p></div><dl class="paramcmts block"><dt class="param">paramValue</dt><dd class="cmt"><p>the param value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#as" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="as[U](responseCodec:io.vertx.scala.ext.web.codec.BodyCodec[U])(implicitevidence$2:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.ext.web.client.HttpRequest[U]"></a><a id="as[U](BodyCodec[U])(scala.reflect.api.JavaUniverse.TypeTag[U]):HttpRequest[U]"></a>
       <span class="permalink">
@@ -373,7 +373,7 @@ such as .
         <span class="name">as</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="responseCodec">responseCodec: <a href="../codec/BodyCodec.html" class="extype" name="io.vertx.scala.ext.web.codec.BodyCodec">BodyCodec</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.as.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.as.U">U</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.as.U">U</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Configure the request to decode the response with the <code>responseCodec</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to decode the response with the <code>responseCodec</code>.</p></div><dl class="paramcmts block"><dt class="param">responseCodec</dt><dd class="cmt"><p>the response codec</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Configure the request to decode the response with the <code>responseCodec</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to decode the response with the <code>responseCodec</code>.   * @param responseCodec the response codec</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -430,7 +430,7 @@ such as .
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="io.vertx.scala.ext.web.client.HttpRequest#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="io.vertx.scala.ext.web.client.HttpRequest#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="copy():io.vertx.scala.ext.web.client.HttpRequest[T]"></a><a id="copy():HttpRequest[T]"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/web/client/HttpRequest.html#copy():io.vertx.scala.ext.web.client.HttpRequest[T]" title="Permalink">
@@ -445,7 +445,8 @@ such as .
         <span class="name">copy</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Copy this request</p><div class="fullcomment"><div class="comment cmt"><p>Copy this request</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a copy of this request</p></dd></dl></div>
+      <p class="shortcomment cmt">Copy this request   * @return a copy of this request
+</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -515,7 +516,7 @@ such as .
         <span class="name">followRedirects</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Set wether or not to follow the directs for the request.</p><div class="fullcomment"><div class="comment cmt"><p>Set wether or not to follow the directs for the request.</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>true if redirections should be followed</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set wether or not to follow the directs for the request.</p><div class="fullcomment"><div class="comment cmt"><p>Set wether or not to follow the directs for the request.   * @param value true if redirections should be followed</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -585,7 +586,8 @@ such as .
         <span class="name">host</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Configure the request to use a new host <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new host <code>value</code>.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Configure the request to use a new host <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new host <code>value</code>.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -617,7 +619,8 @@ such as .
         <span class="name">method</span><span class="params">(<span name="value">value: <span class="extype" name="io.vertx.core.http.HttpMethod">HttpMethod</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Configure the request to use a new method <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new method <code>value</code>.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Configure the request to use a new method <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new method <code>value</code>.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -687,7 +690,8 @@ such as .
         <span class="name">port</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Configure the request to use a new port <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new port <code>value</code>.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Configure the request to use a new port <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new port <code>value</code>.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#putHeader" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="putHeader(name:String,value:String):io.vertx.scala.ext.web.client.HttpRequest[T]"></a><a id="putHeader(String,String):HttpRequest[T]"></a>
       <span class="permalink">
@@ -703,7 +707,7 @@ such as .
         <span class="name">putHeader</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Configure the request to add a new HTTP header.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to add a new HTTP header.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the header name</p></dd><dt class="param">value</dt><dd class="cmt"><p>the header value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Configure the request to add a new HTTP header.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to add a new HTTP header.   * @param name the header name</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the header value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#queryParams" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="queryParams():io.vertx.scala.core.MultiMap"></a><a id="queryParams():MultiMap"></a>
       <span class="permalink">
@@ -719,7 +723,8 @@ such as .
         <span class="name">queryParams</span><span class="params">()</span><span class="result">: <a href="../../../core/MultiMap.html" class="extype" name="io.vertx.scala.core.MultiMap">MultiMap</a></span>
       </span>
       
-      <p class="shortcomment cmt">Return the current query parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Return the current query parameters.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the current query parameters</p></dd></dl></div>
+      <p class="shortcomment cmt">Return the current query parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Return the current query parameters.   * @return the current query parameters
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#send" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit"></a><a id="send(Handler[AsyncResult[HttpResponse[T]]]):Unit"></a>
       <span class="permalink">
@@ -751,7 +756,8 @@ such as .
         <span class="name">sendBuffer</span><span class="params">(<span name="body">body: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">HttpResponse</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> buffer.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> buffer.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> buffer.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> buffer.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#sendBufferFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendBufferFuture(body:io.vertx.core.buffer.Buffer):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]"></a><a id="sendBufferFuture(Buffer):Future[HttpResponse[T]]"></a>
       <span class="permalink">
@@ -783,9 +789,10 @@ such as .
         <span class="name">sendForm</span><span class="params">(<span name="body">body: <a href="../../../core/MultiMap.html" class="extype" name="io.vertx.scala.core.MultiMap">MultiMap</a></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">HttpResponse</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
-set to <code>application/x-www-form-urlencoded</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
-set to <code>application/x-www-form-urlencoded</code>.</p><p>When the content type header is previously set to <code>multipart/form-data</code> it will be used instead.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
+set to <code>application/x-www-form-urlencoded</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
+set to <code>application/x-www-form-urlencoded</code>.</p><p>When the content type header is previously set to <code>multipart/form-data</code> it will be used instead.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#sendFormFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendFormFuture(body:io.vertx.scala.core.MultiMap):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]"></a><a id="sendFormFuture(MultiMap):Future[HttpResponse[T]]"></a>
       <span class="permalink">
@@ -833,9 +840,10 @@ set to <code>application/x-www-form-urlencoded</code>.</p><p>When the content ty
         <span class="name">sendJson</span><span class="params">(<span name="body">body: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">HttpResponse</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> object encoded as json and the content type
-set to <code>application/json</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> object encoded as json and the content type
-set to <code>application/json</code>.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> object encoded as json and the content type
+set to <code>application/json</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> object encoded as json and the content type
+set to <code>application/json</code>.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#sendJsonFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendJsonFuture(body:AnyRef):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]"></a><a id="sendJsonFuture(AnyRef):Future[HttpResponse[T]]"></a>
       <span class="permalink">
@@ -867,9 +875,10 @@ set to <code>application/json</code>.</p></div><dl class="paramcmts block"><dt c
         <span class="name">sendJsonObject</span><span class="params">(<span name="body">body: <span class="extype" name="io.vertx.core.json.JsonObject">JsonObject</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">HttpResponse</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> object encoded as json and the content type
-set to <code>application/json</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> object encoded as json and the content type
-set to <code>application/json</code>.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> object encoded as json and the content type
+set to <code>application/json</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> object encoded as json and the content type
+set to <code>application/json</code>.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#sendJsonObjectFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendJsonObjectFuture(body:io.vertx.core.json.JsonObject):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]"></a><a id="sendJsonObjectFuture(JsonObject):Future[HttpResponse[T]]"></a>
       <span class="permalink">
@@ -901,9 +910,10 @@ set to <code>application/json</code>.</p></div><dl class="paramcmts block"><dt c
         <span class="name">sendMultipartForm</span><span class="params">(<span name="body">body: <a href="../multipart/MultipartForm.html" class="extype" name="io.vertx.scala.ext.web.multipart.MultipartForm">MultipartForm</a></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">HttpResponse</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
-set to <code>multipart/form-data</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
-set to <code>multipart/form-data</code>. You may use this method to send attributes and upload files.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
+set to <code>multipart/form-data</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> multimap encoded as form and the content type
+set to <code>multipart/form-data</code>. You may use this method to send attributes and upload files.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#sendMultipartFormFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendMultipartFormFuture(body:io.vertx.scala.ext.web.multipart.MultipartForm):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]"></a><a id="sendMultipartFormFuture(MultipartForm):Future[HttpResponse[T]]"></a>
       <span class="permalink">
@@ -935,7 +945,8 @@ set to <code>multipart/form-data</code>. You may use this method to send attribu
         <span class="name">sendStream</span><span class="params">(<span name="body">body: <a href="../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="HttpResponse.html" class="extype" name="io.vertx.scala.ext.web.client.HttpResponse">HttpResponse</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> stream.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#sendFuture():scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#sendFuture">io.vertx.scala.ext.web.client.HttpRequest#sendFuture</a> but with an HTTP request <code>body</code> stream.</p></div><dl class="paramcmts block"><dt class="param">body</dt><dd class="cmt"><p>the body</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> stream.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#send(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.ext.web.client.HttpResponse[T]]]):Unit" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#send">io.vertx.scala.ext.web.client.HttpRequest#send</a> but with an HTTP request <code>body</code> stream.   * @param body the body
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#sendStreamFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sendStreamFuture(body:io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]):scala.concurrent.Future[io.vertx.scala.ext.web.client.HttpResponse[T]]"></a><a id="sendStreamFuture(ReadStream[Buffer]):Future[HttpResponse[T]]"></a>
       <span class="permalink">
@@ -967,7 +978,7 @@ set to <code>multipart/form-data</code>. You may use this method to send attribu
         <span class="name">setQueryParam</span><span class="params">(<span name="paramName">paramName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="paramValue">paramValue: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.client.HttpRequest">HttpRequest</a>[<span class="extype" name="io.vertx.scala.ext.web.client.HttpRequest.T">T</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Set a query parameter to the request.</p><div class="fullcomment"><div class="comment cmt"><p>Set a query parameter to the request.</p></div><dl class="paramcmts block"><dt class="param">paramName</dt><dd class="cmt"><p>the param name</p></dd><dt class="param">paramValue</dt><dd class="cmt"><p>the param value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Set a query parameter to the request.</p><div class="fullcomment"><div class="comment cmt"><p>Set a query parameter to the request.   * @param paramName the param name</p></div><dl class="paramcmts block"><dt class="param">paramValue</dt><dd class="cmt"><p>the param value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#ssl" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ssl(value:Boolean):io.vertx.scala.ext.web.client.HttpRequest[T]"></a><a id="ssl(Boolean):HttpRequest[T]"></a>
       <span class="permalink">
@@ -1017,7 +1028,7 @@ set to <code>multipart/form-data</code>. You may use this method to send attribu
       
       <p class="shortcomment cmt">Configures the amount of time in milliseconds after which if the request does not return any data within the timeout
 period an TimeoutException fails the request.</p><div class="fullcomment"><div class="comment cmt"><p>Configures the amount of time in milliseconds after which if the request does not return any data within the timeout
-period an TimeoutException fails the request.</p><p>Setting zero or a negative <code>value</code> disables the timeout.</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The quantity of time in milliseconds.</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+period an TimeoutException fails the request.</p><p>Setting zero or a negative <code>value</code> disables the timeout.   * @param value The quantity of time in milliseconds.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
@@ -1050,7 +1061,8 @@ period an TimeoutException fails the request.</p><p>Setting zero or a negative <
       </span>
       
       <p class="shortcomment cmt">Configure the request to use a new request URI <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a new request URI <code>value</code>.</p><p>When the uri has query parameters, they are set in the <a href="#queryParams():io.vertx.scala.core.MultiMap" class="extmbr" name="io.vertx.scala.ext.web.client.HttpRequest#queryParams">io.vertx.scala.ext.web.client.HttpRequest#queryParams</a> multimap, overwritting
-any parameters previously set.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+any parameters previously set.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.client.HttpRequest#virtualHost" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="virtualHost(value:String):io.vertx.scala.ext.web.client.HttpRequest[T]"></a><a id="virtualHost(String):HttpRequest[T]"></a>
       <span class="permalink">
@@ -1069,7 +1081,8 @@ any parameters previously set.</p></div><dl class="paramcmts block"><dt>returns<
       <p class="shortcomment cmt">Configure the request to use a virtual host <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Configure the request to use a virtual host <code>value</code>.</p><p>Usually the header <i>host</i> (<i>:authority</i> pseudo header for HTTP/2) is set from the request host value
 since this host value resolves to the server IP address.</p><p>Sometimes you need to set a host header for an address that does not resolve to the server IP address.
 The virtual host value overrides the value of the actual <i>host</i> header (<i>:authority</i> pseudo header
-for HTTP/2).</p><p>The virtual host is also be used for SNI.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+for HTTP/2).</p><p>The virtual host is also be used for SNI.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

@@ -432,6 +432,24 @@ so it can be used with
       
       <p class="shortcomment cmt">Close it
 </p>
+    </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#close" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="close(statusCode:Int,reason:String):Unit"></a><a id="close(Int,String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../../io/vertx/scala/ext/web/handler/sockjs/SockJSSocket.html#close(statusCode:Int,reason:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">close</span><span class="params">(<span name="statusCode">statusCode: <span class="extype" name="scala.Int">Int</span></span>, <span name="reason">reason: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Close it giving a status code and reason.</p><div class="fullcomment"><div class="comment cmt"><p>Close it giving a status code and reason. Only Applicable to RawWebSocket will downgrade to plain close for
+other transports.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#drainHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="drainHandler(handler:io.vertx.core.Handler[Unit]):io.vertx.scala.ext.web.handler.sockjs.SockJSSocket"></a><a id="drainHandler(Handler[Unit]):SockJSSocket"></a>
       <span class="permalink">
@@ -449,7 +467,7 @@ so it can be used with
       
       <p class="shortcomment cmt">Set a drain handler on the stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set a drain handler on the stream. If the write queue is full, then the handler will be called when the write
 queue is ready to accept buffers again. See <a href="../../../../core/streams/Pump.html" class="extype" name="io.vertx.scala.core.streams.Pump">io.vertx.scala.core.streams.Pump</a> for an example of this being used.</p><p>The stream implementation defines when the drain handler, for example it could be when the queue size has been
-reduced to <code>maxSize / 2</code>.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+reduced to <code>maxSize / 2</code>.   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="end():Unit"></a>
       <span class="permalink">
@@ -499,7 +517,8 @@ reduced to <code>maxSize / 2</code>.</p></div><dl class="paramcmts block"><dt cl
         <span class="name">endHandler</span><span class="params">(<span name="endHandler">endHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an end handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set an end handler. Once the stream has ended, and there is no more data to be read, this handler will be called.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -547,7 +566,26 @@ reduced to <code>maxSize / 2</code>.</p></div><dl class="paramcmts block"><dt cl
         <span class="name">exceptionHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set an exception handler on the write stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the write stream.</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the exception handler</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="../../../../core/streams/StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+      <p class="shortcomment cmt">Set an exception handler on the write stream.</p><div class="fullcomment"><div class="comment cmt"><p>Set an exception handler on the write stream.   * @param handler the exception handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a> → <a href="../../../../core/streams/StreamBase.html" class="extype" name="io.vertx.scala.core.streams.StreamBase">StreamBase</a></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#fetch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fetch(arg0:Long):io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]"></a><a id="fetch(Long):ReadStream[Buffer]"></a>
+      <span class="permalink">
+      <a href="../../../../../../../io/vertx/scala/ext/web/handler/sockjs/SockJSSocket.html#fetch(arg0:Long):io.vertx.scala.core.streams.ReadStream[io.vertx.core.buffer.Buffer]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fetch</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Fetch the specified <code>amount</code> of elements.</p><div class="fullcomment"><div class="comment cmt"><p>Fetch the specified <code>amount</code> of elements. If the <code>ReadStream</code> has been paused, reading will
+recommence with the specified <code>amount</code> of items, otherwise the specified <code>amount</code> will
+be added to the current stream demand.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -604,7 +642,8 @@ reduced to <code>maxSize / 2</code>.</p></div><dl class="paramcmts block"><dt cl
         <span class="name">handler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Set a data handler.</p><div class="fullcomment"><div class="comment cmt"><p>Set a data handler. As data is read, the handler will be called with the data.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -744,7 +783,8 @@ Any cookie headers will be removed for security reasons
         <span class="name">pause</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#remoteAddress" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="remoteAddress():io.vertx.scala.core.net.SocketAddress"></a><a id="remoteAddress():SocketAddress"></a>
       <span class="permalink">
@@ -777,7 +817,8 @@ Any cookie headers will be removed for security reasons
         <span class="name">resume</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#setWriteQueueMaxSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWriteQueueMaxSize(maxSize:Int):io.vertx.scala.ext.web.handler.sockjs.SockJSSocket"></a><a id="setWriteQueueMaxSize(Int):SockJSSocket"></a>
       <span class="permalink">
@@ -797,7 +838,7 @@ Any cookie headers will be removed for security reasons
 if there is more than <code>maxSize</code> items in the write queue. This is used as an indicator by classes such as
 <code>Pump</code> to provide flow control.</p><p>The value is defined by the implementation of the stream, e.g in bytes for a
 <a href="../../../../core/net/NetSocket.html" class="extype" name="io.vertx.scala.core.net.NetSocket">io.vertx.scala.core.net.NetSocket</a>, the number of <a href="../../../../core/eventbus/Message.html" class="extype" name="io.vertx.scala.core.eventbus.Message">io.vertx.scala.core.eventbus.Message</a> for a
-<a href="../../../../core/eventbus/MessageProducer.html" class="extype" name="io.vertx.scala.core.eventbus.MessageProducer">io.vertx.scala.core.eventbus.MessageProducer</a>, etc...</p></div><dl class="paramcmts block"><dt class="param">maxSize</dt><dd class="cmt"><p>the max size of the write stream</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+<a href="../../../../core/eventbus/MessageProducer.html" class="extype" name="io.vertx.scala.core.eventbus.MessageProducer">io.vertx.scala.core.eventbus.MessageProducer</a>, etc...   * @param maxSize the max size of the write stream</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -962,7 +1003,7 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
         <span class="name">write</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a></span>
       </span>
       
-      <p class="shortcomment cmt">Write a String to the socket, encoded in UTF-8.</p><div class="fullcomment"><div class="comment cmt"><p>Write a String to the socket, encoded in UTF-8.</p></div><dl class="paramcmts block"><dt class="param">data</dt><dd class="cmt"><p>the string to write</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Write a String to the socket, encoded in UTF-8.</p><div class="fullcomment"><div class="comment cmt"><p>Write a String to the socket, encoded in UTF-8.   * @param data the string to write</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="write(data:io.vertx.core.buffer.Buffer):io.vertx.scala.ext.web.handler.sockjs.SockJSSocket"></a><a id="write(Buffer):SockJSSocket"></a>
       <span class="permalink">
@@ -980,7 +1021,7 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
       
       <p class="shortcomment cmt">Write some data to the stream.</p><div class="fullcomment"><div class="comment cmt"><p>Write some data to the stream. The data is put on an internal write queue, and the write actually happens
 asynchronously. To avoid running out of memory by putting too much on the write queue,
-check the <a href="../../../../core/streams/WriteStream.html#writeQueueFull():Boolean" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#writeQueueFull">io.vertx.scala.core.streams.WriteStream#writeQueueFull</a> method before writing. This is done automatically if using a <a href="../../../../core/streams/Pump.html" class="extype" name="io.vertx.scala.core.streams.Pump">io.vertx.scala.core.streams.Pump</a>.</p></div><dl class="paramcmts block"><dt class="param">data</dt><dd class="cmt"><p>the data to write</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+check the <a href="../../../../core/streams/WriteStream.html#writeQueueFull():Boolean" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#writeQueueFull">io.vertx.scala.core.streams.WriteStream#writeQueueFull</a> method before writing. This is done automatically if using a <a href="../../../../core/streams/Pump.html" class="extype" name="io.vertx.scala.core.streams.Pump">io.vertx.scala.core.streams.Pump</a>.   * @param data the data to write</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket#writeHandlerID" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="writeHandlerID():String"></a>
       <span class="permalink">
@@ -1017,7 +1058,9 @@ allows you to write data to other sockets which are owned by different event loo
         <span class="name">writeQueueFull</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt">This will return <code>true</code> if there are more bytes in the write queue than the value set using <a href="../../../../core/streams/WriteStream.html#setWriteQueueMaxSize(maxSize:Int):io.vertx.scala.core.streams.WriteStream[T]" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize">io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize</a></p><div class="fullcomment"><div class="comment cmt"><p>This will return <code>true</code> if there are more bytes in the write queue than the value set using <a href="../../../../core/streams/WriteStream.html#setWriteQueueMaxSize(maxSize:Int):io.vertx.scala.core.streams.WriteStream[T]" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize">io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize</a></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if write queue is full</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+      <p class="shortcomment cmt">This will return <code>true</code> if there are more bytes in the write queue than the value set using <a href="../../../../core/streams/WriteStream.html#setWriteQueueMaxSize(maxSize:Int):io.vertx.scala.core.streams.WriteStream[T]" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize">io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize</a>   * @return true if write queue is full
+</p><div class="fullcomment"><div class="comment cmt"><p>This will return <code>true</code> if there are more bytes in the write queue than the value set using <a href="../../../../core/streams/WriteStream.html#setWriteQueueMaxSize(maxSize:Int):io.vertx.scala.core.streams.WriteStream[T]" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize">io.vertx.scala.core.streams.WriteStream#setWriteQueueMaxSize</a>   * @return true if write queue is full
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.ext.web.handler.sockjs.SockJSSocket">SockJSSocket</a> → <a href="../../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li>
               </ol>
             </div>
