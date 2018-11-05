@@ -239,11 +239,8 @@ fs.copyBlocking("foo.txt", "bar.txt");</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.core.buffer { buffer }
-import io.vertx.ceylon.core { vertx_ = vertx }
 
 ...
-
-value vertx = vertx_.vertx();
 
 // Read a file
 vertx.fileSystem().readFile("target/classes/readme.txt", (Buffer|Throwable result) {
@@ -338,11 +335,9 @@ fileSystem.open("myfile.txt", options, (AsyncFile|Throwable res) {
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.core.buffer { buffer }
-import io.vertx.ceylon.core { vertx_ = vertx }
 
 ...
 
-value vertx = vertx_.vertx();
 vertx.fileSystem().open("target/classes/hello.txt", OpenOptions(), (AsyncFile|Throwable result) {
   if (is AsyncFile result) {
     value file = result;
@@ -399,11 +394,9 @@ vertx.fileSystem().open("target/classes/hello.txt", OpenOptions(), (AsyncFile|Th
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.core.buffer { buffer }
-import io.vertx.ceylon.core { vertx_ = vertx }
 
 ...
 
-value vertx = vertx_.vertx();
 vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), (AsyncFile|Throwable result) {
   if (is AsyncFile result) {
     value file = result;
@@ -459,12 +452,10 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), (Asy
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.core { vertx_ = vertx }
-import io.vertx.ceylon.core.streams { pump }
+<pre class="highlight"><code class="language-ceylon" data-lang="ceylon">import io.vertx.ceylon.core.streams { pump }
 
 ...
 
-value vertx = vertx_.vertx();
 value output = vertx.fileSystem().openBlocking("target/classes/plagiary.txt", OpenOptions());
 
 vertx.fileSystem().open("target/classes/les_miserables.txt", OpenOptions(), (AsyncFile|Throwable result) {
@@ -534,7 +525,7 @@ you can do so via the <code><a href="../../ceylondoc/vertx-core//file/FileSystem
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:07 CST
+                上次更新时间 2018-11-05 19:55:24 CST
               
               
             </div>

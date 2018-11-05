@@ -196,7 +196,7 @@
 <p>Vert.x有多个对象可以用于文件的读取和写入。</p>
 </div>
 <div class="paragraph">
-<p>在以前的版本中，只能通过操作指定的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code>
+<p>在以前的版本中，只能通过操作指定的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code>
 对象来实现文件读写。从现在开始，流不再与 <code>Buffer</code> 耦合，它们可以和任意类型的对象一起工作。</p>
 </div>
 <div class="paragraph">
@@ -209,14 +209,14 @@
 <p>为了解决这个问题，Vert.x API中的一些对象提供了简单的流程控制（回压）功能。</p>
 </div>
 <div class="paragraph">
-<p>任何可控制的写入流对象都实现了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 接口，相应的，任何可控制的读取流对象都实现了
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口。</p>
+<p>任何可控制的写入流对象都实现了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 接口，相应的，任何可控制的读取流对象都实现了
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口。</p>
 </div>
 <div class="paragraph">
 <p>让我们举个例子，我们要从 <code>ReadStream</code> 中读取数据，然后将数据写入 <code>WriteStream</code> 。</p>
 </div>
 <div class="paragraph">
-<p>一个非常简单的例子是从 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了 <code>ReadStream</code> 也实现了 <code>WriteStream</code> 接口。
+<p>一个非常简单的例子是从 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了 <code>ReadStream</code> 也实现了 <code>WriteStream</code> 接口。
 请注意，这些操作适用于任何实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口的对象，包括HTTP 请求、HTTP 响应、异步文件 I/O 和 WebSocket等。</p>
 </div>
 <div class="paragraph">
@@ -305,11 +305,11 @@
 </div>
 </div>
 <div class="paragraph">
-<p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code>
+<p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code>
 事件处理器将被调用，它会恢复 <code>NetSocket</code> 的状态，允许读取更多的数据。</p>
 </div>
 <div class="paragraph">
-<p>在编写Vert.x 应用程序时，这样做是很常见的，因此我们提供了一个名为 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html">Pump</a></code> 的帮助类，它为您完成所有这些艰苦的工作。
+<p>在编写Vert.x 应用程序时，这样做是很常见的，因此我们提供了一个名为 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html">Pump</a></code> 的帮助类，它为您完成所有这些艰苦的工作。
 您只需要给 <code>ReadStream</code> 追加上 <code>WriteStream</code> ，然后启动它：</p>
 </div>
 <div class="listingblock">
@@ -334,11 +334,11 @@
 <div class="sect2">
 <h3 id="_readstream">ReadStream</h3>
 <div class="paragraph">
-<p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.TimeoutStream.html">TimeoutStream</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code>.</p>
+<p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.TimeoutStream.html">TimeoutStream</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -346,19 +346,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_handler">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_handler">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_pause">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_pause">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_resume">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_resume">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_endHandler">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_endHandler">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
 </li>
 </ul>
 </div>
@@ -366,9 +366,9 @@
 <div class="sect2">
 <h3 id="_writestream">WriteStream</h3>
 <div class="paragraph">
-<p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> ,
-and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageProducer.html">MessageProducer</a></code></p>
+<p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> ,
+and <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageProducer.html">MessageProducer</a></code></p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -376,19 +376,19 @@ and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_write">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_write">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
 </li>
 </ul>
 </div>
@@ -401,15 +401,15 @@ and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html#method_start">start</a></code> : 启动泵。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html#method_start">start</a></code> : 启动泵。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html#method_stop">stop</a></code> :
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html#method_stop">stop</a></code> :
 停止泵，当泵启动时它要处于停止模式。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> :
-与 <code>WriteStream</code> 接口的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> 方法相同。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> :
+与 <code>WriteStream</code> 接口的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> 方法相同。</p>
 </li>
 </ul>
 </div>
@@ -428,7 +428,7 @@ and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:07 CST
+                上次更新时间 2018-11-05 19:55:24 CST
               
               
             </div>

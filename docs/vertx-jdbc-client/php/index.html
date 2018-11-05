@@ -217,7 +217,7 @@
 <p>使用 Vert.x JDBC Client，可以让我们的 Vert.x 应用程序通过异步的方式，与任何支持 JDBC 的数据库进行交互。</p>
 </div>
 <div class="paragraph">
-<p>Vert.x JDBC Client 的接口定义为 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code> 。</p>
+<p>Vert.x JDBC Client 的接口定义为 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>要使用Vert.x JDBC Client，需要添加下面的依赖：</p>
@@ -279,7 +279,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>只有在第一次调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createShared">JDBCClient::createShared</a></code>
+<p>只有在第一次调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createShared">JDBCClient::createShared</a></code>
 方法的时候，才会真正的根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
@@ -304,7 +304,7 @@
 <p>如果不同的 Vert.x JDBC client 对象使用了相同的Vert.x 对象和相同的数据源名称，那么它们将共享数据源。</p>
 </div>
 <div class="paragraph">
-<p>同样的（与默认使用共享的数据源），只有在第一次调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createShared">JDBCClient::createShared</a></code>
+<p>同样的（与默认使用共享的数据源），只有在第一次调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createShared">JDBCClient::createShared</a></code>
 方法的时候，才会真正的根据 <code>config</code> 参数创建一个数据源。</p>
 </div>
 <div class="paragraph">
@@ -320,7 +320,7 @@
 <p>在大部分情况下，我们会希望在不同的 Vert.x JDBC Client 对象之间共享数据源。但有时候，却恰恰相反。</p>
 </div>
 <div class="paragraph">
-<p>这时，可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createNonShared">JDBCClient::createNonShared</a></code> 方法：</p>
+<p>这时，可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createNonShared">JDBCClient::createNonShared</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -331,7 +331,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>每次调用此方法，就相当于在调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createShared">JDBCClient::createShared</a></code>
+<p>每次调用此方法，就相当于在调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html#method_createShared">JDBCClient::createShared</a></code>
 方法时加上了具有唯一名称的数据源参数。</p>
 </div>
 </div>
@@ -372,7 +372,7 @@
 <h2 id="_获取数据库连接">获取数据库连接</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>在创建 Vert.x JDBC Client 对象后，我们可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-sql-jphp/classes/io.vertx.jphp.ext.sql.SQLClient.html#method_getConnection">getConnection</a></code> 方法来获取一个数据库连接。</p>
+<p>在创建 Vert.x JDBC Client 对象后，我们可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.sql.SQLClient.html#method_getConnection">getConnection</a></code> 方法来获取一个数据库连接。</p>
 </div>
 <div class="paragraph">
 <p>此方法从连接池中获取一个数据库连接，并返回给回调方法：</p>
@@ -402,7 +402,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>获取的这个连接，是接口 <code><a href="https://vertx.okou.tk/phpdoc/vertx-sql-jphp/classes/io.vertx.jphp.ext.sql.SQLConnection.html">SQLConnection</a></code> 的一个实现。但是 <code><a href="https://vertx.okou.tk/phpdoc/vertx-sql-jphp/classes/io.vertx.jphp.ext.sql.SQLConnection.html">SQLConnection</a></code> 是一个通用接口，不只是在 Vert.x JDBC Client 中有用到。</p>
+<p>获取的这个连接，是接口 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.sql.SQLConnection.html">SQLConnection</a></code> 的一个实现。但是 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.sql.SQLConnection.html">SQLConnection</a></code> 是一个通用接口，不只是在 Vert.x JDBC Client 中有用到。</p>
 </div>
 <div class="paragraph">
 <p>更多详细内容，可以参考文档 <code><a href="../../vertx-sql-common/php/">Vert.x Common SQL Interface</a></code></p>
@@ -605,7 +605,7 @@
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:43 CST
+                上次更新时间 2018-11-05 19:55:50 CST
               
               
             </div>

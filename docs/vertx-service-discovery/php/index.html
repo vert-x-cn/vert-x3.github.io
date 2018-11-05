@@ -248,7 +248,7 @@
 这些资源都可以称为<strong>服务</strong>。服务就是一个可以被发现和访问的功能，可以通过它的类型、元数据和位置来进行描述。
 所以，服务可以是一个数据库、一个服务代理、一个HTTP应用，以及任何你能想到的可描述、可发现、可交互的资源。
 它不一定是Vert.x实体，它可以是任何组件。在Vert.x 服务发现组件中，我们通过
-`<a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a>`来描述每个服务。</p>
+`<a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a>`来描述每个服务。</p>
 </div>
 <div class="paragraph">
 <p>服务发现组件实现了面向服务计算中定义的服务交互。此外，在某种程度上，还提供了动态的面向服务计算交互，这样应用程序可以对各种服务的上线、下线作出反应。</p>
@@ -278,7 +278,7 @@
 <p>查找各种服务</p>
 </li>
 <li>
-<p>绑定到某个服务（它所获取到的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a></code>) ）并且使用这个服务</p>
+<p>绑定到某个服务（它所获取到的 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a></code>) ）并且使用这个服务</p>
 </li>
 <li>
 <p>当使用完后，释放绑定的服务</p>
@@ -290,17 +290,17 @@
 </div>
 <div class="paragraph">
 <p>Consumer would 1) lookup a service record matching their need, 2) retrieve the
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a>`that give access to the service, 3) get a service object to access
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a>`that give access to the service, 3) get a service object to access
 the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>如果知道服务的类型（JDBC客户端、HTTP客户端），整个过程就可以简化为通过服务类型直接获取服务对象。</p>
 </div>
 <div class="paragraph">
-<p>从上面可以看出，服务提供者和服务消费者，通过服务记录 （ <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 对象） 来共享关键的信息。</p>
+<p>从上面可以看出，服务提供者和服务消费者，通过服务记录 （ <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 对象） 来共享关键的信息。</p>
 </div>
 <div class="paragraph">
-<p>服务提供者和消费者，必须创建他们自己的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html">ServiceDiscovery</a></code> 实例。这些实例通过底层的分布式数据结构来协同保持服务集合的同步。</p>
+<p>服务提供者和消费者，必须创建他们自己的 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html">ServiceDiscovery</a></code> 实例。这些实例通过底层的分布式数据结构来协同保持服务集合的同步。</p>
 </div>
 <div class="paragraph">
 <p>服务发现组件支持桥接的方式，来从其他服务发现技术中导入和导出服务。</p>
@@ -352,7 +352,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_服务记录">服务记录</h3>
 <div class="paragraph">
-<p>我们用服务记录（ <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 对象）来描述服务提供者提供的服务，它包含了服务名称、一些元数据和一个描述服务所在位置的位置对象。</p>
+<p>我们用服务记录（ <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 对象）来描述服务提供者提供的服务，它包含了服务名称、一些元数据和一个描述服务所在位置的位置对象。</p>
 </div>
 <div class="paragraph">
 <p>服务记录的元数据、甚至位置的格式，都有赖于 <code>服务的类型</code> （详见后续章节）。</p>
@@ -371,8 +371,8 @@ the service, 4) release the service object once done.</p>
 <h3 id="_服务消费者">服务消费者</h3>
 <div class="paragraph">
 <p>服务消费者在Service Discovery中搜索服务，每次搜索得到的结果是0..n条服务记录（
-<code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code>）。通过这些服务记录，消费者可以获得服务引用（
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a></code>）。服务引用的作用是绑定服务消费者和服务提供者。通过服务引用，消费者可以得到服务对象来使用服务，也可以通过服务引用释放服务对象。</p>
+<code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code>）。通过这些服务记录，消费者可以获得服务引用（
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a></code>）。服务引用的作用是绑定服务消费者和服务提供者。通过服务引用，消费者可以得到服务对象来使用服务，也可以通过服务引用释放服务对象。</p>
 </div>
 <div class="paragraph">
 <p>在使用完服务后，必须释放服务引用，才能清理服务对象和更新服务使用状态。</p>
@@ -407,8 +407,8 @@ the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>每当通过
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_getReference">getReference</a>`方法获取一个服务引用或者通过
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html#method_release">release</a>`方法释放一个服务引用时，都会有事件发送到 Event Bus 中，用来跟踪服务的使用情况。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_getReference">getReference</a>`方法获取一个服务引用或者通过
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html#method_release">release</a>`方法释放一个服务引用时，都会有事件发送到 Event Bus 中，用来跟踪服务的使用情况。</p>
 </div>
 <div class="paragraph">
 <p>关于服务事件的更详细内容参考后续章节。</p>
@@ -422,7 +422,7 @@ the service, 4) release the service object once done.</p>
 比如，Vert.x还通过实现该接口提供了基于Redis的存储后端。</p>
 </div>
 <div class="paragraph">
-<p>注意服务发现模块并不需要运行在Vert.x 集群模式下。在单机模式下，服务记录存储于本地，并且可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html">ServiceImporter</a></code> 来导入。
+<p>注意服务发现模块并不需要运行在Vert.x 集群模式下。在单机模式下，服务记录存储于本地，并且可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html">ServiceImporter</a></code> 来导入。
 从 3.5.0 版本开始，你甚至可以在集群模式下采用本地结构储存，通过设置 <code>vertx-service-discovery-backend-local</code>
 为 <code>true</code>(或者设置环境变量 <code>VERTX-SERVICE-DISCOVERY-BACKEND-LOCAL</code> 为 <code>true</code>)</p>
 </div>
@@ -433,7 +433,7 @@ the service, 4) release the service object once done.</p>
 <h2 id="_创建service_discovery实例">创建Service Discovery实例</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>服务发布者和服务消费者都必须通过单独创建自己的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html">ServiceDiscovery</a></code>
+<p>服务发布者和服务消费者都必须通过单独创建自己的 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html">ServiceDiscovery</a></code>
 实例来使用服务发现模块：</p>
 </div>
 <div class="listingblock">
@@ -485,7 +485,7 @@ the service, 4) release the service object once done.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>你可以通过 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 类或者各种服务类型类提供的快捷方法来创建服务记录。</p>
+<p>你可以通过 <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 类或者各种服务类型类提供的快捷方法来创建服务记录。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -565,7 +565,7 @@ the service, 4) release the service object once done.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>一个接收 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 对象的函数，这个函数返回一个布尔值（就是一个 <code>predicate</code>，即判断函数）</p>
+<p>一个接收 <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 对象的函数，这个函数返回一个布尔值（就是一个 <code>predicate</code>，即判断函数）</p>
 </li>
 <li>
 <p>过滤器是一个JSON对象。对象中的每个条目，将会用来过滤服务记录。服务记录必须满足所有的条目要求。这些条目可以使用 <code>*</code> 号来代表必须存在某个key值，而不管value值</p>
@@ -678,7 +678,7 @@ the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>你可以获取一条服务记录，也可以通过
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_getRecords">getRecords</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_getRecords">getRecords</a></code>
 方法获取所有匹配到的服务记录。默认情况下，服务查找只会包含状态为`UP`的服务，可以通过如下方式覆盖默认设置：</p>
 </div>
 <div class="ulist">
@@ -687,7 +687,7 @@ the service, 4) release the service object once done.</p>
 <p>当使用JSON过滤器，设置`status`属性为你想要的值（或者 <code>*</code> 来接收所有的状态）</p>
 </li>
 <li>
-<p>当使用函数过滤器，将 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_getRecords">getRecords</a></code> 方法的参数`includeOutOfService`设置为`true`</p>
+<p>当使用函数过滤器，将 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_getRecords">getRecords</a></code> 方法的参数`includeOutOfService`设置为`true`</p>
 </li>
 </ul>
 </div>
@@ -697,8 +697,8 @@ the service, 4) release the service object once done.</p>
 <h2 id="_获取服务引用">获取服务引用</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>当你选择好了服务记录( <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 对象)后，你就可以获得到一个
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a></code>，然后得到服务对象：</p>
+<p>当你选择好了服务记录( <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 对象)后，你就可以获得到一个
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html">ServiceReference</a></code>，然后得到服务对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -746,8 +746,8 @@ the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>在前面的示例中，代码中使用的是
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html#method_getAs">getAs</a>`方法，参数是你期望获得的对象类型。如果你使用Java语言，那么可以直接用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceReference.html#method_get">get</a>`方法，而其他语言中，你必须传递对象类型。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html#method_getAs">getAs</a>`方法，参数是你期望获得的对象类型。如果你使用Java语言，那么可以直接用
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceReference.html#method_get">get</a>`方法，而其他语言中，你必须传递对象类型。</p>
 </div>
 </div>
 </div>
@@ -763,22 +763,22 @@ the service, 4) release the service object once done.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html">HttpEndpoint</a></code> - 为REST API服务提供的类型，服务对象的类型是一个配置好了host和port的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> （其location表现为一个url）</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html">HttpEndpoint</a></code> - 为REST API服务提供的类型，服务对象的类型是一个配置好了host和port的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> （其location表现为一个url）</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.EventBusService.html">EventBusService</a></code> - 服务代理，服务对象是一个代理，它的类型是所代理的接口（其location表现为一个Event Bus的address地址）</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.EventBusService.html">EventBusService</a></code> - 服务代理，服务对象是一个代理，它的类型是所代理的接口（其location表现为一个Event Bus的address地址）</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a></code> - 消息源服务，服务对象的类型是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> （其location表现为一个Event Bus的address地址）</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a></code> - 消息源服务，服务对象的类型是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> （其location表现为一个Event Bus的address地址）</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.JDBCDataSource.html">JDBCDataSource</a></code> - JDBC数据源服务，服务对象的类型是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code> （该Client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.JDBCDataSource.html">JDBCDataSource</a></code> - JDBC数据源服务，服务对象的类型是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code> （该Client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.RedisDataSource.html">RedisDataSource</a></code> - Redis数据源服务，服务对象的类型是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-redis-jphp/classes/io.vertx.jphp.redis.RedisClient.html">RedisClient</a></code> （该client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.RedisDataSource.html">RedisDataSource</a></code> - Redis数据源服务，服务对象的类型是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.redis.RedisClient.html">RedisClient</a></code> （该client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MongoDataSource.html">MongoDataSource</a></code> - Mongo数据源服务，服务对象的类型一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-mongo-jphp/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> （该client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MongoDataSource.html">MongoDataSource</a></code> - Mongo数据源服务，服务对象的类型一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> （该client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
 </li>
 </ul>
 </div>
@@ -788,7 +788,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_无类型的服务">无类型的服务</h3>
 <div class="paragraph">
-<p>某些服务记录也可以不带有类型( <code>ServiceType::UNKNOWN</code> )。通过这种服务记录，是无法获取到服务引用的，但是你可以通过服务记录（ <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> ）的`location`和`metadata`来创建连接的细节。</p>
+<p>某些服务记录也可以不带有类型( <code>ServiceType::UNKNOWN</code> )。通过这种服务记录，是无法获取到服务引用的，但是你可以通过服务记录（ <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> ）的`location`和`metadata`来创建连接的细节。</p>
 </div>
 <div class="paragraph">
 <p>使用这种服务，将不会产生服务使用的事件。</p>
@@ -797,16 +797,16 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_http_endpoints">HTTP endpoints</h3>
 <div class="paragraph">
-<p>一个 HTTP 端点(endpoint)，就是一个REST API或可以通过HTTP请求访问的服务。HTTP Endpoint服务对象就是一个配置了host、port和ssl的 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a>`对象。</p>
+<p>一个 HTTP 端点(endpoint)，就是一个REST API或可以通过HTTP请求访问的服务。HTTP Endpoint服务对象就是一个配置了host、port和ssl的 `<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a>`对象。</p>
 </div>
 <div class="sect3">
 <h4 id="_发布http_endpoint服务">发布HTTP Endpoint服务</h4>
 <div class="paragraph">
-<p>要发布一个HTTP Endpoint服务，你需要一个 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 对象。你可以通过调用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html#method_createRecord">HttpEndpoint::createRecord</a>`创建这样一个服务记录对象。</p>
+<p>要发布一个HTTP Endpoint服务，你需要一个 <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 对象。你可以通过调用
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html#method_createRecord">HttpEndpoint::createRecord</a>`创建这样一个服务记录对象。</p>
 </div>
 <div class="paragraph">
-<p>下面的代码片段，展示了如何通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html">HttpEndpoint</a></code> 接口创建一个 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> ：</p>
+<p>下面的代码片段，展示了如何通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html">HttpEndpoint</a></code> 接口创建一个 <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -831,7 +831,7 @@ the service, 4) release the service object once done.</p>
 <h4 id="_调用http_endpoint服务">调用HTTP Endpoint服务</h4>
 <div class="paragraph">
 <p>一旦一个HTTP Endpoint服务发布好了，服务消费者就可以获取到这个服务。对应的服务对象是一个
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a>`实例，并且已经配置好了host和port参数。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a>`实例，并且已经配置好了host和port参数。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -862,7 +862,7 @@ the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>你也可以使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html#method_getClient">HttpEndpoint::getClient</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.HttpEndpoint.html#method_getClient">HttpEndpoint::getClient</a></code>
 这个方法，一步就完成服务查找和服务获取：</p>
 </div>
 <div class="listingblock">
@@ -891,12 +891,12 @@ the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>在第二种写法中，服务对象的释放是通过
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_releaseServiceObject">ServiceDiscovery::releaseServiceObject</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_releaseServiceObject">ServiceDiscovery::releaseServiceObject</a></code>
 这个方法完成的，因此在这种情况下你是不需要持有一个服务引用的。</p>
 </div>
 <div class="paragraph">
-<p>从Vert.x 3.4.0开始，Vert.x提供了另一种更高层次封装、更方便使用的HTTP客户端 — <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.WebClient.html">WebClient</a></code> 。
-你可以通过如下方式来获取一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.WebClient.html">WebClient</a></code> 实例：</p>
+<p>从Vert.x 3.4.0开始，Vert.x提供了另一种更高层次封装、更方便使用的HTTP客户端 — <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.WebClient.html">WebClient</a></code> 。
+你可以通过如下方式来获取一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.WebClient.html">WebClient</a></code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -957,7 +957,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_event_bus_服务">Event Bus 服务</h3>
 <div class="paragraph">
-<p>Event Bus 服务是一种服务代理，是基于Event Bus实现的一种异步RPC服务。当从一个Event Bus服务中获取一个服务对象时，你实际上得到的某个服务类的服务代理。你也可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.EventBusService.html">EventBusService</a></code> 接口的辅助方法来获得服务代理。</p>
+<p>Event Bus 服务是一种服务代理，是基于Event Bus实现的一种异步RPC服务。当从一个Event Bus服务中获取一个服务对象时，你实际上得到的某个服务类的服务代理。你也可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.EventBusService.html">EventBusService</a></code> 接口的辅助方法来获得服务代理。</p>
 </div>
 <div class="paragraph">
 <p>注意服务代理（服务实现和服务接口）都需要用Java语言开发。</p>
@@ -965,7 +965,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect3">
 <h4 id="_发布event_bus_服务">发布Event Bus 服务</h4>
 <div class="paragraph">
-<p>要发布一个Event Bus服务，你需要创建一个 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 对象：</p>
+<p>要发布一个Event Bus服务，你需要创建一个 <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -985,7 +985,7 @@ the service, 4) release the service object once done.</p>
 <h4 id="_调用_event_bus_服务">调用 Event Bus 服务</h4>
 <div class="paragraph">
 <p>要调用（消费）Event Bus服务，你可以通过先获取到服务记录然后获取服务引用的方式，也可以直接通过
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.EventBusService.html">EventBusService</a>`接口，将两步合并成一次方法调用。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.EventBusService.html">EventBusService</a>`接口，将两步合并成一次方法调用。</p>
 </div>
 </div>
 </div>
@@ -993,7 +993,7 @@ the service, 4) release the service object once done.</p>
 <h3 id="_消息源服务">消息源服务</h3>
 <div class="paragraph">
 <p>消息源服务，就是通过Event Bus发送消息到某个地址的组件。消息源服务的Client是
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code>。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>消息源服务的 <code>location</code> 是消息所发送的Event Bus 地址。</p>
@@ -1006,7 +1006,7 @@ the service, 4) release the service object once done.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a></code> 接口创建一条服务记录</p>
+<p>通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a></code> 接口创建一条服务记录</p>
 </li>
 <li>
 <p>发布这条服务记录</p>
@@ -1027,14 +1027,14 @@ the service, 4) release the service object once done.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>在第二个 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#Record">Record</a></code> 创建时，我们同时指明了消息体（payload）的类型，这不是必须的。</p>
+<p>在第二个 <code><a href="../../vertx-service-discovery/php/dataobjects.html#Record">Record</a></code> 创建时，我们同时指明了消息体（payload）的类型，这不是必须的。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_消费消息源服务">消费消息源服务</h4>
 <div class="paragraph">
 <p>在服务消费端，你可以手动获取服务记录和服务引用，也可以使用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a>`接口提供的辅助方法直接获取。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a>`接口提供的辅助方法直接获取。</p>
 </div>
 <div class="paragraph">
 <p>第一种方式对应的代码示例如下：</p>
@@ -1063,7 +1063,7 @@ the service, 4) release the service object once done.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>如果使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a></code> 接口，代码如下：</p>
+<p>如果使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MessageSource.html">MessageSource</a></code> 接口，代码如下：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1090,7 +1090,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_jdbc_数据源">JDBC 数据源</h3>
 <div class="paragraph">
-<p>数据源指的是数据库或数据存储。JDBC数据源通过JDBC驱动访问数据库，JDBC数据源服务对象是是 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code> 实例。</p>
+<p>数据源指的是数据库或数据存储。JDBC数据源通过JDBC驱动访问数据库，JDBC数据源服务对象是是 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code> 实例。</p>
 </div>
 <div class="sect3">
 <h4 id="_发布_jdbc_数据源服务">发布 JDBC 数据源服务</h4>
@@ -1100,7 +1100,7 @@ the service, 4) release the service object once done.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.JDBCDataSource.html">JDBCDataSource</a></code> 接口创建服务记录</p>
+<p>通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.JDBCDataSource.html">JDBCDataSource</a></code> 接口创建服务记录</p>
 </li>
 <li>
 <p>发布服务记录</p>
@@ -1130,7 +1130,7 @@ the service, 4) release the service object once done.</p>
 <h4 id="_消费_jdbc_数据源服务">消费 JDBC 数据源服务</h4>
 <div class="paragraph">
 <p>如前所述，访问数据源的方式依赖于数据源本身。要创建一个
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jdbc-jphp/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.jdbc.JDBCClient.html">JDBCClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1189,7 +1189,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_redis_数据源">Redis 数据源</h3>
 <div class="paragraph">
-<p>Redis 数据源服务是专门为Redis提供的服务类型，对应服务对象是 <code><a href="https://vertx.okou.tk/phpdoc/vertx-redis-jphp/classes/io.vertx.jphp.redis.RedisClient.html">RedisClient</a></code> 。</p>
+<p>Redis 数据源服务是专门为Redis提供的服务类型，对应服务对象是 <code><a href="../../phpdoc/classes/io.vertx.jphp.redis.RedisClient.html">RedisClient</a></code> 。</p>
 </div>
 <div class="sect3">
 <h4 id="_发布_redis_数据源服务">发布 Redis 数据源服务</h4>
@@ -1199,7 +1199,7 @@ the service, 4) release the service object once done.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.RedisDataSource.html">RedisDataSource</a></code> 接口创建一条服务记录</p>
+<p>通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.RedisDataSource.html">RedisDataSource</a></code> 接口创建一条服务记录</p>
 </li>
 <li>
 <p>发布这个服务记录</p>
@@ -1229,7 +1229,7 @@ the service, 4) release the service object once done.</p>
 <h4 id="_消费_redis_数据源服务">消费 Redis 数据源服务</h4>
 <div class="paragraph">
 <p>如前所述，访问数据源的方式依赖于数据源本身。要创建一个
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-redis-jphp/classes/io.vertx.jphp.redis.RedisClient.html">RedisClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.redis.RedisClient.html">RedisClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1255,7 +1255,7 @@ the service, 4) release the service object once done.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>你也可以利用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.RedisDataSource.html">RedisDataSource</a></code> 接口的辅助方法来查询和获取服务对象：</p>
+<p>你也可以利用 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.RedisDataSource.html">RedisDataSource</a></code> 接口的辅助方法来查询和获取服务对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1282,7 +1282,7 @@ the service, 4) release the service object once done.</p>
 <div class="sect2">
 <h3 id="_mongo_数据源">Mongo 数据源</h3>
 <div class="paragraph">
-<p>Mongo 数据源服务是专门为 MongoDB 提供的一种服务类型，对应的服务对象是 <code><a href="https://vertx.okou.tk/phpdoc/vertx-mongo-jphp/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> 。</p>
+<p>Mongo 数据源服务是专门为 MongoDB 提供的一种服务类型，对应的服务对象是 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> 。</p>
 </div>
 <div class="sect3">
 <h4 id="_发布_mongo_数据源服务">发布 Mongo 数据源服务</h4>
@@ -1292,7 +1292,7 @@ the service, 4) release the service object once done.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MongoDataSource.html">MongoDataSource</a></code> 接口创建一条服务记录</p>
+<p>通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MongoDataSource.html">MongoDataSource</a></code> 接口创建一条服务记录</p>
 </li>
 <li>
 <p>发布这条服务记录</p>
@@ -1322,7 +1322,7 @@ the service, 4) release the service object once done.</p>
 <h4 id="_消费_mongo_数据源服务">消费 Mongo 数据源服务</h4>
 <div class="paragraph">
 <p>如前所述，访问数据源的方式依赖于数据源本身。要创建一个
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-mongo-jphp/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1350,7 +1350,7 @@ the service, 4) release the service object once done.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>你也可以利用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.types.MongoDataSource.html">MongoDataSource</a></code> 接口中的辅助方法来完成服务对象的查找和获取：</p>
+<p>你也可以利用 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.types.MongoDataSource.html">MongoDataSource</a></code> 接口中的辅助方法来完成服务对象的查找和获取：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1383,7 +1383,7 @@ the service, 4) release the service object once done.</p>
 <h2 id="_监听服务的上线与下线">监听服务的上线与下线</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>每当服务发布或者取消发布，都会有相应的事件发送到 <code>vertx.discovery.announce</code> 这个地址。这个地址可以通过 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code> 配置。</p>
+<p>每当服务发布或者取消发布，都会有相应的事件发送到 <code>vertx.discovery.announce</code> 这个地址。这个地址可以通过 <code><a href="../../vertx-service-discovery/php/dataobjects.html#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code> 配置。</p>
 </div>
 <div class="paragraph">
 <p>收到的`Record`中有个`status`字段，用来表示服务的状态：</p>
@@ -1407,7 +1407,7 @@ the service, 4) release the service object once done.</p>
 <h2 id="_监听服务的使用">监听服务的使用</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>每当有一个服务引用被绑定或者被释放，都会有相应的事件发送到 <code>vertx.discovery.usage</code> 这个地址。这个地址可以通过 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code> 配置。</p>
+<p>每当有一个服务引用被绑定或者被释放，都会有相应的事件发送到 <code>vertx.discovery.usage</code> 这个地址。这个地址可以通过 <code><a href="../../vertx-service-discovery/php/dataobjects.html#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code> 配置。</p>
 </div>
 <div class="paragraph">
 <p>通过这个事件，可以监听服务的使用和服务的映射。</p>
@@ -1429,11 +1429,11 @@ the service, 4) release the service object once done.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>其中 <code>id</code> 可以通过 <code><a href="../../vertx-service-discovery/vertx-service-discovery-jphp/enums.adoc#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code> 进行配置。默认情况下，在单节点时它的值是`localhost`，在集群模式时是节点的ID。</p>
+<p>其中 <code>id</code> 可以通过 <code><a href="../../vertx-service-discovery/php/dataobjects.html#ServiceDiscoveryOptions">ServiceDiscoveryOptions</a></code> 进行配置。默认情况下，在单节点时它的值是`localhost`，在集群模式时是节点的ID。</p>
 </div>
 <div class="paragraph">
 <p>你也可以通过
-<code><a href="../vertx-service-discovery-jphp/enums.adoc#ServiceDiscoveryOptions#method_setUsageAddress">setUsageAddress</a>`方法，将事件发送地址设置为`null</code>，这样就可以禁用服务使用情况的监听功能了。</p>
+<code><a href="../php/dataobjects.html#ServiceDiscoveryOptions#method_setUsageAddress">setUsageAddress</a>`方法，将事件发送地址设置为`null</code>，这样就可以禁用服务使用情况的监听功能了。</p>
 </div>
 </div>
 </div>
@@ -1444,8 +1444,8 @@ the service, 4) release the service object once done.</p>
 <p>通过桥接器（bridge），你可以从其他服务发现组件中导入和导出服务，比如Docker，Kubernetes，Consul等。每种类型的桥接器，决定了服务如何导入和导出，并且不一定都是双向的。</p>
 </div>
 <div class="paragraph">
-<p>要想自定义桥接器，你可以通过实现 <code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html">ServiceImporter</a></code> 接口，然后再使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_registerServiceImporter">registerServiceImporter</a></code>
+<p>要想自定义桥接器，你可以通过实现 <code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html">ServiceImporter</a></code> 接口，然后再使用
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.ServiceDiscovery.html#method_registerServiceImporter">registerServiceImporter</a></code>
 方法注册一下。</p>
 </div>
 <div class="paragraph">
@@ -1453,15 +1453,15 @@ the service, 4) release the service object once done.</p>
 </div>
 <div class="paragraph">
 <p>当桥接器注册后，
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html">#start)</a></code>
-方法将会被调用，这样你可以对桥接器进行一些配置。当桥接器配置好了，已经准备导入导出初始的服务时，必须 <code>complete</code> 所传递的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code> 。如果桥接器的启动方法是阻塞型的，那么就必须使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_executeBlocking">executeBlocking</a>`方法进行封装，并且`complete`所传递的 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code> 对象。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html">#start)</a></code>
+方法将会被调用，这样你可以对桥接器进行一些配置。当桥接器配置好了，已经准备导入导出初始的服务时，必须 <code>complete</code> 所传递的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code> 。如果桥接器的启动方法是阻塞型的，那么就必须使用
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_executeBlocking">executeBlocking</a>`方法进行封装，并且`complete`所传递的 `<a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code> 对象。</p>
 </div>
 <div class="paragraph">
 <p>当服务发现实例被关闭的时候，对应的桥接器也一块被关闭了。执行关闭操作的时候，服务发现组件会调用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-service-discovery-jphp/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html#method_close">close</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.servicediscovery.spi.ServiceImporter.html#method_close">close</a></code>
 方法以进行资源的释放以及移除导入/导出的服务。这个方法必须调用所传递的
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a>`的`complete`方法，来通知调用者关闭操作已经完成。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a>`的`complete`方法，来通知调用者关闭操作已经完成。</p>
 </div>
 <div class="paragraph">
 <p>需要提醒的是，在一个集群中，只需要有一个节点注册了服务桥接器，集群中所有成员就都能使用了。</p>
@@ -1505,7 +1505,7 @@ the service, 4) release the service object once done.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:25:35 CST
+                上次更新时间 2018-11-05 19:56:44 CST
               
               
             </div>

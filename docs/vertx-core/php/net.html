@@ -253,7 +253,7 @@
 <div class="sect2">
 <h3 id="_配置_tcp_服务端">配置 TCP 服务端</h3>
 <div class="paragraph">
-<p>若您不想使用默认配置，可以在创建时通过传入一个 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code>
+<p>若您不想使用默认配置，可以在创建时通过传入一个 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code>
 实例来配置服务器：</p>
 </div>
 <div class="listingblock">
@@ -270,7 +270,7 @@
 <div class="sect2">
 <h3 id="_启动服务端监听">启动服务端监听</h3>
 <div class="paragraph">
-<p>要告诉服务端监听传入的请求，您可以使用其中一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_listen">listen</a></code>
+<p>要告诉服务端监听传入的请求，您可以使用其中一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_listen">listen</a></code>
 方法。</p>
 </div>
 <div class="paragraph">
@@ -325,7 +325,7 @@
 <p>若设置监听端口为 <code>0</code> ，服务器将随机寻找一个没有使用的端口来监听。</p>
 </div>
 <div class="paragraph">
-<p>可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_actualPort">actualPort</a></code> 方法来获得服务器实际监听的端口：</p>
+<p>可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_actualPort">actualPort</a></code> 方法来获得服务器实际监听的端口：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -345,7 +345,7 @@
 <div class="sect2">
 <h3 id="_接收传入连接的通知">接收传入连接的通知</h3>
 <div class="paragraph">
-<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_connectHandler">connectHandler</a></code> :</p>
+<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_connectHandler">connectHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -358,7 +358,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>当连接成功时，您可以在回调函数中处理得到的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 实例。</p>
+<p>当连接成功时，您可以在回调函数中处理得到的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 实例。</p>
 </div>
 <div class="paragraph">
 <p>这是一个代表了实际连接的套接字接口，它允许您读取和写入数据、以及执行各种其他操作，如关闭 Socket。</p>
@@ -367,10 +367,10 @@
 <div class="sect2">
 <h3 id="_从socket读取数据">从Socket读取数据</h3>
 <div class="paragraph">
-<p>您可以在Socket上调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_handler">handler</a></code> 方法来设置用于读取数据的处理器。</p>
+<p>您可以在Socket上调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_handler">handler</a></code> 方法来设置用于读取数据的处理器。</p>
 </div>
 <div class="paragraph">
-<p>每次 Socket 接收到数据时，会以 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 对象为参数调用处理器。</p>
+<p>每次 Socket 接收到数据时，会以 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 对象为参数调用处理器。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -388,7 +388,7 @@
 <div class="sect2">
 <h3 id="_向socket中写入数据">向Socket中写入数据</h3>
 <div class="paragraph">
-<p>您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_write">write</a></code> 方法写入数据到Socket：</p>
+<p>您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_write">write</a></code> 方法写入数据到Socket：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -413,7 +413,7 @@
 <div class="sect2">
 <h3 id="_关闭处理器">关闭处理器</h3>
 <div class="paragraph">
-<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_closeHandler">closeHandler</a></code> :</p>
+<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_closeHandler">closeHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -428,7 +428,7 @@
 <div class="sect2">
 <h3 id="_处理异常">处理异常</h3>
 <div class="paragraph">
-<p>您可以设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_exceptionHandler">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
+<p>您可以设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_exceptionHandler">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
 </div>
 </div>
 <div class="sect2">
@@ -440,22 +440,22 @@
 <p>这意味着您可以通过向这个地址发送 <code>Buffer</code> 的方式，从不同的 Verticle 甚至是不同的 Vert.x 实例中向指定的 Socket 发送数据。</p>
 </div>
 <div class="paragraph">
-<p>处理器的地址由 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_writeHandlerID">writeHandlerID</a></code> 方法提供。</p>
+<p>处理器的地址由 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_writeHandlerID">writeHandlerID</a></code> 方法提供。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_本地和远程地址">本地和远程地址</h3>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_localAddress">localAddress</a></code> 方法获取 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的本地地址，</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_localAddress">localAddress</a></code> 方法获取 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的本地地址，</p>
 </div>
 <div class="paragraph">
-<p>通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_remoteAddress">remoteAddress</a></code> 方法获取 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的远程地址（即连接的另一端的地址）。</p>
+<p>通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_remoteAddress">remoteAddress</a></code> 方法获取 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的远程地址（即连接的另一端的地址）。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_发送文件或_classpath_中的资源">发送文件或 Classpath 中的资源</h3>
 <div class="paragraph">
-<p>您可以直接通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_sendFile">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
+<p>您可以直接通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_sendFile">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
 这种做法是非常高效的，它可以被操作系统内核直接处理。</p>
 </div>
 <div class="paragraph">
@@ -472,8 +472,8 @@
 <div class="sect2">
 <h3 id="_流式的socket">流式的Socket</h3>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`接口继承了 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`接口继承了 `<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
 </div>
 <div class="paragraph">
 <p>有关更多信息，请参阅 <a href="#streams">流和管道</a>  章节。</p>
@@ -482,7 +482,7 @@
 <div class="sect2">
 <h3 id="_升级到_ssl_tls_连接">升级到 SSL/TLS 连接</h3>
 <div class="paragraph">
-<p>一个非SSL/TLS连接可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_upgradeToSsl">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
+<p>一个非SSL/TLS连接可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_upgradeToSsl">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
 </div>
 <div class="paragraph">
 <p>必须为服务器或客户端配置SSL/TLS才能正常工作。请参阅 <a href="#ssl">SSL/TLS</a> 章节来获取详细信息。
@@ -492,7 +492,7 @@ for more information.</p>
 <div class="sect2">
 <h3 id="_关闭_tcp_服务端">关闭 TCP 服务端</h3>
 <div class="paragraph">
-<p>您可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_close">close</a></code> 方法关闭服务端。关闭操作将关闭所有打开的连接并释放所有服务端资源。</p>
+<p>您可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_close">close</a></code> 方法关闭服务端。关闭操作将关闭所有打开的连接并释放所有服务端资源。</p>
 </div>
 <div class="paragraph">
 <p>关闭操作也是异步的，可能直到方法调用返回过后一段时间才会实际关闭。若您想在实际关闭完成时收到通知，那么您可以传递一个处理器。</p>
@@ -606,7 +606,7 @@ for more information.</p>
 <div class="sect2">
 <h3 id="_配置_tcp_客户端">配置 TCP 客户端</h3>
 <div class="paragraph">
-<p>如果您不想使用默认值，则可以在创建实例时传入 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code>
+<p>如果您不想使用默认值，则可以在创建实例时传入 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code>
 给客户端：</p>
 </div>
 <div class="listingblock">
@@ -623,9 +623,9 @@ for more information.</p>
 <div class="sect2">
 <h3 id="_创建连接">创建连接</h3>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetClient.html#method_connect">connect</a></code> ,
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetClient.html#method_connect">connect</a></code> ,
 方法创建到服务器的连接。请指定服务器的端口和主机，以及用于处理
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -650,8 +650,8 @@ for more information.</p>
 <h3 id="_配置连接重试">配置连接重试</h3>
 <div class="paragraph">
 <p>可以将客户端配置为在无法连接的情况下自动重试。
-这是通过 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions#method_setReconnectInterval">setReconnectInterval</a></code> 和
-`<a href="../vertx-jphp/enums.adoc#NetClientOptions#method_setReconnectAttempts">setReconnectAttempts</a>`方法配置的。</p>
+这是通过 <code><a href="../php/dataobjects.html#NetClientOptions#method_setReconnectInterval">setReconnectInterval</a></code> 和
+`<a href="../php/dataobjects.html#NetClientOptions#method_setReconnectAttempts">setReconnectAttempts</a>`方法配置的。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -735,12 +735,12 @@ for more information.</p>
 。早期版本的TLS被称为SSL。</p>
 </div>
 <div class="paragraph">
-<p>无论是否使用SSL/TLS，服务器和客户端的API都是相同的。通过创建客户端/服务器时使用的 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 或 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 来启用TLS/SSL。</p>
+<p>无论是否使用SSL/TLS，服务器和客户端的API都是相同的。通过创建客户端/服务器时使用的 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 或 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 来启用TLS/SSL。</p>
 </div>
 <div class="sect3">
 <h4 id="_在服务端启用ssl_tls">在服务端启用SSL/TLS</h4>
 <div class="paragraph">
-<p>您需要设置 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions#method_setSsl">ssl</a></code> 配置项来启用 SSL/TLS。</p>
+<p>您需要设置 <code><a href="../php/dataobjects.html#NetServerOptions#method_setSsl">ssl</a></code> 配置项来启用 SSL/TLS。</p>
 </div>
 <div class="paragraph">
 <p>默认是禁用的。</p>
@@ -1012,7 +1012,7 @@ for more information.</p>
 <div class="sect3">
 <h4 id="_客户端受信配置">客户端受信配置</h4>
 <div class="paragraph">
-<p>若客户端将 <code><a href="../vertx-jphp/enums.adoc#ClientOptionsBase#method_setTrustAll">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
+<p>若客户端将 <code><a href="../php/dataobjects.html#ClientOptionsBase#method_setTrustAll">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
 连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为 <code>false</code> 。</p>
 </div>
 <div class="listingblock">
@@ -1026,7 +1026,7 @@ for more information.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>若客户端没有设置 <code><a href="../vertx-jphp/enums.adoc#ClientOptionsBase#method_setTrustAll">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
+<p>若客户端没有设置 <code><a href="../php/dataobjects.html#ClientOptionsBase#method_setTrustAll">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下，客户端禁用主机验证。要启用主机验证，请在客户端上设置使用的算法（目前仅支持HTTPS和LDAPS）：</p>
@@ -1049,7 +1049,7 @@ for more information.</p>
 </div>
 <div class="paragraph">
 <p>它只是一个标准的Java密钥存储，与服务器端的密钥存储相同。通过在
-<code><a href="../vertx-jphp/enums.adoc#JksOptions">jks options</a>`上使用 `<a href="../vertx-jphp/enums.adoc#JksOptions#method_setPath">path</a></code>
+<code><a href="../php/dataobjects.html#JksOptions">jks options</a>`上使用 `<a href="../php/dataobjects.html#JksOptions#method_setPath">path</a></code>
 设置客户端受信存储位置。如果服务器在连接期间提供不在客户端受信存储中的证书，则尝试连接将不会成功。</p>
 </div>
 <div class="listingblock">
@@ -1157,7 +1157,7 @@ for more information.</p>
 <p>如果服务器需要客户端认证，那么当连接时，客户端必须向服务器提供自己的证书。可通过以下几种方式配置客户端：</p>
 </div>
 <div class="paragraph">
-<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../vertx-jphp/enums.adoc#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../vertx-jphp/enums.adoc#JksOptions#method_setPath">path</a></code> 。</p>
+<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../php/dataobjects.html#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../php/dataobjects.html#JksOptions#method_setPath">path</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1281,7 +1281,7 @@ for more information.</p>
 <p>在运行单元/集成测试或是运行开发版的应用程序时都经常需要自签名证书。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
 give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
 </div>
 <div class="listingblock">
@@ -1352,7 +1352,7 @@ give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置�
 <div class="sect3">
 <h4 id="_待撤销证书颁发机构">待撤销证书颁发机构</h4>
 <div class="paragraph">
-<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions#method_addCrlPath">crlPath</a></code> 配置了使用的CRL：
+<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../php/dataobjects.html#NetClientOptions#method_addCrlPath">crlPath</a></code> 配置了使用的CRL：
 the crl list to use:</p>
 </div>
 <div class="listingblock">
@@ -1408,7 +1408,7 @@ the crl list to use:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>密码套件可在 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
+<p>密码套件可在 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1422,7 +1422,7 @@ the crl list to use:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>协议版本可在 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
+<p>协议版本可在 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1436,10 +1436,10 @@ the crl list to use:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>当 <code><a href="../vertx-jphp/enums.adoc#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
+<p>当 <code><a href="../php/dataobjects.html#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
 </li>
 <li>
-<p>否则使用 <code><a href="../vertx-jphp/enums.adoc#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
+<p>否则使用 <code><a href="../php/dataobjects.html#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
 </li>
 </ul>
 </div>
@@ -1502,8 +1502,8 @@ indicated server name.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>if <code><a href="../vertx-jphp/enums.adoc#JksOptions">JksOptions</a></code> were used to set the trust options
-( <code><a href="../vertx-jphp/enums.adoc#NetServerOptions#method_setTrustOptions">options</a></code> ) then an exact match with the trust store
+<p>if <code><a href="../php/dataobjects.html#JksOptions">JksOptions</a></code> were used to set the trust options
+( <code><a href="../php/dataobjects.html#NetServerOptions#method_setTrustOptions">options</a></code> ) then an exact match with the trust store
 alias is done</p>
 </li>
 <li>
@@ -1512,7 +1512,7 @@ alias is done</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>You can enable SNI on the server by setting <code><a href="../vertx-jphp/enums.adoc#NetServerOptions#method_setSni">setSni</a></code> to <code>true</code> and
+<p>You can enable SNI on the server by setting <code><a href="../php/dataobjects.html#NetServerOptions#method_setSni">setSni</a></code> to <code>true</code> and
 configured the server with multiple key/certificate pairs.</p>
 </div>
 <div class="paragraph">
@@ -1534,7 +1534,7 @@ configured the server with multiple key/certificate pairs.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../vertx-jphp/enums.adoc#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
+<p>`<a href="../php/dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1621,13 +1621,13 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>当 <code><a href="../vertx-jphp/enums.adoc#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
+<p>当 <code><a href="../php/dataobjects.html#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
 </li>
 <li>
-<p>JDK中ALPN可用时使用 <code><a href="../vertx-jphp/enums.adoc#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
+<p>JDK中ALPN可用时使用 <code><a href="../php/dataobjects.html#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
 </li>
 <li>
-<p>OpenSSL中ALPN可用时使用 <code><a href="../vertx-jphp/enums.adoc#OpenSSLEngineOptions">OpenSSLEngineOptions</a></code></p>
+<p>OpenSSL中ALPN可用时使用 <code><a href="../php/dataobjects.html#OpenSSLEngineOptions">OpenSSLEngineOptions</a></code></p>
 </li>
 <li>
 <p>否则失败</p>
@@ -1640,7 +1640,7 @@ configured the server with multiple key/certificate pairs.</p>
 <p>OpenSSL提供了原生的ALPN支持。</p>
 </div>
 <div class="paragraph">
-<p>OpenSSL需要配置 <code><a href="../vertx-jphp/enums.adoc#TCPSSLOptions#method_setOpenSslEngineOptions">setOpenSslEngineOptions</a></code>
+<p>OpenSSL需要配置 <code><a href="../php/dataobjects.html#TCPSSLOptions#method_setOpenSslEngineOptions">setOpenSslEngineOptions</a></code>
 并在类路径上使用 <a href="http://netty.io/wiki/forked-tomcat-native.html">netty-tcnative</a> 的jar库。依赖于tcnative的实现它需要OpenSSL安装在您的操作系统中。</p>
 </div>
 </div>
@@ -1678,11 +1678,11 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect2">
 <h3 id="_客户端连接使用代理">客户端连接使用代理</h3>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
 </div>
 <div class="paragraph">
-<p>代理可以在 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 内设置
-`<a href="../vertx-jphp/enums.adoc#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
+<p>代理可以在 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 内设置
+`<a href="../php/dataobjects.html#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -1714,7 +1714,7 @@ configured the server with multiple key/certificate pairs.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:07 CST
+                上次更新时间 2018-11-05 19:55:24 CST
               
               
             </div>

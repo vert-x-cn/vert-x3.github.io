@@ -294,6 +294,23 @@ config['automaticRecoveryEnabled'] = true
 client = VertxRabbitmq::RabbitMQClient.create(vertx, config)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can set multiples addresses to connect to a cluster;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'vertx-rabbitmq/rabbit_mq_client'
+config = {
+}
+config['user'] = "user1"
+config['password'] = "password1"
+config['virtualHost'] = "vhost1"
+
+config['addresses'] = [Java::ComRabbitmqClient::Address.parse_addresses("firstHost,secondHost:5672")]
+
+client = VertxRabbitmq::RabbitMQClient.create(vertx, config)</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_declare_exchange_with_additional_config">Declare exchange with additional config</h3>
@@ -568,7 +585,7 @@ client.basic_consume("my.queue", "my.address", false) { |consumeResult_err,consu
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:25:17 CST
+                上次更新时间 2018-11-05 19:56:28 CST
               
               
             </div>

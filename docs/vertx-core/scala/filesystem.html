@@ -239,9 +239,7 @@ fs.copyBlocking("foo.txt", "bar.txt")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-scala" data-lang="scala">var vertx = Vertx.vertx()
-
-// Read a file
+<pre class="highlight"><code class="language-scala" data-lang="scala">// Read a file
 vertx.fileSystem().readFileFuture("target/classes/readme.txt").onComplete{
   case Success(result) =&gt; {
     println(result)
@@ -332,8 +330,7 @@ fileSystem.openFuture("myfile.txt", options).onComplete{
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-scala" data-lang="scala">var vertx = Vertx.vertx()
-vertx.fileSystem().openFuture("target/classes/hello.txt", OpenOptions()).onComplete{
+<pre class="highlight"><code class="language-scala" data-lang="scala">vertx.fileSystem().openFuture("target/classes/hello.txt", OpenOptions()).onComplete{
   case Success(result) =&gt; {
     var file = result
     var buff = Buffer.buffer("foo")
@@ -391,8 +388,7 @@ vertx.fileSystem().openFuture("target/classes/hello.txt", OpenOptions()).onCompl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-scala" data-lang="scala">var vertx = Vertx.vertx()
-vertx.fileSystem().openFuture("target/classes/les_miserables.txt", OpenOptions()).onComplete{
+<pre class="highlight"><code class="language-scala" data-lang="scala">vertx.fileSystem().openFuture("target/classes/les_miserables.txt", OpenOptions()).onComplete{
   case Success(result) =&gt; {
     var file = result
     var buff = Buffer.buffer(1000)
@@ -450,8 +446,7 @@ vertx.fileSystem().openFuture("target/classes/les_miserables.txt", OpenOptions()
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-scala" data-lang="scala">var vertx = Vertx.vertx()
-var output = vertx.fileSystem().openBlocking("target/classes/plagiary.txt", OpenOptions())
+<pre class="highlight"><code class="language-scala" data-lang="scala">var output = vertx.fileSystem().openBlocking("target/classes/plagiary.txt", OpenOptions())
 
 vertx.fileSystem().openFuture("target/classes/les_miserables.txt", OpenOptions()).onComplete{
   case Success(result) =&gt; {
@@ -521,7 +516,7 @@ you can do so via the <code><a href="../dataobjects.html#FileSystemOptions#setCl
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:09 CST
+                上次更新时间 2018-11-05 19:55:26 CST
               
               
             </div>

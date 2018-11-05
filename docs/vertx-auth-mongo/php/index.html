@@ -187,7 +187,7 @@
 <h2 id="_mongo_auth_provider_implementation">Mongo Auth Provider implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.X中提供了一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code> 的实现，它可以让你使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-mongo-jphp/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code>
+<p>Vert.X中提供了一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code> 的实现，它可以让你使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code>
 针对MongoDb数据库执行认证和授权。</p>
 </div>
 <div class="paragraph">
@@ -222,10 +222,10 @@
 </div>
 </div>
 <div class="paragraph">
-<p>如果要创建一个客户端实例，你首先需要一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-mongo-jphp/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> 的实例，要知道如何创建这个实例可按照文档中的内容实施。</p>
+<p>如果要创建一个客户端实例，你首先需要一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> 的实例，要知道如何创建这个实例可按照文档中的内容实施。</p>
 </div>
 <div class="paragraph">
-<p>一旦你创建了一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-mongo-jphp/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> 实例后，就可以按照下边的代码创建 <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html">MongoAuth</a></code> 实例：</p>
+<p>一旦你创建了一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.mongo.MongoClient.html">MongoClient</a></code> 实例后，就可以按照下边的代码创建 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html">MongoAuth</a></code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -239,7 +239,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>创建好上边的实例过后，你就可以使用任何 <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code> 针对MongoDB执行认证和授权功能了。</p>
+<p>创建好上边的实例过后，你就可以使用任何 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code> 针对MongoDB执行认证和授权功能了。</p>
 </div>
 <div class="paragraph">
 <p>Vert.X的默认标准配置（Out Of the Box）中包含了"user"集合（Collection），用户名字段使用"username"进行存储和读取。</p>
@@ -260,17 +260,17 @@
 <p>根据你自己的需要，你同样可以使用下边的方法改变MongoDB中使用的默认集合（Collection）和列（Column）名称等信息：</p>
 </div>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setCollectionName">setCollectionName</a></code>
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setUsernameField">setUsernameField</a></code>
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setPasswordField">setPasswordField</a></code>
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setPermissionField">setPermissionField</a></code>
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setRoleField">setRoleField</a></code></p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setCollectionName">setCollectionName</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setUsernameField">setUsernameField</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setPasswordField">setPasswordField</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setPermissionField">setPermissionField</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setRoleField">setRoleField</a></code></p>
 </div>
 <div class="paragraph">
 <p>Vert.X默认实现中的密码在数据库中使用了SHA-512算法加密后进行存储，之后会连接对应的`salt`值，这个`salt`值和密码存储在同一个表里。
-你可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setSaltField">setSaltField</a></code> 方法来改变存储`salt`值的字段名称，它的默认值是"salt"，
-你同样可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.HashStrategy.html#method_setSaltStyle">setSaltStyle</a></code> 来改变一些行为。
-通过调用  <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_getHashStrategy">getHashStrategy</a></code> 方法还可以读取Hash策略设置。</p>
+你可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setSaltField">setSaltField</a></code> 方法来改变存储`salt`值的字段名称，它的默认值是"salt"，
+你同样可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.HashStrategy.html#method_setSaltStyle">setSaltStyle</a></code> 来改变一些行为。
+通过调用  <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_getHashStrategy">getHashStrategy</a></code> 方法还可以读取Hash策略设置。</p>
 </div>
 <div class="paragraph">
 <p>MongoDB中可以设置下边几种`SALT`的值：</p>
@@ -278,11 +278,11 @@
 <div class="paragraph">
 <p><code>NO_SALT</code>：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
 <code>COLUMN</code>：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
-<code>EXTERNAL</code>：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.HashStrategy.html#method_setExternalSalt">setExternalSalt</a></code> 方法进行设置。</p>
+<code>EXTERNAL</code>：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.HashStrategy.html#method_setExternalSalt">setExternalSalt</a></code> 方法进行设置。</p>
 </div>
 <div class="paragraph">
 <p>如果你想要重写上述行为，则你可以调用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setHashStrategy">setHashStrategy</a></code> 方法设置新的Hash策略，并且提供变更过的Hash策略及配置信息。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setHashStrategy">setHashStrategy</a></code> 方法设置新的Hash策略，并且提供变更过的Hash策略及配置信息。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -433,8 +433,8 @@ they can be replayed individually.</p>
 </div>
 <div class="paragraph">
 <p>如果想要替换上边的 <code>username</code> 和 <code>password</code> 两个默认字段名，你可以使用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setUsernameCredentialField">setUsernameCredentialField</a>`和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-auth-mongo-jphp/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setPasswordCredentialField">setPasswordCredentialField</a>`方法。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setUsernameCredentialField">setUsernameCredentialField</a>`和
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.mongo.MongoAuth.html#method_setPasswordCredentialField">setPasswordCredentialField</a>`方法。</p>
 </div>
 </div>
 </div>
@@ -446,7 +446,7 @@ they can be replayed individually.</p>
 </div>
 <div class="paragraph">
 <p>如果要验证一个用户是否拥有特定的许可，则要将许可信息传递到
-`<a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.User.html#method_isAuthorised">isAuthorised</a>`中：</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.User.html#method_isAuthorised">isAuthorised</a>`中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -486,7 +486,7 @@ they can be replayed individually.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:23:35 CST
+                上次更新时间 2018-11-05 19:54:32 CST
               
               
             </div>

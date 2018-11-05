@@ -7225,11 +7225,11 @@ sd.&lt;String, String&gt;getAsyncMap("mymap", res -&gt; {
 
 // Copy file from foo.txt to bar.txt
 fs.copy("foo.txt", "bar.txt", res -&gt; {
-    if (res.succeeded()) {
-        // Copied ok!
-    } else {
-        // Something went wrong
-    }
+  if (res.succeeded()) {
+    // Copied ok!
+  } else {
+    // Something went wrong
+  }
 });</code></pre>
 </div>
 </div>
@@ -7257,44 +7257,41 @@ fs.copyBlocking("foo.txt", "bar.txt");</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx();
-
-// Read a file
-vertx.fileSystem().readFile("target/classes/readme.txt", result -&gt; {
-    if (result.succeeded()) {
-        System.out.println(result.result());
-    } else {
-        System.err.println("Oh oh ..." + result.cause());
-    }
+<pre class="highlight"><code class="language-java" data-lang="java">vertx.fileSystem().readFile("target/classes/readme.txt", result -&gt; {
+  if (result.succeeded()) {
+    System.out.println(result.result());
+  } else {
+    System.err.println("Oh oh ..." + result.cause());
+  }
 });
 
 // Copy a file
 vertx.fileSystem().copy("target/classes/readme.txt", "target/classes/readme2.txt", result -&gt; {
-    if (result.succeeded()) {
-        System.out.println("File copied");
-    } else {
-        System.err.println("Oh oh ..." + result.cause());
-    }
+  if (result.succeeded()) {
+    System.out.println("File copied");
+  } else {
+    System.err.println("Oh oh ..." + result.cause());
+  }
 });
 
 // Write a file
 vertx.fileSystem().writeFile("target/classes/hello.txt", Buffer.buffer("Hello"), result -&gt; {
-    if (result.succeeded()) {
-        System.out.println("File written");
-    } else {
-        System.err.println("Oh oh ..." + result.cause());
-    }
+  if (result.succeeded()) {
+    System.out.println("File written");
+  } else {
+    System.err.println("Oh oh ..." + result.cause());
+  }
 });
 
 // Check existence and delete
 vertx.fileSystem().exists("target/classes/junk.txt", result -&gt; {
-    if (result.succeeded() &amp;&amp; result.result()) {
-        vertx.fileSystem().delete("target/classes/junk.txt", r -&gt; {
-            System.out.println("File deleted");
-        });
-    } else {
-        System.err.println("Oh oh ... - cannot delete the file: " + result.cause());
-    }
+  if (result.succeeded() &amp;&amp; result.result()) {
+    vertx.fileSystem().delete("target/classes/junk.txt", r -&gt; {
+      System.out.println("File deleted");
+    });
+  } else {
+    System.err.println("Oh oh ... - cannot delete the file: " + result.cause());
+  }
 });</code></pre>
 </div>
 </div>
@@ -7310,11 +7307,11 @@ vertx.fileSystem().exists("target/classes/junk.txt", result -&gt; {
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">OpenOptions options = new OpenOptions();
 fileSystem.open("myfile.txt", options, res -&gt; {
-    if (res.succeeded()) {
-        AsyncFile file = res.result();
-    } else {
-        // Something went wrong!
-    }
+  if (res.succeeded()) {
+    AsyncFile file = res.result();
+  } else {
+    // Something went wrong!
+  }
 });</code></pre>
 </div>
 </div>
@@ -7351,24 +7348,23 @@ fileSystem.open("myfile.txt", options, res -&gt; {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx();
-vertx.fileSystem().open("target/classes/hello.txt", new OpenOptions(), result -&gt; {
-    if (result.succeeded()) {
-        AsyncFile file = result.result();
-        Buffer buff = Buffer.buffer("foo");
-        for (int i = 0; i &lt; 5; i++) {
-            file.write(buff, buff.length() * i, ar -&gt; {
-                if (ar.succeeded()) {
-                    System.out.println("Written ok!");
-                    // etc
-                } else {
-                    System.err.println("Failed to write: " + ar.cause());
-                }
-            });
+<pre class="highlight"><code class="language-java" data-lang="java">vertx.fileSystem().open("target/classes/hello.txt", new OpenOptions(), result -&gt; {
+  if (result.succeeded()) {
+    AsyncFile file = result.result();
+    Buffer buff = Buffer.buffer("foo");
+    for (int i = 0; i &lt; 5; i++) {
+      file.write(buff, buff.length() * i, ar -&gt; {
+        if (ar.succeeded()) {
+          System.out.println("Written ok!");
+          // etc
+        } else {
+          System.err.println("Failed to write: " + ar.cause());
         }
-    } else {
-        System.err.println("Cannot open file " + result.cause());
+      });
     }
+  } else {
+    System.err.println("Cannot open file " + result.cause());
+  }
 });</code></pre>
 </div>
 </div>
@@ -7407,23 +7403,22 @@ vertx.fileSystem().open("target/classes/hello.txt", new OpenOptions(), result -&
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx();
-vertx.fileSystem().open("target/classes/les_miserables.txt", new OpenOptions(), result -&gt; {
-    if (result.succeeded()) {
-        AsyncFile file = result.result();
-        Buffer buff = Buffer.buffer(1000);
-        for (int i = 0; i &lt; 10; i++) {
-            file.read(buff, i * 100, i * 100, 100, ar -&gt; {
-                if (ar.succeeded()) {
-                    System.out.println("Read ok!");
-                } else {
-                    System.err.println("Failed to write: " + ar.cause());
-                }
-            });
+<pre class="highlight"><code class="language-java" data-lang="java">vertx.fileSystem().open("target/classes/les_miserables.txt", new OpenOptions(), result -&gt; {
+  if (result.succeeded()) {
+    AsyncFile file = result.result();
+    Buffer buff = Buffer.buffer(1000);
+    for (int i = 0; i &lt; 10; i++) {
+      file.read(buff, i * 100, i * 100, 100, ar -&gt; {
+        if (ar.succeeded()) {
+          System.out.println("Read ok!");
+        } else {
+          System.err.println("Failed to write: " + ar.cause());
         }
-    } else {
-        System.err.println("Cannot open file " + result.cause());
+      });
     }
+  } else {
+    System.err.println("Cannot open file " + result.cause());
+  }
 });</code></pre>
 </div>
 </div>
@@ -7463,19 +7458,18 @@ vertx.fileSystem().open("target/classes/les_miserables.txt", new OpenOptions(), 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx();
-final AsyncFile output = vertx.fileSystem().openBlocking("target/classes/plagiary.txt", new OpenOptions());
+<pre class="highlight"><code class="language-java" data-lang="java">final AsyncFile output = vertx.fileSystem().openBlocking("target/classes/plagiary.txt", new OpenOptions());
 
 vertx.fileSystem().open("target/classes/les_miserables.txt", new OpenOptions(), result -&gt; {
-    if (result.succeeded()) {
-        AsyncFile file = result.result();
-        Pump.pump(file, output).start();
-        file.endHandler((r) -&gt; {
-            System.out.println("Copy done");
-        });
-    } else {
-        System.err.println("Cannot open file " + result.cause());
-    }
+  if (result.succeeded()) {
+    AsyncFile file = result.result();
+    Pump.pump(file, output).start();
+    file.endHandler((r) -&gt; {
+      System.out.println("Copy done");
+    });
+  } else {
+    System.err.println("Cannot open file " + result.cause());
+  }
 });</code></pre>
 </div>
 </div>
@@ -10567,7 +10561,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:08 CST
+                上次更新时间 2018-11-05 19:55:25 CST
               
               
             </div>

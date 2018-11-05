@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -197,6 +198,11 @@
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_SESSIONID_LENGTH" title="DEFAULT_SESSIONID_LENGTH :: Default length for a session id.">
+                        <span class="description">Default length for a session id.</span><pre>DEFAULT_SESSIONID_LENGTH</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -271,10 +277,7 @@
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultHandler [callable] will be called with a success or a failure
-<b>
-clear($resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -299,9 +302,7 @@ clear($resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -408,11 +409,7 @@ createSession($timeout, $length)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $id [string] the session id
-param $resultHandler [callable] will be called with a success or a failure
-<b>
-delete($id, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -441,11 +438,7 @@ delete($id, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $cookieValue [string] the unique ID of the session
-param $resultHandler [callable] will be called with a result holding the session, or a failure
-<b>
-get($cookieValue, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -467,18 +460,14 @@ get($cookieValue, $resultHandler)
                                             <a id="method_init"></a>
                         <div class="element clickable method public  method_init" data-toggle="collapse" data-target=".method_init .collapse">
                             <h2>Initialize this store.</h2>
-                            <pre>init( $arg0,  $arg1) : \io\vertx\jphp\ext\web\sstore\SessionStore</pre>
+                            <pre>init( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $vertx [Vertx] the vertx instance
-param $options [array] optional Json with extra configuration options
-<b>
-init($vertx, $options)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -494,7 +483,7 @@ init($vertx, $options)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.sstore.SessionStore.html">\io\vertx\jphp\ext\web\sstore\SessionStore</a></code><p><p>self</p></p>
+                                        <code>$this</code><p><p>self</p></p>
                                                                     </div>
                             </div>
 
@@ -509,11 +498,7 @@ init($vertx, $options)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $session [Session] the session
-param $resultHandler [callable] will be called with a success or a failure
-<b>
-put($session, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -542,10 +527,7 @@ put($session, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>A non positive value means there is no retry at all.</p>
-<p><b>
-retryTimeout()
-</b></p></div>
+                                    <div class="long_description"><p>A non positive value means there is no retry at all.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -575,12 +557,7 @@ retryTimeout()
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-Beware of the result which is just an estimate, in particular with distributed session stores.
-
-param $resultHandler [callable] will be called with the number, or a failure
-<b>
-size($resultHandler)
-</b></div>
+Beware of the result which is just an estimate, in particular with distributed session stores.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -596,7 +573,30 @@ size($resultHandler)
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_DEFAULT_SESSIONID_LENGTH"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_SESSIONID_LENGTH" data-toggle="collapse" data-target=".constant_DEFAULT_SESSIONID_LENGTH .collapse">
+                                <h2>Default length for a session id.</h2>
+                                <pre>DEFAULT_SESSIONID_LENGTH</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"><p>More info: <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">https://www.owasp.org/index.php/Session_Management_Cheat_Sheet</a></p></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\ext\web\sstore\SessionStore"></a>
@@ -617,7 +617,7 @@ size($resultHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:58 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:40 +0000.<br/>
     </footer>
     </body>
 </html>

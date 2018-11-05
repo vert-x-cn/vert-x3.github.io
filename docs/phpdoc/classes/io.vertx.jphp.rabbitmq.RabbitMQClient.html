@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -382,12 +383,7 @@ method containing the received message being acknowledged.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $deliveryTag [integer]
-param $multiple [boolean]
-param $resultHandler [callable]
-<b>
-basicAck($deliveryTag, $multiple, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -592,7 +588,7 @@ basicConsumer($queue, $resultHandler)
                                 <div class="detail-description">
                                     <div class="long_description"><p>Create a consumer with the given <code>options</code>.</p>
 <p>param $queue [string] the name of a queue
-param $options [QueueOptions | mixed] options for queue
+param $options [QueueOptions | array] options for queue
 param $resultHandler [callable] a handler through which you can find out the operation status; if the operation succeeds you can begin to receive messages through an instance of \RabbitMQConsumer
 <b>
 basicConsumer($queue, $options, $resultHandler)
@@ -608,7 +604,7 @@ basicConsumer($queue, $options, $resultHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>callable | mixed | QueueOptions</p></p>
+                                                <code></code><p><p>callable | array | QueueOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -629,12 +625,7 @@ basicConsumer($queue, $options, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $queue [string]
-param $autoAck [boolean]
-param $resultHandler [callable]
-<b>
-basicGet($queue, $autoAck, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -667,13 +658,7 @@ basicGet($queue, $autoAck, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $deliveryTag [integer]
-param $multiple [boolean]
-param $requeue [boolean]
-param $resultHandler [callable]
-<b>
-basicNack($deliveryTag, $multiple, $requeue, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -711,13 +696,7 @@ which closes the channel. Invocations of Channel#basicPublish will eventually bl
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $exchange [string]
-param $routingKey [string]
-param $message [array]
-param $resultHandler [callable]
-<b>
-basicPublish($exchange, $routingKey, $message, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -816,10 +795,7 @@ will have to be confirmed.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultHandler [callable]
-<b>
-confirmSelect($resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -850,7 +826,7 @@ create($vertx)
 </b></p>
 <p>Create and return a client.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $config [RabbitMQOptions | mixed] the client config
+param $config [RabbitMQOptions | array] the client config
 <b>
 create($vertx, $config)
 </b></p></div>
@@ -865,7 +841,7 @@ create($vertx, $config)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>RabbitMQOptions | mixed</p></p>
+                                                <code></code><p><p>RabbitMQOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -884,13 +860,7 @@ create($vertx, $config)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $destination [string]
-param $source [string]
-param $routingKey [string]
-param $resultHandler [callable]
-<b>
-exchangeBind($destination, $source, $routingKey, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -989,11 +959,7 @@ exchangeDeclare($exchange, $type, $durable, $autoDelete, $config, $resultHandler
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $exchange [string]
-param $resultHandler [callable]
-<b>
-exchangeDelete($exchange, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1022,13 +988,7 @@ exchangeDelete($exchange, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $destination [string]
-param $source [string]
-param $routingKey [string]
-param $resultHandler [callable]
-<b>
-exchangeUnbind($destination, $source, $routingKey, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1065,9 +1025,7 @@ exchangeUnbind($destination, $source, $routingKey, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isConnected()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -1096,9 +1054,7 @@ isConnected()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isOpenChannel()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -1127,11 +1083,7 @@ isOpenChannel()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $queue [string]
-param $resultHandler [callable]
-<b>
-messageCount($queue, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1160,13 +1112,7 @@ messageCount($queue, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $queue [string]
-param $exchange [string]
-param $routingKey [string]
-param $resultHandler [callable]
-<b>
-queueBind($queue, $exchange, $routingKey, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1265,10 +1211,7 @@ queueDeclare($queue, $durable, $exclusive, $autoDelete, $config, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultHandler [callable]
-<b>
-queueDeclareAuto($resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1293,11 +1236,7 @@ queueDeclareAuto($resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $queue [string]
-param $resultHandler [callable]
-<b>
-queueDelete($queue, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1326,13 +1265,7 @@ queueDelete($queue, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $queue [string]
-param $ifUnused [boolean]
-param $ifEmpty [boolean]
-param $resultHandler [callable]
-<b>
-queueDeleteIf($queue, $ifUnused, $ifEmpty, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1369,10 +1302,7 @@ queueDeleteIf($queue, $ifUnused, $ifEmpty, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultHandler [callable]
-<b>
-start($resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1397,10 +1327,7 @@ start($resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultHandler [callable]
-<b>
-stop($resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1477,7 +1404,7 @@ waitForConfirms($timeout, $resultHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:54 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:28 +0000.<br/>
     </footer>
     </body>
 </html>

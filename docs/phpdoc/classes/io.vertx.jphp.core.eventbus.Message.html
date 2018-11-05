@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -258,9 +259,7 @@ If you want to notify the sender that processing failed, then @see \io\vertx\jph
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-address()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -282,16 +281,14 @@ address()
                                             <a id="method_body"></a>
                         <div class="element clickable method public  method_body" data-toggle="collapse" data-target=".method_body .collapse">
                             <h2>The body of the message. Can be null.</h2>
-                            <pre>body() : mixed</pre>
+                            <pre>body() : object</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-body()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -305,7 +302,7 @@ body()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code>mixed</code><p><p>the body, or null.</p></p>
+                                        <code>object</code><p><p>the body, or null.</p></p>
                                                                     </div>
                             </div>
 
@@ -322,13 +319,7 @@ body()
                                 <div class="detail-description">
                                     <div class="long_description"><p>
 If the message was sent specifying a result handler
-the handler will be called with a failure corresponding to the failure code and message specified here.
-
-param $failureCode [integer] A failure code to pass back to the sender
-param $message [string] A message to pass back to the sender
-<b>
-fail($failureCode, $message)
-</b></div>
+the handler will be called with a failure corresponding to the failure code and message specified here.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -357,9 +348,7 @@ fail($failureCode, $message)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-headers()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -388,9 +377,7 @@ headers()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isSend()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -424,7 +411,7 @@ If the message was sent specifying a reply handler, that handler will be
 called when it has received a reply. If the message wasn't sent specifying a receipt handler
 this method does nothing.
 
-param $message [mixed] the message to reply with.
+param $message [object] the message to reply with.
 <b>
 reply($message)
 </b>
@@ -432,7 +419,7 @@ reply($message)
 The same as <code>reply(R message)</code> but you can specify handler for the reply - i.e.
 to receive the reply to the reply.
 
-param $message [mixed] the message to reply with.
+param $message [object] the message to reply with.
 param $replyHandler [callable] the reply handler for the reply.
 <b>
 reply($message, $replyHandler)
@@ -440,8 +427,8 @@ reply($message, $replyHandler)
 
 Link @see \io\vertx\jphp\core\eventbus\Message::reply but allows you to specify delivery options for the reply.
 
-param $message [mixed] the reply message
-param $options [DeliveryOptions | mixed] the delivery options
+param $message [object] the reply message
+param $options [DeliveryOptions | array] the delivery options
 <b>
 reply($message, $options)
 </b>
@@ -449,8 +436,8 @@ reply($message, $options)
 The same as <code>reply(R message, DeliveryOptions)</code> but you can specify handler for the reply - i.e.
 to receive the reply to the reply.
 
-param $message [mixed] the reply message
-param $options [DeliveryOptions | mixed] the delivery options
+param $message [object] the reply message
+param $options [DeliveryOptions | array] the delivery options
 param $replyHandler [callable] the reply handler for the reply.
 <b>
 reply($message, $options, $replyHandler)
@@ -462,11 +449,11 @@ reply($message, $options, $replyHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>callable | mixed | DeliveryOptions</p></p>
+                                                <code></code><p><p>callable | array | DeliveryOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -487,9 +474,7 @@ reply($message, $options, $replyHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-replyAddress()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -530,7 +515,7 @@ replyAddress()
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:55 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:31 +0000.<br/>
     </footer>
     </body>
 </html>

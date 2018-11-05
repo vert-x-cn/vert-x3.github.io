@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -284,17 +285,14 @@ Please refer to the documentation for more information on the event bus.
                                             <a id="method_addInboundInterceptor"></a>
                         <div class="element clickable method public  method_addInboundInterceptor" data-toggle="collapse" data-target=".method_addInboundInterceptor .collapse">
                             <h2>Add an interceptor that will be called whenever a message is received by Vert.x</h2>
-                            <pre>addInboundInterceptor( $arg0) : \io\vertx\jphp\core\eventbus\EventBus</pre>
+                            <pre>addInboundInterceptor( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $interceptor [callable] the interceptor
-<b>
-addInboundInterceptor($interceptor)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -306,7 +304,7 @@ addInboundInterceptor($interceptor)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.eventbus.EventBus.html">\io\vertx\jphp\core\eventbus\EventBus</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -314,17 +312,14 @@ addInboundInterceptor($interceptor)
                                             <a id="method_addOutboundInterceptor"></a>
                         <div class="element clickable method public  method_addOutboundInterceptor" data-toggle="collapse" data-target=".method_addOutboundInterceptor .collapse">
                             <h2>Add an interceptor that will be called whenever a message is sent from Vert.x</h2>
-                            <pre>addOutboundInterceptor( $arg0) : \io\vertx\jphp\core\eventbus\EventBus</pre>
+                            <pre>addOutboundInterceptor( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $interceptor [callable] the interceptor
-<b>
-addOutboundInterceptor($interceptor)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -336,7 +331,7 @@ addOutboundInterceptor($interceptor)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.eventbus.EventBus.html">\io\vertx\jphp\core\eventbus\EventBus</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -398,9 +393,7 @@ consumer($address, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isMetricsEnabled()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -463,7 +456,7 @@ localConsumer($address, $handler)
                         <div class="element clickable method public  method_publish" data-toggle="collapse" data-target=".method_publish .collapse">
                             <h2>Publish a message.&lt;p&gt;
 The message will be delivered to all handlers registered to the address.</h2>
-                            <pre>publish( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\core\eventbus\EventBus</pre>
+                            <pre>publish( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -471,14 +464,14 @@ The message will be delivered to all handlers registered to the address.</h2>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>param $address [string] the address to publish it to
-param $message [mixed] the message, may be {@code null}
+param $message [object] the message, may be {@code null}
 <b>
 publish($address, $message)
 </b></p>
 <p>Like @see \io\vertx\jphp\core\eventbus\EventBus::publish but specifying <code>options</code> that can be used to configure the delivery.</p>
 <p>param $address [string] the address to publish it to
-param $message [mixed] the message, may be {@code null}
-param $options [DeliveryOptions | mixed] the delivery options
+param $message [object] the message, may be {@code null}
+param $options [DeliveryOptions | array] the delivery options
 <b>
 publish($address, $message, $options)
 </b></p></div>
@@ -493,15 +486,15 @@ publish($address, $message, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>mixed | DeliveryOptions</p></p>
+                                                <code></code><p><p>array | DeliveryOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.eventbus.EventBus.html">\io\vertx\jphp\core\eventbus\EventBus</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -530,7 +523,7 @@ Like @see \io\vertx\jphp\core\eventbus\EventBus::publisher but specifying delive
 the message.
 
 param $address [string] the address to publish it to
-param $options [DeliveryOptions | mixed] the delivery options
+param $options [DeliveryOptions | array] the delivery options
 <b>
 publisher($address, $options)
 </b></div>
@@ -545,7 +538,7 @@ publisher($address, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | DeliveryOptions</p></p>
+                                                <code></code><p><p>array | DeliveryOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -557,17 +550,14 @@ publisher($address, $options)
                                             <a id="method_removeInboundInterceptor"></a>
                         <div class="element clickable method public  method_removeInboundInterceptor" data-toggle="collapse" data-target=".method_removeInboundInterceptor .collapse">
                             <h2>Remove an interceptor that was added by @see \io\vertx\jphp\core\eventbus\EventBus::addInboundInterceptor</h2>
-                            <pre>removeInboundInterceptor( $arg0) : \io\vertx\jphp\core\eventbus\EventBus</pre>
+                            <pre>removeInboundInterceptor( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $interceptor [callable] the interceptor
-<b>
-removeInboundInterceptor($interceptor)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -579,7 +569,7 @@ removeInboundInterceptor($interceptor)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.eventbus.EventBus.html">\io\vertx\jphp\core\eventbus\EventBus</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -587,17 +577,14 @@ removeInboundInterceptor($interceptor)
                                             <a id="method_removeOutboundInterceptor"></a>
                         <div class="element clickable method public  method_removeOutboundInterceptor" data-toggle="collapse" data-target=".method_removeOutboundInterceptor .collapse">
                             <h2>Remove an interceptor that was added by @see \io\vertx\jphp\core\eventbus\EventBus::addOutboundInterceptor</h2>
-                            <pre>removeOutboundInterceptor( $arg0) : \io\vertx\jphp\core\eventbus\EventBus</pre>
+                            <pre>removeOutboundInterceptor( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $interceptor [callable] the interceptor
-<b>
-removeOutboundInterceptor($interceptor)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -609,7 +596,7 @@ removeOutboundInterceptor($interceptor)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.eventbus.EventBus.html">\io\vertx\jphp\core\eventbus\EventBus</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -617,7 +604,7 @@ removeOutboundInterceptor($interceptor)
                                             <a id="method_send"></a>
                         <div class="element clickable method public  method_send" data-toggle="collapse" data-target=".method_send .collapse">
                             <h2>Sends a message.</h2>
-                            <pre>send( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\core\eventbus\EventBus</pre>
+                            <pre>send( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -628,7 +615,7 @@ removeOutboundInterceptor($interceptor)
 The message will be delivered to at most one of the handlers registered to the address.
 
 param $address [string] the address to send it to
-param $message [mixed] the message, may be {@code null}
+param $message [object] the message, may be {@code null}
 <b>
 send($address, $message)
 </b>
@@ -637,7 +624,7 @@ Like @see \io\vertx\jphp\core\eventbus\EventBus::send but specifying a <code>rep
 subsequently replies to the message.
 
 param $address [string] the address to send it to
-param $message [mixed] the message, may be {@code null}
+param $message [object] the message, may be {@code null}
 param $replyHandler [callable] reply handler will be called when any reply from the recipient is received, may be {@code null}
 <b>
 send($address, $message, $replyHandler)
@@ -646,8 +633,8 @@ send($address, $message, $replyHandler)
 Like @see \io\vertx\jphp\core\eventbus\EventBus::send but specifying <code>options</code> that can be used to configure the delivery.
 
 param $address [string] the address to send it to
-param $message [mixed] the message, may be {@code null}
-param $options [DeliveryOptions | mixed] delivery options
+param $message [object] the message, may be {@code null}
+param $options [DeliveryOptions | array] delivery options
 <b>
 send($address, $message, $options)
 </b>
@@ -656,8 +643,8 @@ Like @see \io\vertx\jphp\core\eventbus\EventBus::send but specifying a <code>rep
 subsequently replies to the message.
 
 param $address [string] the address to send it to
-param $message [mixed] the message, may be {@code null}
-param $options [DeliveryOptions | mixed] delivery options
+param $message [object] the message, may be {@code null}
+param $options [DeliveryOptions | array] delivery options
 param $replyHandler [callable] reply handler will be called when any reply from the recipient is received, may be {@code null}
 <b>
 send($address, $message, $options, $replyHandler)
@@ -673,11 +660,11 @@ send($address, $message, $options, $replyHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>callable | mixed | DeliveryOptions</p></p>
+                                                <code></code><p><p>callable | array | DeliveryOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -685,7 +672,7 @@ send($address, $message, $options, $replyHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.eventbus.EventBus.html">\io\vertx\jphp\core\eventbus\EventBus</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -714,7 +701,7 @@ Like @see \io\vertx\jphp\core\eventbus\EventBus::sender but specifying delivery 
 the message.
 
 param $address [string] the address to send it to
-param $options [DeliveryOptions | mixed] the delivery options
+param $options [DeliveryOptions | array] the delivery options
 <b>
 sender($address, $options)
 </b></div>
@@ -729,7 +716,7 @@ sender($address, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | DeliveryOptions</p></p>
+                                                <code></code><p><p>array | DeliveryOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -748,12 +735,7 @@ sender($address, $options)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>
-
-param $name [string] the name of the codec
-<b>
-unregisterCodec($name)
-</b></div>
+                                    <div class="long_description"><p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -792,7 +774,7 @@ unregisterCodec($name)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:55 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:31 +0000.<br/>
     </footer>
     </body>
 </html>

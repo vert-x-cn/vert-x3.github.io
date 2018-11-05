@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -336,10 +337,7 @@ requests/response is necessary.
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>Clients should always be closed after use.</p>
-<p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"><p>Clients should always be closed after use.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -372,7 +370,7 @@ create($vertx)
 </b></p>
 <p>Create a web client using the provided <code>vertx</code> instance.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $options [WebClientOptions | mixed] the Web Client options
+param $options [WebClientOptions | array] the Web Client options
 <b>
 create($vertx, $options)
 </b></p></div>
@@ -387,7 +385,7 @@ create($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>WebClientOptions | mixed</p></p>
+                                                <code></code><p><p>WebClientOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -458,10 +456,7 @@ the response</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $absoluteURI [string] the absolute URI
-<b>
-deleteAbs($absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -540,10 +535,7 @@ the response</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $absoluteURI [string] the absolute URI
-<b>
-getAbs($absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -622,10 +614,7 @@ the response</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $absoluteURI [string] the absolute URI
-<b>
-headAbs($absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -704,10 +693,7 @@ the response</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $absoluteURI [string] the absolute URI
-<b>
-patchAbs($absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -786,10 +772,7 @@ the response</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $absoluteURI [string] the absolute URI
-<b>
-postAbs($absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -868,10 +851,7 @@ the response</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $absoluteURI [string] the absolute URI
-<b>
-putAbs($absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -905,7 +885,7 @@ request($method, $requestURI)
 </b></p>
 <p>Create an HTTP request to send to the server at the specified host and port.</p>
 <p>param $method [string] the HTTP method
-param $options [RequestOptions | mixed] the request options
+param $options [RequestOptions | array] the request options
 <b>
 request($method, $options)
 </b></p>
@@ -935,7 +915,7 @@ request($method, $port, $host, $requestURI)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -962,11 +942,7 @@ request($method, $port, $host, $requestURI)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $method [string] the HTTP method
-param $absoluteURI [string] the absolute URI
-<b>
-requestAbs($method, $absoluteURI)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1007,7 +983,7 @@ Only the specific web client portion of the <code>options</code> is used, the @s
 of the <code>httpClient</code> is reused.
 
 param $httpClient [HttpClient] the [HttpClient](/classes/io.vertx.jphp.core.http.HttpClient.html) to wrap
-param $options [WebClientOptions | mixed] the Web Client options
+param $options [WebClientOptions | array] the Web Client options
 <b>
 wrap($httpClient, $options)
 </b></div>
@@ -1022,7 +998,7 @@ wrap($httpClient, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>WebClientOptions | mixed</p></p>
+                                                <code></code><p><p>WebClientOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -1053,7 +1029,7 @@ wrap($httpClient, $options)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:00 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:42 +0000.<br/>
     </footer>
     </body>
 </html>

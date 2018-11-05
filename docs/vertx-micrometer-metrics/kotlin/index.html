@@ -406,11 +406,6 @@ You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
  &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
  &lt;artifactId&gt;micrometer-registry-prometheus&lt;/artifactId&gt;
  &lt;version&gt;${micrometer.version}&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
- &lt;groupId&gt;io.vertx&lt;/groupId&gt;
- &lt;artifactId&gt;vertx-web&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -420,8 +415,7 @@ You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
-compile 'io.micrometer:micrometer-registry-prometheus:${micrometer.version}'
-compile 'io.vertx:vertx-web:3.6.0-SNAPSHOT'</code></pre>
+compile 'io.micrometer:micrometer-registry-prometheus:${micrometer.version}'</code></pre>
 </div>
 </div>
 </div>
@@ -440,7 +434,7 @@ compile 'io.vertx:vertx-web:3.6.0-SNAPSHOT'</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_using_an_embedded_http_server_wih_custom_endpoint">Using an embedded HTTP server wih custom endpoint</h4>
+<h4 id="_using_an_embedded_http_server_with_custom_endpoint">Using an embedded HTTP server with custom endpoint</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
@@ -459,7 +453,7 @@ compile 'io.vertx:vertx-web:3.6.0-SNAPSHOT'</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binding_metrics_to_an_existing_vert_x_router">Binding metrics to an existing Vert.x router</h4>
+<h4 id="_binding_metrics_to_an_existing_vert_x_web_router">Binding metrics to an existing Vert.x Web router</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
@@ -470,15 +464,7 @@ compile 'io.vertx:vertx-web:3.6.0-SNAPSHOT'</code></pre>
 
 // Later on, creating a router
 var router = Router.router(vertx)
-router.route("/metrics").handler({ routingContext -&gt;
-  var prometheusRegistry = io.vertx.micrometer.backends.BackendRegistries.getDefaultNow()
-  if (prometheusRegistry != null) {
-    var response = prometheusRegistry.scrape()
-    routingContext.response().end(response)
-  } else {
-    routingContext.fail(500)
-  }
-})
+router.route("/metrics").handler(PrometheusScrapingHandler.create())
 vertx.createHttpServer().requestHandler(router).listen(8080)</code></pre>
 </div>
 </div>
@@ -1278,7 +1264,7 @@ Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:25:02 CST
+                上次更新时间 2018-11-05 19:56:10 CST
               
               
             </div>

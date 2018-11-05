@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -136,16 +137,8 @@ to check if a Sentinel deployment is ok.</span><pre>ckquorum</pre>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_create" title="create :: param $vertx [Vertx]
-param $config [RedisOptions | mixed]
-&lt;b&gt;
-create($vertx, $config)
-&lt;/b&gt;">
-            <span class="description">param $vertx [Vertx]
-param $config [RedisOptions | mixed]
-&lt;b&gt;
-create($vertx, $config)
-&lt;/b&gt;</span><pre>create</pre>
+        <a href="#method_create" title="create :: ">
+            <span class="description"></span><pre>create</pre>
         </a>
     </li>
 
@@ -288,18 +281,14 @@ will update their configurations)</span><pre>failover</pre>
                             <h2>Check if the current Sentinel configuration is able to reach the quorum needed to failover a master,
 and the majority needed to authorize the failover. This command should be used in monitoring systems
 to check if a Sentinel deployment is ok.</h2>
-                            <pre>ckquorum( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>ckquorum( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $name [string] master name
-param $handler [callable] Handler for the result of this call
-<b>
-ckquorum($name, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -315,7 +304,7 @@ ckquorum($name, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -330,10 +319,7 @@ ckquorum($name, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable]
-<b>
-close($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -350,11 +336,7 @@ close($handler)
                         </div>
                                             <a id="method_create"></a>
                         <div class="element clickable method public  method_create" data-toggle="collapse" data-target=".method_create .collapse">
-                            <h2>param $vertx [Vertx]
-param $config [RedisOptions | mixed]
-&lt;b&gt;
-create($vertx, $config)
-&lt;/b&gt;</h2>
+                            <h2>create</h2>
                             <pre>create( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
@@ -374,7 +356,7 @@ create($vertx, $config)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>RedisOptions | mixed</p></p>
+                                                <code></code><p><p>array | RedisOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -388,18 +370,14 @@ create($vertx, $config)
                             <h2>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
 (however a new version of the configuration will be published so that the other Sentinels
 will update their configurations)</h2>
-                            <pre>failover( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>failover( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $name [string] master name
-param $handler [callable] Handler for the result of this call
-<b>
-failover($name, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -415,7 +393,7 @@ failover($name, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -423,7 +401,7 @@ failover($name, $handler)
                                             <a id="method_flushConfig"></a>
                         <div class="element clickable method public  method_flushConfig" data-toggle="collapse" data-target=".method_flushConfig .collapse">
                             <h2>Force Sentinel to rewrite its configuration on disk, including the current Sentinel state.</h2>
-                            <pre>flushConfig( $arg0) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>flushConfig( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -435,11 +413,7 @@ failover($name, $handler)
 However sometimes it is possible that the configuration file is lost because of operation errors,
 disk failures, package upgrade scripts or configuration managers. In those cases a way to to force Sentinel to
 rewrite the configuration file is handy. This command works even if the previous configuration file
-is completely missing.</p>
-<p>param $handler [callable] Handler for the result of this call
-<b>
-flushConfig($handler)
-</b></p></div>
+is completely missing.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -451,7 +425,7 @@ flushConfig($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -459,7 +433,7 @@ flushConfig($handler)
                                             <a id="method_getMasterAddrByName"></a>
                         <div class="element clickable method public  method_getMasterAddrByName" data-toggle="collapse" data-target=".method_getMasterAddrByName .collapse">
                             <h2>Return the ip and port number of the master with that name.</h2>
-                            <pre>getMasterAddrByName( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>getMasterAddrByName( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -467,12 +441,7 @@ flushConfig($handler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>If a failover is in progress or terminated successfully for this master
-it returns the address and port of the promoted slave</p>
-<p>param $name [string] master name
-param $handler [callable] Handler for the result of this call
-<b>
-getMasterAddrByName($name, $handler)
-</b></p></div>
+it returns the address and port of the promoted slave</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -488,7 +457,7 @@ getMasterAddrByName($name, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -496,18 +465,14 @@ getMasterAddrByName($name, $handler)
                                             <a id="method_master"></a>
                         <div class="element clickable method public  method_master" data-toggle="collapse" data-target=".method_master .collapse">
                             <h2>Show the state and info of the specified master</h2>
-                            <pre>master( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>master( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $name [string] master name
-param $handler [callable] Handler for the result of this call
-<b>
-master($name, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -523,7 +488,7 @@ master($name, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -531,17 +496,14 @@ master($name, $handler)
                                             <a id="method_masters"></a>
                         <div class="element clickable method public  method_masters" data-toggle="collapse" data-target=".method_masters .collapse">
                             <h2>Show a list of monitored masters and their state</h2>
-                            <pre>masters( $arg0) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>masters( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] Handler for the result of this call
-<b>
-masters($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -553,7 +515,7 @@ masters($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -561,7 +523,7 @@ masters($handler)
                                             <a id="method_reset"></a>
                         <div class="element clickable method public  method_reset" data-toggle="collapse" data-target=".method_reset .collapse">
                             <h2>Reset all the masters with matching name.</h2>
-                            <pre>reset( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>reset( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -569,12 +531,7 @@ masters($handler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>The pattern argument is a glob-style pattern.
-The reset process clears any previous state in a master (including a failover in pro</p>
-<p>param $pattern [string] pattern String
-param $handler [callable] Handler for the result of this call
-<b>
-reset($pattern, $handler)
-</b></p></div>
+The reset process clears any previous state in a master (including a failover in pro</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -590,7 +547,7 @@ reset($pattern, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -598,18 +555,14 @@ reset($pattern, $handler)
                                             <a id="method_sentinels"></a>
                         <div class="element clickable method public  method_sentinels" data-toggle="collapse" data-target=".method_sentinels .collapse">
                             <h2>Show a list of sentinel instances for this master, and their state</h2>
-                            <pre>sentinels( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>sentinels( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $name [string] master name
-param $handler [callable] Handler for the result of this call
-<b>
-sentinels($name, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -625,7 +578,7 @@ sentinels($name, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -633,18 +586,14 @@ sentinels($name, $handler)
                                             <a id="method_slaves"></a>
                         <div class="element clickable method public  method_slaves" data-toggle="collapse" data-target=".method_slaves .collapse">
                             <h2>Show a list of slaves for this master, and their state</h2>
-                            <pre>slaves( $arg0,  $arg1) : \io\vertx\jphp\redis\sentinel\RedisSentinel</pre>
+                            <pre>slaves( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $name [string] master name
-param $handler [callable] Handler for the result of this call
-<b>
-slaves($name, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -660,7 +609,7 @@ slaves($name, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.redis.sentinel.RedisSentinel.html">\io\vertx\jphp\redis\sentinel\RedisSentinel</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -687,7 +636,7 @@ slaves($name, $handler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:54 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:29 +0000.<br/>
     </footer>
     </body>
 </html>

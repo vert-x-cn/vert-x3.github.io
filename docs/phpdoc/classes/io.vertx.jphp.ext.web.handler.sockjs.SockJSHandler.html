@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -238,20 +239,20 @@ We currently support version 0.3.3 of the SockJS protocol, which can be found in
                             <h2>Bridge the SockJS handler to the Vert.x event bus. This basically installs a built-in SockJS socket handler
 which takes SockJS traffic and bridges it to the event bus, thus allowing you to extend the server-side
 Vert.x event bus to browsers</h2>
-                            <pre>bridge( $arg0,  $arg1 = null) : \io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler</pre>
+                            <pre>bridge( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $bridgeOptions [BridgeOptions | mixed] options to configure the bridge with
+                                    <div class="long_description"><p>param $bridgeOptions [BridgeOptions | array] options to configure the bridge with
 <b>
 bridge($bridgeOptions)
 </b></p>
 <p>Like @see \io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler::bridge but specifying a handler
 that will receive bridge events.</p>
-<p>param $bridgeOptions [BridgeOptions | mixed] options to configure the bridge with
+<p>param $bridgeOptions [BridgeOptions | array] options to configure the bridge with
 param $bridgeEventHandler [callable] handler to receive bridge events
 <b>
 bridge($bridgeOptions, $bridgeEventHandler)
@@ -263,7 +264,7 @@ bridge($bridgeOptions, $bridgeEventHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>BridgeOptions | mixed</p></p>
+                                                <code></code><p><p>array | BridgeOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -271,7 +272,7 @@ bridge($bridgeOptions, $bridgeEventHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">\io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -292,7 +293,7 @@ create($vertx)
 </b></p>
 <p>Create a SockJS handler</p>
 <p>param $vertx [Vertx] the Vert.x instance
-param $options [SockJSHandlerOptions | mixed] options to configure the handler
+param $options [SockJSHandlerOptions | array] options to configure the handler
 <b>
 create($vertx, $options)
 </b></p></div>
@@ -307,11 +308,11 @@ create($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>SockJSHandlerOptions | mixed</p></p>
+                                                <code></code><p><p>SockJSHandlerOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">\io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler</a></code><p><p>| callable the handler</p></p>
+                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">\io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler</a></code><p><p>the handler</p></p>
                                                                     </div>
                             </div>
 
@@ -326,10 +327,7 @@ create($vertx, $options)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $event [RoutingContext] the event to handle
-<b>
-handle($event)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -348,17 +346,14 @@ handle($event)
                         <div class="element clickable method public  method_socketHandler" data-toggle="collapse" data-target=".method_socketHandler .collapse">
                             <h2>Set a SockJS socket handler. This handler will be called with a SockJS socket whenever a SockJS connection
 is made from a client</h2>
-                            <pre>socketHandler( $arg0) : \io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler</pre>
+                            <pre>socketHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler
-<b>
-socketHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -370,7 +365,7 @@ socketHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">\io\vertx\jphp\ext\web\handler\sockjs\SockJSHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -397,7 +392,7 @@ socketHandler($handler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:59 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:41 +0000.<br/>
     </footer>
     </body>
 </html>

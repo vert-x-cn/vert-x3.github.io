@@ -322,7 +322,7 @@ configures a set of configuration store
 </div>
 </div>
 <div class="paragraph">
-<p>Once done, you first need to instantiate the <code><a href="https://vertx.okou.tk/phpdoc/vertx-config-jphp/classes/io.vertx.jphp.config.ConfigRetriever.html">ConfigRetriever</a></code>:</p>
+<p>Once done, you first need to instantiate the <code><a href="../../phpdoc/classes/io.vertx.jphp.config.ConfigRetriever.html">ConfigRetriever</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -607,7 +607,7 @@ not set JSON is used.</p>
 </div>
 <div class="paragraph">
 <p>Some configurations tore requires additional configuration (such a path&#8230;&#8203;). This
-configuration is passed as a Json Object using <code><a href="../vertx-config-jphp/enums.adoc#ConfigStoreOptions#method_setConfig">setConfig</a></code></p>
+configuration is passed as a Json Object using <code><a href="../php/dataobjects.html#ConfigStoreOptions#method_setConfig">setConfig</a></code></p>
 </div>
 </div>
 <div class="sect2">
@@ -884,6 +884,30 @@ retrieved using <code>config.getString(key)</code>.</p>
     );</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Some properties configuration maybe is hierarchical in nature.
+When reading such a file, you can pass the <code>hierarchical</code> attribute to
+indicate to Vert.x to convert the configuration to a json object while maintaining this hierarchy,
+in contrast to the previous method with a flat structure.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>server.host=localhost
+server.port=8080
+multiple.values=1,2,3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-php" data-lang="php">Code not translatable</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -942,8 +966,8 @@ using:</p>
 <h2 id="_reading_configuration_as_a_stream">Reading configuration as a stream</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-config-jphp/classes/io.vertx.jphp.config.ConfigRetriever.html">ConfigRetriever</a></code> provide a way to access the stream of configuration.
-It&#8217;s a <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> of <code>JsonObject</code>. By registering the right
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.config.ConfigRetriever.html">ConfigRetriever</a></code> provide a way to access the stream of configuration.
+It&#8217;s a <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> of <code>JsonObject</code>. By registering the right
 set of handlers you are notified:</p>
 </div>
 <div class="ulist">
@@ -956,7 +980,7 @@ set of handlers you are notified:</p>
 </li>
 <li>
 <p>when the configuration retriever is closed (the
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_endHandler">endHandler</a>`is called).</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_endHandler">endHandler</a>`is called).</p>
 </li>
 </ul>
 </div>
@@ -990,7 +1014,7 @@ set of handlers you are notified:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can configure a <em>processor</em> that can validate and update the configuration. This is done using the
-`<a href="https://vertx.okou.tk/phpdoc/vertx-config-jphp/classes/io.vertx.jphp.config.ConfigRetriever.html#method_setConfigurationProcessor">setConfigurationProcessor</a>`method.</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.config.ConfigRetriever.html#method_setConfigurationProcessor">setConfigurationProcessor</a>`method.</p>
 </div>
 <div class="paragraph">
 <p>The prcessing must not return <code>null</code>. It takes the retrieved configuration and returns the processed one. If the processor
@@ -1003,8 +1027,8 @@ example for validation purpose).</p>
 <h2 id="_retrieving_the_configuration_as_a_future">Retrieving the configuration as a Future</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-config-jphp/classes/io.vertx.jphp.config.ConfigRetriever.html">ConfigRetriever</a></code> provide a way to retrieve the configuration as a
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code>:</p>
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.config.ConfigRetriever.html">ConfigRetriever</a></code> provide a way to retrieve the configuration as a
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1093,7 +1117,7 @@ stores you can use in your application.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:02 CST
+                上次更新时间 2018-11-05 19:55:08 CST
               
               
             </div>

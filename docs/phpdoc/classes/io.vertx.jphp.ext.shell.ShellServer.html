@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -297,7 +298,7 @@ create($vertx)
 </b></p>
 <p>Create a new shell server with default options.</p>
 <p>param $vertx [Vertx] the vertx
-param $options [ShellServerOptions | mixed] the options
+param $options [ShellServerOptions | array] the options
 <b>
 create($vertx, $options)
 </b></p></div>
@@ -312,7 +313,7 @@ create($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | ShellServerOptions</p></p>
+                                                <code></code><p><p>array | ShellServerOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -358,7 +359,7 @@ createShell($term)
                                             <a id="method_listen"></a>
                         <div class="element clickable method public  method_listen" data-toggle="collapse" data-target=".method_listen .collapse">
                             <h2>Start the shell service, this is an asynchronous start.</h2>
-                            <pre>listen( $arg0 = null) : \io\vertx\jphp\ext\shell\ShellServer</pre>
+                            <pre>listen( $arg0 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -384,7 +385,7 @@ listen($listenHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.shell.ShellServer.html">\io\vertx\jphp\ext\shell\ShellServer</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -392,17 +393,14 @@ listen($listenHandler)
                                             <a id="method_registerCommandResolver"></a>
                         <div class="element clickable method public  method_registerCommandResolver" data-toggle="collapse" data-target=".method_registerCommandResolver .collapse">
                             <h2>Register a command resolver for this server.</h2>
-                            <pre>registerCommandResolver( $arg0) : \io\vertx\jphp\ext\shell\ShellServer</pre>
+                            <pre>registerCommandResolver( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resolver [CommandResolver] the resolver
-<b>
-registerCommandResolver($resolver)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -414,7 +412,7 @@ registerCommandResolver($resolver)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.shell.ShellServer.html">\io\vertx\jphp\ext\shell\ShellServer</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -422,17 +420,14 @@ registerCommandResolver($resolver)
                                             <a id="method_registerTermServer"></a>
                         <div class="element clickable method public  method_registerTermServer" data-toggle="collapse" data-target=".method_registerTermServer .collapse">
                             <h2>Register a term server to this shell server, the term server lifecycle methods are managed by this shell server.</h2>
-                            <pre>registerTermServer( $arg0) : \io\vertx\jphp\ext\shell\ShellServer</pre>
+                            <pre>registerTermServer( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $termServer [TermServer] the term server to add
-<b>
-registerTermServer($termServer)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -444,7 +439,7 @@ registerTermServer($termServer)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.shell.ShellServer.html">\io\vertx\jphp\ext\shell\ShellServer</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -460,10 +455,7 @@ or set the prompt.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $shellHandler [callable] handler for getting notified when the server creates a new shell.
-<b>
-shellHandler($shellHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -500,7 +492,7 @@ shellHandler($shellHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:02 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:45 +0000.<br/>
     </footer>
     </body>
 </html>

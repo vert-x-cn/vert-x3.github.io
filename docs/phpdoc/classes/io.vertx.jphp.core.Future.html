@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -132,12 +133,8 @@
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_completer" title="completer :: &lt;b&gt;
-completer()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-completer()
-&lt;/b&gt;</span><pre>completer</pre>
+        <a href="#method_completer" title="completer :: ">
+            <span class="description"></span><pre>completer</pre>
         </a>
     </li>
 
@@ -339,9 +336,7 @@ It&#039;s completed if it&#039;s either succeeded or failed.</span><pre>isComple
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-cause()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -374,7 +369,7 @@ cause()
 complete()
 </b></p>
 <p>Set the result. Any handler will be called, if there is one, and the future will be marked as completed.</p>
-<p>param $result [mixed] the result
+<p>param $result [object] the result
 <b>
 complete($result)
 </b></p></div>
@@ -385,7 +380,7 @@ complete($result)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                             
                                                                     </div>
@@ -394,9 +389,7 @@ complete($result)
                         </div>
                                             <a id="method_completer"></a>
                         <div class="element clickable method public  method_completer" data-toggle="collapse" data-target=".method_completer .collapse">
-                            <h2>&lt;b&gt;
-completer()
-&lt;/b&gt;</h2>
+                            <h2>completer</h2>
                             <pre>completer() : callable</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -517,9 +510,7 @@ fail($failureMessage)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-failed()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -619,9 +610,7 @@ It&#039;s completed if it&#039;s either succeeded or failed.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isComplete()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -662,7 +651,7 @@ map($mapper)
 <p>Map the result of a future to a specific <code>value</code>.<p></p>
 <p>When this future succeeds, this <code>value</code> will complete the future returned by this method call.<p></p>
 <p>When this future fails, the failure will be propagated to the returned future.</p>
-<p>param $value [mixed] the value that eventually completes the mapped future
+<p>param $value [object] the value that eventually completes the mapped future
 <b>
 map($value)
 </b></p></div>
@@ -673,7 +662,7 @@ map($value)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>callable | mixed</p></p>
+                                                <code></code><p><p>callable | object</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -694,10 +683,7 @@ map($value)
                                 <div class="detail-description">
                                     <div class="long_description"><p>This is a conveniency for <code>future.map((T) null)</code> or <code>future.map((Void) null)</code>.<p></p>
 <p>When this future succeeds, <code>null</code> will complete the future returned by this method call.<p></p>
-<p>When this future fails, the failure will be propagated to the returned future.</p>
-<p><b>
-mapEmpty()
-</b></p></div>
+<p>When this future fails, the failure will be propagated to the returned future.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -738,7 +724,7 @@ otherwise($mapper)
 <p>Map the failure of a future to a specific <code>value</code>.<p></p>
 <p>When this future fails, this <code>value</code> will complete the future returned by this method call.<p></p>
 <p>When this future succeeds, the result will be propagated to the returned future.</p>
-<p>param $value [mixed] the value that eventually completes the mapped future
+<p>param $value [object] the value that eventually completes the mapped future
 <b>
 otherwise($value)
 </b></p></div>
@@ -749,7 +735,7 @@ otherwise($value)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>callable | mixed</p></p>
+                                                <code></code><p><p>callable | object</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -770,10 +756,7 @@ otherwise($value)
                                 <div class="detail-description">
                                     <div class="long_description"><p>This is a convenience for <code>future.otherwise((T) null)</code>.<p></p>
 <p>When this future fails, the <code>null</code> value will complete the future returned by this method call.<p></p>
-<p>When this future succeeds, the result will be propagated to the returned future.</p>
-<p><b>
-otherwiseEmpty()
-</b></p></div>
+<p>When this future succeeds, the result will be propagated to the returned future.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -802,11 +785,7 @@ otherwiseEmpty()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>If the mapper fails, then the returned future will be failed with this failure.</p>
-<p>param $mapper [callable] A function which takes the exception of a failure and returns a new future.
-<b>
-recover($mapper)
-</b></p></div>
+                                    <div class="long_description"><p>If the mapper fails, then the returned future will be failed with this failure.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -826,16 +805,14 @@ recover($mapper)
                                             <a id="method_result"></a>
                         <div class="element clickable method public  method_result" data-toggle="collapse" data-target=".method_result .collapse">
                             <h2>The result of the operation. This will be null if the operation failed.</h2>
-                            <pre>result() : mixed</pre>
+                            <pre>result() : object</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-result()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -849,7 +826,7 @@ result()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code>mixed</code><p><p>the result or null if the operation failed.</p></p>
+                                        <code>object</code><p><p>the result or null if the operation failed.</p></p>
                                                                     </div>
                             </div>
 
@@ -857,7 +834,7 @@ result()
                                             <a id="method_setHandler"></a>
                         <div class="element clickable method public  method_setHandler" data-toggle="collapse" data-target=".method_setHandler .collapse">
                             <h2>Set a handler for the result.</h2>
-                            <pre>setHandler( $arg0) : \io\vertx\jphp\core\Future</pre>
+                            <pre>setHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -866,12 +843,7 @@ result()
                                 <div class="detail-description">
                                     <div class="long_description"><p>
 If the future has already been completed it will be called immediately. Otherwise it will be called when the
-future is completed.
-
-param $handler [callable] the Handler that will be called with the result
-<b>
-setHandler($handler)
-</b></div>
+future is completed.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -883,7 +855,7 @@ setHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.Future.html">\io\vertx\jphp\core\Future</a></code><p><p>a reference to this, so it can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so it can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -898,9 +870,7 @@ setHandler($handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-succeeded()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -933,7 +903,7 @@ succeeded()
 succeededFuture()
 </b></p>
 <p>Created a succeeded future with the specified result.</p>
-<p>param $result [mixed] the result
+<p>param $result [object] the result
 <b>
 succeededFuture($result)
 </b></p></div>
@@ -944,7 +914,7 @@ succeededFuture($result)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -967,7 +937,7 @@ succeededFuture($result)
 tryComplete()
 </b></p>
 <p>Set the failure. Any handler will be called, if there is one, and the future will be marked as completed.</p>
-<p>param $result [mixed] the result
+<p>param $result [object] the result
 <b>
 tryComplete($result)
 </b></p></div>
@@ -978,7 +948,7 @@ tryComplete($result)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -1044,7 +1014,7 @@ tryFail($failureMessage)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:54 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:30 +0000.<br/>
     </footer>
     </body>
 </html>

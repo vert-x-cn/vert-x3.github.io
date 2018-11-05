@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -270,9 +271,7 @@ signifying an ephemeral port</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-actualPort()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -295,17 +294,14 @@ actualPort()
                         <div class="element clickable method public  method_authProvider" data-toggle="collapse" data-target=".method_authProvider .collapse">
                             <h2>Set an auth provider to use, any provider configured in options will override this provider. This should be used
 when a custom auth provider should be used.</h2>
-                            <pre>authProvider( $arg0) : \io\vertx\jphp\ext\shell\term\TermServer</pre>
+                            <pre>authProvider( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $provider [AuthProvider] the auth to use
-<b>
-authProvider($provider)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -317,7 +313,7 @@ authProvider($provider)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.shell.term.TermServer.html">\io\vertx\jphp\ext\shell\term\TermServer</a></code><p><p>this object</p></p>
+                                        <code>$this</code><p><p>this object</p></p>
                                                                     </div>
                             </div>
 
@@ -371,20 +367,20 @@ createHttpTermServer($vertx)
 </b></p>
 <p>Create a term server for the HTTP protocol.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $options [HttpTermOptions | mixed] the term options
+param $options [HttpTermOptions | array] the term options
 <b>
 createHttpTermServer($vertx, $options)
 </b></p>
 <p>Create a term server for the HTTP protocol, using an existing router.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $router [Router | callable] the router
+param $router [Router] the router
 <b>
 createHttpTermServer($vertx, $router)
 </b></p>
 <p>Create a term server for the HTTP protocol, using an existing router.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $router [Router | callable] the router
-param $options [HttpTermOptions | mixed] the term options
+param $router [Router] the router
+param $options [HttpTermOptions | array] the term options
 <b>
 createHttpTermServer($vertx, $router, $options)
 </b></p></div>
@@ -399,11 +395,11 @@ createHttpTermServer($vertx, $router, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>HttpTermOptions | callable | Router | mixed</p></p>
+                                                <code></code><p><p>HttpTermOptions | array | Router</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>HttpTermOptions | mixed</p></p>
+                                                <code></code><p><p>HttpTermOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -428,7 +424,7 @@ createSSHTermServer($vertx)
 </b></p>
 <p>Create a term server for the SSH protocol.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $options [SSHTermOptions | mixed] the ssh options
+param $options [SSHTermOptions | array] the ssh options
 <b>
 createSSHTermServer($vertx, $options)
 </b></p></div>
@@ -443,7 +439,7 @@ createSSHTermServer($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | SSHTermOptions</p></p>
+                                                <code></code><p><p>array | SSHTermOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -468,7 +464,7 @@ createTelnetTermServer($vertx)
 </b></p>
 <p>Create a term server for the Telnet protocol.</p>
 <p>param $vertx [Vertx] the vertx instance
-param $options [TelnetTermOptions | mixed] the term options
+param $options [TelnetTermOptions | array] the term options
 <b>
 createTelnetTermServer($vertx, $options)
 </b></p></div>
@@ -483,7 +479,7 @@ createTelnetTermServer($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>TelnetTermOptions | mixed</p></p>
+                                                <code></code><p><p>TelnetTermOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -495,7 +491,7 @@ createTelnetTermServer($vertx, $options)
                                             <a id="method_listen"></a>
                         <div class="element clickable method public  method_listen" data-toggle="collapse" data-target=".method_listen .collapse">
                             <h2>Bind the term server, the @see \io\vertx\jphp\ext\shell\term\TermServer::termHandler must be set before.</h2>
-                            <pre>listen( $arg0 = null) : \io\vertx\jphp\ext\shell\term\TermServer</pre>
+                            <pre>listen( $arg0 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -521,7 +517,7 @@ listen($listenHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.shell.term.TermServer.html">\io\vertx\jphp\ext\shell\term\TermServer</a></code><p><p>this object</p></p>
+                                        <code>$this</code><p><p>this object</p></p>
                                                                     </div>
                             </div>
 
@@ -531,17 +527,14 @@ listen($listenHandler)
                             <h2>Set the term handler that will receive incoming client connections. When a remote terminal connects
 the &lt;code&gt;handler&lt;/code&gt; will be called with the @see \io\vertx\jphp\ext\shell\term\Term which can be used to interact with the remote
 terminal.</h2>
-                            <pre>termHandler( $arg0) : \io\vertx\jphp\ext\shell\term\TermServer</pre>
+                            <pre>termHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the term handler
-<b>
-termHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -553,7 +546,7 @@ termHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.shell.term.TermServer.html">\io\vertx\jphp\ext\shell\term\TermServer</a></code><p><p>this object</p></p>
+                                        <code>$this</code><p><p>this object</p></p>
                                                                     </div>
                             </div>
 
@@ -580,7 +573,7 @@ termHandler($handler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:01 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:44 +0000.<br/>
     </footer>
     </body>
 </html>

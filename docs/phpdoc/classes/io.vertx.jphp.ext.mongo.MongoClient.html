@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -461,6 +462,16 @@ This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;document&lt
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_DB_NAME" title="DEFAULT_DB_NAME :: The name of the default database">
+                        <span class="description">The name of the default database</span><pre>DEFAULT_DB_NAME</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_POOL_NAME" title="DEFAULT_POOL_NAME :: The name of the default pool">
+                        <span class="description">The name of the default pool</span><pre>DEFAULT_POOL_NAME</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -529,19 +540,14 @@ Some of the operations might change <i>_id</i> field of passed  document.
                                             <a id="method_bulkWrite"></a>
                         <div class="element clickable method public  method_bulkWrite" data-toggle="collapse" data-target=".method_bulkWrite .collapse">
                             <h2>Execute a bulk operation. Can insert, update, replace, and/or delete multiple documents with one request.</h2>
-                            <pre>bulkWrite( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>bulkWrite( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $operations [array] the operations to execute
-param $resultHandler [callable] will be called with a \MongoClientBulkWriteResult when complete
-<b>
-bulkWrite($collection, $operations, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -561,7 +567,7 @@ bulkWrite($collection, $operations, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -570,20 +576,14 @@ bulkWrite($collection, $operations, $resultHandler)
                         <div class="element clickable method public  method_bulkWriteWithOptions" data-toggle="collapse" data-target=".method_bulkWriteWithOptions .collapse">
                             <h2>Execute a bulk operation with the specified write options. Can insert, update, replace, and/or delete multiple
 documents with one request.</h2>
-                            <pre>bulkWriteWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>bulkWriteWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $operations [array] the operations to execute
-param $bulkWriteOptions [BulkWriteOptions | mixed] the write options
-param $resultHandler [callable] will be called with a \MongoClientBulkWriteResult when complete
-<b>
-bulkWriteWithOptions($collection, $operations, $bulkWriteOptions, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -599,7 +599,7 @@ bulkWriteWithOptions($collection, $operations, $bulkWriteOptions, $resultHandler
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>BulkWriteOptions | mixed</p></p>
+                                                <code></code><p><p>BulkWriteOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -607,7 +607,7 @@ bulkWriteWithOptions($collection, $operations, $bulkWriteOptions, $resultHandler
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -622,9 +622,7 @@ bulkWriteWithOptions($collection, $operations, $bulkWriteOptions, $resultHandler
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -644,19 +642,14 @@ close()
                                             <a id="method_count"></a>
                         <div class="element clickable method public  method_count" data-toggle="collapse" data-target=".method_count .collapse">
                             <h2>Count matching documents in a collection.</h2>
-                            <pre>count( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>count( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $resultHandler [callable] will be provided with the number of matching documents
-<b>
-count($collection, $query, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -676,7 +669,7 @@ count($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -684,18 +677,14 @@ count($collection, $query, $resultHandler)
                                             <a id="method_createCollection"></a>
                         <div class="element clickable method public  method_createCollection" data-toggle="collapse" data-target=".method_createCollection .collapse">
                             <h2>Create a new collection</h2>
-                            <pre>createCollection( $arg0,  $arg1) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>createCollection( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collectionName [string] the name of the collection
-param $resultHandler [callable] will be called when complete
-<b>
-createCollection($collectionName, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -711,7 +700,7 @@ createCollection($collectionName, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -719,19 +708,14 @@ createCollection($collectionName, $resultHandler)
                                             <a id="method_createIndex"></a>
                         <div class="element clickable method public  method_createIndex" data-toggle="collapse" data-target=".method_createIndex .collapse">
                             <h2>Creates an index.</h2>
-                            <pre>createIndex( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>createIndex( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $key [array] A document that contains the field and value pairs where the field is the index key and the value describes the type of index for that field. For an ascending index on a field, specify a value of 1; for descending index, specify a value of -1.
-param $resultHandler [callable] will be called when complete
-<b>
-createIndex($collection, $key, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -751,7 +735,7 @@ createIndex($collection, $key, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -759,20 +743,14 @@ createIndex($collection, $key, $resultHandler)
                                             <a id="method_createIndexWithOptions"></a>
                         <div class="element clickable method public  method_createIndexWithOptions" data-toggle="collapse" data-target=".method_createIndexWithOptions .collapse">
                             <h2>Creates an index.</h2>
-                            <pre>createIndexWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>createIndexWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $key [array] A document that contains the field and value pairs where the field is the index key and the value describes the type of index for that field. For an ascending index on a field, specify a value of 1; for descending index, specify a value of -1.
-param $options [IndexOptions | mixed] the options for the index
-param $resultHandler [callable] will be called when complete
-<b>
-createIndexWithOptions($collection, $key, $options, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -788,7 +766,7 @@ createIndexWithOptions($collection, $key, $options, $resultHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>IndexOptions | mixed</p></p>
+                                                <code></code><p><p>IndexOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -796,7 +774,7 @@ createIndexWithOptions($collection, $key, $options, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -811,11 +789,7 @@ createIndexWithOptions($collection, $key, $options, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $vertx [Vertx] the Vert.x instance
-param $config [array] the configuration
-<b>
-createNonShared($vertx, $config)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -886,21 +860,14 @@ createShared($vertx, $config, $dataSourceName)
                                             <a id="method_distinct"></a>
                         <div class="element clickable method public  method_distinct" data-toggle="collapse" data-target=".method_distinct .collapse">
                             <h2>Gets the distinct values of the specified field name.</h2>
-                            <pre>distinct( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>distinct( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>Return a JsonArray containing distinct values (eg: [ 1 , 89 ])</p>
-<p>param $collection [string] the collection
-param $fieldName [string] the field name
-param $resultClassname [string]
-param $resultHandler [callable] will be provided with array of values.
-<b>
-distinct($collection, $fieldName, $resultClassname, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"><p>Return a JsonArray containing distinct values (eg: [ 1 , 89 ])</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -924,7 +891,7 @@ distinct($collection, $fieldName, $resultClassname, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -940,13 +907,7 @@ distinct($collection, $fieldName, $resultClassname, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>This method use batchCursor for returning each found value.
-Each value is a json fragment with fieldName key (eg: {&quot;num&quot;: 1}).</p>
-<p>param $collection [string] the collection
-param $fieldName [string] the field name
-param $resultClassname [string]
-<b>
-distinctBatch($collection, $fieldName, $resultClassname)
-</b></p></div>
+Each value is a json fragment with fieldName key (eg: {&quot;num&quot;: 1}).</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1036,22 +997,14 @@ distinctBatchWithQuery($collection, $fieldName, $resultClassname, $query, $batch
                                             <a id="method_distinctWithQuery"></a>
                         <div class="element clickable method public  method_distinctWithQuery" data-toggle="collapse" data-target=".method_distinctWithQuery .collapse">
                             <h2>Gets the distinct values of the specified field name filtered by specified query.</h2>
-                            <pre>distinctWithQuery( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>distinctWithQuery( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>Return a JsonArray containing distinct values (eg: [ 1 , 89 ])</p>
-<p>param $collection [string] the collection
-param $fieldName [string] the field name
-param $resultClassname [string]
-param $query [array] the query
-param $resultHandler [callable] will be provided with array of values.
-<b>
-distinctWithQuery($collection, $fieldName, $resultClassname, $query, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"><p>Return a JsonArray containing distinct values (eg: [ 1 , 89 ])</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1079,7 +1032,7 @@ distinctWithQuery($collection, $fieldName, $resultClassname, $query, $resultHand
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1087,18 +1040,14 @@ distinctWithQuery($collection, $fieldName, $resultClassname, $query, $resultHand
                                             <a id="method_dropCollection"></a>
                         <div class="element clickable method public  method_dropCollection" data-toggle="collapse" data-target=".method_dropCollection .collapse">
                             <h2>Drop a collection</h2>
-                            <pre>dropCollection( $arg0,  $arg1) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>dropCollection( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $resultHandler [callable] will be called when complete
-<b>
-dropCollection($collection, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1114,7 +1063,7 @@ dropCollection($collection, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1122,19 +1071,14 @@ dropCollection($collection, $resultHandler)
                                             <a id="method_dropIndex"></a>
                         <div class="element clickable method public  method_dropIndex" data-toggle="collapse" data-target=".method_dropIndex .collapse">
                             <h2>Drops the index given its name.</h2>
-                            <pre>dropIndex( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>dropIndex( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $indexName [string] the name of the index to remove
-param $resultHandler [callable] will be called when complete
-<b>
-dropIndex($collection, $indexName, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1154,7 +1098,7 @@ dropIndex($collection, $indexName, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1162,19 +1106,14 @@ dropIndex($collection, $indexName, $resultHandler)
                                             <a id="method_find"></a>
                         <div class="element clickable method public  method_find" data-toggle="collapse" data-target=".method_find .collapse">
                             <h2>Find matching documents in the specified collection</h2>
-                            <pre>find( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>find( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $resultHandler [callable] will be provided with list of documents
-<b>
-find($collection, $query, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1194,7 +1133,7 @@ find($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1209,12 +1148,7 @@ find($collection, $query, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>This method use batchCursor for returning each found document.</p>
-<p>param $collection [string] the collection
-param $query [array] query used to match documents
-<b>
-findBatch($collection, $query)
-</b></p></div>
+                                    <div class="long_description"><p>This method use batchCursor for returning each found document.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1245,13 +1179,7 @@ findBatch($collection, $query)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>This method use batchCursor for returning each found document.</p>
-<p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $options [FindOptions | mixed] options to configure the find
-<b>
-findBatchWithOptions($collection, $query, $options)
-</b></p></div>
+                                    <div class="long_description"><p>This method use batchCursor for returning each found document.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1267,7 +1195,7 @@ findBatchWithOptions($collection, $query, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>FindOptions | mixed</p></p>
+                                                <code></code><p><p>FindOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -1281,20 +1209,14 @@ findBatchWithOptions($collection, $query, $options)
                             <h2>Find a single matching document in the specified collection
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;query&lt;/i&gt; parameter</h2>
-                            <pre>findOne( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOne( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] the query used to match the document
-param $fields [array] the fields
-param $resultHandler [callable] will be provided with the document, if any
-<b>
-findOne($collection, $query, $fields, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1318,7 +1240,7 @@ findOne($collection, $query, $fields, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1326,7 +1248,7 @@ findOne($collection, $query, $fields, $resultHandler)
                                             <a id="method_findOneAndDelete"></a>
                         <div class="element clickable method public  method_findOneAndDelete" data-toggle="collapse" data-target=".method_findOneAndDelete .collapse">
                             <h2>Find a single matching document in the specified collection and delete it.</h2>
-                            <pre>findOneAndDelete( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOneAndDelete( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1334,14 +1256,7 @@ findOne($collection, $query, $fields, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-This operation might change <i>_id</i> field of <i>query</i> parameter
-
-param $collection [string] the collection
-param $query [array] the query used to match the document
-param $resultHandler [callable] will be provided with the deleted document, if any
-<b>
-findOneAndDelete($collection, $query, $resultHandler)
-</b></div>
+This operation might change <i>_id</i> field of <i>query</i> parameter</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1361,7 +1276,7 @@ findOneAndDelete($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1369,7 +1284,7 @@ findOneAndDelete($collection, $query, $resultHandler)
                                             <a id="method_findOneAndDeleteWithOptions"></a>
                         <div class="element clickable method public  method_findOneAndDeleteWithOptions" data-toggle="collapse" data-target=".method_findOneAndDeleteWithOptions .collapse">
                             <h2>Find a single matching document in the specified collection and delete it.</h2>
-                            <pre>findOneAndDeleteWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOneAndDeleteWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1377,15 +1292,7 @@ findOneAndDelete($collection, $query, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-This operation might change <i>_id</i> field of <i>query</i> parameter
-
-param $collection [string] the collection
-param $query [array] the query used to match the document
-param $findOptions [FindOptions | mixed] options to configure the find
-param $resultHandler [callable] will be provided with the deleted document, if any
-<b>
-findOneAndDeleteWithOptions($collection, $query, $findOptions, $resultHandler)
-</b></div>
+This operation might change <i>_id</i> field of <i>query</i> parameter</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1401,7 +1308,7 @@ findOneAndDeleteWithOptions($collection, $query, $findOptions, $resultHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>FindOptions | mixed</p></p>
+                                                <code></code><p><p>FindOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -1409,7 +1316,7 @@ findOneAndDeleteWithOptions($collection, $query, $findOptions, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1417,7 +1324,7 @@ findOneAndDeleteWithOptions($collection, $query, $findOptions, $resultHandler)
                                             <a id="method_findOneAndReplace"></a>
                         <div class="element clickable method public  method_findOneAndReplace" data-toggle="collapse" data-target=".method_findOneAndReplace .collapse">
                             <h2>Find a single matching document in the specified collection and replace it.</h2>
-                            <pre>findOneAndReplace( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOneAndReplace( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1425,15 +1332,7 @@ findOneAndDeleteWithOptions($collection, $query, $findOptions, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-This operation might change <i>_id</i> field of <i>query</i> parameter
-
-param $collection [string] the collection
-param $query [array] the query used to match the document
-param $replace [array] the replacement document
-param $resultHandler [callable] will be provided with the document, if any
-<b>
-findOneAndReplace($collection, $query, $replace, $resultHandler)
-</b></div>
+This operation might change <i>_id</i> field of <i>query</i> parameter</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1457,7 +1356,7 @@ findOneAndReplace($collection, $query, $replace, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1465,7 +1364,7 @@ findOneAndReplace($collection, $query, $replace, $resultHandler)
                                             <a id="method_findOneAndReplaceWithOptions"></a>
                         <div class="element clickable method public  method_findOneAndReplaceWithOptions" data-toggle="collapse" data-target=".method_findOneAndReplaceWithOptions .collapse">
                             <h2>Find a single matching document in the specified collection and replace it.</h2>
-                            <pre>findOneAndReplaceWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4,  $arg5) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOneAndReplaceWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4,  $arg5) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1473,17 +1372,7 @@ findOneAndReplace($collection, $query, $replace, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-This operation might change <i>_id</i> field of <i>query</i> parameter
-
-param $collection [string] the collection
-param $query [array] the query used to match the document
-param $replace [array] the replacement document
-param $findOptions [FindOptions | mixed] options to configure the find
-param $updateOptions [UpdateOptions | mixed] options to configure the update
-param $resultHandler [callable] will be provided with the document, if any
-<b>
-findOneAndReplaceWithOptions($collection, $query, $replace, $findOptions, $updateOptions, $resultHandler)
-</b></div>
+This operation might change <i>_id</i> field of <i>query</i> parameter</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1503,11 +1392,11 @@ findOneAndReplaceWithOptions($collection, $query, $replace, $findOptions, $updat
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
-                                                <code></code><p><p>FindOptions | mixed</p></p>
+                                                <code></code><p><p>FindOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg4</h4>
-                                                <code></code><p><p>mixed | UpdateOptions</p></p>
+                                                <code></code><p><p>array | UpdateOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg5</h4>
@@ -1515,7 +1404,7 @@ findOneAndReplaceWithOptions($collection, $query, $replace, $findOptions, $updat
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1523,7 +1412,7 @@ findOneAndReplaceWithOptions($collection, $query, $replace, $findOptions, $updat
                                             <a id="method_findOneAndUpdate"></a>
                         <div class="element clickable method public  method_findOneAndUpdate" data-toggle="collapse" data-target=".method_findOneAndUpdate .collapse">
                             <h2>Find a single matching document in the specified collection and update it.</h2>
-                            <pre>findOneAndUpdate( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOneAndUpdate( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1531,15 +1420,7 @@ findOneAndReplaceWithOptions($collection, $query, $replace, $findOptions, $updat
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-This operation might change <i>_id</i> field of <i>query</i> parameter
-
-param $collection [string] the collection
-param $query [array] the query used to match the document
-param $update [array] used to describe how the documents will be updated
-param $resultHandler [callable] will be provided with the document, if any
-<b>
-findOneAndUpdate($collection, $query, $update, $resultHandler)
-</b></div>
+This operation might change <i>_id</i> field of <i>query</i> parameter</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1563,7 +1444,7 @@ findOneAndUpdate($collection, $query, $update, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1571,7 +1452,7 @@ findOneAndUpdate($collection, $query, $update, $resultHandler)
                                             <a id="method_findOneAndUpdateWithOptions"></a>
                         <div class="element clickable method public  method_findOneAndUpdateWithOptions" data-toggle="collapse" data-target=".method_findOneAndUpdateWithOptions .collapse">
                             <h2>Find a single matching document in the specified collection and update it.</h2>
-                            <pre>findOneAndUpdateWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4,  $arg5) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findOneAndUpdateWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4,  $arg5) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1579,17 +1460,7 @@ findOneAndUpdate($collection, $query, $update, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-This operation might change <i>_id</i> field of <i>query</i> parameter
-
-param $collection [string] the collection
-param $query [array] the query used to match the document
-param $update [array] used to describe how the documents will be updated
-param $findOptions [FindOptions | mixed] options to configure the find
-param $updateOptions [UpdateOptions | mixed] options to configure the update
-param $resultHandler [callable] will be provided with the document, if any
-<b>
-findOneAndUpdateWithOptions($collection, $query, $update, $findOptions, $updateOptions, $resultHandler)
-</b></div>
+This operation might change <i>_id</i> field of <i>query</i> parameter</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1609,11 +1480,11 @@ findOneAndUpdateWithOptions($collection, $query, $update, $findOptions, $updateO
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
-                                                <code></code><p><p>FindOptions | mixed</p></p>
+                                                <code></code><p><p>FindOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg4</h4>
-                                                <code></code><p><p>mixed | UpdateOptions</p></p>
+                                                <code></code><p><p>array | UpdateOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg5</h4>
@@ -1621,7 +1492,7 @@ findOneAndUpdateWithOptions($collection, $query, $update, $findOptions, $updateO
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1629,20 +1500,14 @@ findOneAndUpdateWithOptions($collection, $query, $update, $findOptions, $updateO
                                             <a id="method_findWithOptions"></a>
                         <div class="element clickable method public  method_findWithOptions" data-toggle="collapse" data-target=".method_findWithOptions .collapse">
                             <h2>Find matching documents in the specified collection, specifying options</h2>
-                            <pre>findWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>findWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $options [FindOptions | mixed] options to configure the find
-param $resultHandler [callable] will be provided with list of documents
-<b>
-findWithOptions($collection, $query, $options, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1658,7 +1523,7 @@ findWithOptions($collection, $query, $options, $resultHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>FindOptions | mixed</p></p>
+                                                <code></code><p><p>FindOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -1666,7 +1531,7 @@ findWithOptions($collection, $query, $options, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1674,17 +1539,14 @@ findWithOptions($collection, $query, $options, $resultHandler)
                                             <a id="method_getCollections"></a>
                         <div class="element clickable method public  method_getCollections" data-toggle="collapse" data-target=".method_getCollections .collapse">
                             <h2>Get a list of all collections in the database.</h2>
-                            <pre>getCollections( $arg0) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>getCollections( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultHandler [callable] will be called with a list of collections.
-<b>
-getCollections($resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1696,7 +1558,7 @@ getCollections($resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1706,19 +1568,14 @@ getCollections($resultHandler)
                             <h2>Insert a document in the specified collection
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;document&lt;/i&gt; parameter</h2>
-                            <pre>insert( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>insert( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $document [array] the document
-param $resultHandler [callable] result handler will be provided with the id if document didn't already have one
-<b>
-insert($collection, $document, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1738,7 +1595,7 @@ insert($collection, $document, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1748,20 +1605,14 @@ insert($collection, $document, $resultHandler)
                             <h2>Insert a document in the specified collection with the specified write option
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;document&lt;/i&gt; parameter</h2>
-                            <pre>insertWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>insertWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $document [array] the document
-param $writeOption [string] the write option to use
-param $resultHandler [callable] result handler will be provided with the id if document didn't already have one
-<b>
-insertWithOptions($collection, $document, $writeOption, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1785,7 +1636,7 @@ insertWithOptions($collection, $document, $writeOption, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1793,18 +1644,14 @@ insertWithOptions($collection, $document, $writeOption, $resultHandler)
                                             <a id="method_listIndexes"></a>
                         <div class="element clickable method public  method_listIndexes" data-toggle="collapse" data-target=".method_listIndexes .collapse">
                             <h2>Get all the indexes in this collection.</h2>
-                            <pre>listIndexes( $arg0,  $arg1) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>listIndexes( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $resultHandler [callable] will be called when complete
-<b>
-listIndexes($collection, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1820,7 +1667,7 @@ listIndexes($collection, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1828,22 +1675,14 @@ listIndexes($collection, $resultHandler)
                                             <a id="method_remove"></a>
                         <div class="element clickable method public deprecated method_remove" data-toggle="collapse" data-target=".method_remove .collapse">
                             <h2>Remove matching documents from a collection</h2>
-                            <pre>remove( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>remove( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-remove($collection, $query, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -1872,7 +1711,7 @@ remove($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1880,19 +1719,14 @@ remove($collection, $query, $resultHandler)
                                             <a id="method_removeDocument"></a>
                         <div class="element clickable method public  method_removeDocument" data-toggle="collapse" data-target=".method_removeDocument .collapse">
                             <h2>Remove a single matching document from a collection and return the handler with MongoClientDeleteResult result</h2>
-                            <pre>removeDocument( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeDocument( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match document
-param $resultHandler [callable] will be called when complete
-<b>
-removeDocument($collection, $query, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1912,7 +1746,7 @@ removeDocument($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1920,19 +1754,14 @@ removeDocument($collection, $query, $resultHandler)
                                             <a id="method_removeDocuments"></a>
                         <div class="element clickable method public  method_removeDocuments" data-toggle="collapse" data-target=".method_removeDocuments .collapse">
                             <h2>Remove matching documents from a collection and return the handler with MongoClientDeleteResult result</h2>
-                            <pre>removeDocuments( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeDocuments( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $resultHandler [callable] will be called when complete
-<b>
-removeDocuments($collection, $query, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1952,7 +1781,7 @@ removeDocuments($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1960,20 +1789,14 @@ removeDocuments($collection, $query, $resultHandler)
                                             <a id="method_removeDocumentsWithOptions"></a>
                         <div class="element clickable method public  method_removeDocumentsWithOptions" data-toggle="collapse" data-target=".method_removeDocumentsWithOptions .collapse">
                             <h2>Remove matching documents from a collection with the specified write option and return the handler with MongoClientDeleteResult result</h2>
-                            <pre>removeDocumentsWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeDocumentsWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $writeOption [string] the write option to use
-param $resultHandler [callable] will be called when complete
-<b>
-removeDocumentsWithOptions($collection, $query, $writeOption, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1997,7 +1820,7 @@ removeDocumentsWithOptions($collection, $query, $writeOption, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2005,20 +1828,14 @@ removeDocumentsWithOptions($collection, $query, $writeOption, $resultHandler)
                                             <a id="method_removeDocumentWithOptions"></a>
                         <div class="element clickable method public  method_removeDocumentWithOptions" data-toggle="collapse" data-target=".method_removeDocumentWithOptions .collapse">
                             <h2>Remove a single matching document from a collection with the specified write option and return the handler with MongoClientDeleteResult result</h2>
-                            <pre>removeDocumentWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeDocumentWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match document
-param $writeOption [string] the write option to use
-param $resultHandler [callable] will be called when complete
-<b>
-removeDocumentWithOptions($collection, $query, $writeOption, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2042,7 +1859,7 @@ removeDocumentWithOptions($collection, $query, $writeOption, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2050,22 +1867,14 @@ removeDocumentWithOptions($collection, $query, $writeOption, $resultHandler)
                                             <a id="method_removeOne"></a>
                         <div class="element clickable method public deprecated method_removeOne" data-toggle="collapse" data-target=".method_removeOne .collapse">
                             <h2>Remove a single matching document from a collection</h2>
-                            <pre>removeOne( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeOne( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match document
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-removeOne($collection, $query, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2094,7 +1903,7 @@ removeOne($collection, $query, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2102,23 +1911,14 @@ removeOne($collection, $query, $resultHandler)
                                             <a id="method_removeOneWithOptions"></a>
                         <div class="element clickable method public deprecated method_removeOneWithOptions" data-toggle="collapse" data-target=".method_removeOneWithOptions .collapse">
                             <h2>Remove a single matching document from a collection with the specified write option</h2>
-                            <pre>removeOneWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeOneWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match document
-param $writeOption [string] the write option to use
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-removeOneWithOptions($collection, $query, $writeOption, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2151,7 +1951,7 @@ removeOneWithOptions($collection, $query, $writeOption, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2159,23 +1959,14 @@ removeOneWithOptions($collection, $query, $writeOption, $resultHandler)
                                             <a id="method_removeWithOptions"></a>
                         <div class="element clickable method public deprecated method_removeWithOptions" data-toggle="collapse" data-target=".method_removeWithOptions .collapse">
                             <h2>Remove matching documents from a collection with the specified write option</h2>
-                            <pre>removeWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>removeWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match documents
-param $writeOption [string] the write option to use
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-removeWithOptions($collection, $query, $writeOption, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2208,7 +1999,7 @@ removeWithOptions($collection, $query, $writeOption, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2218,23 +2009,14 @@ removeWithOptions($collection, $query, $writeOption, $resultHandler)
                             <h2>Replace matching documents in the specified collection
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;replace&lt;/i&gt; parameter</h2>
-                            <pre>replace( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>replace( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $replace [array] all matching documents will be replaced with this
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-replace($collection, $query, $replace, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2267,7 +2049,7 @@ replace($collection, $query, $replace, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2275,20 +2057,14 @@ replace($collection, $query, $replace, $resultHandler)
                                             <a id="method_replaceDocuments"></a>
                         <div class="element clickable method public  method_replaceDocuments" data-toggle="collapse" data-target=".method_replaceDocuments .collapse">
                             <h2>Replace matching documents in the specified collection and return the handler with MongoClientUpdateResult result</h2>
-                            <pre>replaceDocuments( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>replaceDocuments( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $replace [array] all matching documents will be replaced with this
-param $resultHandler [callable] will be called when complete
-<b>
-replaceDocuments($collection, $query, $replace, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2312,7 +2088,7 @@ replaceDocuments($collection, $query, $replace, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2320,21 +2096,14 @@ replaceDocuments($collection, $query, $replace, $resultHandler)
                                             <a id="method_replaceDocumentsWithOptions"></a>
                         <div class="element clickable method public  method_replaceDocumentsWithOptions" data-toggle="collapse" data-target=".method_replaceDocumentsWithOptions .collapse">
                             <h2>Replace matching documents in the specified collection, specifying options and return the handler with MongoClientUpdateResult result</h2>
-                            <pre>replaceDocumentsWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>replaceDocumentsWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $replace [array] all matching documents will be replaced with this
-param $options [UpdateOptions | mixed] options to configure the replace
-param $resultHandler [callable] will be called when complete
-<b>
-replaceDocumentsWithOptions($collection, $query, $replace, $options, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2354,7 +2123,7 @@ replaceDocumentsWithOptions($collection, $query, $replace, $options, $resultHand
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
-                                                <code></code><p><p>mixed | UpdateOptions</p></p>
+                                                <code></code><p><p>array | UpdateOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg4</h4>
@@ -2362,7 +2131,7 @@ replaceDocumentsWithOptions($collection, $query, $replace, $options, $resultHand
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2372,24 +2141,14 @@ replaceDocumentsWithOptions($collection, $query, $replace, $options, $resultHand
                             <h2>Replace matching documents in the specified collection, specifying options
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;replace&lt;/i&gt; parameter</h2>
-                            <pre>replaceWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>replaceWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $replace [array] all matching documents will be replaced with this
-param $options [UpdateOptions | mixed] options to configure the replace
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-replaceWithOptions($collection, $query, $replace, $options, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2418,7 +2177,7 @@ replaceWithOptions($collection, $query, $replace, $options, $resultHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
-                                                <code></code><p><p>mixed | UpdateOptions</p></p>
+                                                <code></code><p><p>array | UpdateOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg4</h4>
@@ -2426,7 +2185,7 @@ replaceWithOptions($collection, $query, $replace, $options, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2434,19 +2193,14 @@ replaceWithOptions($collection, $query, $replace, $options, $resultHandler)
                                             <a id="method_runCommand"></a>
                         <div class="element clickable method public  method_runCommand" data-toggle="collapse" data-target=".method_runCommand .collapse">
                             <h2>Run an arbitrary MongoDB command.</h2>
-                            <pre>runCommand( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>runCommand( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $commandName [string] the name of the command
-param $command [array] the command
-param $resultHandler [callable] will be called with the result.
-<b>
-runCommand($commandName, $command, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2466,7 +2220,7 @@ runCommand($commandName, $command, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2476,19 +2230,14 @@ runCommand($commandName, $command, $resultHandler)
                             <h2>Save a document in the specified collection
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;document&lt;/i&gt; parameter</h2>
-                            <pre>save( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>save( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $document [array] the document
-param $resultHandler [callable] result handler will be provided with the id if document didn't already have one
-<b>
-save($collection, $document, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2508,7 +2257,7 @@ save($collection, $document, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2518,20 +2267,14 @@ save($collection, $document, $resultHandler)
                             <h2>Save a document in the specified collection with the specified write option
 &lt;p&gt;
 This operation might change &lt;i&gt;_id&lt;/i&gt; field of &lt;i&gt;document&lt;/i&gt; parameter</h2>
-                            <pre>saveWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>saveWithOptions( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $document [array] the document
-param $writeOption [string] the write option to use
-param $resultHandler [callable] result handler will be provided with the id if document didn't already have one
-<b>
-saveWithOptions($collection, $document, $writeOption, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2555,7 +2298,7 @@ saveWithOptions($collection, $document, $writeOption, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2563,23 +2306,14 @@ saveWithOptions($collection, $document, $writeOption, $resultHandler)
                                             <a id="method_update"></a>
                         <div class="element clickable method public deprecated method_update" data-toggle="collapse" data-target=".method_update .collapse">
                             <h2>Update matching documents in the specified collection</h2>
-                            <pre>update( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>update( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $update [array] used to describe how the documents will be updated
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-update($collection, $query, $update, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2612,7 +2346,7 @@ update($collection, $query, $update, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2620,20 +2354,14 @@ update($collection, $query, $update, $resultHandler)
                                             <a id="method_updateCollection"></a>
                         <div class="element clickable method public  method_updateCollection" data-toggle="collapse" data-target=".method_updateCollection .collapse">
                             <h2>Update matching documents in the specified collection and return the handler with MongoClientUpdateResult result</h2>
-                            <pre>updateCollection( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>updateCollection( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $update [array] used to describe how the documents will be updated
-param $resultHandler [callable] will be called when complete
-<b>
-updateCollection($collection, $query, $update, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2657,7 +2385,7 @@ updateCollection($collection, $query, $update, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2665,21 +2393,14 @@ updateCollection($collection, $query, $update, $resultHandler)
                                             <a id="method_updateCollectionWithOptions"></a>
                         <div class="element clickable method public  method_updateCollectionWithOptions" data-toggle="collapse" data-target=".method_updateCollectionWithOptions .collapse">
                             <h2>Update matching documents in the specified collection, specifying options and return the handler with MongoClientUpdateResult result</h2>
-                            <pre>updateCollectionWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>updateCollectionWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $update [array] used to describe how the documents will be updated
-param $options [UpdateOptions | mixed] options to configure the update
-param $resultHandler [callable] will be called when complete
-<b>
-updateCollectionWithOptions($collection, $query, $update, $options, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2699,7 +2420,7 @@ updateCollectionWithOptions($collection, $query, $update, $options, $resultHandl
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
-                                                <code></code><p><p>mixed | UpdateOptions</p></p>
+                                                <code></code><p><p>array | UpdateOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg4</h4>
@@ -2707,7 +2428,7 @@ updateCollectionWithOptions($collection, $query, $update, $options, $resultHandl
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2715,24 +2436,14 @@ updateCollectionWithOptions($collection, $query, $update, $options, $resultHandl
                                             <a id="method_updateWithOptions"></a>
                         <div class="element clickable method public deprecated method_updateWithOptions" data-toggle="collapse" data-target=".method_updateWithOptions .collapse">
                             <h2>Update matching documents in the specified collection, specifying options</h2>
-                            <pre>updateWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : \io\vertx\jphp\ext\mongo\MongoClient</pre>
+                            <pre>updateWithOptions( $arg0,  $arg1,  $arg2,  $arg3,  $arg4) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $collection [string] the collection
-param $query [array] query used to match the documents
-param $update [array] used to describe how the documents will be updated
-param $options [UpdateOptions | mixed] options to configure the update
-param $resultHandler [callable] will be called when complete
-<b>
-this method is deprecated
-<s>
-updateWithOptions($collection, $query, $update, $options, $resultHandler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -2761,7 +2472,7 @@ updateWithOptions($collection, $query, $update, $options, $resultHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
-                                                <code></code><p><p>mixed | UpdateOptions</p></p>
+                                                <code></code><p><p>array | UpdateOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg4</h4>
@@ -2769,13 +2480,58 @@ updateWithOptions($collection, $query, $update, $options, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mongo.MongoClient.html">\io\vertx\jphp\ext\mongo\MongoClient</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_DEFAULT_POOL_NAME"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_POOL_NAME" data-toggle="collapse" data-target=".constant_DEFAULT_POOL_NAME .collapse">
+                                <h2>The name of the default pool</h2>
+                                <pre>DEFAULT_POOL_NAME</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_DB_NAME"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_DB_NAME" data-toggle="collapse" data-target=".constant_DEFAULT_DB_NAME .collapse">
+                                <h2>The name of the default database</h2>
+                                <pre>DEFAULT_DB_NAME</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\ext\mongo\MongoClient"></a>
@@ -2796,7 +2552,7 @@ updateWithOptions($collection, $query, $update, $options, $resultHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:03 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:46 +0000.<br/>
     </footer>
     </body>
 </html>

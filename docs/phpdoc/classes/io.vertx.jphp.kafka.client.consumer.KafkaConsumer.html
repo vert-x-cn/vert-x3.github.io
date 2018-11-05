@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -174,14 +175,8 @@ records individually using the @see \io\vertx\jphp\kafka\client\consumer\KafkaCo
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_endHandler" title="endHandler :: param $endHandler [callable]
-&lt;b&gt;
-endHandler($endHandler)
-&lt;/b&gt;">
-            <span class="description">param $endHandler [callable]
-&lt;b&gt;
-endHandler($endHandler)
-&lt;/b&gt;</span><pre>endHandler</pre>
+        <a href="#method_endHandler" title="endHandler :: ">
+            <span class="description"></span><pre>endHandler</pre>
         </a>
     </li>
 
@@ -194,14 +189,8 @@ of the upcoming message, i.e. the offset of the last available message + 1.</spa
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_exceptionHandler" title="exceptionHandler :: param $handler [callable]
-&lt;b&gt;
-exceptionHandler($handler)
-&lt;/b&gt;">
-            <span class="description">param $handler [callable]
-&lt;b&gt;
-exceptionHandler($handler)
-&lt;/b&gt;</span><pre>exceptionHandler</pre>
+        <a href="#method_exceptionHandler" title="exceptionHandler :: ">
+            <span class="description"></span><pre>exceptionHandler</pre>
         </a>
     </li>
 
@@ -216,14 +205,8 @@ be added to the current stream demand.</span><pre>fetch</pre>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_handler" title="handler :: param $handler [callable]
-&lt;b&gt;
-handler($handler)
-&lt;/b&gt;">
-            <span class="description">param $handler [callable]
-&lt;b&gt;
-handler($handler)
-&lt;/b&gt;</span><pre>handler</pre>
+        <a href="#method_handler" title="handler :: ">
+            <span class="description"></span><pre>handler</pre>
         </a>
     </li>
 
@@ -425,14 +408,14 @@ for specific Topic/Partition, these are Kafka's specific operations.
                                             <a id="method_assign"></a>
                         <div class="element clickable method public  method_assign" data-toggle="collapse" data-target=".method_assign .collapse">
                             <h2>Manually assign a partition to this consumer.</h2>
-                            <pre>assign( $arg0,  $arg1 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>assign( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] partition which want assigned
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] partition which want assigned
 <b>
 assign($topicPartition)
 </b></p>
@@ -451,7 +434,7 @@ is called. In contrast, the once the given <code>completionHandler</code>
 is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
 consistent with the new partition.
 
-param $topicPartition [TopicPartition | mixed] partition which want assigned
+param $topicPartition [TopicPartition | array] partition which want assigned
 param $completionHandler [callable] handler called on operation completed
 <b>
 assign($topicPartition, $completionHandler)
@@ -479,7 +462,7 @@ assign($topicPartitions, $completionHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>array | TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -487,7 +470,7 @@ assign($topicPartitions, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -495,17 +478,14 @@ assign($topicPartitions, $completionHandler)
                                             <a id="method_assignment"></a>
                         <div class="element clickable method public  method_assignment" data-toggle="collapse" data-target=".method_assignment .collapse">
                             <h2>Get the set of partitions currently assigned to this consumer.</h2>
-                            <pre>assignment( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>assignment( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] handler called on operation completed
-<b>
-assignment($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -517,7 +497,7 @@ assignment($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -528,17 +508,14 @@ assignment($handler)
 from the Kafka server. Batch handlers need to take care not to block
 the event loop when dealing with large batches. It is better to process
 records individually using the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer #handler(Handler) record handler.</h2>
-                            <pre>batchHandler( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>batchHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] handler called when batches of messages are fetched
-<b>
-batchHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -550,7 +527,7 @@ batchHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -565,11 +542,7 @@ batchHandler($handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] the partition to get the earliest offset.
-param $handler [callable] handler called on operation completed. Returns the earliest available offset for the given partition
-<b>
-beginningOffsets($topicPartition, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -577,7 +550,7 @@ beginningOffsets($topicPartition, $handler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -662,11 +635,7 @@ commit($completionHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] topic partition for getting last committed offset
-param $handler [callable] handler called on operation completed
-<b>
-committed($topicPartition, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -674,7 +643,7 @@ committed($topicPartition, $handler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -738,11 +707,8 @@ create($vertx, $config, $keyType, $valueType)
                         </div>
                                             <a id="method_endHandler"></a>
                         <div class="element clickable method public  method_endHandler" data-toggle="collapse" data-target=".method_endHandler .collapse">
-                            <h2>param $endHandler [callable]
-&lt;b&gt;
-endHandler($endHandler)
-&lt;/b&gt;</h2>
-                            <pre>endHandler( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <h2>endHandler</h2>
+                            <pre>endHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -761,7 +727,7 @@ endHandler($endHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -777,11 +743,7 @@ of the upcoming message, i.e. the offset of the last available message + 1.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] the partition to get the end offset.
-param $handler [callable] handler called on operation completed. The end offset for the given partition.
-<b>
-endOffsets($topicPartition, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -789,7 +751,7 @@ endOffsets($topicPartition, $handler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -802,11 +764,8 @@ endOffsets($topicPartition, $handler)
                         </div>
                                             <a id="method_exceptionHandler"></a>
                         <div class="element clickable method public  method_exceptionHandler" data-toggle="collapse" data-target=".method_exceptionHandler .collapse">
-                            <h2>param $handler [callable]
-&lt;b&gt;
-exceptionHandler($handler)
-&lt;/b&gt;</h2>
-                            <pre>exceptionHandler( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <h2>exceptionHandler</h2>
+                            <pre>exceptionHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -825,7 +784,7 @@ exceptionHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -835,17 +794,14 @@ exceptionHandler($handler)
                             <h2>Fetch the specified &lt;code&gt;amount&lt;/code&gt; of elements. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will
 recommence with the specified &lt;code&gt;amount&lt;/code&gt; of items, otherwise the specified &lt;code&gt;amount&lt;/code&gt; will
 be added to the current stream demand.</h2>
-                            <pre>fetch( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>fetch( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $amount [integer]
-<b>
-fetch($amount)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -857,18 +813,15 @@ fetch($amount)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_handler"></a>
                         <div class="element clickable method public  method_handler" data-toggle="collapse" data-target=".method_handler .collapse">
-                            <h2>param $handler [callable]
-&lt;b&gt;
-handler($handler)
-&lt;/b&gt;</h2>
-                            <pre>handler( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <h2>handler</h2>
+                            <pre>handler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -887,7 +840,7 @@ handler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -903,12 +856,7 @@ for the given timestamp no offset can be found -- e.g., when the timestamp refer
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] TopicPartition to query.
-param $timestamp [integer] Timestamp to be used in the query.
-param $handler [callable] handler called on operation completed
-<b>
-offsetsForTimes($topicPartition, $timestamp, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -916,7 +864,7 @@ offsetsForTimes($topicPartition, $timestamp, $handler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -934,17 +882,14 @@ offsetsForTimes($topicPartition, $timestamp, $handler)
                                             <a id="method_partitionsAssignedHandler"></a>
                         <div class="element clickable method public  method_partitionsAssignedHandler" data-toggle="collapse" data-target=".method_partitionsAssignedHandler .collapse">
                             <h2>Set the handler called when topic partitions are assigned to the consumer</h2>
-                            <pre>partitionsAssignedHandler( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>partitionsAssignedHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] handler called on assigned topic partitions
-<b>
-partitionsAssignedHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -956,7 +901,7 @@ partitionsAssignedHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -964,18 +909,14 @@ partitionsAssignedHandler($handler)
                                             <a id="method_partitionsFor"></a>
                         <div class="element clickable method public  method_partitionsFor" data-toggle="collapse" data-target=".method_partitionsFor .collapse">
                             <h2>Get metadata about the partitions for a given topic.</h2>
-                            <pre>partitionsFor( $arg0,  $arg1) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>partitionsFor( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topic [string] topic partition for which getting partitions info
-param $handler [callable] handler called on operation completed
-<b>
-partitionsFor($topic, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -991,7 +932,7 @@ partitionsFor($topic, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -999,17 +940,14 @@ partitionsFor($topic, $handler)
                                             <a id="method_partitionsRevokedHandler"></a>
                         <div class="element clickable method public  method_partitionsRevokedHandler" data-toggle="collapse" data-target=".method_partitionsRevokedHandler .collapse">
                             <h2>Set the handler called when topic partitions are revoked to the consumer</h2>
-                            <pre>partitionsRevokedHandler( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>partitionsRevokedHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] handler called on revoked topic partitions
-<b>
-partitionsRevokedHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1021,7 +959,7 @@ partitionsRevokedHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1031,7 +969,7 @@ partitionsRevokedHandler($handler)
                             <h2>&lt;b&gt;
 pause()
 &lt;/b&gt;</h2>
-                            <pre>pause( $arg0 = null,  $arg1 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>pause( $arg0 = null,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1039,7 +977,7 @@ pause()
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>Suspend fetching from the requested partition.</p>
-<p>param $topicPartition [TopicPartition | mixed] topic partition from which suspend fetching
+<p>param $topicPartition [TopicPartition | array] topic partition from which suspend fetching
 <b>
 pause($topicPartition)
 </b></p>
@@ -1058,7 +996,7 @@ is called. In contrast, the once the given <code>completionHandler</code>
 is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will not see messages
 from the given <code>topicPartition</code>.
 
-param $topicPartition [TopicPartition | mixed] topic partition from which suspend fetching
+param $topicPartition [TopicPartition | array] topic partition from which suspend fetching
 param $completionHandler [callable] handler called on operation completed
 <b>
 pause($topicPartition, $completionHandler)
@@ -1086,7 +1024,7 @@ pause($topicPartitions, $completionHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>array | TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1094,7 +1032,7 @@ pause($topicPartitions, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1109,10 +1047,7 @@ pause($topicPartitions, $completionHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] handler called on operation completed
-<b>
-paused($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1137,11 +1072,7 @@ paused($handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $timeout [integer] The time, in milliseconds, spent waiting in poll if data is not available in the buffer. If 0, returns immediately with any records that are available currently in the native Kafka consumer's buffer, else returns empty. Must not be negative.
-param $handler [callable] handler called after the poll with batch of records (can be empty).
-<b>
-poll($timeout, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1172,11 +1103,7 @@ poll($timeout, $handler)
                                 <div class="detail-description">
                                     <div class="long_description"><p>Setting timeout to a lower value results in a more 'responsive' client, because it will block for a shorter period
 if no data is available in the assigned partition and therefore allows subsequent actions to be executed with a shorter
-delay. At the same time, the client will poll more frequently and thus will potentially create a higher load on the Kafka Broker.</p>
-<p>param $timeout [integer] The time, in milliseconds, spent waiting in poll if data is not available in the buffer. If 0, returns immediately with any records that are available currently in the native Kafka consumer's buffer, else returns empty. Must not be negative.
-<b>
-pollTimeout($timeout)
-</b></p></div>
+delay. At the same time, the client will poll more frequently and thus will potentially create a higher load on the Kafka Broker.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1203,11 +1130,7 @@ pollTimeout($timeout)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $partition [TopicPartition | mixed] The partition to get the position for
-param $handler [callable] handler called on operation completed
-<b>
-position($partition, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1215,7 +1138,7 @@ position($partition, $handler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1231,7 +1154,7 @@ position($partition, $handler)
                             <h2>&lt;b&gt;
 resume()
 &lt;/b&gt;</h2>
-                            <pre>resume( $arg0 = null,  $arg1 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>resume( $arg0 = null,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1239,7 +1162,7 @@ resume()
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>Resume specified partition which have been paused with pause.</p>
-<p>param $topicPartition [TopicPartition | mixed] topic partition from which resume fetching
+<p>param $topicPartition [TopicPartition | array] topic partition from which resume fetching
 <b>
 resume($topicPartition)
 </b></p>
@@ -1249,7 +1172,7 @@ resume($topicPartition)
 resume($topicPartitions)
 </b></p>
 <p>Resume specified partition which have been paused with pause.</p>
-<p>param $topicPartition [TopicPartition | mixed] topic partition from which resume fetching
+<p>param $topicPartition [TopicPartition | array] topic partition from which resume fetching
 param $completionHandler [callable] handler called on operation completed
 <b>
 resume($topicPartition, $completionHandler)
@@ -1267,7 +1190,7 @@ resume($topicPartitions, $completionHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>array | TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1275,7 +1198,7 @@ resume($topicPartitions, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1283,14 +1206,14 @@ resume($topicPartitions, $completionHandler)
                                             <a id="method_seek"></a>
                         <div class="element clickable method public  method_seek" data-toggle="collapse" data-target=".method_seek .collapse">
                             <h2>Overrides the fetch offsets that the consumer will use on the next poll.</h2>
-                            <pre>seek( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>seek( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] topic partition for which seek
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] topic partition for which seek
 param $offset [integer] offset to seek inside the topic partition
 <b>
 seek($topicPartition, $offset)
@@ -1305,7 +1228,7 @@ is called. In contrast, the once the given <code>completionHandler</code>
 is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
 consistent with the new offset.
 
-param $topicPartition [TopicPartition | mixed] topic partition for which seek
+param $topicPartition [TopicPartition | array] topic partition for which seek
 param $offset [integer] offset to seek inside the topic partition
 param $completionHandler [callable] handler called on operation completed
 <b>
@@ -1318,7 +1241,7 @@ seek($topicPartition, $offset, $completionHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1330,7 +1253,7 @@ seek($topicPartition, $offset, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1338,14 +1261,14 @@ seek($topicPartition, $offset, $completionHandler)
                                             <a id="method_seekToBeginning"></a>
                         <div class="element clickable method public  method_seekToBeginning" data-toggle="collapse" data-target=".method_seekToBeginning .collapse">
                             <h2>Seek to the first offset for each of the given partition.</h2>
-                            <pre>seekToBeginning( $arg0,  $arg1 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>seekToBeginning( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] topic partition for which seek
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] topic partition for which seek
 <b>
 seekToBeginning($topicPartition)
 </b></p>
@@ -1364,7 +1287,7 @@ is called. In contrast, the once the given <code>completionHandler</code>
 is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
 consistent with the new offset.
 
-param $topicPartition [TopicPartition | mixed] topic partition for which seek
+param $topicPartition [TopicPartition | array] topic partition for which seek
 param $completionHandler [callable] handler called on operation completed
 <b>
 seekToBeginning($topicPartition, $completionHandler)
@@ -1392,7 +1315,7 @@ seekToBeginning($topicPartitions, $completionHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>array | TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1400,7 +1323,7 @@ seekToBeginning($topicPartitions, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1408,14 +1331,14 @@ seekToBeginning($topicPartitions, $completionHandler)
                                             <a id="method_seekToEnd"></a>
                         <div class="element clickable method public  method_seekToEnd" data-toggle="collapse" data-target=".method_seekToEnd .collapse">
                             <h2>Seek to the last offset for each of the given partition.</h2>
-                            <pre>seekToEnd( $arg0,  $arg1 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>seekToEnd( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $topicPartition [TopicPartition | mixed] topic partition for which seek
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] topic partition for which seek
 <b>
 seekToEnd($topicPartition)
 </b></p>
@@ -1434,7 +1357,7 @@ is called. In contrast, the once the given <code>completionHandler</code>
 is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
 consistent with the new offset.
 
-param $topicPartition [TopicPartition | mixed] topic partition for which seek
+param $topicPartition [TopicPartition | array] topic partition for which seek
 param $completionHandler [callable] handler called on operation completed
 <b>
 seekToEnd($topicPartition, $completionHandler)
@@ -1462,7 +1385,7 @@ seekToEnd($topicPartitions, $completionHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>array | TopicPartition | mixed</p></p>
+                                                <code></code><p><p>array | TopicPartition</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1470,7 +1393,7 @@ seekToEnd($topicPartitions, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1478,7 +1401,7 @@ seekToEnd($topicPartitions, $completionHandler)
                                             <a id="method_subscribe"></a>
                         <div class="element clickable method public  method_subscribe" data-toggle="collapse" data-target=".method_subscribe .collapse">
                             <h2>Subscribe to the given topic to get dynamically assigned partitions.</h2>
-                            <pre>subscribe( $arg0,  $arg1 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>subscribe( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1540,7 +1463,7 @@ subscribe($topics, $completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1548,17 +1471,14 @@ subscribe($topics, $completionHandler)
                                             <a id="method_subscription"></a>
                         <div class="element clickable method public  method_subscription" data-toggle="collapse" data-target=".method_subscription .collapse">
                             <h2>Get the current subscription.</h2>
-                            <pre>subscription( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>subscription( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] handler called on operation completed
-<b>
-subscription($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1570,7 +1490,7 @@ subscription($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1578,7 +1498,7 @@ subscription($handler)
                                             <a id="method_unsubscribe"></a>
                         <div class="element clickable method public  method_unsubscribe" data-toggle="collapse" data-target=".method_unsubscribe .collapse">
                             <h2>Unsubscribe from topics currently subscribed with subscribe.</h2>
-                            <pre>unsubscribe( $arg0 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer</pre>
+                            <pre>unsubscribe( $arg0 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1604,7 +1524,7 @@ unsubscribe($completionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">\io\vertx\jphp\kafka\client\consumer\KafkaConsumer</a></code><p><p>current KafkaConsumer instance</p></p>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
                                                                     </div>
                             </div>
 
@@ -1631,7 +1551,7 @@ unsubscribe($completionHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:04 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:49 +0000.<br/>
     </footer>
     </body>
 </html>

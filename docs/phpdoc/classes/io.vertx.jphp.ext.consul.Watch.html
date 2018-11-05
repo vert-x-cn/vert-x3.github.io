@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -277,7 +278,7 @@ events($event, $vertx)
 This maps to the <a href="https://www.consul.io/docs/agent/http/event.html#event_list">/v1/event/list</a> API internally.</p>
 <p>param $event [string] the event name
 param $vertx [Vertx] the {@code Vertx} instance
-param $options [ConsulClientOptions | mixed] the options to create underlying Consul client
+param $options [ConsulClientOptions | array] the options to create underlying Consul client
 <b>
 events($event, $vertx, $options)
 </b></p></div>
@@ -296,7 +297,7 @@ events($event, $vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>mixed | ConsulClientOptions</p></p>
+                                                <code></code><p><p>array | ConsulClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -326,7 +327,7 @@ key($key, $vertx)
 This maps to the <a href="https://www.consul.io/api/kv.html">/v1/kv/</a> API internally.</p>
 <p>param $key [string] the key
 param $vertx [Vertx] the {@code Vertx} instance
-param $options [ConsulClientOptions | mixed] the options to create underlying Consul client
+param $options [ConsulClientOptions | array] the options to create underlying Consul client
 <b>
 key($key, $vertx, $options)
 </b></p></div>
@@ -345,7 +346,7 @@ key($key, $vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>mixed | ConsulClientOptions</p></p>
+                                                <code></code><p><p>array | ConsulClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -375,7 +376,7 @@ keyPrefix($keyPrefix, $vertx)
 This maps to the <a href="https://www.consul.io/api/kv.html">/v1/kv/</a> API internally.</p>
 <p>param $keyPrefix [string] the key
 param $vertx [Vertx] the {@code Vertx} instance
-param $options [ConsulClientOptions | mixed] the options to create underlying Consul client
+param $options [ConsulClientOptions | array] the options to create underlying Consul client
 <b>
 keyPrefix($keyPrefix, $vertx, $options)
 </b></p></div>
@@ -394,7 +395,7 @@ keyPrefix($keyPrefix, $vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>mixed | ConsulClientOptions</p></p>
+                                                <code></code><p><p>array | ConsulClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -422,7 +423,7 @@ nodes($vertx)
 <p>Creates <code>Watch</code> to monitoring the list of available nodes.
 This maps to the <a href="https://www.consul.io/api/catalog.html#list-nodes">/v1/catalog/nodes</a> API internally.</p>
 <p>param $vertx [Vertx] the {@code Vertx} instance
-param $options [ConsulClientOptions | mixed] the options to create underlying Consul client
+param $options [ConsulClientOptions | array] the options to create underlying Consul client
 <b>
 nodes($vertx, $options)
 </b></p></div>
@@ -437,7 +438,7 @@ nodes($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | ConsulClientOptions</p></p>
+                                                <code></code><p><p>array | ConsulClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -467,7 +468,7 @@ service($service, $vertx)
 This maps to the <a href="https://www.consul.io/docs/agent/http/health.html#health_service">/v1/health/service/&lt;service&gt;</a> API internally.</p>
 <p>param $service [string] the service name
 param $vertx [Vertx] the {@code Vertx} instance
-param $options [ConsulClientOptions | mixed] the options to create underlying Consul client
+param $options [ConsulClientOptions | array] the options to create underlying Consul client
 <b>
 service($service, $vertx, $options)
 </b></p></div>
@@ -486,7 +487,7 @@ service($service, $vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>mixed | ConsulClientOptions</p></p>
+                                                <code></code><p><p>array | ConsulClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -514,7 +515,7 @@ services($vertx)
 <p>Creates <code>Watch</code> to monitoring the list of available services.
 This maps to the <a href="https://www.consul.io/docs/agent/http/catalog.html#catalog_services">/v1/catalog/services</a> API internally.</p>
 <p>param $vertx [Vertx] the {@code Vertx} instance
-param $options [ConsulClientOptions | mixed] the options to create underlying Consul client
+param $options [ConsulClientOptions | array] the options to create underlying Consul client
 <b>
 services($vertx, $options)
 </b></p></div>
@@ -529,7 +530,7 @@ services($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | ConsulClientOptions</p></p>
+                                                <code></code><p><p>array | ConsulClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -541,17 +542,14 @@ services($vertx, $options)
                                             <a id="method_setHandler"></a>
                         <div class="element clickable method public  method_setHandler" data-toggle="collapse" data-target=".method_setHandler .collapse">
                             <h2>Set the result handler. As data is changed, the handler will be called with the result.</h2>
-                            <pre>setHandler( $arg0) : \io\vertx\jphp\ext\consul\Watch</pre>
+                            <pre>setHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the result handler
-<b>
-setHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -563,7 +561,7 @@ setHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.consul.Watch.html">\io\vertx\jphp\ext\consul\Watch</a></code><p><p>reference to this, for fluency</p></p>
+                                        <code>$this</code><p><p>reference to this, for fluency</p></p>
                                                                     </div>
                             </div>
 
@@ -571,16 +569,14 @@ setHandler($handler)
                                             <a id="method_start"></a>
                         <div class="element clickable method public  method_start" data-toggle="collapse" data-target=".method_start .collapse">
                             <h2>Start this &lt;code&gt;Watch&lt;/code&gt;</h2>
-                            <pre>start() : \io\vertx\jphp\ext\consul\Watch</pre>
+                            <pre>start() : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-start()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -594,7 +590,7 @@ start()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.consul.Watch.html">\io\vertx\jphp\ext\consul\Watch</a></code><p><p>reference to this, for fluency</p></p>
+                                        <code>$this</code><p><p>reference to this, for fluency</p></p>
                                                                     </div>
                             </div>
 
@@ -609,9 +605,7 @@ start()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-stop()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -650,7 +644,7 @@ stop()
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:58 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:39 +0000.<br/>
     </footer>
     </body>
 </html>

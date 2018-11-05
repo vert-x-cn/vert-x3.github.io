@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -161,6 +162,11 @@
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_POOL_NAME" title="DEFAULT_POOL_NAME :: The name of the default pool">
+                        <span class="description">The name of the default pool</span><pre>DEFAULT_POOL_NAME</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -237,9 +243,7 @@ A simple asynchronous API for sending mails from Vert.x applications</p>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -266,11 +270,7 @@ close()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $vertx [Vertx] the Vertx instance the operation will be run in
-param $config [MailConfig | mixed] MailConfig configuration to be used for sending mails
-<b>
-createNonShared($vertx, $config)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -282,7 +282,7 @@ createNonShared($vertx, $config)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | MailConfig</p></p>
+                                                <code></code><p><p>array | MailConfig</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -302,14 +302,14 @@ createNonShared($vertx, $config)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>param $vertx [Vertx] the Vert.x instance
-param $config [MailConfig | mixed] the configuration
+param $config [MailConfig | array] the configuration
 <b>
 createShared($vertx, $config)
 </b></p>
 <p>Create a Mail client which shares its data source with any other Mongo clients created with the same
 pool name</p>
 <p>param $vertx [Vertx] the Vert.x instance
-param $config [MailConfig | mixed] the configuration
+param $config [MailConfig | array] the configuration
 param $poolName [string] the pool name
 <b>
 createShared($vertx, $config, $poolName)
@@ -325,7 +325,7 @@ createShared($vertx, $config, $poolName)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | MailConfig</p></p>
+                                                <code></code><p><p>array | MailConfig</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -341,18 +341,14 @@ createShared($vertx, $config, $poolName)
                                             <a id="method_sendMail"></a>
                         <div class="element clickable method public  method_sendMail" data-toggle="collapse" data-target=".method_sendMail .collapse">
                             <h2>send a single mail via MailClient</h2>
-                            <pre>sendMail( $arg0,  $arg1) : \io\vertx\jphp\ext\mail\MailClient</pre>
+                            <pre>sendMail( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $email [MailMessage | mixed] MailMessage object containing the mail text, from/to, attachments etc
-param $resultHandler [callable] will be called when the operation is finished or it fails (may be null to ignore the result)
-<b>
-sendMail($email, $resultHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -360,7 +356,7 @@ sendMail($email, $resultHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>MailMessage | mixed</p></p>
+                                                <code></code><p><p>MailMessage | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -368,13 +364,36 @@ sendMail($email, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.mail.MailClient.html">\io\vertx\jphp\ext\mail\MailClient</a></code><p><p>this MailClient instance so the method can be used fluently</p></p>
+                                        <code>$this</code><p><p>this MailClient instance so the method can be used fluently</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_DEFAULT_POOL_NAME"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_POOL_NAME" data-toggle="collapse" data-target=".constant_DEFAULT_POOL_NAME .collapse">
+                                <h2>The name of the default pool</h2>
+                                <pre>DEFAULT_POOL_NAME</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\ext\mail\MailClient"></a>
@@ -395,7 +414,7 @@ sendMail($email, $resultHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:03 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:48 +0000.<br/>
     </footer>
     </body>
 </html>

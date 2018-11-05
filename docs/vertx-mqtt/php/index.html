@@ -306,13 +306,13 @@ this module has the tech preview status, this means the API can change between v
 <h3 id="_handling_client_connection_disconnection">Handling client connection/disconnection</h3>
 <div class="paragraph">
 <p>This example shows how it&#8217;s possible to handle the connection request from a remote MQTT client. First, an
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttServer.html">MqttServer</a>`instance is created and the `<a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttServer.html#method_endpointHandler">endpointHandler</a></code> method is used to specify the handler called
-when a remote client sends a CONNECT message for connecting to the server itself. The <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttServer.html">MqttServer</a>`instance is created and the `<a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttServer.html#method_endpointHandler">endpointHandler</a></code> method is used to specify the handler called
+when a remote client sends a CONNECT message for connecting to the server itself. The <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code>
 instance, provided as parameter to the handler, brings all main information related to the CONNECT message like client identifier,
 username/password, "will" information, clean session flag, protocol version and the "keep alive" timeout.
-Inside that handler, the <em>endpoint</em> instance provides the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_accept">accept</a></code> method
+Inside that handler, the <em>endpoint</em> instance provides the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_accept">accept</a></code> method
 for replying to the remote client with the corresponding CONNACK message : in this way, the connection is established.
-Finally, the server is started using the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttServer.html#method_listen">listen</a></code> method with
+Finally, the server is started using the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttServer.html#method_listen">listen</a></code> method with
 the default behavior (on localhost and default MQTT port 1883). The same method allows to specify an handler in order
 to check if the server is started properly or not.</p>
 </div>
@@ -322,7 +322,7 @@ to check if the server is started properly or not.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The same <em>endpoint</em> instance provides the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_disconnectHandler">disconnectHandler</a></code>
+<p>The same <em>endpoint</em> instance provides the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_disconnectHandler">disconnectHandler</a></code>
 for specifying the handler called when the remote client sends a DISCONNECT message in order to disconnect from the server;
 this handler takes no parameters.</p>
 </div>
@@ -342,15 +342,15 @@ this handler takes no parameters.</p>
 <h3 id="_handling_client_connection_disconnection_with_ssl_tls_support">Handling client connection/disconnection with SSL/TLS support</h3>
 <div class="paragraph">
 <p>The server has the support for accepting connection requests through the SSL/TLS protocol for authentication and encryption.
-In order to do that, the <code><a href="../../vertx-mqtt/vertx-mqtt-jphp/enums.adoc#MqttServerOptions">MqttServerOptions</a></code> class provides the <code><a href="../vertx-mqtt-jphp/enums.adoc#MqttServerOptions#method_setSsl">setSsl</a></code> method
+In order to do that, the <code><a href="../../vertx-mqtt/php/dataobjects.html#MqttServerOptions">MqttServerOptions</a></code> class provides the <code><a href="../php/dataobjects.html#MqttServerOptions#method_setSsl">setSsl</a></code> method
 for setting the usage of SSL/TLS (passing 'true' as value) and some other useful methods for providing server certificate and
 related private key (as Java key store reference, PEM or PFX format). In the following example, the
-<code><a href="../vertx-mqtt-jphp/enums.adoc#MqttServerOptions#method_setKeyCertOptions">setKeyCertOptions</a>`method is used in order to
+<code><a href="../php/dataobjects.html#MqttServerOptions#method_setKeyCertOptions">setKeyCertOptions</a>`method is used in order to
 pass the certificates in PEM format. This method requires an instance of the possible implementations of the
-`KeyCertOptions`interface and in this case the `<a href="../vertx-jphp/enums.adoc#PemKeyCertOptions">PemKeyCertOptions</a></code> class
+`KeyCertOptions`interface and in this case the `<a href="../php/dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> class
 is used in order to provide the path for the server certificate and the private key with the correspondent
-`<a href="../vertx-jphp/enums.adoc#PemKeyCertOptions#method_setCertPath">setCertPath</a>`and
-`<a href="../vertx-jphp/enums.adoc#PemKeyCertOptions#method_setKeyPath">setKeyPath</a>`methods.
+`<a href="../php/dataobjects.html#PemKeyCertOptions#method_setCertPath">setCertPath</a>`and
+`<a href="../php/dataobjects.html#PemKeyCertOptions#method_setKeyPath">setKeyPath</a>`methods.
 The MQTT server is started passing the Vert.x instance as usual and the above MQTT options instance to the creation method.</p>
 </div>
 <div class="listingblock">
@@ -366,11 +366,11 @@ The MQTT server is started passing the Vert.x instance as usual and the above MQ
 <h3 id="_handling_client_subscription_unsubscription_request">Handling client subscription/unsubscription request</h3>
 <div class="paragraph">
 <p>After a connection is established between client and server, the client can send a subscription request for a topic
-using the SUBSCRIBE message. The <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code> interface allows to specify an handler for the
-incoming subscription request using the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_subscribeHandler">subscribeHandler</a></code> method.
-Such handler receives an instance of the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.messages.MqttSubscribeMessage.html">MqttSubscribeMessage</a></code> interface which brings
+using the SUBSCRIBE message. The <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code> interface allows to specify an handler for the
+incoming subscription request using the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_subscribeHandler">subscribeHandler</a></code> method.
+Such handler receives an instance of the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.messages.MqttSubscribeMessage.html">MqttSubscribeMessage</a></code> interface which brings
 the list of topics with related QoS levels as desired by the client.
-Finally, the endpoint instance provides the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_subscribeAcknowledge">subscribeAcknowledge</a></code> method
+Finally, the endpoint instance provides the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_subscribeAcknowledge">subscribeAcknowledge</a></code> method
 for replying to the client with the related SUBACK message containing the granted QoS levels.</p>
 </div>
 <div class="listingblock">
@@ -392,10 +392,10 @@ for replying to the client with the related SUBACK message containing the grante
 </div>
 </div>
 <div class="paragraph">
-<p>In the same way, it&#8217;s possible to use the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_unsubscribeHandler">unsubscribeHandler</a></code> method
+<p>In the same way, it&#8217;s possible to use the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_unsubscribeHandler">unsubscribeHandler</a></code> method
 on the endpoint in order to specify the handler called when the client sends an UNSUBSCRIBE message. This handler receives
-an instance of the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.messages.MqttUnsubscribeMessage.html">MqttUnsubscribeMessage</a></code> interface as parameter with the list of topics to unsubscribe.
-Finally, the endpoint instance provides the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_unsubscribeAcknowledge">unsubscribeAcknowledge</a></code> method
+an instance of the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.messages.MqttUnsubscribeMessage.html">MqttUnsubscribeMessage</a></code> interface as parameter with the list of topics to unsubscribe.
+Finally, the endpoint instance provides the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_unsubscribeAcknowledge">unsubscribeAcknowledge</a></code> method
 for replying to the client with the related UNSUBACK message.</p>
 </div>
 <div class="listingblock">
@@ -417,9 +417,9 @@ for replying to the client with the related UNSUBACK message.</p>
 <div class="sect2">
 <h3 id="_handling_client_published_message">Handling client published message</h3>
 <div class="paragraph">
-<p>In order to handle incoming messages published by the remote client, the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code> interface provides
-the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishHandler">publishHandler</a></code> method for specifying the handler called
-when the client sends a PUBLISH message. This handler receives an instance of the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.messages.MqttPublishMessage.html">MqttPublishMessage</a></code>
+<p>In order to handle incoming messages published by the remote client, the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code> interface provides
+the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishHandler">publishHandler</a></code> method for specifying the handler called
+when the client sends a PUBLISH message. This handler receives an instance of the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.messages.MqttPublishMessage.html">MqttPublishMessage</a></code>
 interface as parameter with the payload, the QoS level, the duplicate and retain flags.</p>
 </div>
 <div class="paragraph">
@@ -427,14 +427,14 @@ interface as parameter with the payload, the QoS level, the duplicate and retain
 </div>
 <div class="paragraph">
 <p>If the QoS level is 1 (AT_LEAST_ONCE), the endpoind needs to reply with a PUBACK message using the
-available <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishAcknowledge">publishAcknowledge</a></code> method.</p>
+available <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishAcknowledge">publishAcknowledge</a></code> method.</p>
 </div>
 <div class="paragraph">
 <p>If the QoS level is 2 (EXACTLY_ONCE), the endpoint needs to reply with a PUBREC message using the
-available <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishReceived">publishReceived</a></code> method; in this case the same endpoint should handle
+available <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishReceived">publishReceived</a></code> method; in this case the same endpoint should handle
 the PUBREL message received from the client as well (the remote client sends it after receiving the PUBREC from the endpoint)
-and it can do that specifying the handler through the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishReleaseHandler">publishReleaseHandler</a></code> method.
-In order to close the QoS level 2 delivery, the endpoint can use the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishComplete">publishComplete</a></code> method
+and it can do that specifying the handler through the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishReleaseHandler">publishReleaseHandler</a></code> method.
+In order to close the QoS level 2 delivery, the endpoint can use the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishComplete">publishComplete</a></code> method
 for sending the PUBCOMP message to the client.</p>
 </div>
 <div class="listingblock">
@@ -463,7 +463,7 @@ for sending the PUBCOMP message to the client.</p>
 <h3 id="_publish_message_to_the_client">Publish message to the client</h3>
 <div class="paragraph">
 <p>The endpoint can publish a message to the remote client (sending a PUBLISH message) using the
-`<a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publish">publish</a>`method
+`<a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publish">publish</a>`method
 which takes the following input parameters : the topic to publish, the payload, the QoS level, the duplicate and retain flags.</p>
 </div>
 <div class="paragraph">
@@ -471,15 +471,15 @@ which takes the following input parameters : the topic to publish, the payload, 
 </div>
 <div class="paragraph">
 <p>If the QoS level is 1 (AT_LEAST_ONCE), the endpoint needs to handle the PUBACK message received from the client
-in order to receive final acknowledge of delivery. It&#8217;s possible using the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishAcknowledgeHandler">publishAcknowledgeHandler</a></code> method
+in order to receive final acknowledge of delivery. It&#8217;s possible using the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishAcknowledgeHandler">publishAcknowledgeHandler</a></code> method
 specifying such an handler.</p>
 </div>
 <div class="paragraph">
 <p>If the QoS level is 2 (EXACTLY_ONCE), the endpoint needs to handle the PUBREC message received from the client.
-The <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishReceivedHandler">publishReceivedHandler</a></code> method allows to specify
-the handler for that. Inside that handler, the endpoint can use the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishRelease">publishRelease</a></code> method
+The <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishReceivedHandler">publishReceivedHandler</a></code> method allows to specify
+the handler for that. Inside that handler, the endpoint can use the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishRelease">publishRelease</a></code> method
 for replying to the client with the PUBREL message. The last step is to handle the PUBCOMP message received from the client
-as final acknowledge for the published message; it&#8217;s possible using the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishCompletionHandler">publishCompletionHandler</a></code>
+as final acknowledge for the published message; it&#8217;s possible using the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_publishCompletionHandler">publishCompletionHandler</a></code>
 for specifying the handler called when the final PUBCOMP message is received.</p>
 </div>
 <div class="listingblock">
@@ -514,8 +514,8 @@ the server takes care of the keep alive timeout specified inside that message in
 send messages in such timeout. At same time, for every PINGREQ received, the server replies with the related PINGRESP.</p>
 </div>
 <div class="paragraph">
-<p>Even if there is no need for the high level application to handle that, the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code> interface
-provides the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_pingHandler">pingHandler</a></code> method for specifying an handler
+<p>Even if there is no need for the high level application to handle that, the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html">MqttEndpoint</a></code> interface
+provides the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttEndpoint.html#method_pingHandler">pingHandler</a></code> method for specifying an handler
 called when a PINGREQ message is received from the client. It&#8217;s just a notification to the application that the client
 isn&#8217;t sending meaningful messages but only pings for keeping alive; in any case the PINGRESP is automatically sent
 by the server internally as described above.</p>
@@ -535,7 +535,7 @@ by the server internally as described above.</p>
 <div class="sect2">
 <h3 id="_closing_the_server">Closing the server</h3>
 <div class="paragraph">
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttServer.html">MqttServer</a></code> interface provides the <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttServer.html#method_close">close</a></code> method
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttServer.html">MqttServer</a></code> interface provides the <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttServer.html#method_close">close</a></code> method
 that can be used for closing the server; it stops to listen for incoming connections and closes all the active connections
 with remote clients. This method is asynchronous and one overload provides the possibility to specify a complention handler
 that will be called when the server is really closed.</p>
@@ -634,11 +634,11 @@ this module has the tech preview status, this means the API can change between v
 <div class="paragraph">
 <p>The client gives you opportunity to connect to a server and disconnect from it.
 Also, you could specify things like the host and port of a server you would like
-to connect to passing instance of <code><a href="../../vertx-mqtt/vertx-mqtt-jphp/enums.adoc#MqttClientOptions">MqttClientOptions</a></code> as a param through constructor.</p>
+to connect to passing instance of <code><a href="../../vertx-mqtt/php/dataobjects.html#MqttClientOptions">MqttClientOptions</a></code> as a param through constructor.</p>
 </div>
 <div class="paragraph">
 <p>This example shows how you could connect to a server and disconnect from it using Vert.x MQTT client
-and calling <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_connect">connect</a></code> and <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_disconnect">disconnect</a></code> methods.</p>
+and calling <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_connect">connect</a></code> and <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_disconnect">disconnect</a></code> methods.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -658,7 +658,7 @@ and calling <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/
 <div class="title">Note</div>
 </td>
 <td class="content">
-default address of server provided by <code><a href="../../vertx-mqtt/vertx-mqtt-jphp/enums.adoc#MqttClientOptions">MqttClientOptions</a></code> is localhost:1883 and localhost:8883 if you are using SSL/TSL.
+default address of server provided by <code><a href="../../vertx-mqtt/php/dataobjects.html#MqttClientOptions">MqttClientOptions</a></code> is localhost:1883 and localhost:8883 if you are using SSL/TSL.
 </td>
 </tr>
 </table>
@@ -680,15 +680,15 @@ default address of server provided by <code><a href="../../vertx-mqtt/vertx-mqtt
 </div>
 </div>
 <div class="paragraph">
-<p>Here we have the example of usage of <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_subscribe">subscribe</a></code> method. In order to receive messages from rpi2/temp topic we call <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_subscribe">subscribe</a></code> method.
+<p>Here we have the example of usage of <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_subscribe">subscribe</a></code> method. In order to receive messages from rpi2/temp topic we call <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_subscribe">subscribe</a></code> method.
 Although, to handle received messages from server you need to provide a handler, which will be called each time you have a new messages in the topics you subscribe on.
-As this example shows, handler could be provided via <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_publishHandler">publishHandler</a></code> method.</p>
+As this example shows, handler could be provided via <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_publishHandler">publishHandler</a></code> method.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_publishing_message_to_a_topic">Publishing message to a topic</h3>
 <div class="paragraph">
-<p>If you would like to publish some message into topic then <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_publish">publish</a></code> should be called.
+<p>If you would like to publish some message into topic then <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_publish">publish</a></code> should be called.
 Let&#8217;s take a look at the example:</p>
 </div>
 <div class="listingblock">
@@ -706,7 +706,7 @@ Let&#8217;s take a look at the example:</p>
 <h3 id="_keep_connection_with_server_alive">Keep connection with server alive</h3>
 <div class="paragraph">
 <p>In order to keep connection with server you should time to time send something to server otherwise server will close the connection.
-The right way to keep connection alive is a <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_ping">ping</a></code> method.</p>
+The right way to keep connection alive is a <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_ping">ping</a></code> method.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -715,14 +715,14 @@ The right way to keep connection alive is a <code><a href="https://vertx.okou.tk
 <div class="title">Important</div>
 </td>
 <td class="content">
-by default you client keep connections with server automatically. That means that you don&#8217;t need to call <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_ping">ping</a></code> in order to keep connections with server.
-The <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html">MqttClient</a></code> will do it for you.
+by default you client keep connections with server automatically. That means that you don&#8217;t need to call <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_ping">ping</a></code> in order to keep connections with server.
+The <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html">MqttClient</a></code> will do it for you.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you want to disable this feature then you should call <code><a href="../vertx-mqtt-jphp/enums.adoc#MqttClientOptions#method_setAutoKeepAlive">setAutoKeepAlive</a></code> with {@code false} as argument:</p>
+<p>If you want to disable this feature then you should call <code><a href="../php/dataobjects.html#MqttClientOptions#method_setAutoKeepAlive">setAutoKeepAlive</a></code> with {@code false} as argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -738,7 +738,7 @@ The <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx
 <li>
 <p>publish is completed</p>
 <div class="paragraph">
-<p>You could provide handler by calling <code><a href="https://vertx.okou.tk/phpdoc/vertx-mqtt-jphp/classes/io.vertx.jphp.mqtt.MqttClient.html#method_publishCompletionHandler">publishCompletionHandler</a></code>. The handler will be called each time publish is completed.
+<p>You could provide handler by calling <code><a href="../../phpdoc/classes/io.vertx.jphp.mqtt.MqttClient.html#method_publishCompletionHandler">publishCompletionHandler</a></code>. The handler will be called each time publish is completed.
 This one is pretty useful because you could see the packetId of just received PUBACK or PUBCOMP packet.</p>
 </div>
 </li>
@@ -830,7 +830,7 @@ The handler WILL NOT BE CALLED if sent publish packet with QoS=0.
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:25:09 CST
+                上次更新时间 2018-11-05 19:56:20 CST
               
               
             </div>

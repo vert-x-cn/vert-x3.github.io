@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -155,6 +156,16 @@
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_TYPE" title="TYPE :: Name of the type.">
+                        <span class="description">Name of the type.</span><pre>TYPE</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_UNKNOWN" title="UNKNOWN :: Unknown type.">
+                        <span class="description">Unknown type.</span><pre>UNKNOWN</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -269,7 +280,7 @@ createRecord($name, $address, $itf, $metadata)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.servicediscovery.Record.html">\io\vertx\jphp\servicediscovery\Record</a></code><p><p>| mixed the record</p></p>
+                                        <code><a href="../classes/io.vertx.jphp.servicediscovery.Record.html">\io\vertx\jphp\servicediscovery\Record</a></code><p><p>the record</p></p>
                                                                     </div>
                             </div>
 
@@ -277,7 +288,7 @@ createRecord($name, $address, $itf, $metadata)
                                             <a id="method_getServiceProxy"></a>
                         <div class="element clickable method public  method_getServiceProxy" data-toggle="collapse" data-target=".method_getServiceProxy .collapse">
                             <h2>Lookup for a service record and if found, retrieve it and return the service object (used to consume the service).</h2>
-                            <pre>getServiceProxy( $arg0,  $arg1,  $arg2,  $arg3) : mixed</pre>
+                            <pre>getServiceProxy( $arg0,  $arg1,  $arg2,  $arg3) : object</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
 
@@ -286,14 +297,7 @@ createRecord($name, $address, $itf, $metadata)
                                 <div class="detail-description">
                                     <div class="long_description"><p>This is a convenient method to avoid explicit lookup and then retrieval of the service. This method requires to
 have the <code>clientClass</code> set with the expected set of client. This is important for usages not using Java so
-you can pass the expected type.</p>
-<p>param $discovery [ServiceDiscovery] the service discovery
-param $filter [callable] the filter
-param $clientClass [string] the client class
-param $resultHandler [callable] the result handler
-<b>
-getServiceProxy($discovery, $filter, $clientClass, $resultHandler)
-</b></p></div>
+you can pass the expected type.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -317,7 +321,7 @@ getServiceProxy($discovery, $filter, $clientClass, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code>mixed</code><p><p>{@code null} - do not use</p></p>
+                                        <code>object</code><p><p>{@code null} - do not use</p></p>
                                                                     </div>
                             </div>
 
@@ -325,7 +329,7 @@ getServiceProxy($discovery, $filter, $clientClass, $resultHandler)
                                             <a id="method_getServiceProxyWithJsonFilter"></a>
                         <div class="element clickable method public  method_getServiceProxyWithJsonFilter" data-toggle="collapse" data-target=".method_getServiceProxyWithJsonFilter .collapse">
                             <h2>Lookup for a service record and if found, retrieve it and return the service object (used to consume the service).</h2>
-                            <pre>getServiceProxyWithJsonFilter( $arg0,  $arg1,  $arg2,  $arg3) : mixed</pre>
+                            <pre>getServiceProxyWithJsonFilter( $arg0,  $arg1,  $arg2,  $arg3) : object</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
 
@@ -334,14 +338,7 @@ getServiceProxy($discovery, $filter, $clientClass, $resultHandler)
                                 <div class="detail-description">
                                     <div class="long_description"><p>This is a convenient method to avoid explicit lookup and then retrieval of the service. This method requires to
 have the <code>clientClass</code> set with the expected set of client. This is important for usages not using Java so
-you can pass the expected type.</p>
-<p>param $discovery [ServiceDiscovery] the service discovery
-param $filter [array] the filter as json object
-param $clientClass [string] the client class
-param $resultHandler [callable] the result handler
-<b>
-getServiceProxyWithJsonFilter($discovery, $filter, $clientClass, $resultHandler)
-</b></p></div>
+you can pass the expected type.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -365,13 +362,58 @@ getServiceProxyWithJsonFilter($discovery, $filter, $clientClass, $resultHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code>mixed</code><p><p>{@code null} - do not use</p></p>
+                                        <code>object</code><p><p>{@code null} - do not use</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_UNKNOWN"> </a>
+                            <div class="element clickable constant  constant_UNKNOWN" data-toggle="collapse" data-target=".constant_UNKNOWN .collapse">
+                                <h2>Unknown type.</h2>
+                                <pre>UNKNOWN</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_TYPE"> </a>
+                            <div class="element clickable constant  constant_TYPE" data-toggle="collapse" data-target=".constant_TYPE .collapse">
+                                <h2>Name of the type.</h2>
+                                <pre>TYPE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\servicediscovery\types\EventBusService"></a>
@@ -392,7 +434,7 @@ getServiceProxyWithJsonFilter($discovery, $filter, $clientClass, $resultHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:54 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:30 +0000.<br/>
     </footer>
     </body>
 </html>

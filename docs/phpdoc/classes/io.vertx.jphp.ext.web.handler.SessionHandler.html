@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -132,18 +133,24 @@
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_setCookieHttpOnlyFlag" title="setCookieHttpOnlyFlag :: Sets whether the &#039;HttpOnly&#039; flag should be set for the session cookie. When set this flag instructs browsers to
-prevent Javascript access to the the cookie. Used as a line of defence against the most common XSS attacks.">
-            <span class="description">Sets whether the &#039;HttpOnly&#039; flag should be set for the session cookie. When set this flag instructs browsers to
-prevent Javascript access to the the cookie. Used as a line of defence against the most common XSS attacks.</span><pre>setCookieHttpOnlyFlag</pre>
+        <a href="#method_setCookieHttpOnlyFlag" title="setCookieHttpOnlyFlag :: Sets whether the &#039;HttpOnly&#039; flag should be set for the session cookie. When
+set this flag instructs browsers to prevent Javascript access to the the
+cookie. Used as a line of defence against the most common XSS attacks.">
+            <span class="description">Sets whether the &#039;HttpOnly&#039; flag should be set for the session cookie. When
+set this flag instructs browsers to prevent Javascript access to the the
+cookie. Used as a line of defence against the most common XSS attacks.</span><pre>setCookieHttpOnlyFlag</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_setCookieSecureFlag" title="setCookieSecureFlag :: Sets whether the &#039;secure&#039; flag should be set for the session cookie. When set this flag instructs browsers to only
-send the cookie over HTTPS. Note that this will probably stop your sessions working if used without HTTPS (e.g. in development).">
-            <span class="description">Sets whether the &#039;secure&#039; flag should be set for the session cookie. When set this flag instructs browsers to only
-send the cookie over HTTPS. Note that this will probably stop your sessions working if used without HTTPS (e.g. in development).</span><pre>setCookieSecureFlag</pre>
+        <a href="#method_setCookieSecureFlag" title="setCookieSecureFlag :: Sets whether the &#039;secure&#039; flag should be set for the session cookie. When set
+this flag instructs browsers to only send the cookie over HTTPS. Note that
+this will probably stop your sessions working if used without HTTPS (e.g. in
+development).">
+            <span class="description">Sets whether the &#039;secure&#039; flag should be set for the session cookie. When set
+this flag instructs browsers to only send the cookie over HTTPS. Note that
+this will probably stop your sessions working if used without HTTPS (e.g. in
+development).</span><pre>setCookieSecureFlag</pre>
         </a>
     </li>
 
@@ -154,16 +161,22 @@ send the cookie over HTTPS. Note that this will probably stop your sessions work
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_setNagHttps" title="setNagHttps :: Set whether a nagging log warning should be written if the session handler is accessed over HTTP, not
-HTTPS">
-            <span class="description">Set whether a nagging log warning should be written if the session handler is accessed over HTTP, not
-HTTPS</span><pre>setNagHttps</pre>
+        <a href="#method_setNagHttps" title="setNagHttps :: Set whether a nagging log warning should be written if the session handler is
+accessed over HTTP, not HTTPS">
+            <span class="description">Set whether a nagging log warning should be written if the session handler is
+accessed over HTTP, not HTTPS</span><pre>setNagHttps</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
         <a href="#method_setSessionCookieName" title="setSessionCookieName :: Set the session cookie name">
             <span class="description">Set the session cookie name</span><pre>setSessionCookieName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setSessionCookiePath" title="setSessionCookiePath :: Set the session cookie path">
+            <span class="description">Set the session cookie path</span><pre>setSessionCookiePath</pre>
         </a>
     </li>
 
@@ -177,7 +190,7 @@ HTTPS</span><pre>setNagHttps</pre>
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                                                                                                                                                                                                                                                                </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
         </li>
         <li class="nav-header private">» Private
             <ul>
@@ -186,11 +199,56 @@ HTTPS</span><pre>setNagHttps</pre>
                                 <span class="description"></span><pre>__construct</pre>
                             </a>
                         </li>
-                                                                                                                                                                                                                                                                                                                                                </ul>
+                                                                                                                                                                                                                                                                                                                                                                                    </ul>
         </li>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_COOKIE_HTTP_ONLY_FLAG" title="DEFAULT_COOKIE_HTTP_ONLY_FLAG :: Default of whether the cookie has the HttpOnly flag set More info:
+https://www.owasp.org/index.php/HttpOnly">
+                        <span class="description">Default of whether the cookie has the HttpOnly flag set More info:
+https://www.owasp.org/index.php/HttpOnly</span><pre>DEFAULT_COOKIE_HTTP_ONLY_FLAG</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_COOKIE_SECURE_FLAG" title="DEFAULT_COOKIE_SECURE_FLAG :: Default of whether the cookie has the &#039;secure&#039; flag set to allow transmission
+over https only. More info: https://www.owasp.org/index.php/SecureFlag">
+                        <span class="description">Default of whether the cookie has the &#039;secure&#039; flag set to allow transmission
+over https only. More info: https://www.owasp.org/index.php/SecureFlag</span><pre>DEFAULT_COOKIE_SECURE_FLAG</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_NAG_HTTPS" title="DEFAULT_NAG_HTTPS :: Default of whether a nagging log warning should be written if the session
+handler is accessed over HTTP, not HTTPS">
+                        <span class="description">Default of whether a nagging log warning should be written if the session
+handler is accessed over HTTP, not HTTPS</span><pre>DEFAULT_NAG_HTTPS</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_SESSION_COOKIE_NAME" title="DEFAULT_SESSION_COOKIE_NAME :: Default name of session cookie">
+                        <span class="description">Default name of session cookie</span><pre>DEFAULT_SESSION_COOKIE_NAME</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_SESSION_COOKIE_PATH" title="DEFAULT_SESSION_COOKIE_PATH :: Default path of session cookie">
+                        <span class="description">Default path of session cookie</span><pre>DEFAULT_SESSION_COOKIE_PATH</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_SESSION_TIMEOUT" title="DEFAULT_SESSION_TIMEOUT :: Default time, in ms, that a session lasts for without being accessed before
+expiring.">
+                        <span class="description">Default time, in ms, that a session lasts for without being accessed before
+expiring.</span><pre>DEFAULT_SESSION_TIMEOUT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_SESSIONID_MIN_LENGTH" title="DEFAULT_SESSIONID_MIN_LENGTH :: Default min length for a session id. More info:
+https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">
+                        <span class="description">Default min length for a session id. More info:
+https://www.owasp.org/index.php/Session_Management_Cheat_Sheet</span><pre>DEFAULT_SESSIONID_MIN_LENGTH</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -203,16 +261,20 @@ HTTPS</span><pre>setNagHttps</pre>
                 <h1>SessionHandler</h1>
                 <small style="display: block; text-align: right">
                                                         </small>
-                <p class="short_description">A handler that maintains a @see \io\vertx\jphp\ext\web\Session for each browser session.</p>
+                <p class="short_description">A handler that maintains a @see \io\vertx\jphp\ext\web\Session for each browser
+session.</p>
                 <div class="details">
                     <div class="long_description">
                         <p>
-It looks up the session for each request based on a session cookie which contains a session ID. It stores the session
-when the response is ended in the session store.
+It looks up the session for each request based on a session cookie which
+contains a session ID. It stores the session when the response is ended in
+the session store.
 <p>
-The session is available on the routing context with .
+The session is available on the routing context with
+.
 <p>
-The session handler requires a @see \io\vertx\jphp\ext\web\handler\CookieHandler to be on the routing chain before it.
+The session handler requires a @see \io\vertx\jphp\ext\web\handler\CookieHandler to be on the routing
+chain before it.
                     </div>
                     <table class="table table-bordered">
                                                                                     <tr>
@@ -271,10 +333,7 @@ The session handler requires a @see \io\vertx\jphp\ext\web\handler\CookieHandler
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $sessionStore [SessionStore] the session store
-<b>
-create($sessionStore)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -286,7 +345,7 @@ create($sessionStore)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable the handler</p></p>
+                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>the handler</p></p>
                                                                     </div>
                             </div>
 
@@ -301,10 +360,7 @@ create($sessionStore)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $event [RoutingContext] the event to handle
-<b>
-handle($event)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -321,19 +377,17 @@ handle($event)
                         </div>
                                             <a id="method_setCookieHttpOnlyFlag"></a>
                         <div class="element clickable method public  method_setCookieHttpOnlyFlag" data-toggle="collapse" data-target=".method_setCookieHttpOnlyFlag .collapse">
-                            <h2>Sets whether the &#039;HttpOnly&#039; flag should be set for the session cookie. When set this flag instructs browsers to
-prevent Javascript access to the the cookie. Used as a line of defence against the most common XSS attacks.</h2>
-                            <pre>setCookieHttpOnlyFlag( $arg0) : \io\vertx\jphp\ext\web\handler\SessionHandler</pre>
+                            <h2>Sets whether the &#039;HttpOnly&#039; flag should be set for the session cookie. When
+set this flag instructs browsers to prevent Javascript access to the the
+cookie. Used as a line of defence against the most common XSS attacks.</h2>
+                            <pre>setCookieHttpOnlyFlag( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $httpOnly [boolean] true to set the HttpOnly flag on the cookie
-<b>
-setCookieHttpOnlyFlag($httpOnly)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -345,26 +399,25 @@ setCookieHttpOnlyFlag($httpOnly)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_setCookieSecureFlag"></a>
                         <div class="element clickable method public  method_setCookieSecureFlag" data-toggle="collapse" data-target=".method_setCookieSecureFlag .collapse">
-                            <h2>Sets whether the &#039;secure&#039; flag should be set for the session cookie. When set this flag instructs browsers to only
-send the cookie over HTTPS. Note that this will probably stop your sessions working if used without HTTPS (e.g. in development).</h2>
-                            <pre>setCookieSecureFlag( $arg0) : \io\vertx\jphp\ext\web\handler\SessionHandler</pre>
+                            <h2>Sets whether the &#039;secure&#039; flag should be set for the session cookie. When set
+this flag instructs browsers to only send the cookie over HTTPS. Note that
+this will probably stop your sessions working if used without HTTPS (e.g. in
+development).</h2>
+                            <pre>setCookieSecureFlag( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $secure [boolean] true to set the secure flag on the cookie
-<b>
-setCookieSecureFlag($secure)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -376,7 +429,7 @@ setCookieSecureFlag($secure)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -384,17 +437,14 @@ setCookieSecureFlag($secure)
                                             <a id="method_setMinLength"></a>
                         <div class="element clickable method public  method_setMinLength" data-toggle="collapse" data-target=".method_setMinLength .collapse">
                             <h2>Set expected session id minimum length.</h2>
-                            <pre>setMinLength( $arg0) : \io\vertx\jphp\ext\web\handler\SessionHandler</pre>
+                            <pre>setMinLength( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $minLength [integer] the session id minimal length
-<b>
-setMinLength($minLength)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -406,26 +456,23 @@ setMinLength($minLength)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_setNagHttps"></a>
                         <div class="element clickable method public  method_setNagHttps" data-toggle="collapse" data-target=".method_setNagHttps .collapse">
-                            <h2>Set whether a nagging log warning should be written if the session handler is accessed over HTTP, not
-HTTPS</h2>
-                            <pre>setNagHttps( $arg0) : \io\vertx\jphp\ext\web\handler\SessionHandler</pre>
+                            <h2>Set whether a nagging log warning should be written if the session handler is
+accessed over HTTP, not HTTPS</h2>
+                            <pre>setNagHttps( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $nag [boolean] true to nag
-<b>
-setNagHttps($nag)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -437,7 +484,7 @@ setNagHttps($nag)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -445,17 +492,14 @@ setNagHttps($nag)
                                             <a id="method_setSessionCookieName"></a>
                         <div class="element clickable method public  method_setSessionCookieName" data-toggle="collapse" data-target=".method_setSessionCookieName .collapse">
                             <h2>Set the session cookie name</h2>
-                            <pre>setSessionCookieName( $arg0) : \io\vertx\jphp\ext\web\handler\SessionHandler</pre>
+                            <pre>setSessionCookieName( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $sessionCookieName [string] the session cookie name
-<b>
-setSessionCookieName($sessionCookieName)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -467,7 +511,34 @@ setSessionCookieName($sessionCookieName)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setSessionCookiePath"></a>
+                        <div class="element clickable method public  method_setSessionCookiePath" data-toggle="collapse" data-target=".method_setSessionCookiePath .collapse">
+                            <h2>Set the session cookie path</h2>
+                            <pre>setSessionCookiePath( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -475,17 +546,14 @@ setSessionCookieName($sessionCookieName)
                                             <a id="method_setSessionTimeout"></a>
                         <div class="element clickable method public  method_setSessionTimeout" data-toggle="collapse" data-target=".method_setSessionTimeout .collapse">
                             <h2>Set the session timeout</h2>
-                            <pre>setSessionTimeout( $arg0) : \io\vertx\jphp\ext\web\handler\SessionHandler</pre>
+                            <pre>setSessionTimeout( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $timeout [integer] the timeout, in ms.
-<b>
-setSessionTimeout($timeout)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -497,13 +565,173 @@ setSessionTimeout($timeout)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">\io\vertx\jphp\ext\web\handler\SessionHandler</a></code><p><p>| callable a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_DEFAULT_SESSION_COOKIE_NAME"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_SESSION_COOKIE_NAME" data-toggle="collapse" data-target=".constant_DEFAULT_SESSION_COOKIE_NAME .collapse">
+                                <h2>Default name of session cookie</h2>
+                                <pre>DEFAULT_SESSION_COOKIE_NAME</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_SESSION_COOKIE_PATH"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_SESSION_COOKIE_PATH" data-toggle="collapse" data-target=".constant_DEFAULT_SESSION_COOKIE_PATH .collapse">
+                                <h2>Default path of session cookie</h2>
+                                <pre>DEFAULT_SESSION_COOKIE_PATH</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_SESSION_TIMEOUT"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_SESSION_TIMEOUT" data-toggle="collapse" data-target=".constant_DEFAULT_SESSION_TIMEOUT .collapse">
+                                <h2>Default time, in ms, that a session lasts for without being accessed before
+expiring.</h2>
+                                <pre>DEFAULT_SESSION_TIMEOUT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_NAG_HTTPS"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_NAG_HTTPS" data-toggle="collapse" data-target=".constant_DEFAULT_NAG_HTTPS .collapse">
+                                <h2>Default of whether a nagging log warning should be written if the session
+handler is accessed over HTTP, not HTTPS</h2>
+                                <pre>DEFAULT_NAG_HTTPS</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_COOKIE_HTTP_ONLY_FLAG"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_COOKIE_HTTP_ONLY_FLAG" data-toggle="collapse" data-target=".constant_DEFAULT_COOKIE_HTTP_ONLY_FLAG .collapse">
+                                <h2>Default of whether the cookie has the HttpOnly flag set More info:
+https://www.owasp.org/index.php/HttpOnly</h2>
+                                <pre>DEFAULT_COOKIE_HTTP_ONLY_FLAG</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_COOKIE_SECURE_FLAG"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_COOKIE_SECURE_FLAG" data-toggle="collapse" data-target=".constant_DEFAULT_COOKIE_SECURE_FLAG .collapse">
+                                <h2>Default of whether the cookie has the &#039;secure&#039; flag set to allow transmission
+over https only. More info: https://www.owasp.org/index.php/SecureFlag</h2>
+                                <pre>DEFAULT_COOKIE_SECURE_FLAG</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_SESSIONID_MIN_LENGTH"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_SESSIONID_MIN_LENGTH" data-toggle="collapse" data-target=".constant_DEFAULT_SESSIONID_MIN_LENGTH .collapse">
+                                <h2>Default min length for a session id. More info:
+https://www.owasp.org/index.php/Session_Management_Cheat_Sheet</h2>
+                                <pre>DEFAULT_SESSIONID_MIN_LENGTH</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\ext\web\handler\SessionHandler"></a>
@@ -524,7 +752,7 @@ setSessionTimeout($timeout)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:59 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:41 +0000.<br/>
     </footer>
     </body>
 </html>

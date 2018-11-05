@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -188,12 +189,8 @@ call  in case of failure.</span><pre>executeWithFallback</pre>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_failureCount" title="failureCount :: &lt;b&gt;
-failureCount()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-failureCount()
-&lt;/b&gt;</span><pre>failureCount</pre>
+        <a href="#method_failureCount" title="failureCount :: ">
+            <span class="description"></span><pre>failureCount</pre>
         </a>
     </li>
 
@@ -212,12 +209,8 @@ if @see \io\vertx\jphp\circuitbreaker\CircuitBreakerOptions is enabled.</span><p
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_name" title="name :: &lt;b&gt;
-name()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-name()
-&lt;/b&gt;</span><pre>name</pre>
+        <a href="#method_name" title="name :: ">
+            <span class="description"></span><pre>name</pre>
         </a>
     </li>
 
@@ -240,24 +233,14 @@ name()
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_retryPolicy" title="retryPolicy :: param $retryPolicy [callable]
-&lt;b&gt;
-retryPolicy($retryPolicy)
-&lt;/b&gt;">
-            <span class="description">param $retryPolicy [callable]
-&lt;b&gt;
-retryPolicy($retryPolicy)
-&lt;/b&gt;</span><pre>retryPolicy</pre>
+        <a href="#method_retryPolicy" title="retryPolicy :: ">
+            <span class="description"></span><pre>retryPolicy</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_state" title="state :: &lt;b&gt;
-state()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-state()
-&lt;/b&gt;</span><pre>state</pre>
+        <a href="#method_state" title="state :: ">
+            <span class="description"></span><pre>state</pre>
         </a>
     </li>
 
@@ -346,7 +329,7 @@ state()
                                             <a id="method_close"></a>
                         <div class="element clickable method public  method_close" data-toggle="collapse" data-target=".method_close .collapse">
                             <h2>Closes the circuit breaker. It stops sending events on its state on the event bus.</h2>
-                            <pre>close() : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>close() : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -354,10 +337,7 @@ state()
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>This method is not related to the <code>close</code> state of the circuit breaker. To set the circuit breaker in the
-<code>close</code> state, use @see \io\vertx\jphp\circuitbreaker\CircuitBreaker::reset.</p>
-<p><b>
-close()
-</b></p></div>
+<code>close</code> state, use @see \io\vertx\jphp\circuitbreaker\CircuitBreaker::reset.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -371,7 +351,7 @@ close()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -379,17 +359,14 @@ close()
                                             <a id="method_closeHandler"></a>
                         <div class="element clickable method public  method_closeHandler" data-toggle="collapse" data-target=".method_closeHandler .collapse">
                             <h2>Sets a  invoked when the circuit breaker state switches to close.</h2>
-                            <pre>closeHandler( $arg0) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>closeHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler, must not be {@code null}
-<b>
-closeHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -401,7 +378,7 @@ closeHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
                                                                     </div>
                             </div>
 
@@ -424,7 +401,7 @@ create($name, $vertx)
 <p>Creates a new instance of @see \io\vertx\jphp\circuitbreaker\CircuitBreaker.</p>
 <p>param $name [string] the name
 param $vertx [Vertx] the Vert.x instance
-param $options [CircuitBreakerOptions | mixed] the configuration option
+param $options [CircuitBreakerOptions | array] the configuration option
 <b>
 create($name, $vertx, $options)
 </b></p></div>
@@ -443,7 +420,7 @@ create($name, $vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>CircuitBreakerOptions | mixed</p></p>
+                                                <code></code><p><p>array | CircuitBreakerOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -462,10 +439,7 @@ create($name, $vertx, $options)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $command [callable] the operation
-<b>
-execute($command)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -486,18 +460,14 @@ execute($command)
                         <div class="element clickable method public  method_executeAndReport" data-toggle="collapse" data-target=".method_executeAndReport .collapse">
                             <h2>Same as @see \io\vertx\jphp\circuitbreaker\CircuitBreaker::executeAndReportWithFallback but using the circuit breaker default
 fallback.</h2>
-                            <pre>executeAndReport( $arg0,  $arg1) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>executeAndReport( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $resultFuture [Future<T>] the future on which the operation result is reported
-param $command [callable] the operation
-<b>
-executeAndReport($resultFuture, $command)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -513,7 +483,7 @@ executeAndReport($resultFuture, $command)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
                                                                     </div>
                             </div>
 
@@ -524,7 +494,7 @@ executeAndReport($resultFuture, $command)
 &lt;em&gt;external&lt;/em&gt; system. The operation receives a  object as parameter and &lt;strong&gt;must&lt;/strong&gt;
 call  when the operation has terminated successfully. The operation must also
 call  in case of failure.</h2>
-                            <pre>executeAndReportWithFallback( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>executeAndReportWithFallback( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -539,14 +509,7 @@ considered as failed if it does not terminate in time.
 Unlike @see \io\vertx\jphp\circuitbreaker\CircuitBreaker::executeWithFallback,  this method does return a  object, but
 let the caller pass a  object on which the result is reported. If the fallback is called, the future
 is successfully completed with the value returned by the fallback function. If the fallback throws an exception,
-the future is marked as failed.
-
-param $resultFuture [Future<T>] the future on which the operation result is reported
-param $command [callable] the operation
-param $fallback [callable] the fallback function. It gets an exception as parameter and returns the <em>fallback</em> result
-<b>
-executeAndReportWithFallback($resultFuture, $command, $fallback)
-</b></div>
+the future is marked as failed.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -566,7 +529,7 @@ executeAndReportWithFallback($resultFuture, $command, $fallback)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
                                                                     </div>
                             </div>
 
@@ -581,11 +544,7 @@ executeAndReportWithFallback($resultFuture, $command, $fallback)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $command [callable] the operation
-param $handler [callable]
-<b>
-executeCommand($command, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -614,12 +573,7 @@ executeCommand($command, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $command [callable] the operation
-param $fallback [callable] the fallback
-param $handler [callable] the completion handler receiving either the operation result or the fallback result. The parameter is an \AsyncResult because if the fallback is not called, the error is passed to the handler.
-<b>
-executeCommandWithFallback($command, $fallback, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -662,13 +616,7 @@ considered as failed if it does not terminate in time.
 <p>
 This method returns a  object to retrieve the status and result of the operation, with the status
 being a success or a failure. If the fallback is called, the returned future is successfully completed with the
-value returned from the fallback. If the fallback throws an exception, the returned future is marked as failed.
-
-param $command [callable] the operation
-param $fallback [callable] the fallback function. It gets an exception as parameter and returns the <em>fallback</em> result
-<b>
-executeWithFallback($command, $fallback)
-</b></div>
+value returned from the fallback. If the fallback throws an exception, the returned future is marked as failed.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -691,9 +639,7 @@ executeWithFallback($command, $fallback)
                         </div>
                                             <a id="method_failureCount"></a>
                         <div class="element clickable method public  method_failureCount" data-toggle="collapse" data-target=".method_failureCount .collapse">
-                            <h2>&lt;b&gt;
-failureCount()
-&lt;/b&gt;</h2>
+                            <h2>failureCount</h2>
                             <pre>failureCount() : integer</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -724,7 +670,7 @@ failureCount()
                         <div class="element clickable method public  method_fallback" data-toggle="collapse" data-target=".method_fallback .collapse">
                             <h2>Sets a &lt;em&gt;default&lt;/em&gt;  invoked when the bridge is open to handle the &quot;request&quot;, or on failure
 if @see \io\vertx\jphp\circuitbreaker\CircuitBreakerOptions is enabled.</h2>
-                            <pre>fallback( $arg0) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>fallback( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -732,12 +678,7 @@ if @see \io\vertx\jphp\circuitbreaker\CircuitBreakerOptions is enabled.</h2>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-The function gets the exception as parameter and returns the <em>fallback</em> result.
-
-param $handler [callable] the handler
-<b>
-fallback($handler)
-</b></div>
+The function gets the exception as parameter and returns the <em>fallback</em> result.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -749,7 +690,7 @@ fallback($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
                                                                     </div>
                             </div>
 
@@ -757,17 +698,14 @@ fallback($handler)
                                             <a id="method_halfOpenHandler"></a>
                         <div class="element clickable method public  method_halfOpenHandler" data-toggle="collapse" data-target=".method_halfOpenHandler .collapse">
                             <h2>Sets a  invoked when the circuit breaker state switches to half-open.</h2>
-                            <pre>halfOpenHandler( $arg0) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>halfOpenHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler, must not be {@code null}
-<b>
-halfOpenHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -779,16 +717,14 @@ halfOpenHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_name"></a>
                         <div class="element clickable method public  method_name" data-toggle="collapse" data-target=".method_name .collapse">
-                            <h2>&lt;b&gt;
-name()
-&lt;/b&gt;</h2>
+                            <h2>name</h2>
                             <pre>name() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -818,16 +754,14 @@ name()
                                             <a id="method_open"></a>
                         <div class="element clickable method public  method_open" data-toggle="collapse" data-target=".method_open .collapse">
                             <h2>Explicitly opens the circuit.</h2>
-                            <pre>open() : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>open() : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-open()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -841,7 +775,7 @@ open()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
                                                                     </div>
                             </div>
 
@@ -849,71 +783,7 @@ open()
                                             <a id="method_openHandler"></a>
                         <div class="element clickable method public  method_openHandler" data-toggle="collapse" data-target=".method_openHandler .collapse">
                             <h2>Sets a  invoked when the circuit breaker state switches to open.</h2>
-                            <pre>openHandler( $arg0) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-
-                            
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler, must not be {@code null}
-<b>
-openHandler($handler)
-</b></p></div>
-
-                                    <table class="table">
-                                                                            </table>
-
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$arg0</h4>
-                                                <code></code><p><p>callable</p></p>
-                                            </div>
-                                                                            
-                                                                            <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
-                                                                    </div>
-                            </div>
-
-                        </div>
-                                            <a id="method_reset"></a>
-                        <div class="element clickable method public  method_reset" data-toggle="collapse" data-target=".method_reset .collapse">
-                            <h2>Resets the circuit breaker state (number of failure set to 0 and state set to closed).</h2>
-                            <pre>reset() : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-
-                            
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description"><p><b>
-reset()
-</b></p></div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                    
-                                                                            <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p><p>the current {@link CircuitBreaker}</p></p>
-                                                                    </div>
-                            </div>
-
-                        </div>
-                                            <a id="method_retryPolicy"></a>
-                        <div class="element clickable method public  method_retryPolicy" data-toggle="collapse" data-target=".method_retryPolicy .collapse">
-                            <h2>param $retryPolicy [callable]
-&lt;b&gt;
-retryPolicy($retryPolicy)
-&lt;/b&gt;</h2>
-                            <pre>retryPolicy( $arg0) : \io\vertx\jphp\circuitbreaker\CircuitBreaker</pre>
+                            <pre>openHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -932,16 +802,70 @@ retryPolicy($retryPolicy)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">\io\vertx\jphp\circuitbreaker\CircuitBreaker</a></code><p></p>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_reset"></a>
+                        <div class="element clickable method public  method_reset" data-toggle="collapse" data-target=".method_reset .collapse">
+                            <h2>Resets the circuit breaker state (number of failure set to 0 and state set to closed).</h2>
+                            <pre>reset() : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>the current {@link CircuitBreaker}</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_retryPolicy"></a>
+                        <div class="element clickable method public  method_retryPolicy" data-toggle="collapse" data-target=".method_retryPolicy .collapse">
+                            <h2>retryPolicy</h2>
+                            <pre>retryPolicy( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_state"></a>
                         <div class="element clickable method public  method_state" data-toggle="collapse" data-target=".method_state .collapse">
-                            <h2>&lt;b&gt;
-state()
-&lt;/b&gt;</h2>
+                            <h2>state</h2>
                             <pre>state() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -990,7 +914,7 @@ state()
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:54 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:28 +0000.<br/>
     </footer>
     </body>
 </html>

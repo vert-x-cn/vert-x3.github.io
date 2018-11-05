@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -138,24 +139,8 @@
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_createKeycloak" title="createKeycloak :: param $vertx [Vertx] the Vertx instance
-param $flow [string]
-param $config [array] the config as exported from the admin console
-&lt;b&gt;
-this method is deprecated
-&lt;s&gt;
-createKeycloak($vertx, $flow, $config)
-&lt;/s&gt;
-&lt;/b&gt;">
-            <span class="description">param $vertx [Vertx] the Vertx instance
-param $flow [string]
-param $config [array] the config as exported from the admin console
-&lt;b&gt;
-this method is deprecated
-&lt;s&gt;
-createKeycloak($vertx, $flow, $config)
-&lt;/s&gt;
-&lt;/b&gt;</span><pre>createKeycloak</pre>
+        <a href="#method_createKeycloak" title="createKeycloak :: ">
+            <span class="description"></span><pre>createKeycloak</pre>
         </a>
     </li>
 
@@ -198,14 +183,8 @@ meta-information about this token.</span><pre>introspectToken</pre>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_rbacHandler" title="rbacHandler :: param $rbac [OAuth2RBAC]
-&lt;b&gt;
-rbacHandler($rbac)
-&lt;/b&gt;">
-            <span class="description">param $rbac [OAuth2RBAC]
-&lt;b&gt;
-rbacHandler($rbac)
-&lt;/b&gt;</span><pre>rbacHandler</pre>
+        <a href="#method_rbacHandler" title="rbacHandler :: ">
+            <span class="description"></span><pre>rbacHandler</pre>
         </a>
     </li>
 
@@ -314,13 +293,7 @@ authentication it is likely to contain a JSON object with the following structur
 For other types of authentication it contain different information - for example a JWT token or OAuth bearer token.
 <p>
 If the user is successfully authenticated a  object is passed to the handler in an \io.vertx.core.AsyncResult.
-The user object can then be used for authorisation.
-
-param $authInfo [array] The auth information
-param $resultHandler [callable] The result handler
-<b>
-authenticate($authInfo, $resultHandler)
-</b></div>
+The user object can then be used for authorisation.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -349,10 +322,7 @@ authenticate($authInfo, $resultHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $params [array]
-<b>
-authorizeURL($params)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -394,14 +364,14 @@ create($vertx, $flow)
 </b></p>
 <p>Create a OAuth2 auth provider</p>
 <p>param $vertx [Vertx] the Vertx instance
-param $config [OAuth2ClientOptions | mixed] the config
+param $config [OAuth2ClientOptions | array] the config
 <b>
 create($vertx, $config)
 </b></p>
 <p>Create a OAuth2 auth provider</p>
 <p>param $vertx [Vertx] the Vertx instance
 param $flow [string]
-param $config [OAuth2ClientOptions | mixed] the config
+param $config [OAuth2ClientOptions | array] the config
 <b>
 this method is deprecated
 <s>
@@ -419,11 +389,11 @@ create($vertx, $flow, $config)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>string | OAuth2ClientOptions | mixed</p></p>
+                                                <code></code><p><p>string | array | OAuth2ClientOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>OAuth2ClientOptions | mixed</p></p>
+                                                <code></code><p><p>array | OAuth2ClientOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -434,15 +404,7 @@ create($vertx, $flow, $config)
                         </div>
                                             <a id="method_createKeycloak"></a>
                         <div class="element clickable method public deprecated method_createKeycloak" data-toggle="collapse" data-target=".method_createKeycloak .collapse">
-                            <h2>param $vertx [Vertx] the Vertx instance
-param $flow [string]
-param $config [array] the config as exported from the admin console
-&lt;b&gt;
-this method is deprecated
-&lt;s&gt;
-createKeycloak($vertx, $flow, $config)
-&lt;/s&gt;
-&lt;/b&gt;</h2>
+                            <h2>createKeycloak</h2>
                             <pre>createKeycloak( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
@@ -487,21 +449,14 @@ createKeycloak($vertx, $flow, $config)
                                             <a id="method_decodeToken"></a>
                         <div class="element clickable method public deprecated method_decodeToken" data-toggle="collapse" data-target=".method_decodeToken .collapse">
                             <h2>Decode a token to a @see \io\vertx\jphp\ext\auth\oauth2\AccessToken object. This is useful to handle bearer JWT tokens.</h2>
-                            <pre>decodeToken( $arg0,  $arg1) : \io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</pre>
+                            <pre>decodeToken( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $token [string] the access token (base64 string)
-param $handler [callable] A handler to receive the event
-<b>
-this method is deprecated
-<s>
-decodeToken($token, $handler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -526,7 +481,7 @@ decodeToken($token, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.oauth2.OAuth2Auth.html">\io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</a></code><p><p>self</p></p>
+                                        <code>$this</code><p><p>self</p></p>
                                                                     </div>
                             </div>
 
@@ -541,9 +496,7 @@ decodeToken($token, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-getFlowType()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -573,13 +526,7 @@ getFlowType()
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>The RFC 6749 states that a scope is expressed as a set of case-sensitive and space-delimited strings, however
-vendors tend not to agree on this and we see the following cases being used: space, plus sign, comma.</p>
-<p><b>
-this method is deprecated
-<s>
-getScopeSeparator()
-</s>
-</b></p></div>
+vendors tend not to agree on this and we see the following cases being used: space, plus sign, comma.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -617,14 +564,7 @@ getScopeSeparator()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $params [array] - JSON with the options, each flow requires different options.
-param $handler [callable] - The handler returning the results.
-<b>
-this method is deprecated
-<s>
-getToken($params, $handler)
-</s>
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -656,7 +596,7 @@ getToken($params, $handler)
                         <div class="element clickable method public  method_introspectToken" data-toggle="collapse" data-target=".method_introspectToken .collapse">
                             <h2>Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine
 meta-information about this token.</h2>
-                            <pre>introspectToken( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</pre>
+                            <pre>introspectToken( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -695,7 +635,7 @@ introspectToken($token, $tokenType, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.oauth2.OAuth2Auth.html">\io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</a></code><p><p>self</p></p>
+                                        <code>$this</code><p><p>self</p></p>
                                                                     </div>
                             </div>
 
@@ -703,18 +643,14 @@ introspectToken($token, $tokenType, $handler)
                                             <a id="method_loadJWK"></a>
                         <div class="element clickable method public  method_loadJWK" data-toggle="collapse" data-target=".method_loadJWK .collapse">
                             <h2>Loads a JWK Set from the remote provider.</h2>
-                            <pre>loadJWK( $arg0) : \io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</pre>
+                            <pre>loadJWK( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>When calling this method several times, the loaded JWKs are updated in the underlying JWT object.</p>
-<p>param $handler [callable]
-<b>
-loadJWK($handler)
-</b></p></div>
+                                    <div class="long_description"><p>When calling this method several times, the loaded JWKs are updated in the underlying JWT object.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -726,18 +662,15 @@ loadJWK($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.oauth2.OAuth2Auth.html">\io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_rbacHandler"></a>
                         <div class="element clickable method public  method_rbacHandler" data-toggle="collapse" data-target=".method_rbacHandler .collapse">
-                            <h2>param $rbac [OAuth2RBAC]
-&lt;b&gt;
-rbacHandler($rbac)
-&lt;/b&gt;</h2>
-                            <pre>rbacHandler( $arg0) : \io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</pre>
+                            <h2>rbacHandler</h2>
+                            <pre>rbacHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -756,7 +689,7 @@ rbacHandler($rbac)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.oauth2.OAuth2Auth.html">\io\vertx\jphp\ext\auth\oauth2\OAuth2Auth</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -783,7 +716,7 @@ rbacHandler($rbac)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:01 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:43 +0000.<br/>
     </footer>
     </body>
 </html>

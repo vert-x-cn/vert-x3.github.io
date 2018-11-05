@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -193,6 +194,26 @@ nonces where each position corresponds to a version.</span><pre>setNonces</pre>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_AUTHENTICATE_QUERY" title="DEFAULT_AUTHENTICATE_QUERY :: The default query to be used for authentication">
+                        <span class="description">The default query to be used for authentication</span><pre>DEFAULT_AUTHENTICATE_QUERY</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_PERMISSIONS_QUERY" title="DEFAULT_PERMISSIONS_QUERY :: The default query to retrieve all permissions for the role">
+                        <span class="description">The default query to retrieve all permissions for the role</span><pre>DEFAULT_PERMISSIONS_QUERY</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_ROLE_PREFIX" title="DEFAULT_ROLE_PREFIX :: The default role prefix">
+                        <span class="description">The default role prefix</span><pre>DEFAULT_ROLE_PREFIX</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_ROLES_QUERY" title="DEFAULT_ROLES_QUERY :: The default query to retrieve all roles for the user">
+                        <span class="description">The default query to retrieve all roles for the user</span><pre>DEFAULT_ROLES_QUERY</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -282,13 +303,7 @@ authentication it is likely to contain a JSON object with the following structur
 For other types of authentication it contain different information - for example a JWT token or OAuth bearer token.
 <p>
 If the user is successfully authenticated a  object is passed to the handler in an \io.vertx.core.AsyncResult.
-The user object can then be used for authorisation.
-
-param $authInfo [array] The auth information
-param $resultHandler [callable] The result handler
-<b>
-authenticate($authInfo, $resultHandler)
-</b></div>
+The user object can then be used for authorisation.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -365,11 +380,7 @@ computeHash($password, $salt, $version)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $vertx [Vertx]
-param $client [JDBCClient] the JDBC client instance
-<b>
-create($vertx, $client)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -400,10 +411,7 @@ create($vertx, $client)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>The implementation relays to the JDBCHashStrategy provided.</p>
-<p><b>
-generateSalt()
-</b></p></div>
+                                    <div class="long_description"><p>The implementation relays to the JDBCHashStrategy provided.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -425,17 +433,14 @@ generateSalt()
                                             <a id="method_setAuthenticationQuery"></a>
                         <div class="element clickable method public  method_setAuthenticationQuery" data-toggle="collapse" data-target=".method_setAuthenticationQuery .collapse">
                             <h2>Set the authentication query to use. Use this if you want to override the default authentication query.</h2>
-                            <pre>setAuthenticationQuery( $arg0) : \io\vertx\jphp\ext\auth\jdbc\JDBCAuth</pre>
+                            <pre>setAuthenticationQuery( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $authenticationQuery [string] the authentication query
-<b>
-setAuthenticationQuery($authenticationQuery)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -447,7 +452,7 @@ setAuthenticationQuery($authenticationQuery)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.jdbc.JDBCAuth.html">\io\vertx\jphp\ext\auth\jdbc\JDBCAuth</a></code><p><p>a reference to this for fluency</p></p>
+                                        <code>$this</code><p><p>a reference to this for fluency</p></p>
                                                                     </div>
                             </div>
 
@@ -456,7 +461,7 @@ setAuthenticationQuery($authenticationQuery)
                         <div class="element clickable method public  method_setNonces" data-toggle="collapse" data-target=".method_setNonces .collapse">
                             <h2>Provide a application configuration level on hash nonce&#039;s as a ordered list of
 nonces where each position corresponds to a version.</h2>
-                            <pre>setNonces( $arg0) : \io\vertx\jphp\ext\auth\jdbc\JDBCAuth</pre>
+                            <pre>setNonces( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -468,11 +473,7 @@ be provided as a application configuration. The idea is to add one extra variabl
 to the hash function in order to make breaking the passwords using rainbow tables
 or precomputed hashes harder. Leaving the attacker only with the brute force
 approach.</p>
-<p>The implementation relays to the JDBCHashStrategy provided.</p>
-<p>param $nonces [array] a List of non null Strings.
-<b>
-setNonces($nonces)
-</b></p></div>
+<p>The implementation relays to the JDBCHashStrategy provided.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -484,7 +485,7 @@ setNonces($nonces)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.jdbc.JDBCAuth.html">\io\vertx\jphp\ext\auth\jdbc\JDBCAuth</a></code><p><p>a reference to this for fluency</p></p>
+                                        <code>$this</code><p><p>a reference to this for fluency</p></p>
                                                                     </div>
                             </div>
 
@@ -492,17 +493,14 @@ setNonces($nonces)
                                             <a id="method_setPermissionsQuery"></a>
                         <div class="element clickable method public  method_setPermissionsQuery" data-toggle="collapse" data-target=".method_setPermissionsQuery .collapse">
                             <h2>Set the permissions query to use. Use this if you want to override the default permissions query.</h2>
-                            <pre>setPermissionsQuery( $arg0) : \io\vertx\jphp\ext\auth\jdbc\JDBCAuth</pre>
+                            <pre>setPermissionsQuery( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $permissionsQuery [string] the permissions query
-<b>
-setPermissionsQuery($permissionsQuery)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -514,7 +512,7 @@ setPermissionsQuery($permissionsQuery)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.jdbc.JDBCAuth.html">\io\vertx\jphp\ext\auth\jdbc\JDBCAuth</a></code><p><p>a reference to this for fluency</p></p>
+                                        <code>$this</code><p><p>a reference to this for fluency</p></p>
                                                                     </div>
                             </div>
 
@@ -522,17 +520,14 @@ setPermissionsQuery($permissionsQuery)
                                             <a id="method_setRolePrefix"></a>
                         <div class="element clickable method public  method_setRolePrefix" data-toggle="collapse" data-target=".method_setRolePrefix .collapse">
                             <h2>Set the role prefix to distinguish from permissions when checking for isPermitted requests.</h2>
-                            <pre>setRolePrefix( $arg0) : \io\vertx\jphp\ext\auth\jdbc\JDBCAuth</pre>
+                            <pre>setRolePrefix( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $rolePrefix [string] a Prefix e.g.: &quot;role:&quot;
-<b>
-setRolePrefix($rolePrefix)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -544,7 +539,7 @@ setRolePrefix($rolePrefix)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.jdbc.JDBCAuth.html">\io\vertx\jphp\ext\auth\jdbc\JDBCAuth</a></code><p><p>a reference to this for fluency</p></p>
+                                        <code>$this</code><p><p>a reference to this for fluency</p></p>
                                                                     </div>
                             </div>
 
@@ -552,17 +547,14 @@ setRolePrefix($rolePrefix)
                                             <a id="method_setRolesQuery"></a>
                         <div class="element clickable method public  method_setRolesQuery" data-toggle="collapse" data-target=".method_setRolesQuery .collapse">
                             <h2>Set the roles query to use. Use this if you want to override the default roles query.</h2>
-                            <pre>setRolesQuery( $arg0) : \io\vertx\jphp\ext\auth\jdbc\JDBCAuth</pre>
+                            <pre>setRolesQuery( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $rolesQuery [string] the roles query
-<b>
-setRolesQuery($rolesQuery)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -574,13 +566,102 @@ setRolesQuery($rolesQuery)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.auth.jdbc.JDBCAuth.html">\io\vertx\jphp\ext\auth\jdbc\JDBCAuth</a></code><p><p>a reference to this for fluency</p></p>
+                                        <code>$this</code><p><p>a reference to this for fluency</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_DEFAULT_AUTHENTICATE_QUERY"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_AUTHENTICATE_QUERY" data-toggle="collapse" data-target=".constant_DEFAULT_AUTHENTICATE_QUERY .collapse">
+                                <h2>The default query to be used for authentication</h2>
+                                <pre>DEFAULT_AUTHENTICATE_QUERY</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_ROLES_QUERY"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_ROLES_QUERY" data-toggle="collapse" data-target=".constant_DEFAULT_ROLES_QUERY .collapse">
+                                <h2>The default query to retrieve all roles for the user</h2>
+                                <pre>DEFAULT_ROLES_QUERY</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_PERMISSIONS_QUERY"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_PERMISSIONS_QUERY" data-toggle="collapse" data-target=".constant_DEFAULT_PERMISSIONS_QUERY .collapse">
+                                <h2>The default query to retrieve all permissions for the role</h2>
+                                <pre>DEFAULT_PERMISSIONS_QUERY</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_DEFAULT_ROLE_PREFIX"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_ROLE_PREFIX" data-toggle="collapse" data-target=".constant_DEFAULT_ROLE_PREFIX .collapse">
+                                <h2>The default role prefix</h2>
+                                <pre>DEFAULT_ROLE_PREFIX</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\ext\auth\jdbc\JDBCAuth"></a>
@@ -601,7 +682,7 @@ setRolesQuery($rolesQuery)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:00 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:42 +0000.<br/>
     </footer>
     </body>
 </html>

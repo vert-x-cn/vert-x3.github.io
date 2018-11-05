@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -536,7 +537,7 @@ Please consult the documentation for more information on file system support.
                                             <a id="method_chmod"></a>
                         <div class="element clickable method public  method_chmod" data-toggle="collapse" data-target=".method_chmod .collapse">
                             <h2>Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.</h2>
-                            <pre>chmod( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>chmod( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -545,14 +546,7 @@ Please consult the documentation for more information on file system support.
                                 <div class="detail-description">
                                     <div class="long_description"><p>
 The permission String takes the form rwxr-x--- as
-specified <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.
-
-param $path [string] the path to the file
-param $perms [string] the permissions string
-param $handler [callable] the handler that will be called on completion
-<b>
-chmod($path, $perms, $handler)
-</b></div>
+specified <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -572,7 +566,7 @@ chmod($path, $perms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -580,18 +574,14 @@ chmod($path, $perms, $handler)
                                             <a id="method_chmodBlocking"></a>
                         <div class="element clickable method public  method_chmodBlocking" data-toggle="collapse" data-target=".method_chmodBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem #chmod(String, String, Handler)</h2>
-                            <pre>chmodBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>chmodBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $perms [string]
-<b>
-chmodBlocking($path, $perms)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -607,7 +597,7 @@ chmodBlocking($path, $perms)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -617,7 +607,7 @@ chmodBlocking($path, $perms)
                             <h2>Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.&lt;p&gt;
 The permission String takes the form rwxr-x--- as
 specified in {&lt;a href=&quot;http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html&quot;&gt;here&lt;/a&gt;}.</h2>
-                            <pre>chmodRecursive( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>chmodRecursive( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -626,15 +616,7 @@ specified in {&lt;a href=&quot;http://download.oracle.com/javase/7/docs/api/java
                                 <div class="detail-description">
                                     <div class="long_description"><p>
 If the file is directory then all contents will also have their permissions changed recursively. Any directory permissions will
-be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.
-
-param $path [string] the path to the file
-param $perms [string] the permissions string
-param $dirPerms [string] the directory permissions
-param $handler [callable] the handler that will be called on completion
-<b>
-chmodRecursive($path, $perms, $dirPerms, $handler)
-</b></div>
+be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -658,7 +640,7 @@ chmodRecursive($path, $perms, $dirPerms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -666,19 +648,14 @@ chmodRecursive($path, $perms, $dirPerms, $handler)
                                             <a id="method_chmodRecursiveBlocking"></a>
                         <div class="element clickable method public  method_chmodRecursiveBlocking" data-toggle="collapse" data-target=".method_chmodRecursiveBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::chmodRecursive</h2>
-                            <pre>chmodRecursiveBlocking( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>chmodRecursiveBlocking( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $perms [string]
-param $dirPerms [string]
-<b>
-chmodRecursiveBlocking($path, $perms, $dirPerms)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -698,7 +675,7 @@ chmodRecursiveBlocking($path, $perms, $dirPerms)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -706,20 +683,14 @@ chmodRecursiveBlocking($path, $perms, $dirPerms)
                                             <a id="method_chown"></a>
                         <div class="element clickable method public  method_chown" data-toggle="collapse" data-target=".method_chown .collapse">
                             <h2>Change the ownership on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;user&lt;/code&gt; and {code group}, asynchronously.</h2>
-                            <pre>chown( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>chown( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string] the path to the file
-param $user [string] the user name, {@code null} will not change the user name
-param $group [string] the user group, {@code null} will not change the user group name
-param $handler [callable] the handler that will be called on completion
-<b>
-chown($path, $user, $group, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -743,7 +714,7 @@ chown($path, $user, $group, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -751,19 +722,14 @@ chown($path, $user, $group, $handler)
                                             <a id="method_chownBlocking"></a>
                         <div class="element clickable method public  method_chownBlocking" data-toggle="collapse" data-target=".method_chownBlocking .collapse">
                             <h2>Blocking version of</h2>
-                            <pre>chownBlocking( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>chownBlocking( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $user [string]
-param $group [string]
-<b>
-chownBlocking($path, $user, $group)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -783,7 +749,7 @@ chownBlocking($path, $user, $group)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -791,7 +757,7 @@ chownBlocking($path, $user, $group)
                                             <a id="method_copy"></a>
                         <div class="element clickable method public  method_copy" data-toggle="collapse" data-target=".method_copy .collapse">
                             <h2>Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</h2>
-                            <pre>copy( $arg0,  $arg1,  $arg2,  $arg3 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>copy( $arg0,  $arg1,  $arg2,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -812,7 +778,7 @@ Copy a file from the path <code>from</code> to path <code>to</code>, asynchronou
 
 param $from [string] the path to copy from
 param $to [string] the path to copy to
-param $options [CopyOptions | mixed] options describing how the file should be copied
+param $options [CopyOptions | array] options describing how the file should be copied
 param $handler [callable] the handler that will be called on completion
 <b>
 copy($from, $to, $options, $handler)
@@ -832,7 +798,7 @@ copy($from, $to, $options, $handler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>callable | CopyOptions | mixed</p></p>
+                                                <code></code><p><p>callable | array | CopyOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -840,7 +806,7 @@ copy($from, $to, $options, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -848,18 +814,14 @@ copy($from, $to, $options, $handler)
                                             <a id="method_copyBlocking"></a>
                         <div class="element clickable method public  method_copyBlocking" data-toggle="collapse" data-target=".method_copyBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copy</h2>
-                            <pre>copyBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>copyBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $from [string]
-param $to [string]
-<b>
-copyBlocking($from, $to)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -875,7 +837,7 @@ copyBlocking($from, $to)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -883,7 +845,7 @@ copyBlocking($from, $to)
                                             <a id="method_copyRecursive"></a>
                         <div class="element clickable method public  method_copyRecursive" data-toggle="collapse" data-target=".method_copyRecursive .collapse">
                             <h2>Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</h2>
-                            <pre>copyRecursive( $arg0,  $arg1,  $arg2,  $arg3) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>copyRecursive( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -894,15 +856,7 @@ copyBlocking($from, $to)
 If <code>recursive</code> is <code>true</code> and <code>from</code> represents a directory, then the directory and its contents
 will be copied recursively to the destination <code>to</code>.
 <p>
-The copy will fail if the destination if the destination already exists.
-
-param $from [string] the path to copy from
-param $to [string] the path to copy to
-param $recursive [boolean]
-param $handler [callable] the handler that will be called on completion
-<b>
-copyRecursive($from, $to, $recursive, $handler)
-</b></div>
+The copy will fail if the destination if the destination already exists.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -926,7 +880,7 @@ copyRecursive($from, $to, $recursive, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -934,19 +888,14 @@ copyRecursive($from, $to, $recursive, $handler)
                                             <a id="method_copyRecursiveBlocking"></a>
                         <div class="element clickable method public  method_copyRecursiveBlocking" data-toggle="collapse" data-target=".method_copyRecursiveBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copyRecursive</h2>
-                            <pre>copyRecursiveBlocking( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>copyRecursiveBlocking( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $from [string]
-param $to [string]
-param $recursive [boolean]
-<b>
-copyRecursiveBlocking($from, $to, $recursive)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -966,7 +915,7 @@ copyRecursiveBlocking($from, $to, $recursive)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -974,7 +923,7 @@ copyRecursiveBlocking($from, $to, $recursive)
                                             <a id="method_createFile"></a>
                         <div class="element clickable method public  method_createFile" data-toggle="collapse" data-target=".method_createFile .collapse">
                             <h2>Creates an empty file with the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>createFile( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>createFile( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1012,7 +961,7 @@ createFile($path, $perms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1020,7 +969,7 @@ createFile($path, $perms, $handler)
                                             <a id="method_createFileBlocking"></a>
                         <div class="element clickable method public  method_createFileBlocking" data-toggle="collapse" data-target=".method_createFileBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createFile</h2>
-                            <pre>createFileBlocking( $arg0,  $arg1 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>createFileBlocking( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1052,7 +1001,7 @@ createFileBlocking($path, $perms)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1061,7 +1010,7 @@ createFileBlocking($path, $perms)
                         <div class="element clickable method public  method_createTempDirectory" data-toggle="collapse" data-target=".method_createTempDirectory .collapse">
                             <h2>Creates a new directory in the default temporary-file directory, using the given
 prefix to generate its name, asynchronously.</h2>
-                            <pre>createTempDirectory( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>createTempDirectory( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1138,7 +1087,7 @@ createTempDirectory($dir, $prefix, $perms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1198,7 +1147,7 @@ createTempDirectoryBlocking($dir, $prefix, $perms)
                         <div class="element clickable method public  method_createTempFile" data-toggle="collapse" data-target=".method_createTempFile .collapse">
                             <h2>Creates a new file in the default temporary-file directory, using the given
 prefix and suffix to generate its name, asynchronously.</h2>
-                            <pre>createTempFile( $arg0,  $arg1,  $arg2,  $arg3 = null,  $arg4 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>createTempFile( $arg0,  $arg1,  $arg2,  $arg3 = null,  $arg4 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1277,7 +1226,7 @@ createTempFile($dir, $prefix, $suffix, $perms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1343,18 +1292,14 @@ createTempFileBlocking($dir, $prefix, $suffix, $perms)
                                             <a id="method_delete"></a>
                         <div class="element clickable method public  method_delete" data-toggle="collapse" data-target=".method_delete .collapse">
                             <h2>Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>delete( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>delete( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string] path to the file
-param $handler [callable] the handler that will be called on completion
-<b>
-delete($path, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1370,7 +1315,7 @@ delete($path, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1378,17 +1323,14 @@ delete($path, $handler)
                                             <a id="method_deleteBlocking"></a>
                         <div class="element clickable method public  method_deleteBlocking" data-toggle="collapse" data-target=".method_deleteBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::delete</h2>
-                            <pre>deleteBlocking( $arg0) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>deleteBlocking( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-<b>
-deleteBlocking($path)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1400,7 +1342,7 @@ deleteBlocking($path)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1408,7 +1350,7 @@ deleteBlocking($path)
                                             <a id="method_deleteRecursive"></a>
                         <div class="element clickable method public  method_deleteRecursive" data-toggle="collapse" data-target=".method_deleteRecursive .collapse">
                             <h2>Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>deleteRecursive( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>deleteRecursive( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1417,14 +1359,7 @@ deleteBlocking($path)
                                 <div class="detail-description">
                                     <div class="long_description"><p>
 If the path represents a directory and <code>recursive = true</code> then the directory and its contents will be
-deleted recursively.
-
-param $path [string] path to the file
-param $recursive [boolean] delete recursively?
-param $handler [callable] the handler that will be called on completion
-<b>
-deleteRecursive($path, $recursive, $handler)
-</b></div>
+deleted recursively.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1444,7 +1379,7 @@ deleteRecursive($path, $recursive, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1452,18 +1387,14 @@ deleteRecursive($path, $recursive, $handler)
                                             <a id="method_deleteRecursiveBlocking"></a>
                         <div class="element clickable method public  method_deleteRecursiveBlocking" data-toggle="collapse" data-target=".method_deleteRecursiveBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::deleteRecursive</h2>
-                            <pre>deleteRecursiveBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>deleteRecursiveBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $recursive [boolean]
-<b>
-deleteRecursiveBlocking($path, $recursive)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1479,7 +1410,7 @@ deleteRecursiveBlocking($path, $recursive)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1487,18 +1418,14 @@ deleteRecursiveBlocking($path, $recursive)
                                             <a id="method_exists"></a>
                         <div class="element clickable method public  method_exists" data-toggle="collapse" data-target=".method_exists .collapse">
                             <h2>Determines whether the file as specified by the path &lt;code&gt;path&lt;/code&gt; exists, asynchronously.</h2>
-                            <pre>exists( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>exists( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string] path to the file
-param $handler [callable] the handler that will be called on completion
-<b>
-exists($path, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1514,7 +1441,7 @@ exists($path, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1529,10 +1456,7 @@ exists($path, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-<b>
-existsBlocking($path)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1552,18 +1476,14 @@ existsBlocking($path)
                                             <a id="method_fsProps"></a>
                         <div class="element clickable method public  method_fsProps" data-toggle="collapse" data-target=".method_fsProps .collapse">
                             <h2>Returns properties of the file-system being used by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>fsProps( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>fsProps( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string] path to anywhere on the filesystem
-param $handler [callable] the handler that will be called on completion
-<b>
-fsProps($path, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1579,7 +1499,7 @@ fsProps($path, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1594,10 +1514,7 @@ fsProps($path, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-<b>
-fsPropsBlocking($path)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1617,19 +1534,14 @@ fsPropsBlocking($path)
                                             <a id="method_link"></a>
                         <div class="element clickable method public  method_link" data-toggle="collapse" data-target=".method_link .collapse">
                             <h2>Create a hard link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.</h2>
-                            <pre>link( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>link( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string] the link
-param $existing [string] the link destination
-param $handler [callable] the handler that will be called on completion
-<b>
-link($link, $existing, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1649,7 +1561,7 @@ link($link, $existing, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1657,18 +1569,14 @@ link($link, $existing, $handler)
                                             <a id="method_linkBlocking"></a>
                         <div class="element clickable method public  method_linkBlocking" data-toggle="collapse" data-target=".method_linkBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link</h2>
-                            <pre>linkBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>linkBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string]
-param $existing [string]
-<b>
-linkBlocking($link, $existing)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1684,7 +1592,7 @@ linkBlocking($link, $existing)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1692,7 +1600,7 @@ linkBlocking($link, $existing)
                                             <a id="method_lprops"></a>
                         <div class="element clickable method public  method_lprops" data-toggle="collapse" data-target=".method_lprops .collapse">
                             <h2>Obtain properties for the link represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>lprops( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>lprops( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1700,13 +1608,7 @@ linkBlocking($link, $existing)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-The link will not be followed.
-
-param $path [string] the path to the file
-param $handler [callable] the handler that will be called on completion
-<b>
-lprops($path, $handler)
-</b></div>
+The link will not be followed.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1722,7 +1624,7 @@ lprops($path, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1737,10 +1639,7 @@ lprops($path, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-<b>
-lpropsBlocking($path)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -1760,7 +1659,7 @@ lpropsBlocking($path)
                                             <a id="method_mkdir"></a>
                         <div class="element clickable method public  method_mkdir" data-toggle="collapse" data-target=".method_mkdir .collapse">
                             <h2>Create the directory represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>mkdir( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>mkdir( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1810,7 +1709,7 @@ mkdir($path, $perms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1818,7 +1717,7 @@ mkdir($path, $perms, $handler)
                                             <a id="method_mkdirBlocking"></a>
                         <div class="element clickable method public  method_mkdirBlocking" data-toggle="collapse" data-target=".method_mkdirBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdir</h2>
-                            <pre>mkdirBlocking( $arg0,  $arg1 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>mkdirBlocking( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1850,7 +1749,7 @@ mkdirBlocking($path, $perms)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1858,7 +1757,7 @@ mkdirBlocking($path, $perms)
                                             <a id="method_mkdirs"></a>
                         <div class="element clickable method public  method_mkdirs" data-toggle="collapse" data-target=".method_mkdirs .collapse">
                             <h2>Create the directory represented by &lt;code&gt;path&lt;/code&gt; and any non existent parents, asynchronously.</h2>
-                            <pre>mkdirs( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>mkdirs( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1908,7 +1807,7 @@ mkdirs($path, $perms, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1916,7 +1815,7 @@ mkdirs($path, $perms, $handler)
                                             <a id="method_mkdirsBlocking"></a>
                         <div class="element clickable method public  method_mkdirsBlocking" data-toggle="collapse" data-target=".method_mkdirsBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdirs</h2>
-                            <pre>mkdirsBlocking( $arg0,  $arg1 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>mkdirsBlocking( $arg0,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1948,7 +1847,7 @@ mkdirsBlocking($path, $perms)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1956,7 +1855,7 @@ mkdirsBlocking($path, $perms)
                                             <a id="method_move"></a>
                         <div class="element clickable method public  method_move" data-toggle="collapse" data-target=".method_move .collapse">
                             <h2>Move a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</h2>
-                            <pre>move( $arg0,  $arg1,  $arg2,  $arg3 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>move( $arg0,  $arg1,  $arg2,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1977,7 +1876,7 @@ Move a file from the path <code>from</code> to path <code>to</code>, asynchronou
 
 param $from [string] the path to copy from
 param $to [string] the path to copy to
-param $options [CopyOptions | mixed] options describing how the file should be copied
+param $options [CopyOptions | array] options describing how the file should be copied
 param $handler [callable] the handler that will be called on completion
 <b>
 move($from, $to, $options, $handler)
@@ -1997,7 +1896,7 @@ move($from, $to, $options, $handler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>callable | CopyOptions | mixed</p></p>
+                                                <code></code><p><p>callable | array | CopyOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg3</h4>
@@ -2005,7 +1904,7 @@ move($from, $to, $options, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2013,18 +1912,14 @@ move($from, $to, $options, $handler)
                                             <a id="method_moveBlocking"></a>
                         <div class="element clickable method public  method_moveBlocking" data-toggle="collapse" data-target=".method_moveBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::move</h2>
-                            <pre>moveBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>moveBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $from [string]
-param $to [string]
-<b>
-moveBlocking($from, $to)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2040,7 +1935,7 @@ moveBlocking($from, $to)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2048,7 +1943,7 @@ moveBlocking($from, $to)
                                             <a id="method_open"></a>
                         <div class="element clickable method public  method_open" data-toggle="collapse" data-target=".method_open .collapse">
                             <h2>Open the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>open( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>open( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -2056,14 +1951,7 @@ moveBlocking($from, $to)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-The file is opened for both reading and writing. If the file does not already exist it will be created.
-
-param $path [string] path to the file
-param $options [OpenOptions | mixed] options describing how the file should be opened
-param $handler [callable]
-<b>
-open($path, $options, $handler)
-</b></div>
+The file is opened for both reading and writing. If the file does not already exist it will be created.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -2075,7 +1963,7 @@ open($path, $options, $handler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>OpenOptions | mixed</p></p>
+                                                <code></code><p><p>OpenOptions | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -2083,7 +1971,7 @@ open($path, $options, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2098,11 +1986,7 @@ open($path, $options, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $options [OpenOptions | mixed]
-<b>
-openBlocking($path, $options)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2114,7 +1998,7 @@ openBlocking($path, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>OpenOptions | mixed</p></p>
+                                                <code></code><p><p>OpenOptions | array</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -2126,7 +2010,7 @@ openBlocking($path, $options)
                                             <a id="method_props"></a>
                         <div class="element clickable method public  method_props" data-toggle="collapse" data-target=".method_props .collapse">
                             <h2>Obtain properties for the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>props( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>props( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -2134,13 +2018,7 @@ openBlocking($path, $options)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-If the file is a link, the link will be followed.
-
-param $path [string] the path to the file
-param $handler [callable] the handler that will be called on completion
-<b>
-props($path, $handler)
-</b></div>
+If the file is a link, the link will be followed.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -2156,7 +2034,7 @@ props($path, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2171,10 +2049,7 @@ props($path, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-<b>
-propsBlocking($path)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2194,7 +2069,7 @@ propsBlocking($path)
                                             <a id="method_readDir"></a>
                         <div class="element clickable method public  method_readDir" data-toggle="collapse" data-target=".method_readDir .collapse">
                             <h2>Read the contents of the directory specified by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
-                            <pre>readDir( $arg0,  $arg1,  $arg2 = null) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>readDir( $arg0,  $arg1,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -2242,7 +2117,7 @@ readDir($path, $filter, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2290,7 +2165,7 @@ readDirBlocking($path, $filter)
                                             <a id="method_readFile"></a>
                         <div class="element clickable method public  method_readFile" data-toggle="collapse" data-target=".method_readFile .collapse">
                             <h2>Reads the entire file as represented by the path &lt;code&gt;path&lt;/code&gt; as a , asynchronously.</h2>
-                            <pre>readFile( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>readFile( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -2298,13 +2173,7 @@ readDirBlocking($path, $filter)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-Do not use this method to read very large files or you risk running out of available RAM.
-
-param $path [string] path to the file
-param $handler [callable] the handler that will be called on completion
-<b>
-readFile($path, $handler)
-</b></div>
+Do not use this method to read very large files or you risk running out of available RAM.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -2320,7 +2189,7 @@ readFile($path, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2335,10 +2204,7 @@ readFile($path, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-<b>
-readFileBlocking($path)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2358,18 +2224,14 @@ readFileBlocking($path)
                                             <a id="method_readSymlink"></a>
                         <div class="element clickable method public  method_readSymlink" data-toggle="collapse" data-target=".method_readSymlink .collapse">
                             <h2>Returns the path representing the file that the symbolic link specified by &lt;code&gt;link&lt;/code&gt; points to, asynchronously.</h2>
-                            <pre>readSymlink( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>readSymlink( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string] the link
-param $handler [callable] the handler that will be called on completion
-<b>
-readSymlink($link, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2385,7 +2247,7 @@ readSymlink($link, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2400,10 +2262,7 @@ readSymlink($link, $handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string]
-<b>
-readSymlinkBlocking($link)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2423,19 +2282,14 @@ readSymlinkBlocking($link)
                                             <a id="method_symlink"></a>
                         <div class="element clickable method public  method_symlink" data-toggle="collapse" data-target=".method_symlink .collapse">
                             <h2>Create a symbolic link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.</h2>
-                            <pre>symlink( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>symlink( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string] the link
-param $existing [string] the link destination
-param $handler [callable] the handler that will be called on completion
-<b>
-symlink($link, $existing, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2455,7 +2309,7 @@ symlink($link, $existing, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2463,18 +2317,14 @@ symlink($link, $existing, $handler)
                                             <a id="method_symlinkBlocking"></a>
                         <div class="element clickable method public  method_symlinkBlocking" data-toggle="collapse" data-target=".method_symlinkBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link</h2>
-                            <pre>symlinkBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>symlinkBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string]
-param $existing [string]
-<b>
-symlinkBlocking($link, $existing)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2490,7 +2340,7 @@ symlinkBlocking($link, $existing)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2498,7 +2348,7 @@ symlinkBlocking($link, $existing)
                                             <a id="method_truncate"></a>
                         <div class="element clickable method public  method_truncate" data-toggle="collapse" data-target=".method_truncate .collapse">
                             <h2>Truncate the file represented by &lt;code&gt;path&lt;/code&gt; to length &lt;code&gt;len&lt;/code&gt; in bytes, asynchronously.</h2>
-                            <pre>truncate( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>truncate( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -2506,14 +2356,7 @@ symlinkBlocking($link, $existing)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>
-The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.
-
-param $path [string] the path to the file
-param $len [integer] the length to truncate it to
-param $handler [callable] the handler that will be called on completion
-<b>
-truncate($path, $len, $handler)
-</b></div>
+The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -2533,7 +2376,7 @@ truncate($path, $len, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2541,18 +2384,14 @@ truncate($path, $len, $handler)
                                             <a id="method_truncateBlocking"></a>
                         <div class="element clickable method public  method_truncateBlocking" data-toggle="collapse" data-target=".method_truncateBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::truncate</h2>
-                            <pre>truncateBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>truncateBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $len [integer]
-<b>
-truncateBlocking($path, $len)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2568,7 +2407,7 @@ truncateBlocking($path, $len)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2576,18 +2415,14 @@ truncateBlocking($path, $len)
                                             <a id="method_unlink"></a>
                         <div class="element clickable method public  method_unlink" data-toggle="collapse" data-target=".method_unlink .collapse">
                             <h2>Unlinks the link on the file system represented by the path &lt;code&gt;link&lt;/code&gt;, asynchronously.</h2>
-                            <pre>unlink( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>unlink( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string] the link
-param $handler [callable] the handler that will be called on completion
-<b>
-unlink($link, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2603,7 +2438,7 @@ unlink($link, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2611,17 +2446,14 @@ unlink($link, $handler)
                                             <a id="method_unlinkBlocking"></a>
                         <div class="element clickable method public  method_unlinkBlocking" data-toggle="collapse" data-target=".method_unlinkBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::unlink</h2>
-                            <pre>unlinkBlocking( $arg0) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>unlinkBlocking( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $link [string]
-<b>
-unlinkBlocking($link)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2633,7 +2465,7 @@ unlinkBlocking($link)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2642,19 +2474,14 @@ unlinkBlocking($link)
                         <div class="element clickable method public  method_writeFile" data-toggle="collapse" data-target=".method_writeFile .collapse">
                             <h2>Creates the file, and writes the specified &lt;code&gt;Buffer data&lt;/code&gt; to the file represented by the path &lt;code&gt;path&lt;/code&gt;,
 asynchronously.</h2>
-                            <pre>writeFile( $arg0,  $arg1,  $arg2) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>writeFile( $arg0,  $arg1,  $arg2) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string] path to the file
-param $data [Buffer]
-param $handler [callable] the handler that will be called on completion
-<b>
-writeFile($path, $data, $handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2674,7 +2501,7 @@ writeFile($path, $data, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2682,18 +2509,14 @@ writeFile($path, $data, $handler)
                                             <a id="method_writeFileBlocking"></a>
                         <div class="element clickable method public  method_writeFileBlocking" data-toggle="collapse" data-target=".method_writeFileBlocking .collapse">
                             <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::writeFile</h2>
-                            <pre>writeFileBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\FileSystem</pre>
+                            <pre>writeFileBlocking( $arg0,  $arg1) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $path [string]
-param $data [Buffer]
-<b>
-writeFileBlocking($path, $data)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2709,7 +2532,7 @@ writeFileBlocking($path, $data)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">\io\vertx\jphp\core\file\FileSystem</a></code><p></p>
+                                        <code>$this</code><p></p>
                                                                     </div>
                             </div>
 
@@ -2736,7 +2559,7 @@ writeFileBlocking($path, $data)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:56 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:32 +0000.<br/>
     </footer>
     </body>
 </html>

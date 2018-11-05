@@ -485,7 +485,19 @@ additional data, the data is also given:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">Code not translatable</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">/*
+handler.register("my-service",
+  future -&gt; HttpEndpoint.getClient(discovery,
+    (rec) -&gt; "my-service".equals(rec.getName()),
+    client -&gt; {
+      if (client.failed()) {
+        future.fail(client.cause());
+      } else {
+        client.result().close();
+        future.complete(Status.OK());
+      }
+    }));
+    */</code></pre>
 </div>
 </div>
 </div>
@@ -559,7 +571,7 @@ to expose the data differently. This section gives an example to expose the data
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:36 CST
+                上次更新时间 2018-11-05 19:55:42 CST
               
               
             </div>

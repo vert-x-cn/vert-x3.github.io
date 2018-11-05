@@ -241,13 +241,13 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>制作Web Client的目的并非为了替换Vert.x Core中的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> ，
+<p>制作Web Client的目的并非为了替换Vert.x Core中的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> ，
 而是基于该客户端，扩展并保留其便利的设置和特性，例如请求连接池（Pooling），HTTP/2的支持，
 流水线／管线的支持等。当您需要对 HTTP 请求和响应做细微粒度控制时，您应当使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code>。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code>。</p>
 </div>
 <div class="paragraph">
-<p>另外Web Client并未提供 WebSocket API，此时您应当使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 。</p>
+<p>另外Web Client并未提供 WebSocket API，此时您应当使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 。</p>
 </div>
 </div>
 </div>
@@ -294,7 +294,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x Web Client使用Vert.x Core的API，如您对此还不熟悉，请先熟悉
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a>`的一些基本概念。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a>`的一些基本概念。</p>
 </div>
 </div>
 </div>
@@ -302,7 +302,7 @@
 <h2 id="_创建web_client">创建Web Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可使用缺省设置创建一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.WebClient.html">WebClient</a></code> ：</p>
+<p>您可使用缺省设置创建一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.WebClient.html">WebClient</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -435,7 +435,7 @@
 <p>如需要发送请求体，可使用相同的API并在最后加上 <code>sendXXX</code> 方法发送相应的请求体。</p>
 </div>
 <div class="paragraph">
-<p>例如用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendBuffer">sendBuffer</a></code> 方法发送一个缓冲体：</p>
+<p>例如用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendBuffer">sendBuffer</a></code> 方法发送一个缓冲体：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -450,8 +450,8 @@
 </div>
 <div class="paragraph">
 <p>有时候我们并不希望将所有数据一次性全部读入内存，因为文件太大或希望同时处理多个请求，希望每个请求仅使用最小的内存。出于此目的，Web Client可用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendStream">sendStream</a>`方法发送流式数据 `ReadStream&lt;Buffer&gt;</code>
-（例如 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> 便是一个 <code>ReadStream&lt;Buffer&gt;</code>）：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendStream">sendStream</a>`方法发送流式数据 `ReadStream&lt;Buffer&gt;</code>
+（例如 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> 便是一个 <code>ReadStream&lt;Buffer&gt;</code>）：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -496,7 +496,7 @@
 <div class="sect3">
 <h4 id="_json体">JSON体</h4>
 <div class="paragraph">
-<p>有时您需要在请求体中使用JSON格式，可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendJsonObject">sendJsonObject</a></code> 方法发送 <code>JsonObject</code> ：</p>
+<p>有时您需要在请求体中使用JSON格式，可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendJsonObject">sendJsonObject</a></code> 方法发送 <code>JsonObject</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -512,7 +512,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>在Java，Groovy以及Kotlin语言中，您亦可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendJson">sendJson</a></code> 方法发送POJO（Plain Old Java Object），该方法会自动调用 <code><a href="null#method_encode">Json::encode</a></code>
+<p>在Java，Groovy以及Kotlin语言中，您亦可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendJson">sendJson</a></code> 方法发送POJO（Plain Old Java Object），该方法会自动调用 <code><a href="null#method_encode">Json::encode</a></code>
 方法将 POJO 映射为 JSON：</p>
 </div>
 <div class="listingblock">
@@ -541,7 +541,7 @@
 <div class="sect3">
 <h4 id="_表单提交">表单提交</h4>
 <div class="paragraph">
-<p>您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendForm">sendForm</a></code>
+<p>您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendForm">sendForm</a></code>
 方法发送HTTP表单。</p>
 </div>
 <div class="listingblock">
@@ -580,8 +580,8 @@
 </div>
 </div>
 <div class="paragraph">
-<p>If you want to upload files and send attributes, you can create a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.multipart.MultipartForm.html">MultipartForm</a></code> and
-use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendMultipartForm">sendMultipartForm</a></code>.</p>
+<p>If you want to upload files and send attributes, you can create a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.multipart.MultipartForm.html">MultipartForm</a></code> and
+use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_sendMultipartForm">sendMultipartForm</a></code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -614,7 +614,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 </div>
 </div>
 <div class="paragraph">
-<p>此处 Headers 是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 对象，提供了增加、设置以及删除头属性操作的入口。HTTP头的某些特定属性允许设置多个值。</p>
+<p>此处 Headers 是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 对象，提供了增加、设置以及删除头属性操作的入口。HTTP头的某些特定属性允许设置多个值。</p>
 </div>
 <div class="paragraph">
 <p>您亦可通过 <code>putHeader</code> 方法写入头属性：</p>
@@ -631,8 +631,8 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <div class="sect2">
 <h3 id="_重用请求">重用请求</h3>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_send">send</a>`方法可被重复多次调用，这使得配置以及重用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html">HttpRequest</a>`对象变得更加便捷：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_send">send</a>`方法可被重复多次调用，这使得配置以及重用
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html">HttpRequest</a>`对象变得更加便捷：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -653,8 +653,8 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 </div>
 </div>
 <div class="paragraph">
-<p>请注意， <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html">HttpRequest</a></code> 对象是可变的。
-所以在修改缓存中的对象之前，您应当使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_copy">copy</a></code> 方法先复制一份拷贝：</p>
+<p>请注意， <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html">HttpRequest</a></code> 对象是可变的。
+所以在修改缓存中的对象之前，您应当使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_copy">copy</a></code> 方法先复制一份拷贝：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -678,7 +678,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <div class="sect2">
 <h3 id="_超时">超时</h3>
 <div class="paragraph">
-<p>您可通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_timeout">timeout</a></code> 方法设置超时时间。</p>
+<p>您可通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpRequest.html#method_timeout">timeout</a></code> 方法设置超时时间。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -702,7 +702,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <h2 id="_处理http响应">处理HTTP响应</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Web Client请求发送之后，返回的结果将会被包装在异步结果 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io.vertx.jphp.ext.web.client.HttpResponse.html">HttpResponse</a></code> 中。</p>
+<p>Web Client请求发送之后，返回的结果将会被包装在异步结果 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.client.HttpResponse.html">HttpResponse</a></code> 中。</p>
 </div>
 <div class="paragraph">
 <p>当响应被成功接收到之后，相应的回调函数将会被触发。</p>
@@ -729,7 +729,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <div class="title">Warning</div>
 </td>
 <td class="content">
-缺省状况下，响应会被完全缓冲读入内存，请用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_pipe">BodyCodec::pipe</a></code> 方法将响应写入流。
+缺省状况下，响应会被完全缓冲读入内存，请用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_pipe">BodyCodec::pipe</a></code> 方法将响应写入流。
 </td>
 </tr>
 </table>
@@ -740,7 +740,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <p>缺省状况下，响应以缓冲形式提供，并不提供任何形式的解码。</p>
 </div>
 <div class="paragraph">
-<p>可用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html">BodyCodec</a></code> 将响应定制成以下类型：</p>
+<p>可用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html">BodyCodec</a></code> 将响应定制成以下类型：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -754,7 +754,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <p>将JSON映射成POJO</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code></p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code></p>
 </li>
 </ul>
 </div>
@@ -762,7 +762,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <p>响应体编解码器对二进制数据流解码，以节省您在响应处理中的代码。</p>
 </div>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_jsonObject">BodyCodec::jsonObject</a></code> 将结果解码为JSON对象：</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_jsonObject">BodyCodec::jsonObject</a></code> 将结果解码为JSON对象：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -802,8 +802,8 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 </div>
 </div>
 <div class="paragraph">
-<p>当响应结果较大时，请使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_pipe">BodyCodec::pipe</a></code>
-方法。响应体编解码器将响应结果压入 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code>
+<p>当响应结果较大时，请使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_pipe">BodyCodec::pipe</a></code>
+方法。响应体编解码器将响应结果压入 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code>
 并在最后发出成功或失败的信号。</p>
 </div>
 <div class="listingblock">
@@ -823,7 +823,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 </div>
 </div>
 <div class="paragraph">
-<p>最后，如您对响应结果不感兴趣，可用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_none">BodyCodec::none</a></code>
+<p>最后，如您对响应结果不感兴趣，可用 <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.codec.BodyCodec.html#method_none">BodyCodec::none</a></code>
 废弃响应体。</p>
 </div>
 <div class="listingblock">
@@ -879,7 +879,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <div class="sect2">
 <h3 id="_处理30x重定向">处理30x重定向</h3>
 <div class="paragraph">
-<p>缺省状况下，客户端将会依照30x状态码自动重定向，您可使用 <code><a href="../../vertx-web-client/vertx-web-client-jphp/enums.adoc#WebClientOptions">WebClientOptions</a></code> 予以配置：</p>
+<p>缺省状况下，客户端将会依照30x状态码自动重定向，您可使用 <code><a href="../../vertx-web-client/php/dataobjects.html#WebClientOptions">WebClientOptions</a></code> 予以配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -893,7 +893,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 </div>
 </div>
 <div class="paragraph">
-<p>客户端将会执行最多达`16`次重定向，该参数亦可在 <code><a href="../../vertx-web-client/vertx-web-client-jphp/enums.adoc#WebClientOptions">WebClientOptions</a></code> 配置：</p>
+<p>客户端将会执行最多达`16`次重定向，该参数亦可在 <code><a href="../../vertx-web-client/php/dataobjects.html#WebClientOptions">WebClientOptions</a></code> 配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -913,7 +913,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
 <h2 id="_使用https">使用HTTPS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x Web Client可用与 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 相同方式配置HTTPS协议。</p>
+<p>Vert.x Web Client可用与 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 相同方式配置HTTPS协议。</p>
 </div>
 <div class="paragraph">
 <p>您可对每个请求单独设置：</p>
@@ -961,7 +961,7 @@ use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-client-jphp/classes/io
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:26:21 CST
+                上次更新时间 2018-11-05 19:57:30 CST
               
               
             </div>

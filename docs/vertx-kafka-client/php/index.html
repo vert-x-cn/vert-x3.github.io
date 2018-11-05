@@ -314,8 +314,8 @@
 </div>
 <div class="paragraph">
 <p>我们可以通过一个 Map 来包装这些配置，然后将其传入到
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a></code> 接口或
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html">KafkaProducer</a>`接口中的 `create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a></code> 接口或
+<code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html">KafkaProducer</a>`接口中的 `create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -336,7 +336,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>在上面的例子中，我们在创建 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a></code> 实例时传入了一个 Map 实例，用于指定要连接的 Kafka 节点列表（只有一个）以及如何对接收到的消息进行解析以得到 key 与 value。</p>
+<p>在上面的例子中，我们在创建 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a></code> 实例时传入了一个 Map 实例，用于指定要连接的 Kafka 节点列表（只有一个）以及如何对接收到的消息进行解析以得到 key 与 value。</p>
 </div>
 <div class="paragraph">
 <p>我们可以用类似的方法来创建 Producer：</p>
@@ -364,11 +364,11 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>我们可以通过 <code>KafkaConsumer</code> 的
-`<a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_subscribe">subscribe</a>`方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_subscribe">subscribe</a>`方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
 </div>
 <div class="paragraph">
 <p>当然你需要通过
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_handler">handler</a>`方法注册一个 `Handler</code> 来处理接收的消息：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_handler">handler</a>`方法注册一个 `Handler</code> 来处理接收的消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -438,9 +438,9 @@ order to only consume messages starting from a particular offset, for example.</
 <p>如果组内的一个消费者挂了，kafka 集群会自动把 partition 重新分配给组内其他消费者，或者新加入一个消费者去消费对应的 partition。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_partitionsRevokedHandler">partitionsRevokedHandler</a></code> 和
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_partitionsAssignedHandler">partitionsAssignedHandler</a>`方法在
-`<a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a>`里注册一个 `Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_partitionsRevokedHandler">partitionsRevokedHandler</a></code> 和
+<code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_partitionsAssignedHandler">partitionsAssignedHandler</a>`方法在
+`<a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a>`里注册一个 `Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -479,7 +479,7 @@ order to only consume messages starting from a particular offset, for example.</
 </div>
 <div class="paragraph">
 <p>加入某个 consumer group 的消费者，可以通过
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_unsubscribe">unsubscribe</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_unsubscribe">unsubscribe</a></code>
 方法退出该消费组，从而不再接受到相关消息：</p>
 </div>
 <div class="listingblock">
@@ -519,7 +519,7 @@ order to only consume messages starting from a particular offset, for example.</
 <p>消费组内的消费者可以消费某个 topic 指定的 partition。如果某个消费者并不属于任何消费组，那么整个程序就不能依赖 Kafka 的 re-balancing 机制去消费消息。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_assign">assign</a></code>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_assign">assign</a></code>
 方法请求分配指定的分区：</p>
 </div>
 <div class="listingblock">
@@ -565,7 +565,7 @@ messages won&#8217;t be consumed until both methods have been called. This allow
 order to only consume messages starting from a particular offset, for example.</p>
 </div>
 <div class="paragraph">
-<p>上面的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_assignment">assignment</a></code> 方法可以列出当前分配的 topic partition。</p>
+<p>上面的 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_assignment">assignment</a></code> 方法可以列出当前分配的 topic partition。</p>
 </div>
 </div>
 </div>
@@ -574,7 +574,7 @@ order to only consume messages starting from a particular offset, for example.</
 <div class="sectionbody">
 <div class="paragraph">
 <p>Other than using the internal polling mechanism in order to receive messages from Kafka, the client can subscribe to a
-topic, avoiding to register the handler for getting the messages and then using the <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_poll">poll</a></code> method.</p>
+topic, avoiding to register the handler for getting the messages and then using the <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_poll">poll</a></code> method.</p>
 </div>
 <div class="paragraph">
 <p>In this way, the user application is in charge to execute the poll for getting messages when it needs, for example after processing
@@ -634,7 +634,7 @@ Once the completion handler has been called it will only observe messages read f
 <h2 id="_获取_topic_以及分区信息">获取 Topic 以及分区信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_partitionsFor">partitionsFor</a></code> 方法获取指定 topic 的 partition 信息：</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_partitionsFor">partitionsFor</a></code> 方法获取指定 topic 的 partition 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -653,7 +653,7 @@ Once the completion handler has been called it will only observe messages read f
 </div>
 </div>
 <div class="paragraph">
-<p>另外， <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_listTopics">listTopics</a></code> 方法可以列出消费者下的所有 topic 以及对应的 partition 信息：</p>
+<p>另外， <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_listTopics">listTopics</a></code> 方法可以列出消费者下的所有 topic 以及对应的 partition 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -686,7 +686,7 @@ Once the completion handler has been called it will only observe messages read f
 <p>Consumer 会在每次从某个 topic partition 中读取一批消息的时候自动执行提交偏移量的操作。需要在创建 <code>KafkaConsumer</code> 时将 <code>enable.auto.commit</code> 配置项设为 <code>true</code> 来开启自动提交。</p>
 </div>
 <div class="paragraph">
-<p>我们可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_commit">commit</a></code>
+<p>我们可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_commit">commit</a></code>
 方法进行手动提交。手动提交偏移量通常用于确保消息分发的 <strong>at least once</strong> 语义，以确保消息没有被消费前不会执行提交。</p>
 </div>
 <div class="listingblock">
@@ -714,7 +714,7 @@ Once the completion handler has been called it will only observe messages read f
 并从任意指定的 topic 以及 partition 位置开始消费消息。</p>
 </div>
 <div class="paragraph">
-<p>我们可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seek">seek</a></code> 方法来更改读取位置对应的偏移量：</p>
+<p>我们可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seek">seek</a></code> 方法来更改读取位置对应的偏移量：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -735,7 +735,7 @@ Once the completion handler has been called it will only observe messages read f
 </div>
 </div>
 <div class="paragraph">
-<p>当消费者需要从 Stream 的起始位置读取消息时，可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToBeginning">seekToBeginning</a></code> 方法将 <code>offset</code> 位置设置到 partition 的起始端：</p>
+<p>当消费者需要从 Stream 的起始位置读取消息时，可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToBeginning">seekToBeginning</a></code> 方法将 <code>offset</code> 位置设置到 partition 的起始端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -756,7 +756,7 @@ Once the completion handler has been called it will only observe messages read f
 </div>
 </div>
 <div class="paragraph">
-<p>最后我们也可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToEnd">seekToEnd</a></code> 方法将 <code>offset</code> 位置设置到 partition 的末端：</p>
+<p>最后我们也可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToEnd">seekToEnd</a></code> 方法将 <code>offset</code> 位置设置到 partition 的末端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -789,7 +789,7 @@ handler has been called. This is not the case for messages observed by the batch
 <div class="sectionbody">
 <div class="paragraph">
 <p>你可以利用 Kafka 0.10.1.1 引入的新的API <code>beginningOffsets</code> 来获取给定分区的起始偏移量。这个跟上面的
-`<a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToBeginning">seekToBeginning</a>`方法有一个地方不同：
+`<a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToBeginning">seekToBeginning</a>`方法有一个地方不同：
 beginningOffsets
 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
@@ -822,7 +822,7 @@ beginningOffsets
 </div>
 </div>
 <div class="paragraph">
-<p>与此对应的API还有 <code>endOffsets</code> 方法，用于获取给定分区末端的偏移量值。与 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToEnd">seekToEnd</a></code> 方法相比，
+<p>与此对应的API还有 <code>endOffsets</code> 方法，用于获取给定分区末端的偏移量值。与 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_seekToEnd">seekToEnd</a></code> 方法相比，
 <code>endOffsets</code> 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
 <div class="listingblock">
@@ -899,8 +899,8 @@ beginningOffsets
 等我们处理了差不多了，可以再继续消费缓存起来的消息（<code>resume</code>）。</p>
 </div>
 <div class="paragraph">
-<p>我们可以利用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_pause">pause</a></code> 方法和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_resume">resume</a>`方法来进行流量控制：</p>
+<p>我们可以利用 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_pause">pause</a></code> 方法和
+`<a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_resume">resume</a>`方法来进行流量控制：</p>
 </div>
 <div class="paragraph">
 <p>In the case of the partition-specific pause and resume it is possible that the record handler will continue to
@@ -976,7 +976,7 @@ rare not paused.</p>
 <h2 id="_发送消息到某个_topic">发送消息到某个 Topic</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以利用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_write">write</a></code> 方法来向某个 topic 发送消息(records)。</p>
+<p>您可以利用 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_write">write</a></code> 方法来向某个 topic 发送消息(records)。</p>
 </div>
 <div class="paragraph">
 <p>最简单的发送消息的方式是仅仅指定目的 topic 以及相应的值而省略消息的 key 以及分区。在这种情况下，
@@ -1080,7 +1080,7 @@ rare not paused.</p>
 <p>有时候您希望在多个 Verticle 或者 Vert.x Context 下共用一个 Producer。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_createShared">KafkaProducer::createShared</a></code>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_createShared">KafkaProducer::createShared</a></code>
 方法来创建可以在 Verticle 之间安全共享的 <code>KafkaProducer</code> 实例：</p>
 </div>
 <div class="listingblock">
@@ -1133,7 +1133,7 @@ rare not paused.</p>
 <h2 id="_获取_topic_partition_的相关信息">获取 Topic Partition 的相关信息</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_partitionsFor">partitionsFor</a></code> 方法获取指定 topic 的分区信息。</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_partitionsFor">partitionsFor</a></code> 方法获取指定 topic 的分区信息。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1158,8 +1158,8 @@ rare not paused.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>您可以利用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_exceptionHandler">exceptionHandler</a>`方法和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_exceptionHandler">exceptionHandler</a>`方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
+`<a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html#method_exceptionHandler">exceptionHandler</a>`方法和
+`<a href="../../phpdoc/classes/io.vertx.jphp.kafka.client.producer.KafkaProducer.html#method_exceptionHandler">exceptionHandler</a>`方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
 比如：</p>
 </div>
 <div class="listingblock">
@@ -1281,7 +1281,7 @@ but not this wrapper, includes Partition Management, Broker Configuration manage
 <div class="sect2">
 <h3 id="_create_a_topic">Create a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_createTopic">createTopic</a></code> to create a topic.
+<p>You can call <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_createTopic">createTopic</a></code> to create a topic.
 Parameters are: topic name, number of partitions, number of replicas, and the usual callback to handle the result.
 It might return an error, e.g. if the number of requested replicas is greater than the number of brokers.</p>
 </div>
@@ -1303,7 +1303,7 @@ It might return an error, e.g. if the number of requested replicas is greater th
 <div class="sect2">
 <h3 id="_delete_a_topic">Delete a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_deleteTopic">deleteTopic</a></code> to delete a topic.
+<p>You can call <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_deleteTopic">deleteTopic</a></code> to delete a topic.
 Parameters are: topic name, and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
 </div>
@@ -1326,7 +1326,7 @@ It might return an error, e.g. if the topic does not exist.</p>
 <h3 id="_change_a_topic_s_configuration">Change a topic&#8217;s configuration</h3>
 <div class="paragraph">
 <p>If you need to update the configuration of a topic, e.g., you want to update the retention policy,
-you can call <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_changeTopicConfig">changeTopicConfig</a></code> to update a topic.
+you can call <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_changeTopicConfig">changeTopicConfig</a></code> to update a topic.
 Parameters are: topic name, a Map (String &#8594; String) with parameters to be changed,
 and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
@@ -1353,7 +1353,7 @@ It might return an error, e.g. if the topic does not exist.</p>
 <div class="sect2">
 <h3 id="_check_if_a_topic_exists">Check if a topic exists</h3>
 <div class="paragraph">
-<p>If you want to check if a topic exists, you can call <code><a href="https://vertx.okou.tk/phpdoc/vertx-kafka-client-jphp/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_topicExists">topicExists</a></code>.
+<p>If you want to check if a topic exists, you can call <code><a href="../../phpdoc/classes/io.vertx.jphp.kafka.admin.AdminUtils.html#method_topicExists">topicExists</a></code>.
 Parameters are: topic name, and the usual callback to handle the result.
 It might return an error, e.g. if the topic does not exist.</p>
 </div>
@@ -1380,7 +1380,7 @@ It might return an error, e.g. if the topic does not exist.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:51 CST
+                上次更新时间 2018-11-05 19:55:58 CST
               
               
             </div>

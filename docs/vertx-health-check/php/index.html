@@ -260,7 +260,7 @@ result as JSON.</p>
 <div class="sect2">
 <h3 id="_creating_the_health_check_object">Creating the health check object.</h3>
 <div class="paragraph">
-<p>The central object is <code><a href="https://vertx.okou.tk/phpdoc/vertx-health-checks-jphp/classes/io.vertx.jphp.ext.healthchecks.HealthChecks.html">HealthChecks</a></code>. You can create a new instance using:</p>
+<p>The central object is <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.healthchecks.HealthChecks.html">HealthChecks</a></code>. You can create a new instance using:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -279,7 +279,7 @@ result as JSON.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>using an existing instance of <code><a href="https://vertx.okou.tk/phpdoc/vertx-health-checks-jphp/classes/io.vertx.jphp.ext.healthchecks.HealthChecks.html">HealthChecks</a></code></p>
+<p>using an existing instance of <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.healthchecks.HealthChecks.html">HealthChecks</a></code></p>
 </li>
 <li>
 <p>let the handler create one instance for you.</p>
@@ -304,8 +304,8 @@ result as JSON.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Procedure registration can be directly made on the <code><a href="https://vertx.okou.tk/phpdoc/vertx-health-checks-jphp/classes/io.vertx.jphp.ext.healthchecks.HealthCheckHandler.html">HealthCheckHandler</a></code>
-instance. Alternatively, if you have created the <code><a href="https://vertx.okou.tk/phpdoc/vertx-health-checks-jphp/classes/io.vertx.jphp.ext.healthchecks.HealthChecks.html">HealthChecks</a></code> instance
+<p>Procedure registration can be directly made on the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.healthchecks.HealthCheckHandler.html">HealthCheckHandler</a></code>
+instance. Alternatively, if you have created the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.healthchecks.HealthChecks.html">HealthChecks</a></code> instance
 beforehand, you can register the procedure on this object directly. Registrations and unregistrations can be done at
 anytime, even after the route registration:</p>
 </div>
@@ -322,8 +322,8 @@ anytime, even after the route registration:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A procedure is a function checking some aspect of the system to deduce the current health. It reports a
-<code><a href="../../vertx-health-check/vertx-health-checks-jphp/enums.adoc#Status">Status</a>`indicating whether or not the test has passed or failed. This function
-must not block and report to the given `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code> whether or not it succeed.</p>
+<code><a href="../../vertx-health-check/php/dataobjects.html#Status">Status</a>`indicating whether or not the test has passed or failed. This function
+must not block and report to the given `<a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code> whether or not it succeed.</p>
 </div>
 <div class="paragraph">
 <p>When you register a procedure, you give a name, and the function (handler) executing the check.</p>
@@ -337,21 +337,21 @@ must not block and report to the given `<a href="https://vertx.okou.tk/phpdoc/ve
 <p>if the future is mark as failed, the check is considered as <em>KO</em></p>
 </li>
 <li>
-<p>if the future is completed successfully but without a <code><a href="../../vertx-health-check/vertx-health-checks-jphp/enums.adoc#Status">Status</a></code>, the check
+<p>if the future is completed successfully but without a <code><a href="../../vertx-health-check/php/dataobjects.html#Status">Status</a></code>, the check
 is considered as <em>OK</em>.</p>
 </li>
 <li>
-<p>if the future is completed successfully with a <code><a href="../../vertx-health-check/vertx-health-checks-jphp/enums.adoc#Status">Status</a></code> marked as <em>OK</em>,
+<p>if the future is completed successfully with a <code><a href="../../vertx-health-check/php/dataobjects.html#Status">Status</a></code> marked as <em>OK</em>,
 the check is considered as <em>OK</em>.</p>
 </li>
 <li>
-<p>if the future is completed successfully with a <code><a href="../../vertx-health-check/vertx-health-checks-jphp/enums.adoc#Status">Status</a></code> marked as <em>KO</em>,
+<p>if the future is completed successfully with a <code><a href="../../vertx-health-check/php/dataobjects.html#Status">Status</a></code> marked as <em>KO</em>,
 the check is considered as <em>KO</em>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>`<a href="../../vertx-health-check/vertx-health-checks-jphp/enums.adoc#Status">Status</a>`can also provide additional data:</p>
+<p>`<a href="../../vertx-health-check/php/dataobjects.html#Status">Status</a>`can also provide additional data:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -389,7 +389,7 @@ tree and the structure is mapped to HTTP urls (see below).</p>
 <div class="paragraph">
 <p>When using the Vert.x web handler, the overall health check is retrieved using a HTTP GET or POST (depending on
 the route you registered) on the route given when exposing the
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-health-checks-jphp/classes/io.vertx.jphp.ext.healthchecks.HealthCheckHandler.html">HealthCheckHandler</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.healthchecks.HealthCheckHandler.html">HealthCheckHandler</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>If no procedure are registered, the response is <code>204 - NO CONTENT</code>, indicating that the system is <em>UP</em> but no
@@ -491,7 +491,20 @@ additional data, the data is also given:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-php" data-lang="php">Code not translatable</code></pre>
+<pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
+    /*
+    handler.register("my-service",
+      future -&gt; HttpEndpoint.getClient(discovery,
+        (rec) -&gt; "my-service".equals(rec.getName()),
+        client -&gt; {
+          if (client.failed()) {
+            future.fail(client.cause());
+          } else {
+            client.result().close();
+            future.complete(Status.OK());
+          }
+        }));
+        */</code></pre>
 </div>
 </div>
 </div>
@@ -514,7 +527,7 @@ if it&#8217;s listening on a specific event address.</p>
 <h2 id="_authentication">Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When using the Vert.x web handler, you can pass a <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code> use to authenticate the
+<p>When using the Vert.x web handler, you can pass a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code> use to authenticate the
 request. Check &lt;a href="http://vertx.io/docs/#authentication_and_authorisation"&gt;Vert.x Auth&lt;/a&gt; for more details
 about available authentication providers.</p>
 </div>
@@ -566,7 +579,7 @@ to expose the data differently. This section gives an example to expose the data
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:36 CST
+                上次更新时间 2018-11-05 19:55:42 CST
               
               
             </div>

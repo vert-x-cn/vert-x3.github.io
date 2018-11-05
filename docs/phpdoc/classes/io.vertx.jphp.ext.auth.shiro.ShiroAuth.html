@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -155,6 +156,11 @@
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
             <ul>
+                                <li class="constant ">
+                    <a href="#constant_DEFAULT_ROLE_PREFIX" title="DEFAULT_ROLE_PREFIX :: The default role prefix">
+                        <span class="description">The default role prefix</span><pre>DEFAULT_ROLE_PREFIX</pre>
+                    </a>
+                </li>
                             </ul>
         </li>
     </ul>
@@ -242,13 +248,7 @@ authentication it is likely to contain a JSON object with the following structur
 For other types of authentication it contain different information - for example a JWT token or OAuth bearer token.
 <p>
 If the user is successfully authenticated a  object is passed to the handler in an \io.vertx.core.AsyncResult.
-The user object can then be used for authorisation.
-
-param $authInfo [array] The auth information
-param $resultHandler [callable] The result handler
-<b>
-authenticate($authInfo, $resultHandler)
-</b></div>
+The user object can then be used for authorisation.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -278,7 +278,7 @@ authenticate($authInfo, $resultHandler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>param $vertx [Vertx] the Vert.x instance
-param $options [ShiroAuthOptions | mixed] the Shiro configuration options
+param $options [ShiroAuthOptions | array] the Shiro configuration options
 <b>
 create($vertx, $options)
 </b></p>
@@ -303,7 +303,7 @@ create($vertx, $realmType, $config)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>string | ShiroAuthOptions | mixed</p></p>
+                                                <code></code><p><p>string | array | ShiroAuthOptions</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -326,10 +326,7 @@ create($vertx, $realmType, $config)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $rolePrefix [string] a Prefix e.g.: &quot;role:&quot;
-<b>
-setRolePrefix($rolePrefix)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -347,7 +344,30 @@ setRolePrefix($rolePrefix)
 
                         </div>
                     
-                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_DEFAULT_ROLE_PREFIX"> </a>
+                            <div class="element clickable constant  constant_DEFAULT_ROLE_PREFIX" data-toggle="collapse" data-target=".constant_DEFAULT_ROLE_PREFIX .collapse">
+                                <h2>The default role prefix</h2>
+                                <pre>DEFAULT_ROLE_PREFIX</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>php文件只是为了写代码方便，常量的实际值请参考原java文件</p>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
                                                         </div>
             </div>
             <a id="\io\vertx\jphp\ext\auth\shiro\ShiroAuth"></a>
@@ -368,7 +388,7 @@ setRolePrefix($rolePrefix)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:00 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:42 +0000.<br/>
     </footer>
     </body>
 </html>

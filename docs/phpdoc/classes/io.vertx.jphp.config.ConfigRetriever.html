@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -126,12 +127,8 @@
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_configStream" title="configStream :: &lt;b&gt;
-configStream()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-configStream()
-&lt;/b&gt;</span><pre>configStream</pre>
+        <a href="#method_configStream" title="configStream :: ">
+            <span class="description"></span><pre>configStream</pre>
         </a>
     </li>
 
@@ -277,9 +274,7 @@ the code to customize the configuration.</span><pre>setConfigurationProcessor</p
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -298,9 +293,7 @@ close()
                         </div>
                                             <a id="method_configStream"></a>
                         <div class="element clickable method public  method_configStream" data-toggle="collapse" data-target=".method_configStream .collapse">
-                            <h2>&lt;b&gt;
-configStream()
-&lt;/b&gt;</h2>
+                            <h2>configStream</h2>
                             <pre>configStream() : \io\vertx\jphp\config\ReadStream&lt;JsonObject&gt;</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -344,7 +337,7 @@ create($vertx)
 </b></p>
 <p>Creates an instance of the default implementation of the @see \io\vertx\jphp\config\ConfigRetriever.</p>
 <p>param $vertx [Vertx] the vert.x instance
-param $options [ConfigRetrieverOptions | mixed] the options, must not be {@code null}, must contain the list of configured store.
+param $options [ConfigRetrieverOptions | array] the options, must not be {@code null}, must contain the list of configured store.
 <b>
 create($vertx, $options)
 </b></p></div>
@@ -359,7 +352,7 @@ create($vertx, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>mixed | ConfigRetrieverOptions</p></p>
+                                                <code></code><p><p>array | ConfigRetrieverOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -378,9 +371,7 @@ create($vertx, $options)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-getCachedConfig()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -410,10 +401,7 @@ and computes the final configuration.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $completionHandler [callable] handler receiving the computed configuration, or a failure if the configuration cannot be retrieved
-<b>
-getConfig($completionHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -438,11 +426,7 @@ getConfig($completionHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>.</p>
-<p>param $retriever [ConfigRetriever] the config retrieve
-<b>
-getConfigAsFuture($retriever)
-</b></p></div>
+                                    <div class="long_description"><p>.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -470,10 +454,7 @@ the configuration is broadcasted.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $listener [callable] the listener
-<b>
-listen($listener)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -491,17 +472,14 @@ listen($listener)
                                             <a id="method_setBeforeScanHandler"></a>
                         <div class="element clickable method public  method_setBeforeScanHandler" data-toggle="collapse" data-target=".method_setBeforeScanHandler .collapse">
                             <h2>Registers a handler called before every scan. This method is mostly used for logging purpose.</h2>
-                            <pre>setBeforeScanHandler( $arg0) : \io\vertx\jphp\config\ConfigRetriever</pre>
+                            <pre>setBeforeScanHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $function [callable] the function, must not be {@code null}
-<b>
-setBeforeScanHandler($function)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -513,7 +491,7 @@ setBeforeScanHandler($function)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.config.ConfigRetriever.html">\io\vertx\jphp\config\ConfigRetriever</a></code><p><p>the current config retriever</p></p>
+                                        <code>$this</code><p><p>the current config retriever</p></p>
                                                                     </div>
                             </div>
 
@@ -522,17 +500,14 @@ setBeforeScanHandler($function)
                         <div class="element clickable method public  method_setConfigurationProcessor" data-toggle="collapse" data-target=".method_setConfigurationProcessor .collapse">
                             <h2>Registers a handler that process the configuration before being injected into @see \io\vertx\jphp\config\ConfigRetriever::getConfig or @see \io\vertx\jphp\config\ConfigRetriever::listen. This allows
 the code to customize the configuration.</h2>
-                            <pre>setConfigurationProcessor( $arg0) : \io\vertx\jphp\config\ConfigRetriever</pre>
+                            <pre>setConfigurationProcessor( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $processor [callable] the processor, must not be {@code null}. The method must not return {@code null}. The returned configuration is used. If the processor does not update the configuration, it must return the input configuration. If the processor throws an exception, the failure is passed to the #getConfig(Handler) handler.
-<b>
-setConfigurationProcessor($processor)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -544,7 +519,7 @@ setConfigurationProcessor($processor)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.config.ConfigRetriever.html">\io\vertx\jphp\config\ConfigRetriever</a></code><p><p>the current config retriever</p></p>
+                                        <code>$this</code><p><p>the current config retriever</p></p>
                                                                     </div>
                             </div>
 
@@ -571,7 +546,7 @@ setConfigurationProcessor($processor)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:53 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:27 +0000.<br/>
     </footer>
     </body>
 </html>

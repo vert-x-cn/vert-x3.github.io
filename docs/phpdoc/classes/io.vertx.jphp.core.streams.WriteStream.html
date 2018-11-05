@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -253,7 +254,7 @@ to it.
                         <div class="element clickable method public  method_drainHandler" data-toggle="collapse" data-target=".method_drainHandler .collapse">
                             <h2>Set a drain handler on the stream. If the write queue is full, then the handler will be called when the write
 queue is ready to accept buffers again. See @see \io\vertx\jphp\core\streams\Pump for an example of this being used.</h2>
-                            <pre>drainHandler( $arg0) : \io\vertx\jphp\core\streams\WriteStream</pre>
+                            <pre>drainHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -262,11 +263,7 @@ queue is ready to accept buffers again. See @see \io\vertx\jphp\core\streams\Pum
                                 <div class="detail-description">
                                     <div class="long_description"><p/>
 <p>The stream implementation defines when the drain handler, for example it could be when the queue size has been
-reduced to <code>maxSize / 2</code>.</p>
-<p>param $handler [callable] the handler
-<b>
-drainHandler($handler)
-</b></p></div>
+reduced to <code>maxSize / 2</code>.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -278,7 +275,7 @@ drainHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.streams.WriteStream.html">\io\vertx\jphp\core\streams\WriteStream</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -302,7 +299,7 @@ end()
 
 Same as @see \io\vertx\jphp\core\streams\WriteStream::end but writes some data to the stream before ending.
 
-param $t [mixed]
+param $t [object]
 <b>
 end($t)
 </b></div>
@@ -313,7 +310,7 @@ end($t)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                             
                                                                     </div>
@@ -323,17 +320,14 @@ end($t)
                                             <a id="method_exceptionHandler"></a>
                         <div class="element clickable method public  method_exceptionHandler" data-toggle="collapse" data-target=".method_exceptionHandler .collapse">
                             <h2>Set an exception handler on the write stream.</h2>
-                            <pre>exceptionHandler( $arg0) : \io\vertx\jphp\core\streams\WriteStream</pre>
+                            <pre>exceptionHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the exception handler
-<b>
-exceptionHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -345,7 +339,7 @@ exceptionHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.streams.WriteStream.html">\io\vertx\jphp\core\streams\WriteStream</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -355,7 +349,7 @@ exceptionHandler($handler)
                             <h2>Set the maximum size of the write queue to &lt;code&gt;maxSize&lt;/code&gt;. You will still be able to write to the stream even
 if there is more than &lt;code&gt;maxSize&lt;/code&gt; items in the write queue. This is used as an indicator by classes such as
 &lt;code&gt;Pump&lt;/code&gt; to provide flow control.</h2>
-                            <pre>setWriteQueueMaxSize( $arg0) : \io\vertx\jphp\core\streams\WriteStream</pre>
+                            <pre>setWriteQueueMaxSize( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -377,10 +371,6 @@ if there is more than &lt;code&gt;maxSize&lt;/code&gt; items in the write queue.
                                                                                                                                                                         
                                                                                                                                                                             \io\vertx\jphp\core\eventbus\MessageProducer,
                                                                                                                 <p>etc...</p>
-<p>param $maxSize [integer] the max size of the write stream
-<b>
-setWriteQueueMaxSize($maxSize)
-</b></p>
                                                                                                     </td>
                                             </tr>
                                                                             </table>
@@ -392,7 +382,7 @@ setWriteQueueMaxSize($maxSize)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.streams.WriteStream.html">\io\vertx\jphp\core\streams\WriteStream</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -402,17 +392,14 @@ setWriteQueueMaxSize($maxSize)
                             <h2>Write some data to the stream. The data is put on an internal write queue, and the write actually happens
 asynchronously. To avoid running out of memory by putting too much on the write queue,
 check the @see \io\vertx\jphp\core\streams\WriteStream::writeQueueFull method before writing. This is done automatically if using a @see \io\vertx\jphp\core\streams\Pump.</h2>
-                            <pre>write( $arg0) : \io\vertx\jphp\core\streams\WriteStream</pre>
+                            <pre>write( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $data [mixed] the data to write
-<b>
-write($data)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -420,11 +407,11 @@ write($data)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>mixed</p></p>
+                                                <code></code><p><p>object</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.streams.WriteStream.html">\io\vertx\jphp\core\streams\WriteStream</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -439,9 +426,7 @@ write($data)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-writeQueueFull()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -482,7 +467,7 @@ writeQueueFull()
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:56 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:32 +0000.<br/>
     </footer>
     </body>
 </html>

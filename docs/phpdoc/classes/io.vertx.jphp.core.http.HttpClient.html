@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -393,10 +394,7 @@ The client is designed to be reused between requests.
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>Clients should always be closed after use.</p>
-<p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"><p>Clients should always be closed after use.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -416,17 +414,14 @@ close()
                                             <a id="method_connectionHandler"></a>
                         <div class="element clickable method public  method_connectionHandler" data-toggle="collapse" data-target=".method_connectionHandler .collapse">
                             <h2>Set a connection handler for the client. This handler is called when a new connection is established.</h2>
-                            <pre>connectionHandler( $arg0) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>connectionHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable]
-<b>
-connectionHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -438,7 +433,7 @@ connectionHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -453,7 +448,7 @@ connectionHandler($handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 delete($options)
 </b></p>
@@ -470,7 +465,7 @@ delete($host, $requestURI)
 </b></p>
 <p>Create an HTTP DELETE request to send to the server with the specified options, specifying a response handler to receive
 the response</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 delete($options, $responseHandler)
@@ -513,7 +508,7 @@ delete($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -585,7 +580,7 @@ deleteAbs($absoluteURI, $responseHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 get($options)
 </b></p>
@@ -602,7 +597,7 @@ get($host, $requestURI)
 </b></p>
 <p>Create an HTTP GET request to send to the server with the specified options, specifying a response handler to receive
 the response</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 get($options, $responseHandler)
@@ -645,7 +640,7 @@ get($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -711,14 +706,14 @@ getAbs($absoluteURI, $responseHandler)
                         <div class="element clickable method public  method_getNow" data-toggle="collapse" data-target=".method_getNow .collapse">
                             <h2>Sends an HTTP GET request to the server with the specified options, specifying a response handler to receive
 the response</h2>
-                            <pre>getNow( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>getNow( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 getNow($options, $responseHandler)
@@ -754,7 +749,7 @@ getNow($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -770,7 +765,7 @@ getNow($port, $host, $requestURI, $responseHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -785,7 +780,7 @@ getNow($port, $host, $requestURI, $responseHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 head($options)
 </b></p>
@@ -802,7 +797,7 @@ head($host, $requestURI)
 </b></p>
 <p>Create an HTTP HEAD request to send to the server with the specified options, specifying a response handler to receive
 the response</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 head($options, $responseHandler)
@@ -845,7 +840,7 @@ head($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -911,14 +906,14 @@ headAbs($absoluteURI, $responseHandler)
                         <div class="element clickable method public  method_headNow" data-toggle="collapse" data-target=".method_headNow .collapse">
                             <h2>Sends an HTTP HEAD request to the server with the specified options, specifying a response handler to receive
 the response</h2>
-                            <pre>headNow( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>headNow( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 headNow($options, $responseHandler)
@@ -954,7 +949,7 @@ headNow($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -970,7 +965,7 @@ headNow($port, $host, $requestURI, $responseHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -985,9 +980,7 @@ headNow($port, $host, $requestURI, $responseHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isMetricsEnabled()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -1016,7 +1009,7 @@ isMetricsEnabled()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 options($options)
 </b></p>
@@ -1033,7 +1026,7 @@ options($host, $requestURI)
 </b></p>
 <p>Create an HTTP OPTIONS request to send to the server with the specified options, specifying a response handler to receive
 the response</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 options($options, $responseHandler)
@@ -1076,7 +1069,7 @@ options($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1142,14 +1135,14 @@ optionsAbs($absoluteURI, $responseHandler)
                         <div class="element clickable method public  method_optionsNow" data-toggle="collapse" data-target=".method_optionsNow .collapse">
                             <h2>Sends an HTTP OPTIONS request to the server with the specified options, specifying a response handler to receive
 the response</h2>
-                            <pre>optionsNow( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>optionsNow( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 optionsNow($options, $responseHandler)
@@ -1185,7 +1178,7 @@ optionsNow($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1201,7 +1194,7 @@ optionsNow($port, $host, $requestURI, $responseHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1216,7 +1209,7 @@ optionsNow($port, $host, $requestURI, $responseHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 post($options)
 </b></p>
@@ -1233,7 +1226,7 @@ post($host, $requestURI)
 </b></p>
 <p>Create an HTTP POST request to send to the server with the specified options, specifying a response handler to receive
 the response</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 post($options, $responseHandler)
@@ -1276,7 +1269,7 @@ post($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1348,7 +1341,7 @@ postAbs($absoluteURI, $responseHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 put($options)
 </b></p>
@@ -1365,7 +1358,7 @@ put($host, $requestURI)
 </b></p>
 <p>Create an HTTP PUT request to send to the server with the specified options, specifying a response handler to receive
 the response</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $responseHandler [callable] the response handler
 <b>
 put($options, $responseHandler)
@@ -1408,7 +1401,7 @@ put($port, $host, $requestURI, $responseHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1473,7 +1466,7 @@ putAbs($absoluteURI, $responseHandler)
                                             <a id="method_redirectHandler"></a>
                         <div class="element clickable method public  method_redirectHandler" data-toggle="collapse" data-target=".method_redirectHandler .collapse">
                             <h2>Set a redirect handler for the http client.</h2>
-                            <pre>redirectHandler( $arg0) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>redirectHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1492,12 +1485,7 @@ The redirect handler is passed the @see \io\vertx\jphp\core\http\HttpClientRespo
 The new request will get a copy of the previous request headers unless headers are set. In this case,
 the client assumes that the redirect handler exclusively managers the headers of the new request.
 <p>
-The handler must return a <code>Future<HttpClientRequest></code> unsent so the client can further configure it and send it.
-
-param $handler [callable] the new redirect handler
-<b>
-redirectHandler($handler)
-</b></div>
+The handler must return a <code>Future<HttpClientRequest></code> unsent so the client can further configure it and send it.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1509,7 +1497,7 @@ redirectHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -1525,7 +1513,7 @@ redirectHandler($handler)
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p>param $method [string] the HTTP method
-param $options [RequestOptions | mixed] the request options
+param $options [RequestOptions | array] the request options
 <b>
 request($method, $options)
 </b></p>
@@ -1544,7 +1532,7 @@ request($method, $host, $requestURI)
 </b></p>
 <p>Create an HTTP request to send to the server with the specified options, specifying a response handler to receive</p>
 <p>param $method [string] the HTTP method
-param $options [RequestOptions | mixed] the request options
+param $options [RequestOptions | array] the request options
 param $responseHandler [callable]
 <b>
 request($method, $options, $responseHandler)
@@ -1595,7 +1583,7 @@ request($method, $port, $host, $requestURI, $responseHandler)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
@@ -1666,14 +1654,14 @@ requestAbs($method, $absoluteURI, $responseHandler)
                                             <a id="method_websocket"></a>
                         <div class="element clickable method public  method_websocket" data-toggle="collapse" data-target=".method_websocket .collapse">
                             <h2>Connect a WebSocket with the specified options</h2>
-                            <pre>websocket( $arg0,  $arg1,  $arg2 = null,  $arg3 = null,  $arg4 = null,  $arg5 = null,  $arg6 = null,  $arg7 = null) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>websocket( $arg0,  $arg1,  $arg2 = null,  $arg3 = null,  $arg4 = null,  $arg5 = null,  $arg6 = null,  $arg7 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 param $wsConnect [callable] handler that will be called with the websocket when connected
 <b>
 websocket($options, $wsConnect)
@@ -1685,7 +1673,7 @@ param $wsConnect [callable] handler that will be called with the websocket when 
 websocket($requestURI, $wsConnect)
 </b></p>
 <p>Connect a WebSocket with the specified options</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $wsConnect [callable] handler that will be called with the websocket when connected
 param $failureHandler [callable] handler that will be called if websocket connection fails
 <b>
@@ -1699,7 +1687,7 @@ param $wsConnect [callable] handler that will be called with the websocket when 
 websocket($host, $requestURI, $wsConnect)
 </b></p>
 <p>Connect a WebSocket with the specified options, and with the specified headers</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $wsConnect [callable] handler that will be called with the websocket when connected
 <b>
@@ -1736,7 +1724,7 @@ param $failureHandler [callable] handler that will be called if websocket connec
 websocket($host, $requestURI, $wsConnect, $failureHandler)
 </b></p>
 <p>Connect a WebSocket with the specified options, and with the specified headers</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $wsConnect [callable] handler that will be called with the websocket when connected
 param $failureHandler [callable] handler that will be called if websocket connection fails
@@ -1753,7 +1741,7 @@ websocket($host, $requestURI, $headers, $wsConnect)
 </b></p>
 <p>Connect a WebSocket with the specified optionsI, with the specified headers and using
 the specified version of WebSockets</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $version [string] the websocket version
 param $wsConnect [callable] handler that will be called with the websocket when connected
@@ -1806,7 +1794,7 @@ websocket($host, $requestURI, $headers, $wsConnect, $failureHandler)
 </b></p>
 <p>Connect a WebSocket with the specified options, with the specified headers and using
 the specified version of WebSockets</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $version [string] the websocket version
 param $wsConnect [callable] handler that will be called with the websocket when connected
@@ -1826,7 +1814,7 @@ websocket($host, $requestURI, $headers, $version, $wsConnect)
 </b></p>
 <p>Connect a WebSocket with the specified options, with the specified headers, using
 the specified version of WebSockets, and the specified websocket sub protocols</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $version [string] the websocket version
 param $subProtocols [string] the subprotocols to use
@@ -1888,7 +1876,7 @@ websocket($host, $requestURI, $headers, $version, $wsConnect, $failureHandler)
 </b></p>
 <p>Connect a WebSocket with the specified options, with the specified headers, using
 the specified version of WebSockets, and the specified websocket sub protocols</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $version [string] the websocket version
 param $subProtocols [string] the subprotocols to use
@@ -1975,7 +1963,7 @@ websocket($port, $host, $requestURI, $headers, $version, $subProtocols, $wsConne
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -2007,7 +1995,7 @@ websocket($port, $host, $requestURI, $headers, $version, $subProtocols, $wsConne
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2016,22 +2004,14 @@ websocket($port, $host, $requestURI, $headers, $version, $subProtocols, $wsConne
                         <div class="element clickable method public  method_websocketAbs" data-toggle="collapse" data-target=".method_websocketAbs .collapse">
                             <h2>Connect a WebSocket with the specified absolute url, with the specified headers, using
 the specified version of WebSockets, and the specified websocket sub protocols.</h2>
-                            <pre>websocketAbs( $arg0,  $arg1,  $arg2,  $arg3,  $arg4,  $arg5) : \io\vertx\jphp\core\http\HttpClient</pre>
+                            <pre>websocketAbs( $arg0,  $arg1,  $arg2,  $arg3,  $arg4,  $arg5) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $url [string] the absolute url
-param $headers [MultiMap] the headers
-param $version [string] the websocket version
-param $subProtocols [string] the subprotocols to use
-param $wsConnect [callable] handler that will be called with the websocket when connected
-param $failureHandler [callable] handler that will be called if websocket connection fails
-<b>
-websocketAbs($url, $headers, $version, $subProtocols, $wsConnect, $failureHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2063,7 +2043,7 @@ websocketAbs($url, $headers, $version, $subProtocols, $wsConnect, $failureHandle
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.core.http.HttpClient.html">\io\vertx\jphp\core\http\HttpClient</a></code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
                                                                     </div>
                             </div>
 
@@ -2078,7 +2058,7 @@ websocketAbs($url, $headers, $version, $subProtocols, $wsConnect, $failureHandle
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $options [RequestOptions | mixed] the request options
+                                    <div class="long_description"><p>param $options [RequestOptions | array] the request options
 <b>
 websocketStream($options)
 </b></p>
@@ -2094,7 +2074,7 @@ param $requestURI [string] the relative URI
 websocketStream($host, $requestURI)
 </b></p>
 <p>Create a WebSocket stream with the specified options, and with the specified headers</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 <b>
 websocketStream($options, $headers)
@@ -2121,7 +2101,7 @@ websocketStream($host, $requestURI, $headers)
 </b></p>
 <p>Create a WebSocket stream with the specified options, with the specified headers and using
 the specified version of WebSockets</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $version [string] the websocket version
 <b>
@@ -2154,7 +2134,7 @@ websocketStream($host, $requestURI, $headers, $version)
 </b></p>
 <p>Create a WebSocket stream to the specified port, host and relative request URI, with the specified headers, using
 the specified version of WebSockets, and the specified websocket sub protocols</p>
-<p>param $options [RequestOptions | mixed] the request options
+<p>param $options [RequestOptions | array] the request options
 param $headers [MultiMap] the headers
 param $version [string] the websocket version
 param $subProtocols [string] the subprotocols to use
@@ -2208,7 +2188,7 @@ websocketStream($port, $host, $requestURI, $headers, $version, $subProtocols)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>string | RequestOptions | mixed | integer</p></p>
+                                                <code></code><p><p>string | RequestOptions | array | integer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -2248,13 +2228,7 @@ and the specified websocket sub protocols.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $url [string] the absolute url
-param $headers [MultiMap] the headers
-param $version [string] the websocket version
-param $subProtocols [string] the subprotocols to use
-<b>
-websocketStreamAbs($url, $headers, $version, $subProtocols)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -2305,7 +2279,7 @@ websocketStreamAbs($url, $headers, $version, $subProtocols)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:39:57 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:34 +0000.<br/>
     </footer>
     </body>
 </html>

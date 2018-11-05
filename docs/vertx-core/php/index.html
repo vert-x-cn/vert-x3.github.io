@@ -708,7 +708,7 @@
 <h2 id="_故事从_vert_x_开始">故事从 Vert.x 开始</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>除非您拿到 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html">Vertx</a></code> 对象，否则在Vert.x领域中您做不了太多的事情。它是 Vert.x 的控制中心，也是您做几乎一切事情的基础，包括创建客户端和服务器、获取事件总线的引用、设置定时器等等。</p>
+<p>除非您拿到 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html">Vertx</a></code> 对象，否则在Vert.x领域中您做不了太多的事情。它是 Vert.x 的控制中心，也是您做几乎一切事情的基础，包括创建客户端和服务器、获取事件总线的引用、设置定时器等等。</p>
 </div>
 <div class="paragraph">
 <p>那么如何获取它的实例呢？</p>
@@ -750,7 +750,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../vertx-jphp/enums.adoc#VertxOptions">VertxOptions</a>`对象有很多配置，包括集群、高可用、池大小等。在Javadoc中描述了所有配置的细节。</p>
+<p>`<a href="../php/dataobjects.html#VertxOptions">VertxOptions</a>`对象有很多配置，包括集群、高可用、池大小等。在Javadoc中描述了所有配置的细节。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1015,7 +1015,7 @@
 <p>Vert.x 还将提供堆栈跟踪，以精确定位发生阻塞的位置。</p>
 </div>
 <div class="paragraph">
-<p>如果想关闭这些警告或更改设置，您可以在创建 <code>Vertx</code> 对象之前在 <code><a href="../vertx-jphp/enums.adoc#VertxOptions">VertxOptions</a></code> 中完成此操作。</p>
+<p>如果想关闭这些警告或更改设置，您可以在创建 <code>Vertx</code> 对象之前在 <code><a href="../php/dataobjects.html#VertxOptions">VertxOptions</a></code> 中完成此操作。</p>
 </div>
 </div>
 </div>
@@ -1038,7 +1038,7 @@
 <p>如之前讨论，您不能在 Event Loop 中直接调用阻塞式操作，因为这样做会阻止 Event Loop 执行其他有用的任务。那您该怎么做？</p>
 </div>
 <div class="paragraph">
-<p>可以通过调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_executeBlocking">executeBlocking</a></code> 方法来指定阻塞式代码的执行以及阻塞式代码执行后处理结果的异步回调。</p>
+<p>可以通过调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_executeBlocking">executeBlocking</a></code> 方法来指定阻塞式代码的执行以及阻塞式代码执行后处理结果的异步回调。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1056,7 +1056,7 @@
 <p>默认情况下，如果 <code>executeBlocking</code> 在同一个上下文环境中（如：同一个 Verticle 实例）被调用了多次，那么这些不同的 <code>executeBlocking</code> 代码块会 <strong>顺序执行</strong> （一个接一个）。</p>
 </div>
 <div class="paragraph">
-<p>若您不需要关心您调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_executeBlocking">executeBlocking</a></code>
+<p>若您不需要关心您调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_executeBlocking">executeBlocking</a></code>
 的顺序，可以将 <code>ordered</code> 参数的值设为 <code>false</code> 。这样任何 <code>executeBlocking</code> 都会在 Worker Pool 中并行执行。</p>
 </div>
 <div class="paragraph">
@@ -1066,7 +1066,7 @@
 <p>一个 Worker Verticle 始终会使用 Worker Pool 中的某个线程来执行。</p>
 </div>
 <div class="paragraph">
-<p>默认的阻塞式代码会在 Vert.x 的 Worker Pool 中执行，通过 <code><a href="../vertx-jphp/enums.adoc#VertxOptions#method_setWorkerPoolSize">setWorkerPoolSize</a></code> 配置。</p>
+<p>默认的阻塞式代码会在 Vert.x 的 Worker Pool 中执行，通过 <code><a href="../php/dataobjects.html#VertxOptions#method_setWorkerPoolSize">setWorkerPoolSize</a></code> 配置。</p>
 </div>
 <div class="paragraph">
 <p>可以为不同的用途创建不同的池：</p>
@@ -1134,7 +1134,7 @@
 <h2 id="_异步协调">异步协调</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x 中的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code> 可以用来协调多个异步操作的结果。它支持并发组合（并行执行多个异步调用）和顺序组合（依次执行异步调用）。</p>
+<p>Vert.x 中的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code> 可以用来协调多个异步操作的结果。它支持并发组合（并行执行多个异步调用）和顺序组合（依次执行异步调用）。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1143,7 +1143,7 @@
 <div class="title">Note</div>
 </td>
 <td class="content">
-译者注：Vert.x 中的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code> 即异步开发模式中的 Future/Promise 模式的实现。
+译者注：Vert.x 中的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code> 即异步开发模式中的 Future/Promise 模式的实现。
 </td>
 </tr>
 </table>
@@ -1151,7 +1151,7 @@
 <div class="sect2">
 <h3 id="_并发合并">并发合并</h3>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.CompositeFuture.html#method_all">CompositeFuture::all</a>`方法接受多个 `Future</code> 对象作为参数（最多6个，或者传入 <code>List</code> ）。当所有的 <code>Future</code> 都成功完成，该方法将返回一个 <strong>成功的</strong> <code>Future</code> ；当任一个 <code>Future</code> 执行失败，则返回一个 <strong>失败的</strong> <code>Future</code> ：</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.CompositeFuture.html#method_all">CompositeFuture::all</a>`方法接受多个 `Future</code> 对象作为参数（最多6个，或者传入 <code>List</code> ）。当所有的 <code>Future</code> 都成功完成，该方法将返回一个 <strong>成功的</strong> <code>Future</code> ；当任一个 <code>Future</code> 执行失败，则返回一个 <strong>失败的</strong> <code>Future</code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1190,7 +1190,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>不同于 <code>all</code> 方法的合并会等待所有的 Future 成功执行（或任一失败）， <code>any</code> 方法的合并会等待第一个成功执行的Future。 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.CompositeFuture.html#method_any">CompositeFuture::any</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个，或传入 <code>List</code> ）。当任意一个 <code>Future</code> 成功得到结果，则该 <code>Future</code> 成功；当所有的 <code>Future</code> 都执行失败，则该 <code>Future</code> 失败。</p>
+<p>不同于 <code>all</code> 方法的合并会等待所有的 Future 成功执行（或任一失败）， <code>any</code> 方法的合并会等待第一个成功执行的Future。 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.CompositeFuture.html#method_any">CompositeFuture::any</a></code> 方法接受多个 <code>Future</code> 作为参数（最多6个，或传入 <code>List</code> ）。当任意一个 <code>Future</code> 成功得到结果，则该 <code>Future</code> 成功；当所有的 <code>Future</code> 都执行失败，则该 <code>Future</code> 失败。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1217,7 +1217,7 @@
 </div>
 <div class="paragraph">
 <p><code>join</code> 方法的合并会等待所有的 <code>Future</code> 完成，无论成败。
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.CompositeFuture.html#method_join">CompositeFuture::join</a>`方法接受多个 `Future</code> 作为参数（最多6个），并将结果归并成一个 <code>Future</code> 。
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.CompositeFuture.html#method_join">CompositeFuture::join</a>`方法接受多个 `Future</code> 作为参数（最多6个），并将结果归并成一个 <code>Future</code> 。
 当全部 <code>Future</code> 成功执行完成，得到的 <code>Future</code> 是成功状态的；当至少一个 <code>Future</code> 执行失败时，得到的 <code>Future</code> 是失败状态的。</p>
 </div>
 <div class="listingblock">
@@ -1247,7 +1247,7 @@
 <div class="sect2">
 <h3 id="_顺序合并">顺序合并</h3>
 <div class="paragraph">
-<p>和 <code>all</code> 以及 <code>any</code> 实现的并发组合不同， <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html#method_compose">compose</a></code> 方法作用于顺序组合 <code>Future</code> 。</p>
+<p>和 <code>all</code> 以及 <code>any</code> 实现的并发组合不同， <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html#method_compose">compose</a></code> 方法作用于顺序组合 <code>Future</code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1297,10 +1297,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html#method_compose">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并返回 <code>Future</code> 。当返回的 <code>Future</code> 完成时，组合完成。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html#method_compose">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并返回 <code>Future</code> 。当返回的 <code>Future</code> 完成时，组合完成。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html#method_compose">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并完成下一个 <code>Future</code> 的处理。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html#method_compose">compose</a></code> ：当前 <code>Future</code> 完成时，执行相关代码，并完成下一个 <code>Future</code> 的处理。</p>
 </li>
 </ul>
 </div>
@@ -1308,7 +1308,7 @@
 <p>对于第二个例子，处理器需要完成 <code>next</code> future，以此来汇报处理成功或者失败。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html#method_completer">completer</a></code> 方法来串起一个带操作结果的或失败的 <code>Future</code> ，它可使您避免用传统方式编写代码：如果成功则完成 <code>Future</code> ，否则就标记为失败。（译者注：3.4.0 以后不需要再使用 <code>completer</code> 方法）</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html#method_completer">completer</a></code> 方法来串起一个带操作结果的或失败的 <code>Future</code> ，它可使您避免用传统方式编写代码：如果成功则完成 <code>Future</code> ，否则就标记为失败。（译者注：3.4.0 以后不需要再使用 <code>completer</code> 方法）</p>
 </div>
 </div>
 </div>
@@ -1386,7 +1386,7 @@
 <p>如果您不想使用 Worker Verticle 来运行阻塞式代码，您还可以在一个Event Loop中直接使用 [内联阻塞式代码](#运行阻塞式代码)。</p>
 </div>
 <div class="paragraph">
-<p>若您想要将 Verticle 部署成一个 Worker Verticle，您可以通过 <code><a href="../vertx-jphp/enums.adoc#DeploymentOptions#method_setWorker">setWorker</a></code> 方法来设置：</p>
+<p>若您想要将 Verticle 部署成一个 Worker Verticle，您可以通过 <code><a href="../php/dataobjects.html#DeploymentOptions#method_setWorker">setWorker</a></code> 方法来设置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1422,7 +1422,7 @@
 <div class="sect2">
 <h3 id="_编程方式部署verticle">编程方式部署Verticle</h3>
 <div class="paragraph">
-<p>您可以指定一个 Verticle 名称或传入您已经创建好的 Verticle 实例，使用任意一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_deployVerticle">deployVerticle</a></code> 方法来部署Verticle。</p>
+<p>您可以指定一个 Verticle 名称或传入您已经创建好的 Verticle 实例，使用任意一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_deployVerticle">deployVerticle</a></code> 方法来部署Verticle。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1523,8 +1523,8 @@
 <p>大部分Verticle Factory会从 classpath 中加载，并在 Vert.x 启动时注册。</p>
 </div>
 <div class="paragraph">
-<p>您同样可以使用编程的方式去注册或注销Verticle Factory：通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_registerVerticleFactory">registerVerticleFactory</a></code>
-方法和 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_unregisterVerticleFactory">unregisterVerticleFactory</a></code> 方法。</p>
+<p>您同样可以使用编程的方式去注册或注销Verticle Factory：通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_registerVerticleFactory">registerVerticleFactory</a></code>
+方法和 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_unregisterVerticleFactory">unregisterVerticleFactory</a></code> 方法。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1557,7 +1557,7 @@
 <div class="sect2">
 <h3 id="_撤销verticle">撤销Verticle</h3>
 <div class="paragraph">
-<p>我们可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_undeploy">undeploy</a></code> 方法来撤销部署好的 Verticle。</p>
+<p>我们可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_undeploy">undeploy</a></code> 方法来撤销部署好的 Verticle。</p>
 </div>
 <div class="paragraph">
 <p>撤销操作也是异步的，因此若您想要在撤销完成过后收到通知则可以指定另一个完成处理器：</p>
@@ -1609,13 +1609,13 @@
 </div>
 <div class="paragraph">
 <p>当使用隔离组时，您需要用
-<code><a href="../vertx-jphp/enums.adoc#DeploymentOptions#method_setIsolatedClasses">setIsolatedClasses</a></code> 方法来提供一个您想隔离的类名列表。列表项可以是一个Java 限定类全名，如 <code>com.mycompany.myproject.engine.MyClass</code> ；也可以是包含通配符的可匹配某个包或子包的任何类，例如 <code>com.mycompany.myproject.*</code> 将会匹配所有 <code>com.mycompany.myproject</code> 包或任意子包中的任意类名。</p>
+<code><a href="../php/dataobjects.html#DeploymentOptions#method_setIsolatedClasses">setIsolatedClasses</a></code> 方法来提供一个您想隔离的类名列表。列表项可以是一个Java 限定类全名，如 <code>com.mycompany.myproject.engine.MyClass</code> ；也可以是包含通配符的可匹配某个包或子包的任何类，例如 <code>com.mycompany.myproject.*</code> 将会匹配所有 <code>com.mycompany.myproject</code> 包或任意子包中的任意类名。</p>
 </div>
 <div class="paragraph">
 <p>请注意仅仅只有匹配的类会被隔离，其他任意类会被当前类加载器加载。</p>
 </div>
 <div class="paragraph">
-<p>若您想要加载的类和资源不存在于主类路径（main classpath），您可使用 <code><a href="../vertx-jphp/enums.adoc#DeploymentOptions#method_setExtraClasspath">setExtraClasspath</a></code> 方法将额外的类路径添加到这里。</p>
+<p>若您想要加载的类和资源不存在于主类路径（main classpath），您可使用 <code><a href="../php/dataobjects.html#DeploymentOptions#method_setExtraClasspath">setExtraClasspath</a></code> 方法将额外的类路径添加到这里。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1722,7 +1722,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>Vert.x 实例维护的线程不是守护线程，因此它们会阻止JVM退出。</p>
 </div>
 <div class="paragraph">
-<p>如果您通过嵌入式的方式使用 Vert.x 并且完成了操作，您可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_close">close</a></code> 方法关闭它。</p>
+<p>如果您通过嵌入式的方式使用 Vert.x 并且完成了操作，您可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_close">close</a></code> 方法关闭它。</p>
 </div>
 <div class="paragraph">
 <p>这将关闭所有内部线程池并关闭其他资源，允许JVM退出。</p>
@@ -1746,7 +1746,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 </table>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_getOrCreateContext">getOrCreateContext</a></code> 方法获取 <code>Context</code> 实例：</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_getOrCreateContext">getOrCreateContext</a></code> 方法获取 <code>Context</code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1786,7 +1786,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 </div>
 <div class="paragraph">
 <p>当在同一个 <code>Context</code> 中运行了多个处理函数时，可能需要在它们之间共享数据。 <code>Context</code> 对象提供了存储和读取共享数据的方法。举例来说，它允许您将数据传递到
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Context.html#method_runOnContext">runOnContext</a>`方法运行的某些操作中：</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.Context.html#method_runOnContext">runOnContext</a>`方法运行的某些操作中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1799,7 +1799,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>您还可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Context.html#method_config">config</a></code> 方法访问 Verticle 的配置信息。查看 <a href="#Passing_configuration_to_a_verticle">向 Verticle 传入配置</a> 章节了解更多配置信息。</p>
+<p>您还可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Context.html#method_config">config</a></code> 方法访问 Verticle 的配置信息。查看 <a href="#Passing_configuration_to_a_verticle">向 Verticle 传入配置</a> 章节了解更多配置信息。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1819,7 +1819,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>一次性计时器会在一定延迟后调用一个 Event Handler，以毫秒为单位计时。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_setTimer">setTimer</a></code> 方法传递延迟时间和一个处理器来设置计时器的触发。</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_setTimer">setTimer</a></code> 方法传递延迟时间和一个处理器来设置计时器的触发。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1838,7 +1838,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_周期性计时器">周期性计时器</h4>
 <div class="paragraph">
-<p>您同样可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_setPeriodic">setPeriodic</a></code> 方法设置一个周期性触发的计时器。</p>
+<p>您同样可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_setPeriodic">setPeriodic</a></code> 方法设置一个周期性触发的计时器。</p>
 </div>
 <div class="paragraph">
 <p>第一次触发之前同样会有一段设置的延时时间。</p>
@@ -1853,7 +1853,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>请记住这个计时器将会定期触发。如果您的定时任务会花费大量的时间，则您的计时器事件可能会连续执行甚至发生更坏的情况：重叠。</p>
 </div>
 <div class="paragraph">
-<p>这种情况，您应考虑使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_setTimer">setTimer</a></code> 方法，当任务执行完成时设置下一个计时器。</p>
+<p>这种情况，您应考虑使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_setTimer">setTimer</a></code> 方法，当任务执行完成时设置下一个计时器。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1869,7 +1869,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_取消计时器">取消计时器</h4>
 <div class="paragraph">
-<p>指定一个计时器id并调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_cancelTimer">cancelTimer</a></code> 方法来取消一个周期性计时器。如：</p>
+<p>指定一个计时器id并调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_cancelTimer">cancelTimer</a></code> 方法来取消一个周期性计时器。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1888,7 +1888,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_verticle_worker_pool">Verticle worker pool</h3>
 <div class="paragraph">
-<p>Verticle 使用 Vert.x 中的 Worker Pool 来执行阻塞式行为，例如 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Context.html#method_executeBlocking">executeBlocking</a></code> 或 Worker Verticle。</p>
+<p>Verticle 使用 Vert.x 中的 Worker Pool 来执行阻塞式行为，例如 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Context.html#method_executeBlocking">executeBlocking</a></code> 或 Worker Verticle。</p>
 </div>
 <div class="paragraph">
 <p>可以在部署配置项中指定不同的Worker 线程池：</p>
@@ -1908,10 +1908,10 @@ vertx run FooVerticle.groovy -cluster</pre>
 <h2 id="event_bus">The Event Bus</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.EventBus.html">Event Bus</a>`是 Vert.x 的神经系统。</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.EventBus.html">Event Bus</a>`是 Vert.x 的神经系统。</p>
 </div>
 <div class="paragraph">
-<p>每一个 Vert.x 实例都有一个单独的 Event Bus 实例。您可以通过 <code>Vertx</code> 实例的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_eventBus">eventBus</a></code> 方法来获得对应的 <code>EventBus</code> 实例。</p>
+<p>每一个 Vert.x 实例都有一个单独的 Event Bus 实例。您可以通过 <code>Vertx</code> 实例的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_eventBus">eventBus</a></code> 方法来获得对应的 <code>EventBus</code> 实例。</p>
 </div>
 <div class="paragraph">
 <p>您的应用中的不同部分通过 Event Bus 相互通信，无论它们使用哪一种语言实现，无论它们在同一个 Vert.x 实例中或在不同的 Vert.x 实例中。</p>
@@ -2020,7 +2020,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_消息类型">消息类型</h4>
 <div class="paragraph">
-<p>Vert.x 默认允许任何基本/简单类型、<code>String</code> 或 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">buffers</a></code> 作为消息发送。</p>
+<p>Vert.x 默认允许任何基本/简单类型、<code>String</code> 或 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">buffers</a></code> 作为消息发送。</p>
 </div>
 <div class="paragraph">
 <p>不过在 Vert.x 中的通常做法是使用 <a href="http://json.org/">JSON</a> 格式来发送消息。</p>
@@ -2059,7 +2059,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_注册处理器">注册处理器</h4>
 <div class="paragraph">
-<p>最简单的注册处理器的方式是使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_consumer">consumer</a></code> 方法，
+<p>最简单的注册处理器的方式是使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_consumer">consumer</a></code> 方法，
 这儿有个例子：</p>
 </div>
 <div class="listingblock">
@@ -2073,16 +2073,16 @@ vertx run FooVerticle.groovy -cluster</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>当一个消息达到您的处理器，该处理器会以 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.Message.html">message</a></code> 为参数被调用。</p>
+<p>当一个消息达到您的处理器，该处理器会以 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.Message.html">message</a></code> 为参数被调用。</p>
 </div>
 <div class="paragraph">
-<p>调用 <code>consumer</code> 方法会返回一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> 对象。</p>
+<p>调用 <code>consumer</code> 方法会返回一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> 对象。</p>
 </div>
 <div class="paragraph">
 <p>该对象随后可用于撤销处理器、或将处理器用作流式处理。</p>
 </div>
 <div class="paragraph">
-<p>您也可以不设置处理器而使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_consumer">consumer</a></code> 方法直接返回一个 <code>MessageConsumer</code>，之后再来设置处理器。如：</p>
+<p>您也可以不设置处理器而使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_consumer">consumer</a></code> 方法直接返回一个 <code>MessageConsumer</code>，之后再来设置处理器。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2099,7 +2099,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>在集群模式下的Event Bus上注册处理器时，注册信息会花费一些时间才能传播到集群中的所有节点。</p>
 </div>
 <div class="paragraph">
-<p>若您希望在完成注册后收到通知，您可以在 <code>MessageConsumer</code> 对象上注册一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html#method_completionHandler">completion handler</a></code> 。</p>
+<p>若您希望在完成注册后收到通知，您可以在 <code>MessageConsumer</code> 对象上注册一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html#method_completionHandler">completion handler</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2117,10 +2117,10 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_注销处理器">注销处理器</h4>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html#method_unregister">unregister</a></code> 方法来注销处理器。</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html#method_unregister">unregister</a></code> 方法来注销处理器。</p>
 </div>
 <div class="paragraph">
-<p>若您在集群模式下的 Event Bus 中撤销处理器，则同样会花费一些时间在节点中传播。若您想在完成后收到通知，可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html#method_unregister">unregister</a></code> 方法注册处理器：</p>
+<p>若您在集群模式下的 Event Bus 中撤销处理器，则同样会花费一些时间在节点中传播。若您想在完成后收到通知，可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html#method_unregister">unregister</a></code> 方法注册处理器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2138,7 +2138,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_发布消息">发布消息</h4>
 <div class="paragraph">
-<p>发布消息很简单，只需使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_publish">publish</a></code> 方法指定一个地址去发布即可。</p>
+<p>发布消息很简单，只需使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_publish">publish</a></code> 方法指定一个地址去发布即可。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2156,7 +2156,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>与发布消息的不同之处在于，发送(<code>send</code>)的消息只会传递给在该地址注册的其中一个处理器，这就是点对点模式。Vert.x 使用不严格的轮询算法来选择绑定的处理器。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_send">send</a></code> 方法来发送消息：</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_send">send</a></code> 方法来发送消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2177,26 +2177,26 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_消息对象">消息对象</h4>
 <div class="paragraph">
-<p>您在消息处理器中接收到的对象的类型是 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.Message.html">Message</a></code> 。</p>
+<p>您在消息处理器中接收到的对象的类型是 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.Message.html">Message</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>消息的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.Message.html#method_body">body</a></code> 对应发送或发布的对象。</p>
+<p>消息的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.Message.html#method_body">body</a></code> 对应发送或发布的对象。</p>
 </div>
 <div class="paragraph">
-<p>消息的头信息可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.Message.html#method_headers">headers</a></code> 方法获取。</p>
+<p>消息的头信息可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.Message.html#method_headers">headers</a></code> 方法获取。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_应答消息_发送回复">应答消息/发送回复</h4>
 <div class="paragraph">
-<p>当使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_send">send</a></code> 方法发送消息时，Event Bus会尝试将消息传递到注册在Event Bus上的
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a>`中。</p>
+<p>当使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.EventBus.html#method_send">send</a></code> 方法发送消息时，Event Bus会尝试将消息传递到注册在Event Bus上的
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a>`中。</p>
 </div>
 <div class="paragraph">
 <p>在某些情况下，发送者需要知道消费者何时收到消息并 <strong>处理</strong> 了消息。</p>
 </div>
 <div class="paragraph">
-<p>消费者可以通过调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.Message.html#method_reply">reply</a></code> 方法来应答这个消息。</p>
+<p>消费者可以通过调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.Message.html#method_reply">reply</a></code> 方法来应答这个消息。</p>
 </div>
 <div class="paragraph">
 <p>当这种情况发生时，它会将消息回复给发送者并且在发送者中调用应答处理器来处理回复的消息。</p>
@@ -2256,7 +2256,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect3">
 <h4 id="_带超时的发送">带超时的发送</h4>
 <div class="paragraph">
-<p>当发送带有应答处理器的消息时，可以在 <code><a href="../vertx-jphp/enums.adoc#DeliveryOptions">DeliveryOptions</a></code> 中指定一个超时时间。</p>
+<p>当发送带有应答处理器的消息时，可以在 <code><a href="../php/dataobjects.html#DeliveryOptions">DeliveryOptions</a></code> 中指定一个超时时间。</p>
 </div>
 <div class="paragraph">
 <p>如果在这个时间之内没有收到应答，则会以失败为参数调用应答处理器。</p>
@@ -2276,7 +2276,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>没有可用的处理器来接收消息</p>
 </li>
 <li>
-<p>接收者调用了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.Message.html#method_fail">fail</a></code> 方法显式声明失败</p>
+<p>接收者调用了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.Message.html#method_fail">fail</a></code> 方法显式声明失败</p>
 </li>
 </ul>
 </div>
@@ -2342,8 +2342,8 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Event Bus 是可以配置的，这对于以集群模式运行的 Event Bus 是非常有用的。Event Bus 使用 TCP 连接发送和接收消息，因此可以通过
-<code><a href="../vertx-jphp/enums.adoc#EventBusOptions">EventBusOptions</a>`对TCP连接进行全面的配置。由于 Event Bus 同时用作客户端和服务器，因此这些配置近似于
-`<a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a>`和 `<a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 。</p>
+<code><a href="../php/dataobjects.html#EventBusOptions">EventBusOptions</a>`对TCP连接进行全面的配置。由于 Event Bus 同时用作客户端和服务器，因此这些配置近似于
+`<a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a>`和 `<a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2385,9 +2385,9 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>Event Bus 的配置需要在所有集群节点中保持一致性。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../vertx-jphp/enums.adoc#EventBusOptions">EventBusOptions</a>`还允许您指定 Event Bus 是否运行在集群模式下，以及它的主机信息和端口。您可使用
-`<a href="../vertx-jphp/enums.adoc#VertxOptions#method_setClustered">setClustered</a></code>、
-<code><a href="../vertx-jphp/enums.adoc#VertxOptions#method_getClusterHost">getClusterHost</a></code> 和 <code><a href="../vertx-jphp/enums.adoc#VertxOptions#method_getClusterPort">getClusterPort</a></code> 方法来设置。</p>
+<p><code><a href="../php/dataobjects.html#EventBusOptions">EventBusOptions</a>`还允许您指定 Event Bus 是否运行在集群模式下，以及它的主机信息和端口。您可使用
+`<a href="../php/dataobjects.html#VertxOptions#method_setClustered">setClustered</a></code>、
+<code><a href="../php/dataobjects.html#VertxOptions#method_getClusterHost">getClusterHost</a></code> 和 <code><a href="../php/dataobjects.html#VertxOptions#method_getClusterPort">getClusterPort</a></code> 方法来设置。</p>
 </div>
 <div class="paragraph">
 <p>在容器中使用时，您也可以配置公共主机和端口号：</p>
@@ -2431,7 +2431,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_创建_buffer">创建 Buffer</h3>
 <div class="paragraph">
-<p>可以使用静态方法 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html#method_buffer">Buffer::buffer</a></code> 来创建 <code>Buffer</code> 。</p>
+<p>可以使用静态方法 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html#method_buffer">Buffer::buffer</a></code> 来创建 <code>Buffer</code> 。</p>
 </div>
 <div class="paragraph">
 <p><code>Buffer</code> 可以从字符串或字节数组初始化，或者直接创建空的 <code>Buffer</code> 。</p>
@@ -2578,19 +2578,19 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_buffer长度">Buffer长度</h3>
 <div class="paragraph">
-<p>可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html#method_length">length</a></code> 方法获取Buffer长度，Buffer的长度值是Buffer中包含的字节的最大索引 + 1。</p>
+<p>可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html#method_length">length</a></code> 方法获取Buffer长度，Buffer的长度值是Buffer中包含的字节的最大索引 + 1。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_拷贝buffer">拷贝Buffer</h3>
 <div class="paragraph">
-<p>可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html#method_copy">copy</a></code> 方法创建一个Buffer的副本。</p>
+<p>可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html#method_copy">copy</a></code> 方法创建一个Buffer的副本。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_裁剪buffer">裁剪Buffer</h3>
 <div class="paragraph">
-<p>裁剪得到的Buffer是基于原始Buffer的一个新的Buffer。它不会拷贝实际的数据。使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html#method_slice">slice</a></code> 方法裁剪一个Buffer。</p>
+<p>裁剪得到的Buffer是基于原始Buffer的一个新的Buffer。它不会拷贝实际的数据。使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html#method_slice">slice</a></code> 方法裁剪一个Buffer。</p>
 </div>
 </div>
 <div class="sect2">
@@ -2623,7 +2623,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_配置_tcp_服务端">配置 TCP 服务端</h3>
 <div class="paragraph">
-<p>若您不想使用默认配置，可以在创建时通过传入一个 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code>
+<p>若您不想使用默认配置，可以在创建时通过传入一个 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code>
 实例来配置服务器：</p>
 </div>
 <div class="listingblock">
@@ -2640,7 +2640,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_启动服务端监听">启动服务端监听</h3>
 <div class="paragraph">
-<p>要告诉服务端监听传入的请求，您可以使用其中一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_listen">listen</a></code>
+<p>要告诉服务端监听传入的请求，您可以使用其中一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_listen">listen</a></code>
 方法。</p>
 </div>
 <div class="paragraph">
@@ -2695,7 +2695,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>若设置监听端口为 <code>0</code> ，服务器将随机寻找一个没有使用的端口来监听。</p>
 </div>
 <div class="paragraph">
-<p>可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_actualPort">actualPort</a></code> 方法来获得服务器实际监听的端口：</p>
+<p>可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_actualPort">actualPort</a></code> 方法来获得服务器实际监听的端口：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2715,7 +2715,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_接收传入连接的通知">接收传入连接的通知</h3>
 <div class="paragraph">
-<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_connectHandler">connectHandler</a></code> :</p>
+<p>若您想要在连接创建完时收到通知，则需要设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_connectHandler">connectHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2728,7 +2728,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>当连接成功时，您可以在回调函数中处理得到的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 实例。</p>
+<p>当连接成功时，您可以在回调函数中处理得到的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 实例。</p>
 </div>
 <div class="paragraph">
 <p>这是一个代表了实际连接的套接字接口，它允许您读取和写入数据、以及执行各种其他操作，如关闭 Socket。</p>
@@ -2737,10 +2737,10 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_从socket读取数据">从Socket读取数据</h3>
 <div class="paragraph">
-<p>您可以在Socket上调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_handler">handler</a></code> 方法来设置用于读取数据的处理器。</p>
+<p>您可以在Socket上调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_handler">handler</a></code> 方法来设置用于读取数据的处理器。</p>
 </div>
 <div class="paragraph">
-<p>每次 Socket 接收到数据时，会以 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 对象为参数调用处理器。</p>
+<p>每次 Socket 接收到数据时，会以 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 对象为参数调用处理器。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2758,7 +2758,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_向socket中写入数据">向Socket中写入数据</h3>
 <div class="paragraph">
-<p>您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_write">write</a></code> 方法写入数据到Socket：</p>
+<p>您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_write">write</a></code> 方法写入数据到Socket：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2783,7 +2783,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_关闭处理器">关闭处理器</h3>
 <div class="paragraph">
-<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_closeHandler">closeHandler</a></code> :</p>
+<p>若您想要在 Socket 关闭时收到通知，可以设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_closeHandler">closeHandler</a></code> :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2798,7 +2798,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_处理异常">处理异常</h3>
 <div class="paragraph">
-<p>您可以设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_exceptionHandler">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
+<p>您可以设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_exceptionHandler">exceptionHandler</a></code> 用以在发生任何异常的时候接收异常信息。</p>
 </div>
 </div>
 <div class="sect2">
@@ -2810,22 +2810,22 @@ vertx run FooVerticle.groovy -cluster</pre>
 <p>这意味着您可以通过向这个地址发送 <code>Buffer</code> 的方式，从不同的 Verticle 甚至是不同的 Vert.x 实例中向指定的 Socket 发送数据。</p>
 </div>
 <div class="paragraph">
-<p>处理器的地址由 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_writeHandlerID">writeHandlerID</a></code> 方法提供。</p>
+<p>处理器的地址由 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_writeHandlerID">writeHandlerID</a></code> 方法提供。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_本地和远程地址">本地和远程地址</h3>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_localAddress">localAddress</a></code> 方法获取 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的本地地址，</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_localAddress">localAddress</a></code> 方法获取 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的本地地址，</p>
 </div>
 <div class="paragraph">
-<p>通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_remoteAddress">remoteAddress</a></code> 方法获取 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的远程地址（即连接的另一端的地址）。</p>
+<p>通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_remoteAddress">remoteAddress</a></code> 方法获取 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 的远程地址（即连接的另一端的地址）。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_发送文件或_classpath_中的资源">发送文件或 Classpath 中的资源</h3>
 <div class="paragraph">
-<p>您可以直接通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_sendFile">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
+<p>您可以直接通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_sendFile">sendFile</a></code> 方法将文件和 classpath 中的资源写入Socket。
 这种做法是非常高效的，它可以被操作系统内核直接处理。</p>
 </div>
 <div class="paragraph">
@@ -2842,8 +2842,8 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_流式的socket">流式的Socket</h3>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`接口继承了 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`接口继承了 `<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
 </div>
 <div class="paragraph">
 <p>有关更多信息，请参阅 <a href="#streams">流和管道</a>  章节。</p>
@@ -2852,7 +2852,7 @@ vertx run FooVerticle.groovy -cluster</pre>
 <div class="sect2">
 <h3 id="_升级到_ssl_tls_连接">升级到 SSL/TLS 连接</h3>
 <div class="paragraph">
-<p>一个非SSL/TLS连接可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html#method_upgradeToSsl">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
+<p>一个非SSL/TLS连接可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html#method_upgradeToSsl">upgradeToSsl</a></code> 方法升级到SSL/TLS连接。</p>
 </div>
 <div class="paragraph">
 <p>必须为服务器或客户端配置SSL/TLS才能正常工作。请参阅 <a href="#ssl">SSL/TLS</a> 章节来获取详细信息。
@@ -2862,7 +2862,7 @@ for more information.</p>
 <div class="sect2">
 <h3 id="_关闭_tcp_服务端">关闭 TCP 服务端</h3>
 <div class="paragraph">
-<p>您可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html#method_close">close</a></code> 方法关闭服务端。关闭操作将关闭所有打开的连接并释放所有服务端资源。</p>
+<p>您可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html#method_close">close</a></code> 方法关闭服务端。关闭操作将关闭所有打开的连接并释放所有服务端资源。</p>
 </div>
 <div class="paragraph">
 <p>关闭操作也是异步的，可能直到方法调用返回过后一段时间才会实际关闭。若您想在实际关闭完成时收到通知，那么您可以传递一个处理器。</p>
@@ -2976,7 +2976,7 @@ for more information.</p>
 <div class="sect2">
 <h3 id="_配置_tcp_客户端">配置 TCP 客户端</h3>
 <div class="paragraph">
-<p>如果您不想使用默认值，则可以在创建实例时传入 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code>
+<p>如果您不想使用默认值，则可以在创建实例时传入 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code>
 给客户端：</p>
 </div>
 <div class="listingblock">
@@ -2993,9 +2993,9 @@ for more information.</p>
 <div class="sect2">
 <h3 id="_创建连接">创建连接</h3>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetClient.html#method_connect">connect</a></code> ,
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetClient.html#method_connect">connect</a></code> ,
 方法创建到服务器的连接。请指定服务器的端口和主机，以及用于处理
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3020,8 +3020,8 @@ for more information.</p>
 <h3 id="_配置连接重试">配置连接重试</h3>
 <div class="paragraph">
 <p>可以将客户端配置为在无法连接的情况下自动重试。
-这是通过 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions#method_setReconnectInterval">setReconnectInterval</a></code> 和
-`<a href="../vertx-jphp/enums.adoc#NetClientOptions#method_setReconnectAttempts">setReconnectAttempts</a>`方法配置的。</p>
+这是通过 <code><a href="../php/dataobjects.html#NetClientOptions#method_setReconnectInterval">setReconnectInterval</a></code> 和
+`<a href="../php/dataobjects.html#NetClientOptions#method_setReconnectAttempts">setReconnectAttempts</a>`方法配置的。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3105,12 +3105,12 @@ for more information.</p>
 。早期版本的TLS被称为SSL。</p>
 </div>
 <div class="paragraph">
-<p>无论是否使用SSL/TLS，服务器和客户端的API都是相同的。通过创建客户端/服务器时使用的 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 或 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 来启用TLS/SSL。</p>
+<p>无论是否使用SSL/TLS，服务器和客户端的API都是相同的。通过创建客户端/服务器时使用的 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 或 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 来启用TLS/SSL。</p>
 </div>
 <div class="sect3">
 <h4 id="_在服务端启用ssl_tls">在服务端启用SSL/TLS</h4>
 <div class="paragraph">
-<p>您需要设置 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions#method_setSsl">ssl</a></code> 配置项来启用 SSL/TLS。</p>
+<p>您需要设置 <code><a href="../php/dataobjects.html#NetServerOptions#method_setSsl">ssl</a></code> 配置项来启用 SSL/TLS。</p>
 </div>
 <div class="paragraph">
 <p>默认是禁用的。</p>
@@ -3382,7 +3382,7 @@ for more information.</p>
 <div class="sect3">
 <h4 id="_客户端受信配置">客户端受信配置</h4>
 <div class="paragraph">
-<p>若客户端将 <code><a href="../vertx-jphp/enums.adoc#ClientOptionsBase#method_setTrustAll">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
+<p>若客户端将 <code><a href="../php/dataobjects.html#ClientOptionsBase#method_setTrustAll">trustALl</a></code> 设置为 <code>true</code> ，则客户端将信任所有服务端证书。
 连接仍然会被加密，但这种模式很容易受到中间人攻击。即您无法确定您正连接到谁，请谨慎使用。默认值为 <code>false</code> 。</p>
 </div>
 <div class="listingblock">
@@ -3396,7 +3396,7 @@ for more information.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>若客户端没有设置 <code><a href="../vertx-jphp/enums.adoc#ClientOptionsBase#method_setTrustAll">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
+<p>若客户端没有设置 <code><a href="../php/dataobjects.html#ClientOptionsBase#method_setTrustAll">trustAll</a></code> ，则必须配置客户端受信存储，并且受信客户端应该包含服务器的证书。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下，客户端禁用主机验证。要启用主机验证，请在客户端上设置使用的算法（目前仅支持HTTPS和LDAPS）：</p>
@@ -3419,7 +3419,7 @@ for more information.</p>
 </div>
 <div class="paragraph">
 <p>它只是一个标准的Java密钥存储，与服务器端的密钥存储相同。通过在
-<code><a href="../vertx-jphp/enums.adoc#JksOptions">jks options</a>`上使用 `<a href="../vertx-jphp/enums.adoc#JksOptions#method_setPath">path</a></code>
+<code><a href="../php/dataobjects.html#JksOptions">jks options</a>`上使用 `<a href="../php/dataobjects.html#JksOptions#method_setPath">path</a></code>
 设置客户端受信存储位置。如果服务器在连接期间提供不在客户端受信存储中的证书，则尝试连接将不会成功。</p>
 </div>
 <div class="listingblock">
@@ -3527,7 +3527,7 @@ for more information.</p>
 <p>如果服务器需要客户端认证，那么当连接时，客户端必须向服务器提供自己的证书。可通过以下几种方式配置客户端：</p>
 </div>
 <div class="paragraph">
-<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../vertx-jphp/enums.adoc#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../vertx-jphp/enums.adoc#JksOptions#method_setPath">path</a></code> 。</p>
+<p>第一种方法是指定包含密钥和证书的Java 密钥库的位置，它只是一个常规的Java 密钥存储。使用 <code><a href="../php/dataobjects.html#JksOptions">jks options</a></code> 上的功能路径设置客户端密钥库位置 <code><a href="../php/dataobjects.html#JksOptions#method_setPath">path</a></code> 。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3651,7 +3651,7 @@ for more information.</p>
 <p>在运行单元/集成测试或是运行开发版的应用程序时都经常需要自签名证书。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
 give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
 </div>
 <div class="listingblock">
@@ -3722,7 +3722,7 @@ give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置�
 <div class="sect3">
 <h4 id="_待撤销证书颁发机构">待撤销证书颁发机构</h4>
 <div class="paragraph">
-<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions#method_addCrlPath">crlPath</a></code> 配置了使用的CRL：
+<p>可以通过配置证书吊销列表（CRL）来吊销不再被信任的证书机构。 <code><a href="../php/dataobjects.html#NetClientOptions#method_addCrlPath">crlPath</a></code> 配置了使用的CRL：
 the crl list to use:</p>
 </div>
 <div class="listingblock">
@@ -3778,7 +3778,7 @@ the crl list to use:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>密码套件可在 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
+<p>密码套件可在 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
 </div>
 </div>
 <div class="sect3">
@@ -3792,7 +3792,7 @@ the crl list to use:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>协议版本可在 <code><a href="../vertx-jphp/enums.adoc#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
+<p>协议版本可在 <code><a href="../php/dataobjects.html#NetServerOptions">NetServerOptions</a></code> 或 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 配置项中指定。</p>
 </div>
 </div>
 <div class="sect3">
@@ -3806,10 +3806,10 @@ the crl list to use:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>当 <code><a href="../vertx-jphp/enums.adoc#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
+<p>当 <code><a href="../php/dataobjects.html#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
 </li>
 <li>
-<p>否则使用 <code><a href="../vertx-jphp/enums.adoc#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
+<p>否则使用 <code><a href="../php/dataobjects.html#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
 </li>
 </ul>
 </div>
@@ -3872,8 +3872,8 @@ indicated server name.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>if <code><a href="../vertx-jphp/enums.adoc#JksOptions">JksOptions</a></code> were used to set the trust options
-( <code><a href="../vertx-jphp/enums.adoc#NetServerOptions#method_setTrustOptions">options</a></code> ) then an exact match with the trust store
+<p>if <code><a href="../php/dataobjects.html#JksOptions">JksOptions</a></code> were used to set the trust options
+( <code><a href="../php/dataobjects.html#NetServerOptions#method_setTrustOptions">options</a></code> ) then an exact match with the trust store
 alias is done</p>
 </li>
 <li>
@@ -3882,7 +3882,7 @@ alias is done</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>You can enable SNI on the server by setting <code><a href="../vertx-jphp/enums.adoc#NetServerOptions#method_setSni">setSni</a></code> to <code>true</code> and
+<p>You can enable SNI on the server by setting <code><a href="../php/dataobjects.html#NetServerOptions#method_setSni">setSni</a></code> to <code>true</code> and
 configured the server with multiple key/certificate pairs.</p>
 </div>
 <div class="paragraph">
@@ -3904,7 +3904,7 @@ configured the server with multiple key/certificate pairs.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../vertx-jphp/enums.adoc#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
+<p>`<a href="../php/dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3991,13 +3991,13 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>当 <code><a href="../vertx-jphp/enums.adoc#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
+<p>当 <code><a href="../php/dataobjects.html#TCPSSLOptions#method_getSslEngineOptions">getSslEngineOptions</a></code> 被设置时，使用该选项</p>
 </li>
 <li>
-<p>JDK中ALPN可用时使用 <code><a href="../vertx-jphp/enums.adoc#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
+<p>JDK中ALPN可用时使用 <code><a href="../php/dataobjects.html#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
 </li>
 <li>
-<p>OpenSSL中ALPN可用时使用 <code><a href="../vertx-jphp/enums.adoc#OpenSSLEngineOptions">OpenSSLEngineOptions</a></code></p>
+<p>OpenSSL中ALPN可用时使用 <code><a href="../php/dataobjects.html#OpenSSLEngineOptions">OpenSSLEngineOptions</a></code></p>
 </li>
 <li>
 <p>否则失败</p>
@@ -4010,7 +4010,7 @@ configured the server with multiple key/certificate pairs.</p>
 <p>OpenSSL提供了原生的ALPN支持。</p>
 </div>
 <div class="paragraph">
-<p>OpenSSL需要配置 <code><a href="../vertx-jphp/enums.adoc#TCPSSLOptions#method_setOpenSslEngineOptions">setOpenSslEngineOptions</a></code>
+<p>OpenSSL需要配置 <code><a href="../php/dataobjects.html#TCPSSLOptions#method_setOpenSslEngineOptions">setOpenSslEngineOptions</a></code>
 并在类路径上使用 <a href="http://netty.io/wiki/forked-tomcat-native.html">netty-tcnative</a> 的jar库。依赖于tcnative的实现它需要OpenSSL安装在您的操作系统中。</p>
 </div>
 </div>
@@ -4048,11 +4048,11 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect2">
 <h3 id="_客户端连接使用代理">客户端连接使用代理</h3>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
 </div>
 <div class="paragraph">
-<p>代理可以在 <code><a href="../vertx-jphp/enums.adoc#NetClientOptions">NetClientOptions</a></code> 内设置
-`<a href="../vertx-jphp/enums.adoc#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
+<p>代理可以在 <code><a href="../php/dataobjects.html#NetClientOptions">NetClientOptions</a></code> 内设置
+`<a href="../php/dataobjects.html#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -4106,7 +4106,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect2">
 <h3 id="_配置_http_服务端">配置 HTTP 服务端</h3>
 <div class="paragraph">
-<p>若您不想用默认值，可以在创建服务器时传递一个 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions">HttpServerOptions</a></code>
+<p>若您不想用默认值，可以在创建服务器时传递一个 <code><a href="../php/dataobjects.html#HttpServerOptions">HttpServerOptions</a></code>
 实例给它：</p>
 </div>
 <div class="listingblock">
@@ -4137,7 +4137,7 @@ configured the server with multiple key/certificate pairs.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>要处理 h2 请求，你必须调用 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setUseAlpn">setUseAlpn</a></code> 方法来启用TLS：</p>
+<p>要处理 h2 请求，你必须调用 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setUseAlpn">setUseAlpn</a></code> 方法来启用TLS：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4178,12 +4178,12 @@ configured the server with multiple key/certificate pairs.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>当服务器接受 HTTP/2 连接时， 它会向客户端发送其 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_getInitialSettings">初始设置</a></code> 。定义客户端如何使用连接，服务器的默认初始设置为：</p>
+<p>当服务器接受 HTTP/2 连接时， 它会向客户端发送其 <code><a href="../php/dataobjects.html#HttpServerOptions#method_getInitialSettings">初始设置</a></code> 。定义客户端如何使用连接，服务器的默认初始设置为：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#Http2Settings#method_getMaxConcurrentStreams">getMaxConcurrentStreams</a></code> ：按照 HTTP/2 RFC建议推荐值为 <code>100</code></p>
+<p><code><a href="../php/dataobjects.html#Http2Settings#method_getMaxConcurrentStreams">getMaxConcurrentStreams</a></code> ：按照 HTTP/2 RFC建议推荐值为 <code>100</code></p>
 </li>
 <li>
 <p>其他默认的 HTTP/2 的设置</p>
@@ -4226,7 +4226,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect2">
 <h3 id="_开启服务端监听">开启服务端监听</h3>
 <div class="paragraph">
-<p>要告诉服务器监听传入的请求，您可以使用其中一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html#method_listen">listen</a></code>
+<p>要告诉服务器监听传入的请求，您可以使用其中一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html#method_listen">listen</a></code>
 方法。</p>
 </div>
 <div class="paragraph">
@@ -4278,7 +4278,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect2">
 <h3 id="_收到传入请求的通知">收到传入请求的通知</h3>
 <div class="paragraph">
-<p>若您需要在收到请求时收到通知，则需要设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html#method_requestHandler">requestHandler</a></code> ：</p>
+<p>若您需要在收到请求时收到通知，则需要设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html#method_requestHandler">requestHandler</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4294,7 +4294,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect2">
 <h3 id="_处理请求">处理请求</h3>
 <div class="paragraph">
-<p>当请求到达时，Vert.x 会像对应的处理函数传入一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code> 实例并调用请求处理函数，此对象表示服务端 HTTP 请求。</p>
+<p>当请求到达时，Vert.x 会像对应的处理函数传入一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code> 实例并调用请求处理函数，此对象表示服务端 HTTP 请求。</p>
 </div>
 <div class="paragraph">
 <p>当请求的头信息被完全读取时会调用该请求处理器。</p>
@@ -4303,13 +4303,13 @@ configured the server with multiple key/certificate pairs.</p>
 <p>如果请求包含请求体，那么该请求体将在请求处理器被调用后的某个时间到达服务器。</p>
 </div>
 <div class="paragraph">
-<p>服务请求对象允许您检索 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_uri">uri</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_path">path</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_params">params</a></code> 和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_headers">headers</a>`等其他信息。</p>
+<p>服务请求对象允许您检索 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_uri">uri</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_path">path</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_params">params</a></code> 和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_headers">headers</a>`等其他信息。</p>
 </div>
 <div class="paragraph">
 <p>每一个服务请求对象和一个服务响应对象绑定，您可以用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_response">response</a>`方法获取一个 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_response">response</a>`方法获取一个 `<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
 对象的引用。</p>
 </div>
 <div class="paragraph">
@@ -4327,19 +4327,19 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect3">
 <h4 id="_请求版本">请求版本</h4>
 <div class="paragraph">
-<p>在请求中指定的 HTTP 版本可通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_version">version</a></code> 方法获取。</p>
+<p>在请求中指定的 HTTP 版本可通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_version">version</a></code> 方法获取。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_请求方法">请求方法</h4>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_method">method</a></code> 方法读取请求中的 HTTP Method（即GET、POST、PUT、DELETE、HEAD、OPTIONS等）。</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_method">method</a></code> 方法读取请求中的 HTTP Method（即GET、POST、PUT、DELETE、HEAD、OPTIONS等）。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_请求uri">请求URI</h4>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_uri">uri</a></code> 方法读取请求中的URI路径。</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_uri">uri</a></code> 方法读取请求中的URI路径。</p>
 </div>
 <div class="paragraph">
 <p>请注意，这是在HTTP 请求中传递的实际URI，它总是一个相对的URI。</p>
@@ -4351,7 +4351,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect3">
 <h4 id="_请求路径">请求路径</h4>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_path">path</a></code> 方法读取URI中的路径部分。</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_path">path</a></code> 方法读取URI中的路径部分。</p>
 </div>
 <div class="paragraph">
 <p>例如，请求的URI为：</p>
@@ -4369,7 +4369,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect3">
 <h4 id="_请求查询">请求查询</h4>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_query">query</a></code> 读取URI中的查询部分。</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_query">query</a></code> 读取URI中的查询部分。</p>
 </div>
 <div class="paragraph">
 <p>例如，请求的URI为：</p>
@@ -4387,10 +4387,10 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect3">
 <h4 id="_请求头部">请求头部</h4>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_headers">headers</a></code> 方法获取HTTP 请求中的请求头部信息。</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_headers">headers</a></code> 方法获取HTTP 请求中的请求头部信息。</p>
 </div>
 <div class="paragraph">
-<p>这个方法返回一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code>  实例。它像一个普通的Map或Hash，并且它还允许同一个键支持多个值 —— 因为HTTP允许同一个键支持多个请求头的值。</p>
+<p>这个方法返回一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code>  实例。它像一个普通的Map或Hash，并且它还允许同一个键支持多个值 —— 因为HTTP允许同一个键支持多个请求头的值。</p>
 </div>
 <div class="paragraph">
 <p>它的键值不区分大小写，这意味着您可以执行以下操作：</p>
@@ -4412,7 +4412,7 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect3">
 <h4 id="_请求主机">请求主机</h4>
 <div class="paragraph">
-<p>使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_host">host</a></code> 方法返回 HTTP 请求中的主机名。</p>
+<p>使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_host">host</a></code> 方法返回 HTTP 请求中的主机名。</p>
 </div>
 <div class="paragraph">
 <p>对于 HTTP/1.x 请求返回请求头中的 <code>host</code> 值，对于 HTTP/1 请求则返回伪头中的 <code>:authority</code> 的值。</p>
@@ -4421,10 +4421,10 @@ configured the server with multiple key/certificate pairs.</p>
 <div class="sect3">
 <h4 id="_请求参数">请求参数</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_params">params</a></code> 方法返回HTTP请求中的参数信息。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_params">params</a></code> 方法返回HTTP请求中的参数信息。</p>
 </div>
 <div class="paragraph">
-<p>像 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_headers">headers</a></code> 方法一样它也会返回一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 实例，因为可以有多个具有相同名称的参数。</p>
+<p>像 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_headers">headers</a></code> 方法一样它也会返回一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 实例，因为可以有多个具有相同名称的参数。</p>
 </div>
 <div class="paragraph">
 <p>请求参数在请求URI的 path 部分之后，例如URI是：</p>
@@ -4448,19 +4448,19 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_远程地址">远程地址</h4>
 <div class="paragraph">
-<p>可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_remoteAddress">remoteAddress</a></code> 方法读取请求发送者的地址。</p>
+<p>可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_remoteAddress">remoteAddress</a></code> 方法读取请求发送者的地址。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_绝对uri">绝对URI</h4>
 <div class="paragraph">
-<p>HTTP 请求中传递的URI通常是相对的，若您想要读取请求中和相对URI对应的绝对URI，可调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_absoluteURI">absoluteURI</a></code> 方法。</p>
+<p>HTTP 请求中传递的URI通常是相对的，若您想要读取请求中和相对URI对应的绝对URI，可调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_absoluteURI">absoluteURI</a></code> 方法。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_结束处理器">结束处理器</h4>
 <div class="paragraph">
-<p>当整个请求（包括任何正文）已经被完全读取时，请求中的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_endHandler">endHandler</a></code> 方法会被调用。</p>
+<p>当整个请求（包括任何正文）已经被完全读取时，请求中的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_endHandler">endHandler</a></code> 方法会被调用。</p>
 </div>
 </div>
 <div class="sect3">
@@ -4472,7 +4472,7 @@ param2: 'xyz</pre>
 <p>这是因为请求体可能非常大（如文件上传），并且我们不会在内容发送给您之前将其全部缓冲存储在内存中，这可能会导致服务器耗尽可用内存。</p>
 </div>
 <div class="paragraph">
-<p>要接收请求体，您可在请求中调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_handler">handler</a></code> 方法设置一个处理器，每次请求体的一小块数据收到时，该处理器都会被调用。以下是一个例子：</p>
+<p>要接收请求体，您可在请求中调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_handler">handler</a></code> 方法设置一个处理器，每次请求体的一小块数据收到时，该处理器都会被调用。以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4484,7 +4484,7 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>传递给处理器的对象是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> ，当数据从网络到达时，处理器可以多次被调用，这取决于请求体的大小。</p>
+<p>传递给处理器的对象是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> ，当数据从网络到达时，处理器可以多次被调用，这取决于请求体的大小。</p>
 </div>
 <div class="paragraph">
 <p>在某些情况下（例：若请求体很小），您将需要将这个请求体聚合到内存中，以便您可以按照下边的方式进行聚合：</p>
@@ -4508,7 +4508,7 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_bodyHandler">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时， <code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
+<p>这是一个常见的情况，Vert.x为您提供了一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_bodyHandler">bodyHandler</a></code> 方法来执行此操作。当所有请求体被收到时， <code>bodyHandler</code> 绑定的处理器会被调用一次：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4523,8 +4523,8 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_pumping_请求">Pumping 请求</h4>
 <div class="paragraph">
-<p>请求对象实现了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 实例中。</p>
+<p>请求对象实现了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 实例中。</p>
 </div>
 <div class="paragraph">
 <p>详细请参阅 <a href="#streams">流和管道</a> 章节。</p>
@@ -4545,8 +4545,8 @@ param2: 'xyz</pre>
 <p>Multipart 表单还可以包含文件上传。</p>
 </div>
 <div class="paragraph">
-<p>若您想要读取 multipart 表单的属性，您应该告诉 Vert.x 您会在读取任何正文 <strong>之前</strong> 调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_setExpectMultipart">setExpectMultipart</a></code>
-方法，然后在整个请求体都被读取后，您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_formAttributes">formAttributes</a></code>
+<p>若您想要读取 multipart 表单的属性，您应该告诉 Vert.x 您会在读取任何正文 <strong>之前</strong> 调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_setExpectMultipart">setExpectMultipart</a></code>
+方法，然后在整个请求体都被读取后，您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_formAttributes">formAttributes</a></code>
 方法来读取实际的表单属性。</p>
 </div>
 <div class="listingblock">
@@ -4570,13 +4570,13 @@ param2: 'xyz</pre>
 </div>
 <div class="paragraph">
 <p>要接收文件，您可以告诉 Vert.x 使用 multipart 表单，并对请求设置
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_uploadHandler">uploadHandler</a></code>。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_uploadHandler">uploadHandler</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>当服务器每次接收到上传请求时，该处理器将被调用一次。</p>
 </div>
 <div class="paragraph">
-<p>传递给处理器的对象是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html">HttpServerFileUpload</a></code> 实例。</p>
+<p>传递给处理器的对象是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html">HttpServerFileUpload</a></code> 实例。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4605,11 +4605,11 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>上传对象实现了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
+<p>上传对象实现了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
 </div>
 <div class="paragraph">
-<p>若您只是想将文件上传到服务器的某个磁盘，可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html#method_streamToFileSystem">streamToFileSystem</a></code> 方法：</p>
+<p>若您只是想将文件上传到服务器的某个磁盘，可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html#method_streamToFileSystem">streamToFileSystem</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4639,7 +4639,7 @@ param2: 'xyz</pre>
 <p>Vert.x 可以处理在客户端通过 <strong>deflate</strong> 或 <strong>gzip</strong> 算法压缩过的请求体信息。</p>
 </div>
 <div class="paragraph">
-<p>若要启用解压缩功能则您要在创建服务器时调用 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setDecompressionSupported">setDecompressionSupported</a></code> 方法设置配置项。</p>
+<p>若要启用解压缩功能则您要在创建服务器时调用 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setDecompressionSupported">setDecompressionSupported</a></code> 方法设置配置项。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下解压缩是被禁用的。</p>
@@ -4651,7 +4651,7 @@ param2: 'xyz</pre>
 <p>HTTP/2 是用于 HTTP 请求/响应模型的包含各种帧的一种帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>若要接收自定义帧(frame)，您可以在请求中使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_customFrameHandler">customFrameHandler</a></code> ，每次当自定义的帧数据到达时，这个处理器会被调用。这而是一个例子：</p>
+<p>若要接收自定义帧(frame)，您可以在请求中使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_customFrameHandler">customFrameHandler</a></code> ，每次当自定义的帧数据到达时，这个处理器会被调用。这而是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4671,15 +4671,15 @@ param2: 'xyz</pre>
 <h4 id="_非标准的_http_方法">非标准的 HTTP 方法</h4>
 <div class="paragraph">
 <p><code>OTHER</code> HTTP 方法可用于非标准方法，在这种情况下，
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_rawMethod">rawMethod</a>`方法返回客户端发送的实际 HTTP 方法。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_rawMethod">rawMethod</a>`方法返回客户端发送的实际 HTTP 方法。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_发回响应">发回响应</h3>
 <div class="paragraph">
-<p>服务器响应对象是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code> 实例，它可以从 <code>request</code> 对应的
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_response">response</a></code> 方法中读取。</p>
+<p>服务器响应对象是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code> 实例，它可以从 <code>request</code> 对应的
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_response">response</a></code> 方法中读取。</p>
 </div>
 <div class="paragraph">
 <p>您可以使用响应对象回写一个响应到 HTTP客户端。</p>
@@ -4690,10 +4690,10 @@ param2: 'xyz</pre>
 <p>默认的 HTTP 状态响应码为 <code>200</code> ，表示 <code>OK</code> 。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_setStatusCode">setStatusCode</a></code> 方法设置不同状态代码。</p>
+<p>可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_setStatusCode">setStatusCode</a></code> 方法设置不同状态代码。</p>
 </div>
 <div class="paragraph">
-<p>您还可用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_setStatusMessage">setStatusMessage</a></code> 方法指定自定义状态消息。</p>
+<p>您还可用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_setStatusMessage">setStatusMessage</a></code> 方法指定自定义状态消息。</p>
 </div>
 <div class="paragraph">
 <p>若您不指定状态信息，将会使用默认的状态码响应。</p>
@@ -4714,7 +4714,7 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_向_http_响应写入数据">向 HTTP 响应写入数据</h4>
 <div class="paragraph">
-<p>想要将数据写入 HTTP Response，您可使用任意一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_write">write</a></code> 方法。</p>
+<p>想要将数据写入 HTTP Response，您可使用任意一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_write">write</a></code> 方法。</p>
 </div>
 <div class="paragraph">
 <p>它们可以在响应结束之前被多次调用，它们可以通过以下几种方式调用：</p>
@@ -4753,7 +4753,7 @@ param2: 'xyz</pre>
 <p>响应写入是异步的，并且在写操作进入队列之后会立即返回。</p>
 </div>
 <div class="paragraph">
-<p>若您只需要将单个字符串或 <code>Buffer</code> 写入到HTTP 响应，则可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_end">end</a></code> 方法将其直接写入响应中并发回到客户端。</p>
+<p>若您只需要将单个字符串或 <code>Buffer</code> 写入到HTTP 响应，则可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_end">end</a></code> 方法将其直接写入响应中并发回到客户端。</p>
 </div>
 <div class="paragraph">
 <p>第一次写入操作会触发响应头的写入，因此，若您不使用HTTP 分块，那么必须在写入响应之前设置 <code>Content-Length</code> 头，否则会太迟。若您使用 HTTP 分块则不需要担心这点。</p>
@@ -4762,7 +4762,7 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_完成_http_响应">完成 HTTP 响应</h4>
 <div class="paragraph">
-<p>一旦您完成了 HTTP 响应，可调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_end">end</a></code> 将其发回客户端。</p>
+<p>一旦您完成了 HTTP 响应，可调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_end">end</a></code> 将其发回客户端。</p>
 </div>
 <div class="paragraph">
 <p>这可以通过几种方式完成：</p>
@@ -4792,13 +4792,13 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_关闭底层连接">关闭底层连接</h4>
 <div class="paragraph">
-<p>您可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_close">close</a></code> 方法关闭底层的TCP 连接。</p>
+<p>您可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_close">close</a></code> 方法关闭底层的TCP 连接。</p>
 </div>
 <div class="paragraph">
 <p>当响应结束时，Vert.x 将自动关闭非 keep-alive 的连接。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下，Vert.x 不会自动关闭 keep-alive 的连接，若您想要在一段空闲时间之后让 Vert.x 自动关闭 keep-alive 的连接，则使用 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setIdleTimeout">setIdleTimeout</a></code> 方法进行配置。</p>
+<p>默认情况下，Vert.x 不会自动关闭 keep-alive 的连接，若您想要在一段空闲时间之后让 Vert.x 自动关闭 keep-alive 的连接，则使用 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setIdleTimeout">setIdleTimeout</a></code> 方法进行配置。</p>
 </div>
 <div class="paragraph">
 <p>HTTP/2 连接在关闭响应之前会发送 <code>GOAWAY</code> 帧。</p>
@@ -4808,7 +4808,7 @@ param2: 'xyz</pre>
 <h4 id="_设置响应头">设置响应头</h4>
 <div class="paragraph">
 <p>HTTP 响应头可直接添加到 HTTP 响应中，通常直接操作
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_headers">headers</a></code>：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_headers">headers</a></code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4820,7 +4820,7 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_putHeader">putHeader</a></code> 方法：</p>
+<p>或您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_putHeader">putHeader</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4852,7 +4852,7 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>默认是不分块的，当处于分块模式，每次调用任意一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_write">write</a></code>
+<p>默认是不分块的，当处于分块模式，每次调用任意一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_write">write</a></code>
 方法将导致新的 HTTP 块被写出。</p>
 </div>
 <div class="paragraph">
@@ -4871,7 +4871,7 @@ param2: 'xyz</pre>
 </table>
 </div>
 <div class="paragraph">
-<p>若要向响应添加尾部，则直接添加到 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_trailers">trailers</a></code> 里。</p>
+<p>若要向响应添加尾部，则直接添加到 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_trailers">trailers</a></code> 里。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4883,7 +4883,7 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>或者调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_putTrailer">putTrailer</a></code> 方法：</p>
+<p>或者调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_putTrailer">putTrailer</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4897,17 +4897,17 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_直接从磁盘或_classpath_读文件">直接从磁盘或 Classpath 读文件</h4>
 <div class="paragraph">
-<p>若您正在编写一个Web 服务端，一种从磁盘中读取并提供文件的方法是将文件作为 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code>
+<p>若您正在编写一个Web 服务端，一种从磁盘中读取并提供文件的方法是将文件作为 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code>
 对象打开并其传送到HTTP 响应中。</p>
 </div>
 <div class="paragraph">
-<p>或您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.FileSystem.html#method_readFile">readFile</a></code> 方法一次性加载它，并直接将其写入响应。</p>
+<p>或您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.FileSystem.html#method_readFile">readFile</a></code> 方法一次性加载它，并直接将其写入响应。</p>
 </div>
 <div class="paragraph">
 <p>或者，Vert.x 提供了一种方法，允许您在一个操作中将文件从磁盘或文件系统中读取并提供给HTTP 响应。若底层操作系统支持，这会导致操作系统不通过用户空间复制而直接将文件内容中字节数据从文件传输到Socket。</p>
 </div>
 <div class="paragraph">
-<p>这是使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_sendFile">sendFile</a></code> 方法完成的，对于大文件处理通常更有效，而这个方法对于小文件可能很慢。</p>
+<p>这是使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_sendFile">sendFile</a></code> 方法完成的，对于大文件处理通常更有效，而这个方法对于小文件可能很慢。</p>
 </div>
 <div class="paragraph">
 <p>这儿是一个非常简单的 Web 服务器，它使用 <code>sendFile</code> 方法从文件系统中读取并提供文件：</p>
@@ -4927,7 +4927,7 @@ param2: 'xyz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>发送文件是异步的，可能在调用返回一段时间后才能完成。如果要在文件写入时收到通知，可以在 <code>sendFile</code> 方法中设置一个处理器。 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_sendFile">sendFile</a></code></p>
+<p>发送文件是异步的，可能在调用返回一段时间后才能完成。如果要在文件写入时收到通知，可以在 <code>sendFile</code> 方法中设置一个处理器。 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_sendFile">sendFile</a></code></p>
 </div>
 <div class="paragraph">
 <p>请阅读 <a href="#classpath">从 Classpath 访问文件</a> 章节了解类路径的限制或禁用它。</p>
@@ -5006,9 +5006,9 @@ param2: 'xyz</pre>
 <div class="sect3">
 <h4 id="_pumping_响应">Pumping 响应</h4>
 <div class="paragraph">
-<p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 实例，因此您可以从任何
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a>`向其泵送数据，如 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a>`或 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
+<p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 实例，因此您可以从任何
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a>`向其泵送数据，如 `<a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a>`或 `<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一个例子，它回应了任何 PUT 方法的响应中的请求体，它为请求体使用了 Pump，所以即使 HTTP 请求体很大并填满了内存，任何时候它依旧会工作：</p>
@@ -5038,7 +5038,7 @@ param2: 'xyz</pre>
 <p>HTTP/2 是用于 HTTP 请求/响应模型的包含各种帧的一种帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>要发送这样的帧，您可以在响应中使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_writeCustomFrame">writeCustomFrame</a></code> 方法，以下是一个例子：</p>
+<p>要发送这样的帧，您可以在响应中使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_writeCustomFrame">writeCustomFrame</a></code> 方法，以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5088,8 +5088,8 @@ param2: 'xyz</pre>
 <p>HTTP/2 规范中定义了可用的 <a href="http://httpwg.org/specs/rfc7540.html#ErrorCodes">错误码</a> 列表：</p>
 </div>
 <div class="paragraph">
-<p>若使用了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_exceptionHandler">request handler</a></code> 和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_exceptionHandler">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知：</p>
+<p>若使用了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_exceptionHandler">request handler</a></code> 和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_exceptionHandler">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5144,15 +5144,15 @@ param2: 'xyz</pre>
 <p>推送响应处理器客户能会接收到失败，如：客户端可能取消推送，因为它已经在缓存中包含了 <code>main.js</code> ，并不在需要它。</p>
 </div>
 <div class="paragraph">
-<p>您必须在响应结束之前调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_push">push</a></code> 方法，但是在推送响应过后依然可以写响应。</p>
+<p>您必须在响应结束之前调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_push">push</a></code> 方法，但是在推送响应过后依然可以写响应。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_handling_exceptions">Handling exceptions</h4>
 <div class="paragraph">
-<p>You can set an <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html#method_exceptionHandler">exceptionHandler</a></code> to receive any
-exceptions that happens before the connection is passed to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html#method_requestHandler">requestHandler</a></code>
-or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html#method_websocketHandler">websocketHandler</a></code> , e.g during the TLS handshake.</p>
+<p>You can set an <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html#method_exceptionHandler">exceptionHandler</a></code> to receive any
+exceptions that happens before the connection is passed to the <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html#method_requestHandler">requestHandler</a></code>
+or to the <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html#method_websocketHandler">websocketHandler</a></code> , e.g during the TLS handshake.</p>
 </div>
 </div>
 </div>
@@ -5171,7 +5171,7 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <p>这允许它同时处理支持HTTP 压缩的客户端和不支持的客户端。</p>
 </div>
 <div class="paragraph">
-<p>要启用压缩，可以使用 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setCompressionSupported">setCompressionSupported</a></code> 方法进行配置。默认情况下，未启用压缩。</p>
+<p>要启用压缩，可以使用 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setCompressionSupported">setCompressionSupported</a></code> 方法进行配置。默认情况下，未启用压缩。</p>
 </div>
 <div class="paragraph">
 <p>默认情况下，未启用压缩。</p>
@@ -5208,13 +5208,13 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <p>使用高于 1-2 的压缩级别通常允许仅仅保存一些字节大小 —— 它的增益不是线性的，并取决于要压缩的特定数据 —— 但它可以满足服务器所要求的CPU周期的不可控的成本（注意现在Vert.x不支持任何缓存形式的响应数据，如静态文件，因此压缩是在每个请求体生成时进行的）,它可生成压缩过的响应数据、并对接收的响应解码（膨胀）—— 和客户端使用的方式一致，这种操作随着压缩级别的增长会变得更加倾向于CPU密集型。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下 —— 如果通过 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setCompressionSupported">setCompressionSupported</a></code> 方法启用压缩，Vert.x 将使用 <strong>6</strong> 作为压缩级别，但是该参数可通过 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setCompressionLevel">setCompressionLevel</a></code> 方法来更改。</p>
+<p>默认情况下 —— 如果通过 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setCompressionSupported">setCompressionSupported</a></code> 方法启用压缩，Vert.x 将使用 <strong>6</strong> 作为压缩级别，但是该参数可通过 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setCompressionLevel">setCompressionLevel</a></code> 方法来更改。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_创建_http_客户端">创建 HTTP 客户端</h3>
 <div class="paragraph">
-<p>您可通过以下方式创建一个具有默认配置的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 实例：</p>
+<p>您可通过以下方式创建一个具有默认配置的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5238,7 +5238,7 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <p>Vert.x 支持基于 TLS <code>h2</code> 和 TCP <code>h2c</code> 的 HTTP/2 协议。</p>
 </div>
 <div class="paragraph">
-<p>默认情况下，HTTP 客户端会发送 HTTP/1.1 请求。若要执行 HTTP/2 请求，则必须调用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setProtocolVersion">setProtocolVersion</a></code>
+<p>默认情况下，HTTP 客户端会发送 HTTP/1.1 请求。若要执行 HTTP/2 请求，则必须调用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setProtocolVersion">setProtocolVersion</a></code>
 方法将版本设置成 <code>HTTP_2</code> 。</p>
 </div>
 <div class="paragraph">
@@ -5274,13 +5274,13 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 </div>
 <div class="paragraph">
 <p><code>h2c</code> 连接也可以直接建立，如连接可以使用前文提到的方式创建，当
-<code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setHttp2ClearTextUpgrade">setHttp2ClearTextUpgrade</a>`选项设置为 `false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
+<code><a href="../php/dataobjects.html#HttpClientOptions#method_setHttp2ClearTextUpgrade">setHttp2ClearTextUpgrade</a>`选项设置为 `false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
 </div>
 <div class="paragraph">
-<p>HTTP 服务端可能不支持 HTTP/2，当响应到达时，可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_version">version</a></code> 方法检查响应实际HTTP版本。</p>
+<p>HTTP 服务端可能不支持 HTTP/2，当响应到达时，可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_version">version</a></code> 方法检查响应实际HTTP版本。</p>
 </div>
 <div class="paragraph">
-<p>当客户端连接到 HTTP/2 服务端时，它将向服务端发送其 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_getInitialSettings">初始设置</a></code>.
+<p>当客户端连接到 HTTP/2 服务端时，它将向服务端发送其 <code><a href="../php/dataobjects.html#HttpClientOptions#method_getInitialSettings">初始设置</a></code>.
 。设置定义服务器如何使用连接、客户端的默认初始设置是由 HTTP/2 RFC定义的。</p>
 </div>
 </div>
@@ -5353,7 +5353,7 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 </div>
 <div class="paragraph">
 <p>使用 Vert.x HTTP Client 执行这种请求最简单的方式是使用加了 <code>Now</code> 后缀的请求方法，如
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_getNow">getNow</a></code>。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_getNow">getNow</a></code>。</p>
 </div>
 <div class="paragraph">
 <p>这些方法会创建HTTP 请求，并在单个方法调用中发送它，而且允许您提供一个处理器，当HTTP 响应发送回来时调用该处理器来处理响应结果。</p>
@@ -5378,7 +5378,7 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <div class="sect3">
 <h4 id="_发送通用请求">发送通用请求</h4>
 <div class="paragraph">
-<p>有时您在运行时不知道发送请求的 HTTP 方法，对于这种情况，我们提供通用请求方法 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_request">request</a></code> ，允许您在运行时指定 HTTP 方法：</p>
+<p>有时您在运行时不知道发送请求的 HTTP 方法，对于这种情况，我们提供通用请求方法 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_request">request</a></code> ，允许您在运行时指定 HTTP 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5401,10 +5401,10 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <p>有时您想要发送一个包含了请求体的请求，或者也许您想要在发送请求之前写入头部到请求中。</p>
 </div>
 <div class="paragraph">
-<p>为此，您可以调用其中一个指定的请求方法，如 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_post">post</a></code> 或一个其他通用请求方法，如 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_request">request</a></code> 。</p>
+<p>为此，您可以调用其中一个指定的请求方法，如 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_post">post</a></code> 或一个其他通用请求方法，如 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_request">request</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>这些方法都不会立即发送请求，而是返回一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code>
+<p>这些方法都不会立即发送请求，而是返回一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code>
 实例，它可以用来写数据到请求体和请求头。</p>
 </div>
 <div class="paragraph">
@@ -5498,7 +5498,7 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <div class="sect3">
 <h4 id="_写请求头">写请求头</h4>
 <div class="paragraph">
-<p>您可以直接使用 MultiMap 结构的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_headers">headers</a></code> 来设置请求头：</p>
+<p>您可以直接使用 MultiMap 结构的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_headers">headers</a></code> 来设置请求头：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5511,10 +5511,10 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 </div>
 </div>
 <div class="paragraph">
-<p>这个headers是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 的实例，它提供了添加、设置、删除条目的操作。HTTP Header允许一个特定的键包含多个值。</p>
+<p>这个headers是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 的实例，它提供了添加、设置、删除条目的操作。HTTP Header允许一个特定的键包含多个值。</p>
 </div>
 <div class="paragraph">
-<p>您也可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_putHeader">putHeader</a></code> 方法编写头文件：</p>
+<p>您也可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_putHeader">putHeader</a></code> 方法编写头文件：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5533,14 +5533,14 @@ or to the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vert
 <h4 id="_非标准的http_方法">非标准的HTTP 方法</h4>
 <div class="paragraph">
 <p>The <code>OTHER</code> HTTP method is used for non standard methods, when this method
-is used, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setRawMethod">setRawMethod</a></code> must be used to
+is used, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setRawMethod">setRawMethod</a></code> must be used to
 set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_发送_http_请求">发送 HTTP 请求</h4>
 <div class="paragraph">
-<p>一旦完成了 HTTP 请求的准备工作，您必须调用其中一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_end">end</a></code> 方法来发送该请求（结束请求）。</p>
+<p>一旦完成了 HTTP 请求的准备工作，您必须调用其中一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_end">end</a></code> 方法来发送该请求（结束请求）。</p>
 </div>
 <div class="paragraph">
 <p>结束一个请求时，若请求头尚未被写入，会导致它们被写入，并且请求被标记成完成的。</p>
@@ -5579,7 +5579,7 @@ set the raw method to send to the server.</p>
 <p>这允许使用块方式写入HTTP 请求体，这个在请求体比较大需要流式发送到服务器，或预先不知道大小时很常用。</p>
 </div>
 <div class="paragraph">
-<p>您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setChunked">setChunked</a></code> 将HTTP 请求设置成分块模式。</p>
+<p>您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setChunked">setChunked</a></code> 将HTTP 请求设置成分块模式。</p>
 </div>
 <div class="paragraph">
 <p>在分块模式下，每次调用 <code>write</code> 方法将导致新的块被写入到报文，这种模式中，无需先设置请求头中的 <code>Content-Length</code> 。</p>
@@ -5602,7 +5602,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_请求超时">请求超时</h4>
 <div class="paragraph">
-<p>您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setTimeout">setTimeout</a></code> 设置一个特定 HTTP 请求的超时时间。</p>
+<p>您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setTimeout">setTimeout</a></code> 设置一个特定 HTTP 请求的超时时间。</p>
 </div>
 <div class="paragraph">
 <p>若请求在超时期限内未返回任何数据，则异常将会被传给异常处理器（若提供），并且请求将会被关闭。</p>
@@ -5611,7 +5611,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_handling_exceptions_2">Handling exceptions</h4>
 <div class="paragraph">
-<p>您可以通过在 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> 实例中设置异常处理器来处理请求时发生的异常：</p>
+<p>您可以通过在 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> 实例中设置异常处理器来处理请求时发生的异常：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5627,7 +5627,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>这种处理器不处理需要在 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> 中处理的非 2xx 响应：</p>
+<p>这种处理器不处理需要在 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> 中处理的非 2xx 响应：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5662,7 +5662,7 @@ set the raw method to send to the server.</p>
 <h4 id="_客户端请求中指定处理器">客户端请求中指定处理器</h4>
 <div class="paragraph">
 <p>不像在调用中提供响应处理器来创建客户端请求对象，相反您可以当请求创建时不提供处理器、稍后在请求对象中调用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_handler">handler</a>`来设置。如：</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_handler">handler</a>`来设置。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5678,7 +5678,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_使用流式请求">使用流式请求</h4>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a>`实例实现了 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a>`实例实现了 `<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
 </div>
 <div class="paragraph">
 <p>例如，您可以将磁盘上的文件直接泵送到HTTP 请求体中，如下所示：</p>
@@ -5703,7 +5703,7 @@ set the raw method to send to the server.</p>
 <p>HTTP/2 是用于 HTTP 请求/响应模型的具有各种帧的一个帧协议，该协议允许发送和接收其他类型的帧。</p>
 </div>
 <div class="paragraph">
-<p>要发送这样的帧，您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_write">write</a></code> 方法写入请求，以下是一个例子：</p>
+<p>要发送这样的帧，您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_write">write</a></code> 方法写入请求，以下是一个例子：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5748,8 +5748,8 @@ set the raw method to send to the server.</p>
 <p>HTTP/2规范定义了可使用的 <a href="http://httpwg.org/specs/rfc7540.html#ErrorCodes">错误码</a> 列表。</p>
 </div>
 <div class="paragraph">
-<p>若使用了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_exceptionHandler">request handler</a></code> 和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_exceptionHandler">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知。</p>
+<p>若使用了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_exceptionHandler">request handler</a></code> 和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_exceptionHandler">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5768,11 +5768,11 @@ set the raw method to send to the server.</p>
 <div class="sect2">
 <h3 id="_处理_http_响应">处理 HTTP 响应</h3>
 <div class="paragraph">
-<p>您可以在请求方法中指定处理器或通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> 对象直接设置处理器来接收到 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> 的实例。</p>
+<p>您可以在请求方法中指定处理器或通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> 对象直接设置处理器来接收到 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> 的实例。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_statusCode">statusCode</a></code>
-和 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_statusMessage">statusMessage</a></code> 方法从响应中查询响应的状态码和状态消息：</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_statusCode">statusCode</a></code>
+和 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_statusMessage">statusMessage</a></code> 方法从响应中查询响应的状态码和状态消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5790,16 +5790,16 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_使用流式响应">使用流式响应</h4>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> 实例也是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 实例，这意味着您可以泵送数据到任何 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 实例。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> 实例也是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 实例，这意味着您可以泵送数据到任何 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 实例。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_响应头和尾">响应头和尾</h4>
 <div class="paragraph">
-<p>HTTP 响应可包含头信息。您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_headers">headers</a></code> 方法来读取响应头。</p>
+<p>HTTP 响应可包含头信息。您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_headers">headers</a></code> 方法来读取响应头。</p>
 </div>
 <div class="paragraph">
-<p>该方法返回的对象是 一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 实例，因为 HTTP 响应头中单个键可以关联多个值。</p>
+<p>该方法返回的对象是 一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 实例，因为 HTTP 响应头中单个键可以关联多个值。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5813,7 +5813,7 @@ set the raw method to send to the server.</p>
 <p>分块 HTTP 响应还可以包含响应尾(trailer) —— 这实际上是在发送响应体的最后一个（数据）块。</p>
 </div>
 <div class="paragraph">
-<p>您可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_trailers">trailers</a></code> 方法读取响应尾，尾数据也是一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 。</p>
+<p>您可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_trailers">trailers</a></code> 方法读取响应尾，尾数据也是一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.MultiMap.html">MultiMap</a></code> 。</p>
 </div>
 </div>
 <div class="sect3">
@@ -5825,8 +5825,8 @@ set the raw method to send to the server.</p>
 <p>如果收到的HTTP 响应包含响应体（正文），它可能会在响应头被读取后的某个时间以分片的方式到达。在调用响应处理器之前，我们不要等待所有的响应体到达，因为它可能非常大而要等待很长时间、又或者会花费大量内存。</p>
 </div>
 <div class="paragraph">
-<p>当响应体的某部分（数据）到达时，<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_handler">handler</a></code>
-方法绑定的回调函数将会被调用，其中传入的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 中包含了响应体的这一分片（部分）内容：</p>
+<p>当响应体的某部分（数据）到达时，<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_handler">handler</a></code>
+方法绑定的回调函数将会被调用，其中传入的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 中包含了响应体的这一分片（部分）内容：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5867,7 +5867,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>或者当响应已被完全读取时，您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_bodyHandler">bodyHandler</a></code> 方法以便读取整个响应体：</p>
+<p>或者当响应已被完全读取时，您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_bodyHandler">bodyHandler</a></code> 方法以便读取整个响应体：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5886,13 +5886,13 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_响应完成处理器">响应完成处理器</h4>
 <div class="paragraph">
-<p>当整个响应体被完全读取或者无响应体的响应头被完全读取时，响应的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_endHandler">endHandler</a></code> 就会被调用。</p>
+<p>当整个响应体被完全读取或者无响应体的响应头被完全读取时，响应的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_endHandler">endHandler</a></code> 就会被调用。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_从响应中读取cookie">从响应中读取Cookie</h4>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_cookies">cookies</a></code> 方法从响应中获取 Cookie 列表。</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html#method_cookies">cookies</a></code> 方法从响应中获取 Cookie 列表。</p>
 </div>
 <div class="paragraph">
 <p>或者您可以在响应中自己解析 <code>Set-Cookie</code> 头。</p>
@@ -5941,7 +5941,7 @@ set the raw method to send to the server.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>默认情况最大的重定向数为 <code>16</code> ，您可使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setMaxRedirects">setMaxRedirects</a></code> 方法设置。</p>
+<p>默认情况最大的重定向数为 <code>16</code> ，您可使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setMaxRedirects">setMaxRedirects</a></code> 方法设置。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5985,7 +5985,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>这个策略将会处理接收到的原始 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> ，并返回 <code>null</code> 或 <code>Future&lt;HttpClientRequest&gt;</code> 。</p>
+<p>这个策略将会处理接收到的原始 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> ，并返回 <code>null</code> 或 <code>Future&lt;HttpClientRequest&gt;</code> 。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6009,7 +6009,7 @@ set the raw method to send to the server.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>请求头，除非您已经设置了一些头（包括 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setHost">setHost</a></code> ）</p>
+<p>请求头，除非您已经设置了一些头（包括 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_setHost">setHost</a></code> ）</p>
 </li>
 <li>
 <p>请求体，除非返回的请求使用了 <code>GET</code> 方法</p>
@@ -6038,13 +6038,13 @@ set the raw method to send to the server.</p>
 <p>这里的想法是允许服务器在发送大量数据之前授权、接收/拒绝请求，若请求不能被接收，则发送大量数据信息会浪费带宽，并将服务器绑定在读取即将丢弃的无用数据中。</p>
 </div>
 <div class="paragraph">
-<p>Vert.x 允许您在客户端请求对象中设置一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_continueHandler">continueHandler</a></code> 。</p>
+<p>Vert.x 允许您在客户端请求对象中设置一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_continueHandler">continueHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>它将在服务器发回一个状态 <code>Status: 100 (Continue)</code> 时被调用, 同时也表示（客户端）可以发送请求的剩余部分。</p>
 </div>
 <div class="paragraph">
-<p>通常将其与 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_sendHead">sendHead</a></code> 结合起来发送请求的头信息。</p>
+<p>通常将其与 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_sendHead">sendHead</a></code> 结合起来发送请求的头信息。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -6071,10 +6071,10 @@ set the raw method to send to the server.</p>
 <p>在服务端，Vert.x HTTP Server可配置成接收到 <code>Expect: 100-Continue</code> 头时自动发回 <code>100 Continue</code> 临时响应信息。</p>
 </div>
 <div class="paragraph">
-<p>这个可通过 <code><a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setHandle100ContinueAutomatically">setHandle100ContinueAutomatically</a></code> 方法来设置。</p>
+<p>这个可通过 <code><a href="../php/dataobjects.html#HttpServerOptions#method_setHandle100ContinueAutomatically">setHandle100ContinueAutomatically</a></code> 方法来设置。</p>
 </div>
 <div class="paragraph">
-<p>若您想要决定是否手动发送持续响应，那么此属性可设置成 <code>false</code> （默认值），然后您可以通过检查头信息并且调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_writeContinue">writeContinue</a></code>
+<p>若您想要决定是否手动发送持续响应，那么此属性可设置成 <code>false</code> （默认值），然后您可以通过检查头信息并且调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html#method_writeContinue">writeContinue</a></code>
 方法让客户端持续发送请求体：</p>
 </div>
 <div class="listingblock">
@@ -6224,7 +6224,7 @@ set the raw method to send to the server.</p>
 <p>Content-Encoding: gzip</p>
 </div>
 <div class="paragraph">
-<p>创建客户端时可使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setTryUseCompression">setTryUseCompression</a></code> 设置配置项启用压缩。</p>
+<p>创建客户端时可使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setTryUseCompression">setTryUseCompression</a></code> 设置配置项启用压缩。</p>
 </div>
 <div class="paragraph">
 <p>默认情况压缩被禁用。</p>
@@ -6239,7 +6239,7 @@ set the raw method to send to the server.</p>
 <p>对于 HTTP/1.x 版本，HTTP 客户端支持连接池，它允许您重用请求之间的连接。</p>
 </div>
 <div class="paragraph">
-<p>为了连接池（能）工作，配置客户端时，keep alive 必须通过 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setKeepAlive">setKeepAlive</a></code>
+<p>为了连接池（能）工作，配置客户端时，keep alive 必须通过 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setKeepAlive">setKeepAlive</a></code>
 方法设置成 <code>true</code> 。默认值为 <code>true</code> 。</p>
 </div>
 <div class="paragraph">
@@ -6247,7 +6247,7 @@ set the raw method to send to the server.</p>
 当 keep alive 禁用时，Vert.x 将为每一个 HTTP/1.1 请求添加一个 <code>Connection: Close</code> 头 —— 表示在响应完成后连接将被关闭。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setMaxPoolSize">setMaxPoolSize</a></code> 方法为每个服务器配置连接池的最大连接数。</p>
+<p>可使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setMaxPoolSize">setMaxPoolSize</a></code> 方法为每个服务器配置连接池的最大连接数。</p>
 </div>
 <div class="paragraph">
 <p>当启用连接池创建请求时，若存在少于已经为服务器创建的最大连接数，Vert.x 将创建一个新连接，否则直接将请求添加到队列中。</p>
@@ -6261,7 +6261,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>或者，您可使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setKeepAliveTimeout">setKeepAliveTimeout</a></code> 设置空闲时间——在设置的时间内然后没使用的连接将被关闭。请注意空闲超时值以秒为单位而不是毫秒。</p>
+<p>或者，您可使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setKeepAliveTimeout">setKeepAliveTimeout</a></code> 设置空闲时间——在设置的时间内然后没使用的连接将被关闭。请注意空闲超时值以秒为单位而不是毫秒。</p>
 </div>
 </div>
 <div class="sect2">
@@ -6273,13 +6273,13 @@ set the raw method to send to the server.</p>
 <p>管道意味着在返回一个响应之前，在同一个连接上发送另一个请求，管道不适合所有请求。</p>
 </div>
 <div class="paragraph">
-<p>若要启用管道，必须调用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setPipelining">setPipelining</a></code> 方法，默认管道是禁止的。</p>
+<p>若要启用管道，必须调用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setPipelining">setPipelining</a></code> 方法，默认管道是禁止的。</p>
 </div>
 <div class="paragraph">
 <p>当启用管道时，请求可以不等待以前的响应返回而写入到连接。</p>
 </div>
 <div class="paragraph">
-<p>单个连接的管道请求限制数由 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setPipeliningLimit">setPipeliningLimit</a></code>
+<p>单个连接的管道请求限制数由 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setPipeliningLimit">setPipeliningLimit</a></code>
 方法设置，此选项定义了发送到服务器的等待响应的最大请求数。这个限制可以确保和同一个服务器的连接分发到客户端的公平性。</p>
 </div>
 </div>
@@ -6289,11 +6289,11 @@ set the raw method to send to the server.</p>
 <p>HTTP/2 提倡使用服务器的单一连接，默认情况下，HTTP 客户端针对每个服务器都使用单一连接，同样服务器上的所有流都会复用到对应连接中。</p>
 </div>
 <div class="paragraph">
-<p>当客户端需要使用连接池并使用超过一个连接时，则可使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setHttp2MaxPoolSize">setHttp2MaxPoolSize</a></code>
+<p>当客户端需要使用连接池并使用超过一个连接时，则可使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setHttp2MaxPoolSize">setHttp2MaxPoolSize</a></code>
 设置。</p>
 </div>
 <div class="paragraph">
-<p>当您希望限制每个连接的多路复用流数量而使用连接池而不是单个连接时，可使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setHttp2MultiplexingLimit">setHttp2MultiplexingLimit</a></code>
+<p>当您希望限制每个连接的多路复用流数量而使用连接池而不是单个连接时，可使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setHttp2MultiplexingLimit">setHttp2MultiplexingLimit</a></code>
 设置。</p>
 </div>
 <div class="listingblock">
@@ -6310,31 +6310,31 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>连接的复用限制是在客户端上设置限制单个连接的流数量，如果服务器使用 <code><a href="../vertx-jphp/enums.adoc#Http2Settings#method_setMaxConcurrentStreams">SETTINGS_MAX_CONCURRENT_STREAMS</a></code> 设置了下限，则有效值可以更低。</p>
+<p>连接的复用限制是在客户端上设置限制单个连接的流数量，如果服务器使用 <code><a href="../php/dataobjects.html#Http2Settings#method_setMaxConcurrentStreams">SETTINGS_MAX_CONCURRENT_STREAMS</a></code> 设置了下限，则有效值可以更低。</p>
 </div>
 <div class="paragraph">
-<p>HTTP/2 连接不会被客户端自动关闭，若要关闭它们，可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_close">close</a></code>
+<p>HTTP/2 连接不会被客户端自动关闭，若要关闭它们，可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_close">close</a></code>
 来关闭客户端实例。</p>
 </div>
 <div class="paragraph">
-<p>或者，您可以使用 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setIdleTimeout">setIdleTimeout</a></code> 设置空闲时间——这个时间内没有使用的任何连接将被关闭，注意，空闲时间以秒为单位，不是毫秒。</p>
+<p>或者，您可以使用 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setIdleTimeout">setIdleTimeout</a></code> 设置空闲时间——这个时间内没有使用的任何连接将被关闭，注意，空闲时间以秒为单位，不是毫秒。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_http_连接">HTTP 连接</h3>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html">HttpConnection</a>`接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html">HttpConnection</a>`接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
 </div>
 <div class="paragraph">
-<p>HTTP/2 实现了完整的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html">HttpConnection</a></code> API。</p>
+<p>HTTP/2 实现了完整的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html">HttpConnection</a></code> API。</p>
 </div>
 <div class="paragraph">
-<p>HTTP/1.x 实现了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html">HttpConnection</a></code> 中的部分API：仅关闭操作，实现了关闭处理器和异常处理器。该协议并不提供其他操作的语义。</p>
+<p>HTTP/1.x 实现了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html">HttpConnection</a></code> 中的部分API：仅关闭操作，实现了关闭处理器和异常处理器。该协议并不提供其他操作的语义。</p>
 </div>
 <div class="sect3">
 <h4 id="_服务端连接">服务端连接</h4>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_connection">connection</a>`方法会返回服务器上的请求连接：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_connection">connection</a>`方法会返回服务器上的请求连接：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6359,7 +6359,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_客户端连接">客户端连接</h4>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_connection">connection</a>`方法会返回客户端上的连接请求：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html#method_connection">connection</a>`方法会返回客户端上的连接请求：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6382,14 +6382,14 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_连接配置">连接配置</h4>
 <div class="paragraph">
-<p>HTTP/2 由 <code><a href="../vertx-jphp/enums.adoc#Http2Settings">Http2Settings</a></code> 数据对象来配置。</p>
+<p>HTTP/2 由 <code><a href="../php/dataobjects.html#Http2Settings">Http2Settings</a></code> 数据对象来配置。</p>
 </div>
 <div class="paragraph">
 <p>每个 Endpoint 都必须遵守连接另一端的发送设置。</p>
 </div>
 <div class="paragraph">
-<p>当建立连接时，客户端和服务器交换初始配置，初始设置由客户端上的 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setInitialSettings">setInitialSettings</a></code> 和服务器上的
-`<a href="../vertx-jphp/enums.adoc#HttpServerOptions#method_setInitialSettings">setInitialSettings</a>`方法配置。</p>
+<p>当建立连接时，客户端和服务器交换初始配置，初始设置由客户端上的 <code><a href="../php/dataobjects.html#HttpClientOptions#method_setInitialSettings">setInitialSettings</a></code> 和服务器上的
+`<a href="../php/dataobjects.html#HttpServerOptions#method_setInitialSettings">setInitialSettings</a>`方法配置。</p>
 </div>
 <div class="paragraph">
 <p>连接建立后可随时更改设置：</p>
@@ -6418,7 +6418,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>相反，在收到新的远程设置时会通知 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_remoteSettingsHandler">remoteSettingsHandler</a></code> ：</p>
+<p>相反，在收到新的远程设置时会通知 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_remoteSettingsHandler">remoteSettingsHandler</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6444,7 +6444,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_连接_ping">连接 Ping</h4>
 <div class="paragraph">
-<p>HTTP/2 连接 ping 对于确定连接往返时间或检查连接有效性很有用： <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_ping">ping</a></code> 发送 {@literal PING} 帧到远端：</p>
+<p>HTTP/2 连接 ping 对于确定连接往返时间或检查连接有效性很有用： <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_ping">ping</a></code> 发送 {@literal PING} 帧到远端：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6489,7 +6489,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_连接关闭_goaway">连接关闭/GOAWAY</h4>
 <div class="paragraph">
-<p>调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_shutdown">shutdown</a></code> 方法将发送 {@literal GOAWAY} 帧到远程的连接，要求其停止创建流：客户端将停止发送新请求，并且服务器将停止推送响应。发送 {@literal GOAWAY} 帧后，连接将等待一段时间（默认为30秒），直到所有当前流关闭和连接关闭。</p>
+<p>调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_shutdown">shutdown</a></code> 方法将发送 {@literal GOAWAY} 帧到远程的连接，要求其停止创建流：客户端将停止发送新请求，并且服务器将停止推送响应。发送 {@literal GOAWAY} 帧后，连接将等待一段时间（默认为30秒），直到所有当前流关闭和连接关闭。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6498,7 +6498,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_shutdownHandler">shutdownHandler</a>`通知何时关闭所有流，连接尚未关闭。</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_shutdownHandler">shutdownHandler</a>`通知何时关闭所有流，连接尚未关闭。</p>
 </div>
 <div class="paragraph">
 <p>有可能只需发送 {@literal GOAWAY} 帧，和关闭主要的区别在于它将只是告诉远程连接停止创建新流，而没有计划关闭连接：</p>
@@ -6521,7 +6521,7 @@ set the raw method to send to the server.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>当所有当前流已经关闭并且可关闭连接时， <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_shutdownHandler">shutdownHandler</a></code> 将被调用：</p>
+<p>当所有当前流已经关闭并且可关闭连接时， <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_shutdownHandler">shutdownHandler</a></code> 将被调用：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6553,7 +6553,7 @@ set the raw method to send to the server.</p>
 <div class="sect3">
 <h4 id="_连接关闭">连接关闭</h4>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_close">close</a></code> 方法关闭连接：</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_close">close</a></code> 方法关闭连接：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6566,7 +6566,7 @@ set the raw method to send to the server.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>连接关闭时 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpConnection.html#method_closeHandler">closeHandler</a></code> 将发出通知。</p>
+<p>连接关闭时 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpConnection.html#method_closeHandler">closeHandler</a></code> 将发出通知。</p>
 </div>
 </div>
 </div>
@@ -6658,7 +6658,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <p>有关详细信息，请参阅 <a href="#ssl">配置网络服务器以使用 SSL</a> 章节。</p>
 </div>
 <div class="paragraph">
-<p>SSL可以通过每个请求的 <code><a href="../vertx-jphp/enums.adoc#RequestOptions">RequestOptions</a></code> 来启用/禁用，或在指定模式时调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_requestAbs">requestAbs</a></code> ：</p>
+<p>SSL可以通过每个请求的 <code><a href="../php/dataobjects.html#RequestOptions">RequestOptions</a></code> 来启用/禁用，或在指定模式时调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_requestAbs">requestAbs</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6674,10 +6674,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setSsl">setSsl</a>`设置将用作客户端默认配置。</p>
+<p>`<a href="../php/dataobjects.html#HttpClientOptions#method_setSsl">setSsl</a>`设置将用作客户端默认配置。</p>
 </div>
 <div class="paragraph">
-<p>`<a href="../vertx-jphp/enums.adoc#RequestOptions#method_setSsl">setSsl</a>`将覆盖默认客户端设置：</p>
+<p>`<a href="../php/dataobjects.html#RequestOptions#method_setSsl">setSsl</a>`将覆盖默认客户端设置：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6690,7 +6690,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </ul>
 </div>
 <div class="paragraph">
-<p>同样， <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_requestAbs">requestAbs</a></code> 方法也会（在调用时）覆盖默认客户端设置。</p>
+<p>同样， <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_requestAbs">requestAbs</a></code> 方法也会（在调用时）覆盖默认客户端设置。</p>
 </div>
 <div class="sect3">
 <h4 id="_server_name_indication_sni_2">Server Name Indication (SNI)</h4>
@@ -6718,11 +6718,11 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_websocket_handler">WebSocket handler</h5>
 <div class="paragraph">
-<p>第一种方法需要在服务端实例上提供一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html#method_websocketHandler">websocketHandler</a></code> 。</p>
+<p>第一种方法需要在服务端实例上提供一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html#method_websocketHandler">websocketHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler</code> 传入一个
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html">ServerWebSocket</a>`实例，在其中去处理它。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html">ServerWebSocket</a>`实例，在其中去处理它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6734,7 +6734,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 </div>
 <div class="paragraph">
-<p>您可以调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_reject">reject</a></code> 方法来拒绝一个 WebSocket。</p>
+<p>您可以调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_reject">reject</a></code> 方法来拒绝一个 WebSocket。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6753,7 +6753,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_转换到_websocket">转换到 WebSocket</h5>
 <div class="paragraph">
-<p>处理 WebSocket 的第二种方法是处理从客户端发送的HTTP升级请求，调用服务器请求对象的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_upgrade">upgrade</a></code> 方法：</p>
+<p>处理 WebSocket 的第二种方法是处理从客户端发送的HTTP升级请求，调用服务器请求对象的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_upgrade">upgrade</a></code> 方法：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6776,22 +6776,22 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_服务端_websocket_2">服务端 WebSocket</h5>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html">ServerWebSocket</a>`实例能够让您读取在WebSocket 握手中的HTTP 请求的 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_headers">headers</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_path">path</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_query">query</a></code> 和
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_uri">URI</a></code>。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html">ServerWebSocket</a>`实例能够让您读取在WebSocket 握手中的HTTP 请求的 `<a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_headers">headers</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_path">path</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_query">query</a></code> 和
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.ServerWebSocket.html#method_uri">URI</a></code>。</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_客户端_websocket">客户端 WebSocket</h4>
 <div class="paragraph">
-<p>Vert.x 的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 支持 WebSocket。</p>
+<p>Vert.x 的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html">HttpClient</a></code> 支持 WebSocket。</p>
 </div>
 <div class="paragraph">
-<p>您可以调用其中任意一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClient.html#method_websocket">websocket</a></code> 方法创建 WebSocket 连接到服务端，并提供回调函数。</p>
+<p>您可以调用其中任意一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClient.html#method_websocket">websocket</a></code> 方法创建 WebSocket 连接到服务端，并提供回调函数。</p>
 </div>
 <div class="paragraph">
-<p>当连接建立时，处理器将被调用并且传入 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code> 实例：</p>
+<p>当连接建立时，处理器将被调用并且传入 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code> 实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6806,8 +6806,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <h4 id="_向_websocket_写入消息">向 WebSocket 写入消息</h4>
 <div class="paragraph">
 <p>若您想将一个 WebSocket 消息写入 WebSocket，可使用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeBinaryMessage">writeBinaryMessage</a>`方法或
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeTextMessage">writeTextMessage</a>`方法来执行该操作：</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeBinaryMessage">writeBinaryMessage</a>`方法或
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeTextMessage">writeTextMessage</a>`方法来执行该操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6824,7 +6824,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 <div class="paragraph">
 <p>若WebSocket 消息大于使用
-<code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setMaxWebsocketFrameSize">setMaxWebsocketFrameSize</a></code>
+<code><a href="../php/dataobjects.html#HttpClientOptions#method_setMaxWebsocketFrameSize">setMaxWebsocketFrameSize</a></code>
 设置的WebSocket 的帧的最大值，则Vert.x在将其发送到报文之前将其拆分为多个WebSocket 帧。</p>
 </div>
 </div>
@@ -6838,9 +6838,9 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 <div class="paragraph">
 <p>要发送多个帧组成的消息，请使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocketFrame.html#method_binaryFrame">WebSocketFrame::binaryFrame</a></code>
-, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocketFrame.html#method_textFrame">WebSocketFrame::textFrame</a></code> 或
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocketFrame.html#method_continuationFrame">WebSocketFrame::continuationFrame</a>`方法创建帧，并使用 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeFrame">writeFrame</a></code> 方法将其写入WebSocket。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocketFrame.html#method_binaryFrame">WebSocketFrame::binaryFrame</a></code>
+, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocketFrame.html#method_textFrame">WebSocketFrame::textFrame</a></code> 或
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocketFrame.html#method_continuationFrame">WebSocketFrame::continuationFrame</a>`方法创建帧，并使用 `<a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeFrame">writeFrame</a></code> 方法将其写入WebSocket。</p>
 </div>
 <div class="paragraph">
 <p>以下是二进制帧的示例：</p>
@@ -6862,8 +6862,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 </div>
 <div class="paragraph">
-<p>许多情况下，您只需要发送一个包含了单个最终帧的 WebSocket 消息，因此我们提供了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeFinalBinaryFrame">writeFinalBinaryFrame</a></code>
-和 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeFinalTextFrame">writeFinalTextFrame</a></code> 这两个快捷方法。</p>
+<p>许多情况下，您只需要发送一个包含了单个最终帧的 WebSocket 消息，因此我们提供了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeFinalBinaryFrame">writeFinalBinaryFrame</a></code>
+和 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html#method_writeFinalTextFrame">writeFinalTextFrame</a></code> 这两个快捷方法。</p>
 </div>
 <div class="paragraph">
 <p>下边是示例：</p>
@@ -6888,10 +6888,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect3">
 <h4 id="_从_websocket_读取帧">从 WebSocket 读取帧</h4>
 <div class="paragraph">
-<p>要 从WebSocket 读取帧，您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html#method_frameHandler">frameHandler</a></code> 方法。</p>
+<p>要 从WebSocket 读取帧，您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html#method_frameHandler">frameHandler</a></code> 方法。</p>
 </div>
 <div class="paragraph">
-<p>当帧到达时，会传入一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocketFrame.html">WebSocketFrame</a></code> 实例给帧处理器，并调用它，例如：</p>
+<p>当帧到达时，会传入一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocketFrame.html">WebSocketFrame</a></code> 实例给帧处理器，并调用它，例如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6906,14 +6906,14 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect3">
 <h4 id="_关闭_websocket">关闭 WebSocket</h4>
 <div class="paragraph">
-<p>处理完成之后，请使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocketBase.html#method_close">close</a></code> 方法关闭 WebSocket 连接。</p>
+<p>处理完成之后，请使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocketBase.html#method_close">close</a></code> 方法关闭 WebSocket 连接。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_流式_websocket">流式 WebSocket</h4>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a>`实例也是 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`的实现类，因此可以和泵(pump)一起使用。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a>`实例也是 `<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`的实现类，因此可以和泵(pump)一起使用。</p>
 </div>
 <div class="paragraph">
 <p>当使用 WebSocket 作为可写流或可读流时，它只能用于不分割多个帧的二进制帧一起使用的 WebSocket 连接。</p>
@@ -6929,8 +6929,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <p>到 <code>h2c</code> （未加密HTTP/2服务器）的连接可能不受 HTTP 代理支持，因为代理仅支持 HTTP/1.1。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions">HttpClientOptions</a></code> 中的
-`<a href="../vertx-jphp/enums.adoc#ProxyOptions">ProxyOptions</a>`对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
+<p>您可以通过 <code><a href="../php/dataobjects.html#HttpClientOptions">HttpClientOptions</a></code> 中的
+`<a href="../php/dataobjects.html#ProxyOptions">ProxyOptions</a>`对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
 </div>
 <div class="paragraph">
 <p>以下是使用 HTTP 代理的例子：</p>
@@ -7054,10 +7054,10 @@ support them (gopher:// for example).</p>
 <div class="sect2">
 <h3 id="_本地共享map">本地共享Map</h3>
 <div class="paragraph">
-<p>本地共享Map <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.LocalMap.html">Local shared maps</a></code> 允许您在同一个 Vert.x 实例中的不同 Event Loop（如不同的 Verticle 中）之间安全共享数据。</p>
+<p>本地共享Map <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.LocalMap.html">Local shared maps</a></code> 允许您在同一个 Vert.x 实例中的不同 Event Loop（如不同的 Verticle 中）之间安全共享数据。</p>
 </div>
 <div class="paragraph">
-<p>本地共享Map仅允许将某些数据类型作为键值和值，这些类型必须是不可变的，或可以像 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 那样复制某些其他类型。在后一种情况中，键/值将被复制，然后再放到Map中。</p>
+<p>本地共享Map仅允许将某些数据类型作为键值和值，这些类型必须是不可变的，或可以像 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 那样复制某些其他类型。在后一种情况中，键/值将被复制，然后再放到Map中。</p>
 </div>
 <div class="paragraph">
 <p>这样，我们可以确保在Vert.x应用程序不同线程之间 <strong>没有共享访问可变状态</strong>，因此您不必担心需要通过同步访问来保护该状态。</p>
@@ -7114,8 +7114,8 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>这使得它们对于托管Vert.x Web应用程序的服务器场中的会话状态存储非常有用。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getAsyncMap">getAsyncMap</a></code> 方法获取
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">AsyncMap</a>`的实例。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getAsyncMap">getAsyncMap</a></code> 方法获取
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">AsyncMap</a>`的实例。</p>
 </div>
 <div class="paragraph">
 <p>获取Map的过程是异步的，返回结果可以传给您指定的处理器中。以下是一个例子：</p>
@@ -7138,7 +7138,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect3">
 <h4 id="_将数据放入map">将数据放入Map</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_put">put</a></code> 方法将数据放入Map。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_put">put</a></code> 方法将数据放入Map。</p>
 </div>
 <div class="paragraph">
 <p><code>put</code> 方法是异步的，一旦完成它会通知处理器：</p>
@@ -7160,7 +7160,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect3">
 <h4 id="_从map读取数据">从Map读取数据</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_get">get</a></code> 方法从Map读取数据。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_get">get</a></code> 方法从Map读取数据。</p>
 </div>
 <div class="paragraph">
 <p><code>get</code> 方法也是异步的，一段时间过后它会通知处理器并传入结果。</p>
@@ -7185,7 +7185,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>您还可以从异步Map中删除条目、清除Map、读取它的大小。</p>
 </div>
 <div class="paragraph">
-<p>有关更多信息，请参阅 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">API 文档</a></code> 。</p>
+<p>有关更多信息，请参阅 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">API 文档</a></code> 。</p>
 </div>
 </div>
 </div>
@@ -7193,22 +7193,22 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect2">
 <h3 id="_集群范围锁">集群范围锁</h3>
 <div class="paragraph">
-<p>集群范围锁 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Lock.html">Asynchronous locks</a></code> 允许您在集群中获取独占锁 —— 当您想要在任何时间只在集群一个节点上执行某些操作或访问资源时，这很有用。</p>
+<p>集群范围锁 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Lock.html">Asynchronous locks</a></code> 允许您在集群中获取独占锁 —— 当您想要在任何时间只在集群一个节点上执行某些操作或访问资源时，这很有用。</p>
 </div>
 <div class="paragraph">
 <p>集群范围锁具有异步API，它和大多数等待锁释放的阻塞调用线程的API锁不相同。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getLock">getLock</a></code> 方法获取锁。</p>
+<p>可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getLock">getLock</a></code> 方法获取锁。</p>
 </div>
 <div class="paragraph">
-<p>它不会阻塞，但当锁可用时，将 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Lock.html">Lock</a></code> 的实例传入处理器并调用它，表示您现在拥有该锁。</p>
+<p>它不会阻塞，但当锁可用时，将 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Lock.html">Lock</a></code> 的实例传入处理器并调用它，表示您现在拥有该锁。</p>
 </div>
 <div class="paragraph">
 <p>若您拥有的锁没有其他调用者，集群上的任何地方都可以获得该锁。</p>
 </div>
 <div class="paragraph">
-<p>当您用完锁后，您可以调用  <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Lock.html#method_release">release</a></code> 方法来释放它，以便另一个调用者可获得它。</p>
+<p>当您用完锁后，您可以调用  <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Lock.html#method_release">release</a></code> 方法来释放它，以便另一个调用者可获得它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7254,10 +7254,10 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>很多时候我们需要在集群范围内维护一个原子计数器。</p>
 </div>
 <div class="paragraph">
-<p>您可以用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Counter.html">Counter</a></code> 来做到这一点。</p>
+<p>您可以用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Counter.html">Counter</a></code> 来做到这一点。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getCounter">getCounter</a></code> 方法获取一个实例：</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getCounter">getCounter</a></code> 方法获取一个实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7275,7 +7275,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>一旦您有了一个实例，您可以获取当前的计数，以原子方式递增、递减，并使用各种方法添加一个值。</p>
 </div>
 <div class="paragraph">
-<p>有更多信息，请参阅 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Counter.html">API 文档</a></code></p>
+<p>有更多信息，请参阅 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Counter.html">API 文档</a></code></p>
 </div>
 </div>
 </div>
@@ -7284,10 +7284,10 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <h2 id="_访问文件系统">访问文件系统</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x 中的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.FileSystem.html">FileSystem</a></code> 对象提供了许多操作文件系统的方法。</p>
+<p>Vert.x 中的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.FileSystem.html">FileSystem</a></code> 对象提供了许多操作文件系统的方法。</p>
 </div>
 <div class="paragraph">
-<p>每个Vert.x 实例有一个文件系统对象，您可以使用  <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_fileSystem">fileSystem</a></code> 方法获取它。</p>
+<p>每个Vert.x 实例有一个文件系统对象，您可以使用  <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_fileSystem">fileSystem</a></code> 方法获取它。</p>
 </div>
 <div class="paragraph">
 <p>每个操作都提供了阻塞和非阻塞版本，其中非阻塞版本接受一个处理器 <code>Handler</code> ，当操作完成或发生错误时调用该处理器。</p>
@@ -7328,7 +7328,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 </div>
 </div>
 <div class="paragraph">
-<p>Vert.x 文件系统支持诸如 copy、move、truncate、chmod 和许多其他文件操作。我们不会在这里列出所有内容，请参考 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.FileSystem.html">API 文档</a></code> 获取完整列表。</p>
+<p>Vert.x 文件系统支持诸如 copy、move、truncate、chmod 和许多其他文件操作。我们不会在这里列出所有内容，请参考 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.FileSystem.html">API 文档</a></code> 获取完整列表。</p>
 </div>
 <div class="paragraph">
 <p>让我们看看使用异步方法的几个例子：</p>
@@ -7336,10 +7336,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
-    use io\vertx\jphp\core\Vertx;
     use io\vertx\jphp\core\buffer\Buffer;
-    $vertx = Vertx::vertx();
-
     // Read a file
     $vertx-&gt;fileSystem()-&gt;readFile("target/classes/readme.txt", function ($result, $result_err) {
         if ($result != null) {
@@ -7385,7 +7382,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>Vert.x提供了异步文件访问的抽象，允许您操作文件系统上的文件。</p>
 </div>
 <div class="paragraph">
-<p>您可以像下边代码打开一个  <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> ：</p>
+<p>您可以像下边代码打开一个  <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7411,7 +7408,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <h4 id="_随机访问写">随机访问写</h4>
 <div class="paragraph">
 <p>要使用 <code>AsyncFile</code> 进行随机访问写，请使用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html#method_write">write</a>`方法。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html#method_write">write</a>`方法。</p>
 </div>
 <div class="paragraph">
 <p>这个方法的参数有：</p>
@@ -7435,9 +7432,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
-    use io\vertx\jphp\core\Vertx;
     use io\vertx\jphp\core\buffer\Buffer;
-    $vertx = Vertx::vertx();
     $vertx-&gt;fileSystem()-&gt;open("target/classes/hello.txt", array(
     ), function ($result, $result_err) {
         if ($result != null) {
@@ -7464,7 +7459,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <h4 id="_随机访问读">随机访问读</h4>
 <div class="paragraph">
 <p>要使用 <code>AsyncFile</code> 进行随机访问读，请使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html#method_read">read</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html#method_read">read</a></code>
 方法。</p>
 </div>
 <div class="paragraph">
@@ -7495,9 +7490,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
-    use io\vertx\jphp\core\Vertx;
     use io\vertx\jphp\core\buffer\Buffer;
-    $vertx = Vertx::vertx();
     $vertx-&gt;fileSystem()-&gt;open("target/classes/les_miserables.txt", array(
     ), function ($result, $result_err) {
         if ($result != null) {
@@ -7522,25 +7515,25 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect3">
 <h4 id="_打开选项">打开选项</h4>
 <div class="paragraph">
-<p>打开 <code>AsyncFile</code> 时，您可以传递一个 <code><a href="../vertx-jphp/enums.adoc#OpenOptions">OpenOptions</a></code> 实例，这些选项描述了访问文件的行为。例如：您可使用
-<code><a href="../vertx-jphp/enums.adoc#OpenOptions#method_setRead">setRead</a></code>, <code><a href="../vertx-jphp/enums.adoc#OpenOptions#method_setWrite">setWrite</a></code>
-和 <code><a href="../vertx-jphp/enums.adoc#OpenOptions#method_setPerms">setPerms</a></code> 方法配置文件访问权限。</p>
+<p>打开 <code>AsyncFile</code> 时，您可以传递一个 <code><a href="../php/dataobjects.html#OpenOptions">OpenOptions</a></code> 实例，这些选项描述了访问文件的行为。例如：您可使用
+<code><a href="../php/dataobjects.html#OpenOptions#method_setRead">setRead</a></code>, <code><a href="../php/dataobjects.html#OpenOptions#method_setWrite">setWrite</a></code>
+和 <code><a href="../php/dataobjects.html#OpenOptions#method_setPerms">setPerms</a></code> 方法配置文件访问权限。</p>
 </div>
 <div class="paragraph">
 <p>若打开的文件已经存在，则可以使用
-`<a href="../vertx-jphp/enums.adoc#OpenOptions#method_setCreateNew">setCreateNew</a>`和
-`<a href="../vertx-jphp/enums.adoc#OpenOptions#method_setTruncateExisting">setTruncateExisting</a>`配置对应行为。</p>
+`<a href="../php/dataobjects.html#OpenOptions#method_setCreateNew">setCreateNew</a>`和
+`<a href="../php/dataobjects.html#OpenOptions#method_setTruncateExisting">setTruncateExisting</a>`配置对应行为。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="../vertx-jphp/enums.adoc#OpenOptions#method_setDeleteOnClose">setDeleteOnClose</a></code> 标记在关闭时或JVM停止时要删除的文件。</p>
+<p>您可以使用 <code><a href="../php/dataobjects.html#OpenOptions#method_setDeleteOnClose">setDeleteOnClose</a></code> 标记在关闭时或JVM停止时要删除的文件。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_将数据刷新到底层存储">将数据刷新到底层存储</h4>
 <div class="paragraph">
 <p>在 <code>OpenOptions</code> 中，您可以使用
-<code><a href="../vertx-jphp/enums.adoc#OpenOptions#method_setDsync">setDsync</a></code>. 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html#method_flush">flush</a></code> 方法手动刷新OS缓存中的数据写入。</p>
+<code><a href="../php/dataobjects.html#OpenOptions#method_setDsync">setDsync</a></code>. 方法在每次写入时启用/禁用内容的自动同步。这种情况下，您可以使用
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html#method_flush">flush</a></code> 方法手动刷新OS缓存中的数据写入。</p>
 </div>
 <div class="paragraph">
 <p>该方法也可使用一个处理器来调用，这个处理器在 <code>flush</code> 完成时被调用。</p>
@@ -7555,9 +7548,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
-    use io\vertx\jphp\core\Vertx;
     use io\vertx\jphp\core\streams\Pump;
-    $vertx = Vertx::vertx();
     $output = $vertx-&gt;fileSystem()-&gt;openBlocking("target/classes/plagiary.txt", array(
     ));
 
@@ -7611,13 +7602,13 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 </div>
 <div class="paragraph">
 <p>If you want to disable classpath resolving for a particular application but keep it enabled by default system-wide,
-you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#method_setClassPathResolvingEnabled">setClassPathResolvingEnabled</a></code> option.</p>
+you can do so via the <code><a href="../php/dataobjects.html#FileSystemOptions#method_setClassPathResolvingEnabled">setClassPathResolvingEnabled</a></code> option.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_关闭_asyncfile">关闭 AsyncFile</h4>
 <div class="paragraph">
-<p>您可调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html#method_close">close</a></code> 方法来关闭 <code>AsyncFile</code> 。关闭是异步的，如果希望在关闭过后收到通知，您可指定一个处理器作为函数（ <code>close</code> ）参数传入。</p>
+<p>您可调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html#method_close">close</a></code> 方法来关闭 <code>AsyncFile</code> 。关闭是异步的，如果希望在关闭过后收到通知，您可指定一个处理器作为函数（ <code>close</code> ）参数传入。</p>
 </div>
 </div>
 </div>
@@ -7659,7 +7650,7 @@ you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#
 <div class="sect2">
 <h3 id="_创建_datagramsocket">创建 DatagramSocket</h3>
 <div class="paragraph">
-<p>要使用UDP，您首先要创建一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 实例，无论您是要仅仅发送数据或者收发数据，这都是一样的。</p>
+<p>要使用UDP，您首先要创建一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 实例，无论您是要仅仅发送数据或者收发数据，这都是一样的。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7669,7 +7660,7 @@ you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#
 </div>
 </div>
 <div class="paragraph">
-<p>返回的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 实例不会绑定到特定端口，如果您只想发送数据（如作为客户端）的话，这是没问题的，但更多详细的内容在下一节。</p>
+<p>返回的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 实例不会绑定到特定端口，如果您只想发送数据（如作为客户端）的话，这是没问题的，但更多详细的内容在下一节。</p>
 </div>
 </div>
 <div class="sect2">
@@ -7704,24 +7695,24 @@ you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#
 <div class="sect2">
 <h3 id="_接收数据报包">接收数据报包</h3>
 <div class="paragraph">
-<p>若您想要接收数据包，则您需要调用 <code>listen(&#8230;&#8203;)</code> 方法绑定 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 。</p>
+<p>若您想要接收数据包，则您需要调用 <code>listen(&#8230;&#8203;)</code> 方法绑定 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>这样您就可以接收到被发送至 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a></code> 所监听的地址和端口的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 。</p>
+<p>这样您就可以接收到被发送至 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a></code> 所监听的地址和端口的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 。</p>
 </div>
 <div class="paragraph">
-<p>除此之外，您还要设置一个 <code>Handler</code> ，每接收到一个 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
+<p>除此之外，您还要设置一个 <code>Handler</code> ，每接收到一个 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a></code> 时它都会被调用。</p>
 </div>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a>`有以下方法：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a>`有以下方法：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramPacket.html#method_sender">sender</a></code>: 表示数据发送方的 <code>InetSocketAddress</code> 。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramPacket.html#method_sender">sender</a></code>: 表示数据发送方的 <code>InetSocketAddress</code> 。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramPacket.html#method_data">data</a></code>: 保存接收数据的 <code>Buffer</code> 。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramPacket.html#method_data">data</a></code>: 保存接收数据的 <code>Buffer</code> 。</p>
 </li>
 </ul>
 </div>
@@ -7786,17 +7777,17 @@ you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#
 <div class="sect4">
 <h5 id="_接收多播数据包">接收多播数据包</h5>
 <div class="paragraph">
-<p>若要接收特定多播组的数据包，您需要通过调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 的 <code>listen(&#8230;&#8203;)</code> 方法来绑定一个地址并且加入多播组，并加入多播组。</p>
+<p>若要接收特定多播组的数据包，您需要通过调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 的 <code>listen(&#8230;&#8203;)</code> 方法来绑定一个地址并且加入多播组，并加入多播组。</p>
 </div>
 <div class="paragraph">
 <p>这样，您将能够接收到被发送到
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a>`所监听的地址和端口的数据报，同时也可以接收被发送到该多播组的数据报。</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a>`所监听的地址和端口的数据报，同时也可以接收被发送到该多播组的数据报。</p>
 </div>
 <div class="paragraph">
 <p>除此之外，您还可设置一个处理器，它在每次接收到 <code>DatagramPacket</code> 时会被调用。</p>
 </div>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a>`有以下方法：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramPacket.html">DatagramPacket</a>`有以下方法：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7909,31 +7900,31 @@ you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#
 <div class="sect3">
 <h4 id="_datagramsocket_属性">DatagramSocket 属性</h4>
 <div class="paragraph">
-<p>当创建 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 时，您可以通过
-<code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions">DatagramSocketOptions</a></code> 对象来设置多个属性以更改它的功能。这些（属性）列在这儿：</p>
+<p>当创建 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> 时，您可以通过
+<code><a href="../php/dataobjects.html#DatagramSocketOptions">DatagramSocketOptions</a></code> 对象来设置多个属性以更改它的功能。这些（属性）列在这儿：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setSendBufferSize">setSendBufferSize</a></code> 以字节为单位设置发送缓冲区的大小。</p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setSendBufferSize">setSendBufferSize</a></code> 以字节为单位设置发送缓冲区的大小。</p>
 </li>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setReceiveBufferSize">setReceiveBufferSize</a></code> 设置TCP接收缓冲区大小（以字节为单位）。</p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setReceiveBufferSize">setReceiveBufferSize</a></code> 设置TCP接收缓冲区大小（以字节为单位）。</p>
 </li>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setReuseAddress">setReuseAddress</a></code> 若为 <code>true</code> ，则 <code>TIME_WAIT</code> 状态中的地址在关闭后可重用。</p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setReuseAddress">setReuseAddress</a></code> 若为 <code>true</code> ，则 <code>TIME_WAIT</code> 状态中的地址在关闭后可重用。</p>
 </li>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setTrafficClass">setTrafficClass</a></code></p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setTrafficClass">setTrafficClass</a></code></p>
 </li>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setBroadcast">setBroadcast</a></code> 设置或清除 <code>SO_BROADCAST</code> 套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setBroadcast">setBroadcast</a></code> 设置或清除 <code>SO_BROADCAST</code> 套接字选项，设置此选项时，数据报（UDP）数据包可能会发送到本地接口的广播地址。</p>
 </li>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setMulticastNetworkInterface">setMulticastNetworkInterface</a></code> 设置或清除 <code>IP_MULTICAST_LOOP</code> 套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setMulticastNetworkInterface">setMulticastNetworkInterface</a></code> 设置或清除 <code>IP_MULTICAST_LOOP</code> 套接字选项，设置此选项时，多播数据包也将在本地接口上接收。</p>
 </li>
 <li>
-<p><code><a href="../vertx-jphp/enums.adoc#DatagramSocketOptions#method_setMulticastTimeToLive">setMulticastTimeToLive</a></code> 设置 <code>IP_MULTICAST_TTL</code> 套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
+<p><code><a href="../php/dataobjects.html#DatagramSocketOptions#method_setMulticastTimeToLive">setMulticastTimeToLive</a></code> 设置 <code>IP_MULTICAST_TTL</code> 套接字选项。TTL表示“活动时间”，单这种情况下，它指定允许数据包经过的IP跳数，特别是用于多播流量。转发数据包的每个路由器或网管会递减TTL，如果路由器将TTL递减为0，则不会再转发。</p>
 </li>
 </ul>
 </div>
@@ -7942,14 +7933,14 @@ you can do so via the <code><a href="../vertx-jphp/enums.adoc#FileSystemOptions#
 <h4 id="_datagramsocket本地地址">DatagramSocket本地地址</h4>
 <div class="paragraph">
 <p>Y若您在调用 <code>listen(&#8230;&#8203;)</code> 之前已经绑定了
-bound the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html#method_localAddress">localAddress</a>`来查找套接字的本地地址（即UDP Socket这边的地址，它将返回一个InetSocketAddress，否则返回null。</p>
+bound the <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> ，您可以通过调用
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html#method_localAddress">localAddress</a>`来查找套接字的本地地址（即UDP Socket这边的地址，它将返回一个InetSocketAddress，否则返回null。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_关闭datagramsocket">关闭DatagramSocket</h4>
 <div class="paragraph">
-<p>您可以通过调用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html#method_close">close</a></code> 方法来关闭Socket，它将关闭Socket并释放所有资源。</p>
+<p>您可以通过调用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html#method_close">close</a></code> 方法来关闭Socket，它将关闭Socket并释放所有资源。</p>
 </div>
 </div>
 </div>
@@ -8168,10 +8159,10 @@ for non blocking address resolution.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>请注意，列表将包含按照它们优先级排序的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.dns.MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。</p>
+<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.dns.MxRecord.html">MxRecord</a></code> ，这意味着列表中优先级低的MX记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.dns.MxRecord.html">MxRecord</a>`允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.dns.MxRecord.html">MxRecord</a>`允许您通过下边提供的方法访问MX记录的优先级和名称：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8256,10 +8247,10 @@ for non blocking address resolution.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>请注意，列表将包含按照它们优先级排序的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.dns.SrvRecord.html">SrvRecord</a></code> ，这意味着优先级低的记录会第一个优先出现在列表中。</p>
+<p>请注意，列表将包含按照它们优先级排序的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.dns.SrvRecord.html">SrvRecord</a></code> ，这意味着优先级低的记录会第一个优先出现在列表中。</p>
 </div>
 <div class="paragraph">
-<p>`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.dns.SrvRecord.html">SrvRecord</a>`允许您访问SRV记录本身中包含的所有信息：</p>
+<p>`<a href="../../phpdoc/classes/io.vertx.jphp.core.dns.SrvRecord.html">SrvRecord</a>`允许您访问SRV记录本身中包含的所有信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8335,7 +8326,7 @@ for non blocking address resolution.</p>
 <p>Vert.x有多个对象可以用于文件的读取和写入。</p>
 </div>
 <div class="paragraph">
-<p>在以前的版本中，只能通过操作指定的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code>
+<p>在以前的版本中，只能通过操作指定的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code>
 对象来实现文件读写。从现在开始，流不再与 <code>Buffer</code> 耦合，它们可以和任意类型的对象一起工作。</p>
 </div>
 <div class="paragraph">
@@ -8348,14 +8339,14 @@ for non blocking address resolution.</p>
 <p>为了解决这个问题，Vert.x API中的一些对象提供了简单的流程控制（回压）功能。</p>
 </div>
 <div class="paragraph">
-<p>任何可控制的写入流对象都实现了 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 接口，相应的，任何可控制的读取流对象都实现了
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口。</p>
+<p>任何可控制的写入流对象都实现了 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a></code> 接口，相应的，任何可控制的读取流对象都实现了
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> 接口。</p>
 </div>
 <div class="paragraph">
 <p>让我们举个例子，我们要从 <code>ReadStream</code> 中读取数据，然后将数据写入 <code>WriteStream</code> 。</p>
 </div>
 <div class="paragraph">
-<p>一个非常简单的例子是从 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了 <code>ReadStream</code> 也实现了 <code>WriteStream</code> 接口。
+<p>一个非常简单的例子是从 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> 读取然后写回到同一个 <code>NetSocket</code> - 因为 <code>NetSocket</code> 既实现了 <code>ReadStream</code> 也实现了 <code>WriteStream</code> 接口。
 请注意，这些操作适用于任何实现了 <code>ReadStream</code> 和 <code>WriteStream</code> 接口的对象，包括HTTP 请求、HTTP 响应、异步文件 I/O 和 WebSocket等。</p>
 </div>
 <div class="paragraph">
@@ -8444,11 +8435,11 @@ for non blocking address resolution.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code>
+<p>在这里，我们的目标实现了。当写队列准备好接收更多的数据时， <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code>
 事件处理器将被调用，它会恢复 <code>NetSocket</code> 的状态，允许读取更多的数据。</p>
 </div>
 <div class="paragraph">
-<p>在编写Vert.x 应用程序时，这样做是很常见的，因此我们提供了一个名为 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html">Pump</a></code> 的帮助类，它为您完成所有这些艰苦的工作。
+<p>在编写Vert.x 应用程序时，这样做是很常见的，因此我们提供了一个名为 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html">Pump</a></code> 的帮助类，它为您完成所有这些艰苦的工作。
 您只需要给 <code>ReadStream</code> 追加上 <code>WriteStream</code> ，然后启动它：</p>
 </div>
 <div class="listingblock">
@@ -8473,11 +8464,11 @@ for non blocking address resolution.</p>
 <div class="sect2">
 <h3 id="_readstream">ReadStream</h3>
 <div class="paragraph">
-<p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.TimeoutStream.html">TimeoutStream</a></code> ,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code>.</p>
+<p><code>ReadStream</code> （可读流） 接口的实现类包括： <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientResponse.html">HttpClientResponse</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.datagram.DatagramSocket.html">DatagramSocket</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerFileUpload.html">HttpServerFileUpload</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageConsumer.html">MessageConsumer</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.TimeoutStream.html">TimeoutStream</a></code> ,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -8485,19 +8476,19 @@ for non blocking address resolution.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_handler">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_handler">handler</a></code> : 设置一个处理器，它将从 <code>ReadStream</code> 读取项</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_pause">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_pause">pause</a></code> : 暂停处理器，暂停时，处理器中将不会受到任何项</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_resume">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_resume">resume</a></code> : 恢复处理器，若任何项到达则处理器将被调用</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若ReadStream发生异常，将被调用</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html#method_endHandler">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html#method_endHandler">endHandler</a></code> : 当流到达时将被调用。这有可能是到达了描述文件的EOF、达到HTTP请求的请求结束、或TCP Socket的连接被关闭</p>
 </li>
 </ul>
 </div>
@@ -8505,9 +8496,9 @@ for non blocking address resolution.</p>
 <div class="sect2">
 <h3 id="_writestream">WriteStream</h3>
 <div class="paragraph">
-<p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code>, <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> , <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> ,
-and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.eventbus.MessageProducer.html">MessageProducer</a></code></p>
+<p><code>WriteStream</code> （可写流）接口的实现类包括： <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpClientRequest.html">HttpClientRequest</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code>, <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> , <code><a href="../../phpdoc/classes/io.vertx.jphp.core.file.AsyncFile.html">AsyncFile</a></code> ,
+and <code><a href="../../phpdoc/classes/io.vertx.jphp.core.eventbus.MessageProducer.html">MessageProducer</a></code></p>
 </div>
 <div class="paragraph">
 <p>函数：</p>
@@ -8515,19 +8506,19 @@ and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_write">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_write">write</a></code> : 写入一个对象到 <code>WriteStream</code> ，该方法将永远不会阻塞，内部是排队写入并且底层资源是异步写入。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> : 设置写入队列被认为是 <strong>full</strong> 的对象的数量——方法 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> 返回 <code>true</code> 。注意，当写队列被认为已满时，若写（操作）被调用则数据依然会被接收和排队。实际数量取决于流的实现，对于 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> ，尺寸代表实际写入的字节数，而并非缓冲区的数量。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_writeQueueFull">writeQueueFull</a></code> : 若写队列被认为已满，则返回 <code>true</code> 。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_exceptionHandler">exceptionHandler</a></code> : 若 <code>WriteStream</code> 发生异常，则被调用。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_drainHandler">drainHandler</a></code> : 若 <code>WriteStream</code> 被认为不再满，则处理器将被调用。</p>
 </li>
 </ul>
 </div>
@@ -8540,15 +8531,15 @@ and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp
 <div class="ulist">
 <ul>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html#method_start">start</a></code> : 启动泵。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html#method_start">start</a></code> : 启动泵。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html#method_stop">stop</a></code> :
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html#method_stop">stop</a></code> :
 停止泵，当泵启动时它要处于停止模式。</p>
 </li>
 <li>
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.Pump.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> :
-与 <code>WriteStream</code> 接口的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> 方法相同。</p>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.Pump.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> :
+与 <code>WriteStream</code> 接口的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html#method_setWriteQueueMaxSize">setWriteQueueMaxSize</a></code> 方法相同。</p>
 </li>
 </ul>
 </div>
@@ -8620,7 +8611,7 @@ buffer3:I AM DOING OK</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>有关更多详细信息，请查看 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.parsetools.RecordParser.html">RecordParser</a></code> 类。</p>
+<p>有关更多详细信息，请查看 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.parsetools.RecordParser.html">RecordParser</a></code> 类。</p>
 </div>
 </div>
 </div>
@@ -8743,7 +8734,7 @@ events or JSON object value events.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For more details, check out the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.parsetools.JsonParser.html">JsonParser</a></code> class.</p>
+<p>For more details, check out the <code><a href="../../phpdoc/classes/io.vertx.jphp.core.parsetools.JsonParser.html">JsonParser</a></code> class.</p>
 </div>
 </div>
 </div>
@@ -8754,8 +8745,8 @@ events or JSON object value events.</p>
 <p>大多数Vert.x 对象可以从被不同的线程安全地访问，但在相同的上下文中访问它们时，性能才是最优的。</p>
 </div>
 <div class="paragraph">
-<p>例如，若您部署了一个创建 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html">NetServer</a></code> 的Verticle，该 <code>NetServer</code> 在处理器中提供了
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`实例，则最好始终从该Verticle的Event Loop中访问Socket 实例。</p>
+<p>例如，若您部署了一个创建 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html">NetServer</a></code> 的Verticle，该 <code>NetServer</code> 在处理器中提供了
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a>`实例，则最好始终从该Verticle的Event Loop中访问Socket 实例。</p>
 </div>
 <div class="paragraph">
 <p>如您坚持使用标准的Vert.x Verticle部署模型，避免在 Verticle 之间分享对象，那这种情况您无需考虑。</p>
@@ -8770,7 +8761,7 @@ events or JSON object value events.</p>
 <code>API 文档</code>。</p>
 </div>
 <div class="paragraph">
-<p>若使用 <code><a href="../vertx-jphp/enums.adoc#MetricsOptions#method_setFactory">setFactory</a></code> 嵌入了Vert.x实例，也可以用编程方式指定度量工厂。</p>
+<p>若使用 <code><a href="../php/dataobjects.html#MetricsOptions#method_setFactory">setFactory</a></code> 嵌入了Vert.x实例，也可以用编程方式指定度量工厂。</p>
 </div>
 </div>
 </div>
@@ -9286,7 +9277,7 @@ java -jar build/libs/my-fat-jar.jar --redeploy="src&amp;#47;**&amp;#47;*.java" -
 </div>
 <div class="paragraph">
 <p>您也可以以编程的方式在嵌入Vert.x 时使用
-`<a href="../vertx-jphp/enums.adoc#VertxOptions#method_setClusterManager">setClusterManager</a>`指定集群管理器。</p>
+`<a href="../php/dataobjects.html#VertxOptions#method_setClusterManager">setClusterManager</a>`指定集群管理器。</p>
 </div>
 </div>
 </div>
@@ -9463,7 +9454,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 <p>默认情况下，它将使用环境中系统DNS服务器地址的列表，若该列表无法检索，将使用Google的公共DNS服务器 <code>8.8.8.8</code> 和 <code>8.8.4.4</code> 。</p>
 </div>
 <div class="paragraph">
-<p>创建 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html">Vertx</a></code> 实例时也可配置DNS 服务器：</p>
+<p>创建 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html">Vertx</a></code> 实例时也可配置DNS 服务器：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9497,11 +9488,11 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 <div class="sect2">
 <h3 id="_故障转移">故障转移</h3>
 <div class="paragraph">
-<p>当服务器没有及时回应时，尝试从列表中选择下一个解析器，搜索（数量）的限制由 <code><a href="../vertx-jphp/enums.adoc#AddressResolverOptions#method_setMaxQueries">setMaxQueries</a></code> 设置（默认值是4个查询）</p>
+<p>当服务器没有及时回应时，尝试从列表中选择下一个解析器，搜索（数量）的限制由 <code><a href="../php/dataobjects.html#AddressResolverOptions#method_setMaxQueries">setMaxQueries</a></code> 设置（默认值是4个查询）</p>
 </div>
 <div class="paragraph">
 <p>若解析器在
-`<a href="../vertx-jphp/enums.adoc#AddressResolverOptions#method_getQueryTimeout">getQueryTimeout</a>`毫秒内没有收到正确答案（默认为5秒），DNS查询被视为失败。</p>
+`<a href="../php/dataobjects.html#AddressResolverOptions#method_getQueryTimeout">getQueryTimeout</a>`毫秒内没有收到正确答案（默认为5秒），DNS查询被视为失败。</p>
 </div>
 </div>
 <div class="sect2">
@@ -9510,7 +9501,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 <p>默认情况下，DNS服务器选择使用第一个，其余的服务器用于故障转移。</p>
 </div>
 <div class="paragraph">
-<p>您可以配置 <code><a href="../vertx-jphp/enums.adoc#AddressResolverOptions#method_setRotateServers">setRotateServers</a></code> 为 <code>true</code> ，让解析器使用轮询选择。它会在服务器之间传播查询负载，并避免所有的查找都找到列表中的第一个服务器。</p>
+<p>您可以配置 <code><a href="../php/dataobjects.html#AddressResolverOptions#method_setRotateServers">setRotateServers</a></code> 为 <code>true</code> ，让解析器使用轮询选择。它会在服务器之间传播查询负载，并避免所有的查找都找到列表中的第一个服务器。</p>
 </div>
 <div class="paragraph">
 <p>故障转移仍然适用，并将使用列表中的下一个服务器。</p>
@@ -9556,7 +9547,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>当使用搜索域列表时，点数的阈值为 <code>1</code> ，或从Linux上的 <code>/etc/resolv.conf</code> 加载，也可使用  <code><a href="../vertx-jphp/enums.adoc#AddressResolverOptions#method_setNdots">setNdots</a></code> 方法配置特定值。</p>
+<p>当使用搜索域列表时，点数的阈值为 <code>1</code> ，或从Linux上的 <code>/etc/resolv.conf</code> 加载，也可使用  <code><a href="../php/dataobjects.html#AddressResolverOptions#method_setNdots">setNdots</a></code> 方法配置特定值。</p>
 </div>
 </div>
 </div>
@@ -9770,7 +9761,7 @@ SEVERE: java.io.IOException: Connection reset by peer</pre>
 </td>
 <td class="content">
 preferring native transport will not prevent the application to execute, if your application requires native
-transport, you need to check <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html#method_isNativeTransportEnabled">isNativeTransportEnabled</a></code> .
+transport, you need to check <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html#method_isNativeTransportEnabled">isNativeTransportEnabled</a></code> .
 </td>
 </tr>
 </table>
@@ -10017,7 +10008,7 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 <div class="sect2">
 <h3 id="_定义阶段">定义阶段</h3>
 <div class="paragraph">
-<p>每个命令行界面必须定义将要使用的选项和参数集合。它也需要一个名字。CLI API使用 <code><a href="../vertx-jphp/enums.adoc#Option">Option</a></code> 和 <code><a href="../vertx-jphp/enums.adoc#Argument">Argument</a></code> 类来描述选项和参数：</p>
+<p>每个命令行界面必须定义将要使用的选项和参数集合。它也需要一个名字。CLI API使用 <code><a href="../php/dataobjects.html#Option">Option</a></code> 和 <code><a href="../php/dataobjects.html#Argument">Argument</a></code> 类来描述选项和参数：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10040,19 +10031,19 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 </div>
 </div>
 <div class="paragraph">
-<p>您可以看到，您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html#method_create">CLI::create</a></code> 创建一个新的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html">CLI</a></code> 。
+<p>您可以看到，您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html#method_create">CLI::create</a></code> 创建一个新的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html">CLI</a></code> 。
 传递的字符串是 <code>CLI</code> 的名称。创建后，您可以设置摘要和描述，摘要的目的是简短（一行），而描述可以包含更多细节。每个选项和参数也使用
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html#method_addArgument">addArgument</a>`和
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html#method_addOption">addOption</a>`方法添加到 `CLI</code> 对象上。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html#method_addArgument">addArgument</a>`和
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html#method_addOption">addOption</a>`方法添加到 `CLI</code> 对象上。</p>
 </div>
 <div class="sect3">
 <h4 id="_选项">选项</h4>
 <div class="paragraph">
-<p><code><a href="../vertx-jphp/enums.adoc#Option">Option</a>`是由用户命令行中存在的 <strong>键</strong> 标识的命令行参数。选项至少必须有一个长名或一个短名。
+<p><code><a href="../php/dataobjects.html#Option">Option</a>`是由用户命令行中存在的 <strong>键</strong> 标识的命令行参数。选项至少必须有一个长名或一个短名。
 长名称通常使用 `--</code> 前缀，而短名称与单个 <code>-</code> 一起使用。选项可以获取用法中显示的描述（见下文）。选项可以接受0、1或几个值。
 接受0值的选项是一个标志( <code>flag</code> )，必须使用
-<code><a href="../vertx-jphp/enums.adoc#Option#method_setFlag">setFlag</a>`声明。默认情况下，选项会接受一个值，但是您可以使用
-`<a href="../vertx-jphp/enums.adoc#Option#method_setMultiValued">setMultiValued</a></code> 方法配置该选项接收多个值：</p>
+<code><a href="../php/dataobjects.html#Option#method_setFlag">setFlag</a>`声明。默认情况下，选项会接受一个值，但是您可以使用
+`<a href="../php/dataobjects.html#Option#method_setMultiValued">setMultiValued</a></code> 方法配置该选项接收多个值：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10104,7 +10095,7 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 </div>
 </div>
 <div class="paragraph">
-<p>可以使用 <code><a href="../vertx-jphp/enums.adoc#Option#method_setHidden">setHidden</a></code> 方法隐藏选项，隐藏选项不在用法中列出，但仍可在用户命令行中使用（针对高级用户）。</p>
+<p>可以使用 <code><a href="../php/dataobjects.html#Option#method_setHidden">setHidden</a></code> 方法隐藏选项，隐藏选项不在用法中列出，但仍可在用户命令行中使用（针对高级用户）。</p>
 </div>
 <div class="paragraph">
 <p>如果选项值被限制为一个固定集合，您可以设置不同的可接受选项：</p>
@@ -10172,21 +10163,21 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 <p><code>argName</code> 是可选的，并在消息中使用。</p>
 </div>
 <div class="paragraph">
-<p>相比选项， <code><a href="../vertx-jphp/enums.adoc#Argument">Argument</a></code> 可以：</p>
+<p>相比选项， <code><a href="../php/dataobjects.html#Argument">Argument</a></code> 可以：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>使用 <code><a href="../vertx-jphp/enums.adoc#Argument#method_setHidden">setHidden</a></code> 隐藏</p>
+<p>使用 <code><a href="../php/dataobjects.html#Argument#method_setHidden">setHidden</a></code> 隐藏</p>
 </li>
 <li>
-<p>使用 <code><a href="../vertx-jphp/enums.adoc#Argument#method_setRequired">setRequired</a></code> 设置必填</p>
+<p>使用 <code><a href="../php/dataobjects.html#Argument#method_setRequired">setRequired</a></code> 设置必填</p>
 </li>
 <li>
-<p>使用 <code><a href="../vertx-jphp/enums.adoc#Argument#method_setDefaultValue">setDefaultValue</a></code> 设置默认值</p>
+<p>使用 <code><a href="../php/dataobjects.html#Argument#method_setDefaultValue">setDefaultValue</a></code> 设置默认值</p>
 </li>
 <li>
-<p>使用 <code><a href="../vertx-jphp/enums.adoc#Argument#method_setMultiValued">setMultiValued</a></code> 设置接收多个值——只有最后一个参数可以是多值的。</p>
+<p>使用 <code><a href="../php/dataobjects.html#Argument#method_setMultiValued">setMultiValued</a></code> 设置接收多个值——只有最后一个参数可以是多值的。</p>
 </li>
 </ul>
 </div>
@@ -10197,7 +10188,7 @@ support for <code>HttpClient</code> can be expected in later versions of Vert.x
 <div class="sect3">
 <h4 id="_生成_usage_信息">生成 usage 信息</h4>
 <div class="paragraph">
-<p>一旦您的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html">CLI</a></code> 实例配置好后，您可以生成 <strong>usage</strong> 信息：</p>
+<p>一旦您的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html">CLI</a></code> 实例配置好后，您可以生成 <strong>usage</strong> 信息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10242,7 +10233,7 @@ A command line interface to copy files.
 <div class="sect2">
 <h3 id="_解析阶段">解析阶段</h3>
 <div class="paragraph">
-<p>一旦您的 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html">CLI</a></code> 实例配置好后，您可以解析用户命令行来解析每个选项和参数：实例配置好后，您可以解析用户命令行来解析每个选项和参数：</p>
+<p>一旦您的 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html">CLI</a></code> 实例配置好后，您可以解析用户命令行来解析每个选项和参数：实例配置好后，您可以解析用户命令行来解析每个选项和参数：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10251,21 +10242,21 @@ A command line interface to copy files.
 </div>
 </div>
 <div class="paragraph">
-<p><code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html#method_parse">parse</a>`解析方法返回包含值的 `<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CommandLine.html">CommandLine</a></code>
+<p><code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html#method_parse">parse</a>`解析方法返回包含值的 `<a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CommandLine.html">CommandLine</a></code>
 对象。默认情况下，它验证用户命令行，并检查每个必填选项和参数的设置以及每个选项接收的值的数量。
-您可以通过传递 <code>false</code> 作为 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html#method_parse">parse</a></code> 的第二个参数来禁用验证。
+您可以通过传递 <code>false</code> 作为 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html#method_parse">parse</a></code> 的第二个参数来禁用验证。
 如果要检查参数或选项，即使解析的命令行无效，这也是有用的。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CommandLine.html#method_isValid">isValid</a></code>
-来检查 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CommandLine.html">CommandLine</a></code> 是否有效。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CommandLine.html#method_isValid">isValid</a></code>
+来检查 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CommandLine.html">CommandLine</a></code> 是否有效。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_查询_审问阶段">查询/审问阶段</h3>
 <div class="paragraph">
-<p>解析后，您可以从 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CLI.html#method_parse">parse</a></code> 方法返回的
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.cli.CommandLine.html">CommandLine</a>`对象中读取选项和参数的值：</p>
+<p>解析后，您可以从 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CLI.html#method_parse">parse</a></code> 方法返回的
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.cli.CommandLine.html">CommandLine</a>`对象中读取选项和参数的值：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10485,7 +10476,7 @@ java -jar my-fat.jar vertx.cacheDirBase=/tmp/vertx-cache</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:07 CST
+                上次更新时间 2018-11-05 19:55:24 CST
               
               
             </div>

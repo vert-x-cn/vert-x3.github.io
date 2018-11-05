@@ -265,9 +265,9 @@
 <h2 id="_features">Features</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A fairly simple API to retrieve metrics via the <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.metrics.Measured.html">Measured</a></code>
-interface which is implemented by various Vert.x components like <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html">HttpServer</a></code>,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetServer.html">NetServer</a></code>, and even <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Vertx.html">Vertx</a></code> itself.</p>
+<p>A fairly simple API to retrieve metrics via the <code><a href="../../phpdoc/classes/io.vertx.jphp.core.metrics.Measured.html">Measured</a></code>
+interface which is implemented by various Vert.x components like <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html">HttpServer</a></code>,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetServer.html">NetServer</a></code>, and even <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Vertx.html">Vertx</a></code> itself.</p>
 </div>
 <div class="paragraph">
 <p>Configurable JMX reporting based on Dropwizard implementation, exposing Vert.x as JMX MBeans.</p>
@@ -309,7 +309,7 @@ interface which is implemented by various Vert.x components like <code><a href="
 </div>
 </div>
 <div class="paragraph">
-<p>Then when you create vertx enable metrics using the <code><a href="../../vertx-dropwizard-metrics/vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code>:</p>
+<p>Then when you create vertx enable metrics using the <code><a href="../../vertx-dropwizard-metrics/php/dataobjects.html#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -358,7 +358,7 @@ options must be set to <code>true</code>:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions#method_setRegistryName">vertx.metrics.options.registryName</a></code>
+<p>The <code><a href="../php/dataobjects.html#DropwizardMetricsOptions#method_setRegistryName">vertx.metrics.options.registryName</a></code>
 configures the <a href="#dropwizard-registry">Dropwizard Registry</a> to use:</p>
 </div>
 <div class="listingblock">
@@ -367,8 +367,8 @@ configures the <a href="#dropwizard-registry">Dropwizard Registry</a> to use:</p
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions#method_setJmxEnabled">vertx.metrics.options.jmxEnabled</a></code> and
-<code><a href="../vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions#method_setJmxDomain">vertx.metrics.options.jmxDomain</a></code>
+<p>The <code><a href="../php/dataobjects.html#DropwizardMetricsOptions#method_setJmxEnabled">vertx.metrics.options.jmxEnabled</a></code> and
+<code><a href="../php/dataobjects.html#DropwizardMetricsOptions#method_setJmxDomain">vertx.metrics.options.jmxDomain</a></code>
 configures the <a href="#jmx">JMX</a> registration:</p>
 </div>
 <div class="listingblock">
@@ -377,7 +377,7 @@ configures the <a href="#jmx">JMX</a> registration:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions#method_setConfigPath">vertx.metrics.options.configPath</a></code>
+<p>The <code><a href="../php/dataobjects.html#DropwizardMetricsOptions#method_setConfigPath">vertx.metrics.options.configPath</a></code>
 option allows to reconfigure the metrics from a property file.</p>
 </div>
 </div>
@@ -390,7 +390,7 @@ option allows to reconfigure the metrics from a property file.</p>
 an API for retrieving metrics (because some metrics collectors just do reporting and nothing more).</p>
 </div>
 <div class="paragraph">
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-dropwizard-jphp/classes/io.vertx.jphp.ext.dropwizard.MetricsService.html">MetricsService</a></code> provides an API in front of the Dropwizard Registry to get
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.dropwizard.MetricsService.html">MetricsService</a></code> provides an API in front of the Dropwizard Registry to get
 metrics data snapshots.</p>
 </div>
 <div class="sect2">
@@ -447,8 +447,8 @@ can be retrieved by providing the fully qualified name &lt;fqn&gt; <code>baseNam
 <div class="sect2">
 <h3 id="_retrieving_metrics">Retrieving metrics</h3>
 <div class="paragraph">
-<p>Once enabled, the <code><a href="https://vertx.okou.tk/phpdoc/vertx-dropwizard-jphp/classes/io.vertx.jphp.ext.dropwizard.MetricsService.html">MetricsService</a></code> allows to retrieve metrics snapshots from any
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.metrics.Measured.html">Measured</a>`object which provides a map of the metric name to the data,
+<p>Once enabled, the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.dropwizard.MetricsService.html">MetricsService</a></code> allows to retrieve metrics snapshots from any
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.metrics.Measured.html">Measured</a>`object which provides a map of the metric name to the data,
 represented by a `JsonObject</code>. So for example if we were to print out all metrics
 for a particular Vert.x instance:</p>
 </div>
@@ -479,7 +479,7 @@ consult the implementation documentation like <a href="https://github.com/vert-x
 without having to know the details of the naming scheme of every metric (something which is left to the implementers of the SPI).</p>
 </div>
 <div class="paragraph">
-<p>Since <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServer.html">HttpServer</a></code> implements <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.metrics.Measured.html">Measured</a></code>, you can easily grab all metrics
+<p>Since <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServer.html">HttpServer</a></code> implements <code><a href="../../phpdoc/classes/io.vertx.jphp.core.metrics.Measured.html">Measured</a></code>, you can easily grab all metrics
 that are specific for that particular http server.</p>
 </div>
 <div class="listingblock">
@@ -770,7 +770,7 @@ Vert.x can have potentially a huge amount of registered event bus, therefore the
 setting is to monitor zero handlers.</p>
 </div>
 <div class="paragraph">
-<p>The monitored handlers can be configured in the <code><a href="../../vertx-dropwizard-metrics/vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code> via
+<p>The monitored handlers can be configured in the <code><a href="../../vertx-dropwizard-metrics/php/dataobjects.html#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code> via
 a specific address match or a regex match:</p>
 </div>
 <div class="listingblock">
@@ -916,7 +916,7 @@ in this case the alias will be used as a part of the registry name instead of ur
 <h3 id="_http_client_metrics">Http client metrics</h3>
 <div class="paragraph">
 <p>Base name: <code>vertx.http.clients</code> (by default) or <code>vertx.http.clients.&lt;id&gt;</code> where <code>&lt;id&gt;</code> is a non empty string
-configured by <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_setMetricsName">setMetricsName</a></code>.</p>
+configured by <code><a href="../php/dataobjects.html#HttpClientOptions#method_setMetricsName">setMetricsName</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Http client includes all the metrics of a <a href="#http-server-metrics">Http Server</a> plus the following:</p>
@@ -982,7 +982,7 @@ configured by <code><a href="../vertx-jphp/enums.adoc#HttpClientOptions#method_s
 The default for this setting is to monitor no endpoints.</p>
 </div>
 <div class="paragraph">
-<p>The monitored endpoints can be configured in the <code><a href="../../vertx-dropwizard-metrics/vertx-dropwizard-jphp/enums.adoc#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code> via
+<p>The monitored endpoints can be configured in the <code><a href="../../vertx-dropwizard-metrics/php/dataobjects.html#DropwizardMetricsOptions">DropwizardMetricsOptions</a></code> via
 a specific hostname match or a regex match:</p>
 </div>
 <div class="listingblock">
@@ -1038,7 +1038,7 @@ a specific hostname match or a regex match:</p>
 <h3 id="_net_client_metrics">Net client metrics</h3>
 <div class="paragraph">
 <p>Base name: <code>vertx.net.clients</code> (by default) or <code>vertx.net.clients.&lt;id&gt;</code> where <code>&lt;id&gt;</code> is a non empty string
-configured by <code><a href="../vertx-jphp/enums.adoc#NetClientOptions#method_setMetricsName">setMetricsName</a></code>.</p>
+configured by <code><a href="../php/dataobjects.html#NetClientOptions#method_setMetricsName">setMetricsName</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Net client includes all the metrics of a <a href="#net-server-metrics">Net Server</a></p>
@@ -1081,7 +1081,7 @@ configured by <code><a href="../vertx-jphp/enums.adoc#NetClientOptions#method_se
 </div>
 <div class="paragraph">
 <p>Pools of type <em>worker</em> are blocking worker pools. Vert.x exposes its worker as <em>vert.x-worker-thread</em> and
-<em>vert.x-internal-blocking</em>. Named worker executor created with <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.WorkerExecutor.html">WorkerExecutor</a></code> are exposed.</p>
+<em>vert.x-internal-blocking</em>. Named worker executor created with <code><a href="../../phpdoc/classes/io.vertx.jphp.core.WorkerExecutor.html">WorkerExecutor</a></code> are exposed.</p>
 </div>
 <div class="paragraph">
 <p>Datasource created with Vert.x JDBC clients are exposed as <em>datasource</em>.</p>
@@ -1414,7 +1414,7 @@ details about check configuration.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:27 CST
+                上次更新时间 2018-11-05 19:55:36 CST
               
               
             </div>

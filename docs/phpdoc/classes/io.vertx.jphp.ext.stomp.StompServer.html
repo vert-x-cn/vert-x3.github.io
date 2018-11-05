@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -156,32 +157,20 @@
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_options" title="options :: &lt;b&gt;
-options()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-options()
-&lt;/b&gt;</span><pre>options</pre>
+        <a href="#method_options" title="options :: ">
+            <span class="description"></span><pre>options</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_stompHandler" title="stompHandler :: &lt;b&gt;
-stompHandler()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-stompHandler()
-&lt;/b&gt;</span><pre>stompHandler</pre>
+        <a href="#method_stompHandler" title="stompHandler :: ">
+            <span class="description"></span><pre>stompHandler</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_vertx" title="vertx :: &lt;b&gt;
-vertx()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-vertx()
-&lt;/b&gt;</span><pre>vertx</pre>
+        <a href="#method_vertx" title="vertx :: ">
+            <span class="description"></span><pre>vertx</pre>
         </a>
     </li>
 
@@ -295,10 +284,7 @@ the server. By default, it uses a handler compliant with the STOMP specification
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description"><p/>
-<p>This is useful if you bound the server specifying 0 as port number signifying an ephemeral port.</p>
-<p><b>
-actualPort()
-</b></p></div>
+<p>This is useful if you bound the server specifying 0 as port number signifying an ephemeral port.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -365,7 +351,7 @@ create($vertx)
 </b></p>
 <p>Creates a @see \io\vertx\jphp\ext\stomp\StompServer based on the default Stomp Server implementation.</p>
 <p>param $vertx [Vertx] the vert.x instance to use
-param $options [StompServerOptions | mixed] the server options
+param $options [StompServerOptions | array] the server options
 <b>
 create($vertx, $options)
 </b></p>
@@ -378,7 +364,7 @@ create($vertx, $netServer)
 <p>Creates a @see \io\vertx\jphp\ext\stomp\StompServer based on the default Stomp Server implementation.</p>
 <p>param $vertx [Vertx] the vert.x instance to use
 param $net [NetServer] the Net server used by the STOMP server
-param $options [StompServerOptions | mixed] the server options
+param $options [StompServerOptions | array] the server options
 <b>
 create($vertx, $net, $options)
 </b></p></div>
@@ -393,11 +379,11 @@ create($vertx, $net, $options)
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
-                                                <code></code><p><p>StompServerOptions | mixed | NetServer</p></p>
+                                                <code></code><p><p>array | StompServerOptions | NetServer</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg2</h4>
-                                                <code></code><p><p>StompServerOptions | mixed</p></p>
+                                                <code></code><p><p>array | StompServerOptions</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
@@ -409,17 +395,14 @@ create($vertx, $net, $options)
                                             <a id="method_handler"></a>
                         <div class="element clickable method public  method_handler" data-toggle="collapse" data-target=".method_handler .collapse">
                             <h2>Configures the @see \io\vertx\jphp\ext\stomp\StompServerHandler. You must calls this method before calling the @see \io\vertx\jphp\ext\stomp\StompServer::listen method.</h2>
-                            <pre>handler( $arg0) : \io\vertx\jphp\ext\stomp\StompServer</pre>
+                            <pre>handler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [StompServerHandler | callable] the handler
-<b>
-handler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -427,11 +410,11 @@ handler($handler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>StompServerHandler | callable</p></p>
+                                                <code></code><p><p>StompServerHandler</p></p>
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServer.html">\io\vertx\jphp\ext\stomp\StompServer</a></code><p><p>the current {@link StompServer}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompServer}</p></p>
                                                                     </div>
                             </div>
 
@@ -446,9 +429,7 @@ handler($handler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isListening()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -470,7 +451,7 @@ isListening()
                                             <a id="method_listen"></a>
                         <div class="element clickable method public  method_listen" data-toggle="collapse" data-target=".method_listen .collapse">
                             <h2>Connects the STOMP server to the port / host configured in the server options.</h2>
-                            <pre>listen( $arg0 = null,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompServer</pre>
+                            <pre>listen( $arg0 = null,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -531,16 +512,14 @@ listen($port, $host, $handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServer.html">\io\vertx\jphp\ext\stomp\StompServer</a></code><p><p>the current {@link StompServer}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompServer}</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_options"></a>
                         <div class="element clickable method public  method_options" data-toggle="collapse" data-target=".method_options .collapse">
-                            <h2>&lt;b&gt;
-options()
-&lt;/b&gt;</h2>
+                            <h2>options</h2>
                             <pre>options() : \io\vertx\jphp\ext\stomp\StompServerOptions</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -562,16 +541,14 @@ options()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServerOptions.html">\io\vertx\jphp\ext\stomp\StompServerOptions</a></code><p><p>| mixed the server options</p></p>
+                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServerOptions.html">\io\vertx\jphp\ext\stomp\StompServerOptions</a></code><p><p>the server options</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_stompHandler"></a>
                         <div class="element clickable method public  method_stompHandler" data-toggle="collapse" data-target=".method_stompHandler .collapse">
-                            <h2>&lt;b&gt;
-stompHandler()
-&lt;/b&gt;</h2>
+                            <h2>stompHandler</h2>
                             <pre>stompHandler() : \io\vertx\jphp\ext\stomp\StompServerHandler</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -593,16 +570,14 @@ stompHandler()
 
                                     
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServerHandler.html">\io\vertx\jphp\ext\stomp\StompServerHandler</a></code><p><p>| callable the {@link StompServerHandler} used by this server.</p></p>
+                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServerHandler.html">\io\vertx\jphp\ext\stomp\StompServerHandler</a></code><p><p>the {@link StompServerHandler} used by this server.</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_vertx"></a>
                         <div class="element clickable method public  method_vertx" data-toggle="collapse" data-target=".method_vertx .collapse">
-                            <h2>&lt;b&gt;
-vertx()
-&lt;/b&gt;</h2>
+                            <h2>vertx</h2>
                             <pre>vertx() : \io\vertx\jphp\core\Vertx</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -640,9 +615,7 @@ vertx()
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-webSocketHandler()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -665,17 +638,14 @@ webSocketHandler()
                         <div class="element clickable method public  method_writingFrameHandler" data-toggle="collapse" data-target=".method_writingFrameHandler .collapse">
                             <h2>Configures the handler that is invoked every time a frame is going to be written to the &quot;wire&quot;. It lets you log
 the frames, but also adapt the frame if needed.</h2>
-                            <pre>writingFrameHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompServer</pre>
+                            <pre>writingFrameHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler, must not be {@code null}
-<b>
-writingFrameHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -687,7 +657,7 @@ writingFrameHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompServer.html">\io\vertx\jphp\ext\stomp\StompServer</a></code><p><p>the current {@link StompServer}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompServer}</p></p>
                                                                     </div>
                             </div>
 
@@ -714,7 +684,7 @@ writingFrameHandler($handler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:03 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:47 +0000.<br/>
     </footer>
     </body>
 </html>

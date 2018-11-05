@@ -231,10 +231,10 @@
 <div class="sect2">
 <h3 id="_本地共享map">本地共享Map</h3>
 <div class="paragraph">
-<p>本地共享Map <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.LocalMap.html">Local shared maps</a></code> 允许您在同一个 Vert.x 实例中的不同 Event Loop（如不同的 Verticle 中）之间安全共享数据。</p>
+<p>本地共享Map <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.LocalMap.html">Local shared maps</a></code> 允许您在同一个 Vert.x 实例中的不同 Event Loop（如不同的 Verticle 中）之间安全共享数据。</p>
 </div>
 <div class="paragraph">
-<p>本地共享Map仅允许将某些数据类型作为键值和值，这些类型必须是不可变的，或可以像 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 那样复制某些其他类型。在后一种情况中，键/值将被复制，然后再放到Map中。</p>
+<p>本地共享Map仅允许将某些数据类型作为键值和值，这些类型必须是不可变的，或可以像 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code> 那样复制某些其他类型。在后一种情况中，键/值将被复制，然后再放到Map中。</p>
 </div>
 <div class="paragraph">
 <p>这样，我们可以确保在Vert.x应用程序不同线程之间 <strong>没有共享访问可变状态</strong>，因此您不必担心需要通过同步访问来保护该状态。</p>
@@ -291,8 +291,8 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>这使得它们对于托管Vert.x Web应用程序的服务器场中的会话状态存储非常有用。</p>
 </div>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getAsyncMap">getAsyncMap</a></code> 方法获取
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">AsyncMap</a>`的实例。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getAsyncMap">getAsyncMap</a></code> 方法获取
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">AsyncMap</a>`的实例。</p>
 </div>
 <div class="paragraph">
 <p>获取Map的过程是异步的，返回结果可以传给您指定的处理器中。以下是一个例子：</p>
@@ -315,7 +315,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect3">
 <h4 id="_将数据放入map">将数据放入Map</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_put">put</a></code> 方法将数据放入Map。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_put">put</a></code> 方法将数据放入Map。</p>
 </div>
 <div class="paragraph">
 <p><code>put</code> 方法是异步的，一旦完成它会通知处理器：</p>
@@ -337,7 +337,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect3">
 <h4 id="_从map读取数据">从Map读取数据</h4>
 <div class="paragraph">
-<p>您可以使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_get">get</a></code> 方法从Map读取数据。</p>
+<p>您可以使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html#method_get">get</a></code> 方法从Map读取数据。</p>
 </div>
 <div class="paragraph">
 <p><code>get</code> 方法也是异步的，一段时间过后它会通知处理器并传入结果。</p>
@@ -362,7 +362,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>您还可以从异步Map中删除条目、清除Map、读取它的大小。</p>
 </div>
 <div class="paragraph">
-<p>有关更多信息，请参阅 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">API 文档</a></code> 。</p>
+<p>有关更多信息，请参阅 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.AsyncMap.html">API 文档</a></code> 。</p>
 </div>
 </div>
 </div>
@@ -370,22 +370,22 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <div class="sect2">
 <h3 id="_集群范围锁">集群范围锁</h3>
 <div class="paragraph">
-<p>集群范围锁 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Lock.html">Asynchronous locks</a></code> 允许您在集群中获取独占锁 —— 当您想要在任何时间只在集群一个节点上执行某些操作或访问资源时，这很有用。</p>
+<p>集群范围锁 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Lock.html">Asynchronous locks</a></code> 允许您在集群中获取独占锁 —— 当您想要在任何时间只在集群一个节点上执行某些操作或访问资源时，这很有用。</p>
 </div>
 <div class="paragraph">
 <p>集群范围锁具有异步API，它和大多数等待锁释放的阻塞调用线程的API锁不相同。</p>
 </div>
 <div class="paragraph">
-<p>可使用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getLock">getLock</a></code> 方法获取锁。</p>
+<p>可使用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getLock">getLock</a></code> 方法获取锁。</p>
 </div>
 <div class="paragraph">
-<p>它不会阻塞，但当锁可用时，将 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Lock.html">Lock</a></code> 的实例传入处理器并调用它，表示您现在拥有该锁。</p>
+<p>它不会阻塞，但当锁可用时，将 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Lock.html">Lock</a></code> 的实例传入处理器并调用它，表示您现在拥有该锁。</p>
 </div>
 <div class="paragraph">
 <p>若您拥有的锁没有其他调用者，集群上的任何地方都可以获得该锁。</p>
 </div>
 <div class="paragraph">
-<p>当您用完锁后，您可以调用  <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Lock.html#method_release">release</a></code> 方法来释放它，以便另一个调用者可获得它。</p>
+<p>当您用完锁后，您可以调用  <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Lock.html#method_release">release</a></code> 方法来释放它，以便另一个调用者可获得它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -431,10 +431,10 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>很多时候我们需要在集群范围内维护一个原子计数器。</p>
 </div>
 <div class="paragraph">
-<p>您可以用 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Counter.html">Counter</a></code> 来做到这一点。</p>
+<p>您可以用 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Counter.html">Counter</a></code> 来做到这一点。</p>
 </div>
 <div class="paragraph">
-<p>您可以通过 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getCounter">getCounter</a></code> 方法获取一个实例：</p>
+<p>您可以通过 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.SharedData.html#method_getCounter">getCounter</a></code> 方法获取一个实例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -452,7 +452,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 <p>一旦您有了一个实例，您可以获取当前的计数，以原子方式递增、递减，并使用各种方法添加一个值。</p>
 </div>
 <div class="paragraph">
-<p>有更多信息，请参阅 <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.shareddata.Counter.html">API 文档</a></code></p>
+<p>有更多信息，请参阅 <code><a href="../../phpdoc/classes/io.vertx.jphp.core.shareddata.Counter.html">API 文档</a></code></p>
 </div>
 </div>
 </div>
@@ -463,7 +463,7 @@ Beware that the latency relative to asynchronous shared map operations can be mu
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-17 11:47:07 CST
+                上次更新时间 2018-11-05 19:55:24 CST
               
               
             </div>

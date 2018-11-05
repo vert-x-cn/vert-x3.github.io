@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Vert.x-Web API Contract - Vert.x</title>
+  <title>Vert.x Web API Contract - Vert.x</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -141,7 +141,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Vert.x-Web API Contract</h1>
+          <h1>Vert.x Web API Contract</h1>
           
         </div>
       </div>
@@ -158,13 +158,13 @@
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
 <li><a href="#_using_vert_x_api_contract">Using Vert.x API Contract</a></li>
-<li><a href="#_http_requests_validation">HTTP Requests validation</a>
+<li><a href="#_http_requests_validation_without_openapi_3">HTTP Requests validation without OpenAPI 3</a>
 <ul class="sectlevel2">
 <li><a href="#_types_of_request_parameters">Types of request parameters</a></li>
 <li><a href="#_handling_parameters">Handling parameters</a></li>
 </ul>
 </li>
-<li><a href="#_openapi_3_support">OpenAPI 3 support</a>
+<li><a href="#_openapi_3">OpenAPI 3</a>
 <ul class="sectlevel2">
 <li><a href="#_the_router_factory">The router factory</a></li>
 <li><a href="#_create_a_new_router_factory">Create a new router factory</a></li>
@@ -185,13 +185,13 @@
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
 <li><a href="#_using_vert_x_api_contract">Using Vert.x API Contract</a></li>
-<li><a href="#_http_requests_validation">HTTP Requests validation</a>
+<li><a href="#_http_requests_validation_without_openapi_3">HTTP Requests validation without OpenAPI 3</a>
 <ul class="sectlevel2">
 <li><a href="#_types_of_request_parameters">Types of request parameters</a></li>
 <li><a href="#_handling_parameters">Handling parameters</a></li>
 </ul>
 </li>
-<li><a href="#_openapi_3_support">OpenAPI 3 support</a>
+<li><a href="#_openapi_3">OpenAPI 3</a>
 <ul class="sectlevel2">
 <li><a href="#_the_router_factory">The router factory</a></li>
 <li><a href="#_create_a_new_router_factory">Create a new router factory</a></li>
@@ -218,17 +218,10 @@
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web API Contract brings to Vert.x two features to help you to develop you API:</p>
+<p>Vert.x Web API Contract extends Vert.x Web to support <a href="https://www.openapis.org/">OpenAPI 3</a>, bringing to you a simple interface to build your router and mount security and validation handler.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>HTTP Requests validation</p>
-</li>
-<li>
-<p>OpenAPI 3 Support with automatic requests validation</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>If you are interested in building an application that routes API Requests to event bus, check out <a href="https://vertx.io/docs/vertx-web-api-service/java/">Vert.x Web API Service</a></p>
 </div>
 </div>
 </div>
@@ -271,7 +264,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_http_requests_validation">HTTP Requests validation</h2>
+<h2 id="_http_requests_validation_without_openapi_3">HTTP Requests validation without OpenAPI 3</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x provides a validation framework that will validate requests for you and will put results of validation inside a container. To define a <code><a href="../../jsdoc/module-vertx-web-api-contract-js_http_request_validation_handler-HTTPRequestValidationHandler.html">HTTPRequestValidationHandler</a></code>:</p>
@@ -369,7 +362,7 @@ if ((body !== null &amp;&amp; body !== undefined)) {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_openapi_3_support">OpenAPI 3 support</h2>
+<h2 id="_openapi_3">OpenAPI 3</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x allows you to use your OpenApi 3 specification directly inside your code using the design first approach. Vert.x-Web provides:</p>
@@ -595,7 +588,7 @@ server.requestHandler(router.handle).listen();</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 19:27:02 CST
+                上次更新时间 2018-11-05 19:57:26 CST
               
               
             </div>

@@ -157,6 +157,8 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
+<li><a href="#OperationRequest">OperationRequest</a></li>
+<li><a href="#OperationResponse">OperationResponse</a></li>
 <li><a href="#RouterFactoryOptions">RouterFactoryOptions</a></li>
 </ul>
         </div>
@@ -165,6 +167,8 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
+<li><a href="#OperationRequest">OperationRequest</a></li>
+<li><a href="#OperationResponse">OperationResponse</a></li>
 <li><a href="#RouterFactoryOptions">RouterFactoryOptions</a></li>
 </ul>
         </div>
@@ -178,6 +182,64 @@
   </a>
 
         <div class="sect1">
+<h2 id="OperationRequest">OperationRequest</h2>
+<div class="sectionbody">
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="params"></a><code>@params</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Json object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get request parsedParameters as JSON</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="OperationResponse">OperationResponse</h2>
+<div class="sectionbody">
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="payload"></a><code>@payload</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Buffer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="statusCode"></a><code>@statusCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (Integer)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="statusMessage"></a><code>@statusMessage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="RouterFactoryOptions">RouterFactoryOptions</h2>
 <div class="sectionbody">
 
@@ -212,6 +274,12 @@ that manages ValidationException will be mounted. You can change the validation 
 handler will be called.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="operationModelKey"></a><code>@operationModelKey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When set, an additional handler will be created to expose the operation model in the routing
+context under the given key. When the key is null, the handler is not added.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="requireSecurityHandlers"></a><code>@requireSecurityHandlers</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If true, when you call link the factory will mount for every path
@@ -227,7 +295,7 @@ the required security handlers and, if a security handler is not defined, it thr
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 19:27:02 CST
+                上次更新时间 2018-11-05 19:57:26 CST
               
               
             </div>

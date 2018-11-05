@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                                                     <li><a>Namespaces</a></li>
                                                                         <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
                                                                                                                                 </ul>
                         </li>
                         <li class="dropdown" id="charts-menu">
@@ -218,22 +219,14 @@ changing the default behavior may break the compliance with the STOMP specificat
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_server" title="server :: &lt;b&gt;
-server()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-server()
-&lt;/b&gt;</span><pre>server</pre>
+        <a href="#method_server" title="server :: ">
+            <span class="description"></span><pre>server</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_session" title="session :: &lt;b&gt;
-session()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-session()
-&lt;/b&gt;</span><pre>session</pre>
+        <a href="#method_session" title="session :: ">
+            <span class="description"></span><pre>session</pre>
         </a>
     </li>
 
@@ -252,12 +245,8 @@ subscription id (using the &lt;code&gt;id&lt;/code&gt; header).</span><pre>unsub
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_version" title="version :: &lt;b&gt;
-version()
-&lt;/b&gt;">
-            <span class="description">&lt;b&gt;
-version()
-&lt;/b&gt;</span><pre>version</pre>
+        <a href="#method_version" title="version :: ">
+            <span class="description"></span><pre>version</pre>
         </a>
     </li>
 
@@ -355,7 +344,7 @@ send and receive STOMP frames.</p>
                                             <a id="method_abort"></a>
                         <div class="element clickable method public  method_abort" data-toggle="collapse" data-target=".method_abort .collapse">
                             <h2>Aborts a transaction.</h2>
-                            <pre>abort( $arg0,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>abort( $arg0,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -404,7 +393,7 @@ abort($id, $headers, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -413,7 +402,7 @@ abort($id, $headers, $receiptHandler)
                         <div class="element clickable method public  method_ack" data-toggle="collapse" data-target=".method_ack .collapse">
                             <h2>Sends an acknowledgement for a specific message. It means that the message has been handled and processed by the
 client. The &lt;code&gt;id&lt;/code&gt; parameter is the message id received in the frame.</h2>
-                            <pre>ack( $arg0,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>ack( $arg0,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -465,7 +454,7 @@ ack($id, $txId, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -473,7 +462,7 @@ ack($id, $txId, $receiptHandler)
                                             <a id="method_beginTX"></a>
                         <div class="element clickable method public  method_beginTX" data-toggle="collapse" data-target=".method_beginTX .collapse">
                             <h2>Begins a transaction.</h2>
-                            <pre>beginTX( $arg0,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>beginTX( $arg0,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -522,7 +511,7 @@ beginTX($id, $headers, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -537,9 +526,7 @@ beginTX($id, $headers, $receiptHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-close()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -559,17 +546,14 @@ close()
                                             <a id="method_closeHandler"></a>
                         <div class="element clickable method public  method_closeHandler" data-toggle="collapse" data-target=".method_closeHandler .collapse">
                             <h2>Sets a handler notified when the STOMP connection is closed.</h2>
-                            <pre>closeHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>closeHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler
-<b>
-closeHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -581,7 +565,7 @@ closeHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -589,7 +573,7 @@ closeHandler($handler)
                                             <a id="method_commit"></a>
                         <div class="element clickable method public  method_commit" data-toggle="collapse" data-target=".method_commit .collapse">
                             <h2>Commits a transaction.</h2>
-                            <pre>commit( $arg0,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>commit( $arg0,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -638,7 +622,7 @@ commit($id, $headers, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -647,18 +631,14 @@ commit($id, $headers, $receiptHandler)
                         <div class="element clickable method public  method_connectionDroppedHandler" data-toggle="collapse" data-target=".method_connectionDroppedHandler .collapse">
                             <h2>Sets a handler notified when the server does not respond to a &lt;code&gt;ping&lt;/code&gt; request in time. In other
 words, this handler is invoked when the heartbeat has detected a connection failure with the server.</h2>
-                            <pre>connectionDroppedHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>connectionDroppedHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>The handler can decide to reconnect to the server.</p>
-<p>param $handler [callable] the handler
-<b>
-connectionDroppedHandler($handler)
-</b></p></div>
+                                    <div class="long_description"><p>The handler can decide to reconnect to the server.</p></div>
 
                                     <table class="table">
                                                                             </table>
@@ -670,7 +650,7 @@ connectionDroppedHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection} receiving the dropped connection.</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection} receiving the dropped connection.</p></p>
                                                                     </div>
                             </div>
 
@@ -679,7 +659,7 @@ connectionDroppedHandler($handler)
                         <div class="element clickable method public  method_disconnect" data-toggle="collapse" data-target=".method_disconnect .collapse">
                             <h2>Disconnects the client. Unlike the @see \io\vertx\jphp\ext\stomp\StompClientConnection::close method, this method send the &lt;code&gt;DISCONNECT&lt;/code&gt; frame to the
 server.</h2>
-                            <pre>disconnect( $arg0 = null,  $arg1 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>disconnect( $arg0 = null,  $arg1 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -697,13 +677,13 @@ disconnect($receiptHandler)
 </b></p>
 <p>Disconnects the client. Unlike the @see \io\vertx\jphp\ext\stomp\StompClientConnection::close method, this method send the <code>DISCONNECT</code> frame to the
 server. This method lets you customize the <code>DISCONNECT</code> frame.</p>
-<p>param $frame [Frame | mixed] the {@code DISCONNECT} frame.
+<p>param $frame [Frame | array] the {@code DISCONNECT} frame.
 <b>
 disconnect($frame)
 </b></p>
 <p>Disconnects the client. Unlike the @see \io\vertx\jphp\ext\stomp\StompClientConnection::close method, this method send the <code>DISCONNECT</code> frame to the
 server. This method lets you customize the <code>DISCONNECT</code> frame.</p>
-<p>param $frame [Frame | mixed] the {@code DISCONNECT} frame.
+<p>param $frame [Frame | array] the {@code DISCONNECT} frame.
 param $receiptHandler [callable] the handler invoked when the {@code RECEIPT} frame associated with the disconnection has been processed by the server. The handler receives the sent frame ({@code DISCONNECT}).
 <b>
 disconnect($frame, $receiptHandler)
@@ -715,7 +695,7 @@ disconnect($frame, $receiptHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>Frame | callable | mixed</p></p>
+                                                <code></code><p><p>Frame | callable | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -723,7 +703,7 @@ disconnect($frame, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -731,17 +711,14 @@ disconnect($frame, $receiptHandler)
                                             <a id="method_errorHandler"></a>
                         <div class="element clickable method public  method_errorHandler" data-toggle="collapse" data-target=".method_errorHandler .collapse">
                             <h2>Sets a handler notified when an &lt;code&gt;ERROR&lt;/code&gt; frame is received by the client. The handler receives the &lt;code&gt;ERROR&lt;/code&gt; frame and a reference on the @see \io\vertx\jphp\ext\stomp\StompClientConnection.</h2>
-                            <pre>errorHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>errorHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler
-<b>
-errorHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -753,7 +730,7 @@ errorHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -761,17 +738,14 @@ errorHandler($handler)
                                             <a id="method_exceptionHandler"></a>
                         <div class="element clickable method public  method_exceptionHandler" data-toggle="collapse" data-target=".method_exceptionHandler .collapse">
                             <h2>Configures the exception handler notified upon TCP-level errors.</h2>
-                            <pre>exceptionHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>exceptionHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $exceptionHandler [callable] the handler
-<b>
-exceptionHandler($exceptionHandler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -783,7 +757,7 @@ exceptionHandler($exceptionHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -798,9 +772,7 @@ exceptionHandler($exceptionHandler)
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p><b>
-isConnected()
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -822,7 +794,7 @@ isConnected()
                                             <a id="method_nack"></a>
                         <div class="element clickable method public  method_nack" data-toggle="collapse" data-target=".method_nack .collapse">
                             <h2>Sends a non-acknowledgement for the given message. It means that the message has not been handled by the client.</h2>
-                            <pre>nack( $arg0,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>nack( $arg0,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -875,7 +847,7 @@ nack($id, $txId, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -884,17 +856,14 @@ nack($id, $txId, $receiptHandler)
                         <div class="element clickable method public  method_pingHandler" data-toggle="collapse" data-target=".method_pingHandler .collapse">
                             <h2>Sets a handler that let customize the behavior when a ping needs to be sent to the server. Be aware that
 changing the default behavior may break the compliance with the STOMP specification.</h2>
-                            <pre>pingHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>pingHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $handler [callable] the handler
-<b>
-pingHandler($handler)
-</b></p></div>
+                                    <div class="long_description"></div>
 
                                     <table class="table">
                                                                             </table>
@@ -906,7 +875,7 @@ pingHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -914,7 +883,7 @@ pingHandler($handler)
                                             <a id="method_receivedFrameHandler"></a>
                         <div class="element clickable method public  method_receivedFrameHandler" data-toggle="collapse" data-target=".method_receivedFrameHandler .collapse">
                             <h2>Configures a received handler that get notified when a STOMP frame is received by the client.</h2>
-                            <pre>receivedFrameHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>receivedFrameHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -924,12 +893,7 @@ pingHandler($handler)
                                     <div class="long_description"><p>This handler can be used for logging, debugging or ad-hoc behavior. The frame can still be modified by the handler.</p>
 <p>
 Unlike @see \io\vertx\jphp\ext\stomp\StompClient::receivedFrameHandler, the given handler won't receive the <code>CONNECTED</code> frame. If a received frame handler is set on the @see \io\vertx\jphp\ext\stomp\StompClient, it will be used by all
-clients connection, so calling this method is useless, except if you want to use a different handler.
-
-param $handler [callable] the handler
-<b>
-receivedFrameHandler($handler)
-</b></div>
+clients connection, so calling this method is useless, except if you want to use a different handler.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -941,7 +905,7 @@ receivedFrameHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -949,14 +913,14 @@ receivedFrameHandler($handler)
                                             <a id="method_send"></a>
                         <div class="element clickable method public  method_send" data-toggle="collapse" data-target=".method_send .collapse">
                             <h2>Sends the given frame to the server.</h2>
-                            <pre>send( $arg0,  $arg1 = null,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>send( $arg0,  $arg1 = null,  $arg2 = null,  $arg3 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"><p>param $frame [Frame | mixed] the frame
+                                    <div class="long_description"><p>param $frame [Frame | array] the frame
 <b>
 send($frame)
 </b></p>
@@ -973,7 +937,7 @@ param $body [Buffer] the body, may be {@code null}
 send($destination, $body)
 </b></p>
 <p>Sends the given frame to the server.</p>
-<p>param $frame [Frame | mixed] the frame
+<p>param $frame [Frame | array] the frame
 param $receiptHandler [callable] the handler invoked when the {@code RECEIPT} frame associated with the sent frame has been received. The handler receives the sent frame.
 <b>
 send($frame, $receiptHandler)
@@ -1014,7 +978,7 @@ send($destination, $headers, $body, $receiptHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>Frame | string | array | mixed</p></p>
+                                                <code></code><p><p>Frame | string | array</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -1030,16 +994,14 @@ send($destination, $headers, $body, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_server"></a>
                         <div class="element clickable method public  method_server" data-toggle="collapse" data-target=".method_server .collapse">
-                            <h2>&lt;b&gt;
-server()
-&lt;/b&gt;</h2>
+                            <h2>server</h2>
                             <pre>server() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -1068,9 +1030,7 @@ server()
                         </div>
                                             <a id="method_session"></a>
                         <div class="element clickable method public  method_session" data-toggle="collapse" data-target=".method_session .collapse">
-                            <h2>&lt;b&gt;
-session()
-&lt;/b&gt;</h2>
+                            <h2>session</h2>
                             <pre>session() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -1166,7 +1126,7 @@ subscribe($destination, $headers, $handler, $receiptHandler)
                         <div class="element clickable method public  method_unsubscribe" data-toggle="collapse" data-target=".method_unsubscribe .collapse">
                             <h2>Un-subscribes from the given destination. This method only works if the subscription did not specifies a
 subscription id (using the &lt;code&gt;id&lt;/code&gt; header).</h2>
-                            <pre>unsubscribe( $arg0,  $arg1 = null,  $arg2 = null) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>unsubscribe( $arg0,  $arg1 = null,  $arg2 = null) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1218,16 +1178,14 @@ unsubscribe($destination, $headers, $receiptHandler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
                         </div>
                                             <a id="method_version"></a>
                         <div class="element clickable method public  method_version" data-toggle="collapse" data-target=".method_version .collapse">
-                            <h2>&lt;b&gt;
-version()
-&lt;/b&gt;</h2>
+                            <h2>version</h2>
                             <pre>version() : string</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -1258,7 +1216,7 @@ version()
                         <div class="element clickable method public  method_writingFrameHandler" data-toggle="collapse" data-target=".method_writingFrameHandler .collapse">
                             <h2>Configures a handler notified when a frame is going to be written on the wire. This handler can be used from
 logging, debugging. The handler can modify the received frame.</h2>
-                            <pre>writingFrameHandler( $arg0) : \io\vertx\jphp\ext\stomp\StompClientConnection</pre>
+                            <pre>writingFrameHandler( $arg0) : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -1267,12 +1225,7 @@ logging, debugging. The handler can modify the received frame.</h2>
                                 <div class="detail-description">
                                     <div class="long_description"><p>
 If a writing frame handler is set on the @see \io\vertx\jphp\ext\stomp\StompClient, it will be used by all
-clients connection, so calling this method is useless, except if you want to use a different handler.
-
-param $handler [callable] the handler
-<b>
-writingFrameHandler($handler)
-</b></div>
+clients connection, so calling this method is useless, except if you want to use a different handler.</div>
 
                                     <table class="table">
                                                                             </table>
@@ -1284,7 +1237,7 @@ writingFrameHandler($handler)
                                             </div>
                                                                             
                                                                             <h3>Response</h3>
-                                        <code><a href="../classes/io.vertx.jphp.ext.stomp.StompClientConnection.html">\io\vertx\jphp\ext\stomp\StompClientConnection</a></code><p><p>the current {@link StompClientConnection}</p></p>
+                                        <code>$this</code><p><p>the current {@link StompClientConnection}</p></p>
                                                                     </div>
                             </div>
 
@@ -1311,7 +1264,7 @@ writingFrameHandler($handler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 22 Oct 2018 03:40:03 +0000.<br/>
+            generated on Mon, 05 Nov 2018 08:53:47 +0000.<br/>
     </footer>
     </body>
 </html>

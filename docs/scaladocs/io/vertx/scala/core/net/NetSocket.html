@@ -1156,6 +1156,23 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.core.net.NetSocket#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="write(message:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.net.NetSocket"></a><a id="write(Buffer,Handler[AsyncResult[Unit]]):NetSocket"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/net/NetSocket.html#write(message:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.net.NetSocket" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">write</span><span class="params">(<span name="message">message: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.net.NetSocket">NetSocket</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Like  but with an <code>handler</code> called when the message has been written
+or failed to be written.</p>
     </li><li name="io.vertx.scala.core.net.NetSocket#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="write(str:String,enc:String):io.vertx.scala.core.net.NetSocket"></a><a id="write(String,String):NetSocket"></a>
       <span class="permalink">
@@ -1206,6 +1223,22 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
       <p class="shortcomment cmt">Write some data to the stream.</p><div class="fullcomment"><div class="comment cmt"><p>Write some data to the stream. The data is put on an internal write queue, and the write actually happens
 asynchronously. To avoid running out of memory by putting too much on the write queue,
 check the <a href="../streams/WriteStream.html#writeQueueFull():Boolean" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#writeQueueFull">io.vertx.scala.core.streams.WriteStream#writeQueueFull</a> method before writing. This is done automatically if using a <a href="../streams/Pump.html" class="extype" name="io.vertx.scala.core.streams.Pump">io.vertx.scala.core.streams.Pump</a>.   * @param data the data to write</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.net.NetSocket">NetSocket</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.net.NetSocket#writeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="writeFuture(message:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]"></a><a id="writeFuture(Buffer):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/net/NetSocket.html#writeFuture(message:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeFuture</span><span class="params">(<span name="message">message: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#write(message:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.net.NetSocket" class="extmbr" name="io.vertx.scala.core.net.NetSocket#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
     </li><li name="io.vertx.scala.core.net.NetSocket#writeHandlerID" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="writeHandlerID():String"></a>
       <span class="permalink">

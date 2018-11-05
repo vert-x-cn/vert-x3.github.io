@@ -636,8 +636,8 @@ response.</p>
 <p>Here&#8217;s the 10000 foot view:</p>
 </div>
 <div class="paragraph">
-<p>A <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Router.html">Router</a></code> is one of the core concepts of Vert.x-Web. It&#8217;s an object which maintains zero or more
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html">Routes</a></code>.</p>
+<p>A <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Router.html">Router</a></code> is one of the core concepts of Vert.x-Web. It&#8217;s an object which maintains zero or more
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html">Routes</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>A router takes an HTTP request and finds the first matching route for that request, and passes the request to that route.</p>
@@ -682,8 +682,8 @@ no matching criteria so it will match <em>all</em> requests that arrive on the s
 <p>We then specify a handler for that route. That handler will be called for all requests that arrive on the server.</p>
 </div>
 <div class="paragraph">
-<p>The object that gets passed into the handler is a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> - this contains
-the standard Vert.x <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code> and <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
+<p>The object that gets passed into the handler is a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> - this contains
+the standard Vert.x <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html">HttpServerRequest</a></code> and <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerResponse.html">HttpServerResponse</a></code>
 but also various other useful stuff that makes working with Vert.x-Web simpler.</p>
 </div>
 <div class="paragraph">
@@ -704,15 +704,15 @@ to <code><a href="null#method_handle">handle</a></code>.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When Vert.x-Web decides to route a request to a matching route, it calls the handler of the route passing in an instance
-of <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code>. A route can have different handlers, that you can append using
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_handler">handler</a></code></p>
+of <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code>. A route can have different handlers, that you can append using
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_handler">handler</a></code></p>
 </div>
 <div class="paragraph">
-<p>If you don&#8217;t end the response in your handler, you should call <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_next">next</a></code> so another
+<p>If you don&#8217;t end the response in your handler, you should call <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_next">next</a></code> so another
 matching route can handle the request (if any).</p>
 </div>
 <div class="paragraph">
-<p>You don&#8217;t have to call <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_next">next</a></code> before the handler has finished executing.
+<p>You don&#8217;t have to call <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_next">next</a></code> before the handler has finished executing.
 You can do this some time later, if you want:</p>
 </div>
 <div class="listingblock">
@@ -781,7 +781,7 @@ a legacy blocking API or do some intensive calculation.</p>
 not using an event loop.</p>
 </div>
 <div class="paragraph">
-<p>You set a blocking handler on a route with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_blockingHandler">blockingHandler</a></code>.
+<p>You set a blocking handler on a route with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_blockingHandler">blockingHandler</a></code>.
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
@@ -803,7 +803,7 @@ Here&#8217;s an example:</p>
 <p>By default, any blocking handlers executed on the same context (e.g. the same verticle instance) are <em>ordered</em> - this
 means the next one won&#8217;t be executed until the previous one has completed. If you don&#8217;t care about orderering and
 don&#8217;t mind your blocking handlers executing in parallel you can set the blocking handler specifying <code>ordered</code> as
-false using <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_blockingHandler">blockingHandler</a></code>.</p>
+false using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_blockingHandler">blockingHandler</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Note, if you need to process multipart form data from a blocking handler, you MUST use a non-blocking handler
@@ -908,7 +908,7 @@ way is to use an asterisk <code>*</code> at the end of the path when declaring t
 <div class="sectionbody">
 <div class="paragraph">
 <p>It&#8217;s possible to match paths using placeholders for parameters which are then available in the request
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_params">params</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.HttpServerRequest.html#method_params">params</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example</p>
@@ -1060,7 +1060,7 @@ It&#8217;s possible to use named capture groups in the regex path.</p>
 <p>By default a route will match all HTTP methods.</p>
 </div>
 <div class="paragraph">
-<p>If you want a route to only match for a specific HTTP method you can use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_method">method</a></code></p>
+<p>If you want a route to only match for a specific HTTP method you can use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_method">method</a></code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1092,8 +1092,8 @@ It&#8217;s possible to use named capture groups in the regex path.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you want to route for a specific HTTP method you can also use the methods such as <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Router.html#method_get">get</a></code>,
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Router.html#method_post">post</a>`and `<a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Router.html#method_put">put</a></code> named after the HTTP
+<p>If you want to route for a specific HTTP method you can also use the methods such as <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Router.html#method_get">get</a></code>,
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Router.html#method_post">post</a>`and `<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Router.html#method_put">put</a></code> named after the HTTP
 method name. For example:</p>
 </div>
 <div class="listingblock">
@@ -1124,7 +1124,7 @@ method name. For example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you want to specify a route will match for more than HTTP method you can call <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_method">method</a></code>
+<p>If you want to specify a route will match for more than HTTP method you can call <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_method">method</a></code>
 multiple times:</p>
 </div>
 <div class="listingblock">
@@ -1153,7 +1153,7 @@ multiple times:</p>
 the handler for that route will be called.</p>
 </div>
 <div class="paragraph">
-<p>If the handler subsequently calls <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_next">next</a></code> the handler for the next
+<p>If the handler subsequently calls <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_next">next</a></code> the handler for the next
 matching route (if any) will be called. And so on.</p>
 </div>
 <div class="paragraph">
@@ -1210,7 +1210,7 @@ route3</pre>
 <p>As the routes have been called in that order for any request that starts with <code>/some/path</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you want to override the default ordering for routes, you can do so using <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_order">order</a></code>,
+<p>If you want to override the default ordering for routes, you can do so using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_order">order</a></code>,
 specifying an integer value.</p>
 </div>
 <div class="paragraph">
@@ -1278,7 +1278,7 @@ route3</pre>
 <p>If two matching routes have the same value of order, then they will be called in the order they were added.</p>
 </div>
 <div class="paragraph">
-<p>You can also specify that a route is handled last, with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_last">last</a></code></p>
+<p>You can also specify that a route is handled last, with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_last">last</a></code></p>
 </div>
 </div>
 </div>
@@ -1286,11 +1286,11 @@ route3</pre>
 <h2 id="_routing_based_on_mime_type_of_request">Routing based on MIME type of request</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can specify that a route will match against matching request MIME types using <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_consumes">consumes</a></code>.</p>
+<p>You can specify that a route will match against matching request MIME types using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_consumes">consumes</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>In this case, the request will contain a <code>content-type</code> header specifying the MIME type of the request body.
-This will be matched against the value specified in <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_consumes">consumes</a></code>.</p>
+This will be matched against the value specified in <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_consumes">consumes</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Basically, <code>consumes</code> is describing which MIME types the handler can <em>consume</em>.</p>
@@ -1401,7 +1401,7 @@ If omitted it defaults to 1.0.</p>
 <p>If the server can provide both text/plain and text/html it should provide the text/html in this case.</p>
 </div>
 <div class="paragraph">
-<p>By using <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_produces">produces</a></code> you define which MIME type(s) the route produces, e.g. the
+<p>By using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_produces">produces</a></code> you define which MIME type(s) the route produces, e.g. the
 following handler produces a response with MIME type <code>application/json</code>.</p>
 </div>
 <div class="listingblock">
@@ -1431,7 +1431,7 @@ Accept: application/json;q=0.7, text/html;q=0.8, text/plain</p>
 </div>
 <div class="paragraph">
 <p>You can also mark your route as producing more than one MIME type. If this is the case, then you use
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getAcceptableContentType">getAcceptableContentType</a>`to find out the actual MIME type that
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getAcceptableContentType">getAcceptableContentType</a>`to find out the actual MIME type that
 was accepted.</p>
 </div>
 <div class="listingblock">
@@ -1490,10 +1490,10 @@ acceptable but that has a higher <code>q</code> value.</p>
 <h2 id="_enabling_and_disabling_routes">Enabling and disabling routes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can disable a route with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_disable">disable</a></code>. A disabled route will be ignored when matching.</p>
+<p>You can disable a route with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_disable">disable</a></code>. A disabled route will be ignored when matching.</p>
 </div>
 <div class="paragraph">
-<p>You can re-enable a disabled route with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Route.html#method_enable">enable</a></code></p>
+<p>You can re-enable a disabled route with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Route.html#method_enable">enable</a></code></p>
 </div>
 </div>
 </div>
@@ -1501,15 +1501,15 @@ acceptable but that has a higher <code>q</code> value.</p>
 <h2 id="_context_data">Context data</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can use the context data in the <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> to maintain any data that you
+<p>You can use the context data in the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> to maintain any data that you
 want to share between handlers for the lifetime of the request.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example where one handler sets some data in the context data and a subsequent handler retrieves it:</p>
 </div>
 <div class="paragraph">
-<p>You can use the <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_put">put</a></code> to put any object, and
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_get">get</a>`to retrieve any object from the context data.</p>
+<p>You can use the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_put">put</a></code> to put any object, and
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_get">get</a>`to retrieve any object from the context data.</p>
 </div>
 <div class="paragraph">
 <p>A request sent to path <code>/some/path/other</code> will match both routes.</p>
@@ -1732,9 +1732,9 @@ locale for a client or the sorted list of preferred locales by quality.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The main method <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_acceptableLocales">acceptableLocales</a></code> will return the ordered list of locales the
+<p>The main method <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_acceptableLocales">acceptableLocales</a></code> will return the ordered list of locales the
 user understands, if you&#8217;re only interested in the user prefered locale then the helper:
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_preferredLocale">preferredLocale</a>`will return the 1st element of the list or `null</code> if no
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_preferredLocale">preferredLocale</a>`will return the 1st element of the list or `null</code> if no
 locale was provided by the user.</p>
 </div>
 </div>
@@ -1787,7 +1787,7 @@ to paths that start with <code>/somepath/</code>:</p>
 </div>
 <div class="paragraph">
 <p>Failure routing will occur if a handler throws an exception, or if a handler calls
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_fail">fail</a>`specifying an HTTP status code to deliberately signal a failure.</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_fail">fail</a>`specifying an HTTP status code to deliberately signal a failure.</p>
 </div>
 <div class="paragraph">
 <p>If an exception is caught from a handler this will result in a failure with status code <code>500</code> being signalled.</p>
@@ -1846,7 +1846,7 @@ without properly completing the protocol.</p>
 <h2 id="_request_body_handling">Request body handling</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.BodyHandler.html">BodyHandler</a></code> allows you to retrieve request bodies, limit body sizes and handle
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.BodyHandler.html">BodyHandler</a></code> allows you to retrieve request bodies, limit body sizes and handle
 file uploads.</p>
 </div>
 <div class="paragraph">
@@ -1868,15 +1868,15 @@ to install handlers to consume the HTTP request body and this must be done befor
 <div class="sect2">
 <h3 id="_getting_the_request_body">Getting the request body</h3>
 <div class="paragraph">
-<p>If you know the request body is JSON, then you can use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getBodyAsJson">getBodyAsJson</a></code>,
-if you know it&#8217;s a string you can use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getBodyAsString">getBodyAsString</a></code>, or to
-retrieve it as a buffer use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getBody">getBody</a></code>.</p>
+<p>If you know the request body is JSON, then you can use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getBodyAsJson">getBodyAsJson</a></code>,
+if you know it&#8217;s a string you can use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getBodyAsString">getBodyAsString</a></code>, or to
+retrieve it as a buffer use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getBody">getBody</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_limiting_body_size">Limiting body size</h3>
 <div class="paragraph">
-<p>To limit the size of a request body, create the body handler then use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.BodyHandler.html#method_setBodyLimit">setBodyLimit</a></code>
+<p>To limit the size of a request body, create the body handler then use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.BodyHandler.html#method_setBodyLimit">setBodyLimit</a></code>
 to specifying the maximum body size, in bytes. This is useful to avoid running out of memory with very large bodies.</p>
 </div>
 <div class="paragraph">
@@ -1891,7 +1891,7 @@ will be sent.</p>
 <h3 id="_merging_form_attributes">Merging form attributes</h3>
 <div class="paragraph">
 <p>By default, the body handler will merge any form attributes into the request parameters. If you don&#8217;t want this behaviour
-you can use disable it with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.BodyHandler.html#method_setMergeFormAttributes">setMergeFormAttributes</a></code>.</p>
+you can use disable it with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.BodyHandler.html#method_setMergeFormAttributes">setMergeFormAttributes</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1905,7 +1905,7 @@ uploads directory, which is <code>file-uploads</code> by default.</p>
 </div>
 <div class="paragraph">
 <p>Each file will be given an automatically generated file name, and the file uploads will be available on the routing
-context with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_fileUploads">fileUploads</a></code>.</p>
+context with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_fileUploads">fileUploads</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -1926,7 +1926,7 @@ context with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/
 </div>
 </div>
 <div class="paragraph">
-<p>Each file upload is described by a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.FileUpload.html">FileUpload</a></code> instance, which allows various properties
+<p>Each file upload is described by a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.FileUpload.html">FileUpload</a></code> instance, which allows various properties
 such as the name, file-name and size to be accessed.</p>
 </div>
 </div>
@@ -1936,7 +1936,7 @@ such as the name, file-name and size to be accessed.</p>
 <h2 id="_handling_cookies">Handling cookies</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web has cookies support using the <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.CookieHandler.html">CookieHandler</a></code>.</p>
+<p>Vert.x-Web has cookies support using the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.CookieHandler.html">CookieHandler</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>You should make sure a cookie handler is on a matching route for any requests that require this functionality.</p>
@@ -1953,21 +1953,21 @@ such as the name, file-name and size to be accessed.</p>
 <div class="sect2">
 <h3 id="_manipulating_cookies">Manipulating cookies</h3>
 <div class="paragraph">
-<p>You use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getCookie">getCookie</a></code> to retrieve
-a cookie by name, or use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_cookies">cookies</a></code> to retrieve the entire set.</p>
+<p>You use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getCookie">getCookie</a></code> to retrieve
+a cookie by name, or use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_cookies">cookies</a></code> to retrieve the entire set.</p>
 </div>
 <div class="paragraph">
-<p>To remove a cookie, use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_removeCookie">removeCookie</a></code>.</p>
+<p>To remove a cookie, use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_removeCookie">removeCookie</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>To add a cookie use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_addCookie">addCookie</a></code>.</p>
+<p>To add a cookie use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_addCookie">addCookie</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The set of cookies will be written back in the response automatically when the response headers are written so the
 browser can store them.</p>
 </div>
 <div class="paragraph">
-<p>Cookies are described by instances of <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
+<p>Cookies are described by instances of <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
 value, domain, path and other normal cookie properties.</p>
 </div>
 <div class="paragraph">
@@ -2021,7 +2021,7 @@ be effectively unguessable.</p>
 HTTPS when sessions are being used. Vert.x will warn you if you attempt to use sessions over straight HTTP.</p>
 </div>
 <div class="paragraph">
-<p>To enable sessions in your application you must have a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">SessionHandler</a></code>
+<p>To enable sessions in your application you must have a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.SessionHandler.html">SessionHandler</a></code>
 on a matching route before your application logic.</p>
 </div>
 <div class="paragraph">
@@ -2090,7 +2090,7 @@ requests might end up on a server which doesn&#8217;t know about your session.</
 <p>The reaper interval can be configured with a json message with the key: <code>reaperInterval</code>.</p>
 </div>
 <div class="paragraph">
-<p>Here are some examples of creating a local <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.sstore.SessionStore.html">SessionStore</a></code></p>
+<p>Here are some examples of creating a local <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.sstore.SessionStore.html">SessionStore</a></code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2127,7 +2127,7 @@ requests from the same browser to different servers.</p>
 <p>To you use a clustered session store you should make sure your Vert.x instance is clustered.</p>
 </div>
 <div class="paragraph">
-<p>Here are some examples of creating a clustered <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.sstore.SessionStore.html">SessionStore</a></code></p>
+<p>Here are some examples of creating a clustered <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.sstore.SessionStore.html">SessionStore</a></code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2161,7 +2161,7 @@ requests from the same browser to different servers.</p>
 your session handler is routed to before your application handlers.</p>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll also need to include a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.CookieHandler.html">CookieHandler</a></code> as the session handler uses cookies to
+<p>You&#8217;ll also need to include a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.CookieHandler.html">CookieHandler</a></code> as the session handler uses cookies to
 lookup the session. The cookie handler should be before the session handler when routing.</p>
 </div>
 <div class="paragraph">
@@ -2206,16 +2206,16 @@ from the session store and set on the routing context before it gets to your app
 <div class="sect2">
 <h3 id="_using_the_session">Using the session</h3>
 <div class="paragraph">
-<p>In your handlers you can access the session instance with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_session">session</a></code>.</p>
+<p>In your handlers you can access the session instance with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_session">session</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>You put data into the session with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Session.html#method_put">put</a></code>,
-you get data from the session with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Session.html#method_get">get</a></code>, and you remove
-data from the session with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Session.html#method_remove">remove</a></code>.</p>
+<p>You put data into the session with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Session.html#method_put">put</a></code>,
+you get data from the session with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Session.html#method_get">get</a></code>, and you remove
+data from the session with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Session.html#method_remove">remove</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The keys for items in the session are always strings. The values can be any type for a local session store, and for
-a clustered session store they can be any basic type, or <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code>, <code>JsonObject</code>,
+a clustered session store they can be any basic type, or <code><a href="../../phpdoc/classes/io.vertx.jphp.core.buffer.Buffer.html">Buffer</a></code>, <code>JsonObject</code>,
 `JsonArray`or a serializable object, as the values have to serialized across the cluster.</p>
 </div>
 <div class="paragraph">
@@ -2250,7 +2250,7 @@ a clustered session store they can be any basic type, or <code><a href="https://
 <p>Sessions are automatically written back to the store after after responses are complete.</p>
 </div>
 <div class="paragraph">
-<p>You can manually destroy a session using <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Session.html#method_destroy">destroy</a></code>. This will remove the session
+<p>You can manually destroy a session using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Session.html#method_destroy">destroy</a></code>. This will remove the session
 from the context and the session store. Note that if there is no session a new one will be automatically created
 for the next request from the browser that&#8217;s routed through the session handler.</p>
 </div>
@@ -2266,7 +2266,7 @@ a session is timed out, it is removed from the store.</p>
 response is complete and the session is stored back in the store.</p>
 </div>
 <div class="paragraph">
-<p>You can also use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.Session.html#method_setAccessed">setAccessed</a></code> to manually mark a session as accessed.</p>
+<p>You can also use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.Session.html#method_setAccessed">setAccessed</a></code> to manually mark a session as accessed.</p>
 </div>
 <div class="paragraph">
 <p>The session timeout can be configured when creating the session handler. Default timeout is 30 minutes.</p>
@@ -2283,7 +2283,7 @@ response is complete and the session is stored back in the store.</p>
 <div class="sect2">
 <h3 id="_creating_an_auth_handler">Creating an auth handler</h3>
 <div class="paragraph">
-<p>To create an auth handler you need an instance of <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code>. Auth provider is
+<p>To create an auth handler you need an instance of <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code>. Auth provider is
 used for authentication and authorisation of users. Vert.x provides several auth provider instances out of the box
 in the vertx-auth project. For full information on auth providers and how to use and configure them
 please consult the auth documentation.</p>
@@ -2347,9 +2347,9 @@ your auth handler is before your application handlers on those paths:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the auth handler has successfully authenticated and authorised the user it will inject a <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.User.html">User</a></code>
-object into the <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> so it&#8217;s available in your handlers with:
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_user">user</a></code>.</p>
+<p>If the auth handler has successfully authenticated and authorised the user it will inject a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.User.html">User</a></code>
+object into the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> so it&#8217;s available in your handlers with:
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_user">user</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>If you want your User object to be stored in the session so it&#8217;s available between requests so you don&#8217;t have to
@@ -2360,7 +2360,7 @@ routes before the auth handler.</p>
 <p>Once you have your user object you can also programmatically use the methods on it to authorise the user.</p>
 </div>
 <div class="paragraph">
-<p>If you want to cause the user to be logged out you can call <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_clearUser">clearUser</a></code>
+<p>If you want to cause the user to be logged out you can call <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_clearUser">clearUser</a></code>
 on the routing context.</p>
 </div>
 </div>
@@ -2384,7 +2384,7 @@ prompt the user to enter their username and password.</p>
 and password encoded in Base64.</p>
 </div>
 <div class="paragraph">
-<p>When the basic auth handler receives this information, it calls the configured <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-common-jphp/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code>
+<p>When the basic auth handler receives this information, it calls the configured <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.AuthProvider.html">AuthProvider</a></code>
 with the username and password to authenticate the user. If the authentication is successful the handler attempts
 to authorise the user. If that is successful then the routing of the request is allowed to continue to the application
 handlers, otherwise a <code>403</code> response is returned to signify that access is denied.</p>
@@ -2405,12 +2405,12 @@ a protected resource and they are not logged in.</p>
 the user and, if authenticated redirects the user back to the original resource.</p>
 </div>
 <div class="paragraph">
-<p>To use redirect auth you configure an instance of <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.RedirectAuthHandler.html">RedirectAuthHandler</a></code> instead of a
+<p>To use redirect auth you configure an instance of <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.RedirectAuthHandler.html">RedirectAuthHandler</a></code> instead of a
 basic auth handler.</p>
 </div>
 <div class="paragraph">
 <p>You will also need to setup handlers to serve your actual login page, and a handler to handle the actual login itself.
-To handle the login we provide a prebuilt handler <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.FormLoginHandler.html">FormLoginHandler</a></code> for the purpose.</p>
+To handle the login we provide a prebuilt handler <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.FormLoginHandler.html">FormLoginHandler</a></code> for the purpose.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of a simple app, using a redirect auth handler on the default redirect url <code>/loginpage</code>.</p>
@@ -2622,7 +2622,7 @@ may support a role/permission based model but others might use another model.</p
 <h3 id="_chaining_multiple_auth_handlers">Chaining multiple auth handlers</h3>
 <div class="paragraph">
 <p>There are times when you want to support multiple authN/authZ mechanisms in a single application. For this you can
-use the <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.ChainAuthHandler.html">ChainAuthHandler</a></code>. The chain auth handler will attempt to perform
+use the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.ChainAuthHandler.html">ChainAuthHandler</a></code>. The chain auth handler will attempt to perform
 authentication on a chain of handlers. The chain works both for AuthN and AuthZ, so if the authentication is valid
 at a given handler of the chain, then that same handler will be used to perform authorization (if requested).</p>
 </div>
@@ -2632,13 +2632,13 @@ at a given handler of the chain, then that same handler will be used to perform 
 <div class="ulist">
 <ul>
 <li>
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.JWTAuthHandler.html">JWTAuthHandler</a></code> requires <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-jwt-jphp/classes/io.vertx.jphp.ext.auth.jwt.JWTAuth.html">JWTAuth</a></code>.</p>
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.JWTAuthHandler.html">JWTAuthHandler</a></code> requires <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.jwt.JWTAuth.html">JWTAuth</a></code>.</p>
 </li>
 <li>
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.DigestAuthHandler.html">DigestAuthHandler</a></code> requires <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-htdigest-jphp/classes/io.vertx.jphp.ext.auth.htdigest.HtdigestAuth.html">HtdigestAuth</a></code>.</p>
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.DigestAuthHandler.html">DigestAuthHandler</a></code> requires <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.htdigest.HtdigestAuth.html">HtdigestAuth</a></code>.</p>
 </li>
 <li>
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.OAuth2AuthHandler.html">OAuth2AuthHandler</a></code> requires <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.OAuth2Auth.html">OAuth2Auth</a></code>.</p>
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.OAuth2AuthHandler.html">OAuth2AuthHandler</a></code> requires <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.OAuth2Auth.html">OAuth2Auth</a></code>.</p>
 </li>
 </ul>
 </div>
@@ -2649,10 +2649,10 @@ provider across handlers, for example:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.BasicAuthHandler.html">BasicAuthHandler</a></code> can take any provider.</p>
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.BasicAuthHandler.html">BasicAuthHandler</a></code> can take any provider.</p>
 </li>
 <li>
-<p>The <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.RedirectAuthHandler.html">RedirectAuthHandler</a></code> can take any provider.</p>
+<p>The <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.RedirectAuthHandler.html">RedirectAuthHandler</a></code> can take any provider.</p>
 </li>
 </ul>
 </div>
@@ -2710,7 +2710,7 @@ very easily.</p>
 </div>
 <div class="paragraph">
 <p>To serve static resources such as <code>.html</code>, <code>.css</code>, <code>.js</code> or any other static resource, you use an instance of
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html">StaticHandler</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html">StaticHandler</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Any requests to paths handled by the static handler will result in files being served from a directory on the file system
@@ -2755,14 +2755,14 @@ with the correct <code>Content-Range</code> header.</p>
 </div>
 <div class="paragraph">
 <p><code>cache-control</code> is set to <code>max-age=86400</code> by default. This corresponds to one day. This can be configured with
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setMaxAgeSeconds">setMaxAgeSeconds</a>`if required.</p>
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setMaxAgeSeconds">setMaxAgeSeconds</a>`if required.</p>
 </div>
 <div class="paragraph">
 <p>If a browser sends a GET or a HEAD request with an <code>if-modified-since</code> header and the resource has not been modified
 since that date, a <code>304</code> status is returned which tells the browser to use its locally cached resource.</p>
 </div>
 <div class="paragraph">
-<p>If handling of cache headers is not required, it can be disabled with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setCachingEnabled">setCachingEnabled</a></code>.</p>
+<p>If handling of cache headers is not required, it can be disabled with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setCachingEnabled">setCachingEnabled</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>When cache handling is enabled Vert.x-Web will cache the last modified date of resources in memory, this avoids a disk hit
@@ -2778,28 +2778,28 @@ default.</p>
 </div>
 <div class="paragraph">
 <p>If you know that your files might change on disk when the server is running then you can set files read only to false with
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setFilesReadOnly">setFilesReadOnly</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setFilesReadOnly">setFilesReadOnly</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>To enable the maximum number of entries that can be cached in memory at any one time you can use
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setMaxCacheSize">setMaxCacheSize</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setMaxCacheSize">setMaxCacheSize</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>To configure the expiry time of cache entries you can use <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setCacheEntryTimeout">setCacheEntryTimeout</a></code>.</p>
+<p>To configure the expiry time of cache entries you can use <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setCacheEntryTimeout">setCacheEntryTimeout</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_configuring_the_index_page">Configuring the index page</h3>
 <div class="paragraph">
 <p>Any requests to the root path <code>/</code> will cause the index page to be served. By default the index page is <code>index.html</code>.
-This can be configured with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setIndexPage">setIndexPage</a></code>.</p>
+This can be configured with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setIndexPage">setIndexPage</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_changing_the_web_root">Changing the web root</h3>
 <div class="paragraph">
 <p>By default static resources will be served from the directory <code>webroot</code>. To configure this use
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setWebRoot">setWebRoot</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setWebRoot">setWebRoot</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2808,21 +2808,21 @@ This can be configured with <code><a href="https://vertx.okou.tk/phpdoc/vertx-we
 <p>By default the serve will serve hidden files (files starting with <code>.</code>).</p>
 </div>
 <div class="paragraph">
-<p>If you do not want hidden files to be served you can configure it with <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setIncludeHidden">setIncludeHidden</a></code>.</p>
+<p>If you do not want hidden files to be served you can configure it with <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setIncludeHidden">setIncludeHidden</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_directory_listing">Directory listing</h3>
 <div class="paragraph">
 <p>The server can also perform directory listing. By default directory listing is disabled. To enabled it use
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setDirectoryListing">setDirectoryListing</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setDirectoryListing">setDirectoryListing</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>When directory listing is enabled the content returned depends on the content type in the <code>accept</code> header.</p>
 </div>
 <div class="paragraph">
 <p>For <code>text/html</code> directory listing, the template used to render the directory listing page can be configured with
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setDirectoryTemplate">setDirectoryTemplate</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.StaticHandler.html#method_setDirectoryTemplate">setDirectoryTemplate</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2852,7 +2852,7 @@ could set up a run configuration in your IDE to set this when running your main 
 allowing resources to be requested from one domain and served from another.</p>
 </div>
 <div class="paragraph">
-<p>Vert.x-Web includes a handler <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.CorsHandler.html">CorsHandler</a></code> that handles the CORS protocol for you.</p>
+<p>Vert.x-Web includes a handler <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.CorsHandler.html">CorsHandler</a></code> that handles the CORS protocol for you.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -2882,12 +2882,12 @@ allowing resources to be requested from one domain and served from another.</p>
 engines. You can also easily add your own.</p>
 </div>
 <div class="paragraph">
-<p>Template engines are described by <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.templ.TemplateEngine.html">TemplateEngine</a></code>. In order to render a template
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-common-jphp/classes/io.vertx.jphp.ext.web.common.template.TemplateEngine.html#method_render">render</a>`is used.</p>
+<p>Template engines are described by <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.templ.TemplateEngine.html">TemplateEngine</a></code>. In order to render a template
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.common.template.TemplateEngine.html#method_render">render</a>`is used.</p>
 </div>
 <div class="paragraph">
 <p>The simplest way to use templates is not to call the template engine directly but to use the
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.TemplateHandler.html">TemplateHandler</a></code>.
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.TemplateHandler.html">TemplateHandler</a></code>.
 This handler calls the template engine for you based on the path in the HTTP request.</p>
 </div>
 <div class="paragraph">
@@ -2916,7 +2916,7 @@ each template engine.</p>
 templates with the <code>.templ</code> extension if no extension is specified in the file name.</p>
 </div>
 <div class="paragraph">
-<p>The routing context <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
+<p>The routing context <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
 in the MVEL template as the <code>context</code> variable, this means you can render the template based on anything in the context
 including the request, response, session or context data.</p>
 </div>
@@ -2949,7 +2949,7 @@ MVEL templates.</p>
 templates with the <code>.jade</code> extension if no extension is specified in the file name.</p>
 </div>
 <div class="paragraph">
-<p>The routing context <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
+<p>The routing context <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
 in the Jade template as the <code>context</code> variable, this means you can render the template based on anything in the context
 including the request, response, session or context data.</p>
 </div>
@@ -2986,7 +2986,7 @@ templates with the <code>.hbs</code> extension if no extension is specified in t
 into the template and let the template introspect it like we can with other template engines.</p>
 </div>
 <div class="paragraph">
-<p>Instead, the context <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_data">data</a></code> is available in the template.</p>
+<p>Instead, the context <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_data">data</a></code> is available in the template.</p>
 </div>
 <div class="paragraph">
 <p>If you want to have access to other data like the request path, request params or session data you should
@@ -3027,7 +3027,7 @@ using: <code>io.vertx.ext.web.templ.ThymeleafTemplateEngine#create()</code>.</p>
 templates with the <code>.html</code> extension if no extension is specified in the file name.</p>
 </div>
 <div class="paragraph">
-<p>The routing context <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
+<p>The routing context <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
 in the Thymeleaf template as the <code>context</code> variable, this means you can render the template based on anything in the context
 including the request, response, session or context data.</p>
 </div>
@@ -3062,7 +3062,7 @@ using: <code>io.vertx.ext.web.templ.Engine#create()</code>.</p>
 templates with the <code>.ftl</code> extension if no extension is specified in the file name.</p>
 </div>
 <div class="paragraph">
-<p>The routing context <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
+<p>The routing context <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html">RoutingContext</a></code> is available
 in the Apache FreeMarker template as the <code>context</code> variable, this means you can render the template based on anything in the context
 including the request, response, session or context data.</p>
 </div>
@@ -3140,7 +3140,7 @@ In order to do this you need to set the system property: <code>io.vertx.ext.web.
 "pretty" error handler that can render error pages for you.</p>
 </div>
 <div class="paragraph">
-<p>The handler is <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.ErrorHandler.html">ErrorHandler</a></code>. To use the error handler just set it as a
+<p>The handler is <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.ErrorHandler.html">ErrorHandler</a></code>. To use the error handler just set it as a
 failure handler for any paths that you want covered.</p>
 </div>
 </div>
@@ -3149,13 +3149,13 @@ failure handler for any paths that you want covered.</p>
 <h2 id="_request_logger">Request logger</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web includes a handler <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.LoggerHandler.html">LoggerHandler</a></code> that you can use to log HTTP requests.</p>
+<p>Vert.x-Web includes a handler <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.LoggerHandler.html">LoggerHandler</a></code> that you can use to log HTTP requests.</p>
 </div>
 <div class="paragraph">
 <p>By default requests are logged to the Vert.x logger which can be configured to use JUL logging, log4j or SLF4J.</p>
 </div>
 <div class="paragraph">
-<p>See <code><a href="../../vertx-web/vertx-web-jphp/dataobjects.adoc#LoggerFormat">LoggerFormat</a></code>.</p>
+<p>See <code><a href="../../vertx-web/php/enums.html#LoggerFormat">LoggerFormat</a></code>.</p>
 </div>
 </div>
 </div>
@@ -3163,7 +3163,7 @@ failure handler for any paths that you want covered.</p>
 <h2 id="_serving_favicons">Serving favicons</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web includes the handler <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.FaviconHandler.html">FaviconHandler</a></code> especially for serving favicons.</p>
+<p>Vert.x-Web includes the handler <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.FaviconHandler.html">FaviconHandler</a></code> especially for serving favicons.</p>
 </div>
 <div class="paragraph">
 <p>Favicons can be specified using a path to the filesystem, or by default Vert.x-Web will look for a file on the classpath
@@ -3178,7 +3178,7 @@ with the name <code>favicon.ico</code>. This means you bundle the favicon in the
 <p>Vert.x-Web includes a timeout handler that you can use to timeout requests if they take too long to process.</p>
 </div>
 <div class="paragraph">
-<p>This is configured using an instance of <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.TimeoutHandler.html">TimeoutHandler</a></code>.</p>
+<p>This is configured using an instance of <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.TimeoutHandler.html">TimeoutHandler</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>If a request times out before the response is written a <code>503</code> response will be returned to the client.</p>
@@ -3251,7 +3251,7 @@ To avoid this situation, add the <code>ResponseContentTypeHandler</code> to the 
 </div>
 </div>
 <div class="paragraph">
-<p>The handler gets the approriate content type from <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getAcceptableContentType">getAcceptableContentType</a></code>.
+<p>The handler gets the approriate content type from <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.RoutingContext.html#method_getAcceptableContentType">getAcceptableContentType</a></code>.
 As a consequence, you can easily share the same handler to produce data of different types:</p>
 </div>
 <div class="listingblock">
@@ -3296,13 +3296,13 @@ according to browser and network capabilities.</p>
 <div class="sect2">
 <h3 id="_sockjs_handler">SockJS handler</h3>
 <div class="paragraph">
-<p>Vert.x provides an out of the box handler called <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">SockJSHandler</a></code> for
+<p>Vert.x provides an out of the box handler called <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">SockJSHandler</a></code> for
 using SockJS in your Vert.x-Web applications.</p>
 </div>
 <div class="paragraph">
-<p>You should create one handler per SockJS application using <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html#method_create">SockJSHandler::create</a></code>.
+<p>You should create one handler per SockJS application using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html#method_create">SockJSHandler::create</a></code>.
 You can also specify configuration options when creating the instance. The configuration options are described with
-an instance of <code><a href="../../vertx-web/vertx-web-jphp/enums.adoc#SockJSHandlerOptions">SockJSHandlerOptions</a></code>.</p>
+an instance of <code><a href="../../vertx-web/php/dataobjects.html#SockJSHandlerOptions">SockJSHandlerOptions</a></code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3329,10 +3329,10 @@ an instance of <code><a href="../../vertx-web/vertx-web-jphp/enums.adoc#SockJSHa
 this will be called every time a SockJS connection is made from a client:</p>
 </div>
 <div class="paragraph">
-<p>The object passed into the handler is a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSSocket.html">SockJSSocket</a></code>. This has a familiar
-socket-like interface which you can read and write to similarly to a <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> or
-a <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code>. It also implements <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> and
-`<a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`so you can pump it to and from other read and write streams.</p>
+<p>The object passed into the handler is a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSSocket.html">SockJSSocket</a></code>. This has a familiar
+socket-like interface which you can read and write to similarly to a <code><a href="../../phpdoc/classes/io.vertx.jphp.core.net.NetSocket.html">NetSocket</a></code> or
+a <code><a href="../../phpdoc/classes/io.vertx.jphp.core.http.WebSocket.html">WebSocket</a></code>. It also implements <code><a href="../../phpdoc/classes/io.vertx.jphp.core.streams.ReadStream.html">ReadStream</a></code> and
+`<a href="../../phpdoc/classes/io.vertx.jphp.core.streams.WriteStream.html">WriteStream</a>`so you can pump it to and from other read and write streams.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of a simple SockJS handler that simply echoes back any back any data that it reads:</p>
@@ -3398,7 +3398,7 @@ sock.close();</pre>
 <div class="sect2">
 <h3 id="_configuring_the_sockjs_handler">Configuring the SockJS handler</h3>
 <div class="paragraph">
-<p>The handler can be configured with various options using <code><a href="../../vertx-web/vertx-web-jphp/enums.adoc#SockJSHandlerOptions">SockJSHandlerOptions</a></code>.</p>
+<p>The handler can be configured with various options using <code><a href="../../vertx-web/php/dataobjects.html#SockJSHandlerOptions">SockJSHandlerOptions</a></code>.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -3468,15 +3468,15 @@ and register handlers to receive messages.</p>
 </div>
 <div class="paragraph">
 <p>This JavaScript library uses the JavaScript SockJS client to tunnel the event bus traffic over SockJS connections
-terminating at at a <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">SockJSHandler</a></code> on the server-side.</p>
+terminating at at a <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">SockJSHandler</a></code> on the server-side.</p>
 </div>
 <div class="paragraph">
-<p>A special SockJS socket handler is then installed on the <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">SockJSHandler</a></code> which
+<p>A special SockJS socket handler is then installed on the <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html">SockJSHandler</a></code> which
 handles the SockJS data and bridges it to and from the server side event bus.</p>
 </div>
 <div class="paragraph">
 <p>To activate the bridge you simply call
-`<a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html#method_bridge">bridge</a>`on the
+`<a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html#method_bridge">bridge</a>`on the
 SockJS handler.</p>
 </div>
 <div class="listingblock">
@@ -3645,24 +3645,24 @@ bridge what messages are ok for it to pass through. (There is an exception for r
 </div>
 <div class="paragraph">
 <p>You can specify which <em>matches</em> you want to allow for inbound and outbound traffic using the
-`<a href="../../vertx-web/vertx-web-jphp/enums.adoc#BridgeOptions">BridgeOptions</a>`that you pass in when calling bridge.</p>
+`<a href="../../vertx-web/php/dataobjects.html#BridgeOptions">BridgeOptions</a>`that you pass in when calling bridge.</p>
 </div>
 <div class="paragraph">
-<p>Each match is a <code><a href="../../vertx-web/vertx-web-jphp/enums.adoc#PermittedOptions">PermittedOptions</a></code> object:</p>
+<p>Each match is a <code><a href="../../vertx-web/php/dataobjects.html#PermittedOptions">PermittedOptions</a></code> object:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code><a href="../vertx-bridge-common-jphp/enums.adoc#PermittedOptions#method_setAddress">setAddress</a></code></dt>
+<dt class="hdlist1"><code><a href="../php/dataobjects.html#PermittedOptions#method_setAddress">setAddress</a></code></dt>
 <dd>
 <p>This represents the exact address the message is being sent to. If you want to allow messages based on
 an exact address you use this field.</p>
 </dd>
-<dt class="hdlist1"><code><a href="../vertx-bridge-common-jphp/enums.adoc#PermittedOptions#method_setAddressRegex">setAddressRegex</a></code></dt>
+<dt class="hdlist1"><code><a href="../php/dataobjects.html#PermittedOptions#method_setAddressRegex">setAddressRegex</a></code></dt>
 <dd>
 <p>This is a regular expression that will be matched against the address. If you want to allow messages
 based on a regular expression you use this field. If the <code>address</code> field is specified this field will be ignored.</p>
 </dd>
-<dt class="hdlist1"><code><a href="../vertx-bridge-common-jphp/enums.adoc#PermittedOptions#method_setMatch">setMatch</a></code></dt>
+<dt class="hdlist1"><code><a href="../php/dataobjects.html#PermittedOptions#method_setMatch">setMatch</a></code></dt>
 <dd>
 <p>This allows you to allow messages based on their structure. Any fields in the match must exist in the
 message with the same values for them to be allowed. This currently only works with JSON messages.</p>
@@ -3772,7 +3772,7 @@ required for the match.</p>
 </div>
 <div class="paragraph">
 <p>To declare that a specific authority for the logged-in user is required in order to access allow the messages you use the
-`<a href="../vertx-bridge-common-jphp/enums.adoc#PermittedOptions#method_setRequiredAuthority">setRequiredAuthority</a>`field.</p>
+`<a href="../php/dataobjects.html#PermittedOptions#method_setRequiredAuthority">setRequiredAuthority</a>`field.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -3847,11 +3847,11 @@ required for the match.</p>
 <h3 id="_handling_event_bus_bridge_events">Handling event bus bridge events</h3>
 <div class="paragraph">
 <p>If you want to be notified when an event occurs on the bridge you can provide a handler when calling
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html#method_bridge">bridge</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.SockJSHandler.html#method_bridge">bridge</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Whenever an event occurs on the bridge it will be passed to the handler. The event is described by an instance of
-<code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.sockjs.BridgeEvent.html">BridgeEvent</a></code>.</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.sockjs.BridgeEvent.html">BridgeEvent</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The event can be one of the following types:</p>
@@ -3897,8 +3897,8 @@ required for the match.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>The event enables you to retrieve the type using <code><a href="https://vertx.okou.tk/phpdoc/vertx-bridge-common-jphp/classes/io.vertx.jphp.ext.bridge.BaseBridgeEvent.html#method_type">type</a></code> and
-inspect the raw message of the event using <code><a href="https://vertx.okou.tk/phpdoc/vertx-bridge-common-jphp/classes/io.vertx.jphp.ext.bridge.BaseBridgeEvent.html#method_getRawMessage">getRawMessage</a></code>.</p>
+<p>The event enables you to retrieve the type using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.bridge.BaseBridgeEvent.html#method_type">type</a></code> and
+inspect the raw message of the event using <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.bridge.BaseBridgeEvent.html#method_getRawMessage">getRawMessage</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The raw message is a JSON object with the following structure:</p>
@@ -3913,7 +3913,7 @@ inspect the raw message of the event using <code><a href="https://vertx.okou.tk/
 </div>
 </div>
 <div class="paragraph">
-<p>The event is also an instance of <code><a href="https://vertx.okou.tk/phpdoc/vertx-jphp/classes/io.vertx.jphp.core.Future.html">Future</a></code>. When you are finished handling the event you can
+<p>The event is also an instance of <code><a href="../../phpdoc/classes/io.vertx.jphp.core.Future.html">Future</a></code>. When you are finished handling the event you can
 complete the future with <code>true</code> to enable further processing.</p>
 </div>
 <div class="paragraph">
@@ -4077,7 +4077,7 @@ also add headers to the message, here&#8217;s an example:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>CSRF or sometimes also known as XSRF is a technique by which an unauthorized site can gain your user&#8217;s private data.
-Vert.x-Web includes a handler <code><a href="https://vertx.okou.tk/phpdoc/vertx-web-jphp/classes/io.vertx.jphp.ext.web.handler.CSRFHandler.html">CSRFHandler</a></code> that you can use to prevent cross site
+Vert.x-Web includes a handler <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.web.handler.CSRFHandler.html">CSRFHandler</a></code> that you can use to prevent cross site
 request forgery requests.</p>
 </div>
 <div class="paragraph">
@@ -4239,52 +4239,52 @@ vertx-auth provides you with many out of the box implementations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Azure Active Directory <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.AzureADAuth.html">AzureADAuth</a></code></p>
+<p>Azure Active Directory <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.AzureADAuth.html">AzureADAuth</a></code></p>
 </li>
 <li>
-<p>Box.com <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.BoxAuth.html">BoxAuth</a></code></p>
+<p>Box.com <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.BoxAuth.html">BoxAuth</a></code></p>
 </li>
 <li>
-<p>Dropbox <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.DropboxAuth.html">DropboxAuth</a></code></p>
+<p>Dropbox <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.DropboxAuth.html">DropboxAuth</a></code></p>
 </li>
 <li>
-<p>Facebook <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.FacebookAuth.html">FacebookAuth</a></code></p>
+<p>Facebook <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.FacebookAuth.html">FacebookAuth</a></code></p>
 </li>
 <li>
-<p>Foursquare <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.FoursquareAuth.html">FoursquareAuth</a></code></p>
+<p>Foursquare <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.FoursquareAuth.html">FoursquareAuth</a></code></p>
 </li>
 <li>
-<p>Github <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.GithubAuth.html">GithubAuth</a></code></p>
+<p>Github <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.GithubAuth.html">GithubAuth</a></code></p>
 </li>
 <li>
-<p>Google <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.GoogleAuth.html">GoogleAuth</a></code></p>
+<p>Google <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.GoogleAuth.html">GoogleAuth</a></code></p>
 </li>
 <li>
-<p>Instagram <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.InstagramAuth.html">InstagramAuth</a></code></p>
+<p>Instagram <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.InstagramAuth.html">InstagramAuth</a></code></p>
 </li>
 <li>
-<p>Keycloak <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.KeycloakAuth.html">KeycloakAuth</a></code></p>
+<p>Keycloak <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.KeycloakAuth.html">KeycloakAuth</a></code></p>
 </li>
 <li>
-<p>LinkedIn <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.LinkedInAuth.html">LinkedInAuth</a></code></p>
+<p>LinkedIn <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.LinkedInAuth.html">LinkedInAuth</a></code></p>
 </li>
 <li>
-<p>Mailchimp <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.MailchimpAuth.html">MailchimpAuth</a></code></p>
+<p>Mailchimp <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.MailchimpAuth.html">MailchimpAuth</a></code></p>
 </li>
 <li>
-<p>Salesforce <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.SalesforceAuth.html">SalesforceAuth</a></code></p>
+<p>Salesforce <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.SalesforceAuth.html">SalesforceAuth</a></code></p>
 </li>
 <li>
-<p>Shopify <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.ShopifyAuth.html">ShopifyAuth</a></code></p>
+<p>Shopify <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.ShopifyAuth.html">ShopifyAuth</a></code></p>
 </li>
 <li>
-<p>Soundcloud <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.SoundcloudAuth.html">SoundcloudAuth</a></code></p>
+<p>Soundcloud <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.SoundcloudAuth.html">SoundcloudAuth</a></code></p>
 </li>
 <li>
-<p>Stripe <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.StripeAuth.html">StripeAuth</a></code></p>
+<p>Stripe <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.StripeAuth.html">StripeAuth</a></code></p>
 </li>
 <li>
-<p>Twitter <code><a href="https://vertx.okou.tk/phpdoc/vertx-auth-oauth2-jphp/classes/io.vertx.jphp.ext.auth.oauth2.providers.TwitterAuth.html">TwitterAuth</a></code></p>
+<p>Twitter <code><a href="../../phpdoc/classes/io.vertx.jphp.ext.auth.oauth2.providers.TwitterAuth.html">TwitterAuth</a></code></p>
 </li>
 </ul>
 </div>
@@ -4434,7 +4434,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:26:13 CST
+                上次更新时间 2018-11-05 19:57:22 CST
               
               
             </div>

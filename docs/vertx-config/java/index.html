@@ -821,6 +821,47 @@ retrieved using <code>config.getString(key)</code>.</p>
   );</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Some properties configuration maybe is hierarchical in nature.
+When reading such a file, you can pass the <code>hierarchical</code> attribute to
+indicate to Vert.x to convert the configuration to a json object while maintaining this hierarchy,
+in contrast to the previous method with a flat structure.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>server.host=localhost
+server.port=8080
+multiple.values=1,2,3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">ConfigStoreOptions propertyWitHierarchical = new ConfigStoreOptions()
+  .setFormat("properties")
+  .setType("file")
+  .setConfig(new JsonObject().put("path", "hierarchical.properties").put("hierarchical", true)
+  );
+ConfigRetrieverOptions options = new ConfigRetrieverOptions()
+  .addStore(propertyWitHierarchical);
+
+ConfigRetriever configRetriever = ConfigRetriever.create(Vertx.vertx(), options);
+
+configRetriever.configStream().handler(config -&gt; {
+  String host = config.getJsonObject("server").getString("host");
+  Integer port = config.getJsonObject("server").getInteger("port");
+  JsonArray multiple = config.getJsonObject("multiple").getJsonArray("values");
+  for (int i = 0; i &lt; multiple.size(); i++) {
+    Integer value = multiple.getInteger(i);
+  }
+});</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2005,7 +2046,7 @@ ConfigRetriever retriever = ConfigRetriever.create(vertx,
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:04 CST
+                上次更新时间 2018-11-05 19:55:08 CST
               
               
             </div>

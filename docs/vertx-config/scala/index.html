@@ -799,6 +799,30 @@ retrieved using <code>config.getString(key)</code>.</p>
   .setConfig(new io.vertx.core.json.JsonObject().put("path", "raw.properties").put("raw-data", true))</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Some properties configuration maybe is hierarchical in nature.
+When reading such a file, you can pass the <code>hierarchical</code> attribute to
+indicate to Vert.x to convert the configuration to a json object while maintaining this hierarchy,
+in contrast to the previous method with a flat structure.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>server.host=localhost
+server.port=8080
+multiple.values=1,2,3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-scala" data-lang="scala">Code not translatable</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1918,7 +1942,7 @@ var retriever = ConfigRetriever.create(vertx, ConfigRetrieverOptions()
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-10-16 18:24:04 CST
+                上次更新时间 2018-11-05 19:55:09 CST
               
               
             </div>
