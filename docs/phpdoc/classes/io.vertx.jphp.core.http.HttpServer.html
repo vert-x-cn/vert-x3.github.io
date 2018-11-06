@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    API Documentation &raquo; \io\vertx\jphp\core\http\HttpServer
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                                                                            <li class="method public">
+        <a href="#method_actualPort" title="actualPort :: The actual port the server is listening on. This is useful if you bound the server specifying 0 as port number
+signifying an ephemeral port">
+            <span class="description">The actual port the server is listening on. This is useful if you bound the server specifying 0 as port number
+signifying an ephemeral port</span><pre>actualPort</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_close" title="close :: Close the server. Any open HTTP connections will be closed.">
+            <span class="description">Close the server. Any open HTTP connections will be closed.</span><pre>close</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_connectionHandler" title="connectionHandler :: Set a connection handler for the server.">
+            <span class="description">Set a connection handler for the server.</span><pre>connectionHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_exceptionHandler" title="exceptionHandler :: Set an exception handler called for socket errors happening before the HTTP connection
+is established, e.g during the TLS handshake.">
+            <span class="description">Set an exception handler called for socket errors happening before the HTTP connection
+is established, e.g during the TLS handshake.</span><pre>exceptionHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_isMetricsEnabled" title="isMetricsEnabled :: Whether the metrics are enabled for this measured object">
+            <span class="description">Whether the metrics are enabled for this measured object</span><pre>isMetricsEnabled</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_listen" title="listen :: Tell the server to start listening. The server will listen on the port and host specified in the">
+            <span class="description">Tell the server to start listening. The server will listen on the port and host specified in the</span><pre>listen</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_requestHandler" title="requestHandler :: Set the request handler for the server to &lt;code&gt;requestHandler&lt;/code&gt;. As HTTP requests are received by the server,
+instances of @see \io\vertx\jphp\core\http\HttpServerRequest will be created and passed to this handler.">
+            <span class="description">Set the request handler for the server to &lt;code&gt;requestHandler&lt;/code&gt;. As HTTP requests are received by the server,
+instances of @see \io\vertx\jphp\core\http\HttpServerRequest will be created and passed to this handler.</span><pre>requestHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_requestStream" title="requestStream :: Return the request stream for the server. As HTTP requests are received by the server,
+instances of @see \io\vertx\jphp\core\http\HttpServerRequest will be created and passed to the stream .">
+            <span class="description">Return the request stream for the server. As HTTP requests are received by the server,
+instances of @see \io\vertx\jphp\core\http\HttpServerRequest will be created and passed to the stream .</span><pre>requestStream</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_websocketHandler" title="websocketHandler :: Set the websocket handler for the server to &lt;code&gt;wsHandler&lt;/code&gt;. If a websocket connect handshake is successful a
+new @see \io\vertx\jphp\core\http\ServerWebSocket instance will be created and passed to the handler.">
+            <span class="description">Set the websocket handler for the server to &lt;code&gt;wsHandler&lt;/code&gt;. If a websocket connect handshake is successful a
+new @see \io\vertx\jphp\core\http\ServerWebSocket instance will be created and passed to the handler.</span><pre>websocketHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_websocketStream" title="websocketStream :: Return the websocket stream for the server. If a websocket connect handshake is successful a
+new @see \io\vertx\jphp\core\http\ServerWebSocket instance will be created and passed to the stream .">
+            <span class="description">Return the websocket stream for the server. If a websocket connect handshake is successful a
+new @see \io\vertx\jphp\core\http\ServerWebSocket instance will be created and passed to the stream .</span><pre>websocketStream</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                            <li class="method private">
+                            <a href="#method___construct" title="__construct :: ">
+                                <span class="description"></span><pre>__construct</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>HttpServer</h1>
+                <small style="display: block; text-align: right">
+                                                        </small>
+                <p class="short_description">An HTTP and WebSockets server.</p>
+                <div class="details">
+                    <div class="long_description">
+                        <p>
+You receive HTTP requests by providing a @see \io\vertx\jphp\core\http\HttpServer::requestHandler. As requests arrive on the server the handler
+will be called with the requests.
+<p>
+You receive WebSockets by providing a @see \io\vertx\jphp\core\http\HttpServer::websocketHandler. As WebSocket connections arrive on the server, the
+WebSocket is passed to the handler.
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Default</p>
+                                    </td>
+                                </tr>
+                                                                                                                                                                                </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method___construct"></a>
+                        <div class="element clickable method private  method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>__construct</h2>
+                            <pre>__construct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_actualPort"></a>
+                        <div class="element clickable method public  method_actualPort" data-toggle="collapse" data-target=".method_actualPort .collapse">
+                            <h2>The actual port the server is listening on. This is useful if you bound the server specifying 0 as port number
+signifying an ephemeral port</h2>
+                            <pre>actualPort() : integer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>integer</code><p><p>the actual port the server is listening on.</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_close"></a>
+                        <div class="element clickable method public  method_close" data-toggle="collapse" data-target=".method_close .collapse">
+                            <h2>Close the server. Any open HTTP connections will be closed.</h2>
+                            <pre>close( $arg0 = null) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The close happens asynchronously and the server may not be closed until some time after the call has returned.
+
+<b>
+close()
+</b>
+
+Like @see \io\vertx\jphp\core\http\HttpServer::close but supplying a handler that will be called when the server is actually closed (or has failed).
+
+param $completionHandler [callable] the handler
+<b>
+close($completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_connectionHandler"></a>
+                        <div class="element clickable method public  method_connectionHandler" data-toggle="collapse" data-target=".method_connectionHandler .collapse">
+                            <h2>Set a connection handler for the server.</h2>
+                            <pre>connectionHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_exceptionHandler"></a>
+                        <div class="element clickable method public  method_exceptionHandler" data-toggle="collapse" data-target=".method_exceptionHandler .collapse">
+                            <h2>Set an exception handler called for socket errors happening before the HTTP connection
+is established, e.g during the TLS handshake.</h2>
+                            <pre>exceptionHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_isMetricsEnabled"></a>
+                        <div class="element clickable method public  method_isMetricsEnabled" data-toggle="collapse" data-target=".method_isMetricsEnabled .collapse">
+                            <h2>Whether the metrics are enabled for this measured object</h2>
+                            <pre>isMetricsEnabled() : boolean</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p>{@code true} if metrics are enabled</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_listen"></a>
+                        <div class="element clickable method public  method_listen" data-toggle="collapse" data-target=".method_listen .collapse">
+                            <h2>Tell the server to start listening. The server will listen on the port and host specified in the</h2>
+                            <pre>listen( $arg0 = null,  $arg1 = null,  $arg2 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    see
+                                                </th>
+                                                <td>
+                                                                                                                                                                        
+                                                                                                                                                                            <a href="../classes/io.vertx.jphp.core.http.HttpServerOptions.html">\io\vertx\jphp\core\http\HttpServerOptions</a>
+                                                                                                                <p>that was used when creating the server.</p>
+<p>
+The listen happens asynchronously and the server may not be listening until some time after the call has returned.
+
+<b>
+listen()
+</b>
+
+Like @see \io\vertx\jphp\core\http\HttpServer::listen but the server will listen on host "0.0.0.0" and port specified here ignoring
+any value in the @see \io\vertx\jphp\core\http\HttpServerOptions that was used when creating the server.
+
+param $port [integer] the port to listen on
+<b>
+listen($port)
+</b>
+
+Like @see \io\vertx\jphp\core\http\HttpServer::listen but supplying a handler that will be called when the server is actually listening (or has failed).
+
+param $listenHandler [callable] the listen handler
+<b>
+listen($listenHandler)
+</b>
+
+Tell the server to start listening. The server will listen on the port and host specified here,
+ignoring any value set in the @see \io\vertx\jphp\core\http\HttpServerOptions that was used when creating the server.
+<p>
+The listen happens asynchronously and the server may not be listening until some time after the call has returned.
+
+param $port [integer] the port to listen on
+param $host [string] the host to listen on
+<b>
+listen($port, $host)
+</b>
+
+Tell the server to start listening on the given address supplying
+a handler that will be called when the server is actually
+listening (or has failed).
+
+param $address [SocketAddress] the address to listen on
+param $listenHandler [callable] the listen handler
+<b>
+listen($address, $listenHandler)
+</b>
+
+Like @see \io\vertx\jphp\core\http\HttpServer::listen but supplying a handler that will be called when the server is actually listening (or has failed).
+
+param $port [integer] the port to listen on
+param $listenHandler [callable] the listen handler
+<b>
+listen($port, $listenHandler)
+</b>
+
+Like @see \io\vertx\jphp\core\http\HttpServer::listen but supplying a handler that will be called when the server is actually
+listening (or has failed).
+
+param $port [integer] the port to listen on
+param $host [string] the host to listen on
+param $listenHandler [callable] the listen handler
+<b>
+listen($port, $host, $listenHandler)
+</b>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable | integer | SocketAddress</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_requestHandler"></a>
+                        <div class="element clickable method public  method_requestHandler" data-toggle="collapse" data-target=".method_requestHandler .collapse">
+                            <h2>Set the request handler for the server to &lt;code&gt;requestHandler&lt;/code&gt;. As HTTP requests are received by the server,
+instances of @see \io\vertx\jphp\core\http\HttpServerRequest will be created and passed to this handler.</h2>
+                            <pre>requestHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_requestStream"></a>
+                        <div class="element clickable method public  method_requestStream" data-toggle="collapse" data-target=".method_requestStream .collapse">
+                            <h2>Return the request stream for the server. As HTTP requests are received by the server,
+instances of @see \io\vertx\jphp\core\http\HttpServerRequest will be created and passed to the stream .</h2>
+                            <pre>requestStream() : \io\vertx\jphp\core\http\ReadStream&lt;HttpServerRequest&gt;</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>\io\vertx\jphp\core\http\ReadStream<HttpServerRequest></code><p><p>the request stream</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_websocketHandler"></a>
+                        <div class="element clickable method public  method_websocketHandler" data-toggle="collapse" data-target=".method_websocketHandler .collapse">
+                            <h2>Set the websocket handler for the server to &lt;code&gt;wsHandler&lt;/code&gt;. If a websocket connect handshake is successful a
+new @see \io\vertx\jphp\core\http\ServerWebSocket instance will be created and passed to the handler.</h2>
+                            <pre>websocketHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_websocketStream"></a>
+                        <div class="element clickable method public  method_websocketStream" data-toggle="collapse" data-target=".method_websocketStream .collapse">
+                            <h2>Return the websocket stream for the server. If a websocket connect handshake is successful a
+new @see \io\vertx\jphp\core\http\ServerWebSocket instance will be created and passed to the stream .</h2>
+                            <pre>websocketStream() : \io\vertx\jphp\core\http\ReadStream&lt;ServerWebSocket&gt;</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>\io\vertx\jphp\core\http\ReadStream<ServerWebSocket></code><p><p>the websocket stream</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                    
+                                                        </div>
+            </div>
+            <a id="\io\vertx\jphp\core\http\HttpServer"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/io.vertx.jphp.core.http.html">http</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/io.vertx.jphp.core.http.HttpServer.html">HttpServer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Mon, 05 Nov 2018 12:12:47 +0000.<br/>
+    </footer>
+    </body>
+</html>

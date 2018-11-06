@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x Http Service Factory - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x Http Service Factory</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_deploying_a_java_service_packaged_as_a_fatjar">Deploying a Java service packaged as a fatjar</a></li>
+<li><a href="#_http_client_configuration">Http client configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_client_authentication">Client authentication</a></li>
+<li><a href="#_proxy_server_configuration">Proxy server configuration</a></li>
+</ul>
+</li>
+<li><a href="#_public_key_servers">Public key servers</a></li>
+<li><a href="#_validation_policy">Validation policy</a></li>
+<li><a href="#_cache_directory">Cache directory</a></li>
+<li><a href="#_examples">Examples</a>
+<ul class="sectlevel2">
+<li><a href="#_bintray">Bintray</a></li>
+<li><a href="#_service_zip">Service zip</a></li>
+<li><a href="#_bintray_hosting">Bintray hosting</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_deploying_a_java_service_packaged_as_a_fatjar">Deploying a Java service packaged as a fatjar</a></li>
+<li><a href="#_http_client_configuration">Http client configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_client_authentication">Client authentication</a></li>
+<li><a href="#_proxy_server_configuration">Proxy server configuration</a></li>
+</ul>
+</li>
+<li><a href="#_public_key_servers">Public key servers</a></li>
+<li><a href="#_validation_policy">Validation policy</a></li>
+<li><a href="#_cache_directory">Cache directory</a></li>
+<li><a href="#_examples">Examples</a>
+<ul class="sectlevel2">
+<li><a href="#_bintray">Bintray</a></li>
+<li><a href="#_service_zip">Service zip</a></li>
+<li><a href="#_bintray_hosting">Bintray hosting</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/master/vertx-translation-stack/vertx-http-service-factory-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The http service factory is a Vert.x service factory for deploying services from an http server. It it an alternative
+to the Maven Service Factory for using services hosted on a plain http server, e.g a JavaScript service zipped
+and hosted somewhere. Unlike the Maven Service Factory, the Http Service Factory does not provide any kind of
+classpath dependency resolution. To use this feature be sure that <code>io.vertx:vertx-http-service-factory:3.6.0-SNAPSHOT</code> is in your classpath.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx run https://myserver.net/myverticle.zip::my-service</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Although it looks like an http URL, it is a verticle identifier with a factory bound to the <em>https</em> prefix (<em>http</em>
+also supported).</p>
+</div>
+<div class="paragraph">
+<p>The service identifier is made up of the suffix to form an <em>http</em> URL or the archive that contains the service,
+followed by a double colon <code>::</code> and a service name.</p>
+</div>
+<div class="paragraph">
+<p>The service name is used to find the service descriptor file inside the artifact which is named by the service name with
+a <code>.json</code> extension. This is explained in the <a href="http://vertx.io/docs/vertx-service-factory/java">Service Verticle Factory</a>
+documentation.</p>
+</div>
+<div class="paragraph">
+<p>For example, to deploy a service that exists in an hosted at <code><a href="https://myserver.net/myverticle.zip" class="bare">https://myserver.net/myverticle.zip</a></code> called <code>my-service</code>
+you would use the string <code><a href="https://myserver.net/myverticle.zip::my-service" class="bare">https://myserver.net/myverticle.zip::my-service</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Given this string, the verticle factory will use the Vert.x http client try and download the resource
+<code><a href="https://myserver.net/myverticle.zip" class="bare">https://myserver.net/myverticle.zip</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>It then constructs a classpath including this archive and creates a classloader with that classpath in order
+to load the service using the standard <a href="http://vertx.io/docs/vertx-service-factory/java">Service Verticle Factory</a>.</p>
+</div>
+<div class="paragraph">
+<p>The Service Verticle Factory will look for a descriptor file called `my-service.json on the constructed classpath to
+actually load the service.</p>
+</div>
+<div class="paragraph">
+<p>Given a service identifier the service can be deployed programmatically e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx.deployVerticle("https://myserver.net/myverticle.zip::my-service", ...)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or can be deployed on the command line with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx run https://myserver.net/myverticle.zip::my-service</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The service name can be omitted when the service jar <code>META-INF/MANIFEST</code> contains a `Main-Verticle`entry that
+declares the verticle to run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx.deployVerticle("https://myserver.net/myverticle.zip", ...)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And the manifest contains:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Main-Verticle: service:my.service</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of course it can be deployed on the command line with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx run https://myserver.net/myverticle.zip</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploying_a_java_service_packaged_as_a_fatjar">Deploying a Java service packaged as a fatjar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The deployer factory can also deploy a Java service packaged as a fatjar, i.e a jar that contains a Java service and all the classes needed
+to run, for example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the jar manifest contains the <code>Main-Verticle:myservice.json</code></p>
+</li>
+<li>
+<p><code>myservice.json</code> declares the service via <code>main:my.Verticle</code></p>
+</li>
+<li>
+<p>the class <code>my.Verticle</code></p>
+</li>
+<li>
+<p>all the classes needed by the verticle to run, for example Google Guava jar, etc&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_http_client_configuration">Http client configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Files are downloaded using Vert.x http client, by default the https client is configured with the <code>ssl=true</code>
+and <code>trustAll=true</code>. The default client options can be overriden to use specific configurations with the
+<em>vertx.httpServiceFactory.httpClientOptions</em> system property and the <em>vertx.httpServiceFactory.httpsClientOptions</em>
+system property, these properties are valid for any http resource.</p>
+</div>
+<div class="sect2">
+<h3 id="_client_authentication">Client authentication</h3>
+<div class="paragraph">
+<p>The client supports basic authentication via the <em>vertx.httpServiceFactory.authUsername</em> and
+<em>vertx.httpServiceFactory.authPassword</em> system properties.</p>
+</div>
+<div class="paragraph">
+<p>Authentication is done only for services (i.e basic authentication will not be done for key servers) and only using
+an https connection.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_proxy_server_configuration">Proxy server configuration</h3>
+<div class="paragraph">
+<p>The http client can be configured to support a proxy server with the <em>vertx.httpServiceFactory.proxyHost</em> and
+<em>vertx.httpServiceFactory.proxyPort</em> system properties.</p>
+</div>
+<div class="paragraph">
+<p>If you need more proxy configuration such as support for SOCKS or proxy authentication, you can use specify them
+in the <em>vertx.httpServiceFactory.httpClientOptions</em> instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx run https://myserver.net/myverticle.zip \
+  -Dvertx.httpServiceFactory.httpClientOptions="{\"proxyOptions\":{ \
+     \"host\":\"proxy-host\", \
+     \"port\":1234 \
+     \"type\":\"SOCKS4\"
+  } }"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please see read the <code><a href="../../apidocs/io/vertx/core/http/HttpClientOptions.html">HttpClientOptions</a></code> configuration for all the details;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_public_key_servers">Public key servers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Signed artifacts signatures are verifed using a public key, public key are retrieved from a public key server.</p>
+</div>
+<div class="paragraph">
+<p>The public key server uri can be configured with the <em>vertx.httpServiceFactory.keyserverURITemplate</em> system property.
+The URI template is used to create the public key URI this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>String.format(keyserverURITemplate, signature.getKeyID())</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the property is not set, the default public key server is the <em>SKS OpenPGP Public Key Server</em> server used and
+the uri template used is : <code><a href="http://pool.sks-keyservers.net:11371/pks/lookup?op=get&amp;options=mr&amp;search=0x%016X" class="bare">http://pool.sks-keyservers.net:11371/pks/lookup?op=get&amp;options=mr&amp;search=0x%016X</a></code>
+this server will server public key resources with the <em>application/pgp-keys</em> media type.</p>
+</div>
+<div class="paragraph">
+<p>The Json <a href="https://keybase.io/docs/api/1.0/call/key/fetch">format</a> sent by Keybase.io is also support. Keybase.io
+can be used as a public key server with <code><a href="https://keybase.io/_/api/1.0/key/fetch.json?pgp_key_ids=%016X" class="bare">https://keybase.io/_/api/1.0/key/fetch.json?pgp_key_ids=%016X</a></code> URI template.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validation_policy">Validation policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The validation policy governs how downloaded services are validated, the <em>vertx.httpServiceFactory.validationPolicy</em>
+system property configures the behavior of the verticle factory when it attemps to deploy a downloaded service file:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>none</em> : the service file is just deployed as is</p>
+</li>
+<li>
+<p><em>verify</em> : the service file is verified when there is a corresponding <em>.asc</em> signature file, otherwise it is
+not verified. If the signature cannot be verified, the deployment fails.</p>
+</li>
+<li>
+<p><em>mandatory</em>: the service file must have a corresponding <em>.asc</em> signature file and the signature must be verified.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The default validation policy is_verify_*.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cache_directory">Cache directory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The cache directory stores the files used by the http service factory after download:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>deployed services</p>
+</li>
+<li>
+<p>service signatures</p>
+</li>
+<li>
+<p>public keys</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The cached files are named after the percent encoded download URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-rw-r--r--  1 julien  staff   270 May  3 21:44 http%3A%2F%2Flocalhost%3A8080%2Fthe_verticle.zip
+-rw-r--r--  1 julien  staff   473 May  3 21:44 http%3A%2F%2Flocalhost%3A8080%2Fthe_verticle.zip.asc
+-rw-r--r--  1 julien  staff  1768 May  3 21:44 http%3A%2F%2Flocalhost%3A8081%2Fpks%2Flookup%3Fop%3Dget%26options%3Dmr%26search%3D0x9F9358A769793D09</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default cache directory <em>.vertx</em> can be set to a specific location with the <em>vertx.httpServiceFactory.cacheDir</em>
+system property.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">Examples</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bintray">Bintray</h3>
+<div class="paragraph">
+<p>Bintray is a distribution platform that can be used for hosting files.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service_zip">Service zip</h3>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; echo 'console.log("hello world")' &gt; helloworld.js
+&gt; echo '{"main":"helloworld.js"}' &gt; helloworld.json
+&gt; zip helloworld.zip helloworld.json helloworld.js</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bintray_hosting">Bintray hosting</h3>
+<div class="paragraph">
+<p>Assuming you have a Bintray account:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create a Bintray repository with the <em>generic</em> type, for instance <em>testgenrepo</em></p>
+</li>
+<li>
+<p>in this repository create a package, for instance <em>testpkg</em></p>
+</li>
+<li>
+<p>optionally edit the package and check the <em>GPG sign uploaded files using Bintray&#8217;s public /private key pair.</em></p>
+</li>
+<li>
+<p>in this package create a version, for instance <em>1.0</em></p>
+</li>
+<li>
+<p>now upload the <em>helloworld.zip</em> file</p>
+</li>
+<li>
+<p>publish the files</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The file are now hosted with an URL like : <em><a href="https://bintray.com/artifact/download/vietj/testgenrepo/helloworld.zip" class="bare">https://bintray.com/artifact/download/vietj/testgenrepo/helloworld.zip</a></em></p>
+</div>
+<div class="paragraph">
+<p>If you have configured the GPG signature, you will have also the signature file <em><a href="https://bintray.com/artifact/download/vietj/testgenrepo/helloworld.zip.asc" class="bare">https://bintray.com/artifact/download/vietj/testgenrepo/helloworld.zip.asc</a></em>.
+It will be by default downloaded and validated with <a href="http://pool.sks-keyservers.net:11371/pks/lookup?op=vindex&amp;fingerprint=on&amp;search=0x379CE192D401AB61">Bintray&#8217;s public key</a></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Of course you can use your own keys for signing the files.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>We can run this service with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx run https://bintray.com/artifact/download/vietj/testgenrepo/helloworld.zip::helloworld
+% Hello World
+Succeeded in deploying verticle</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-11-06 11:19:12 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

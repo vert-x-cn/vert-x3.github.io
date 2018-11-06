@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x Micrometer Metrics - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x Micrometer Metrics</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_features">Features</a></li>
+<li><a href="#_influxdb">InfluxDB</a>
+<ul class="sectlevel2">
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_configuration_examples">Configuration examples</a></li>
+</ul>
+</li>
+<li><a href="#_prometheus">Prometheus</a>
+<ul class="sectlevel2">
+<li><a href="#_prerequisites_2">Prerequisites</a></li>
+<li><a href="#_getting_started_2">Getting started</a></li>
+<li><a href="#_configuration_examples_2">Configuration examples</a></li>
+</ul>
+</li>
+<li><a href="#_jmx">JMX</a>
+<ul class="sectlevel2">
+<li><a href="#_getting_started_3">Getting started</a></li>
+<li><a href="#_configuration_examples_3">Configuration examples</a></li>
+</ul>
+</li>
+<li><a href="#_other_backends_or_combinations">Other backends or combinations</a></li>
+<li><a href="#_advanced_usage">Advanced usage</a>
+<ul class="sectlevel2">
+<li><a href="#_disable_some_metric_domains">Disable some metric domains</a></li>
+<li><a href="#_user_defined_metrics">User-defined metrics</a></li>
+<li><a href="#_other_instrumentation">Other instrumentation</a></li>
+<li><a href="#_labels_and_matchers">Labels and matchers</a></li>
+<li><a href="#_snapshots">Snapshots</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_core_tools_metrics">Vert.x core tools metrics</a>
+<ul class="sectlevel2">
+<li><a href="#_net_client">Net Client</a></li>
+<li><a href="#_http_client">HTTP Client</a></li>
+<li><a href="#_datagram_socket">Datagram socket</a></li>
+<li><a href="#_net_server">Net Server</a></li>
+<li><a href="#_http_server">HTTP Server</a></li>
+<li><a href="#_event_bus">Event Bus</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_pool_metrics">Vert.x pool metrics</a></li>
+<li><a href="#_verticle_metrics">Verticle metrics</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_features">Features</a></li>
+<li><a href="#_influxdb">InfluxDB</a>
+<ul class="sectlevel2">
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_configuration_examples">Configuration examples</a></li>
+</ul>
+</li>
+<li><a href="#_prometheus">Prometheus</a>
+<ul class="sectlevel2">
+<li><a href="#_prerequisites_2">Prerequisites</a></li>
+<li><a href="#_getting_started_2">Getting started</a></li>
+<li><a href="#_configuration_examples_2">Configuration examples</a></li>
+</ul>
+</li>
+<li><a href="#_jmx">JMX</a>
+<ul class="sectlevel2">
+<li><a href="#_getting_started_3">Getting started</a></li>
+<li><a href="#_configuration_examples_3">Configuration examples</a></li>
+</ul>
+</li>
+<li><a href="#_other_backends_or_combinations">Other backends or combinations</a></li>
+<li><a href="#_advanced_usage">Advanced usage</a>
+<ul class="sectlevel2">
+<li><a href="#_disable_some_metric_domains">Disable some metric domains</a></li>
+<li><a href="#_user_defined_metrics">User-defined metrics</a></li>
+<li><a href="#_other_instrumentation">Other instrumentation</a></li>
+<li><a href="#_labels_and_matchers">Labels and matchers</a></li>
+<li><a href="#_snapshots">Snapshots</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_core_tools_metrics">Vert.x core tools metrics</a>
+<ul class="sectlevel2">
+<li><a href="#_net_client">Net Client</a></li>
+<li><a href="#_http_client">HTTP Client</a></li>
+<li><a href="#_datagram_socket">Datagram socket</a></li>
+<li><a href="#_net_server">Net Server</a></li>
+<li><a href="#_http_server">HTTP Server</a></li>
+<li><a href="#_event_bus">Event Bus</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_pool_metrics">Vert.x pool metrics</a></li>
+<li><a href="#_verticle_metrics">Verticle metrics</a></li>
+</ul>
+        </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/master/vertx-translation-stack/vertx-micrometer-metrics-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project is an implementation of the Vert.x Metrics Service Provider Interface (SPI).
+It uses <a href="http://micrometer.io/">Micrometer</a> for managing metrics and reporting to several backends.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_features">Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Vert.x core tools monitoring: TCP/HTTP client and servers, <code><a href="../../apidocs/io/vertx/core/datagram/DatagramSocket.html">DatagramSocket</a></code>
+, <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html">EventBus</a></code> and pools</p>
+</li>
+<li>
+<p>User defined metrics through Micrometer</p>
+</li>
+<li>
+<p>Reporting to any backend supported by Micrometer</p>
+</li>
+<li>
+<p>Built-in options for <a href="https://www.influxdata.com/">InfluxDB</a>, <a href="https://prometheus.io/">Prometheus</a> and JMX reporting.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_influxdb">InfluxDB</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_prerequisites">Prerequisites</h3>
+<div class="paragraph">
+<p>Follow the <a href="https://docs.influxdata.com/influxdb/latest/introduction/getting_started/">instructions to get InfluxDb up and running</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_started">Getting started</h3>
+<div class="paragraph">
+<p>The modules <em>vertx-micrometer-metrics</em> and <em>micrometer-registry-influx</em> must be present in the classpath.</p>
+</div>
+<div class="paragraph">
+<p>Maven users should add this to their project POM file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-micrometer-metrics&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+ &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
+ &lt;artifactId&gt;micrometer-registry-influx&lt;/artifactId&gt;
+ &lt;version&gt;${micrometer.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And Gradle users, to their build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
+compile 'io.micrometer:micrometer-registry-influx:${micrometer.version}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_examples">Configuration examples</h3>
+<div class="paragraph">
+<p>Vert.x does not enable SPI implementations by default. You must enable metric collection in the Vert.x options.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setInfluxDbOptions(new VertxInfluxDbOptions().setEnabled(true))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_a_specific_uri_and_database_name">Using a specific URI and database name</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setInfluxDbOptions(new VertxInfluxDbOptions().setEnabled(true)
+      .setUri("http://influxdb.example.com:8888")
+      .setDb("sales-department"))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_with_authentication">With authentication</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setInfluxDbOptions(new VertxInfluxDbOptions().setEnabled(true)
+      .setUserName("username")
+      .setPassword("password"))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prometheus">Prometheus</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_prerequisites_2">Prerequisites</h3>
+<div class="paragraph">
+<p>Follow the <a href="https://prometheus.io/docs/prometheus/latest/getting_started/">instructions to get Prometheus up and running</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_started_2">Getting started</h3>
+<div class="paragraph">
+<p>The modules <em>vertx-micrometer-metrics</em> and <em>micrometer-registry-prometheus</em> must be present in the classpath.
+You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
+</div>
+<div class="paragraph">
+<p>Maven users should add this to their project POM file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-micrometer-metrics&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+ &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
+ &lt;artifactId&gt;micrometer-registry-prometheus&lt;/artifactId&gt;
+ &lt;version&gt;${micrometer.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And Gradle users, to their build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
+compile 'io.micrometer:micrometer-registry-prometheus:${micrometer.version}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_examples_2">Configuration examples</h3>
+<div class="paragraph">
+<p>Vert.x does not enable SPI implementations by default. You must enable metric collection in the Vert.x options</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setPrometheusOptions(new VertxPrometheusOptions().setEnabled(true))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_an_embedded_http_server_with_custom_endpoint">Using an embedded HTTP server with custom endpoint</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setPrometheusOptions(new VertxPrometheusOptions().setEnabled(true)
+      .setStartEmbeddedServer(true)
+      .setEmbeddedServerOptions(new HttpServerOptions().setPort(8080))
+      .setEmbeddedServerEndpoint("/metrics/vertx"))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the embedded server endpoint is not specified, it defaults to <em>/metrics</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_binding_metrics_to_an_existing_vert_x_web_router">Binding metrics to an existing Vert.x Web router</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setPrometheusOptions(new VertxPrometheusOptions().setEnabled(true))
+    .setEnabled(true)));
+
+// Later on, creating a router
+Router router = Router.router(vertx);
+router.route("/metrics").handler(PrometheusScrapingHandler.create());
+vertx.createHttpServer().requestHandler(router).listen(8080);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jmx">JMX</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_getting_started_3">Getting started</h3>
+<div class="paragraph">
+<p>The modules <em>vertx-micrometer-metrics</em> and <em>micrometer-registry-jmx</em> must be present in the classpath.</p>
+</div>
+<div class="paragraph">
+<p>Maven users should add this to their project POM file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-micrometer-metrics&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+ &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
+ &lt;artifactId&gt;micrometer-registry-jmx&lt;/artifactId&gt;
+ &lt;version&gt;${micrometer.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And Gradle users, to their build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
+compile 'io.micrometer:micrometer-registry-jmx:${micrometer.version}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_examples_3">Configuration examples</h3>
+<div class="paragraph">
+<p>Vert.x does not enable SPI implementations by default. You must enable metric collection in the Vert.x options</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setJmxMetricsOptions(new VertxJmxMetricsOptions().setEnabled(true))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_with_step_and_domain">With step and domain</h4>
+<div class="paragraph">
+<p>In Micrometer, <code>step</code> refers to the reporting period, in seconds. <code>domain</code> is the JMX domain under which
+MBeans are registered.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setJmxMetricsOptions(new VertxJmxMetricsOptions().setEnabled(true)
+      .setStep(5)
+      .setDomain("my.metrics.domain"))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_backends_or_combinations">Other backends or combinations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Even if not all backends supported by Micrometer are implemented in Vert.x options, it is still possible
+to create any Micrometer registry and pass it to Vert.x.</p>
+</div>
+<div class="paragraph">
+<p>The list of available backends includes Graphite, Ganglia, Atlas, <a href="http://micrometer.io/docs">etc</a>.
+It also enables the <a href="http://micrometer.io/docs/concepts#_composite_registries">Micrometer Composite Registry</a>
+in order to report the same metrics to multiple backends.</p>
+</div>
+<div class="paragraph">
+<p>In this example, metrics are reported both for JMX and Graphite:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">CompositeMeterRegistry myRegistry = new CompositeMeterRegistry();
+myRegistry.add(new JmxMeterRegistry(s -&gt; null, Clock.SYSTEM));
+myRegistry.add(new GraphiteMeterRegistry(s -&gt; null, Clock.SYSTEM));
+
+Vertx vertx = Vertx.vertx(new VertxOptions()
+  .setMetricsOptions(new MicrometerMetricsOptions()
+    .setMicrometerRegistry(myRegistry)
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_advanced_usage">Advanced usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Please refer to <code><a href="../../apidocs/io/vertx/micrometer/MicrometerMetricsOptions.html">MicrometerMetricsOptions</a></code> for an exhaustive list of options.</p>
+</div>
+<div class="sect2">
+<h3 id="_disable_some_metric_domains">Disable some metric domains</h3>
+<div class="paragraph">
+<p>Restricting the Vert.x modules being monitored can be done using
+<code><a href="../../apidocs/io/vertx/micrometer/MicrometerMetricsOptions.html#disabledMetricsCategories">disabledMetricsCategories</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>For a full list of domains, see <code><a href="../../apidocs/io/vertx/micrometer/MetricsDomain.html">MetricsDomain</a></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_defined_metrics">User-defined metrics</h3>
+<div class="paragraph">
+<p>The Micrometer registries are accessible, in order to create new metrics or fetch the existing ones.
+By default, an unique registry is used and will be shared across the Vert.x instances of the JVM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MeterRegistry registry = BackendRegistries.getDefaultNow();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is also possible to have separate registries per Vertx instance, by giving a registry name in metrics options.
+Then it can be retrieved specifically:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setInfluxDbOptions(new VertxInfluxDbOptions().setEnabled(true)) // or VertxPrometheusOptions
+    .setRegistryName("my registry")
+    .setEnabled(true)));
+
+// Later on:
+MeterRegistry registry = BackendRegistries.getNow("my registry");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As an example, here is a custom timer that will track the execution time of a piece of code that is regularly called:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MeterRegistry registry = BackendRegistries.getDefaultNow();
+Timer timer = Timer
+  .builder("my.timer")
+  .description("a description of what this timer does")
+  .register(registry);
+
+vertx.setPeriodic(1000, l -&gt; {
+  timer.record(() -&gt; {
+    // Running here some operation to monitor
+  });
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more examples, documentation about the Micrometer registry and how to create metrics, check
+<a href="http://micrometer.io/docs/concepts#_registry">Micrometer doc</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_instrumentation">Other instrumentation</h3>
+<div class="paragraph">
+<p>Since plain access to Micrometer registries is provided, it is possible to leverage the Micrometer API.
+For instance, to instrument the JVM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MeterRegistry registry = BackendRegistries.getDefaultNow();
+
+new ClassLoaderMetrics().bindTo(registry);
+new JvmMemoryMetrics().bindTo(registry);
+new JvmGcMetrics().bindTo(registry);
+new ProcessorMetrics().bindTo(registry);
+new JvmThreadMetrics().bindTo(registry);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>From <a href="http://micrometer.io/docs/ref/jvm">Micrometer documentation</a>.</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_labels_and_matchers">Labels and matchers</h3>
+<div class="paragraph">
+<p>Vert.x Micrometer Metrics defines a set of labels (aka tags or fields) that are used to provide dimensionality
+to a metric. For instance, metrics related to event bus messages have an <em>address</em> label, which allows then to query
+timeseries for a specific event bus address, or compare timeseries per address, or perform any kind of aggregation
+that the query API allows.</p>
+</div>
+<div class="paragraph">
+<p>While setting up metrics options, you can specify which labels you want to enable or not:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setPrometheusOptions(new VertxPrometheusOptions().setEnabled(true))
+    .setLabels(EnumSet.of(Label.REMOTE, Label.LOCAL, Label.HTTP_CODE, Label.HTTP_PATH))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The full list of labels is detailed here: <code><a href="../../apidocs/io/vertx/micrometer/Label.html">Label</a></code>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Enabling labels may result in a high cardinality in values, which can cause troubles on the metrics backend and affect performances.
+So it must be used with care.
+In general, it is fine to enable labels when the set of possible values is bounded.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For that reason, labels enabled by default are restricted to the ones with known bounded values.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to interact with labels further than just enabling/disabling. There are two ways for that:</p>
+</div>
+<div class="sect3">
+<h4 id="_using_matchers">Using Matchers</h4>
+<div class="paragraph">
+<p><code><a href="../../apidocs/io/vertx/micrometer/Match.html">Match</a></code> objects can be used to filter or rename some label value
+by matching it with either an exact string or a regular expression (the former being more efficient).</p>
+</div>
+<div class="paragraph">
+<p>Here is an example to restrict HTTP server metrics to those with label <em>local=localhost:8080</em> only:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Vertx vertx = Vertx.vertx(new VertxOptions().setMetricsOptions(
+  new MicrometerMetricsOptions()
+    .setPrometheusOptions(new VertxPrometheusOptions().setEnabled(true))
+    .addLabelMatch(new Match()
+      // Restrict HTTP server metrics to those with label "local=localhost:8080" only
+      .setDomain(MetricsDomain.HTTP_SERVER)
+      .setLabel("local")
+      .setValue("localhost:8080"))
+    .setEnabled(true)));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When an <em>alias</em> is specified in the Match, it will be used to rename value instead of filtering.</p>
+</div>
+<div class="paragraph">
+<p>Matchers are especially useful to control labelling through configuration as they are set via
+<code><a href="../../apidocs/io/vertx/micrometer/MicrometerMetricsOptions.html">MicrometerMetricsOptions</a></code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_micrometer_s_meterfilter">Using Micrometer&#8217;s MeterFilter</h4>
+<div class="paragraph">
+<p>Micrometer&#8217;s <a href="http://micrometer.io/docs/concepts#_meter_filters">MeterFilter API</a> can be accessed directly in order to define rules on labels.
+Compared to Matchers, it offers more features in manipulating the labels, but cannot be defined from configuration.
+So both have their advantages.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example to replace the actual <code>path</code> label of HTTP requests with a generic form using regex:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MeterRegistry registry = BackendRegistries.getDefaultNow();
+Pattern pattern = Pattern.compile("/foo/bar/.*");
+
+registry.config().meterFilter(
+  MeterFilter.replaceTagValues(Label.HTTP_PATH.toString(), actualPath -&gt; {
+    Matcher m = pattern.matcher(actualPath);
+    if (m.matches()) {
+      return "/foo/bar/:id";
+    }
+    return actualPath;
+  }, ""));</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Matchers use MeterFilters under the hood.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_snapshots">Snapshots</h3>
+<div class="paragraph">
+<p>A <code><a href="../../apidocs/io/vertx/micrometer/MetricsService.html">MetricsService</a></code> can be created out of a <code><a href="../../apidocs/io/vertx/core/metrics/Measured.html">Measured</a></code> object
+in order to take a snapshot of its related metrics and measurements.
+The snapshot is returned as a <code><a href="../../apidocs/io/vertx/core/json/JsonObject.html">JsonObject</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>A well known <em>Measured</em> object is simply <code><a href="../../apidocs/io/vertx/core/Vertx.html">Vertx</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MetricsService metricsService = MetricsService.create(vertx);
+JsonObject metrics = metricsService.getMetricsSnapshot();
+System.out.println(metrics);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Other components, such as an <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html">EventBus</a></code> or a <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html">HttpServer</a></code> are
+measurable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">HttpServer server = vertx.createHttpServer();
+MetricsService metricsService = MetricsService.create(server);
+JsonObject metrics = metricsService.getMetricsSnapshot();
+System.out.println(metrics);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally it is possible to filter the returned metrics from their base names:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">MetricsService metricsService = MetricsService.create(vertx);
+// Client + server
+JsonObject metrics = metricsService.getMetricsSnapshot("vertx.http");
+System.out.println(metrics);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vert_x_core_tools_metrics">Vert.x core tools metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section lists all the metrics generated by monitoring the Vert.x core tools.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The metric backends may have different conventions or rules for naming metrics.
+For instance, Influx convention is to use dot as a word separator, whereas Prometheus expects underscore.
+The names described below are given with underscore separators, but the actual names will vary
+according to the backend used.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_net_client">Net Client</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_connections{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections to the remote host currently opened.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_bytesReceived{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received from the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_bytesSent{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_errors{local=&lt;local address&gt;,remote=&lt;remote address&gt;,class=&lt;class&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_http_client">HTTP Client</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_connections{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections to the remote host currently opened.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_bytesReceived{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received from the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_bytesSent{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_errors{local=&lt;local address&gt;,remote=&lt;remote address&gt;,class=&lt;class&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_requests{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests waiting for a response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_requestCount{local=&lt;local address&gt;,remote=&lt;remote address&gt;,method=&lt;http method&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests sent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_responseTime{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Response time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_responseCount{local=&lt;local address&gt;,remote=&lt;remote address&gt;,code=&lt;response code&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of received responses.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_wsConnections{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of websockets currently opened.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_datagram_socket">Datagram socket</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_bytesReceived{local=&lt;local&gt;,remote=&lt;remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received on the <code>&lt;host&gt;:&lt;port&gt;</code> listening address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_bytesSent{remote=&lt;remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_errors{class=&lt;class&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_net_server">Net Server</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_connections{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of opened connections to the Net Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_bytesReceived{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received by the Net Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_bytesSent{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent by the Net Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_errors{local=&lt;local address&gt;,class=&lt;class&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_http_server">HTTP Server</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_connections{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of opened connections to the HTTP Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_bytesReceived{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received by the HTTP Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_bytesSent{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent by the HTTP Server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_errors{local=&lt;local address&gt;,class=&lt;class&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requests{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests being processed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requestCount{local=&lt;local address&gt;,method=&lt;http method&gt;,code=&lt;response code&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of processed requests.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requestResetCount{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests reset.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_processingTime{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request processing time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_wsConnections{local=&lt;local address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of websockets currently opened.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_event_bus">Event Bus</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_handlers{address=&lt;address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of event bus handlers in use.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_errors{address=&lt;address&gt;,class=&lt;class&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_bytesWritten{address=&lt;address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent while sending messages to event bus cluster peers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_bytesRead{address=&lt;address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received while reading messages from event bus cluster peers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_pending{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages not processed yet. One message published will count for <code>N</code> pending if <code>N</code> handlers
+are registered to the corresponding address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_published{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages published (publish / subscribe).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_sent{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages sent (point-to-point).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_received{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages received.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_delivered{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages delivered to handlers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_replyFailures{address=&lt;address&gt;,failure=&lt;failure name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of message reply failures.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_processingTime{address=&lt;address&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Processing time for handlers listening to the <code>address</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vert_x_pool_metrics">Vert.x pool metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section lists all the metrics generated by monitoring Vert.x pools.</p>
+</div>
+<div class="paragraph">
+<p>There are two types currently supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>worker</em> (see <code><a href="../../apidocs/io/vertx/core/WorkerExecutor.html">WorkerExecutor</a></code>)</p>
+</li>
+<li>
+<p><em>datasource</em> (created with Vert.x JDBC client)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal-blocking</em>.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_queue_delay{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time waiting for a resource (queue time).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_queue_size{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of elements waiting for a resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_usage{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time using a resource (i.e. processing time for worker pools).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_inUse{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of resources used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_completed{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of elements done with the resource (i.e. total number of tasks executed for worker pools).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_ratio{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pool usage ratio, only present if maximum pool size could be determined.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verticle_metrics">Verticle metrics</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_verticle_deployed{name=&lt;name&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of verticle instances deployed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-11-06 11:19:34 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

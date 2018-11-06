@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    API Documentation &raquo; \io\vertx\jphp\core\file\FileSystem
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                                                                            <li class="method public">
+        <a href="#method_chmod" title="chmod :: Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.">
+            <span class="description">Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.</span><pre>chmod</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_chmodBlocking" title="chmodBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem #chmod(String, String, Handler)">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem #chmod(String, String, Handler)</span><pre>chmodBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_chmodRecursive" title="chmodRecursive :: Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.&lt;p&gt;
+The permission String takes the form rwxr-x--- as
+specified in {&lt;a href=&quot;http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html&quot;&gt;here&lt;/a&gt;}.">
+            <span class="description">Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.&lt;p&gt;
+The permission String takes the form rwxr-x--- as
+specified in {&lt;a href=&quot;http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html&quot;&gt;here&lt;/a&gt;}.</span><pre>chmodRecursive</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_chmodRecursiveBlocking" title="chmodRecursiveBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::chmodRecursive">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::chmodRecursive</span><pre>chmodRecursiveBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_chown" title="chown :: Change the ownership on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;user&lt;/code&gt; and {code group}, asynchronously.">
+            <span class="description">Change the ownership on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;user&lt;/code&gt; and {code group}, asynchronously.</span><pre>chown</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_chownBlocking" title="chownBlocking :: Blocking version of">
+            <span class="description">Blocking version of</span><pre>chownBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_copy" title="copy :: Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.">
+            <span class="description">Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</span><pre>copy</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_copyBlocking" title="copyBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copy">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copy</span><pre>copyBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_copyRecursive" title="copyRecursive :: Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.">
+            <span class="description">Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</span><pre>copyRecursive</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_copyRecursiveBlocking" title="copyRecursiveBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copyRecursive">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copyRecursive</span><pre>copyRecursiveBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_createFile" title="createFile :: Creates an empty file with the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Creates an empty file with the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>createFile</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_createFileBlocking" title="createFileBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createFile">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createFile</span><pre>createFileBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_createTempDirectory" title="createTempDirectory :: Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.">
+            <span class="description">Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</span><pre>createTempDirectory</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_createTempDirectoryBlocking" title="createTempDirectoryBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempDirectory">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempDirectory</span><pre>createTempDirectoryBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_createTempFile" title="createTempFile :: Creates a new file in the default temporary-file directory, using the given
+prefix and suffix to generate its name, asynchronously.">
+            <span class="description">Creates a new file in the default temporary-file directory, using the given
+prefix and suffix to generate its name, asynchronously.</span><pre>createTempFile</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_createTempFileBlocking" title="createTempFileBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempFile">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempFile</span><pre>createTempFileBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_delete" title="delete :: Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>delete</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_deleteBlocking" title="deleteBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::delete">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::delete</span><pre>deleteBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_deleteRecursive" title="deleteRecursive :: Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>deleteRecursive</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_deleteRecursiveBlocking" title="deleteRecursiveBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::deleteRecursive">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::deleteRecursive</span><pre>deleteRecursiveBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_exists" title="exists :: Determines whether the file as specified by the path &lt;code&gt;path&lt;/code&gt; exists, asynchronously.">
+            <span class="description">Determines whether the file as specified by the path &lt;code&gt;path&lt;/code&gt; exists, asynchronously.</span><pre>exists</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_existsBlocking" title="existsBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::exists">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::exists</span><pre>existsBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_fsProps" title="fsProps :: Returns properties of the file-system being used by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Returns properties of the file-system being used by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>fsProps</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_fsPropsBlocking" title="fsPropsBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::fsProps">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::fsProps</span><pre>fsPropsBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_link" title="link :: Create a hard link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.">
+            <span class="description">Create a hard link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.</span><pre>link</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_linkBlocking" title="linkBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link</span><pre>linkBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_lprops" title="lprops :: Obtain properties for the link represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Obtain properties for the link represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>lprops</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_lpropsBlocking" title="lpropsBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::lprops">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::lprops</span><pre>lpropsBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_mkdir" title="mkdir :: Create the directory represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Create the directory represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>mkdir</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_mkdirBlocking" title="mkdirBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdir">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdir</span><pre>mkdirBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_mkdirs" title="mkdirs :: Create the directory represented by &lt;code&gt;path&lt;/code&gt; and any non existent parents, asynchronously.">
+            <span class="description">Create the directory represented by &lt;code&gt;path&lt;/code&gt; and any non existent parents, asynchronously.</span><pre>mkdirs</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_mkdirsBlocking" title="mkdirsBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdirs">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdirs</span><pre>mkdirsBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_move" title="move :: Move a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.">
+            <span class="description">Move a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</span><pre>move</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_moveBlocking" title="moveBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::move">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::move</span><pre>moveBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_open" title="open :: Open the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Open the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>open</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_openBlocking" title="openBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::open">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::open</span><pre>openBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_props" title="props :: Obtain properties for the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Obtain properties for the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>props</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_propsBlocking" title="propsBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::props">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::props</span><pre>propsBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_readDir" title="readDir :: Read the contents of the directory specified by &lt;code&gt;path&lt;/code&gt;, asynchronously.">
+            <span class="description">Read the contents of the directory specified by &lt;code&gt;path&lt;/code&gt;, asynchronously.</span><pre>readDir</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_readDirBlocking" title="readDirBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readDir">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readDir</span><pre>readDirBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_readFile" title="readFile :: Reads the entire file as represented by the path &lt;code&gt;path&lt;/code&gt; as a , asynchronously.">
+            <span class="description">Reads the entire file as represented by the path &lt;code&gt;path&lt;/code&gt; as a , asynchronously.</span><pre>readFile</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_readFileBlocking" title="readFileBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readFile">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readFile</span><pre>readFileBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_readSymlink" title="readSymlink :: Returns the path representing the file that the symbolic link specified by &lt;code&gt;link&lt;/code&gt; points to, asynchronously.">
+            <span class="description">Returns the path representing the file that the symbolic link specified by &lt;code&gt;link&lt;/code&gt; points to, asynchronously.</span><pre>readSymlink</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_readSymlinkBlocking" title="readSymlinkBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readSymlink">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readSymlink</span><pre>readSymlinkBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_symlink" title="symlink :: Create a symbolic link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.">
+            <span class="description">Create a symbolic link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.</span><pre>symlink</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_symlinkBlocking" title="symlinkBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link</span><pre>symlinkBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_truncate" title="truncate :: Truncate the file represented by &lt;code&gt;path&lt;/code&gt; to length &lt;code&gt;len&lt;/code&gt; in bytes, asynchronously.">
+            <span class="description">Truncate the file represented by &lt;code&gt;path&lt;/code&gt; to length &lt;code&gt;len&lt;/code&gt; in bytes, asynchronously.</span><pre>truncate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_truncateBlocking" title="truncateBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::truncate">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::truncate</span><pre>truncateBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_unlink" title="unlink :: Unlinks the link on the file system represented by the path &lt;code&gt;link&lt;/code&gt;, asynchronously.">
+            <span class="description">Unlinks the link on the file system represented by the path &lt;code&gt;link&lt;/code&gt;, asynchronously.</span><pre>unlink</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_unlinkBlocking" title="unlinkBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::unlink">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::unlink</span><pre>unlinkBlocking</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_writeFile" title="writeFile :: Creates the file, and writes the specified &lt;code&gt;Buffer data&lt;/code&gt; to the file represented by the path &lt;code&gt;path&lt;/code&gt;,
+asynchronously.">
+            <span class="description">Creates the file, and writes the specified &lt;code&gt;Buffer data&lt;/code&gt; to the file represented by the path &lt;code&gt;path&lt;/code&gt;,
+asynchronously.</span><pre>writeFile</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_writeFileBlocking" title="writeFileBlocking :: Blocking version of @see \io\vertx\jphp\core\file\FileSystem::writeFile">
+            <span class="description">Blocking version of @see \io\vertx\jphp\core\file\FileSystem::writeFile</span><pre>writeFileBlocking</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                            <li class="method private">
+                            <a href="#method___construct" title="__construct :: ">
+                                <span class="description"></span><pre>__construct</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>FileSystem</h1>
+                <small style="display: block; text-align: right">
+                                                        </small>
+                <p class="short_description">Contains a broad set of operations for manipulating files on the file system.</p>
+                <div class="details">
+                    <div class="long_description">
+                        <p>
+A (potential) blocking and non blocking version of each operation is provided.
+<p>
+The non blocking versions take a handler which is called when the operation completes or an error occurs.
+<p>
+The blocking versions are named <code>xxxBlocking</code> and return the results, or throw exceptions directly.
+In many cases, depending on the operating system and file system some of the potentially blocking operations
+can return quickly, which is why we provide them, but it's highly recommended that you test how long they take to
+return in your particular application before using them on an event loop.
+<p>
+Please consult the documentation for more information on file system support.
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Default</p>
+                                    </td>
+                                </tr>
+                                                                                                                                                                                </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method___construct"></a>
+                        <div class="element clickable method private  method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>__construct</h2>
+                            <pre>__construct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_chmod"></a>
+                        <div class="element clickable method public  method_chmod" data-toggle="collapse" data-target=".method_chmod .collapse">
+                            <h2>Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.</h2>
+                            <pre>chmod( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The permission String takes the form rwxr-x--- as
+specified <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_chmodBlocking"></a>
+                        <div class="element clickable method public  method_chmodBlocking" data-toggle="collapse" data-target=".method_chmodBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem #chmod(String, String, Handler)</h2>
+                            <pre>chmodBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_chmodRecursive"></a>
+                        <div class="element clickable method public  method_chmodRecursive" data-toggle="collapse" data-target=".method_chmodRecursive .collapse">
+                            <h2>Change the permissions on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;perms&lt;/code&gt;, asynchronously.&lt;p&gt;
+The permission String takes the form rwxr-x--- as
+specified in {&lt;a href=&quot;http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html&quot;&gt;here&lt;/a&gt;}.</h2>
+                            <pre>chmodRecursive( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+If the file is directory then all contents will also have their permissions changed recursively. Any directory permissions will
+be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_chmodRecursiveBlocking"></a>
+                        <div class="element clickable method public  method_chmodRecursiveBlocking" data-toggle="collapse" data-target=".method_chmodRecursiveBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::chmodRecursive</h2>
+                            <pre>chmodRecursiveBlocking( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_chown"></a>
+                        <div class="element clickable method public  method_chown" data-toggle="collapse" data-target=".method_chown .collapse">
+                            <h2>Change the ownership on the file represented by &lt;code&gt;path&lt;/code&gt; to &lt;code&gt;user&lt;/code&gt; and {code group}, asynchronously.</h2>
+                            <pre>chown( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_chownBlocking"></a>
+                        <div class="element clickable method public  method_chownBlocking" data-toggle="collapse" data-target=".method_chownBlocking .collapse">
+                            <h2>Blocking version of</h2>
+                            <pre>chownBlocking( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_copy"></a>
+                        <div class="element clickable method public  method_copy" data-toggle="collapse" data-target=".method_copy .collapse">
+                            <h2>Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</h2>
+                            <pre>copy( $arg0,  $arg1,  $arg2,  $arg3 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The copy will fail if the destination already exists.
+
+param $from [string] the path to copy from
+param $to [string] the path to copy to
+param $handler [callable] the handler that will be called on completion
+<b>
+copy($from, $to, $handler)
+</b>
+
+Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.
+
+param $from [string] the path to copy from
+param $to [string] the path to copy to
+param $options [CopyOptions | array] options describing how the file should be copied
+param $handler [callable] the handler that will be called on completion
+<b>
+copy($from, $to, $options, $handler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable | array | CopyOptions</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_copyBlocking"></a>
+                        <div class="element clickable method public  method_copyBlocking" data-toggle="collapse" data-target=".method_copyBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copy</h2>
+                            <pre>copyBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_copyRecursive"></a>
+                        <div class="element clickable method public  method_copyRecursive" data-toggle="collapse" data-target=".method_copyRecursive .collapse">
+                            <h2>Copy a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</h2>
+                            <pre>copyRecursive( $arg0,  $arg1,  $arg2,  $arg3) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+If <code>recursive</code> is <code>true</code> and <code>from</code> represents a directory, then the directory and its contents
+will be copied recursively to the destination <code>to</code>.
+<p>
+The copy will fail if the destination if the destination already exists.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>boolean</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_copyRecursiveBlocking"></a>
+                        <div class="element clickable method public  method_copyRecursiveBlocking" data-toggle="collapse" data-target=".method_copyRecursiveBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::copyRecursive</h2>
+                            <pre>copyRecursiveBlocking( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>boolean</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_createFile"></a>
+                        <div class="element clickable method public  method_createFile" data-toggle="collapse" data-target=".method_createFile .collapse">
+                            <h2>Creates an empty file with the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>createFile( $arg0,  $arg1,  $arg2 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $path [string] path to the file
+param $handler [callable] the handler that will be called on completion
+<b>
+createFile($path, $handler)
+</b></p>
+<p>Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.</p>
+<p>param $path [string] path to the file
+param $perms [string] the permissions string
+param $handler [callable] the handler that will be called on completion
+<b>
+createFile($path, $perms, $handler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_createFileBlocking"></a>
+                        <div class="element clickable method public  method_createFileBlocking" data-toggle="collapse" data-target=".method_createFileBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createFile</h2>
+                            <pre>createFileBlocking( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $path [string]
+<b>
+createFileBlocking($path)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createFile</p>
+<p>param $path [string]
+param $perms [string]
+<b>
+createFileBlocking($path, $perms)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_createTempDirectory"></a>
+                        <div class="element clickable method public  method_createTempDirectory" data-toggle="collapse" data-target=".method_createTempDirectory .collapse">
+                            <h2>Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</h2>
+                            <pre>createTempDirectory( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A \java.lang.Runtime,
+or the \java.io.File mechanism may be used to delete the directory automatically.
+</p>
+<p>param $prefix [string] the prefix string to be used in generating the directory's name; may be {@code null}
+param $handler [callable] the handler that will be called on completion
+<b>
+createTempDirectory($prefix, $handler)
+</b></p>
+<p>Creates a new directory in the default temporary-file directory, using the given
+prefix to generate its name, asynchronously.</p>
+<p>
+The new directory will be created with permissions as specified by <code>perms</code>.
+</p>
+<p>The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p>
+<p>
+As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A \java.lang.Runtime,
+or the \java.io.File mechanism may be used to delete the directory automatically.
+</p>
+<p>param $prefix [string] the prefix string to be used in generating the directory's name; may be {@code null}
+param $perms [string] the permissions string
+param $handler [callable] the handler that will be called on completion
+<b>
+createTempDirectory($prefix, $perms, $handler)
+</b></p>
+<p>Creates a new directory in the directory provided by the path <code>path</code>, using the given
+prefix to generate its name, asynchronously.</p>
+<p>
+The new directory will be created with permissions as specified by <code>perms</code>.
+</p>
+<p>The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p>
+<p>
+As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A \java.lang.Runtime,
+or the \java.io.File mechanism may be used to delete the directory automatically.
+</p>
+<p>param $dir [string] the path to directory in which to create the directory
+param $prefix [string] the prefix string to be used in generating the directory's name; may be {@code null}
+param $perms [string] the permissions string
+param $handler [callable] the handler that will be called on completion
+<b>
+createTempDirectory($dir, $prefix, $perms, $handler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_createTempDirectoryBlocking"></a>
+                        <div class="element clickable method public  method_createTempDirectoryBlocking" data-toggle="collapse" data-target=".method_createTempDirectoryBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempDirectory</h2>
+                            <pre>createTempDirectoryBlocking( $arg0,  $arg1 = null,  $arg2 = null) : string</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $prefix [string]
+<b>
+createTempDirectoryBlocking($prefix)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempDirectory</p>
+<p>param $prefix [string]
+param $perms [string]
+<b>
+createTempDirectoryBlocking($prefix, $perms)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempDirectory</p>
+<p>param $dir [string]
+param $prefix [string]
+param $perms [string]
+<b>
+createTempDirectoryBlocking($dir, $prefix, $perms)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_createTempFile"></a>
+                        <div class="element clickable method public  method_createTempFile" data-toggle="collapse" data-target=".method_createTempFile .collapse">
+                            <h2>Creates a new file in the default temporary-file directory, using the given
+prefix and suffix to generate its name, asynchronously.</h2>
+                            <pre>createTempFile( $arg0,  $arg1,  $arg2,  $arg3 = null,  $arg4 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A \java.lang.Runtime,
+or the \java.io.File mechanism may be used to delete the directory automatically.
+</p>
+<p>param $prefix [string] the prefix string to be used in generating the directory's name; may be {@code null}
+param $suffix [string] the suffix string to be used in generating the file's name; may be {@code null}, in which case &quot;{@code .tmp}&quot; is used
+param $handler [callable] the handler that will be called on completion
+<b>
+createTempFile($prefix, $suffix, $handler)
+</b></p>
+<p>Creates a new file in the directory provided by the path <code>dir</code>, using the given
+prefix and suffix to generate its name, asynchronously.</p>
+<p>
+As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A \java.lang.Runtime,
+or the \java.io.File mechanism may be used to delete the directory automatically.
+</p>
+<p>param $prefix [string] the prefix string to be used in generating the directory's name; may be {@code null}
+param $suffix [string] the suffix string to be used in generating the file's name; may be {@code null}, in which case &quot;{@code .tmp}&quot; is used
+param $perms [string]
+param $handler [callable] the handler that will be called on completion
+<b>
+createTempFile($prefix, $suffix, $perms, $handler)
+</b></p>
+<p>Creates a new file in the directory provided by the path <code>dir</code>, using the given
+prefix and suffix to generate its name, asynchronously.</p>
+<p>
+The new directory will be created with permissions as specified by <code>perms</code>.
+</p>
+<p>The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p>
+<p>
+As with the <code>File.createTempFile</code> methods, this method is only
+part of a temporary-file facility.A \java.lang.Runtime,
+or the \java.io.File mechanism may be used to delete the directory automatically.
+</p>
+<p>param $dir [string] the path to directory in which to create the directory
+param $prefix [string] the prefix string to be used in generating the directory's name; may be {@code null}
+param $suffix [string] the suffix string to be used in generating the file's name; may be {@code null}, in which case &quot;{@code .tmp}&quot; is used
+param $perms [string] the permissions string
+param $handler [callable] the handler that will be called on completion
+<b>
+createTempFile($dir, $prefix, $suffix, $perms, $handler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg4</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_createTempFileBlocking"></a>
+                        <div class="element clickable method public  method_createTempFileBlocking" data-toggle="collapse" data-target=".method_createTempFileBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempFile</h2>
+                            <pre>createTempFileBlocking( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : string</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $prefix [string]
+param $suffix [string]
+<b>
+createTempFileBlocking($prefix, $suffix)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempFile</p>
+<p>param $prefix [string]
+param $suffix [string]
+param $perms [string]
+<b>
+createTempFileBlocking($prefix, $suffix, $perms)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::createTempFile</p>
+<p>param $dir [string]
+param $prefix [string]
+param $suffix [string]
+param $perms [string]
+<b>
+createTempFileBlocking($dir, $prefix, $suffix, $perms)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_delete"></a>
+                        <div class="element clickable method public  method_delete" data-toggle="collapse" data-target=".method_delete .collapse">
+                            <h2>Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>delete( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_deleteBlocking"></a>
+                        <div class="element clickable method public  method_deleteBlocking" data-toggle="collapse" data-target=".method_deleteBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::delete</h2>
+                            <pre>deleteBlocking( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_deleteRecursive"></a>
+                        <div class="element clickable method public  method_deleteRecursive" data-toggle="collapse" data-target=".method_deleteRecursive .collapse">
+                            <h2>Deletes the file represented by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>deleteRecursive( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+If the path represents a directory and <code>recursive = true</code> then the directory and its contents will be
+deleted recursively.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>boolean</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_deleteRecursiveBlocking"></a>
+                        <div class="element clickable method public  method_deleteRecursiveBlocking" data-toggle="collapse" data-target=".method_deleteRecursiveBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::deleteRecursive</h2>
+                            <pre>deleteRecursiveBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>boolean</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_exists"></a>
+                        <div class="element clickable method public  method_exists" data-toggle="collapse" data-target=".method_exists .collapse">
+                            <h2>Determines whether the file as specified by the path &lt;code&gt;path&lt;/code&gt; exists, asynchronously.</h2>
+                            <pre>exists( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_existsBlocking"></a>
+                        <div class="element clickable method public  method_existsBlocking" data-toggle="collapse" data-target=".method_existsBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::exists</h2>
+                            <pre>existsBlocking( $arg0) : boolean</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_fsProps"></a>
+                        <div class="element clickable method public  method_fsProps" data-toggle="collapse" data-target=".method_fsProps .collapse">
+                            <h2>Returns properties of the file-system being used by the specified &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>fsProps( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_fsPropsBlocking"></a>
+                        <div class="element clickable method public  method_fsPropsBlocking" data-toggle="collapse" data-target=".method_fsPropsBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::fsProps</h2>
+                            <pre>fsPropsBlocking( $arg0) : \io\vertx\jphp\core\file\FileSystemProps</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/io.vertx.jphp.core.file.FileSystemProps.html">\io\vertx\jphp\core\file\FileSystemProps</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_link"></a>
+                        <div class="element clickable method public  method_link" data-toggle="collapse" data-target=".method_link .collapse">
+                            <h2>Create a hard link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.</h2>
+                            <pre>link( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_linkBlocking"></a>
+                        <div class="element clickable method public  method_linkBlocking" data-toggle="collapse" data-target=".method_linkBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link</h2>
+                            <pre>linkBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_lprops"></a>
+                        <div class="element clickable method public  method_lprops" data-toggle="collapse" data-target=".method_lprops .collapse">
+                            <h2>Obtain properties for the link represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>lprops( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The link will not be followed.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_lpropsBlocking"></a>
+                        <div class="element clickable method public  method_lpropsBlocking" data-toggle="collapse" data-target=".method_lpropsBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::lprops</h2>
+                            <pre>lpropsBlocking( $arg0) : \io\vertx\jphp\core\file\FileProps</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/io.vertx.jphp.core.file.FileProps.html">\io\vertx\jphp\core\file\FileProps</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_mkdir"></a>
+                        <div class="element clickable method public  method_mkdir" data-toggle="collapse" data-target=".method_mkdir .collapse">
+                            <h2>Create the directory represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>mkdir( $arg0,  $arg1,  $arg2 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The operation will fail if the directory already exists.
+
+param $path [string] path to the file
+param $handler [callable] the handler that will be called on completion
+<b>
+mkdir($path, $handler)
+</b>
+
+Create the directory represented by <code>path</code>, asynchronously.
+<p>
+The new directory will be created with permissions as specified by <code>perms</code>.
+<p>
+The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.
+<p>
+The operation will fail if the directory already exists.
+
+param $path [string] path to the file
+param $perms [string] the permissions string
+param $handler [callable] the handler that will be called on completion
+<b>
+mkdir($path, $perms, $handler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_mkdirBlocking"></a>
+                        <div class="element clickable method public  method_mkdirBlocking" data-toggle="collapse" data-target=".method_mkdirBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdir</h2>
+                            <pre>mkdirBlocking( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $path [string]
+<b>
+mkdirBlocking($path)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdir</p>
+<p>param $path [string]
+param $perms [string]
+<b>
+mkdirBlocking($path, $perms)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_mkdirs"></a>
+                        <div class="element clickable method public  method_mkdirs" data-toggle="collapse" data-target=".method_mkdirs .collapse">
+                            <h2>Create the directory represented by &lt;code&gt;path&lt;/code&gt; and any non existent parents, asynchronously.</h2>
+                            <pre>mkdirs( $arg0,  $arg1,  $arg2 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The operation will fail if the directory already exists.
+
+param $path [string] path to the file
+param $handler [callable] the handler that will be called on completion
+<b>
+mkdirs($path, $handler)
+</b>
+
+Create the directory represented by <code>path</code> and any non existent parents, asynchronously.
+<p>
+The new directory will be created with permissions as specified by <code>perms</code>.
+<p>
+The permission String takes the form rwxr-x--- as specified
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.
+<p>
+The operation will fail if the directory already exists.<p>
+
+param $path [string] path to the file
+param $perms [string] the permissions string
+param $handler [callable] the handler that will be called on completion
+<b>
+mkdirs($path, $perms, $handler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_mkdirsBlocking"></a>
+                        <div class="element clickable method public  method_mkdirsBlocking" data-toggle="collapse" data-target=".method_mkdirsBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdirs</h2>
+                            <pre>mkdirsBlocking( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $path [string]
+<b>
+mkdirsBlocking($path)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::mkdirs</p>
+<p>param $path [string]
+param $perms [string]
+<b>
+mkdirsBlocking($path, $perms)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_move"></a>
+                        <div class="element clickable method public  method_move" data-toggle="collapse" data-target=".method_move .collapse">
+                            <h2>Move a file from the path &lt;code&gt;from&lt;/code&gt; to path &lt;code&gt;to&lt;/code&gt;, asynchronously.</h2>
+                            <pre>move( $arg0,  $arg1,  $arg2,  $arg3 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The move will fail if the destination already exists.
+
+param $from [string] the path to copy from
+param $to [string] the path to copy to
+param $handler [callable] the handler that will be called on completion
+<b>
+move($from, $to, $handler)
+</b>
+
+Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.
+
+param $from [string] the path to copy from
+param $to [string] the path to copy to
+param $options [CopyOptions | array] options describing how the file should be copied
+param $handler [callable] the handler that will be called on completion
+<b>
+move($from, $to, $options, $handler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable | array | CopyOptions</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_moveBlocking"></a>
+                        <div class="element clickable method public  method_moveBlocking" data-toggle="collapse" data-target=".method_moveBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::move</h2>
+                            <pre>moveBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_open"></a>
+                        <div class="element clickable method public  method_open" data-toggle="collapse" data-target=".method_open .collapse">
+                            <h2>Open the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>open( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The file is opened for both reading and writing. If the file does not already exist it will be created.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>OpenOptions | array</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_openBlocking"></a>
+                        <div class="element clickable method public  method_openBlocking" data-toggle="collapse" data-target=".method_openBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::open</h2>
+                            <pre>openBlocking( $arg0,  $arg1) : \io\vertx\jphp\core\file\AsyncFile</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>OpenOptions | array</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/io.vertx.jphp.core.file.AsyncFile.html">\io\vertx\jphp\core\file\AsyncFile</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_props"></a>
+                        <div class="element clickable method public  method_props" data-toggle="collapse" data-target=".method_props .collapse">
+                            <h2>Obtain properties for the file represented by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>props( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+If the file is a link, the link will be followed.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_propsBlocking"></a>
+                        <div class="element clickable method public  method_propsBlocking" data-toggle="collapse" data-target=".method_propsBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::props</h2>
+                            <pre>propsBlocking( $arg0) : \io\vertx\jphp\core\file\FileProps</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/io.vertx.jphp.core.file.FileProps.html">\io\vertx\jphp\core\file\FileProps</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_readDir"></a>
+                        <div class="element clickable method public  method_readDir" data-toggle="collapse" data-target=".method_readDir .collapse">
+                            <h2>Read the contents of the directory specified by &lt;code&gt;path&lt;/code&gt;, asynchronously.</h2>
+                            <pre>readDir( $arg0,  $arg1,  $arg2 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The result is an array of String representing the paths of the files inside the directory.
+
+param $path [string] path to the file
+param $handler [callable] the handler that will be called on completion
+<b>
+readDir($path, $handler)
+</b>
+
+Read the contents of the directory specified by <code>path</code>, asynchronously.
+<p>
+The parameter <code>filter</code> is a regular expression. If <code>filter</code> is specified then only the paths that
+match  @{filter}will be returned.
+<p>
+The result is an array of String representing the paths of the files inside the directory.
+
+param $path [string] path to the directory
+param $filter [string] the filter expression
+param $handler [callable] the handler that will be called on completion
+<b>
+readDir($path, $filter, $handler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable | string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_readDirBlocking"></a>
+                        <div class="element clickable method public  method_readDirBlocking" data-toggle="collapse" data-target=".method_readDirBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readDir</h2>
+                            <pre>readDirBlocking( $arg0,  $arg1 = null) : array</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $path [string]
+<b>
+readDirBlocking($path)
+</b></p>
+<p>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readDir</p>
+<p>param $path [string]
+param $filter [string]
+<b>
+readDirBlocking($path, $filter)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_readFile"></a>
+                        <div class="element clickable method public  method_readFile" data-toggle="collapse" data-target=".method_readFile .collapse">
+                            <h2>Reads the entire file as represented by the path &lt;code&gt;path&lt;/code&gt; as a , asynchronously.</h2>
+                            <pre>readFile( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+Do not use this method to read very large files or you risk running out of available RAM.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_readFileBlocking"></a>
+                        <div class="element clickable method public  method_readFileBlocking" data-toggle="collapse" data-target=".method_readFileBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readFile</h2>
+                            <pre>readFileBlocking( $arg0) : \io\vertx\jphp\core\buffer\Buffer</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/io.vertx.jphp.core.buffer.Buffer.html">\io\vertx\jphp\core\buffer\Buffer</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_readSymlink"></a>
+                        <div class="element clickable method public  method_readSymlink" data-toggle="collapse" data-target=".method_readSymlink .collapse">
+                            <h2>Returns the path representing the file that the symbolic link specified by &lt;code&gt;link&lt;/code&gt; points to, asynchronously.</h2>
+                            <pre>readSymlink( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_readSymlinkBlocking"></a>
+                        <div class="element clickable method public  method_readSymlinkBlocking" data-toggle="collapse" data-target=".method_readSymlinkBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::readSymlink</h2>
+                            <pre>readSymlinkBlocking( $arg0) : string</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_symlink"></a>
+                        <div class="element clickable method public  method_symlink" data-toggle="collapse" data-target=".method_symlink .collapse">
+                            <h2>Create a symbolic link on the file system from &lt;code&gt;link&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt;, asynchronously.</h2>
+                            <pre>symlink( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_symlinkBlocking"></a>
+                        <div class="element clickable method public  method_symlinkBlocking" data-toggle="collapse" data-target=".method_symlinkBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::link</h2>
+                            <pre>symlinkBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_truncate"></a>
+                        <div class="element clickable method public  method_truncate" data-toggle="collapse" data-target=".method_truncate .collapse">
+                            <h2>Truncate the file represented by &lt;code&gt;path&lt;/code&gt; to length &lt;code&gt;len&lt;/code&gt; in bytes, asynchronously.</h2>
+                            <pre>truncate( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>
+The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.</div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_truncateBlocking"></a>
+                        <div class="element clickable method public  method_truncateBlocking" data-toggle="collapse" data-target=".method_truncateBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::truncate</h2>
+                            <pre>truncateBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_unlink"></a>
+                        <div class="element clickable method public  method_unlink" data-toggle="collapse" data-target=".method_unlink .collapse">
+                            <h2>Unlinks the link on the file system represented by the path &lt;code&gt;link&lt;/code&gt;, asynchronously.</h2>
+                            <pre>unlink( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_unlinkBlocking"></a>
+                        <div class="element clickable method public  method_unlinkBlocking" data-toggle="collapse" data-target=".method_unlinkBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::unlink</h2>
+                            <pre>unlinkBlocking( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_writeFile"></a>
+                        <div class="element clickable method public  method_writeFile" data-toggle="collapse" data-target=".method_writeFile .collapse">
+                            <h2>Creates the file, and writes the specified &lt;code&gt;Buffer data&lt;/code&gt; to the file represented by the path &lt;code&gt;path&lt;/code&gt;,
+asynchronously.</h2>
+                            <pre>writeFile( $arg0,  $arg1,  $arg2) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>Buffer</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_writeFileBlocking"></a>
+                        <div class="element clickable method public  method_writeFileBlocking" data-toggle="collapse" data-target=".method_writeFileBlocking .collapse">
+                            <h2>Blocking version of @see \io\vertx\jphp\core\file\FileSystem::writeFile</h2>
+                            <pre>writeFileBlocking( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>Buffer</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                    
+                                                        </div>
+            </div>
+            <a id="\io\vertx\jphp\core\file\FileSystem"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/io.vertx.jphp.core.file.html">file</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/io.vertx.jphp.core.file.FileSystem.html">FileSystem</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Mon, 05 Nov 2018 12:12:46 +0000.<br/>
+    </footer>
+    </body>
+</html>

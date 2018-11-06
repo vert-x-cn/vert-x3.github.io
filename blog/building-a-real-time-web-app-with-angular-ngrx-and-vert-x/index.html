@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang=en><head><title>Building a real-time web app with Angular/Ngrx and Vert.x</title><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta content="width=device-width,initial-scale=1" name=viewport><meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name=description><link href=https://vertx.tk/stylesheets/main.css media=screen rel=stylesheet><link href=https://vertx.tk/stylesheets/font-awesome.min.css media=screen rel=stylesheet><link href=https://vertx.tk/javascripts/styles/rainbow.min.css media=screen rel=stylesheet><!--[if lt IE 9]><script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script><![endif]--><link rel=apple-touch-icon sizes=57x57 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png sizes=192x192><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png sizes=96x96><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png sizes=16x16><link rel=manifest href=https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json><link rel=mask-icon href=https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content=#7d3194><meta name=msapplication-TileImage content=https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png><meta name=theme-color content=#ffffff><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel=stylesheet type=text/css><link rel=alternate type=application/rss+xml title=RSS href=https://vertx.tk/feed.xml><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Building a real-time web app with Angular/Ngrx and Vert.x</h2><p class=blog-post-meta>26th April 2017 by <a href=http://github.com/benorama>benorama</a></p><article><p>Nowadays, there are multiple tech stacks to build a real-time web app. What are the best choices to build real-time Angular client apps, connected to a JVM-based backend? This article describes an Angular+Vertx real-time architecture with a Proof of Concept demo app.</p><p><div class="admonition-block note"><table><tbody><tr><td class=admonition-icon><i class="admonition-icon fa fa-comment"></i></td><td class=content><span class=content>this is a re-publication of the following <a href=https://medium.com/@benorama/building-a-realtime-web-app-with-angular-ngrx-and-vert-x-a5381c0397a1>Medium post</a></span></td></tr></tbody></table></div></p><h2 id=intro>Intro</h2><p><strong>Welcome to the real-time web!</strong> It’s time to move on from traditional synchronous HTTP request/response architectures to reactive apps with connected clients (ouch… that’s a lot of buzzwords in just one sentence)!</p><p><img src=/assets/blog/vertx-realtime-angular-ngrx/data-in-motion.jpg alt="Real-time app"></p><p><em>Image source: <a href=https://www.voxxed.com>https://www.voxxed.com</a></em></p><p>To build this kind of app, <a href=https://www.meteor.com>MeteorJS</a> is the new cool kid on the block (v1.0 released in october 2014): <strong>a full stack Javascript platform to build connected-client reactive applications</strong>. It allows JS developers to build and deploy amazing modern web and mobile apps (iOS/Android) in no time, using a unified backend+frontend code within a single app repo. That’s a pretty ambitious approach but it requires a very opinionated and highly coupled JS tech stack and it’s still a pretty niche framework.</p><p>Moreover, we are a Java shop on the backend. At AgoraPulse, we rely heavily on :</p><ul><li><a href=https://angular.io>Angular</a> and <a href=http://ionicframework.com>Ionic</a> for the JS frontend (with a shared business/data architecture based on <a href=https://github.com/ngrx/store>Ngrx</a>),</li><li><a href=http://www.groovy-lang.org>Groovy</a> and <a href=https://grails.org>Grails</a> ecosystem for the JVM backend.</li></ul><p>So my question is:</p><blockquote><p>What are the best choices to build real-time Angular client apps, connected to a JVM-based backend these days?</p></blockquote><p>Our requirements are pretty basic. We don’t need full Meteor’s end-to-end application model. We just want to be able to :</p><ol><li>build a reactive app with an event bus on the JVM, and</li><li>extend the event bus down to the browser to be able to publish/subscribe to real-time events from an Angular app.</li></ol><h3 id=server-side-jvm->Server side (JVM)</h3><p>Reactive apps is a hot topic nowadays and there are many great libs/platforms to build this type of event-driven architecture on the JVM:</p><ul><li><a href=http://vertx.io>Vert.x</a>,</li><li><a href=https://www.lightbend.com>Lightbend</a> platform (Play, Akka, Scala),</li><li>Spring <a href=http://projectreactor.io>Project Reactor</a> (integrated into Grails 3.0).</li></ul><h3 id=client-side>Client side</h3><p><a href="http://facebook.github.io/react/">ReactJS</a> and <a href=https://angular.io>Angular</a> are the two most popular framework right now to build modern JS apps. Most platforms use <a href=https://github.com/sockjs/sockjs-client>SockJS</a> to handle real-time connections:</p><ul><li><a href="http://vertx.io/docs/vertx-web/groovy/">Vertx-web</a> provides a SockJS server implementation with an event bus bridge and a <a href=http://vertx.io/docs/vertx-web/groovy/#_sockjs_event_bus_bridge>vertx-evenbus.js</a> client library (very easy to use),</li><li>Spring provides websocket SockJS support though Spring Messaging and Websocket libs (see an example <a href="https://spring.io/guides/gs/messaging-stomp-websocket/">here</a>)</li></ul><h3 id=final-choice-vert-x-angular>Final choice: Vert.x + Angular</h3><p>In the end, I’ve chosen to experiment with Vert.x for its excellent Groovy support, distributed event bus, scalability and ease of use.</p><p>I enjoyed it very much. Let me show you the result of my experimentation which is the root of our real-time features coming very soon in AgoraPulse v6.0!</p><h2 id=why-vert-x->Why Vert.x?</h2><p>Like other reactive platform, Vert.x is event driven and non blocking. It scales very well (even more that Node.js).</p><p>Unlike other reactive platforms, Vert.x is polyglot: you can use Vert.x with multiple languages including Java, JavaScript, Groovy, Ruby, Ceylon, Scala and Kotlin.</p><p>Unlike Node.js, Vert.x is a general purpose tool-kit and unopinionated. It’s a versatile platform suitable for many things: from simple network utilities, sophisticated modern web applications, HTTP/REST microservices or a full blown back-end message-bus application.</p><p>Like other reactive platforms, it looks scary in the begining when you read the documentation… ;) But once you start playing with it, it remains fun and simple to use, especially with Groovy! Vert.x really allows you to build substantial systems without getting tangled in complexity.</p><p>In my case, I was mainly interested by the distributed event-bus provided (a core feature of Vert.x).</p><p><strong>To validate our approach, we built prototypes with the following goals:</strong></p><ul><li><strong>share and synchronize a common (Ngrx-based) state between multiple connected clients, and</strong></li><li><strong>distribute real-time (Ngrx-based) actions across multiple connected clients, which impact local states/reducers.</strong></li></ul><p><em>Note: <a href=https://github.com/ngrx/store>@ngrx/store</a> is a RxJS powered state management inspired by Redux for Angular apps. It’s currently the most popular way to structure complex business logic in Angular apps.</em></p><p><img src=/assets/blog/vertx-realtime-angular-ngrx/redux.png alt=Redux></p><p><em>Source: <a href="https://www.smashingmagazine.com/2016/06/an-introduction-to-redux/">https://www.smashingmagazine.com/2016/06/an-introduction-to-redux/</a></em></p><h2 id=proof-of-concept>PROOF OF CONCEPT</h2><p>Here is the repo of our initial proof of concept:</p><p><a href=http://github.com/benorama/ngrx-realtime-app>http://github.com/benorama/ngrx-realtime-app</a></p><p>The repo is divided into two separate projects:</p><ul><li><strong>Vert.x server app</strong>, based on <a href=http://vertx.io>Vert.x</a> (version 3.3), managed by <a href=https://gradle.org>Gradle</a>, with a main verticle developed in <a href=http://groovy-lang.org>Groovy</a> lang.</li><li><strong>Angular client app</strong>, based on Angular (version 4.0.1), managed by <a href=https://angular.io>Angular</a> CLI with state, reducers and actions logic based on <a href=https://github.com/ngrx/store>@ngrx/store</a> (version 2.2.1)</li></ul><p>For the demo, we are using the counter example code (actions and reducers) from <a href=https://github.com/ngrx/store>@ngrx/store</a>.</p><p>The counter client business logic is based on:</p><ul><li><code>CounterState</code> interface, counter state model,</li><li><code>counterReducer</code> reducer, counter state management based on dispatched actions, and</li><li><em>Increment</em>, <em>decrement</em> and <em>reset</em> counter actions.</li></ul><p>State is maintained server-side with a simple singleton <code>CounterService</code>.</p><pre><code class="hljs groovy"><span class=hljs-class><span class=hljs-keyword>class</span> <span class=hljs-title>CounterService</span> {</span>
+    <span class=hljs-keyword>static</span> INCREMENT = <span class=hljs-string>'[Counter] Increment'</span>
+    <span class=hljs-keyword>static</span> DECREMENT = <span class=hljs-string>'[Counter] Decrement'</span>
+    <span class=hljs-keyword>static</span> RESET = <span class=hljs-string>'[Counter] Reset'</span>
+    <span class=hljs-typename>int</span> total = <span class=hljs-number>0</span>
+    <span class=hljs-typename>void</span> handleEvent(event) {
+        <span class=hljs-keyword>switch</span>(event.type) {
+            <span class=hljs-keyword>case</span> <span class=hljs-string>INCREMENT:</span>
+                total++
+                <span class=hljs-keyword>break</span>
+            <span class=hljs-keyword>case</span> <span class=hljs-string>DECREMENT:</span>
+                total--
+                <span class=hljs-keyword>break</span>
+            <span class=hljs-keyword>case</span> <span class=hljs-string>RESET:</span>
+                total = <span class=hljs-number>0</span>
+                <span class=hljs-keyword>break</span>
+        }
+    }
+}</code></pre><h3 id=client-state-initialization-through-request-response>Client state initialization through Request/Response</h3><p>Initial state is initialized with simple <strong>request/response</strong> (or send/reply) on the event bus. Once the client is connected, it sends a request to the event bus at the address <strong>counter::total</strong>. The server replies directly with the value of <code>CounterService</code> total and the client dispatches locally a <em>reset</em> action with the total value from the reply.</p><p><img src=/assets/blog/vertx-realtime-angular-ngrx/vertx-request-response.png alt="Vertx Request Response"></p><p><em>Source: <a href=https://www.slideshare.net/RedHatDevelopers/vertx-microservices-were-never-so-easy-clement-escoffier>https://www.slideshare.net/RedHatDevelopers/vertx-microservices-were-never-so-easy-clement-escoffier</a></em></p><p>Here is an extract of the corresponding code (from <code>AppEventBusService</code>):</p><pre><code class="hljs typescript">initializeCounter() {
+    <span class=hljs-keyword>this</span>.eventBusService.send(<span class=hljs-string>'counter::total'</span>, body, (error, message) =&gt; {
+    <span class=hljs-comment>// Handle reply</span>
+    <span class=hljs-keyword>if</span> (message &amp;&amp; message.body) {
+            <span class=hljs-keyword>let</span> localAction = <span class=hljs-keyword>new</span> CounterActions.ResetAction();
+            localAction.payload = message.body; <span class=hljs-comment>// Total value</span>
+            <span class=hljs-keyword>this</span>.store.dispatch(localAction);
+        }
+    });
+}</code></pre><h3 id=actions-distribution-through-publish-subscribe>Actions distribution through Publish/Subscribe</h3><p>Action distribution/sync uses the <strong>publish/subscribe</strong> pattern.</p><p>Counter actions are published from the client to the event bus at the address <strong>counter::actions</strong>.</p><p>Any client that have subscribed to <strong>counter::actions</strong> address will receive the actions and redispatch them locally to impact app states/reducers.</p><p><img src=/assets/blog/vertx-realtime-angular-ngrx/vertx-publish-subscribe.png alt="Vertx Publish Subscribe"></p><p><em>Source: <a href=https://www.slideshare.net/RedHatDevelopers/vertx-microservices-were-never-so-easy-clement-escoffier>https://www.slideshare.net/RedHatDevelopers/vertx-microservices-were-never-so-easy-clement-escoffier</a></em></p><p>Here is an extract of the corresponding code (from <code>AppEventBusService</code>):</p><pre><code class="hljs typescript">publishAction(action: RemoteAction) {
+    <span class=hljs-keyword>if</span> (action.publishedByUser) {
+        <span class=hljs-built_in>console</span>.error(<span class=hljs-string>"This action has already been published"</span>);
+        <span class=hljs-keyword>return</span>;
+    }
+    action.publishedByUser = <span class=hljs-keyword>this</span>.currentUser;
+    <span class=hljs-keyword>this</span>.eventBusService.publish(action.eventBusAddress, action);
+}
+subscribeToActions(eventBusAddress: <span class=hljs-built_in>string</span>) {
+    <span class=hljs-keyword>this</span>.eventBusService.registerHandler(eventBusAddress, (error, message) =&gt; {
+        <span class=hljs-comment>// Handle message from subscription</span>
+        <span class=hljs-keyword>if</span> (message.body.publishedByUser === <span class=hljs-keyword>this</span>.currentUser) {
+            <span class=hljs-comment>// Ignore action sent by current manager</span>
+            <span class=hljs-keyword>return</span>;
+        }
+        <span class=hljs-keyword>let</span> localAction = message.body;
+        <span class=hljs-keyword>this</span>.store.dispatch(localAction);
+    });
+}</code></pre><p>The event bus publishing logic is achieved through a simple Ngrx Effects. Any actions that extend <code>RemoteAction</code> class will be published to the event bus.</p><pre><code class="hljs typescript">@Injectable()
+<span class=hljs-keyword>export</span> <span class=hljs-keyword>class</span> AppEventBusEffects {
+
+    <span class=hljs-constructor><span class=hljs-keyword>constructor</span>(private actions$: Actions, private appEventBusService: AppEventBusService) </span>{}
+    <span class=hljs-comment>// Listen to all actions and publish remote actions to account event bus</span>
+    @Effect({dispatch: <span class=hljs-literal>false</span>}) remoteAction$ = <span class=hljs-keyword>this</span>.actions$
+        .filter(action =&gt; action <span class=hljs-keyword>instanceof</span> RemoteAction &amp;&amp; action.publishedByUser == <span class=hljs-literal>undefined</span>)
+        .do((action: RemoteAction) =&gt; {
+            <span class=hljs-keyword>this</span>.appEventBusService.publishAction(action);
+        });
+
+    @Effect({dispatch: <span class=hljs-literal>false</span>}) login$ = <span class=hljs-keyword>this</span>.actions$
+        .ofType(UserActionTypes.LOGIN)
+        .do(() =&gt; {
+            <span class=hljs-keyword>this</span>.appEventBusService.connect();
+        });
+}</code></pre><p>You can see all of this in action by locally launching the server and the client app in two separate browser windows.</p><p><img src=/assets/blog/vertx-realtime-angular-ngrx/demo-app-screen.png alt="Demo app screen"></p><p><em>Bonus: the demo app also includes user status (offline/online), based of the event bus connection status.</em></p><p>The counter state is shared and synchronized between connected clients and each local action is distributed in real-time to other clients.</p><p><strong>Mission accomplished!</strong></p><p><div class="admonition-block note"><table><tbody><tr><td class=admonition-icon><i class="admonition-icon fa fa-comment"></i></td><td class=content><span class=title>Typescript version of Vertx EventBus Client</span><br><span class=content>The app uses our own Typescript version of the official JS <a href=https://github.com/vert-x3/vertx-bus-bower>Vertx EventBus Client</a>. It can be found <a href=https://gist.github.com/benorama/93373c3c1c3574732d6cc1b4754aab9f>here</a>, any feedback, improvement suggestions are welcome!</span></td></tr></tbody></table></div></p></article></article></div><div class=row><div class=col-xs-12 id=disqus_thread></div></div><script>var disqus_config = function () {
+  this.page.url = "https://vertx.tk/blog/building-a-real-time-web-app-with-angular-ngrx-and-vert-x/";
+  this.page.identifier = "/blog/building-a-real-time-web-app-with-angular-ngrx-and-vert-x/";
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://vertx.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><footer><div class=container><div class=row><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse Vert.x</h2><ul class=list-unstyled><li><a href="https://vertx.tk/">主页</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Community</h2><ul class=list-unstyled><li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li><li><a href="https://vertx.tk/materials/">Learning materials</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx>User Group</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx-dev>Developer Group</a></li><li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse</h2><ul class=list-unstyled><li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li><li><a href=https://eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=http://www.eclipse.org/legal>Legal Resources</a></li></ul></div><div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright"><p>Eclipse Vert.x is open source and dual-licensed under the <a href=http://www.eclipse.org/legal/epl-v20.html>Eclipse Public License 2.0</a> and <a href=https://www.apache.org/licenses/LICENSE-2.0.html>Apache License 2.0</a>.</p><p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>Design by <a href=https://www.michel-kraemer.com>Michel Kr&auml;mer</a>.</p><div class=row><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2"><a href=http://eclipse.org><img class="logo eclipse-logo" src=https://vertx.tk/assets/eclipse_logo_grey_small.png width=204 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0"><a href=http://cloudbees.com><img class="logo cloudbees-logo" src=https://vertx.tk/assets/Button-Built-on-CB-1-grey.png width=180 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler"><a href=http://www.ej-technologies.com/products/jprofiler/overview.html style=text-decoration:none><img class="logo jprofiler-logo" src=https://vertx.tk/assets/jprofiler-logo.png width=48 height=48><span class=jprofiler-logo>&nbsp; JPROFILER</span></a></div></div></div></div></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script><script src=https://vertx.tk/javascripts/bootstrap.min.js></script><script src=https://vertx.tk/javascripts/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script><link rel=stylesheet type=text/css href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js></script><script>window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});</script></body></html>

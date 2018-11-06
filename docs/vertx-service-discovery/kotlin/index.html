@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x Service Discovery - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x Service Discovery</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_使用service_discovery">使用Service Discovery</a></li>
+<li><a href="#_基本概念">基本概念</a>
+<ul class="sectlevel2">
+<li><a href="#_服务记录">服务记录</a></li>
+<li><a href="#_服务提供者和发布者">服务提供者和发布者</a></li>
+<li><a href="#_服务消费者">服务消费者</a></li>
+<li><a href="#_服务对象">服务对象</a></li>
+<li><a href="#_服务类型">服务类型</a></li>
+<li><a href="#_服务事件">服务事件</a></li>
+<li><a href="#_服务存储后端">服务存储后端</a></li>
+</ul>
+</li>
+<li><a href="#_创建service_discovery实例">创建Service Discovery实例</a></li>
+<li><a href="#_发布服务">发布服务</a></li>
+<li><a href="#_取消发布的服务">取消发布的服务</a></li>
+<li><a href="#_查找服务">查找服务</a></li>
+<li><a href="#_获取服务引用">获取服务引用</a></li>
+<li><a href="#_服务类型_2">服务类型</a>
+<ul class="sectlevel2">
+<li><a href="#_无类型的服务">无类型的服务</a></li>
+<li><a href="#_http_endpoints">HTTP endpoints</a></li>
+<li><a href="#_event_bus_服务">Event Bus 服务</a></li>
+<li><a href="#_消息源服务">消息源服务</a></li>
+<li><a href="#_jdbc_数据源">JDBC 数据源</a></li>
+<li><a href="#_redis_数据源">Redis 数据源</a></li>
+<li><a href="#_mongo_数据源">Mongo 数据源</a></li>
+</ul>
+</li>
+<li><a href="#_监听服务的上线与下线">监听服务的上线与下线</a></li>
+<li><a href="#_监听服务的使用">监听服务的使用</a></li>
+<li><a href="#_服务发现桥接器">服务发现桥接器</a></li>
+<li><a href="#_其他服务发现桥接器">其他服务发现桥接器</a></li>
+<li><a href="#_其他存储后端">其他存储后端</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_使用service_discovery">使用Service Discovery</a></li>
+<li><a href="#_基本概念">基本概念</a>
+<ul class="sectlevel2">
+<li><a href="#_服务记录">服务记录</a></li>
+<li><a href="#_服务提供者和发布者">服务提供者和发布者</a></li>
+<li><a href="#_服务消费者">服务消费者</a></li>
+<li><a href="#_服务对象">服务对象</a></li>
+<li><a href="#_服务类型">服务类型</a></li>
+<li><a href="#_服务事件">服务事件</a></li>
+<li><a href="#_服务存储后端">服务存储后端</a></li>
+</ul>
+</li>
+<li><a href="#_创建service_discovery实例">创建Service Discovery实例</a></li>
+<li><a href="#_发布服务">发布服务</a></li>
+<li><a href="#_取消发布的服务">取消发布的服务</a></li>
+<li><a href="#_查找服务">查找服务</a></li>
+<li><a href="#_获取服务引用">获取服务引用</a></li>
+<li><a href="#_服务类型_2">服务类型</a>
+<ul class="sectlevel2">
+<li><a href="#_无类型的服务">无类型的服务</a></li>
+<li><a href="#_http_endpoints">HTTP endpoints</a></li>
+<li><a href="#_event_bus_服务">Event Bus 服务</a></li>
+<li><a href="#_消息源服务">消息源服务</a></li>
+<li><a href="#_jdbc_数据源">JDBC 数据源</a></li>
+<li><a href="#_redis_数据源">Redis 数据源</a></li>
+<li><a href="#_mongo_数据源">Mongo 数据源</a></li>
+</ul>
+</li>
+<li><a href="#_监听服务的上线与下线">监听服务的上线与下线</a></li>
+<li><a href="#_监听服务的使用">监听服务的使用</a></li>
+<li><a href="#_服务发现桥接器">服务发现桥接器</a></li>
+<li><a href="#_其他服务发现桥接器">其他服务发现桥接器</a></li>
+<li><a href="#_其他存储后端">其他存储后端</a></li>
+</ul>
+        </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/master/vertx-translation-stack/vertx-service-discovery-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x 提供了一个服务发现的基础组件，用来发布和发现各种类型的资源，比如服务代理、HTTP端点（endpoint）、数据源（data source）等等。
+这些资源都可以称为<strong>服务</strong>。服务就是一个可以被发现和访问的功能，可以通过它的类型、元数据和位置来进行描述。
+所以，服务可以是一个数据库、一个服务代理、一个HTTP应用，以及任何你能想到的可描述、可发现、可交互的资源。
+它不一定是Vert.x实体，它可以是任何组件。在Vert.x 服务发现组件中，我们通过
+`<a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a>`来描述每个服务。</p>
+</div>
+<div class="paragraph">
+<p>服务发现组件实现了面向服务计算中定义的服务交互。此外，在某种程度上，还提供了动态的面向服务计算交互，这样应用程序可以对各种服务的上线、下线作出反应。</p>
+</div>
+<div class="paragraph">
+<p>一个服务提供者可以：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>发布一个服务记录</p>
+</li>
+<li>
+<p>将已经发布的服务记录注销</p>
+</li>
+<li>
+<p>更新已发布服务记录的状态（下线、服务暂停等等）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>一个服务消费者可以：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>查找各种服务</p>
+</li>
+<li>
+<p>绑定到某个服务（它所获取到的 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html">ServiceReference</a></code>) ）并且使用这个服务</p>
+</li>
+<li>
+<p>当使用完后，释放绑定的服务</p>
+</li>
+<li>
+<p>监听服务的上线、下线和状态变更的消息</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Consumer would 1) lookup a service record matching their need, 2) retrieve the
+`<a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html">ServiceReference</a>`that give access to the service, 3) get a service object to access
+the service, 4) release the service object once done.</p>
+</div>
+<div class="paragraph">
+<p>如果知道服务的类型（JDBC客户端、HTTP客户端），整个过程就可以简化为通过服务类型直接获取服务对象。</p>
+</div>
+<div class="paragraph">
+<p>从上面可以看出，服务提供者和服务消费者，通过服务记录 （ <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 对象） 来共享关键的信息。</p>
+</div>
+<div class="paragraph">
+<p>服务提供者和消费者，必须创建他们自己的 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html">ServiceDiscovery</a></code> 实例。这些实例通过底层的分布式数据结构来协同保持服务集合的同步。</p>
+</div>
+<div class="paragraph">
+<p>服务发现组件支持桥接的方式，来从其他服务发现技术中导入和导出服务。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_使用service_discovery">使用Service Discovery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>要使用Vert.x 服务发现组件，需要将下列依赖加入到依赖配置中文件：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven ( <code>pom.xml</code> 文件中):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+&lt;groupId&gt;io.vertx&lt;/groupId&gt;
+&lt;artifactId&gt;vertx-service-discovery&lt;/artifactId&gt;
+&lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle ( <code>build.gradle</code> 文件中):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-service-discovery:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_基本概念">基本概念</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>本节将解释服务发现机制所涉及到的一些概念。</p>
+</div>
+<div class="sect2">
+<h3 id="_服务记录">服务记录</h3>
+<div class="paragraph">
+<p>我们用服务记录（ <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 对象）来描述服务提供者提供的服务，它包含了服务名称、一些元数据和一个描述服务所在位置的位置对象。</p>
+</div>
+<div class="paragraph">
+<p>服务记录的元数据、甚至位置的格式，都有赖于 <code>服务的类型</code> （详见后续章节）。</p>
+</div>
+<div class="paragraph">
+<p>当服务提供者准备好可以提供服务时，会发布一条服务记录，在服务停止的时候，会收回这条服务记录。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_服务提供者和发布者">服务提供者和发布者</h3>
+<div class="paragraph">
+<p>服务提供者是提供服务的实体，而发布者的职责是发布服务记录，通过该服务记录来描述服务提供者的信息。服务提供者和发布者可以是同一个实体，也可以是不同的实体。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_服务消费者">服务消费者</h3>
+<div class="paragraph">
+<p>服务消费者在Service Discovery中搜索服务，每次搜索得到的结果是0..n条服务记录（
+<code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code>）。通过这些服务记录，消费者可以获得服务引用（
+<code><a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html">ServiceReference</a></code>）。服务引用的作用是绑定服务消费者和服务提供者。通过服务引用，消费者可以得到服务对象来使用服务，也可以通过服务引用释放服务对象。</p>
+</div>
+<div class="paragraph">
+<p>在使用完服务后，必须释放服务引用，才能清理服务对象和更新服务使用状态。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_服务对象">服务对象</h3>
+<div class="paragraph">
+<p>服务对象为服务消费者提供了一条获取服务的通道，它有各种实现方式，比如一个代理对象、一个客户端对象、甚至某些类型的服务可能不存在这样一个服务对象。服务对象的表现有赖于服务的类型。</p>
+</div>
+<div class="paragraph">
+<p>由于Vert.x的多语言特性，当你从Java、Groovy或其他语言中获取服务对象的时候，可能会有差异。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_服务类型">服务类型</h3>
+<div class="paragraph">
+<p>服务就是资源。有很多各种各样的服务，比如功能性的服务组件、数据库、REST API等等。Vert.x 服务发现组件通过服务类型的概念来处理这种差异。每种服务类型都需要定义：</p>
+</div>
+<div class="paragraph">
+<p>+ 如何定位服务（URI、Event Bus地址、IP/DNS 等） - <strong>location</strong>
++ 提供服务的对象的性质（服务代理、HTTP Client、消息消费者 等） - <strong>client</strong></p>
+</div>
+<div class="paragraph">
+<p>服务发现组件提供了一些现成的服务类型，但你也可以添加自己的服务类型。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_服务事件">服务事件</h3>
+<div class="paragraph">
+<p>每当发布或回收服务时，`Event Bus`中都会触发一个事件，这个事件包含着被修改的服务记录。</p>
+</div>
+<div class="paragraph">
+<p>每当通过
+`<a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html#getReference-io.vertx.servicediscovery.Record-">getReference</a>`方法获取一个服务引用或者通过
+`<a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html#release--">release</a>`方法释放一个服务引用时，都会有事件发送到 Event Bus 中，用来跟踪服务的使用情况。</p>
+</div>
+<div class="paragraph">
+<p>关于服务事件的更详细内容参考后续章节。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_服务存储后端">服务存储后端</h3>
+<div class="paragraph">
+<p>服务发现组件使用Vert.x的分布式数据结构来存储服务记录。所以，集群中所有的成员都可以访问到所有的服务记录，这是服务后端的默认实现。
+你也可以实现自己的服务记录存储后端，只要实现 <code><a href="../../apidocs/io/vertx/servicediscovery/spi/ServiceDiscoveryBackend.html">ServiceDiscoveryBackend</a></code> 接口就可以了。
+比如，Vert.x还通过实现该接口提供了基于Redis的存储后端。</p>
+</div>
+<div class="paragraph">
+<p>注意服务发现模块并不需要运行在Vert.x 集群模式下。在单机模式下，服务记录存储于本地，并且可以通过 <code><a href="../../apidocs/io/vertx/servicediscovery/spi/ServiceImporter.html">ServiceImporter</a></code> 来导入。
+从 3.5.0 版本开始，你甚至可以在集群模式下采用本地结构储存，通过设置 <code>vertx-service-discovery-backend-local</code>
+为 <code>true</code>(或者设置环境变量 <code>VERTX-SERVICE-DISCOVERY-BACKEND-LOCAL</code> 为 <code>true</code>)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建service_discovery实例">创建Service Discovery实例</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>服务发布者和服务消费者都必须通过单独创建自己的 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html">ServiceDiscovery</a></code>
+实例来使用服务发现模块：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Use default configuration
+var discovery = ServiceDiscovery.create(vertx)
+
+// Customize the configuration
+discovery = ServiceDiscovery.create(vertx, ServiceDiscoveryOptions(
+  announceAddress = "service-announce",
+  name = "my-name"))
+
+// Do something...
+
+discovery.close()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在默认情况下，服务事件发送到Event Bus中的地址是 <code>vertx.discovery.announce</code>，你可以自己配置一个（查看服务使用章节）。</p>
+</div>
+<div class="paragraph">
+<p>当你不再需要 <code>ServiceDiscovery</code> 对象时，不要忘记关掉它（通过 <code>close</code> 方法）。它会把你配置的不同的服务导入/导出模块都关掉，并且释放服务引用。</p>
+</div>
+<div class="paragraph">
+<p>你应该禁止在实例中共享 <code>ServiceDiscovery</code> 对象。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_发布服务">发布服务</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>有了 <code>ServiceDiscovery</code> 实例，就可以发布服务了。发布的流程如下：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>为服务提供者创建一个服务记录</p>
+</li>
+<li>
+<p>发布这个服务记录</p>
+</li>
+<li>
+<p>保存这个发布记录的引用，后面可以用来取消发布或者修改发布</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>你可以通过 <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 类或者各种服务类型类提供的快捷方法来创建服务记录。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Manual record creation
+var record = Record(
+  type = "eventbus-service-proxy",
+  location = json {
+    obj("endpoint" to "the-service-address")
+  },
+  name = "my-service",
+  metadata = json {
+    obj("some-label" to "some-value")
+  })
+
+discovery.publish(record, { ar -&gt;
+  if (ar.succeeded()) {
+    // publication succeeded
+    var publishedRecord = ar.result()
+  } else {
+    // publication failed
+  }
+})
+
+// Record creation from a type
+record = HttpEndpoint.createRecord("some-rest-api", "localhost", 8080, "/api")
+discovery.publish(record, { ar -&gt;
+  if (ar.succeeded()) {
+    // publication succeeded
+    var publishedRecord = ar.result()
+  } else {
+    // publication failed
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>一定要保持一个指向服务记录对象的引用，因为这个返回的服务记录会带有一个 <strong>注册ID</strong>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_取消发布的服务">取消发布的服务</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>要取消一个已发布的服务，可以用如下方式：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">discovery.unpublish(record.registration, { ar -&gt;
+  if (ar.succeeded()) {
+    // Ok
+  } else {
+    // cannot un-publish the service, may have already been removed, or the record is not published
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查找服务">查找服务</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>本节讲述的是最基本的获取服务的方法。每种服务类型接口，都提供了快捷的方法，来简化获取服务的步骤。</strong></p>
+</div>
+<div class="paragraph">
+<p>在服务消费端，第一步要做的事情就是查找服务记录。你可以查找并获取一条服务记录，也可以获取一批满足条件的记录。如果是获取一条记录，那么将返回第一条满足条件的服务记录。</p>
+</div>
+<div class="paragraph">
+<p>服务消费者通过传递一个过滤器来选择服务，有两种形式的过滤器：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>一个接收 <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 对象的函数，这个函数返回一个布尔值（就是一个 <code>predicate</code>，即判断函数）</p>
+</li>
+<li>
+<p>过滤器是一个JSON对象。对象中的每个条目，将会用来过滤服务记录。服务记录必须满足所有的条目要求。这些条目可以使用 <code>*</code> 号来代表必须存在某个key值，而不管value值</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>让我们看一些JSON过滤器的例子</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{ "name" = "a" } =&gt; 匹配所有名称为"a"的记录
+{ "color" = "*" } =&gt; 匹配所有设置了 "color" 的记录
+{ "color" = "red" } =&gt; 匹配所有"color" 值为 "red"的记录
+{ "color" = "red", "name" = "a"} =&gt; 匹配所有名称为 "a", 并且"color"值为"red"的记录</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果JSON过滤器未设置（为空或 <code>null</code> ），获取时将获取到所有的服务记录。当使用函数形式时，要获取所有的服务记录，你只需要返回 <code>true</code> 而不需要管服务记录的内容。</p>
+</div>
+<div class="paragraph">
+<p>下面是一些例子：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get any record
+discovery.getRecord({ r -&gt;
+  true
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    if (ar.result() != null) {
+      // we have a record
+    } else {
+      // the lookup succeeded, but no matching service
+    }
+  } else {
+    // lookup failed
+  }
+})
+
+discovery.getRecord(null, { ar -&gt;
+  if (ar.succeeded()) {
+    if (ar.result() != null) {
+      // we have a record
+    } else {
+      // the lookup succeeded, but no matching service
+    }
+  } else {
+    // lookup failed
+  }
+})
+
+
+// Get a record by name
+discovery.getRecord({ r -&gt;
+  r.name == "some-name"
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    if (ar.result() != null) {
+      // we have a record
+    } else {
+      // the lookup succeeded, but no matching service
+    }
+  } else {
+    // lookup failed
+  }
+})
+
+discovery.getRecord(json {
+  obj("name" to "some-service")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    if (ar.result() != null) {
+      // we have a record
+    } else {
+      // the lookup succeeded, but no matching service
+    }
+  } else {
+    // lookup failed
+  }
+})
+
+// Get all records matching the filter
+discovery.getRecords({ r -&gt;
+  "some-value" == r.metadata.getString("some-label")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var results = ar.result()
+    // If the list is not empty, we have matching record
+    // Else, the lookup succeeded, but no matching service
+  } else {
+    // lookup failed
+  }
+})
+
+
+discovery.getRecords(json {
+  obj("some-label" to "some-value")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var results = ar.result()
+    // If the list is not empty, we have matching record
+    // Else, the lookup succeeded, but no matching service
+  } else {
+    // lookup failed
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你可以获取一条服务记录，也可以通过
+<code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html#getRecords-io.vertx.core.json.JsonObject-io.vertx.core.Handler-">getRecords</a></code>
+方法获取所有匹配到的服务记录。默认情况下，服务查找只会包含状态为`UP`的服务，可以通过如下方式覆盖默认设置：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>当使用JSON过滤器，设置`status`属性为你想要的值（或者 <code>*</code> 来接收所有的状态）</p>
+</li>
+<li>
+<p>当使用函数过滤器，将 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html#getRecords-java.util.function.Function-boolean-io.vertx.core.Handler-">getRecords</a></code> 方法的参数`includeOutOfService`设置为`true`</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取服务引用">获取服务引用</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>当你选择好了服务记录( <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 对象)后，你就可以获得到一个
+<code><a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html">ServiceReference</a></code>，然后得到服务对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var reference1 = discovery.getReference(record1)
+var reference2 = discovery.getReference(record2)
+
+// Then, gets the service object, the returned type depends on the service type:
+// For http endpoint:
+var client = reference1.getAs(HttpClient.`class`)
+// For message source
+var consumer = reference2.getAs(MessageConsumer.`class`)
+
+// When done with the service
+reference1.release()
+reference2.release()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>使用完后，不要忘记释放服务引用。</strong></p>
+</div>
+<div class="paragraph">
+<p>服务引用代表了一个绑定的服务提供者。</p>
+</div>
+<div class="paragraph">
+<p>获取服务引用的时候，可以传递一个 <code><a href="../../apidocs/io/vertx/core/json/JsonObject.html">JsonObject</a></code> 对象来配置服务对象，可以包括用来配置服务对象的各种参数。某些服务类型不需要额外的配置，有些需要（比如数据库对象）：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var reference = discovery.getReferenceWithConfiguration(record, conf)
+
+// Then, gets the service object, the returned type depends on the service type:
+// For http endpoint:
+var client = reference.getAs(JDBCClient.`class`)
+
+// Do something with the client...
+
+// When done with the service
+reference.release()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在前面的示例中，代码中使用的是
+`<a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html#getAs-java.lang.Class-">getAs</a>`方法，参数是你期望获得的对象类型。如果你使用Java语言，那么可以直接用
+`<a href="../../apidocs/io/vertx/servicediscovery/ServiceReference.html#get--">get</a>`方法，而其他语言中，你必须传递对象类型。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_服务类型_2">服务类型</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>前面提到，服务发现使用了服务类型的概念，来封装各种服务的差异性。</p>
+</div>
+<div class="paragraph">
+<p>目前服务发现组件提供了几种默认的服务类型：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="../../apidocs/io/vertx/servicediscovery/types/HttpEndpoint.html">HttpEndpoint</a></code> - 为REST API服务提供的类型，服务对象的类型是一个配置好了host和port的 <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html">HttpClient</a></code> （其location表现为一个url）</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/servicediscovery/types/EventBusService.html">EventBusService</a></code> - 服务代理，服务对象是一个代理，它的类型是所代理的接口（其location表现为一个Event Bus的address地址）</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/servicediscovery/types/MessageSource.html">MessageSource</a></code> - 消息源服务，服务对象的类型是一个 <code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> （其location表现为一个Event Bus的address地址）</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/servicediscovery/types/JDBCDataSource.html">JDBCDataSource</a></code> - JDBC数据源服务，服务对象的类型是一个 <code><a href="../../apidocs/io/vertx/ext/jdbc/JDBCClient.html">JDBCClient</a></code> （该Client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/servicediscovery/types/RedisDataSource.html">RedisDataSource</a></code> - Redis数据源服务，服务对象的类型是一个 <code><a href="../../apidocs/io/vertx/redis/RedisClient.html">RedisClient</a></code> （该client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/servicediscovery/types/MongoDataSource.html">MongoDataSource</a></code> - Mongo数据源服务，服务对象的类型一个 <code><a href="../../apidocs/io/vertx/ext/mongo/MongoClient.html">MongoClient</a></code> （该client的配置参数，将从location、元数据和服务消费者传递的参数中获取）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>本节将详细介绍一下服务类型，以及如何使用服务发现框架已提供的几种服务类型。</p>
+</div>
+<div class="sect2">
+<h3 id="_无类型的服务">无类型的服务</h3>
+<div class="paragraph">
+<p>某些服务记录也可以不带有类型( <code><a href="../../apidocs/io/vertx/servicediscovery/spi/ServiceType.html#UNKNOWN">ServiceType.UNKNOWN</a></code> )。通过这种服务记录，是无法获取到服务引用的，但是你可以通过服务记录（ <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> ）的`location`和`metadata`来创建连接的细节。</p>
+</div>
+<div class="paragraph">
+<p>使用这种服务，将不会产生服务使用的事件。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_http_endpoints">HTTP endpoints</h3>
+<div class="paragraph">
+<p>一个 HTTP 端点(endpoint)，就是一个REST API或可以通过HTTP请求访问的服务。HTTP Endpoint服务对象就是一个配置了host、port和ssl的 `<a href="../../apidocs/io/vertx/core/http/HttpClient.html">HttpClient</a>`对象。</p>
+</div>
+<div class="sect3">
+<h4 id="_发布http_endpoint服务">发布HTTP Endpoint服务</h4>
+<div class="paragraph">
+<p>要发布一个HTTP Endpoint服务，你需要一个 <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 对象。你可以通过调用
+`<a href="../../apidocs/io/vertx/servicediscovery/types/HttpEndpoint.html#createRecord-java.lang.String-java.lang.String-int-java.lang.String-io.vertx.core.json.JsonObject-">HttpEndpoint.createRecord</a>`创建这样一个服务记录对象。</p>
+</div>
+<div class="paragraph">
+<p>下面的代码片段，展示了如何通过 <code><a href="../../apidocs/io/vertx/servicediscovery/types/HttpEndpoint.html">HttpEndpoint</a></code> 接口创建一个 <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> ：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var record1 = HttpEndpoint.createRecord("some-http-service", "localhost", 8433, "/api")
+
+discovery.publish(record1, { ar -&gt;
+  // ...
+})
+
+var record2 = HttpEndpoint.createRecord("some-other-name", true, "localhost", 8433, "/api", json {
+  obj("some-metadata" to "some value")
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>当你在容器或云上部署你的服务时，可能你不能确定公开的IP地址和端口。所以，服务的发布必须通过其他拥有这些信息的实体来进行，这通常是一个桥接对象（bridge）。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_调用http_endpoint服务">调用HTTP Endpoint服务</h4>
+<div class="paragraph">
+<p>一旦一个HTTP Endpoint服务发布好了，服务消费者就可以获取到这个服务。对应的服务对象是一个
+`<a href="../../apidocs/io/vertx/core/http/HttpClient.html">HttpClient</a>`实例，并且已经配置好了host和port参数。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get the record
+discovery.getRecord(json {
+  obj("name" to "some-http-service")
+}, { ar -&gt;
+  if (ar.succeeded() &amp;&amp; ar.result() != null) {
+    // Retrieve the service reference
+    var reference = discovery.getReference(ar.result())
+    // Retrieve the service object
+    var client = reference.getAs(HttpClient.`class`)
+
+    // You need to path the complete path
+    client.getNow("/api/persons", { response -&gt;
+
+      // ...
+
+      // Dont' forget to release the service
+      reference.release()
+
+    })
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你也可以使用
+<code><a href="../../apidocs/io/vertx/servicediscovery/types/HttpEndpoint.html#getClient-io.vertx.servicediscovery.ServiceDiscovery-io.vertx.core.json.JsonObject-io.vertx.core.Handler-">HttpEndpoint.getClient</a></code>
+这个方法，一步就完成服务查找和服务获取：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">HttpEndpoint.getClient(discovery, json {
+  obj("name" to "some-http-service")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var client = ar.result()
+
+    // You need to path the complete path
+    client.getNow("/api/persons", { response -&gt;
+
+      // ...
+
+      // Dont' forget to release the service
+      ServiceDiscovery.releaseServiceObject(discovery, client)
+
+    })
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在第二种写法中，服务对象的释放是通过
+<code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html#releaseServiceObject-io.vertx.servicediscovery.ServiceDiscovery-java.lang.Object-">ServiceDiscovery.releaseServiceObject</a></code>
+这个方法完成的，因此在这种情况下你是不需要持有一个服务引用的。</p>
+</div>
+<div class="paragraph">
+<p>从Vert.x 3.4.0开始，Vert.x提供了另一种更高层次封装、更方便使用的HTTP客户端 — <code><a href="../../apidocs/io/vertx/ext/web/client/WebClient.html">WebClient</a></code> 。
+你可以通过如下方式来获取一个 <code><a href="../../apidocs/io/vertx/ext/web/client/WebClient.html">WebClient</a></code> 实例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get the record
+discovery.getRecord(json {
+  obj("name" to "some-http-service")
+}, { ar -&gt;
+  if (ar.succeeded() &amp;&amp; ar.result() != null) {
+    // Retrieve the service reference
+    var reference = discovery.getReference(ar.result())
+    // Retrieve the service object
+    var client = reference.getAs(WebClient.`class`)
+
+    // You need to path the complete path
+    client.get("/api/persons").send({ response -&gt;
+
+      // ...
+
+      // Dont' forget to release the service
+      reference.release()
+
+    })
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>另外一种写法，通过对应的服务类型接口获取的方式：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">HttpEndpoint.getWebClient(discovery, json {
+  obj("name" to "some-http-service")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var client = ar.result()
+
+    // You need to path the complete path
+    client.get("/api/persons").send({ response -&gt;
+
+      // ...
+
+      // Dont' forget to release the service
+      ServiceDiscovery.releaseServiceObject(discovery, client)
+
+    })
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_event_bus_服务">Event Bus 服务</h3>
+<div class="paragraph">
+<p>Event Bus 服务是一种服务代理，是基于Event Bus实现的一种异步RPC服务。当从一个Event Bus服务中获取一个服务对象时，你实际上得到的某个服务类的服务代理。你也可以使用 <code><a href="../../apidocs/io/vertx/servicediscovery/types/EventBusService.html">EventBusService</a></code> 接口的辅助方法来获得服务代理。</p>
+</div>
+<div class="paragraph">
+<p>注意服务代理（服务实现和服务接口）都需要用Java语言开发。</p>
+</div>
+<div class="sect3">
+<h4 id="_发布event_bus_服务">发布Event Bus 服务</h4>
+<div class="paragraph">
+<p>要发布一个Event Bus服务，你需要创建一个 <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var record = EventBusService.createRecord("some-eventbus-service", "address", "examples.MyService", json {
+  obj("some-metadata" to "some value")
+})
+
+discovery.publish(record, { ar -&gt;
+  // ...
+})</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_调用_event_bus_服务">调用 Event Bus 服务</h4>
+<div class="paragraph">
+<p>要调用（消费）Event Bus服务，你可以通过先获取到服务记录然后获取服务引用的方式，也可以直接通过
+`<a href="../../apidocs/io/vertx/servicediscovery/types/EventBusService.html">EventBusService</a>`接口，将两步合并成一次方法调用。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_消息源服务">消息源服务</h3>
+<div class="paragraph">
+<p>消息源服务，就是通过Event Bus发送消息到某个地址的组件。消息源服务的Client是
+<code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html">MessageConsumer</a></code>。</p>
+</div>
+<div class="paragraph">
+<p>消息源服务的 <code>location</code> 是消息所发送的Event Bus 地址。</p>
+</div>
+<div class="sect3">
+<h4 id="_发布消息源服务">发布消息源服务</h4>
+<div class="paragraph">
+<p>和其他服务类型一样，发布一个消息源服务包含两个步骤：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>通过 <code><a href="../../apidocs/io/vertx/servicediscovery/types/MessageSource.html">MessageSource</a></code> 接口创建一条服务记录</p>
+</li>
+<li>
+<p>发布这条服务记录</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var record = MessageSource.createRecord("some-message-source-service", "some-address")
+
+discovery.publish(record, { ar -&gt;
+  // ...
+})
+
+record = MessageSource.createRecord("some-other-message-source-service", "some-address", "examples.MyData")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在第二个 <code><a href="../../apidocs/io/vertx/servicediscovery/Record.html">Record</a></code> 创建时，我们同时指明了消息体（payload）的类型，这不是必须的。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_消费消息源服务">消费消息源服务</h4>
+<div class="paragraph">
+<p>在服务消费端，你可以手动获取服务记录和服务引用，也可以使用
+`<a href="../../apidocs/io/vertx/servicediscovery/types/MessageSource.html">MessageSource</a>`接口提供的辅助方法直接获取。</p>
+</div>
+<div class="paragraph">
+<p>第一种方式对应的代码示例如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get the record
+discovery.getRecord(json {
+  obj("name" to "some-message-source-service")
+}, { ar -&gt;
+  if (ar.succeeded() &amp;&amp; ar.result() != null) {
+    // Retrieve the service reference
+    var reference = discovery.getReference(ar.result())
+    // Retrieve the service object
+    var consumer = reference.getAs(MessageConsumer.`class`)
+
+    // Attach a message handler on it
+    consumer.handler({ message -&gt;
+      // message handler
+      var payload = message.body()
+    })
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果使用 <code><a href="../../apidocs/io/vertx/servicediscovery/types/MessageSource.html">MessageSource</a></code> 接口，代码如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">MessageSource.getConsumer&lt;JsonObject&gt;(discovery, json {
+  obj("name" to "some-message-source-service")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var consumer = ar.result()
+
+    // Attach a message handler on it
+    consumer.handler({ message -&gt;
+      // message handler
+      var payload = message.body()
+    })
+    // ...
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jdbc_数据源">JDBC 数据源</h3>
+<div class="paragraph">
+<p>数据源指的是数据库或数据存储。JDBC数据源通过JDBC驱动访问数据库，JDBC数据源服务对象是是 <code><a href="../../apidocs/io/vertx/ext/jdbc/JDBCClient.html">JDBCClient</a></code> 实例。</p>
+</div>
+<div class="sect3">
+<h4 id="_发布_jdbc_数据源服务">发布 JDBC 数据源服务</h4>
+<div class="paragraph">
+<p>和其他服务类型一样，发布 JDBC 数据源服务共两个步骤：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>通过 <code><a href="../../apidocs/io/vertx/servicediscovery/types/JDBCDataSource.html">JDBCDataSource</a></code> 接口创建服务记录</p>
+</li>
+<li>
+<p>发布服务记录</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var record = JDBCDataSource.createRecord("some-data-source-service", json {
+  obj("url" to "some jdbc url")
+}, json {
+  obj("some-metadata" to "some-value")
+})
+
+discovery.publish(record, { ar -&gt;
+  // ...
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>JDBC 数据源可以代表各种类型的数据库，而这些数据库的访问方式一般是不同的，服务记录很难有统一结构。在服务记录中，<code>location</code> 由一个简单的JSON对象组成，里面包含访问数据源的各种属性（JDBC URL、用户名、密码等）。这些属性既依赖于数据库，同时也依赖于所使用的连接池。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_消费_jdbc_数据源服务">消费 JDBC 数据源服务</h4>
+<div class="paragraph">
+<p>如前所述，访问数据源的方式依赖于数据源本身。要创建一个
+<code><a href="../../apidocs/io/vertx/ext/jdbc/JDBCClient.html">JDBCClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get the record
+discovery.getRecord(json {
+  obj("name" to "some-data-source-service")
+}, { ar -&gt;
+  if (ar.succeeded() &amp;&amp; ar.result() != null) {
+    // Retrieve the service reference
+    var reference = discovery.getReferenceWithConfiguration(ar.result(), json {
+      obj(
+        "username" to "clement",
+        "password" to "*****"
+      )
+    })
+
+    // Retrieve the service object
+    var client = reference.getAs(JDBCClient.`class`)
+
+    // ...
+
+    // when done
+    reference.release()
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你也可以使用 <code>JDBCDataSource</code> 接口的辅助方法，来查询和获取服务对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">JDBCDataSource.getJDBCClient(discovery, json {
+  obj("name" to "some-data-source-service")
+}, json {
+  obj(
+    "username" to "clement",
+    "password" to "*****"
+  )
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var client = ar.result()
+
+    // ...
+
+    // Dont' forget to release the service
+    ServiceDiscovery.releaseServiceObject(discovery, client)
+
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_redis_数据源">Redis 数据源</h3>
+<div class="paragraph">
+<p>Redis 数据源服务是专门为Redis提供的服务类型，对应服务对象是 <code><a href="../../apidocs/io/vertx/redis/RedisClient.html">RedisClient</a></code> 。</p>
+</div>
+<div class="sect3">
+<h4 id="_发布_redis_数据源服务">发布 Redis 数据源服务</h4>
+<div class="paragraph">
+<p>发布一个 Redis 数据源服务共两个步骤：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>通过 <code><a href="../../apidocs/io/vertx/servicediscovery/types/RedisDataSource.html">RedisDataSource</a></code> 接口创建一条服务记录</p>
+</li>
+<li>
+<p>发布这个服务记录</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var record = RedisDataSource.createRecord("some-redis-data-source-service", json {
+  obj("url" to "localhost")
+}, json {
+  obj("some-metadata" to "some-value")
+})
+
+discovery.publish(record, { ar -&gt;
+  // ...
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这里的 <code>location</code> 是一个JSON对象，包含访问Redis数据源的属性（URL、端口等）。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_消费_redis_数据源服务">消费 Redis 数据源服务</h4>
+<div class="paragraph">
+<p>如前所述，访问数据源的方式依赖于数据源本身。要创建一个
+<code><a href="../../apidocs/io/vertx/redis/RedisClient.html">RedisClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get the record
+discovery.getRecord(json {
+  obj("name" to "some-redis-data-source-service")
+}, { ar -&gt;
+  if (ar.succeeded() &amp;&amp; ar.result() != null) {
+    // Retrieve the service reference
+    var reference = discovery.getReference(ar.result())
+
+    // Retrieve the service instance
+    var client = reference.getAs(RedisClient.`class`)
+
+    // ...
+
+    // when done
+    reference.release()
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你也可以利用 <code><a href="../../apidocs/io/vertx/servicediscovery/types/RedisDataSource.html">RedisDataSource</a></code> 接口的辅助方法来查询和获取服务对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">RedisDataSource.getRedisClient(discovery, json {
+  obj("name" to "some-redis-data-source-service")
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var client = ar.result()
+
+    // ...
+
+    // Dont' forget to release the service
+    ServiceDiscovery.releaseServiceObject(discovery, client)
+
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mongo_数据源">Mongo 数据源</h3>
+<div class="paragraph">
+<p>Mongo 数据源服务是专门为 MongoDB 提供的一种服务类型，对应的服务对象是 <code><a href="../../apidocs/io/vertx/ext/mongo/MongoClient.html">MongoClient</a></code> 。</p>
+</div>
+<div class="sect3">
+<h4 id="_发布_mongo_数据源服务">发布 Mongo 数据源服务</h4>
+<div class="paragraph">
+<p>发布一个 Mongo 数据源服务需要两步：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>通过 <code><a href="../../apidocs/io/vertx/servicediscovery/types/MongoDataSource.html">MongoDataSource</a></code> 接口创建一条服务记录</p>
+</li>
+<li>
+<p>发布这条服务记录</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var record = MongoDataSource.createRecord("some-data-source-service", json {
+  obj("connection_string" to "some mongo connection")
+}, json {
+  obj("some-metadata" to "some-value")
+})
+
+discovery.publish(record, { ar -&gt;
+  // ...
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>其中`location`是一个JSON对象，包含了访问Mongo数据源的所有属性（URL、端口等）</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_消费_mongo_数据源服务">消费 Mongo 数据源服务</h4>
+<div class="paragraph">
+<p>如前所述，访问数据源的方式依赖于数据源本身。要创建一个
+<code><a href="../../apidocs/io/vertx/ext/mongo/MongoClient.html">MongoClient</a></code>，你需要同时提供：服务记录位置信息、元数据以及服务消费者提供的JSON对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">// Get the record
+discovery.getRecord(json {
+  obj("name" to "some-data-source-service")
+}, { ar -&gt;
+  if (ar.succeeded() &amp;&amp; ar.result() != null) {
+    // Retrieve the service reference
+    var reference = discovery.getReferenceWithConfiguration(ar.result(), json {
+      obj(
+        "username" to "clement",
+        "password" to "*****"
+      )
+    })
+
+    // Retrieve the service object
+    var client = reference.get&lt;Any&gt;()
+
+    // ...
+
+    // when done
+    reference.release()
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你也可以利用 <code><a href="../../apidocs/io/vertx/servicediscovery/types/MongoDataSource.html">MongoDataSource</a></code> 接口中的辅助方法来完成服务对象的查找和获取：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">MongoDataSource.getMongoClient(discovery, json {
+  obj("name" to "some-data-source-service")
+}, json {
+  obj(
+    "username" to "clement",
+    "password" to "*****"
+  )
+}, { ar -&gt;
+  if (ar.succeeded()) {
+    var client = ar.result()
+
+    // ...
+
+    // Dont' forget to release the service
+    ServiceDiscovery.releaseServiceObject(discovery, client)
+
+  }
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_监听服务的上线与下线">监听服务的上线与下线</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>每当服务发布或者取消发布，都会有相应的事件发送到 <code>vertx.discovery.announce</code> 这个地址。这个地址可以通过 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscoveryOptions.html">ServiceDiscoveryOptions</a></code> 配置。</p>
+</div>
+<div class="paragraph">
+<p>收到的`Record`中有个`status`字段，用来表示服务的状态：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UP</code> : 服务已经可以使用了</p>
+</li>
+<li>
+<p><code>DOWN</code> : 服务不再可用</p>
+</li>
+<li>
+<p><code>OUT_OF_SERVICE</code> : 服务目前不可用，但是过段时间会继续提供服务。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_监听服务的使用">监听服务的使用</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>每当有一个服务引用被绑定或者被释放，都会有相应的事件发送到 <code>vertx.discovery.usage</code> 这个地址。这个地址可以通过 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscoveryOptions.html">ServiceDiscoveryOptions</a></code> 配置。</p>
+</div>
+<div class="paragraph">
+<p>通过这个事件，可以监听服务的使用和服务的映射。</p>
+</div>
+<div class="paragraph">
+<p>收到的消息是一个包含如下内容的 <code><a href="../../apidocs/io/vertx/core/json/JsonObject.html">JsonObject</a></code> 对象：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>在 <code>record</code> 属性中，包含了服务记录信息</p>
+</li>
+<li>
+<p>在 <code>type</code> 属性中记录了事件的类型，类型分为`bind`和`release`</p>
+</li>
+<li>
+<p>在 <code>id</code> 属性中记录了服务发现实例的ID（服务发现实例的名称或节点ID）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>其中 <code>id</code> 可以通过 <code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscoveryOptions.html">ServiceDiscoveryOptions</a></code> 进行配置。默认情况下，在单节点时它的值是`localhost`，在集群模式时是节点的ID。</p>
+</div>
+<div class="paragraph">
+<p>你也可以通过
+<code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscoveryOptions.html#setUsageAddress-java.lang.String-">setUsageAddress</a>`方法，将事件发送地址设置为`null</code>，这样就可以禁用服务使用情况的监听功能了。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_服务发现桥接器">服务发现桥接器</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>通过桥接器（bridge），你可以从其他服务发现组件中导入和导出服务，比如Docker，Kubernetes，Consul等。每种类型的桥接器，决定了服务如何导入和导出，并且不一定都是双向的。</p>
+</div>
+<div class="paragraph">
+<p>要想自定义桥接器，你可以通过实现 <code><a href="../../apidocs/io/vertx/servicediscovery/spi/ServiceImporter.html">ServiceImporter</a></code> 接口，然后再使用
+<code><a href="../../apidocs/io/vertx/servicediscovery/ServiceDiscovery.html#registerServiceImporter-io.vertx.servicediscovery.spi.ServiceImporter-io.vertx.core.json.JsonObject-">registerServiceImporter</a></code>
+方法注册一下。</p>
+</div>
+<div class="paragraph">
+<p>你可以通过第二个参数传递一些可选的配置信息给桥接器。</p>
+</div>
+<div class="paragraph">
+<p>当桥接器注册后，
+<code><a href="../../apidocs/io/vertx/servicediscovery/spi/ServiceImporter.html">#start)</a></code>
+方法将会被调用，这样你可以对桥接器进行一些配置。当桥接器配置好了，已经准备导入导出初始的服务时，必须 <code>complete</code> 所传递的 <code><a href="../../apidocs/io/vertx/core/Future.html">Future</a></code> 。如果桥接器的启动方法是阻塞型的，那么就必须使用
+<code><a href="../../apidocs/io/vertx/core/Vertx.html#executeBlocking-io.vertx.core.Handler-boolean-io.vertx.core.Handler-">executeBlocking</a>`方法进行封装，并且`complete`所传递的 `<a href="../../apidocs/io/vertx/core/Future.html">Future</a></code> 对象。</p>
+</div>
+<div class="paragraph">
+<p>当服务发现实例被关闭的时候，对应的桥接器也一块被关闭了。执行关闭操作的时候，服务发现组件会调用
+<code><a href="../../apidocs/io/vertx/servicediscovery/spi/ServiceImporter.html#close-io.vertx.core.Handler-">close</a></code>
+方法以进行资源的释放以及移除导入/导出的服务。这个方法必须调用所传递的
+`<a href="../../apidocs/io/vertx/core/Future.html">Future</a>`的`complete`方法，来通知调用者关闭操作已经完成。</p>
+</div>
+<div class="paragraph">
+<p>需要提醒的是，在一个集群中，只需要有一个节点注册了服务桥接器，集群中所有成员就都能使用了。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_其他服务发现桥接器">其他服务发现桥接器</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x 服务发现组件除了支持桥接器机制以外，还提供了一些现成的桥接器。</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::consul-bridge.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::kubernetes-bridge.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::zookeeper-bridge.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::docker-links-bridge.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_其他存储后端">其他存储后端</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x服务发现框架还提供了一些现成的后端存储机制支持。</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::redis-backend.adoc[]</p>
+</div>
+</div>
+</div>
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-11-06 11:20:05 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

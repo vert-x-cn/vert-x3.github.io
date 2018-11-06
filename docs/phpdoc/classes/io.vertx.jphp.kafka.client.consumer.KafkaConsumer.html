@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    API Documentation &raquo; \io\vertx\jphp\kafka\client\consumer\KafkaConsumer
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/io.html">io</a></li>
+                                                                        <li><a href="../namespaces/com.html">com</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                                                                            <li class="method public">
+        <a href="#method_assign" title="assign :: Manually assign a partition to this consumer.">
+            <span class="description">Manually assign a partition to this consumer.</span><pre>assign</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_assignment" title="assignment :: Get the set of partitions currently assigned to this consumer.">
+            <span class="description">Get the set of partitions currently assigned to this consumer.</span><pre>assignment</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_batchHandler" title="batchHandler :: Set the handler to be used when batches of messages are fetched
+from the Kafka server. Batch handlers need to take care not to block
+the event loop when dealing with large batches. It is better to process
+records individually using the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer #handler(Handler) record handler.">
+            <span class="description">Set the handler to be used when batches of messages are fetched
+from the Kafka server. Batch handlers need to take care not to block
+the event loop when dealing with large batches. It is better to process
+records individually using the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer #handler(Handler) record handler.</span><pre>batchHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_beginningOffsets" title="beginningOffsets :: Get the first offset for the given partitions.">
+            <span class="description">Get the first offset for the given partitions.</span><pre>beginningOffsets</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_close" title="close :: Close the consumer">
+            <span class="description">Close the consumer</span><pre>close</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_commit" title="commit :: Commit current offsets for all the subscribed list of topics and partition.">
+            <span class="description">Commit current offsets for all the subscribed list of topics and partition.</span><pre>commit</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_committed" title="committed :: Get the last committed offset for the given partition (whether the commit happened by this process or another).">
+            <span class="description">Get the last committed offset for the given partition (whether the commit happened by this process or another).</span><pre>committed</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_create" title="create :: Create a new KafkaConsumer instance">
+            <span class="description">Create a new KafkaConsumer instance</span><pre>create</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_endHandler" title="endHandler :: ">
+            <span class="description"></span><pre>endHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_endOffsets" title="endOffsets :: Get the last offset for the given partition. The last offset of a partition is the offset
+of the upcoming message, i.e. the offset of the last available message + 1.">
+            <span class="description">Get the last offset for the given partition. The last offset of a partition is the offset
+of the upcoming message, i.e. the offset of the last available message + 1.</span><pre>endOffsets</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_exceptionHandler" title="exceptionHandler :: ">
+            <span class="description"></span><pre>exceptionHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_fetch" title="fetch :: Fetch the specified &lt;code&gt;amount&lt;/code&gt; of elements. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will
+recommence with the specified &lt;code&gt;amount&lt;/code&gt; of items, otherwise the specified &lt;code&gt;amount&lt;/code&gt; will
+be added to the current stream demand.">
+            <span class="description">Fetch the specified &lt;code&gt;amount&lt;/code&gt; of elements. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will
+recommence with the specified &lt;code&gt;amount&lt;/code&gt; of items, otherwise the specified &lt;code&gt;amount&lt;/code&gt; will
+be added to the current stream demand.</span><pre>fetch</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_handler" title="handler :: ">
+            <span class="description"></span><pre>handler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_offsetsForTimes" title="offsetsForTimes :: Look up the offset for the given partition by timestamp. Note: the result might be null in case
+for the given timestamp no offset can be found -- e.g., when the timestamp refers to the future">
+            <span class="description">Look up the offset for the given partition by timestamp. Note: the result might be null in case
+for the given timestamp no offset can be found -- e.g., when the timestamp refers to the future</span><pre>offsetsForTimes</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_partitionsAssignedHandler" title="partitionsAssignedHandler :: Set the handler called when topic partitions are assigned to the consumer">
+            <span class="description">Set the handler called when topic partitions are assigned to the consumer</span><pre>partitionsAssignedHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_partitionsFor" title="partitionsFor :: Get metadata about the partitions for a given topic.">
+            <span class="description">Get metadata about the partitions for a given topic.</span><pre>partitionsFor</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_partitionsRevokedHandler" title="partitionsRevokedHandler :: Set the handler called when topic partitions are revoked to the consumer">
+            <span class="description">Set the handler called when topic partitions are revoked to the consumer</span><pre>partitionsRevokedHandler</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_pause" title="pause :: &lt;b&gt;
+pause()
+&lt;/b&gt;">
+            <span class="description">&lt;b&gt;
+pause()
+&lt;/b&gt;</span><pre>pause</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_paused" title="paused :: Get the set of partitions that were previously paused by a call to pause(Set).">
+            <span class="description">Get the set of partitions that were previously paused by a call to pause(Set).</span><pre>paused</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_poll" title="poll :: Executes a poll for getting messages from Kafka">
+            <span class="description">Executes a poll for getting messages from Kafka</span><pre>poll</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_pollTimeout" title="pollTimeout :: Sets the poll timeout (in ms) for the underlying native Kafka Consumer. Defaults to 1000.">
+            <span class="description">Sets the poll timeout (in ms) for the underlying native Kafka Consumer. Defaults to 1000.</span><pre>pollTimeout</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_position" title="position :: Get the offset of the next record that will be fetched (if a record with that offset exists).">
+            <span class="description">Get the offset of the next record that will be fetched (if a record with that offset exists).</span><pre>position</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_resume" title="resume :: &lt;b&gt;
+resume()
+&lt;/b&gt;">
+            <span class="description">&lt;b&gt;
+resume()
+&lt;/b&gt;</span><pre>resume</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_seek" title="seek :: Overrides the fetch offsets that the consumer will use on the next poll.">
+            <span class="description">Overrides the fetch offsets that the consumer will use on the next poll.</span><pre>seek</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_seekToBeginning" title="seekToBeginning :: Seek to the first offset for each of the given partition.">
+            <span class="description">Seek to the first offset for each of the given partition.</span><pre>seekToBeginning</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_seekToEnd" title="seekToEnd :: Seek to the last offset for each of the given partition.">
+            <span class="description">Seek to the last offset for each of the given partition.</span><pre>seekToEnd</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_subscribe" title="subscribe :: Subscribe to the given topic to get dynamically assigned partitions.">
+            <span class="description">Subscribe to the given topic to get dynamically assigned partitions.</span><pre>subscribe</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_subscription" title="subscription :: Get the current subscription.">
+            <span class="description">Get the current subscription.</span><pre>subscription</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_unsubscribe" title="unsubscribe :: Unsubscribe from topics currently subscribed with subscribe.">
+            <span class="description">Unsubscribe from topics currently subscribed with subscribe.</span><pre>unsubscribe</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                            <li class="method private">
+                            <a href="#method___construct" title="__construct :: ">
+                                <span class="description"></span><pre>__construct</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>KafkaConsumer</h1>
+                <small style="display: block; text-align: right">
+                                                        </small>
+                <p class="short_description">Vert.x Kafka consumer.</p>
+                <div class="details">
+                    <div class="long_description">
+                        <p>
+You receive Kafka records by providing a @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::handler. As messages arrive the handler
+will be called with the records.
+<p>
+The @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::pause and @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::resume provides global control over reading the records from the consumer.
+<p>
+The @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::pause and @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::resume provides finer grained control over reading records
+for specific Topic/Partition, these are Kafka's specific operations.
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Default</p>
+                                    </td>
+                                </tr>
+                                                                                                                                                                                </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method___construct"></a>
+                        <div class="element clickable method private  method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>__construct</h2>
+                            <pre>__construct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_assign"></a>
+                        <div class="element clickable method public  method_assign" data-toggle="collapse" data-target=".method_assign .collapse">
+                            <h2>Manually assign a partition to this consumer.</h2>
+                            <pre>assign( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] partition which want assigned
+<b>
+assign($topicPartition)
+</b></p>
+<p>Manually assign a list of partition to this consumer.</p>
+<p>param $topicPartitions [array] partitions which want assigned
+<b>
+assign($topicPartitions)
+</b></p>
+<p>Manually assign a partition to this consumer.</p>
+<p>
+Due to internal buffering of messages, when reassigning
+the old partition may remain in effect
+(as observed by the  record handler)}
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new partition.
+
+param $topicPartition [TopicPartition | array] partition which want assigned
+param $completionHandler [callable] handler called on operation completed
+<b>
+assign($topicPartition, $completionHandler)
+</b>
+
+Manually assign a list of partition to this consumer.
+<p>
+Due to internal buffering of messages, when reassigning
+the old set of partitions may remain in effect
+(as observed by the  record handler)}
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new set of partitions.
+
+param $topicPartitions [array] partitions which want assigned
+param $completionHandler [callable] handler called on operation completed
+<b>
+assign($topicPartitions, $completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_assignment"></a>
+                        <div class="element clickable method public  method_assignment" data-toggle="collapse" data-target=".method_assignment .collapse">
+                            <h2>Get the set of partitions currently assigned to this consumer.</h2>
+                            <pre>assignment( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_batchHandler"></a>
+                        <div class="element clickable method public  method_batchHandler" data-toggle="collapse" data-target=".method_batchHandler .collapse">
+                            <h2>Set the handler to be used when batches of messages are fetched
+from the Kafka server. Batch handlers need to take care not to block
+the event loop when dealing with large batches. It is better to process
+records individually using the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer #handler(Handler) record handler.</h2>
+                            <pre>batchHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_beginningOffsets"></a>
+                        <div class="element clickable method public  method_beginningOffsets" data-toggle="collapse" data-target=".method_beginningOffsets .collapse">
+                            <h2>Get the first offset for the given partitions.</h2>
+                            <pre>beginningOffsets( $arg0,  $arg1) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_close"></a>
+                        <div class="element clickable method public  method_close" data-toggle="collapse" data-target=".method_close .collapse">
+                            <h2>Close the consumer</h2>
+                            <pre>close( $arg0 = null) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p><b>
+close()
+</b></p>
+<p>Close the consumer</p>
+<p>param $completionHandler [callable] handler called on operation completed
+<b>
+close($completionHandler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_commit"></a>
+                        <div class="element clickable method public  method_commit" data-toggle="collapse" data-target=".method_commit .collapse">
+                            <h2>Commit current offsets for all the subscribed list of topics and partition.</h2>
+                            <pre>commit( $arg0 = null) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p><b>
+commit()
+</b></p>
+<p>Commit current offsets for all the subscribed list of topics and partition.</p>
+<p>param $completionHandler [callable] handler called on operation completed
+<b>
+commit($completionHandler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_committed"></a>
+                        <div class="element clickable method public  method_committed" data-toggle="collapse" data-target=".method_committed .collapse">
+                            <h2>Get the last committed offset for the given partition (whether the commit happened by this process or another).</h2>
+                            <pre>committed( $arg0,  $arg1) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_create"></a>
+                        <div class="element clickable method public  method_create" data-toggle="collapse" data-target=".method_create .collapse">
+                            <h2>Create a new KafkaConsumer instance</h2>
+                            <pre>create( $arg0,  $arg1,  $arg2 = null,  $arg3 = null) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer&lt;K,V&gt;</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $vertx [Vertx] Vert.x instance to use
+param $config [array] Kafka consumer configuration
+<b>
+create($vertx, $config)
+</b></p>
+<p>Create a new KafkaConsumer instance</p>
+<p>param $vertx [Vertx] Vert.x instance to use
+param $config [array] Kafka consumer configuration
+param $keyType [string] class type for the key deserialization
+param $valueType [string] class type for the value deserialization
+<b>
+create($vertx, $config, $keyType, $valueType)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>Vertx</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>array</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg3</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\io\vertx\jphp\kafka\client\consumer\KafkaConsumer<K,V></code><p><p>an instance of the KafkaConsumer</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_endHandler"></a>
+                        <div class="element clickable method public  method_endHandler" data-toggle="collapse" data-target=".method_endHandler .collapse">
+                            <h2>endHandler</h2>
+                            <pre>endHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_endOffsets"></a>
+                        <div class="element clickable method public  method_endOffsets" data-toggle="collapse" data-target=".method_endOffsets .collapse">
+                            <h2>Get the last offset for the given partition. The last offset of a partition is the offset
+of the upcoming message, i.e. the offset of the last available message + 1.</h2>
+                            <pre>endOffsets( $arg0,  $arg1) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_exceptionHandler"></a>
+                        <div class="element clickable method public  method_exceptionHandler" data-toggle="collapse" data-target=".method_exceptionHandler .collapse">
+                            <h2>exceptionHandler</h2>
+                            <pre>exceptionHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_fetch"></a>
+                        <div class="element clickable method public  method_fetch" data-toggle="collapse" data-target=".method_fetch .collapse">
+                            <h2>Fetch the specified &lt;code&gt;amount&lt;/code&gt; of elements. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will
+recommence with the specified &lt;code&gt;amount&lt;/code&gt; of items, otherwise the specified &lt;code&gt;amount&lt;/code&gt; will
+be added to the current stream demand.</h2>
+                            <pre>fetch( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>a reference to this, so the API can be used fluently</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_handler"></a>
+                        <div class="element clickable method public  method_handler" data-toggle="collapse" data-target=".method_handler .collapse">
+                            <h2>handler</h2>
+                            <pre>handler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_offsetsForTimes"></a>
+                        <div class="element clickable method public  method_offsetsForTimes" data-toggle="collapse" data-target=".method_offsetsForTimes .collapse">
+                            <h2>Look up the offset for the given partition by timestamp. Note: the result might be null in case
+for the given timestamp no offset can be found -- e.g., when the timestamp refers to the future</h2>
+                            <pre>offsetsForTimes( $arg0,  $arg1,  $arg2) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_partitionsAssignedHandler"></a>
+                        <div class="element clickable method public  method_partitionsAssignedHandler" data-toggle="collapse" data-target=".method_partitionsAssignedHandler .collapse">
+                            <h2>Set the handler called when topic partitions are assigned to the consumer</h2>
+                            <pre>partitionsAssignedHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_partitionsFor"></a>
+                        <div class="element clickable method public  method_partitionsFor" data-toggle="collapse" data-target=".method_partitionsFor .collapse">
+                            <h2>Get metadata about the partitions for a given topic.</h2>
+                            <pre>partitionsFor( $arg0,  $arg1) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_partitionsRevokedHandler"></a>
+                        <div class="element clickable method public  method_partitionsRevokedHandler" data-toggle="collapse" data-target=".method_partitionsRevokedHandler .collapse">
+                            <h2>Set the handler called when topic partitions are revoked to the consumer</h2>
+                            <pre>partitionsRevokedHandler( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_pause"></a>
+                        <div class="element clickable method public  method_pause" data-toggle="collapse" data-target=".method_pause .collapse">
+                            <h2>&lt;b&gt;
+pause()
+&lt;/b&gt;</h2>
+                            <pre>pause( $arg0 = null,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Suspend fetching from the requested partition.</p>
+<p>param $topicPartition [TopicPartition | array] topic partition from which suspend fetching
+<b>
+pause($topicPartition)
+</b></p>
+<p>Suspend fetching from the requested partitions.</p>
+<p>param $topicPartitions [array] topic partition from which suspend fetching
+<b>
+pause($topicPartitions)
+</b></p>
+<p>Suspend fetching from the requested partition.</p>
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages from the given <code>topicPartition</code>
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will not see messages
+from the given <code>topicPartition</code>.
+
+param $topicPartition [TopicPartition | array] topic partition from which suspend fetching
+param $completionHandler [callable] handler called on operation completed
+<b>
+pause($topicPartition, $completionHandler)
+</b>
+
+Suspend fetching from the requested partitions.
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages from the given <code>topicPartitions</code>
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will not see messages
+from the given <code>topicPartitions</code>.
+
+param $topicPartitions [array] topic partition from which suspend fetching
+param $completionHandler [callable] handler called on operation completed
+<b>
+pause($topicPartitions, $completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_paused"></a>
+                        <div class="element clickable method public  method_paused" data-toggle="collapse" data-target=".method_paused .collapse">
+                            <h2>Get the set of partitions that were previously paused by a call to pause(Set).</h2>
+                            <pre>paused( $arg0) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_poll"></a>
+                        <div class="element clickable method public  method_poll" data-toggle="collapse" data-target=".method_poll .collapse">
+                            <h2>Executes a poll for getting messages from Kafka</h2>
+                            <pre>poll( $arg0,  $arg1) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_pollTimeout"></a>
+                        <div class="element clickable method public  method_pollTimeout" data-toggle="collapse" data-target=".method_pollTimeout .collapse">
+                            <h2>Sets the poll timeout (in ms) for the underlying native Kafka Consumer. Defaults to 1000.</h2>
+                            <pre>pollTimeout( $arg0) : \io\vertx\jphp\kafka\client\consumer\KafkaConsumer&lt;K,V&gt;</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Setting timeout to a lower value results in a more 'responsive' client, because it will block for a shorter period
+if no data is available in the assigned partition and therefore allows subsequent actions to be executed with a shorter
+delay. At the same time, the client will poll more frequently and thus will potentially create a higher load on the Kafka Broker.</p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\io\vertx\jphp\kafka\client\consumer\KafkaConsumer<K,V></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_position"></a>
+                        <div class="element clickable method public  method_position" data-toggle="collapse" data-target=".method_position .collapse">
+                            <h2>Get the offset of the next record that will be fetched (if a record with that offset exists).</h2>
+                            <pre>position( $arg0,  $arg1) : void</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_resume"></a>
+                        <div class="element clickable method public  method_resume" data-toggle="collapse" data-target=".method_resume .collapse">
+                            <h2>&lt;b&gt;
+resume()
+&lt;/b&gt;</h2>
+                            <pre>resume( $arg0 = null,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Resume specified partition which have been paused with pause.</p>
+<p>param $topicPartition [TopicPartition | array] topic partition from which resume fetching
+<b>
+resume($topicPartition)
+</b></p>
+<p>Resume specified partitions which have been paused with pause.</p>
+<p>param $topicPartitions [array] topic partition from which resume fetching
+<b>
+resume($topicPartitions)
+</b></p>
+<p>Resume specified partition which have been paused with pause.</p>
+<p>param $topicPartition [TopicPartition | array] topic partition from which resume fetching
+param $completionHandler [callable] handler called on operation completed
+<b>
+resume($topicPartition, $completionHandler)
+</b></p>
+<p>Resume specified partitions which have been paused with pause.</p>
+<p>param $topicPartitions [array] topic partition from which resume fetching
+param $completionHandler [callable] handler called on operation completed
+<b>
+resume($topicPartitions, $completionHandler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_seek"></a>
+                        <div class="element clickable method public  method_seek" data-toggle="collapse" data-target=".method_seek .collapse">
+                            <h2>Overrides the fetch offsets that the consumer will use on the next poll.</h2>
+                            <pre>seek( $arg0,  $arg1,  $arg2 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] topic partition for which seek
+param $offset [integer] offset to seek inside the topic partition
+<b>
+seek($topicPartition, $offset)
+</b></p>
+<p>Overrides the fetch offsets that the consumer will use on the next poll.</p>
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages fetched with respect to the old offset
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new offset.
+
+param $topicPartition [TopicPartition | array] topic partition for which seek
+param $offset [integer] offset to seek inside the topic partition
+param $completionHandler [callable] handler called on operation completed
+<b>
+seek($topicPartition, $offset, $completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>integer</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg2</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_seekToBeginning"></a>
+                        <div class="element clickable method public  method_seekToBeginning" data-toggle="collapse" data-target=".method_seekToBeginning .collapse">
+                            <h2>Seek to the first offset for each of the given partition.</h2>
+                            <pre>seekToBeginning( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] topic partition for which seek
+<b>
+seekToBeginning($topicPartition)
+</b></p>
+<p>Seek to the first offset for each of the given partitions.</p>
+<p>param $topicPartitions [array] topic partition for which seek
+<b>
+seekToBeginning($topicPartitions)
+</b></p>
+<p>Seek to the first offset for each of the given partition.</p>
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages fetched with respect to the old offset
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new offset.
+
+param $topicPartition [TopicPartition | array] topic partition for which seek
+param $completionHandler [callable] handler called on operation completed
+<b>
+seekToBeginning($topicPartition, $completionHandler)
+</b>
+
+Seek to the first offset for each of the given partitions.
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages fetched with respect to the old offset
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new offset.
+
+param $topicPartitions [array] topic partition for which seek
+param $completionHandler [callable] handler called on operation completed
+<b>
+seekToBeginning($topicPartitions, $completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_seekToEnd"></a>
+                        <div class="element clickable method public  method_seekToEnd" data-toggle="collapse" data-target=".method_seekToEnd .collapse">
+                            <h2>Seek to the last offset for each of the given partition.</h2>
+                            <pre>seekToEnd( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $topicPartition [TopicPartition | array] topic partition for which seek
+<b>
+seekToEnd($topicPartition)
+</b></p>
+<p>Seek to the last offset for each of the given partitions.</p>
+<p>param $topicPartitions [array] topic partition for which seek
+<b>
+seekToEnd($topicPartitions)
+</b></p>
+<p>Seek to the last offset for each of the given partition.</p>
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages fetched with respect to the old offset
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new offset.
+
+param $topicPartition [TopicPartition | array] topic partition for which seek
+param $completionHandler [callable] handler called on operation completed
+<b>
+seekToEnd($topicPartition, $completionHandler)
+</b>
+
+Seek to the last offset for each of the given partitions.
+<p>
+Due to internal buffering of messages,
+the  will
+continue to observe messages fetched with respect to the old offset
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new offset.
+
+param $topicPartitions [array] topic partition for which seek
+param $completionHandler [callable] handler called on operation completed
+<b>
+seekToEnd($topicPartitions, $completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>array | TopicPartition</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_subscribe"></a>
+                        <div class="element clickable method public  method_subscribe" data-toggle="collapse" data-target=".method_subscribe .collapse">
+                            <h2>Subscribe to the given topic to get dynamically assigned partitions.</h2>
+                            <pre>subscribe( $arg0,  $arg1 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>param $topic [string] topic to subscribe to
+<b>
+subscribe($topic)
+</b></p>
+<p>Subscribe to the given list of topics to get dynamically assigned partitions.</p>
+<p>param $topics [array] topics to subscribe to
+<b>
+subscribe($topics)
+</b></p>
+<p>Subscribe to the given topic to get dynamically assigned partitions.</p>
+<p>
+Due to internal buffering of messages, when changing the subscribed topic
+the old topic may remain in effect
+(as observed by the  record handler})
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new topic.
+
+param $topic [string] topic to subscribe to
+param $completionHandler [callable] handler called on operation completed
+<b>
+subscribe($topic, $completionHandler)
+</b>
+
+Subscribe to the given list of topics to get dynamically assigned partitions.
+<p>
+Due to internal buffering of messages, when changing the subscribed topics
+the old set of topics may remain in effect
+(as observed by the  record handler})
+until some time <em>after</em> the given <code>completionHandler</code>
+is called. In contrast, the once the given <code>completionHandler</code>
+is called the @see \io\vertx\jphp\kafka\client\consumer\KafkaConsumer::batchHandler will only see messages
+consistent with the new set of topics.
+
+param $topics [array] topics to subscribe to
+param $completionHandler [callable] handler called on operation completed
+<b>
+subscribe($topics, $completionHandler)
+</b></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>string | array</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg1</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_subscription"></a>
+                        <div class="element clickable method public  method_subscription" data-toggle="collapse" data-target=".method_subscription .collapse">
+                            <h2>Get the current subscription.</h2>
+                            <pre>subscription( $arg0) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_unsubscribe"></a>
+                        <div class="element clickable method public  method_unsubscribe" data-toggle="collapse" data-target=".method_unsubscribe .collapse">
+                            <h2>Unsubscribe from topics currently subscribed with subscribe.</h2>
+                            <pre>unsubscribe( $arg0 = null) : $this</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p><b>
+unsubscribe()
+</b></p>
+<p>Unsubscribe from topics currently subscribed with subscribe.</p>
+<p>param $completionHandler [callable] handler called on operation completed
+<b>
+unsubscribe($completionHandler)
+</b></p></div>
+
+                                    <table class="table">
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$arg0</h4>
+                                                <code></code><p><p>callable</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p><p>current KafkaConsumer instance</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                    
+                                                        </div>
+            </div>
+            <a id="\io\vertx\jphp\kafka\client\consumer\KafkaConsumer"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/io.vertx.jphp.kafka.client.consumer.html">consumer</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/io.vertx.jphp.kafka.client.consumer.KafkaConsumer.html">KafkaConsumer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Mon, 05 Nov 2018 12:13:03 +0000.<br/>
+    </footer>
+    </body>
+</html>

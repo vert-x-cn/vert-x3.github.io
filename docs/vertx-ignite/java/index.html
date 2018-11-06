@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Apache Ignite Cluster Manager for Vert.x - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.tk/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.tk/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.tk/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+  <style>
+    .page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }
+
+  </style>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.tk/" class="navbar-brand"><img alt="Brand" src="https://vertx.tk/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.tk/download/">下载</a></li>
+        <li><a href="https://vertx.tk/docs/">文档</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+        <li><a href="https://vertx.tk/community/">社区</a></li>
+        <li><a href="https://vertx.tk/materials/">资料</a></li>
+        <li><a href="https://vertx.tk/blog/">博客</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Apache Ignite Cluster Manager for Vert.x</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_使用_ignite_cluster_manager">使用 Ignite cluster manager</a>
+<ul class="sectlevel2">
+<li><a href="#_通过命令行使用">通过命令行使用</a></li>
+<li><a href="#_通过_maven_或_gradle_构建工具使用">通过 Maven 或 Gradle 构建工具使用</a></li>
+<li><a href="#_编程形式调用">编程形式调用</a></li>
+</ul>
+</li>
+<li><a href="#_配置_ignite_cluster_manager">配置 Ignite cluster manager</a>
+<ul class="sectlevel2">
+<li><a href="#_使用配置文件">使用配置文件</a></li>
+<li><a href="#_编程配置">编程配置</a></li>
+<li><a href="#_自动发现及网络传输配置">自动发现及网络传输配置</a></li>
+</ul>
+</li>
+<li><a href="#_故障排除">故障排除</a>
+<ul class="sectlevel2">
+<li><a href="#_组播未正常开启">组播未正常开启</a></li>
+<li><a href="#_使用错误的网络接口">使用错误的网络接口</a></li>
+<li><a href="#_使用vpn">使用VPN</a></li>
+<li><a href="#_组播被禁用">组播被禁用</a></li>
+<li><a href="#_开启日志">开启日志</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_使用_ignite_cluster_manager">使用 Ignite cluster manager</a>
+<ul class="sectlevel2">
+<li><a href="#_通过命令行使用">通过命令行使用</a></li>
+<li><a href="#_通过_maven_或_gradle_构建工具使用">通过 Maven 或 Gradle 构建工具使用</a></li>
+<li><a href="#_编程形式调用">编程形式调用</a></li>
+</ul>
+</li>
+<li><a href="#_配置_ignite_cluster_manager">配置 Ignite cluster manager</a>
+<ul class="sectlevel2">
+<li><a href="#_使用配置文件">使用配置文件</a></li>
+<li><a href="#_编程配置">编程配置</a></li>
+<li><a href="#_自动发现及网络传输配置">自动发现及网络传输配置</a></li>
+</ul>
+</li>
+<li><a href="#_故障排除">故障排除</a>
+<ul class="sectlevel2">
+<li><a href="#_组播未正常开启">组播未正常开启</a></li>
+<li><a href="#_使用错误的网络接口">使用错误的网络接口</a></li>
+<li><a href="#_使用vpn">使用VPN</a></li>
+<li><a href="#_组播被禁用">组播被禁用</a></li>
+<li><a href="#_开启日志">开启日志</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+
+  <a href="https://github.com/okou19900722/vertx-web-site-translation-chinese/tree/master/vertx-translation-stack/vertx-ignite-translation"
+     class="page-link-to-github"
+     target="_blank"
+     title="Edit this page on GitHub">
+    <i class="github-icon"></i>
+    <span class="text">编辑本页</span>
+  </a>
+
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>IgniteClusterManager</code> 是基于 <a href="http://ignite.apache.org/index.html">Apache Ignite</a> 实现。</p>
+</div>
+<div class="paragraph">
+<p>Vert.x 集群管理器包含以下几个功能：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>发现并管理集群中的节点</p>
+</li>
+<li>
+<p>管理集群端的主题订阅清单（这样就可以轻松得知集群中的那些节点订阅了那些 EventBus 地址）</p>
+</li>
+<li>
+<p>分布式 Map 支持</p>
+</li>
+<li>
+<p>分布式锁</p>
+</li>
+<li>
+<p>分布式计数器</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Vert.x 集群器并不处理节点之间的通信，在 Vert.x 中节点中的通信是直接由 TCP 链接处理的。</p>
+</div>
+<div class="paragraph">
+<p>Vert.x cluster manager is a pluggable component, so you can pick the one you want, or the one that is the most
+adapted to your environment. So you can replace default Vert.x cluster manager by this implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_使用_ignite_cluster_manager">使用 Ignite cluster manager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x 能够从 classpath 路径的 jar 自动检测并使用出 <code>ClusterManager</code> 的实现。不过需要确保在 classpath 没有其他的 <code>ClusterManager</code> 实现。</p>
+</div>
+<div class="paragraph">
+<p>另外 Vert.x 可以通过设置 <code>-Dvertx.clusterManagerFactory=io.vertx.spi.cluster.ignite.IgniteClusterManager</code> 来使用指定的 集群管理器实现。</p>
+</div>
+<div class="sect2">
+<h3 id="_通过命令行使用">通过命令行使用</h3>
+<div class="paragraph">
+<p>确保 <code>vertx-ignite-3.6.0-SNAPSHOT.jar</code> 在 Vert.x 的安装路径中的 lib 目录下。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_通过_maven_或_gradle_构建工具使用">通过 Maven 或 Gradle 构建工具使用</h3>
+<div class="paragraph">
+<p>Add a dependency to the artifact.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (在 <code>pom.xml</code> 文件中):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+ &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+ &lt;artifactId&gt;vertx-ignite&lt;/artifactId&gt;
+ &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (在 <code>build.gradle</code> 文件中):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-ignite:3.6.0-SNAPSHOT'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_编程形式调用">编程形式调用</h3>
+<div class="paragraph">
+<p>通过编码的形式，设置集群管理器实现，例子：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">ClusterManager clusterManager = new IgniteClusterManager();
+
+VertxOptions options = new VertxOptions().setClusterManager(clusterManager);
+Vertx.clusteredVertx(options, res -&gt; {
+ if (res.succeeded()) {
+   Vertx vertx = res.result();
+ } else {
+   // failed!
+ }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_配置_ignite_cluster_manager">配置 Ignite cluster manager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Note: Starting with version 2.0, Apache Ignite has introduced a new off-heap memory architecture. All caches use
+off-heap memory by default. New memory architecture is described in
+<a href="https://apacheignite.readme.io/docs/page-memory">Ignite Virtual Memory</a> article.</p>
+</div>
+<div class="sect2">
+<h3 id="_使用配置文件">使用配置文件</h3>
+<div class="paragraph">
+<p>在 <code>vertx-ignite</code> jar 中内嵌了一个默认配置文件 <code>default-ignite.xml</code>。</p>
+</div>
+<div class="paragraph">
+<p>如果需要覆盖此配置文件，需要在 classpath 路径中添加 <code>ignite.xml</code></p>
+</div>
+<div class="paragraph">
+<p><code>default-ignite.xml</code> 与 <code>ignite.xml</code> 必须是一个 <code>Apache Ignite</code> 配置文件，在
+<a href="https://apacheignite.readme.io/docs">Apache Ignite documentation</a> 的官方中文文档中，可以找到具体的配置描述。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_编程配置">编程配置</h3>
+<div class="paragraph">
+<p>您还可以以编程方式指定配置：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">IgniteConfiguration cfg = new IgniteConfiguration();
+// Configuration code (omitted)
+
+ClusterManager clusterManager = new IgniteClusterManager(cfg);
+
+VertxOptions options = new VertxOptions().setClusterManager(clusterManager);
+Vertx.clusteredVertx(options, res -&gt; {
+ if (res.succeeded()) {
+   Vertx vertx = res.result();
+ } else {
+   // failed!
+ }
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_自动发现及网络传输配置">自动发现及网络传输配置</h3>
+<div class="paragraph">
+<p>在默认配置中使用 <code>TcpDiscoveryMulticastIpFinder</code> 实现，这网络发现实现，需要开启组播。
+如果组播被禁用，可以采用 <code>TcpDiscoveryVmIpFinder</code> 替代，前提是在 <code>ignite.xml</code> 事先配置好 IP 地址列表。
+具体 Ignite 集群配置，可以参考文档 <a href="http://apacheignite.readme.io/docs/cluster-config">Cluster Configuration</a> 。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_故障排除">故障排除</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If the default multicast configuration is not working here are some common causes:</p>
+</div>
+<div class="sect2">
+<h3 id="_组播未正常开启">组播未正常开启</h3>
+<div class="paragraph">
+<p>By default the cluster manager is using <code>TcpDiscoveryMulticastIpFinder</code>, so IP multicasting is required,
+on some systems, multicast route(s) need to be added to the routing table otherwise, the default route will be used.</p>
+</div>
+<div class="paragraph">
+<p>Note that some systems don&#8217;t consult the routing table for IP multicast routing, only for unicast routing</p>
+</div>
+<div class="paragraph">
+<p>MacOS example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># Adds a multicast route for 224.0.0.1-231.255.255.254
+sudo route add -net 224.0.0.0/5 127.0.0.1
+
+# Adds a multicast route for 232.0.0.1-239.255.255.254
+sudo route add -net 232.0.0.0/5 192.168.1.3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please google for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_使用错误的网络接口">使用错误的网络接口</h3>
+<div class="paragraph">
+<p>如果机器上有多个网络接口（也有可能是在运行 VPN 的情况下），那么 Ignite 很有可能是使用了错误的网络接口。</p>
+</div>
+<div class="paragraph">
+<p>为了确保 Ignite 使用正确的网络接口，在配置文件中将 <code>IgniteConfiguration</code> 设置为指定IP地址。 例如：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;bean class="org.apache.ignite.configuration.IgniteConfiguration"&gt;
+ &lt;property name="localHost" value="192.168.1.20"/&gt;
+&lt;/bean&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>当运行集群模式时，需要确保 Vert.x 使用正确的网络接口。
+当通过命令行模式时，可以设置 <code>cluster-host</code> 参数：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>vertx run myverticle.js -cluster -cluster-host your-ip-address</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>其中 <code>your-ip-address</code> 必须与 Ignite 中的配置保持一致。</p>
+</div>
+<div class="paragraph">
+<p>当通过编程模式使用 Vert.x 时，可以调用方法 <code><a href="../../apidocs/io/vertx/core/VertxOptions.html#setClusterHost-java.lang.String-">setClusterHost</a></code> 来设置参数</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_使用vpn">使用VPN</h3>
+<div class="paragraph">
+<p>VPN 软件通常通过创建不支持组播的虚拟网络接口来进行工作。在 VPN 环境中，如果 Ignite 与 Vert.x 不正确配置的话，VPN 接口将被选择，而不是正确的接口。</p>
+</div>
+<div class="paragraph">
+<p>所以，如果你的软件运行在 VPN 环境中，参考上述章节，设置正确的网络接口。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_组播被禁用">组播被禁用</h3>
+<div class="paragraph">
+<p>在一些情况下，运行环境中，无法开启组播。在这种情况下，需要配置合适的 <code>IP finder</code>。TCP sockets 发现器  <code>TcpDiscoveryVmIpFinder</code> ，或者 Amazon S3 发现器 <code>TcpDiscoveryS3IpFinder</code> 。</p>
+</div>
+<div class="paragraph">
+<p>具体 Ignite 集群配置，可以参考文档
+<a href="https://apacheignite.readme.io/docs/clustering">Ignite Clustering</a> 。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_开启日志">开启日志</h3>
+<div class="paragraph">
+<p>在排除故障时，开启 Ignite 日志，将会给予很大的帮助。在 <code>classpath</code> 中添加 <code>vertx-default-jul-logging.properties</code> 文件（默认的JUL记录时），这是一个标准 java.util.loging（JUL） 配置文件。具体配置如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.apache.ignite.level=INFO</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>或者</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.util.logging.ConsoleHandler.level=INFO
+java.util.logging.FileHandler.level=INFO</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                上次更新时间 2018-11-06 11:19:13 CST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/">主页</a></li>
+          <li><a href="https://vertx.tk/download/">下载</a></li>
+          <li><a href="https://vertx.tk/docs/">文档</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">维基</a></li>
+          <li><a href="https://vertx.tk/blog/">博客</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+          <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.tk/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.tk/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.tk/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.tk/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.tk/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.tk/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+
