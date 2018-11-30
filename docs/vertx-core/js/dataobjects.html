@@ -184,6 +184,7 @@
 <li><a href="#PfxOptions">PfxOptions</a></li>
 <li><a href="#ProxyOptions">ProxyOptions</a></li>
 <li><a href="#RequestOptions">RequestOptions</a></li>
+<li><a href="#StreamPriority">StreamPriority</a></li>
 <li><a href="#TCPSSLOptions">TCPSSLOptions</a></li>
 <li><a href="#VertxOptions">VertxOptions</a></li>
 </ul>
@@ -221,6 +222,7 @@
 <li><a href="#PfxOptions">PfxOptions</a></li>
 <li><a href="#ProxyOptions">ProxyOptions</a></li>
 <li><a href="#RequestOptions">RequestOptions</a></li>
+<li><a href="#StreamPriority">StreamPriority</a></li>
 <li><a href="#TCPSSLOptions">TCPSSLOptions</a></li>
 <li><a href="#VertxOptions">VertxOptions</a></li>
 </ul>
@@ -827,7 +829,16 @@ The default value of link is</p></td>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="multiThreaded"></a><code>@multiThreaded</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the verticle(s) should be deployed as a multi-threaded worker verticle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the verticle(s) should be deployed as a multi-threaded worker verticle.
+<p>
+<strong>WARNING</strong>: Multi-threaded worker verticles are a deprecated feature.
+<p>
+Most applications will have no need for them. Because of the concurrency in these verticles you have to be
+very careful to keep the verticle in a consistent state using standard Java techniques for multi-threaded
+programming.
+<p>
+You can read the documentation that explains how you can replace this feature by the usage of custom worker
+pools or <code>executeBlocking</code> calls.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="worker"></a><code>@worker</code></p></td>
@@ -3056,6 +3067,42 @@ Options describing how an link will make connect to make a request.
 </div>
 </div>
 <div class="sect1">
+<h2 id="StreamPriority">StreamPriority</h2>
+<div class="sectionbody">
+This class represents HTTP/2 stream priority defined in RFC 7540 clause 5.3
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="dependency"></a><code>@dependency</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the priority dependency value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="exclusive"></a><code>@exclusive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the priority exclusive value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="weight"></a><code>@weight</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (short)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the priority weight.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="TCPSSLOptions">TCPSSLOptions</h2>
 <div class="sectionbody">
 Base class. TCP and SSL related options
@@ -3399,7 +3446,7 @@ The default value of link is</p></td>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:54 CST
+                上次更新时间 2018-11-30 10:22:52 CST
               
               
             </div>
@@ -3426,8 +3473,8 @@ The default value of link is</p></td>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

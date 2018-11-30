@@ -276,7 +276,7 @@ MongoDB 是在 Vert.x 应用进行数据持久化时的最佳选择，因为 Mon
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-mongo-client&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -289,7 +289,7 @@ MongoDB 是在 Vert.x 应用进行数据持久化时的最佳选择，因为 Mon
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-mongo-client:3.6.0-SNAPSHOT'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-mongo-client:3.6.0'</code></pre>
 </div>
 </div>
 </div>
@@ -375,7 +375,7 @@ client = VertxMongo::MongoClient.create_non_shared(vertx, config)</code></pre>
 <h2 id="_使用客户端_api">使用客户端 API</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code><a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a>`接口定义了操作客户端的API 方法。您可以使用 `<a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a></code> 来使用调用 API 方法。</p>
+<p><code><a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a></code> 接口定义了操作客户端的API 方法。您可以使用 <code><a href="../../yardoc/VertxMongo/MongoClient.html">MongoClient</a></code> 来使用调用 API 方法。</p>
 </div>
 <div class="sect2">
 <h3 id="_保存文档">保存文档</h3>
@@ -686,9 +686,9 @@ mongoClient.find("books", query) { |res_err,res|
 <h3 id="_finding_documents_in_batches">Finding documents in batches</h3>
 <div class="paragraph">
 <p>When dealing with large data sets, it is not advised to use the
-<code><a href="../../yardoc/VertxMongo/MongoClient.html#find-instance_method">find</a>`and
-`<a href="../../yardoc/VertxMongo/MongoClient.html#find_with_options-instance_method">findWithOptions</a>`methods.
-In order to avoid inflating the whole response into memory, use `<a href="../../yardoc/VertxMongo/MongoClient.html#find_batch-instance_method">findBatch</a></code>:</p>
+<code><a href="../../yardoc/VertxMongo/MongoClient.html#find-instance_method">find</a></code> and
+<code><a href="../../yardoc/VertxMongo/MongoClient.html#find_with_options-instance_method">findWithOptions</a></code> methods.
+In order to avoid inflating the whole response into memory, use <code><a href="../../yardoc/VertxMongo/MongoClient.html#find_batch-instance_method">findBatch</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -710,7 +710,7 @@ mongoClient.find_batch("book", query).exception_handler() { |throwable|
 <p>The matching documents are emitted one by one by the <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> handler.</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../vertx-mongo-client/dataobjects.html#FindOptions">FindOptions</a>`has an extra parameter `batchSize</code> which you can use to set the number of documents to load at once:</p>
+<p><code><a href="../../vertx-mongo-client/dataobjects.html#FindOptions">FindOptions</a></code> has an extra parameter <code>batchSize</code> which you can use to set the number of documents to load at once:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1369,7 +1369,7 @@ mongoClient.save("books", document) { |res_err,res|
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:19:37 CST
+                上次更新时间 2018-11-30 10:23:36 CST
               
               
             </div>
@@ -1396,8 +1396,8 @@ mongoClient.save("books", document) { |res_err,res|
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

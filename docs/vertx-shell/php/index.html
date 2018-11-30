@@ -267,7 +267,7 @@ or deployed as a service.</p>
 <div class="listingblock">
 <div class="title">Starting a shell service available via Telnet</div>
 <div class="content">
-<pre class="highlight"><code>vertx run -conf '{"telnetOptions":{"port":5000}}' maven:io.vertx:vertx-shell:3.6.0-SNAPSHOT</code></pre>
+<pre class="highlight"><code>vertx run -conf '{"telnetOptions":{"port":5000}}' maven:io.vertx:vertx-shell:3.6.0</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -281,7 +281,7 @@ keytool -genkey -keyalg RSA -keystore ssh.jks -keysize 2048 -validity 1095 -dnam
 # create the auth config
 echo user.admin=password &gt; auth.properties
 # start the shell
-vertx run -conf '{"sshOptions":{"port":4000,"keyPairOptions":{"path":"ssh.jks","password":"secret"},"authOptions":{"provider":"shiro","config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.6.0-SNAPSHOT</code></pre>
+vertx run -conf '{"sshOptions":{"port":4000,"keyPairOptions":{"path":"ssh.jks","password":"secret"},"authOptions":{"provider":"shiro","config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.6.0</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -294,7 +294,7 @@ vertx run -conf '{"sshOptions":{"port":4000,"keyPairOptions":{"path":"ssh.jks","
 keytool -genkey -keyalg RSA -keystore keystore.jks -keysize 2048 -validity 1095 -dname CN=localhost -keypass secret -storepass secret
 # create the auth config
 echo user.admin=password &gt; auth.properties
-vertx run -conf '{"httpOptions":{"port":8080,"ssl":true,"keyStoreOptions":{"path":"keystore.jks","password":"secret"},"authOptions":{"provider":""shiro,"config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.6.0-SNAPSHOT</code></pre>
+vertx run -conf '{"httpOptions":{"port":8080,"ssl":true,"keyStoreOptions":{"path":"keystore.jks","password":"secret"},"authOptions":{"provider":""shiro,"config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.6.0</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -374,7 +374,7 @@ vertx run -conf '{"httpOptions":{"port":8080,"ssl":true,"keyStoreOptions":{"path
 </td>
 <td class="content">
 when Vert.x Shell is already on your classpath you can use <code>service:io.vertx.ext.shell</code> instead
-or <code>maven:io.vertx:vertx-shell:3.6.0-SNAPSHOT</code>
+or <code>maven:io.vertx:vertx-shell:3.6.0</code>
 </td>
 </tr>
 </table>
@@ -1712,7 +1712,7 @@ jar under the <code>io.vertx.ext.shell</code> packages.</p>
 <p>For example, the <em>Dropwizard</em> metrics service, adds specific metrics command to the shell service on the fly.</p>
 </div>
 <div class="paragraph">
-<p>It can be achieved via the {@code java.util.ServiceLoader} of a <code>CommandResolverFactory</code>.</p>
+<p>It can be achieved via the <code>java.util.ServiceLoader</code> of a <code>CommandResolverFactory</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1725,7 +1725,7 @@ jar under the <code>io.vertx.ext.shell</code> packages.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The {@code resolver} method is async, because the resolver may need to wait some condition before commands
+<p>The <code>resolver</code> method is async, because the resolver may need to wait some condition before commands
 are resolved.</p>
 </div>
 <div class="paragraph">
@@ -1791,7 +1791,7 @@ don&#8217;t use this mechanism.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:20:18 CST
+                上次更新时间 2018-11-30 10:24:18 CST
               
               
             </div>
@@ -1818,8 +1818,8 @@ don&#8217;t use this mechanism.</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

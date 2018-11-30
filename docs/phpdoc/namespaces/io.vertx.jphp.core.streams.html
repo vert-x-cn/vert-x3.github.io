@@ -186,6 +186,20 @@ To prevent this, after each write, instances of this class check whether the wri
                             <p>
 Any class that implements this interface can be used by a @see \io\vertx\jphp\core\streams\Pump to pump data from it
 to a @see \io\vertx\jphp\core\streams\WriteStream.
+<p>
+<h3>Streaming mode</h3>
+The stream is either in <i>flowing</i> or <i>fetch</i> mode.
+<ul>
+  <i>Initially the stream is in <i>flowing</i> mode.</i>
+  <li>When the stream is in <i>flowing</i> mode, elements are delivered to the <code>handler</code>.</li>
+  <li>When the stream is in <i>fetch</i> mode, only the number of requested elements will be delivered to the <code>handler</code>.</li>
+</ul>
+The mode can be changed with the @see \io\vertx\jphp\core\streams\ReadStream::pause, @see \io\vertx\jphp\core\streams\ReadStream::resume and @see \io\vertx\jphp\core\streams\ReadStream::fetch methods:
+<ul>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::resume sets the <i>flowing</i> mode</li>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::pause sets the <i>fetch</i> mode and resets the demand to <code>0</code></li>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::fetch requests a specific amount of elements and adds it to the actual demand</li>
+</ul>
                     </div>
         <a href="../classes/io.vertx.jphp.core.streams.ReadStream.html" class="more">« More »</a>    </div>
 
@@ -218,7 +232,7 @@ to it.
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 05 Nov 2018 12:12:38 +0000.<br/>
+            generated on Fri, 30 Nov 2018 01:45:44 +0000.<br/>
     </footer>
     </body>
 </html>

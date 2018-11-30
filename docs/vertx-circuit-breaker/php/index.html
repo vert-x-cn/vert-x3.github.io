@@ -236,7 +236,7 @@
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-circuit-breaker&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -249,7 +249,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-circuit-breaker:3.6.0-SNAPSHOT'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-circuit-breaker:3.6.0'</code></pre>
 </div>
 </div>
 </div>
@@ -378,8 +378,8 @@
 </div>
 <div class="paragraph">
 <p>熔断状态中都会调用失败回调（fallback），或者设置
-<code><a href="../php/dataobjects.html#CircuitBreakerOptions#method_isFallbackOnFailure">isFallbackOnFailure</a></code>，其结果是失败回调函数的输出。失败回调函数将
-`Throwable`对象作为参数，并返回预期类型的​​对象。</p>
+<code><a href="../php/dataobjects.html#CircuitBreakerOptions#method_isFallbackOnFailure">isFallbackOnFailure</a></code> ，其结果是失败回调函数的输出。失败回调函数将
+<code>Throwable</code> 对象作为参数，并返回预期类型的​​对象。</p>
 </div>
 <div class="paragraph">
 <p>失败回调可以直接设置在 <code><a href="../../phpdoc/classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html">CircuitBreaker</a></code> 上：</p>
@@ -453,7 +453,7 @@ and 2 retries.</p>
 </div>
 <div class="paragraph">
 <p>当熔断器决定尝试复位的时候（ half-open 状态），我们也可以注册
-`<a href="../../phpdoc/classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html#method_halfOpenHandler">halfOpenHandler</a>`的回调从而得到回调通知。</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.circuitbreaker.CircuitBreaker.html#method_halfOpenHandler">halfOpenHandler</a></code> 的回调从而得到回调通知。</p>
 </div>
 </div>
 </div>
@@ -521,7 +521,7 @@ and 2 retries.</p>
 <div class="paragraph">
 <p><a href="https://github.com/Netflix/Hystrix">Netflix Hystrix</a>
 带有一个仪表板（dashboard），用于显示熔断器的当前状态。 Vert.x 熔断器可以发布其指标（metric），以供Hystrix 仪表板使用。 Hystrix 仪表板需要一个发送指标的SSE流，此流由
-`<a href="../../phpdoc/classes/io.vertx.jphp.circuitbreaker.HystrixMetricHandler.html">HystrixMetricHandler</a>`这个 Vert.x Web Handler 提供：</p>
+<code><a href="../../phpdoc/classes/io.vertx.jphp.circuitbreaker.HystrixMetricHandler.html">HystrixMetricHandler</a></code> 这个 Vert.x Web Handler 提供：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -556,7 +556,7 @@ and 2 retries.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:22 CST
+                上次更新时间 2018-11-30 10:22:20 CST
               
               
             </div>
@@ -583,8 +583,8 @@ and 2 retries.</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

@@ -561,7 +561,7 @@ over time.</p>
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-web&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -575,7 +575,7 @@ over time.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
- compile 'io.vertx:vertx-web:3.6.0-SNAPSHOT'
+ compile 'io.vertx:vertx-web:3.6.0'
 }</code></pre>
 </div>
 </div>
@@ -635,7 +635,7 @@ response.</p>
 </div>
 <div class="paragraph">
 <p>A <code><a href="../../apidocs/io/vertx/ext/web/Router.html">Router</a></code> is one of the core concepts of Vert.x-Web. It&#8217;s an object which maintains zero or more
-<code><a href="../../apidocs/io/vertx/ext/web/Route.html">Routes</a></code>.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/Route.html">Routes</a></code> .</p>
 </div>
 <div class="paragraph">
 <p>A router takes an HTTP request and finds the first matching route for that request, and passes the request to that route.</p>
@@ -799,7 +799,7 @@ false using <code><a href="../../apidocs/io/vertx/ext/web/Route.html#blockingHan
 </div>
 <div class="paragraph">
 <p>Note, if you need to process multipart form data from a blocking handler, you MUST use a non-blocking handler
-     FIRST in order to call {@code setExpectMultipart(true)}. Here is an example:</p>
+     FIRST in order to call <code>setExpectMultipart(true)</code>. Here is an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1064,7 +1064,7 @@ route.handler({ routingContext -&gt;
 </div>
 <div class="paragraph">
 <p>If you want to route for a specific HTTP method you can also use the methods such as <code><a href="../../apidocs/io/vertx/ext/web/Router.html#get--">get</a></code>,
-<code><a href="../../apidocs/io/vertx/ext/web/Router.html#post--">post</a>`and `<a href="../../apidocs/io/vertx/ext/web/Router.html#put--">put</a></code> named after the HTTP
+<code><a href="../../apidocs/io/vertx/ext/web/Router.html#post--">post</a></code> and <code><a href="../../apidocs/io/vertx/ext/web/Router.html#put--">put</a></code> named after the HTTP
 method name. For example:</p>
 </div>
 <div class="listingblock">
@@ -1384,7 +1384,7 @@ Accept: application/json;q=0.7, text/html;q=0.8, text/plain</p>
 </div>
 <div class="paragraph">
 <p>You can also mark your route as producing more than one MIME type. If this is the case, then you use
-`<a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#getAcceptableContentType--">getAcceptableContentType</a>`to find out the actual MIME type that
+<code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#getAcceptableContentType--">getAcceptableContentType</a></code> to find out the actual MIME type that
 was accepted.</p>
 </div>
 <div class="listingblock">
@@ -1458,7 +1458,7 @@ want to share between handlers for the lifetime of the request.</p>
 </div>
 <div class="paragraph">
 <p>You can use the <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#put-java.lang.String-java.lang.Object-">put</a></code> to put any object, and
-`<a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#get-java.lang.String-">get</a>`to retrieve any object from the context data.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#get-java.lang.String-">get</a></code> to retrieve any object from the context data.</p>
 </div>
 <div class="paragraph">
 <p>A request sent to path <code>/some/path/other</code> will match both routes.</p>
@@ -1666,7 +1666,7 @@ locale for a client or the sorted list of preferred locales by quality.</p>
 <div class="paragraph">
 <p>The main method <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#acceptableLocales--">acceptableLocales</a></code> will return the ordered list of locales the
 user understands, if you&#8217;re only interested in the user prefered locale then the helper:
-<code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#preferredLocale--">preferredLocale</a>`will return the 1st element of the list or `null</code> if no
+<code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#preferredLocale--">preferredLocale</a></code> will return the 1st element of the list or <code>null</code> if no
 locale was provided by the user.</p>
 </div>
 </div>
@@ -1717,7 +1717,7 @@ route.failureHandler({ frc -&gt;
 </div>
 <div class="paragraph">
 <p>Failure routing will occur if a handler throws an exception, or if a handler calls
-`<a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#fail-int-">fail</a>`specifying an HTTP status code to deliberately signal a failure.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#fail-int-">fail</a></code> specifying an HTTP status code to deliberately signal a failure.</p>
 </div>
 <div class="paragraph">
 <p>If an exception is caught from a handler this will result in a failure with status code <code>500</code> being signalled.</p>
@@ -2117,7 +2117,7 @@ data from the session with <code><a href="../../apidocs/io/vertx/ext/web/Session
 <div class="paragraph">
 <p>The keys for items in the session are always strings. The values can be any type for a local session store, and for
 a clustered session store they can be any basic type, or <code><a href="../../apidocs/io/vertx/core/buffer/Buffer.html">Buffer</a></code>, <code><a href="../../apidocs/io/vertx/core/json/JsonObject.html">JsonObject</a></code>,
-`<a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a>`or a serializable object, as the values have to serialized across the cluster.</p>
+<code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> or a serializable object, as the values have to serialized across the cluster.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of manipulating session data:</p>
@@ -2600,7 +2600,7 @@ with the correct <code>Content-Range</code> header.</p>
 </div>
 <div class="paragraph">
 <p><code>cache-control</code> is set to <code>max-age=86400</code> by default. This corresponds to one day. This can be configured with
-`<a href="../../apidocs/io/vertx/ext/web/handler/StaticHandler.html#setMaxAgeSeconds-long-">setMaxAgeSeconds</a>`if required.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/handler/StaticHandler.html#setMaxAgeSeconds-long-">setMaxAgeSeconds</a></code> if required.</p>
 </div>
 <div class="paragraph">
 <p>If a browser sends a GET or a HEAD request with an <code>if-modified-since</code> header and the resource has not been modified
@@ -2725,7 +2725,7 @@ engines. You can also easily add your own.</p>
 </div>
 <div class="paragraph">
 <p>Template engines are described by <code><a href="../../apidocs/io/vertx/ext/web/templ/TemplateEngine.html">TemplateEngine</a></code>. In order to render a template
-`<a href="../../apidocs/io/vertx/ext/web/common/template/TemplateEngine.html#render-io.vertx.core.json.JsonObject-java.lang.String-io.vertx.core.Handler-">render</a>`is used.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/common/template/TemplateEngine.html#render-io.vertx.core.json.JsonObject-java.lang.String-io.vertx.core.Handler-">render</a></code> is used.</p>
 </div>
 <div class="paragraph">
 <p>The simplest way to use templates is not to call the template engine directly but to use the
@@ -2750,7 +2750,7 @@ each template engine.</p>
 <h3 id="_mvel_template_engine">MVEL template engine</h3>
 <div class="paragraph">
 <p>To use MVEL, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-mvel:3.6.0-SNAPSHOT</code>. Create an instance of the MVEL template engine using:
+<code>io.vertx:vertx-web-templ-mvel:3.6.0</code>. Create an instance of the MVEL template engine using:
 <code>io.vertx.ext.web.templ.MVELTemplateEngine#create()</code></p>
 </div>
 <div class="paragraph">
@@ -2783,7 +2783,7 @@ MVEL templates.</p>
 <h3 id="_jade_template_engine">Jade template engine</h3>
 <div class="paragraph">
 <p>To use the Jade template engine, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-jade:3.6.0-SNAPSHOT</code>. Create an instance of the Jade template engine using:
+<code>io.vertx:vertx-web-templ-jade:3.6.0</code>. Create an instance of the Jade template engine using:
 <code>io.vertx.ext.web.templ.JadeTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2816,7 +2816,7 @@ Jade templates.</p>
 <h3 id="_handlebars_template_engine">Handlebars template engine</h3>
 <div class="paragraph">
 <p>To use Handlebars, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-handlebars:3.6.0-SNAPSHOT</code>. Create an instance of the Handlebars template engine
+<code>io.vertx:vertx-web-templ-handlebars:3.6.0</code>. Create an instance of the Handlebars template engine
 using: <code>io.vertx.ext.web.templ.HandlebarsTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2858,7 +2858,7 @@ handlebars templates.</p>
 <h3 id="_thymeleaf_template_engine">Thymeleaf template engine</h3>
 <div class="paragraph">
 <p>To use Thymeleaf, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-thymeleaf:3.6.0-SNAPSHOT</code>. Create an instance of the Thymeleaf template engine
+<code>io.vertx:vertx-web-templ-thymeleaf:3.6.0</code>. Create an instance of the Thymeleaf template engine
 using: <code>io.vertx.ext.web.templ.ThymeleafTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2893,7 +2893,7 @@ Thymeleaf templates.</p>
 <h3 id="_apache_freemarker_template_engine">Apache FreeMarker template engine</h3>
 <div class="paragraph">
 <p>To use Apache FreeMarker, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-freemarker:3.6.0-SNAPSHOT</code>. Create an instance of the Apache FreeMarker template engine
+<code>io.vertx:vertx-web-templ-freemarker:3.6.0</code>. Create an instance of the Apache FreeMarker template engine
 using: <code>io.vertx.ext.web.templ.Engine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2928,7 +2928,7 @@ Apache FreeMarker templates.</p>
 <h3 id="_pebble_template_engine">Pebble template engine</h3>
 <div class="paragraph">
 <p>To use Pebble, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-pebble:3.6.0-SNAPSHOT</code>. Create an instance of the Pebble template engine
+<code>io.vertx:vertx-web-templ-pebble:3.6.0</code>. Create an instance of the Pebble template engine
 using: <code>io.vertx.ext.web.templ.PebbleTemplateEngine#create(vertx)</code>.</p>
 </div>
 <div class="paragraph">
@@ -3158,7 +3158,7 @@ this will be called every time a SockJS connection is made from a client:</p>
 <p>The object passed into the handler is a <code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSSocket.html">SockJSSocket</a></code>. This has a familiar
 socket-like interface which you can read and write to similarly to a <code><a href="../../apidocs/io/vertx/core/net/NetSocket.html">NetSocket</a></code> or
 a <code><a href="../../apidocs/io/vertx/core/http/WebSocket.html">WebSocket</a></code>. It also implements <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> and
-`<a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a>`so you can pump it to and from other read and write streams.</p>
+<code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> so you can pump it to and from other read and write streams.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of a simple SockJS handler that simply echoes back any back any data that it reads:</p>
@@ -3297,7 +3297,7 @@ handles the SockJS data and bridges it to and from the server side event bus.</p
 </div>
 <div class="paragraph">
 <p>To activate the bridge you simply call
-`<a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSHandler.html#bridge-io.vertx.ext.web.handler.sockjs.BridgeOptions-">bridge</a>`on the
+<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSHandler.html#bridge-io.vertx.ext.web.handler.sockjs.BridgeOptions-">bridge</a></code> on the
 SockJS handler.</p>
 </div>
 <div class="listingblock">
@@ -3393,7 +3393,7 @@ eb2.enableReconnect(true);
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-web&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
  &lt;classifier&gt;client&lt;/classifier&gt;
  &lt;type&gt;js&lt;/type&gt;
 &lt;/dependency&gt;</code></pre>
@@ -3408,7 +3408,7 @@ eb2.enableReconnect(true);
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-web:3.6.0-SNAPSHOT:client'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-web:3.6.0:client'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3461,7 +3461,7 @@ bridge what messages are ok for it to pass through. (There is an exception for r
 </div>
 <div class="paragraph">
 <p>You can specify which <em>matches</em> you want to allow for inbound and outbound traffic using the
-`<a href="../../apidocs/io/vertx/ext/web/handler/sockjs/BridgeOptions.html">BridgeOptions</a>`that you pass in when calling bridge.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/BridgeOptions.html">BridgeOptions</a></code> that you pass in when calling bridge.</p>
 </div>
 <div class="paragraph">
 <p>Each match is a <code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/PermittedOptions.html">PermittedOptions</a></code> object:</p>
@@ -3573,7 +3573,7 @@ required for the match.</p>
 </div>
 <div class="paragraph">
 <p>To declare that a specific authority for the logged-in user is required in order to access allow the messages you use the
-`<a href="../../apidocs/io/vertx/ext/bridge/PermittedOptions.html#setRequiredAuthority-java.lang.String-">setRequiredAuthority</a>`field.</p>
+<code><a href="../../apidocs/io/vertx/ext/bridge/PermittedOptions.html#setRequiredAuthority-java.lang.String-">setRequiredAuthority</a></code> field.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -4173,7 +4173,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:20:39 CST
+                上次更新时间 2018-11-30 10:24:39 CST
               
               
             </div>
@@ -4200,8 +4200,8 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

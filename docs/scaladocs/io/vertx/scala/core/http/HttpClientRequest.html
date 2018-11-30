@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.0-SNAPSHOT API  - io.vertx.scala.core.http.HttpClientRequest</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.0 - SNAPSHOT API - io.vertx.scala.core.http.HttpClientRequest" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.0 SNAPSHOT API io.vertx.scala.core.http.HttpClientRequest" />
+          <title>vertx-lang-scala-docs_2.12 3.6.0 API  - io.vertx.scala.core.http.HttpClientRequest</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.0 API - io.vertx.scala.core.http.HttpClientRequest" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.0 API io.vertx.scala.core.http.HttpClientRequest" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.0-SNAPSHOT API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.0 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -209,6 +209,10 @@
                         <a class="object" href="ServerWebSocket$.html" title=""></a>
                         <a class="class" href="ServerWebSocket.html" title="Represents a server side WebSocket."></a>
                         <a href="ServerWebSocket.html" title="Represents a server side WebSocket.">ServerWebSocket</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="StreamPriority$.html" title=""></a>
+                        <a class="class" href="StreamPriority.html" title="This class represents HTTP/2 stream priority defined in RFC 7540 clause 5.3"></a>
+                        <a href="StreamPriority.html" title="This class represents HTTP/2 stream priority defined in RFC 7540 clause 5.3">StreamPriority</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="WebSocket$.html" title=""></a>
                         <a class="class" href="WebSocket.html" title="Represents a client-side WebSocket."></a>
@@ -749,6 +753,22 @@ be added to the current stream demand.   * @return a reference to this, so the A
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the raw value of the method this request sends</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpClientRequest#getStreamPriority" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStreamPriority():io.vertx.scala.core.http.StreamPriority"></a><a id="getStreamPriority():StreamPriority"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpClientRequest.html#getStreamPriority():io.vertx.scala.core.http.StreamPriority" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStreamPriority</span><span class="params">()</span><span class="result">: <a href="StreamPriority.html" class="extype" name="io.vertx.scala.core.http.StreamPriority">StreamPriority</a></span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the priority of the associated HTTP/2 stream for HTTP/2 otherwise <code>null</code>see <a href="../../../../../../../cheatsheet/StreamPriority.html">StreamPriority</a></p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpClientRequest#handler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.HttpClientResponse]):io.vertx.scala.core.http.HttpClientRequest"></a><a id="handler(Handler[HttpClientResponse]):HttpClientRequest"></a>
       <span class="permalink">
@@ -934,7 +954,7 @@ be added to the current stream demand.   * @return a reference to this, so the A
         <span class="name">pause</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpClientRequest">HttpClientRequest</a></span>
       </span>
       
-      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>   * @return a reference to this, so the API can be used fluently
+      <p class="shortcomment cmt">Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.</p><p>While it's paused, no data will be sent to the data <code>handler</code>.   * @return a reference to this, so the API can be used fluently
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpClientRequest">HttpClientRequest</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpClientRequest#pushHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pushHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.HttpClientRequest]):io.vertx.scala.core.http.HttpClientRequest"></a><a id="pushHandler(Handler[HttpClientRequest]):HttpClientRequest"></a>
@@ -1034,7 +1054,7 @@ process the response.
         <span class="name">resume</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpClientRequest">HttpClientRequest</a></span>
       </span>
       
-      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
+      <p class="shortcomment cmt">Resume reading, and sets the buffer in <code>flowing</code> mode.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading, and sets the buffer in <code>flowing</code> mode.</p><p>If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpClientRequest">HttpClientRequest</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpClientRequest#sendHead" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sendHead(completionHandler:io.vertx.core.Handler[io.vertx.core.http.HttpVersion]):io.vertx.scala.core.http.HttpClientRequest"></a><a id="sendHead(Handler[HttpVersion]):HttpClientRequest"></a>
@@ -1139,6 +1159,23 @@ more information.   * @return a reference to this, so the API can be used fluent
       </span>
       
       <p class="shortcomment cmt">Set the value the method to send when the method  is used.</p><div class="fullcomment"><div class="comment cmt"><p>Set the value the method to send when the method  is used.   * @param method the raw method</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpClientRequest#setStreamPriority" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setStreamPriority(streamPriority:io.vertx.scala.core.http.StreamPriority):io.vertx.scala.core.http.HttpClientRequest"></a><a id="setStreamPriority(StreamPriority):HttpClientRequest"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpClientRequest.html#setStreamPriority(streamPriority:io.vertx.scala.core.http.StreamPriority):io.vertx.scala.core.http.HttpClientRequest" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setStreamPriority</span><span class="params">(<span name="streamPriority">streamPriority: <a href="StreamPriority.html" class="extype" name="io.vertx.scala.core.http.StreamPriority">StreamPriority</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpClientRequest">HttpClientRequest</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the priority of the associated stream.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the priority of the associated stream.</p><p>This is not implemented for HTTP/1.x.   * @param streamPriority the priority of this request's stream see <a href="../../../../../../../cheatsheet/StreamPriority.html">StreamPriority</a>
+</p></div></div>
     </li><li name="io.vertx.scala.core.http.HttpClientRequest#setTimeout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTimeout(timeoutMs:Long):io.vertx.scala.core.http.HttpClientRequest"></a><a id="setTimeout(Long):HttpClientRequest"></a>
       <span class="permalink">

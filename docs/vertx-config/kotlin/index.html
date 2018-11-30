@@ -303,7 +303,7 @@ configures a set of configuration store
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-config&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -316,7 +316,7 @@ configures a set of configuration store
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-config:3.6.0-SNAPSHOT'
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-config:3.6.0'
 ----</code></pre>
 </div>
 </div>
@@ -522,7 +522,30 @@ configuration. Then the actual instance is created:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Code not translatable</code></pre>
+<pre class="highlight"><code>// Create a first instance of Vert.x
+var vertx = Vertx.vertx()
+// Create the config retriever
+var retriever = ConfigRetriever.create(vertx, ConfigRetrieverOptions(
+  stores = listOf(ConfigStoreOptions(
+    type = "file",
+    config = json {
+      obj("path" to "vertx.json")
+    }))))
+
+// Retrieve the configuration
+retriever.getConfig({ json -&gt;
+  var result = json.result()
+  // Close the vert.x instance, we don't need it anymore.
+  vertx.close()
+
+  // Create a new Vert.x instance using the retrieve configuration
+  var options = VertxOptions(result)
+  var newVertx = Vertx.vertx(options)
+
+  // Deploy your verticle
+  newVertx.deployVerticle(examples.GreetingVerticle.`class`.getName(), DeploymentOptions(
+    config = result.getJsonObject("a")))
+})</code></pre>
 </div>
 </div>
 </div>
@@ -843,7 +866,30 @@ multiple.values=1,2,3</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Code not translatable</code></pre>
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">var propertyWitHierarchical = ConfigStoreOptions(
+  format = "properties",
+  type = "file",
+  config = json {
+    obj(
+      "path" to "hierarchical.properties",
+      "hierarchical" to true
+    )
+  })
+var options = ConfigRetrieverOptions(
+  stores = listOf(propertyWitHierarchical))
+
+var configRetriever = ConfigRetriever.create(Vertx.vertx(), options)
+
+configRetriever.configStream().handler({ config -&gt;
+  var host = config.getJsonObject("server").getString("host")
+  var port = config.getJsonObject("server").getInteger("port")
+  var multiple = config.getJsonObject("multiple").getJsonArray("values")
+  for (i in 0 until multiple.size()) {
+    var value = multiple.getInteger(i)
+
+  }
+
+})</code></pre>
 </div>
 </div>
 </div>
@@ -910,7 +956,7 @@ set of handlers you are notified:</p>
 </li>
 <li>
 <p>when the configuration retriever is closed (the
-`<a href="../../apidocs/io/vertx/core/streams/ReadStream.html#endHandler-io.vertx.core.Handler-">endHandler</a>`is called).</p>
+<code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html#endHandler-io.vertx.core.Handler-">endHandler</a></code> is called).</p>
 </li>
 </ul>
 </div>
@@ -937,7 +983,7 @@ retriever.configStream().endHandler({ v -&gt;
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can configure a <em>processor</em> that can validate and update the configuration. This is done using the
-`<a href="../../apidocs/io/vertx/config/ConfigRetriever.html#setConfigurationProcessor-java.util.function.Function-">setConfigurationProcessor</a>`method.</p>
+<code><a href="../../apidocs/io/vertx/config/ConfigRetriever.html#setConfigurationProcessor-java.util.function.Function-">setConfigurationProcessor</a></code> method.</p>
 </div>
 <div class="paragraph">
 <p>The prcessing must not return <code>null</code>. It takes the retrieved configuration and returns the processed one. If the processor
@@ -1038,7 +1084,7 @@ stores you can use in your application.</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:40 CST
+                上次更新时间 2018-11-30 10:22:38 CST
               
               
             </div>
@@ -1065,8 +1111,8 @@ stores you can use in your application.</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

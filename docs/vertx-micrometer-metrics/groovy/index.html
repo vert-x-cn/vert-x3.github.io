@@ -180,6 +180,7 @@
 <li><a href="#_other_backends_or_combinations">Other backends or combinations</a></li>
 <li><a href="#_advanced_usage">Advanced usage</a>
 <ul class="sectlevel2">
+<li><a href="#_averages_and_quantiles_in_prometheus">Averages and quantiles in Prometheus</a></li>
 <li><a href="#_disable_some_metric_domains">Disable some metric domains</a></li>
 <li><a href="#_user_defined_metrics">User-defined metrics</a></li>
 <li><a href="#_other_instrumentation">Other instrumentation</a></li>
@@ -230,6 +231,7 @@
 <li><a href="#_other_backends_or_combinations">Other backends or combinations</a></li>
 <li><a href="#_advanced_usage">Advanced usage</a>
 <ul class="sectlevel2">
+<li><a href="#_averages_and_quantiles_in_prometheus">Averages and quantiles in Prometheus</a></li>
 <li><a href="#_disable_some_metric_domains">Disable some metric domains</a></li>
 <li><a href="#_user_defined_metrics">User-defined metrics</a></li>
 <li><a href="#_other_instrumentation">Other instrumentation</a></li>
@@ -312,7 +314,7 @@ It uses <a href="http://micrometer.io/">Micrometer</a> for managing metrics and 
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-micrometer-metrics&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
  &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
@@ -326,7 +328,7 @@ It uses <a href="http://micrometer.io/">Micrometer</a> for managing metrics and 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0'
 compile 'io.micrometer:micrometer-registry-influx:${micrometer.version}'</code></pre>
 </div>
 </div>
@@ -408,7 +410,7 @@ You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-micrometer-metrics&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
  &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
@@ -422,7 +424,7 @@ You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0'
 compile 'io.micrometer:micrometer-registry-prometheus:${micrometer.version}'</code></pre>
 </div>
 </div>
@@ -506,7 +508,7 @@ vertx.createHttpServer().requestHandler(router).listen(8080)</code></pre>
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-micrometer-metrics&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
  &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
@@ -520,7 +522,7 @@ vertx.createHttpServer().requestHandler(router).listen(8080)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0-SNAPSHOT'
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-micrometer-metrics:3.6.0'
 compile 'io.micrometer:micrometer-registry-jmx:${micrometer.version}'</code></pre>
 </div>
 </div>
@@ -606,6 +608,79 @@ def vertx = Vertx.vertx([
 <div class="sectionbody">
 <div class="paragraph">
 <p>Please refer to <code><a href="../../apidocs/io/vertx/micrometer/MicrometerMetricsOptions.html">MicrometerMetricsOptions</a></code> for an exhaustive list of options.</p>
+</div>
+<div class="sect2">
+<h3 id="_averages_and_quantiles_in_prometheus">Averages and quantiles in Prometheus</h3>
+<div class="paragraph">
+<p>By default, when using the Prometheus registry, histogram-kind metrics will not contain averages or quantile stats.</p>
+</div>
+<div class="paragraph">
+<p>Averages don&#8217;t come out of the box but they are typically <a href="https://prometheus.io/docs/practices/histograms/#count-and-sum-of-observations">computed at query time</a>,
+with <code>promql</code>. Example, for HTTP client response time average during the last 5 minutes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> rate(vertx_http_client_responseTime_seconds_sum[5m])
+/
+ rate(vertx_http_client_responseTime_seconds_count[5m])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To compute quantiles, there are two options available. The first is to activate quantile stats globally
+and make them usable for Prometheus function <code>histogram_quantile</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">def vertx = Vertx.vertx([
+  metricsOptions:[
+    prometheusOptions:[
+      enabled:true,
+      publishQuantiles:true
+    ],
+    enabled:true
+  ]
+])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And then, for example the <code>promql</code> query for the HTTP client response time, 99th percentile over the last 5 minutes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> histogram_quantile(0.99, sum(rate(vertx_http_client_responseTime_seconds_bucket[5m])) by (le))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The advantage of this option is that it can be leveraged in <code>promql</code>, aggregable across dimensions.
+The downside is that it creates a lot of timeseries for stats under the hood.</p>
+</div>
+<div class="paragraph">
+<p>The second option is to create limited stats, non-aggregable across dimensions.
+It requires to access directly the Micrometer / Prometheus registry:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">def registry = io.vertx.micrometer.backends.BackendRegistries.getDefaultNow()
+registry.config().meterFilter(new io.micrometer.core.instrument.config.MeterFilter())</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See also, more on histograms and percentiles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>from <a href="https://micrometer.io/docs/concepts#_histograms_and_percentiles">Micrometer doc</a></p>
+</li>
+<li>
+<p>from <a href="https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile">Prometheus doc</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Furthermore, you can check some <a href="https://github.com/vert-x3/vertx-examples/tree/master/micrometer-metrics-examples">full working examples</a>.
+They come along with few instructions to setup with Prometheus and view dashboards in Grafana.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_disable_some_metric_domains">Disable some metric domains</h3>
@@ -739,7 +814,7 @@ In general, it is fine to enable labels when the set of possible values is bound
 <div class="sect3">
 <h4 id="_using_matchers">Using Matchers</h4>
 <div class="paragraph">
-<p><code><a href="../../apidocs/io/vertx/micrometer/Match.html">Match</a></code> objects can be used to filter or rename some label value
+<p><code><a href="../../apidocs/io/vertx/micrometer/Match.html">Match</a></code>  objects can be used to filter or rename some label value
 by matching it with either an exact string or a regular expression (the former being more efficient).</p>
 </div>
 <div class="paragraph">
@@ -867,9 +942,8 @@ println(metrics)</code></pre>
 </td>
 <td class="content">
 The metric backends may have different conventions or rules for naming metrics.
-For instance, Influx convention is to use dot as a word separator, whereas Prometheus expects underscore.
-The names described below are given with underscore separators, but the actual names will vary
-according to the backend used.
+The names described below are given with underscore separators, but the actual names may vary
+depending on the backend used.
 </td>
 </tr>
 </table>
@@ -1302,7 +1376,7 @@ Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:19:34 CST
+                上次更新时间 2018-11-30 10:23:32 CST
               
               
             </div>
@@ -1329,8 +1403,8 @@ Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

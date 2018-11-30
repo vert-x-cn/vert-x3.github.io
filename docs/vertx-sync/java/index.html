@@ -164,6 +164,12 @@
 <li><a href="#_streams_of_events">Streams of events</a></li>
 <li><a href="#_using_a_code_fiberhandler_code">Using a <code>FiberHandler</code></a></li>
 <li><a href="#_further_examples">Further examples</a></li>
+<li><a href="#_what_if_you_get_exceptions">What if you get exceptions?</a>
+<ul class="sectlevel2">
+<li><a href="#_instrumentation_warnings">Instrumentation warnings</a></li>
+<li><a href="#_calling_fiber_code_from_outside_a_fiber">Calling fiber code from outside a fiber</a></li>
+</ul>
+</li>
 </ul>
         </div>
       </div>
@@ -179,6 +185,12 @@
 <li><a href="#_streams_of_events">Streams of events</a></li>
 <li><a href="#_using_a_code_fiberhandler_code">Using a <code>FiberHandler</code></a></li>
 <li><a href="#_further_examples">Further examples</a></li>
+<li><a href="#_what_if_you_get_exceptions">What if you get exceptions?</a>
+<ul class="sectlevel2">
+<li><a href="#_instrumentation_warnings">Instrumentation warnings</a></li>
+<li><a href="#_calling_fiber_code_from_outside_a_fiber">Calling fiber code from outside a fiber</a></li>
+</ul>
+</li>
 </ul>
         </div>
 
@@ -353,7 +365,7 @@ System.out.println("Timer has now fired");</code></pre>
 </div>
 <div class="paragraph">
 <p>You do this with an instance of <code><a href="../../apidocs/io/vertx/ext/sync/HandlerReceiverAdaptor.html">HandlerReceiverAdaptor</a></code> which implements both
-<code><a href="../../apidocs/io/vertx/core/Handler.html">Handler</a>`and `<a href="../../apidocs/io/vertx/ext/sync/Receiver.html">Receiver</a></code>. You create an instance using
+<code><a href="../../apidocs/io/vertx/core/Handler.html">Handler</a></code> and <code><a href="../../apidocs/io/vertx/ext/sync/Receiver.html">Receiver</a></code>. You create an instance using
 <code><a href="../../apidocs/io/vertx/ext/sync/Sync.html#streamAdaptor--">Sync.streamAdaptor</a></code>.</p>
 </div>
 <div class="paragraph">
@@ -424,13 +436,120 @@ vertx.createHttpServer().requestHandler(fiberHandler(req -&gt; {
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_what_if_you_get_exceptions">What if you get exceptions?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Quasar and co-routines do not <em>"automagically"</em> transform blocking code into non-blocking code.
+Especially, blocking using <code>Thread.sleep</code> or using <code>synchronized</code> blocks and methods <em>is</em> a problem.</p>
+</div>
+<div class="paragraph">
+<p>There are 2 types of exceptions that you may observe when using <code>vertx-sync</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_instrumentation_warnings">Instrumentation warnings</h3>
+<div class="paragraph">
+<p>You may encounter stack traces like the following in your logs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(...)
+[quasar] ERROR: while transforming io/vertx/core/impl/DeploymentManager$DeploymentImpl: Unable to instrument vertx/core/impl/DeploymentManager$DeploymentImpl#lambda$rollback$1(Ljava/lang/Throwable;Lio/vertx/core/impl/ContextInternal;Lio/vertx/core/Handler;/vertx/core/impl/ContextImpl;Lio/vertx/core/AsyncResult;)V because of synchronization
+co.paralleluniverse.fibers.instrument.UnableToInstrumentException: Unable to instrument vertx/core/impl/DeploymentManager$DeploymentImpl#lambda$rollback$1(Ljava/lang/Throwable;Lio/vertx/core/impl/ContextInternal;Lio/vertx/core/Handler;/vertx/core/impl/ContextImpl;Lio/vertx/core/AsyncResult;)V because of synchronization
+       at co.paralleluniverse.fibers.instrument.InstrumentMethod.dumpCodeBlock(InstrumentMethod.java:720)
+       at co.paralleluniverse.fibers.instrument.InstrumentMethod.accept(InstrumentMethod.java:415)
+       at co.paralleluniverse.fibers.instrument.InstrumentClass.visitEnd(InstrumentClass.java:265)
+(...)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These errors are actually warnings from Quasar as it tries to instrument both your code and libraries (including Vert.x modules!).</p>
+</div>
+<div class="paragraph">
+<p>Quasar may encounter blocking constructs such as thread blocking and <code>synchronized</code> blocks or methods.
+There is sometimes little you can do, but this does not mean that your application will not be functional.</p>
+</div>
+<div class="paragraph">
+<p>There are just some parts reported by Quasar where coroutines may block without being able to yield execution to another coroutine.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_calling_fiber_code_from_outside_a_fiber">Calling fiber code from outside a fiber</h3>
+<div class="paragraph">
+<p>You may encounter exceptions that prevent your application to function, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(...)
+io.vertx.core.VertxException: java.lang.IllegalThreadStateException: Method called not from within a fiber
+       at co.paralleluniverse.fibers.FiberAsync.requestSync(FiberAsync.java:289)
+       at co.paralleluniverse.fibers.FiberAsync.runSync(FiberAsync.java:255)
+       at co.paralleluniverse.fibers.FiberAsync.run(FiberAsync.java:111)
+(...)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This happens when you call fiber code (e.g., a method annotated with <code>@Suspendable</code>) from outside a fiber, such as from an event-loop thread.</p>
+</div>
+<div class="paragraph">
+<p>In most of the cases the solution lies in wrapping the call to the first fiber code using one of the helper methods from <code><a href="../../apidocs/io/vertx/ext/sync/Sync.html">Sync</a></code>: <code>awaitResult</code>, <code>awaitEvent</code>, <code>fiberHandler</code> and <code>streamAdaptor</code>.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that we have a fiber method like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Suspendable
+public String readData() {
+ boolean exists = Sync.awaitResult(h -&gt; vertx.fileSystem().exists("file.txt", h));
+ if (exists) {
+   Buffer buf = Sync.awaitResult(h -&gt; vertx.fileSystem().readFile("file.txt", h));
+		 return buf.toString();
+ }
+ return "";
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now suppose that we want to call this method in response to an event-bus method.
+To ensure that the event-bus message processing is from a fiber and we can call the <code>readData</code> method, then we need adapting with <code>fiberHandler</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">vertx.eventBus().consumer("read", Sync.fiberHandler(m -&gt; m.reply(readData())));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Conversely, if you do not use <code>fiberHandler</code> then you will get an exception as above:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">// This crashes!
+vertx.eventBus().consumer("read", m -&gt; m.reply(readData()));</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+If you need more flexibility you can always use <code><a href="../../apidocs/io/vertx/ext/sync/Sync.html#getContextScheduler--">Sync.getContextScheduler</a></code> to access the verticle context scheduler and start Quasar fibers / strands.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
         
 
         
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:20:30 CST
+                上次更新时间 2018-11-30 10:24:30 CST
               
               
             </div>
@@ -457,8 +576,8 @@ vertx.createHttpServer().requestHandler(fiberHandler(req -&gt; {
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

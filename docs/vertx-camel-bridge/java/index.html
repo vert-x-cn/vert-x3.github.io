@@ -244,7 +244,7 @@ build descriptor:</p>
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-camel-bridge&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -257,7 +257,7 @@ build descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-camel-bridge:3.6.0-SNAPSHOT'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-camel-bridge:3.6.0'</code></pre>
 </div>
 </div>
 </div>
@@ -281,7 +281,7 @@ CamelBridge.create(vertx,
 <div class="paragraph">
 <p>The bridge requires a <code>CamelContext</code>. It will find the endpoint from the context. The bridge needs to be started
 before being used. Be aware the the <code>start</code> method is asynchronous. You can use
-`<a href="../../apidocs/io/vertx/camel/CamelBridge.html#start-io.vertx.core.Handler-">start</a>`to be notified when the bridge has been started.</p>
+<code><a href="../../apidocs/io/vertx/camel/CamelBridge.html#start-io.vertx.core.Handler-">start</a></code> to be notified when the bridge has been started.</p>
 </div>
 <div class="sect2">
 <h3 id="_inbound_mapping">Inbound mapping</h3>
@@ -353,7 +353,7 @@ String response = template.extractFutureBody(future, String.class);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also configure the reply {@code timeout} using <code><a href="../../apidocs/io/vertx/camel/InboundMapping.html#setTimeout-int-">setTimeout</a></code>.</p>
+<p>You can also configure the reply <code>timeout</code> using <code><a href="../../apidocs/io/vertx/camel/InboundMapping.html#setTimeout-int-">setTimeout</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -471,7 +471,7 @@ vertx.eventBus().send("camel-route", "hello", reply -&gt; {
 </div>
 <div class="paragraph">
 <p>By default it uses the default worker thread pool, this is customizable using the
-`<a href="../../apidocs/io/vertx/camel/OutboundMapping.html#setWorkerExecutor-io.vertx.core.WorkerExecutor-">setWorkerExecutor</a>`method.</p>
+<code><a href="../../apidocs/io/vertx/camel/OutboundMapping.html#setWorkerExecutor-io.vertx.core.WorkerExecutor-">setWorkerExecutor</a></code> method.</p>
 </div>
 </div>
 </div>
@@ -481,7 +481,7 @@ vertx.eventBus().send("camel-route", "hello", reply -&gt; {
 <div class="sectionbody">
 <div class="paragraph">
 <p>Don&#8217;t forget to stop the bridge using the <code>stop</code> method. The <code>stop</code> method is asynchronous. You can use
-`<a href="../../apidocs/io/vertx/camel/CamelBridge.html#stop-io.vertx.core.Handler-">stop</a>`to be notified when the bridge has been stopped.</p>
+<code><a href="../../apidocs/io/vertx/camel/CamelBridge.html#stop-io.vertx.core.Handler-">stop</a></code> to be notified when the bridge has been stopped.</p>
 </div>
 </div>
 </div>
@@ -504,7 +504,7 @@ vertx.eventBus().send("camel-route", "hello", reply -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:19 CST
+                上次更新时间 2018-11-30 10:22:18 CST
               
               
             </div>
@@ -531,8 +531,8 @@ vertx.eventBus().send("camel-route", "hello", reply -&gt; {
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

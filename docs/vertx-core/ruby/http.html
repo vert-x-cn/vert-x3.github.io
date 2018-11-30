@@ -441,12 +441,12 @@ server.request_handler() { |request|
 </div>
 <div class="paragraph">
 <p>服务请求对象允许您检索 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#uri-instance_method">uri</a></code> ,
-<code><a href="../../yardoc/Vertx/HttpServerRequest.html#path-instance_method">path</a></code>, <code><a href="../../yardoc/Vertx/HttpServerRequest.html#params-instance_method">params</a></code> 和
-`<a href="../../yardoc/Vertx/HttpServerRequest.html#headers-instance_method">headers</a>`等其他信息。</p>
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html#path-instance_method">path</a></code> , <code><a href="../../yardoc/Vertx/HttpServerRequest.html#params-instance_method">params</a></code> 和
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html#headers-instance_method">headers</a></code> 等其他信息。</p>
 </div>
 <div class="paragraph">
 <p>每一个服务请求对象和一个服务响应对象绑定，您可以用
-<code><a href="../../yardoc/Vertx/HttpServerRequest.html#response-instance_method">response</a>`方法获取一个 `<a href="../../yardoc/Vertx/HttpServerResponse.html">HttpServerResponse</a></code>
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html#response-instance_method">response</a></code> 方法获取一个 <code><a href="../../yardoc/Vertx/HttpServerResponse.html">HttpServerResponse</a></code>
 对象的引用。</p>
 </div>
 <div class="paragraph">
@@ -652,7 +652,7 @@ request.end_handler() { |v|
 <h4 id="_pumping_请求">Pumping 请求</h4>
 <div class="paragraph">
 <p>请求对象实现了 <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-<code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 实例中。</p>
+<code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code>  实例中。</p>
 </div>
 <div class="paragraph">
 <p>详细请参阅 <a href="#streams">流和管道</a> 章节。</p>
@@ -696,7 +696,7 @@ request.end_handler() { |v|
 </div>
 <div class="paragraph">
 <p>要接收文件，您可以告诉 Vert.x 使用 multipart 表单，并对请求设置
-<code><a href="../../yardoc/Vertx/HttpServerRequest.html#upload_handler-instance_method">uploadHandler</a></code>。</p>
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html#upload_handler-instance_method">uploadHandler</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>当服务器每次接收到上传请求时，该处理器将被调用一次。</p>
@@ -728,7 +728,7 @@ request.end_handler() { |v|
 </div>
 <div class="paragraph">
 <p>上传对象实现了 <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 接口，因此您可以将请求体读取到任何
-`<a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a>`实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
+<code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 实例中。详细说明请参阅 <a href="#streams">流和管道（泵）</a> 章节。</p>
 </div>
 <div class="paragraph">
 <p>若您只是想将文件上传到服务器的某个磁盘，可以使用 <code><a href="../../yardoc/Vertx/HttpServerFileUpload.html#stream_to_file_system-instance_method">streamToFileSystem</a></code> 方法：</p>
@@ -789,7 +789,7 @@ request.end_handler() { |v|
 <h4 id="_非标准的_http_方法">非标准的 HTTP 方法</h4>
 <div class="paragraph">
 <p><code><a href="todo">OTHER</a></code> HTTP 方法可用于非标准方法，在这种情况下，
-`<a href="../../yardoc/Vertx/HttpServerRequest.html#raw_method-instance_method">rawMethod</a>`方法返回客户端发送的实际 HTTP 方法。</p>
+<code><a href="../../yardoc/Vertx/HttpServerRequest.html#raw_method-instance_method">rawMethod</a></code> 方法返回客户端发送的实际 HTTP 方法。</p>
 </div>
 </div>
 </div>
@@ -921,7 +921,7 @@ response.end("hello world!")</code></pre>
 <h4 id="_设置响应头">设置响应头</h4>
 <div class="paragraph">
 <p>HTTP 响应头可直接添加到 HTTP 响应中，通常直接操作
-<code><a href="../../yardoc/Vertx/HttpServerResponse.html#headers-instance_method">headers</a></code>：</p>
+<code><a href="../../yardoc/Vertx/HttpServerResponse.html#headers-instance_method">headers</a></code> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1112,8 +1112,8 @@ response.put_trailer("X-wibble", "woobble").put_trailer("X-quux", "flooble")</co
 <h4 id="_pumping_响应">Pumping 响应</h4>
 <div class="paragraph">
 <p>服务端响应 <code>HttpServerResponse</code> 也是一个 <code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 实例，因此您可以从任何
-<code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a>`向其泵送数据，如 `<a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code> , <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> ,
-<code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a>`或 `<a href="../../yardoc/Vertx/HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
+<code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 向其泵送数据，如 <code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code> , <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> ,
+<code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code> 或 <code><a href="../../yardoc/Vertx/HttpServerRequest.html">HttpServerRequest</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这儿有一个例子，它回应了任何 PUT 方法的响应中的请求体，它为请求体使用了 Pump，所以即使 HTTP 请求体很大并填满了内存，任何时候它依旧会工作：</p>
@@ -1188,7 +1188,7 @@ request.response().reset(8)</code></pre>
 </div>
 <div class="paragraph">
 <p>若使用了 <code><a href="../../yardoc/Vertx/HttpServerRequest.html#exception_handler-instance_method">request handler</a></code> 和
-`<a href="../../yardoc/Vertx/HttpServerResponse.html#exception_handler-instance_method">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知：</p>
+<code><a href="../../yardoc/Vertx/HttpServerResponse.html#exception_handler-instance_method">response handler</a></code> 两个处理器过后，在流重置完成时您将会收到通知：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1362,7 +1362,7 @@ client = vertx.create_http_client(options)</code></pre>
 </div>
 <div class="paragraph">
 <p><code>h2c</code> 连接也可以直接建立，如连接可以使用前文提到的方式创建，当
-<code><a href="../dataobjects.html#HttpClientOptions#set_http2_clear_text_upgrade-instance_method">http2ClearTextUpgrade</a>`选项设置为 `false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
+<code><a href="../dataobjects.html#HttpClientOptions#set_http2_clear_text_upgrade-instance_method">http2ClearTextUpgrade</a></code> 选项设置为 <code>false</code> 时：建立连接后，客户端将发送 HTTP/2 连接前缀，并期望从服务端接收相同的连接偏好。</p>
 </div>
 <div class="paragraph">
 <p>HTTP 服务端可能不支持 HTTP/2，当响应到达时，可以使用 <code><a href="../../yardoc/Vertx/HttpClientResponse.html#version-instance_method">version</a></code> 方法检查响应实际HTTP版本。</p>
@@ -1438,7 +1438,7 @@ client.get_now("foo.othercompany.com", "/other-uri") { |response|
 </div>
 <div class="paragraph">
 <p>使用 Vert.x HTTP Client 执行这种请求最简单的方式是使用加了 <code>Now</code> 后缀的请求方法，如
-<code><a href="../../yardoc/Vertx/HttpClient.html#get_now-instance_method">getNow</a></code>。</p>
+<code><a href="../../yardoc/Vertx/HttpClient.html#get_now-instance_method">getNow</a></code> 。</p>
 </div>
 <div class="paragraph">
 <p>这些方法会创建HTTP 请求，并在单个方法调用中发送它，而且允许您提供一个处理器，当HTTP 响应发送回来时调用该处理器来处理响应结果。</p>
@@ -1731,7 +1731,7 @@ request.end()</code></pre>
 <h4 id="_客户端请求中指定处理器">客户端请求中指定处理器</h4>
 <div class="paragraph">
 <p>不像在调用中提供响应处理器来创建客户端请求对象，相反您可以当请求创建时不提供处理器、稍后在请求对象中调用
-`<a href="../../yardoc/Vertx/HttpClientRequest.html#handler-instance_method">handler</a>`来设置。如：</p>
+<code><a href="../../yardoc/Vertx/HttpClientRequest.html#handler-instance_method">handler</a></code> 来设置。如：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1745,7 +1745,7 @@ request.handler() { |response|
 <div class="sect3">
 <h4 id="_使用流式请求">使用流式请求</h4>
 <div class="paragraph">
-<p><code><a href="../../yardoc/Vertx/HttpClientRequest.html">HttpClientRequest</a>`实例实现了 `<a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
+<p><code><a href="../../yardoc/Vertx/HttpClientRequest.html">HttpClientRequest</a></code> 实例实现了 <code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 接口，这意味着您可以从任何 <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 实例将数据泵入请求中。</p>
 </div>
 <div class="paragraph">
 <p>例如，您可以将磁盘上的文件直接泵送到HTTP 请求体中，如下所示：</p>
@@ -1810,7 +1810,7 @@ request.write_custom_frame(frameType, frameStatus, payload)</code></pre>
 </div>
 <div class="paragraph">
 <p>若使用了 <code><a href="../../yardoc/Vertx/HttpClientRequest.html#exception_handler-instance_method">request handler</a></code> 和
-`<a href="../../yardoc/Vertx/HttpClientResponse.html#exception_handler-instance_method">response handler</a>`两个处理器过后，在流重置完成时您将会收到通知。</p>
+<code><a href="../../yardoc/Vertx/HttpClientResponse.html#exception_handler-instance_method">response handler</a></code> 两个处理器过后，在流重置完成时您将会收到通知。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2356,7 +2356,7 @@ client = vertx.create_http_client(clientOptions)</code></pre>
 <div class="sect2">
 <h3 id="_http_连接">HTTP 连接</h3>
 <div class="paragraph">
-<p>`<a href="../../yardoc/Vertx/HttpConnection.html">HttpConnection</a>`接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
+<p><code><a href="../../yardoc/Vertx/HttpConnection.html">HttpConnection</a></code> 接口提供了处理HTTP 连接事件、生命周期、设置的API。</p>
 </div>
 <div class="paragraph">
 <p>HTTP/2 实现了完整的 <code><a href="../../yardoc/Vertx/HttpConnection.html">HttpConnection</a></code> API。</p>
@@ -2367,7 +2367,7 @@ client = vertx.create_http_client(clientOptions)</code></pre>
 <div class="sect3">
 <h4 id="_服务端连接">服务端连接</h4>
 <div class="paragraph">
-<p>`<a href="../../yardoc/Vertx/HttpServerRequest.html#connection-instance_method">connection</a>`方法会返回服务器上的请求连接：</p>
+<p><code><a href="../../yardoc/Vertx/HttpServerRequest.html#connection-instance_method">connection</a></code> 方法会返回服务器上的请求连接：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2390,7 +2390,7 @@ server.connection_handler() { |connection|
 <div class="sect3">
 <h4 id="_客户端连接">客户端连接</h4>
 <div class="paragraph">
-<p>`<a href="../../yardoc/Vertx/HttpClientRequest.html#connection-instance_method">connection</a>`方法会返回客户端上的连接请求：</p>
+<p><code><a href="../../yardoc/Vertx/HttpClientRequest.html#connection-instance_method">connection</a></code> 方法会返回客户端上的连接请求：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2418,7 +2418,7 @@ server.connection_handler() { |connection|
 </div>
 <div class="paragraph">
 <p>当建立连接时，客户端和服务器交换初始配置，初始设置由客户端上的 <code><a href="../dataobjects.html#HttpClientOptions#set_initial_settings-instance_method">initialSettings</a></code> 和服务器上的
-`<a href="../dataobjects.html#HttpServerOptions#set_initial_settings-instance_method">initialSettings</a>`方法配置。</p>
+<code><a href="../dataobjects.html#HttpServerOptions#set_initial_settings-instance_method">initialSettings</a></code> 方法配置。</p>
 </div>
 <div class="paragraph">
 <p>连接建立后可随时更改设置：</p>
@@ -2521,7 +2521,7 @@ connection.ping(data) { |pong_err,pong|
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../../yardoc/Vertx/HttpConnection.html#shutdown_handler-instance_method">shutdownHandler</a>`通知何时关闭所有流，连接尚未关闭。</p>
+<p><code><a href="../../yardoc/Vertx/HttpConnection.html#shutdown_handler-instance_method">shutdownHandler</a></code> 通知何时关闭所有流，连接尚未关闭。</p>
 </div>
 <div class="paragraph">
 <p>有可能只需发送 {@literal GOAWAY} 帧，和关闭主要的区别在于它将只是告诉远程连接停止创建新流，而没有计划关闭连接：</p>
@@ -2691,10 +2691,10 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../dataobjects.html#HttpClientOptions#set_ssl-instance_method">ssl</a>`设置将用作客户端默认配置。</p>
+<p><code><a href="../dataobjects.html#HttpClientOptions#set_ssl-instance_method">ssl</a></code> 设置将用作客户端默认配置。</p>
 </div>
 <div class="paragraph">
-<p>`<a href="../dataobjects.html#RequestOptions#set_ssl-instance_method">ssl</a>`将覆盖默认客户端设置：</p>
+<p><code><a href="../dataobjects.html#RequestOptions#set_ssl-instance_method">ssl</a></code> 将覆盖默认客户端设置：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2739,7 +2739,7 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 </div>
 <div class="paragraph">
 <p>当对服务端创建 WebSocket 连接时，Vert.x 将向 <code>Handler</code> 传入一个
-`<a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a>`实例，在其中去处理它。</p>
+<code><a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a></code> 实例，在其中去处理它。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2787,9 +2787,9 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <div class="sect4">
 <h5 id="_服务端_websocket_2">服务端 WebSocket</h5>
 <div class="paragraph">
-<p><code><a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a>`实例能够让您读取在WebSocket 握手中的HTTP 请求的 `<a href="../../yardoc/Vertx/ServerWebSocket.html#headers-instance_method">headers</a></code> ,
-<code><a href="../../yardoc/Vertx/ServerWebSocket.html#path-instance_method">path</a></code>, <code><a href="../../yardoc/Vertx/ServerWebSocket.html#query-instance_method">query</a></code> 和
-<code><a href="../../yardoc/Vertx/ServerWebSocket.html#uri-instance_method">URI</a></code>。</p>
+<p><code><a href="../../yardoc/Vertx/ServerWebSocket.html">ServerWebSocket</a></code> 实例能够让您读取在WebSocket 握手中的HTTP 请求的 <code><a href="../../yardoc/Vertx/ServerWebSocket.html#headers-instance_method">headers</a></code> ,
+<code><a href="../../yardoc/Vertx/ServerWebSocket.html#path-instance_method">path</a></code> , <code><a href="../../yardoc/Vertx/ServerWebSocket.html#query-instance_method">query</a></code> 和
+<code><a href="../../yardoc/Vertx/ServerWebSocket.html#uri-instance_method">URI</a></code> 。</p>
 </div>
 </div>
 </div>
@@ -2816,8 +2816,8 @@ Hello from i.v.e.h.s.HttpServerVerticle@2
 <h4 id="_向_websocket_写入消息">向 WebSocket 写入消息</h4>
 <div class="paragraph">
 <p>若您想将一个 WebSocket 消息写入 WebSocket，可使用
-`<a href="../../yardoc/Vertx/WebSocket.html#write_binary_message-instance_method">writeBinaryMessage</a>`方法或
-`<a href="../../yardoc/Vertx/WebSocket.html#write_text_message-instance_method">writeTextMessage</a>`方法来执行该操作：</p>
+<code><a href="../../yardoc/Vertx/WebSocket.html#write_binary_message-instance_method">writeBinaryMessage</a></code> 方法或
+<code><a href="../../yardoc/Vertx/WebSocket.html#write_text_message-instance_method">writeTextMessage</a></code> 方法来执行该操作：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2849,7 +2849,7 @@ websocket.write_text_message(message)</code></pre>
 <p>要发送多个帧组成的消息，请使用
 <code><a href="../../yardoc/Vertx/WebSocketFrame.html#binary_frame-class_method">WebSocketFrame.binaryFrame</a></code>
 , <code><a href="../../yardoc/Vertx/WebSocketFrame.html#text_frame-class_method">WebSocketFrame.textFrame</a></code> 或
-<code><a href="../../yardoc/Vertx/WebSocketFrame.html#continuation_frame-class_method">WebSocketFrame.continuationFrame</a>`方法创建帧，并使用 `<a href="../../yardoc/Vertx/WebSocket.html#write_frame-instance_method">writeFrame</a></code> 方法将其写入WebSocket。</p>
+<code><a href="../../yardoc/Vertx/WebSocketFrame.html#continuation_frame-class_method">WebSocketFrame.continuationFrame</a></code> 方法创建帧，并使用 <code><a href="../../yardoc/Vertx/WebSocket.html#write_frame-instance_method">writeFrame</a></code> 方法将其写入WebSocket。</p>
 </div>
 <div class="paragraph">
 <p>以下是二进制帧的示例：</p>
@@ -2917,8 +2917,8 @@ websocket.write_final_binary_frame(buff)</code></pre>
 <div class="sect3">
 <h4 id="_流式_websocket">流式 WebSocket</h4>
 <div class="paragraph">
-<p><code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a>`实例也是 `<a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 和
-`<a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a>`的实现类，因此可以和泵(pump)一起使用。</p>
+<p><code><a href="../../yardoc/Vertx/WebSocket.html">WebSocket</a></code> 实例也是 <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> 和
+<code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> 的实现类，因此可以和泵(pump)一起使用。</p>
 </div>
 <div class="paragraph">
 <p>当使用 WebSocket 作为可写流或可读流时，它只能用于不分割多个帧的二进制帧一起使用的 WebSocket 连接。</p>
@@ -2935,7 +2935,7 @@ websocket.write_final_binary_frame(buff)</code></pre>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../dataobjects.html#HttpClientOptions">HttpClientOptions</a></code> 中的
-`<a href="../dataobjects.html#ProxyOptions">ProxyOptions</a>`对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
+<code><a href="../dataobjects.html#ProxyOptions">ProxyOptions</a></code> 对象配置来配置代理（包括代理类型、主机名、端口和可选用户名和密码）。</p>
 </div>
 <div class="paragraph">
 <p>以下是使用 HTTP 代理的例子：</p>
@@ -3019,7 +3019,7 @@ support them (gopher:// for example).</p>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:53 CST
+                上次更新时间 2018-11-30 10:22:52 CST
               
               
             </div>
@@ -3046,8 +3046,8 @@ support them (gopher:// for example).</p>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

@@ -168,24 +168,6 @@
         </a>
         <ul class="nav nav-list nav-namespaces">
                 
-        <li>
-        <a href="../namespaces/io.vertx.jphp.config.vault.html" title="vault">
-            <i class="icon-th"></i> vault
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-        <li>
-        <a href="../namespaces/io.vertx.jphp.config.vault.client.html" title="client">
-            <i class="icon-th"></i> client
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-    
-        </ul>
-    </li>
     
         </ul>
     </li>
@@ -589,11 +571,56 @@
         <ul class="nav nav-list nav-namespaces">
                 
         <li>
+        <a href="../namespaces/io.vertx.jphp.ext.web.api.html" title="api">
+            <i class="icon-th"></i> api
+        </a>
+        <ul class="nav nav-list nav-namespaces">
+                
+        <li>
+        <a href="../namespaces/io.vertx.jphp.ext.web.api.contract.html" title="contract">
+            <i class="icon-th"></i> contract
+        </a>
+        <ul class="nav nav-list nav-namespaces">
+                
+        <li>
+        <a href="../namespaces/io.vertx.jphp.ext.web.api.contract.openapi3.html" title="openapi3">
+            <i class="icon-th"></i> openapi3
+        </a>
+        <ul class="nav nav-list nav-namespaces">
+                
+    
+        </ul>
+    </li>
+    
+        </ul>
+    </li>
+        <li>
+        <a href="../namespaces/io.vertx.jphp.ext.web.api.validation.html" title="validation">
+            <i class="icon-th"></i> validation
+        </a>
+        <ul class="nav nav-list nav-namespaces">
+                
+    
+        </ul>
+    </li>
+    
+        </ul>
+    </li>
+        <li>
         <a href="../namespaces/io.vertx.jphp.ext.web.client.html" title="client">
             <i class="icon-th"></i> client
         </a>
         <ul class="nav nav-list nav-namespaces">
                 
+        <li>
+        <a href="../namespaces/io.vertx.jphp.ext.web.client.predicate.html" title="predicate">
+            <i class="icon-th"></i> predicate
+        </a>
+        <ul class="nav nav-list nav-namespaces">
+                
+    
+        </ul>
+    </li>
     
         </ul>
     </li>
@@ -1171,7 +1198,7 @@
 
                                         <div id="class_ConfigRetrieverOptions" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ConfigRetrieverOptions .collapse">
         <h1>ConfigRetrieverOptions<a href="../classes/io.vertx.jphp.config.ConfigRetrieverOptions.html">¶</a></h1>
-        <p class="short_description"></p>
+        <p class="short_description">Options to configure the &lt;code&gt;ConfigRetriever&lt;/code&gt;.</p>
         <div class="details collapse">
                             
                     </div>
@@ -1190,68 +1217,6 @@ retrieve the configuration chunk.</p>
 
                             </div>
             
-                
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/io.html">io</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/io.vertx.html">vertx</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.html">jphp</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.config.html">config</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.config.vault.html">vault</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.config.vault.client.html">client</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="class_TokenRequest" class="element ajax clickable class" data-toggle="collapse" data-target="#class_TokenRequest .collapse">
-        <h1>TokenRequest<a href="../classes/io.vertx.jphp.config.vault.client.TokenRequest.html">¶</a></h1>
-        <p class="short_description">The token request structure.</p>
-        <div class="details collapse">
-                            
-                    </div>
-        <a href="../classes/io.vertx.jphp.config.vault.client.TokenRequest.html" class="more">« More »</a>    </div>
-
-                            </div>
-            
-    
-    
     
                 
     
@@ -3192,6 +3157,20 @@ To prevent this, after each write, instances of this class check whether the wri
                             <p>
 Any class that implements this interface can be used by a @see \io\vertx\jphp\core\streams\Pump to pump data from it
 to a @see \io\vertx\jphp\core\streams\WriteStream.
+<p>
+<h3>Streaming mode</h3>
+The stream is either in <i>flowing</i> or <i>fetch</i> mode.
+<ul>
+  <i>Initially the stream is in <i>flowing</i> mode.</i>
+  <li>When the stream is in <i>flowing</i> mode, elements are delivered to the <code>handler</code>.</li>
+  <li>When the stream is in <i>fetch</i> mode, only the number of requested elements will be delivered to the <code>handler</code>.</li>
+</ul>
+The mode can be changed with the @see \io\vertx\jphp\core\streams\ReadStream::pause, @see \io\vertx\jphp\core\streams\ReadStream::resume and @see \io\vertx\jphp\core\streams\ReadStream::fetch methods:
+<ul>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::resume sets the <i>flowing</i> mode</li>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::pause sets the <i>fetch</i> mode and resets the demand to <code>0</code></li>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::fetch requests a specific amount of elements and adds it to the actual demand</li>
+</ul>
                     </div>
         <a href="../classes/io.vertx.jphp.core.streams.ReadStream.html" class="more">« More »</a>    </div>
 
@@ -3440,6 +3419,14 @@ Instances of this class are passed into a @see \io\vertx\jphp\core\http\HttpServ
 when a WebSocket handshake is manually @see \io\vertx\jphp\core\http\HttpServerRequest::upgradeed.
                     </div>
         <a href="../classes/io.vertx.jphp.core.http.ServerWebSocket.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_StreamPriority" class="element ajax clickable class" data-toggle="collapse" data-target="#class_StreamPriority .collapse">
+        <h1>StreamPriority<a href="../classes/io.vertx.jphp.core.http.StreamPriority.html">¶</a></h1>
+        <p class="short_description">This class represents HTTP/2 stream priority defined in RFC 7540 clause 5.3</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.core.http.StreamPriority.html" class="more">« More »</a>    </div>
 
                                         <div id="class_WebSocket" class="element ajax clickable class" data-toggle="collapse" data-target="#class_WebSocket .collapse">
         <h1>WebSocket<a href="../classes/io.vertx.jphp.core.http.WebSocket.html">¶</a></h1>
@@ -4424,6 +4411,14 @@ Please consult the documentation for a full explanation.
                             
                     </div>
         <a href="../classes/io.vertx.jphp.ext.consul.ConsulClientOptions.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_ConsulService" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ConsulService .collapse">
+        <h1>ConsulService<a href="../classes/io.vertx.jphp.ext.consul.ConsulService.html">¶</a></h1>
+        <p class="short_description"></p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.consul.ConsulService.html" class="more">« More »</a>    </div>
 
                                         <div id="class_Coordinate" class="element ajax clickable class" data-toggle="collapse" data-target="#class_Coordinate .collapse">
         <h1>Coordinate<a href="../classes/io.vertx.jphp.ext.consul.Coordinate.html">¶</a></h1>
@@ -5681,6 +5676,401 @@ Concrete implementations exist for several well-known template engines.
 
     
     <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.html">api</a>
+    </li>
+
+        </ul>
+
+        
+        
+                    <div class="namespace-indent">
+                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
+                
+                
+                                        <div id="class_OperationRequest" class="element ajax clickable class" data-toggle="collapse" data-target="#class_OperationRequest .collapse">
+        <h1>OperationRequest<a href="../classes/io.vertx.jphp.ext.web.api.OperationRequest.html">¶</a></h1>
+        <p class="short_description"></p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.OperationRequest.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_OperationResponse" class="element ajax clickable class" data-toggle="collapse" data-target="#class_OperationResponse .collapse">
+        <h1>OperationResponse<a href="../classes/io.vertx.jphp.ext.web.api.OperationResponse.html">¶</a></h1>
+        <p class="short_description"></p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.OperationResponse.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_RequestParameter" class="element ajax clickable class" data-toggle="collapse" data-target="#class_RequestParameter .collapse">
+        <h1>RequestParameter<a href="../classes/io.vertx.jphp.ext.web.api.RequestParameter.html">¶</a></h1>
+        <p class="short_description">Request parameter holder</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.RequestParameter.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_RequestParameters" class="element ajax clickable class" data-toggle="collapse" data-target="#class_RequestParameters .collapse">
+        <h1>RequestParameters<a href="../classes/io.vertx.jphp.ext.web.api.RequestParameters.html">¶</a></h1>
+        <p class="short_description">Container for request parameters</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.RequestParameters.html" class="more">« More »</a>    </div>
+
+                            </div>
+            
+                
+    
+        <ul class="breadcrumb">
+            <li><a href="../index.html"><i class="icon-th"></i></a></li>
+                
+                
+                
+                
+                
+                
+                
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.html">io</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.html">vertx</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.html">jphp</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.html">ext</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.html">web</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.html">api</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.validation.html">validation</a>
+    </li>
+
+        </ul>
+
+        
+        
+                    <div class="namespace-indent">
+                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
+                
+                
+                                        <div id="class_ContainerDeserializer" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ContainerDeserializer .collapse">
+        <h1>ContainerDeserializer<a href="../classes/io.vertx.jphp.ext.web.api.validation.ContainerDeserializer.html">¶</a></h1>
+        <p class="short_description">Interface that define methods for deserialization of array and objects</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.validation.ContainerDeserializer.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_CustomValidator" class="element ajax clickable class" data-toggle="collapse" data-target="#class_CustomValidator .collapse">
+        <h1>CustomValidator<a href="../classes/io.vertx.jphp.ext.web.api.validation.CustomValidator.html">¶</a></h1>
+        <p class="short_description">This interface is used to add custom &lt;b&gt;synchronous&lt;/b&gt; functions inside validation process. You can add it in</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.validation.CustomValidator.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_HTTPRequestValidationHandler" class="element ajax clickable class" data-toggle="collapse" data-target="#class_HTTPRequestValidationHandler .collapse">
+        <h1>HTTPRequestValidationHandler<a href="../classes/io.vertx.jphp.ext.web.api.validation.HTTPRequestValidationHandler.html">¶</a></h1>
+        <p class="short_description">An interface for add HTTP Request validation. This class can validate parameters inside query, path, headers an
+body (watch below)
+&lt;br/&gt;
+You can assign multiple body type at the same time(for example a JSON schema together with a XML schema). This
+interface support:
+&lt;ul&gt;
+&lt;li&gt;application/x-www-form-urlencoded&lt;/li&gt;
+&lt;li&gt;multipart/form-data&lt;/li&gt;
+&lt;li&gt;application/xml&lt;/li&gt;
+&lt;li&gt;application/json&lt;/li&gt;
+&lt;/ul&gt;
+Also you can add a form parameter for validation without care about content type of your request. For form
+parameters this interface support both &quot;multipart/form-data&quot; and &quot;application/x-www-form-urlencoded&quot;
+&lt;br/&gt;
+This interface allow extra parameters in the request, so it doesn&#039;t care if in a request there&#039;s a parameter
+without a specified validation rule
+&lt;br/&gt;
+If a parameter is flagged as an array, it will be validated also if the size of array is 1 element</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.validation.HTTPRequestValidationHandler.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_ParameterTypeValidator" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ParameterTypeValidator .collapse">
+        <h1>ParameterTypeValidator<a href="../classes/io.vertx.jphp.ext.web.api.validation.ParameterTypeValidator.html">¶</a></h1>
+        <p class="short_description">Interface for declaration of method for validate a specific parameter type.&lt;br/&gt;
+If you want to implement your own type validator, you need only to implement</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.validation.ParameterTypeValidator.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_ParameterValidationRule" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ParameterValidationRule .collapse">
+        <h1>ParameterValidationRule<a href="../classes/io.vertx.jphp.ext.web.api.validation.ParameterValidationRule.html">¶</a></h1>
+        <p class="short_description">This function is an inner wrapper for ParameterTypeValidator inside ValidationHandler parameter maps. &lt;b&gt;Don&#039;t
+instantiate this class&lt;/b&gt;, if you want to add custom ParameterTypeValidator to a parameter use functions in</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.validation.ParameterValidationRule.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_ValidationHandler" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ValidationHandler .collapse">
+        <h1>ValidationHandler<a href="../classes/io.vertx.jphp.ext.web.api.validation.ValidationHandler.html">¶</a></h1>
+        <p class="short_description">Base interface for validation.</p>
+        <div class="details collapse">
+                            <p>For basic HTTP Request Validator, use @see \io\vertx\jphp\ext\web\api\validation\HTTPRequestValidationHandler</p>
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.validation.ValidationHandler.html" class="more">« More »</a>    </div>
+
+                            </div>
+            
+    
+                
+    
+        <ul class="breadcrumb">
+            <li><a href="../index.html"><i class="icon-th"></i></a></li>
+                
+                
+                
+                
+                
+                
+                
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.html">io</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.html">vertx</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.html">jphp</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.html">ext</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.html">web</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.html">api</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.contract.html">contract</a>
+    </li>
+
+        </ul>
+
+        
+        
+                    <div class="namespace-indent">
+                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
+                
+                
+                                        <div id="class_HTTPOperationRequestValidationHandler" class="element ajax clickable class" data-toggle="collapse" data-target="#class_HTTPOperationRequestValidationHandler .collapse">
+        <h1>HTTPOperationRequestValidationHandler<a href="../classes/io.vertx.jphp.ext.web.api.contract.HTTPOperationRequestValidationHandler.html">¶</a></h1>
+        <p class="short_description">Base interface for HTTP request validation with API specification</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.contract.HTTPOperationRequestValidationHandler.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_RouterFactory" class="element ajax clickable class" data-toggle="collapse" data-target="#class_RouterFactory .collapse">
+        <h1>RouterFactory<a href="../classes/io.vertx.jphp.ext.web.api.contract.RouterFactory.html">¶</a></h1>
+        <p class="short_description">Main interface for Design Driven Router factory
+Author: Francesco Guardiani @slinkydeveloper</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.contract.RouterFactory.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_RouterFactoryOptions" class="element ajax clickable class" data-toggle="collapse" data-target="#class_RouterFactoryOptions .collapse">
+        <h1>RouterFactoryOptions<a href="../classes/io.vertx.jphp.ext.web.api.contract.RouterFactoryOptions.html">¶</a></h1>
+        <p class="short_description"></p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.contract.RouterFactoryOptions.html" class="more">« More »</a>    </div>
+
+                            </div>
+            
+                
+    
+        <ul class="breadcrumb">
+            <li><a href="../index.html"><i class="icon-th"></i></a></li>
+                
+                
+                
+                
+                
+                
+                
+                
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.html">io</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.html">vertx</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.html">jphp</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.html">ext</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.html">web</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.html">api</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.contract.html">contract</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.api.contract.openapi3.html">openapi3</a>
+    </li>
+
+        </ul>
+
+        
+        
+                    <div class="namespace-indent">
+                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
+                
+                
+                                        <div id="class_OpenAPI3RequestValidationHandler" class="element ajax clickable class" data-toggle="collapse" data-target="#class_OpenAPI3RequestValidationHandler .collapse">
+        <h1>OpenAPI3RequestValidationHandler<a href="../classes/io.vertx.jphp.ext.web.api.contract.openapi3.OpenAPI3RequestValidationHandler.html">¶</a></h1>
+        <p class="short_description"></p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.contract.openapi3.OpenAPI3RequestValidationHandler.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_OpenAPI3RouterFactory" class="element ajax clickable class" data-toggle="collapse" data-target="#class_OpenAPI3RouterFactory .collapse">
+        <h1>OpenAPI3RouterFactory<a href="../classes/io.vertx.jphp.ext.web.api.contract.openapi3.OpenAPI3RouterFactory.html">¶</a></h1>
+        <p class="short_description">Interface for OpenAPI3RouterFactory. &lt;br/&gt;
+To add an handler, use @see \io\vertx\jphp\ext\web\api\contract\openapi3\OpenAPI3RouterFactory::addHandlerByOperationId&lt;br/&gt;
+Usage example:
+&lt;pre&gt;
+&lt;code&gt;OpenAPI3RouterFactory.create(vertx, &quot;src/resources/spec.yaml&quot;, asyncResult -&gt; {
+if (!asyncResult.succeeded()) {
+// IO failure or spec invalid&lt;/code&gt; else {
+    OpenAPI3RouterFactory routerFactory = asyncResult.result();
+    routerFactory.addHandlerByOperationId(&quot;operation_id&quot;, routingContext -&gt; {
+       // Do something
+    }, routingContext -&gt; {
+       // Do something with failure handler
+    });
+    Router router = routerFactory.getRouter();
+ }
+});
+}
+&lt;/pre&gt;
+&lt;br/&gt;
+Handlers are loaded in this order:&lt;br/&gt;
+ &lt;ol&gt;
+  &lt;li&gt;Body handler (Customizable with &lt;/li&gt;
+  &lt;li&gt;Custom global handlers configurable with &lt;/li&gt;
+  &lt;li&gt;Global security handlers defined in upper spec level&lt;/li&gt;
+  &lt;li&gt;Operation specific security handlers&lt;/li&gt;
+  &lt;li&gt;Generated validation handler&lt;/li&gt;
+  &lt;li&gt;User handlers or &quot;Not implemented&quot; handler&lt;/li&gt;
+&lt;/ol&gt;</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.api.contract.openapi3.OpenAPI3RouterFactory.html" class="more">« More »</a>    </div>
+
+                            </div>
+            
+    
+    
+    
+                
+    
+        <ul class="breadcrumb">
+            <li><a href="../index.html"><i class="icon-th"></i></a></li>
+                
+                
+                
+                
+                
+                
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.html">io</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.html">vertx</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.html">jphp</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.html">ext</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.html">web</a>
+    </li>
+
+    
+    <li>
         <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.handler.html">handler</a>
     </li>
 
@@ -6118,6 +6508,90 @@ requests/response is necessary.
 
                             </div>
             
+                
+    
+        <ul class="breadcrumb">
+            <li><a href="../index.html"><i class="icon-th"></i></a></li>
+                
+                
+                
+                
+                
+                
+                
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.html">io</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.html">vertx</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.html">jphp</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.html">ext</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.html">web</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.client.html">client</a>
+    </li>
+
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/io.vertx.jphp.ext.web.client.predicate.html">predicate</a>
+    </li>
+
+        </ul>
+
+        
+        
+                    <div class="namespace-indent">
+                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
+                
+                
+                                        <div id="class_ErrorConverter" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ErrorConverter .collapse">
+        <h1>ErrorConverter<a href="../classes/io.vertx.jphp.ext.web.client.predicate.ErrorConverter.html">¶</a></h1>
+        <p class="short_description">Converts a @see \io\vertx\jphp\ext\web\client\predicate\ResponsePredicateResult to a &lt;code&gt;Throwable&lt;/code&gt; describing the error.</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.client.predicate.ErrorConverter.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_ResponsePredicate" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ResponsePredicate .collapse">
+        <h1>ResponsePredicate<a href="../classes/io.vertx.jphp.ext.web.client.predicate.ResponsePredicate.html">¶</a></h1>
+        <p class="short_description">A predicate on .</p>
+        <div class="details collapse">
+                            <p>
+By default, a Vert.x Web Client request ends with an error only if something wrong happens at the network level.
+In other words, a <code>404 Not Found</code> response, or a response with the wrong content type, are <em>NOT</em> considered as failures.
+<p>
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.client.predicate.ResponsePredicate.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_ResponsePredicateResult" class="element ajax clickable class" data-toggle="collapse" data-target="#class_ResponsePredicateResult .collapse">
+        <h1>ResponsePredicateResult<a href="../classes/io.vertx.jphp.ext.web.client.predicate.ResponsePredicateResult.html">¶</a></h1>
+        <p class="short_description">Represents the outcome of a @see \io\vertx\jphp\ext\web\client\predicate\ResponsePredicate applied to an .</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.web.client.predicate.ResponsePredicateResult.html" class="more">« More »</a>    </div>
+
+                            </div>
+            
+    
     
     
                 
@@ -7728,6 +8202,14 @@ keys are available with @see \io\vertx\jphp\ext\sql\UpdateResult.
                 <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
                 
                 
+                                        <div id="class_AggregateOptions" class="element ajax clickable class" data-toggle="collapse" data-target="#class_AggregateOptions .collapse">
+        <h1>AggregateOptions<a href="../classes/io.vertx.jphp.ext.mongo.AggregateOptions.html">¶</a></h1>
+        <p class="short_description">Options used to configure aggregate operations.</p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.mongo.AggregateOptions.html" class="more">« More »</a>    </div>
+
                                         <div id="class_BulkOperation" class="element ajax clickable class" data-toggle="collapse" data-target="#class_BulkOperation .collapse">
         <h1>BulkOperation<a href="../classes/io.vertx.jphp.ext.mongo.BulkOperation.html">¶</a></h1>
         <p class="short_description">Contains all data needed for one operation of a bulk write operation.</p>
@@ -8275,6 +8757,14 @@ port, security options, login options and login/password</p>
                             
                     </div>
         <a href="../classes/io.vertx.jphp.ext.mail.MailResult.html" class="more">« More »</a>    </div>
+
+                                        <div id="class_MailService" class="element ajax clickable class" data-toggle="collapse" data-target="#class_MailService .collapse">
+        <h1>MailService<a href="../classes/io.vertx.jphp.ext.mail.MailService.html">¶</a></h1>
+        <p class="short_description"></p>
+        <div class="details collapse">
+                            
+                    </div>
+        <a href="../classes/io.vertx.jphp.ext.mail.MailService.html" class="more">« More »</a>    </div>
 
                             </div>
             
@@ -8958,7 +9448,7 @@ for specific Topic/Partition, these are Kafka's specific operations.
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 05 Nov 2018 12:12:38 +0000.<br/>
+            generated on Fri, 30 Nov 2018 01:45:43 +0000.<br/>
     </footer>
     </body>
 </html>

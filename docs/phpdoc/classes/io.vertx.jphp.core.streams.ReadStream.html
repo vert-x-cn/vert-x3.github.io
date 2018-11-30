@@ -149,14 +149,14 @@ be added to the current stream demand.</span><pre>fetch</pre>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_pause" title="pause :: Pause the &lt;code&gt;ReadStream&lt;/code&gt;. While it&#039;s paused, no data will be sent to the data &lt;code&gt;handler&lt;/code&gt;">
-            <span class="description">Pause the &lt;code&gt;ReadStream&lt;/code&gt;. While it&#039;s paused, no data will be sent to the data &lt;code&gt;handler&lt;/code&gt;</span><pre>pause</pre>
+        <a href="#method_pause" title="pause :: Pause the &lt;code&gt;ReadStream&lt;/code&gt;, it sets the buffer in &lt;code&gt;fetch&lt;/code&gt; mode and clears the actual demand.">
+            <span class="description">Pause the &lt;code&gt;ReadStream&lt;/code&gt;, it sets the buffer in &lt;code&gt;fetch&lt;/code&gt; mode and clears the actual demand.</span><pre>pause</pre>
         </a>
     </li>
 
                                                                                                         <li class="method public">
-        <a href="#method_resume" title="resume :: Resume reading. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will recommence on it.">
-            <span class="description">Resume reading. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will recommence on it.</span><pre>resume</pre>
+        <a href="#method_resume" title="resume :: Resume reading, and sets the buffer in &lt;code&gt;flowing&lt;/code&gt; mode.">
+            <span class="description">Resume reading, and sets the buffer in &lt;code&gt;flowing&lt;/code&gt; mode.</span><pre>resume</pre>
         </a>
     </li>
 
@@ -196,6 +196,20 @@ be added to the current stream demand.</span><pre>fetch</pre>
                         <p>
 Any class that implements this interface can be used by a @see \io\vertx\jphp\core\streams\Pump to pump data from it
 to a @see \io\vertx\jphp\core\streams\WriteStream.
+<p>
+<h3>Streaming mode</h3>
+The stream is either in <i>flowing</i> or <i>fetch</i> mode.
+<ul>
+  <i>Initially the stream is in <i>flowing</i> mode.</i>
+  <li>When the stream is in <i>flowing</i> mode, elements are delivered to the <code>handler</code>.</li>
+  <li>When the stream is in <i>fetch</i> mode, only the number of requested elements will be delivered to the <code>handler</code>.</li>
+</ul>
+The mode can be changed with the @see \io\vertx\jphp\core\streams\ReadStream::pause, @see \io\vertx\jphp\core\streams\ReadStream::resume and @see \io\vertx\jphp\core\streams\ReadStream::fetch methods:
+<ul>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::resume sets the <i>flowing</i> mode</li>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::pause sets the <i>fetch</i> mode and resets the demand to <code>0</code></li>
+  <li>Calling @see \io\vertx\jphp\core\streams\ReadStream::fetch requests a specific amount of elements and adds it to the actual demand</li>
+</ul>
                     </div>
                     <table class="table table-bordered">
                                                                                     <tr>
@@ -356,7 +370,7 @@ be added to the current stream demand.</h2>
                         </div>
                                             <a id="method_pause"></a>
                         <div class="element clickable method public  method_pause" data-toggle="collapse" data-target=".method_pause .collapse">
-                            <h2>Pause the &lt;code&gt;ReadStream&lt;/code&gt;. While it&#039;s paused, no data will be sent to the data &lt;code&gt;handler&lt;/code&gt;</h2>
+                            <h2>Pause the &lt;code&gt;ReadStream&lt;/code&gt;, it sets the buffer in &lt;code&gt;fetch&lt;/code&gt; mode and clears the actual demand.</h2>
                             <pre>pause() : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -364,7 +378,8 @@ be added to the current stream demand.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"></div>
+                                    <div class="long_description"><p>
+While it's paused, no data will be sent to the data <code>handler</code>.</div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -385,7 +400,7 @@ be added to the current stream demand.</h2>
                         </div>
                                             <a id="method_resume"></a>
                         <div class="element clickable method public  method_resume" data-toggle="collapse" data-target=".method_resume .collapse">
-                            <h2>Resume reading. If the &lt;code&gt;ReadStream&lt;/code&gt; has been paused, reading will recommence on it.</h2>
+                            <h2>Resume reading, and sets the buffer in &lt;code&gt;flowing&lt;/code&gt; mode.</h2>
                             <pre>resume() : $this</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
@@ -393,7 +408,8 @@ be added to the current stream demand.</h2>
                             
                             <div class="row collapse">
                                 <div class="detail-description">
-                                    <div class="long_description"></div>
+                                    <div class="long_description"><p/>
+<p>If the <code>ReadStream</code> has been paused, reading will recommence on it.</p></div>
 
                                     <table class="table">
                                                                                     <tr>
@@ -434,7 +450,7 @@ be added to the current stream demand.</h2>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 05 Nov 2018 12:12:46 +0000.<br/>
+            generated on Fri, 30 Nov 2018 01:45:52 +0000.<br/>
     </footer>
     </body>
 </html>

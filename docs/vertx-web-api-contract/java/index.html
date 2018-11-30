@@ -242,7 +242,7 @@
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-web-api-contract&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -256,7 +256,7 @@
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
- compile 'io.vertx:vertx-web-api-contract:3.6.0-SNAPSHOT'
+ compile 'io.vertx:vertx-web-api-contract:3.6.0'
 }</code></pre>
 </div>
 </div>
@@ -396,7 +396,7 @@ if (body != null) {
 <div class="paragraph">
 <p>You can create your web service based on OpenAPI3 specification with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code>.
 This class, as name says, is a router factory based on your OpenAPI 3 specification.
-`<a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a>`is intended to give you a really simple user interface to use OpenAPI 3 support. It includes:</p>
+<code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code> is intended to give you a really simple user interface to use OpenAPI 3 support. It includes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -451,6 +451,31 @@ As location It accepts absolute paths, local paths and local or remote URLs (HTT
 <pre class="highlight"><code class="language-java" data-lang="java">OpenAPI3RouterFactory.create(
   vertx,
   "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml",
+  ar -&gt; {
+    if (ar.succeeded()) {
+      // Spec loaded with success
+      OpenAPI3RouterFactory routerFactory = ar.result();
+    } else {
+      // Something went wrong during router factory initialization
+      Throwable exception = ar.cause();
+    }
+  });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or, you can also access a private remote spec by passing one or more <a href="https://github.com/swagger-api/swagger-parser#usage">AuthorizationValue</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">AuthorizationValue authorizationValue = new AuthorizationValue()
+  .type("header")
+  .keyName("Authorization")
+  .value("Bearer xx.yy.zz");
+List&lt;JsonObject&gt; authorizations = Collections.singletonList(JsonObject.mapFrom(authorizationValue));
+OpenAPI3RouterFactory.create(
+  vertx,
+  "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml",
+  authorizations,
   ar -&gt; {
     if (ar.succeeded()) {
       // Spec loaded with success
@@ -578,6 +603,9 @@ HttpServer server = vertx.createHttpServer(new HttpServerOptions().setPort(8080)
 server.requestHandler(router).listen();</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::override/rxjava2.adoc[]</p>
+</div>
 </div>
 </div>
 </div>
@@ -587,7 +615,7 @@ server.requestHandler(router).listen();</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:20:45 CST
+                上次更新时间 2018-11-30 10:24:43 CST
               
               
             </div>
@@ -614,8 +642,8 @@ server.requestHandler(router).listen();</code></pre>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

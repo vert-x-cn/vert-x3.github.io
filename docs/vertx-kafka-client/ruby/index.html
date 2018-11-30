@@ -175,7 +175,7 @@
 <li><a href="#_错误处理">错误处理</a></li>
 <li><a href="#_随_verticle_自动关闭">随 Verticle 自动关闭</a></li>
 <li><a href="#_使用_vert_x_自带的序列化与反序列化机制">使用 Vert.x 自带的序列化与反序列化机制</a></li>
-<li><a href="#_rxjava_api">RxJava API</a></li>
+<li><a href="#_rxjava2_api">RxJava2 API</a></li>
 <li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
 <ul class="sectlevel1">
 <li><a href="#_using_the_adminutils">Using the AdminUtils</a>
@@ -214,7 +214,7 @@
 <li><a href="#_错误处理">错误处理</a></li>
 <li><a href="#_随_verticle_自动关闭">随 Verticle 自动关闭</a></li>
 <li><a href="#_使用_vert_x_自带的序列化与反序列化机制">使用 Vert.x 自带的序列化与反序列化机制</a></li>
-<li><a href="#_rxjava_api">RxJava API</a></li>
+<li><a href="#_rxjava2_api">RxJava2 API</a></li>
 <li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
 <ul class="sectlevel1">
 <li><a href="#_using_the_adminutils">Using the AdminUtils</a>
@@ -282,7 +282,7 @@
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-kafka-client&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -295,7 +295,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile io.vertx:vertx-kafka-client:3.6.0-SNAPSHOT</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile io.vertx:vertx-kafka-client:3.6.0</code></pre>
 </div>
 </div>
 </div>
@@ -314,7 +314,7 @@
 <div class="paragraph">
 <p>我们可以通过一个 Map 来包装这些配置，然后将其传入到
 <code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html">KafkaConsumer</a></code> 接口或
-<code><a href="../../yardoc/VertxKafkaClient/KafkaProducer.html">KafkaProducer</a>`接口中的 `create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
+<code><a href="../../yardoc/VertxKafkaClient/KafkaProducer.html">KafkaProducer</a></code> 接口中的 <code>create</code> 静态方法里来创建 <code>KafkaConsumer</code> 或 <code>KafkaProducer</code>：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -361,11 +361,11 @@ producer = VertxKafkaClient::KafkaProducer.create(vertx, config)</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>我们可以通过 <code>KafkaConsumer</code> 的
-`<a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#subscribe-instance_method">subscribe</a>`方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#subscribe-instance_method">subscribe</a></code> 方法来订阅一个或多个 topic 进行消费，同时加入到某个消费组（consumer group）中（在创建消费者实例时通过配置指定）。</p>
 </div>
 <div class="paragraph">
 <p>当然你需要通过
-<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#handler-instance_method">handler</a>`方法注册一个 `Handler</code> 来处理接收的消息：</p>
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#handler-instance_method">handler</a></code> 方法注册一个 <code>Handler</code> 来处理接收的消息：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -432,8 +432,8 @@ consumer.subscribe("a-single-topic") { |ar_err,ar|
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#partitions_revoked_handler-instance_method">partitionsRevokedHandler</a></code> 和
-<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#partitions_assigned_handler-instance_method">partitionsAssignedHandler</a>`方法在
-`<a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html">KafkaConsumer</a>`里注册一个 `Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#partitions_assigned_handler-instance_method">partitionsAssignedHandler</a></code> 方法在
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html">KafkaConsumer</a></code> 里注册一个 <code>Handler</code> 用于监听对应的 partition 是否被删除或者分配。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -759,7 +759,7 @@ handler has been called. This is not the case for messages observed by the batch
 <div class="sectionbody">
 <div class="paragraph">
 <p>你可以利用 Kafka 0.10.1.1 引入的新的API <code>beginningOffsets</code> 来获取给定分区的起始偏移量。这个跟上面的
-`<a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#seek_to_beginning-instance_method">seekToBeginning</a>`方法有一个地方不同：
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#seek_to_beginning-instance_method">seekToBeginning</a></code> 方法有一个地方不同：
 beginningOffsets
 方法不会更改 offset 的值，仅仅是读取（只读模式）。</p>
 </div>
@@ -840,7 +840,7 @@ consumer.end_offsets(topicPartition) { |done_err,done|
 </div>
 <div class="paragraph">
 <p>我们可以利用 <code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#pause-instance_method">pause</a></code> 方法和
-`<a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#resume-instance_method">resume</a>`方法来进行流量控制：</p>
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#resume-instance_method">resume</a></code> 方法来进行流量控制：</p>
 </div>
 <div class="paragraph">
 <p>In the case of the partition-specific pause and resume it is possible that the record handler will continue to
@@ -1087,8 +1087,8 @@ producer.partitions_for("test") { |ar_err,ar|
 <div class="sectionbody">
 <div class="paragraph">
 <p>您可以利用
-`<a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#exception_handler-instance_method">exceptionHandler</a>`方法和
-`<a href="../../yardoc/VertxKafkaClient/KafkaProducer.html#exception_handler-instance_method">exceptionHandler</a>`方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
+<code><a href="../../yardoc/VertxKafkaClient/KafkaConsumer.html#exception_handler-instance_method">exceptionHandler</a></code> 方法和
+<code><a href="../../yardoc/VertxKafkaClient/KafkaProducer.html#exception_handler-instance_method">exceptionHandler</a></code> 方法来处理 Kafka 客户端（生产者和消费者）和 Kafka 集群之间的错误（如超时）。
 比如：</p>
 </div>
 <div class="listingblock">
@@ -1178,7 +1178,7 @@ config["acks"] = "1"</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_rxjava_api">RxJava API</h2>
+<h2 id="_rxjava2_api">RxJava2 API</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x Kafka Client 组件也提供Rx风格的API。</p>
@@ -1299,7 +1299,7 @@ adminUtils.topic_exists("myNewTopic") { |result_err,result|
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:19:24 CST
+                上次更新时间 2018-11-30 10:23:22 CST
               
               
             </div>
@@ -1326,8 +1326,8 @@ adminUtils.topic_exists("myNewTopic") { |result_err,result|
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

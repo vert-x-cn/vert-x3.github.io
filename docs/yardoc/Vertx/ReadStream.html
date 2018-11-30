@@ -87,7 +87,7 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb</dd>
+    <dd class="r1 last">/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -212,7 +212,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Pause the ReadStream.</div></span>
+    <span class="summary_desc"><div class='inline'>Pause the ReadStream, it sets the buffer in fetch mode and clears the actual demand.</div></span>
   
 </li>
 
@@ -234,7 +234,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Resume reading.</div></span>
+    <span class="summary_desc"><div class='inline'>Resume reading, and sets the buffer in flowing mode.</div></span>
   
 </li>
 
@@ -317,16 +317,16 @@
       <pre class="lines">
 
 
-60
-61
-62
-63
 64
 65
-66</pre>
+66
+67
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 60</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_end_handler'>end_handler</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -415,7 +415,7 @@
 16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 10</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exception_handler'>exception_handler</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -498,16 +498,16 @@
       <pre class="lines">
 
 
-50
-51
-52
-53
 54
 55
-56</pre>
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 50</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_amount'>amount</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_amount'>amount</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Fixnum</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -593,7 +593,7 @@
 26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 20</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_handler'>handler</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -618,7 +618,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>
+    Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.
+ <p>
+ While it's paused, no data will be sent to the data <code>handler</code>.
 
   </div>
 </div>
@@ -657,16 +659,16 @@
       <pre class="lines">
 
 
-29
-30
 31
 32
 33
 34
-35</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 29</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pause'>pause</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -691,7 +693,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.
+    Resume reading, and sets the buffer in <code>flowing</code> mode.
+ <p/>
+ If the <code>ReadStream</code> has been paused, reading will recommence on it.
 
   </div>
 </div>
@@ -730,16 +734,16 @@
       <pre class="lines">
 
 
-38
-39
-40
-41
 42
 43
-44</pre>
+44
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/scratch/jenkins/workspace/vert.x3-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 38</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/read_stream.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resume'>resume</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -758,7 +762,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Nov  6 00:52:10 2018 by
+  Generated on Wed Nov 28 22:59:40 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

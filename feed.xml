@@ -193,11 +193,6 @@ After installing you will be able to run a single node cluster:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;ccm create rss_reader -v &lt;span class=&quot;hljs-number&quot;&gt;3.11&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; -n &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;hljs-operator&quot;&gt;-s&lt;/span&gt;
 ccm start&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;For now, &lt;a href=&quot;https://github.com/vert-x3/vertx-cassandra-client&quot;&gt;Eclipse Vert.x Cassandra client&lt;/a&gt; is not available in maven central, it means that you have to build and install it locally:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;git clone https://github.com/vert-x3/vertx-cassandra-client
-&lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; vertx-cassandra-client
-mvn clean install -Dmaven.test.skip=&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;hljs-operator&quot;&gt;-s&lt;/span&gt; .travis.maven.settings.xml&lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Before completing this step make sure that you have successfully cloned the RSS reader repository and checked out the &lt;code&gt;step_1&lt;/code&gt; branch:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;git clone https://github.com/Sammers21/rss-reader
 &lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; rss-reader
@@ -213,9 +208,9 @@ you are running. It means that you need first to figure out what kind of queries
 you will be running, and then you can produce a storage scheme.&lt;/p&gt;
 &lt;p&gt;In our case we’d like our application to have 3 endpoints:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;POST /user/{user_id}/rss_link - for adding links to a user’s feed&lt;/li&gt;
-&lt;li&gt;GET /user/{user_id}/rss_channels - for retrieving information about RSS channels a user subscribed on&lt;/li&gt;
-&lt;li&gt;GET /articles/by_rss_link?link={rss_link} - for retrieving information about articles on a specific RSS channel&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;POST /user/{user_id}/rss_link&lt;/code&gt; - for adding links to a user’s feed&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GET /user/{user_id}/rss_channels&lt;/code&gt; - for retrieving information about RSS channels a user subscribed on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GET /articles/by_rss_link?link={rss_link}&lt;/code&gt; - for retrieving information about articles on a specific RSS channel&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;For implementing this endpoints the schema should look in this way:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-operator&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;TABLE&lt;/span&gt; rss_by_user (login &lt;span class=&quot;hljs-built_in&quot;&gt;text&lt;/span&gt; , rss_link &lt;span class=&quot;hljs-built_in&quot;&gt;text&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;KEY&lt;/span&gt; (login, rss_link));&lt;/span&gt;
@@ -1985,9 +1980,9 @@ provide early feedback!&lt;/p&gt;
 &lt;p&gt;OpenAPI 2 is the most important industry-grade standard for API Specifications. As you can see on &lt;a href=&quot;https://www.openapis.org/blog/2017/05/25/the-open-api-initiative-is-sending-you-a-save-the-date-card?utm_source=Blog&amp;utm_medium=Twitter&amp;utm_campaign=SaveTheDate&quot;&gt;official blog of OpenAPI Initiative&lt;/a&gt;, the release of version 3 is behind the corner, so we want to give to our community the latest tools for the latest standards!&lt;/p&gt;
 &lt;p&gt;Vert.x project objective is to give you more integrated tools. With this new support, it gives you the ability to use the &lt;a href=&quot;https://swaggerhub.com/blog/api-design/design-first-or-code-first-api-development/&quot;&gt;Design Driven&lt;/a&gt; (or Design First) approach &lt;strong&gt;without loading any thirds parties libraries&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
-&lt;p&gt;The actually supported features are the following (we refeer to document Version 3.0.0-rc2):&lt;/p&gt;
+&lt;p&gt;The actually supported features are the following (we reefer to OpenAPI version 3.0.0):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;OpenAPI 3 compliant API specification validation (thanks to &lt;a href=&quot;https://github.com/RepreZen/KaiZen-OpenApi-Parser&quot;&gt;Kaizen-OpenApi-Parser&lt;/a&gt;) with &lt;strong&gt;loading of external Json schemas&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;OpenAPI 3 compliant API specification validation with &lt;strong&gt;loading of external Json schemas&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Automatic request validation&lt;/li&gt;
 &lt;li&gt;Automatic mount of security validation handlers&lt;/li&gt;
 &lt;li&gt;Automatic 501 response for not implemented operations&lt;/li&gt;
@@ -2016,23 +2011,15 @@ provide early feedback!&lt;/p&gt;
 &lt;h2 id=&quot;startup-your-project&quot;&gt;Startup your project&lt;/h2&gt;
 &lt;p&gt;We are in a testing stage, so the vertx-web official repo doesn’t contain it. To include the modified version of vertx-web replace your vertx-web maven dependency with this one:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;dependency&lt;/span&gt;&gt;&lt;/span&gt;
-    &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;groupId&lt;/span&gt;&gt;&lt;/span&gt;com.github.slinkydeveloper&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;groupId&lt;/span&gt;&gt;&lt;/span&gt;
-    &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;artifactId&lt;/span&gt;&gt;&lt;/span&gt;vertx-web&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;artifactId&lt;/span&gt;&gt;&lt;/span&gt;
-    &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;version&lt;/span&gt;&gt;&lt;/span&gt;89d6254d50&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;version&lt;/span&gt;&gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&lt;!-- Or &lt;version&gt;designdriven-SNAPSHOT&lt;/version&gt; for latest versions --&gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;groupId&lt;/span&gt;&gt;&lt;/span&gt;io.vertx&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;groupId&lt;/span&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;artifactId&lt;/span&gt;&gt;&lt;/span&gt;vertx-web-api-contract&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;artifactId&lt;/span&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;version&lt;/span&gt;&gt;&lt;/span&gt;3.6.0&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;version&lt;/span&gt;&gt;&lt;/span&gt;
 &lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;dependency&lt;/span&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-Then you have to add this maven repository in your `pom.xml`
-&lt;pre&gt;&lt;code class=&quot;hljs xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;repositories&lt;/span&gt;&gt;&lt;/span&gt;
-  &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;repository&lt;/span&gt;&gt;&lt;/span&gt;
-      &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;id&lt;/span&gt;&gt;&lt;/span&gt;jitpack.io&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;id&lt;/span&gt;&gt;&lt;/span&gt;
-      &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;url&lt;/span&gt;&gt;&lt;/span&gt;https://jitpack.io&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;url&lt;/span&gt;&gt;&lt;/span&gt;
-  &lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;repository&lt;/span&gt;&gt;&lt;/span&gt;
-&lt;span class=&quot;hljs-tag&quot;&gt;&lt;/&lt;span class=&quot;hljs-title&quot;&gt;repositories&lt;/span&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You can also use it with &lt;a href=&quot;https://jitpack.io/#slinkydeveloper/vertx-web/designdriven-SNAPSHOT&quot;&gt;gradle&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Now you can start using OpenAPI 3 inside your Vert.x powered app!&lt;/p&gt;
 &lt;p&gt;First of all you need to load the specification and construct the router factory:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// Load the api spec. This operation is asynchronous&lt;/span&gt;
-OpenAPI3RouterFactory.createRouterFactoryFromFile(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.vertx, &lt;span class=&quot;hljs-string&quot;&gt;&quot;src/main/resources/petstore.yaml&quot;&lt;/span&gt;, ar -&gt; {
+OpenAPI3RouterFactory.create(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.vertx, &lt;span class=&quot;hljs-string&quot;&gt;&quot;src/main/resources/petstore.yaml&quot;&lt;/span&gt;, ar -&gt; {
     &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (ar.succeeded()) {
         &lt;span class=&quot;hljs-comment&quot;&gt;// Spec loaded with success&lt;/span&gt;
         OpenAPI3RouterFactory routerFactory = ar.result();
@@ -2044,25 +2031,12 @@ OpenAPI3RouterFactory.createRouterFactoryFromFile(&lt;span class=&quot;hljs-keyw
 });&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;handlers-mounting&quot;&gt;Handlers mounting&lt;/h2&gt;
-&lt;p&gt;Now load your first path. There are two functions to load the handlers:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;addHandler(HttpMethod method, String path, Handler&lt;RoutingContext&gt; handler, Handler&lt;RoutingContext&gt; failureHandler)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;addHandlerByOperationId(String operationId, Handler&lt;RoutingContext&gt; handler, Handler&lt;RoutingContext&gt; failureHandler)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This two functions wants an handler and a failure handler. You can, of course, &lt;strong&gt;add multiple handlers to same operation&lt;/strong&gt;, without overwrite the existing ones.&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#39;admonition-block important&#39;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#39;admonition-icon&#39;&gt;&lt;i class=&#39;admonition-icon fa fa-exclamation-circle&#39;&gt;&lt;/i&gt;&lt;/td&gt;&lt;td class=&#39;content&#39;&gt;&lt;span class=&#39;title&#39;&gt;Add operations with operationId &lt;/span&gt;&lt;br/&gt;&lt;span class=&#39;content&#39;&gt; Usage of combination of path and HTTP method is allowed, but it’s better to add operations handlers with operationId, for performance reasons and to avoid paths nomenclature errors&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now load handlers to your operations. Use &lt;code&gt;addHandlerByOperationId(String operationId, Handler&lt;RoutingContext&gt; handler)&lt;/code&gt; to add an handler to a route that matches the &lt;code&gt;operationId&lt;/code&gt;. To add a failure handler use &lt;code&gt;addFailureHandlerByOperationId(String operationId, Handler&lt;RoutingContext&gt; failureHandler)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can, of course, &lt;strong&gt;add multiple handlers to same operation&lt;/strong&gt;, without overwriting the existing ones.&lt;/p&gt;
 &lt;p&gt;This is an example of &lt;code&gt;addHandlerByOperationId()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// Add an handler with operationId&lt;/span&gt;
 routerFactory.addHandlerByOperationId(&lt;span class=&quot;hljs-string&quot;&gt;&quot;listPets&quot;&lt;/span&gt;, routingContext -&gt; {
     &lt;span class=&quot;hljs-comment&quot;&gt;// Handle listPets operation (GET /pets)&lt;/span&gt;
-}, routingContext -&gt; {
-    &lt;span class=&quot;hljs-comment&quot;&gt;// Handle failure&lt;/span&gt;
-});&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is an example of &lt;code&gt;addHandler&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// Add an handler with a combination of HttpMethod and path&lt;/span&gt;
-routerFactory.addHandler(HttpMethod.POST, &lt;span class=&quot;hljs-string&quot;&gt;&quot;/pets&quot;&lt;/span&gt;, routingContext -&gt; {
-    &lt;span class=&quot;hljs-comment&quot;&gt;// Handle /pets POST operation&lt;/span&gt;
 }, routingContext -&gt; {
     &lt;span class=&quot;hljs-comment&quot;&gt;// Handle failure&lt;/span&gt;
 });&lt;/code&gt;&lt;/pre&gt;
@@ -2128,8 +2102,9 @@ routerFactory.addHandler(HttpMethod.POST, &lt;span class=&quot;hljs-string&quot;
 &lt;p&gt;Also the router factory provides two other tools:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It automatically mounts a 501 &lt;code&gt;Not Implemented&lt;/code&gt; handler for operations where you haven’t mounted any handler&lt;/li&gt;
-&lt;li&gt;It can load a default &lt;code&gt;ValidationException&lt;/code&gt; failure handler (You can enable this feature via &lt;code&gt;routerFactory.enableValidationFailureHandler(true)&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;It can load a default &lt;code&gt;ValidationException&lt;/code&gt; failure handler&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Both these options are configurable with &lt;a href=&quot;https://vertx.io/docs/apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html&quot;&gt;&lt;code&gt;RouterFactoryOptions&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;and-now-use-it-&quot;&gt;And now use it!&lt;/h2&gt;
 &lt;p&gt;Now you are ready to generate the &lt;code&gt;Router&lt;/code&gt;!&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;Router router = routerFactory.getRouter();
@@ -2140,16 +2115,8 @@ server.requestHandler(router::accept).listen();&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;div class=&#39;admonition-block note&#39;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#39;admonition-icon&#39;&gt;&lt;i class=&#39;admonition-icon fa fa-comment&#39;&gt;&lt;/i&gt;&lt;/td&gt;&lt;td class=&#39;content&#39;&gt;&lt;span class=&#39;title&#39;&gt;Lazy methods! &lt;/span&gt;&lt;br/&gt;&lt;span class=&#39;content&#39;&gt; &lt;code&gt;getRouter()&lt;/code&gt; generate the &lt;code&gt;Router&lt;/code&gt; object, so you don’t have to care about code definition order&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;h2 id=&quot;and-now-&quot;&gt;And now?&lt;/h2&gt;
-&lt;p&gt;You can find a complete example here: &lt;a href=&quot;https://gist.github.com/slinkydeveloper/bdf5929c2506988d78fc08205089409a&quot;&gt;OpenAPI 3 Vert.x example gists&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;You can access to documentation (WIP) &lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/blob/designdriven/vertx-web/src/main/asciidoc/java/index.adoc#openapi-3&quot;&gt;here&lt;/a&gt; (for others languages, check out &lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/tree/designdriven/vertx-web/src/main/asciidoc&quot;&gt;here&lt;/a&gt;), but you can also check Javadoc inside code. These are the most important ones:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/blob/designdriven/vertx-web/src/main/java/io/vertx/ext/web/designdriven/DesignDrivenRouterFactory.java&quot;&gt;DesignDrivenRouterFactory (Base interface of OpenAPI3RouterFactory)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/blob/designdriven/vertx-web/src/main/java/io/vertx/ext/web/designdriven/OpenAPI3RouterFactory.java&quot;&gt;OpenAPI3RouterFactory&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/blob/designdriven/vertx-web/src/main/java/io/vertx/ext/web/RequestParameters.java&quot;&gt;RequestParameters (container of all parameters)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/blob/designdriven/vertx-web/src/main/java/io/vertx/ext/web/RequestParameter.java&quot;&gt;RequestParameter (container of a parameter instance)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/blob/designdriven/vertx-web/src/main/java/io/vertx/ext/web/validation/ValidationException.java&quot;&gt;ValidationException&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Follow &lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web&quot;&gt;my fork of vertx-web project&lt;/a&gt; to get last updates.&lt;/p&gt;
+&lt;p&gt;You can find a complete example on &lt;a href=&quot;https://github.com/vert-x3/vertx-examples/tree/master/web-examples#http-request-validation-and-openapi-3-router-factory&quot;&gt;&lt;code&gt;vertx-examples&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can access to &lt;a href=&quot;https://vertx.io/docs/#web&quot;&gt;documentation here&lt;/a&gt; and &lt;a href=&quot;https://vertx.io/docs/apidocs/io/vertx/ext/web/api/contract/package-summary.html&quot;&gt;Javadoc here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#39;admonition-block important&#39;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#39;admonition-icon&#39;&gt;&lt;i class=&#39;admonition-icon fa fa-exclamation-circle&#39;&gt;&lt;/i&gt;&lt;/td&gt;&lt;td class=&#39;content&#39;&gt;&lt;span class=&#39;title&#39;&gt;We want you! &lt;/span&gt;&lt;br/&gt;&lt;span class=&#39;content&#39;&gt; Please give us your feedback opening an issue &lt;a href=&quot;https://github.com/slinkydeveloper/vertx-web/issues&quot;&gt;here&lt;/a&gt; &lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;/article&gt;
       </description>
@@ -4159,7 +4126,7 @@ mvn &lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; &lt;span cla
 &lt;li&gt;&lt;a href=&quot;http://sczyh30.github.io/vertx-blueprint-todo-backend/&quot;&gt;Vert.x Blueprint - Todo Backend (English version)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://sczyh30.github.io/vertx-blueprint-todo-backend/cn/&quot;&gt;Vert.x Blueprint - Todo Backend (Chinese version)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/sczyh30/vertx-blueprint-todo-backend/master/docs/img/vertx-todobackend-ui.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/blog/blueprint-tutorials/vertx-todobackend-ui.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h1 id=&quot;vert-x-blueprint-vert-x-kue&quot;&gt;Vert.x Blueprint - Vert.x Kue&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Repository&lt;/strong&gt;: &lt;a href=&quot;https://github.com/sczyh30/vertx-blueprint-job-queue&quot;&gt;sczyh30/vertx-blueprint-job-queue&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This blueprint is a priority job queue developed with Vert.x and backed by Redis. It’s a Vert.x implementation version of &lt;a href=&quot;https://github.com/Automattic/kue&quot;&gt;Automattic/kue&lt;/a&gt; that can be used in production.&lt;/p&gt;
@@ -4226,6 +4193,1371 @@ mvn &lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; &lt;span cla
           <pubDate>Thu, 01 Sep 2016 08:00:00 +0800</pubDate>
           <link>https://vertx.tk/blog/vert-x-blueprint-tutorials</link>
           <guid isPermaLink="true">https://vertx.tk/blog/vert-x-blueprint-tutorials</guid>
+          <author>
+            <name>sczyh30</name>
+            <uri>http://github.com/sczyh30</uri>
+          </author>
+        </item>
+      
+        <item>
+          <title>Vert.x 蓝图 - 待办事项服务开发教程</title>
+          <description>
+      &lt;article&gt;&lt;h1 id=&quot;-&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;在本教程中，我们会使用 Vert.x 来一步一步地开发一个REST风格的Web服务 - Todo Backend，你可以把它看作是一个简单的待办事项服务，我们可以自由添加或者取消各种待办事项。&lt;/p&gt;
+&lt;p&gt;通过本教程，你将会学习到以下的内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Vert.x&lt;/strong&gt; 是什么，以及其基本设计思想&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Verticle&lt;/code&gt;是什么，以及如何使用&lt;code&gt;Verticle&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如何用 &lt;strong&gt;Vert.x Web&lt;/strong&gt; 来开发REST风格的Web服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异步编程风格&lt;/strong&gt; 的应用&lt;/li&gt;
+&lt;li&gt;如何通过 Vert.x 的各种组件来进行数据的存储操作（如 &lt;em&gt;Redis&lt;/em&gt; 和 &lt;em&gt;MySQL&lt;/em&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本教程是 &lt;strong&gt;Vert.x 蓝图系列&lt;/strong&gt; 的第一篇教程，对应的Vert.x版本为&lt;strong&gt;3.4.1&lt;/strong&gt;。本教程中的完整代码已托管至&lt;a href=&quot;https://github.com/sczyh30/vertx-blueprint-todo-backend/tree/master&quot;&gt;GitHub&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：代码已更新至 3.5.x 版本，并重构为响应式编程模式，利用 Vert.x RxJava 2 API 编写。文档待更新。。。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;-vert-x-&quot;&gt;踏入Vert.x之门&lt;/h1&gt;
+&lt;p&gt;朋友，欢迎来到Vert.x的世界！初次听说Vert.x，你一定会非常好奇：这是啥？让我们来看一下Vert.x的官方解释：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vert.x is a tool-kit for building reactive applications on the JVM.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(⊙o⊙)哦哦。。。翻译一下，Vert.x是一个在JVM上构建 &lt;strong&gt;响应式&lt;/strong&gt; 应用的 &lt;strong&gt;工具集&lt;/strong&gt; 。这个定义比较模糊，我们来简单解释一下：&lt;strong&gt;工具集&lt;/strong&gt; 意味着Vert.x非常轻量，可以嵌入到你当前的应用中而不需要改变现有的结构；另一个重要的描述是 &lt;strong&gt;响应式&lt;/strong&gt; —— Vert.x就是为构建响应式应用（系统）而设计的。响应式系统这个概念在 &lt;a href=&quot;http://reactivemanifesto.org/&quot;&gt;Reactive Manifesto&lt;/a&gt; 中有详细的定义。我们在这里总结4个要点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;响应式的(Responsive)：一个响应式系统需要在 _合理_ 的时间内处理请求。&lt;/li&gt;
+&lt;li&gt;弹性的(Resilient)：一个响应式系统必须在遇到 _异常_ （崩溃，超时， &lt;code&gt;500&lt;/code&gt; 错误等等）的时候保持响应的能力，所以它必须要为 &lt;em&gt;异常处理&lt;/em&gt; 而设计。&lt;/li&gt;
+&lt;li&gt;可伸缩的(Elastic)：一个响应式系统必须在不同的负载情况下都要保持响应能力，所以它必须能伸能缩，并且可以利用最少的资源来处理负载。&lt;/li&gt;
+&lt;li&gt;消息驱动：一个响应式系统的各个组件之间通过 &lt;strong&gt;异步消息传递&lt;/strong&gt; 来进行交互。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Vert.x是 &lt;strong&gt;事件驱动的&lt;/strong&gt;，同时也是非阻塞的。首先，我们来介绍 &lt;strong&gt;Event Loop&lt;/strong&gt; 的概念。Event Loop是一组负责分发和处理事件的线程。注意，我们绝对不能去阻塞Event Loop线程，否则事件的处理过程会被阻塞，我们的应用就失去了响应能力。因此当我们在写Vert.x应用的时候，我们要时刻谨记 &lt;strong&gt;异步非阻塞开发模式&lt;/strong&gt; 而不是传统的阻塞开发模式。我们将会在下面详细讲解异步非阻塞开发模式。&lt;/p&gt;
+&lt;h1 id=&quot;-&quot;&gt;我们的应用 - 待办事项服务&lt;/h1&gt;
+&lt;p&gt;我们的应用是一个REST风格的待办事项服务，它非常简单，整个API其实就围绕着 &lt;em&gt;增删改查&lt;/em&gt; 四种操作。所以我们可以设计以下的路由：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加待办事项: &lt;code&gt;POST /todos&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取某一待办事项: &lt;code&gt;GET /todos/:todoId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取所有待办事项: &lt;code&gt;GET /todos&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;更新待办事项: &lt;code&gt;PATCH /todos/:todoId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除某一待办事项: &lt;code&gt;DELETE /todos/:todoId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除所有待办事项: &lt;code&gt;DELETE /todos&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意我们这里不讨论REST风格API的设计规范（仁者见仁,智者见智），因此你也可以用你喜欢的方式去定义路由。&lt;/p&gt;
+&lt;p&gt;下面我们开始开发我们的项目！High起来～～～&lt;/p&gt;
+&lt;h1 id=&quot;-&quot;&gt;说干就干！&lt;/h1&gt;
+&lt;p&gt;Vert.x Core提供了一些较为底层的处理HTTP请求的功能，这对于Web开发来说不是很方便，因为我们通常不需要这么底层的功能，因此&lt;a href=&quot;http://vertx.io/docs/vertx-web/java&quot;&gt;Vert.x Web&lt;/a&gt;应运而生。Vert.x Web基于Vert.x Core，并且提供一组更易于创建Web应用的上层功能（如路由）。&lt;/p&gt;
+&lt;h2 id=&quot;gradle-&quot;&gt;Gradle配置文件&lt;/h2&gt;
+&lt;p&gt;首先我们先来创建我们的项目。在本教程中我们使用&lt;strong&gt;Gradle&lt;/strong&gt;作为构建工具，当然你也可以使用其它诸如Maven之类的构建工具。我们的项目目录里需要有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;src/main/java&lt;/code&gt; 文件夹（源码目录）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/test/java&lt;/code&gt; 文件夹（测试目录）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;build.gradle&lt;/code&gt; 文件（Gradle配置文件）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;.
+├── build&lt;span class=&quot;hljs-class&quot;&gt;.gradle&lt;/span&gt;
+├── settings&lt;span class=&quot;hljs-class&quot;&gt;.gradle&lt;/span&gt;
+├── src
+│   ├── main
+│   │   └── java
+│   └── test
+│       └── java&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们首先来创建 &lt;code&gt;build.gradle&lt;/code&gt; 文件，这是Gradle对应的配置文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs groovy&quot;&gt;apply &lt;span class=&quot;hljs-string&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;java&#39;&lt;/span&gt;
+
+targetCompatibility = &lt;span class=&quot;hljs-number&quot;&gt;1.8&lt;/span&gt;
+sourceCompatibility = &lt;span class=&quot;hljs-number&quot;&gt;1.8&lt;/span&gt;
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+
+  compile &lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-core:3.4.1&quot;&lt;/span&gt;
+  compile &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx:vertx-web:3.4.1&#39;&lt;/span&gt;
+
+  testCompile &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx:vertx-unit:3.4.1&#39;&lt;/span&gt;
+  testCompile &lt;span class=&quot;hljs-string&quot;&gt;group:&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;junit&#39;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;junit&#39;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;version:&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;4.12&#39;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你可能不是很熟悉Gradle，这不要紧。我们来解释一下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们将 &lt;code&gt;targetCompatibility&lt;/code&gt; 和 &lt;code&gt;sourceCompatibility&lt;/code&gt; 这两个值都设为&lt;strong&gt;1.8&lt;/strong&gt;，代表目标Java版本是Java 8。这非常重要，因为Vert.x就是基于Java 8构建的。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;dependencies&lt;/code&gt;中，我们声明了我们需要的依赖。&lt;code&gt;vertx-core&lt;/code&gt; 和 &lt;code&gt;vert-web&lt;/code&gt; 用于开发REST API。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;搞定&lt;code&gt;build.gradle&lt;/code&gt;以后，我们开始写代码！&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;待办事项对象&lt;/h2&gt;
+&lt;p&gt;首先我们需要创建我们的数据实体对象 - &lt;code&gt;Todo&lt;/code&gt; 实体。在&lt;code&gt;io.vertx.blueprint.todolist.entity&lt;/code&gt;包下创建&lt;code&gt;Todo&lt;/code&gt;类，并且编写以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist.entity;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.codegen.annotations.DataObject;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.json.JsonObject;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.concurrent.atomic.AtomicInteger;
+
+
+&lt;span class=&quot;hljs-annotation&quot;&gt;@DataObject&lt;/span&gt;(generateConverter = &lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;)
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; AtomicInteger acc = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; AtomicInteger(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// counter&lt;/span&gt;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; id;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; String title;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; Boolean completed;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; Integer order;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; String url;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Todo other)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.id = other.id;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.title = other.title;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.completed = other.completed;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.order = other.order;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.url = other.url;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(JsonObject obj)&lt;/span&gt; &lt;/span&gt;{
+    TodoConverter.fromJson(obj, &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 还未生成Converter的时候需要先注释掉，生成过后再取消注释&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String jsonStr)&lt;/span&gt; &lt;/span&gt;{
+    TodoConverter.fromJson(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; JsonObject(jsonStr), &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;);
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; id, String title, Boolean completed, Integer order, String url)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.id = id;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.title = title;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.completed = completed;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.order = order;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.url = url;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; JsonObject &lt;span class=&quot;hljs-title&quot;&gt;toJson&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    JsonObject json = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; JsonObject();
+    TodoConverter.toJson(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;, json);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; json;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; id;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setId&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; id)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.id = id;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setIncId&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.id = acc.incrementAndGet();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getIncId&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; acc.get();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setIncIdWith&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; n)&lt;/span&gt; &lt;/span&gt;{
+    acc.set(n);
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;hljs-title&quot;&gt;getTitle&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; title;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String title)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.title = title;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Boolean &lt;span class=&quot;hljs-title&quot;&gt;isCompleted&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(completed, &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setCompleted&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Boolean completed)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.completed = completed;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Integer &lt;span class=&quot;hljs-title&quot;&gt;getOrder&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(order, &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setOrder&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Integer order)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.order = order;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;hljs-title&quot;&gt;getUrl&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; url;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;setUrl&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String url)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.url = url;
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Object o)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt; == o) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (o == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; || getClass() != o.getClass()) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;;
+
+    Todo todo = (Todo) o;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (id != todo.id) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!title.equals(todo.title)) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (completed != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; ? !completed.equals(todo.completed) : todo.completed != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; order != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; ? order.equals(todo.order) : todo.order == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;;
+
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;hashCode&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; result = id;
+    result = &lt;span class=&quot;hljs-number&quot;&gt;31&lt;/span&gt; * result + title.hashCode();
+    result = &lt;span class=&quot;hljs-number&quot;&gt;31&lt;/span&gt; * result + (completed != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; ? completed.hashCode() : &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;);
+    result = &lt;span class=&quot;hljs-number&quot;&gt;31&lt;/span&gt; * result + (order != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; ? order.hashCode() : &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; result;
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;hljs-title&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;Todo -&gt; {&quot;&lt;/span&gt; +
+      &lt;span class=&quot;hljs-string&quot;&gt;&quot;id=&quot;&lt;/span&gt; + id +
+      &lt;span class=&quot;hljs-string&quot;&gt;&quot;, title=&#39;&quot;&lt;/span&gt; + title + &lt;span class=&quot;hljs-string&quot;&gt;&#39;\&#39;&#39;&lt;/span&gt; +
+      &lt;span class=&quot;hljs-string&quot;&gt;&quot;, completed=&quot;&lt;/span&gt; + completed +
+      &lt;span class=&quot;hljs-string&quot;&gt;&quot;, order=&quot;&lt;/span&gt; + order +
+      &lt;span class=&quot;hljs-string&quot;&gt;&quot;, url=&#39;&quot;&lt;/span&gt; + url + &lt;span class=&quot;hljs-string&quot;&gt;&#39;\&#39;&#39;&lt;/span&gt; +
+      &lt;span class=&quot;hljs-string&quot;&gt;&#39;}&#39;&lt;/span&gt;;
+  }
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;T&gt; &lt;span class=&quot;hljs-function&quot;&gt;T &lt;span class=&quot;hljs-title&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(T value, T defaultValue)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; value == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; ? defaultValue : value;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Todo &lt;span class=&quot;hljs-title&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Todo todo)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(id,
+      getOrElse(todo.title, title)&lt;/span&gt;,
+      &lt;span class=&quot;hljs-title&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(todo.completed, completed)&lt;/span&gt;,
+      &lt;span class=&quot;hljs-title&quot;&gt;getOrElse&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(todo.order, order)&lt;/span&gt;,
+      url)&lt;/span&gt;;
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们的 &lt;code&gt;Todo&lt;/code&gt; 实体对象由序号&lt;code&gt;id&lt;/code&gt;、标题&lt;code&gt;title&lt;/code&gt;、次序&lt;code&gt;order&lt;/code&gt;、地址&lt;code&gt;url&lt;/code&gt;以及代表待办事项是否完成的一个标识&lt;code&gt;complete&lt;/code&gt;组成。我们可以把它看作是一个简单的Java Bean。它可以被编码成JSON格式的数据，我们在后边会大量使用JSON（事实上，在Vert.x中JSON非常普遍）。同时注意到我们给&lt;code&gt;Todo&lt;/code&gt;类加上了一个注解：&lt;code&gt;@DataObject&lt;/code&gt;，这是用于生成JSON转换类的注解。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;@DataObject&lt;/code&gt; 注解&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;被 &lt;code&gt;@DataObject&lt;/code&gt; 注解的实体类需要满足以下条件：拥有一个拷贝构造函数以及一个接受一个 &lt;code&gt;JsonObject&lt;/code&gt; 对象的构造函数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们利用Vert.x Codegen来自动生成JSON转换类。我们需要在&lt;code&gt;build.gradle&lt;/code&gt;中添加依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs gradle&quot;&gt;compileOnly &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx:vertx-codegen:3.4.1&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;由于Vert.x Codegen仅在编译期生成代码，因此我们这里使用了&lt;code&gt;compileOnly&lt;/code&gt;(相当于Maven中的&lt;code&gt;provided&lt;/code&gt;。需要Gradle 2.12及以上版本)。同时，我们需要在&lt;code&gt;io.vertx.blueprint.todolist.entity&lt;/code&gt;包中添加&lt;code&gt;package-info.java&lt;/code&gt;文件来指引Vert.x Codegen生成代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+ * Indicates that this module contains classes that need to be generated / processed.
+ */&lt;/span&gt;
+&lt;span class=&quot;hljs-annotation&quot;&gt;@ModuleGen&lt;/span&gt;(name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;vertx-blueprint-todo-entity&quot;&lt;/span&gt;, groupPackage = &lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx.blueprint.todolist.entity&quot;&lt;/span&gt;)
+&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist.entity;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.codegen.annotations.ModuleGen;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vert.x Codegen本质上是一个注解处理器(annotation processing tool)，因此我们还需要在&lt;code&gt;build.gradle&lt;/code&gt;中配置apt。往里面添加以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs gradle&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;task&lt;/span&gt; annotationProcessing(type: JavaCompile, &lt;span class=&quot;hljs-keyword&quot;&gt;group&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;build&#39;&lt;/span&gt;) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;sourceSets&lt;/span&gt;.main.java
+  &lt;span class=&quot;hljs-keyword&quot;&gt;classpath&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;configurations&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt; + &lt;span class=&quot;hljs-keyword&quot;&gt;configurations&lt;/span&gt;.compileOnly
+  &lt;span class=&quot;hljs-keyword&quot;&gt;destinationDir&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;project&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;file&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&#39;src/main/generated&#39;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-keyword&quot;&gt;options&lt;/span&gt;.compilerArgs = [
+    &lt;span class=&quot;hljs-string&quot;&gt;&quot;-proc:only&quot;&lt;/span&gt;,
+    &lt;span class=&quot;hljs-string&quot;&gt;&quot;-processor&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx.codegen.CodeGenProcessor&quot;&lt;/span&gt;,
+    &lt;span class=&quot;hljs-string&quot;&gt;&quot;-Acodegen.output=${destinationDir.absolutePath}&quot;&lt;/span&gt;
+  ]
+}
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;sourceSets&lt;/span&gt; {
+  main {
+    java {
+      srcDirs += &lt;span class=&quot;hljs-string&quot;&gt;&#39;src/main/generated&#39;&lt;/span&gt;
+    }
+  }
+}
+
+compileJava {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;targetCompatibility&lt;/span&gt; = &lt;span class=&quot;hljs-number&quot;&gt;1.8&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;sourceCompatibility&lt;/span&gt; = &lt;span class=&quot;hljs-number&quot;&gt;1.8&lt;/span&gt;
+
+  dependsOn annotationProcessing
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样，每次我们在编译项目的时候，Vert.x Codegen都会自动检测含有 &lt;code&gt;@DataObject&lt;/code&gt; 注解的类并且根据配置生成JSON转换类。在本例中，我们应该会得到一个 &lt;code&gt;TodoConverter&lt;/code&gt; 类，然后我们可以在&lt;code&gt;Todo&lt;/code&gt;类中使用它。&lt;/p&gt;
+&lt;h2 id=&quot;verticle&quot;&gt;Verticle&lt;/h2&gt;
+&lt;p&gt;下面我们来写我们的应用组件。在&lt;code&gt;io.vertx.blueprint.todolist.verticles&lt;/code&gt;包中创建&lt;code&gt;SingleApplicationVerticle&lt;/code&gt;类，并编写以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist.verticles;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.AbstractVerticle;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.Future;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.redis.RedisClient;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.redis.RedisOptions;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;SingleApplicationVerticle&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;AbstractVerticle&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String HTTP_HOST = &lt;span class=&quot;hljs-string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String REDIS_HOST = &lt;span class=&quot;hljs-string&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; HTTP_PORT = &lt;span class=&quot;hljs-number&quot;&gt;8082&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; REDIS_PORT = &lt;span class=&quot;hljs-number&quot;&gt;6379&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; RedisClient redis;
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Future&lt;Void&gt; future)&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;throws&lt;/span&gt; Exception &lt;/span&gt;{
+      &lt;span class=&quot;hljs-comment&quot;&gt;// TODO with start...&lt;/span&gt;
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们的&lt;code&gt;SingleApplicationVerticle&lt;/code&gt;类继承了&lt;code&gt;AbstractVerticle&lt;/code&gt;抽象类。那么什么是 &lt;code&gt;Verticle&lt;/code&gt; 呢？在Vert.x中，一个&lt;code&gt;Verticle&lt;/code&gt;代表应用的某一组件。我们可以通过部署&lt;code&gt;Verticle&lt;/code&gt;来运行这些组件。如果你了解 &lt;strong&gt;Actor&lt;/strong&gt; 模型的话，你会发现它和Actor非常类似。&lt;/p&gt;
+&lt;p&gt;当&lt;code&gt;Verticle&lt;/code&gt;被部署的时候，其&lt;code&gt;start&lt;/code&gt;方法会被调用。我们注意到这里的&lt;code&gt;start&lt;/code&gt;方法接受一个类型为&lt;code&gt;Future&lt;Void&gt;&lt;/code&gt;的参数，这代表了这是一个异步的初始化方法。这里的&lt;code&gt;Future&lt;/code&gt;代表着&lt;code&gt;Verticle&lt;/code&gt;的初始化过程是否完成。你可以通过调用Future的&lt;code&gt;complete&lt;/code&gt;方法来代表初始化过程完成，或者&lt;code&gt;fail&lt;/code&gt;方法代表初始化过程失败。&lt;/p&gt;
+&lt;p&gt;现在我们&lt;code&gt;Verticle&lt;/code&gt;的轮廓已经搞好了，那么下一步也就很明了了 - 创建HTTP Client并且配置路由，处理HTTP请求。&lt;/p&gt;
+&lt;h1 id=&quot;vert-x-web-rest-api&quot;&gt;Vert.x Web与REST API&lt;/h1&gt;
+&lt;h2 id=&quot;-http-&quot;&gt;创建HTTP服务端并配置路由&lt;/h2&gt;
+&lt;p&gt;我们来给&lt;code&gt;start&lt;/code&gt;方法加点东西：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Future&lt;Void&gt; future)&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;throws&lt;/span&gt; Exception &lt;/span&gt;{
+  initData();
+  Router router = Router.router(vertx); &lt;span class=&quot;hljs-comment&quot;&gt;// &lt;1&gt;&lt;/span&gt;
+  &lt;span class=&quot;hljs-comment&quot;&gt;// CORS support&lt;/span&gt;
+  Set&lt;String&gt; allowHeaders = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; HashSet&lt;&gt;();
+  allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;x-requested-with&quot;&lt;/span&gt;);
+  allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;);
+  allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;origin&quot;&lt;/span&gt;);
+  allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;);
+  allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;accept&quot;&lt;/span&gt;);
+  Set&lt;HttpMethod&gt; allowMethods = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; HashSet&lt;&gt;();
+  allowMethods.add(HttpMethod.GET);
+  allowMethods.add(HttpMethod.POST);
+  allowMethods.add(HttpMethod.DELETE);
+  allowMethods.add(HttpMethod.PATCH);
+
+  router.route().handler(CorsHandler.create(&lt;span class=&quot;hljs-string&quot;&gt;&quot;*&quot;&lt;/span&gt;) &lt;span class=&quot;hljs-comment&quot;&gt;// &lt;2&gt;&lt;/span&gt;
+    .allowedHeaders(allowHeaders)
+    .allowedMethods(allowMethods));
+  router.route().handler(BodyHandler.create()); &lt;span class=&quot;hljs-comment&quot;&gt;// &lt;3&gt;&lt;/span&gt;
+
+  &lt;span class=&quot;hljs-comment&quot;&gt;// TODO:routes&lt;/span&gt;
+
+  vertx.createHttpServer() &lt;span class=&quot;hljs-comment&quot;&gt;// &lt;4&gt;&lt;/span&gt;
+    .requestHandler(router::accept)
+    .listen(PORT, HOST, result -&gt; {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (result.succeeded())
+          future.complete();
+        &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+          future.fail(result.cause());
+      });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(⊙o⊙)…一长串代码诶。。是不是看着很晕呢？我们来详细解释一下。&lt;/p&gt;
+&lt;p&gt;首先我们创建了一个 &lt;code&gt;Router&lt;/code&gt; 实例 （1）。这里的&lt;code&gt;Router&lt;/code&gt;代表路由器，相信做过Web开发的开发者们一定不会陌生。路由器负责将对应的HTTP请求分发至对应的处理逻辑（Handler）中。每个&lt;code&gt;Handler&lt;/code&gt;负责处理请求并且写入回应结果。当HTTP请求到达时，对应的&lt;code&gt;Handler&lt;/code&gt;会被调用。&lt;/p&gt;
+&lt;p&gt;然后我们创建了两个&lt;code&gt;Set&lt;/code&gt;：&lt;code&gt;allowHeaders&lt;/code&gt;和&lt;code&gt;allowMethods&lt;/code&gt;，并且我们向里面添加了一些HTTP Header以及HTTP Method，然后我们给路由器绑定了一个&lt;code&gt;CorsHandler&lt;/code&gt; （2）。&lt;code&gt;route()&lt;/code&gt;方法（无参数）代表此路由匹配所有请求。这两个&lt;code&gt;Set&lt;/code&gt;的作用是支持 &lt;em&gt;CORS&lt;/em&gt;，因为我们的API需要开启CORS以便配合前端正常工作。有关CORS的详细内容我们就不在这里细说了，详情可以参考&lt;a href=&quot;http://enable-cors.org/server.html&quot;&gt;这里&lt;/a&gt;。我们这里只需要知道如何开启CORS支持即可。&lt;/p&gt;
+&lt;p&gt;接下来我们给路由器绑定了一个全局的&lt;code&gt;BodyHandler&lt;/code&gt; （3），它的作用是处理HTTP请求正文并获取其中的数据。比如，在实现添加待办事项逻辑的时候，我们需要读取请求正文中的JSON数据，这时候我们就可以用&lt;code&gt;BodyHandler&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;最后，我们通过&lt;code&gt;vertx.createHttpServer()&lt;/code&gt;方法来创建一个HTTP服务端 （4）。注意这个功能是Vert.x Core提供的底层功能之一。然后我们将我们的路由处理器绑定到服务端上，这也是Vert.x Web的核心。你可能不熟悉&lt;code&gt;router::accept&lt;/code&gt;这样的表示，这是Java 8中的 &lt;em&gt;方法引用&lt;/em&gt;，它相当于一个分发路由的&lt;code&gt;Handler&lt;/code&gt;。当有请求到达时，Vert.x会调用&lt;code&gt;accept&lt;/code&gt;方法。然后我们通过&lt;code&gt;listen&lt;/code&gt;方法监听8082端口。因为创建服务端的过程可能失败，因此我们还需要给&lt;code&gt;listen&lt;/code&gt;方法传递一个&lt;code&gt;Handler&lt;/code&gt;来检查服务端是否创建成功。正如我们前面所提到的，我们可以使用&lt;code&gt;future.complete&lt;/code&gt;来表示过程成功，或者用&lt;code&gt;future.fail&lt;/code&gt;来表示过程失败。&lt;/p&gt;
+&lt;p&gt;到现在为止，我们已经创建好HTTP服务端了，但我们还没有见到任何的路由呢！不要着急，是时候去声明路由了！&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;配置路由&lt;/h2&gt;
+&lt;p&gt;下面我们来声明路由。正如我们之前提到的，我们的路由可以设计成这样：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加待办事项: &lt;code&gt;POST /todos&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取某一待办事项: &lt;code&gt;GET /todos/:todoId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取所有待办事项: &lt;code&gt;GET /todos&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;更新待办事项: &lt;code&gt;PATCH /todos/:todoId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除某一待办事项: &lt;code&gt;DELETE /todos/:todoId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除所有待办事项: &lt;code&gt;DELETE /todos&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;路径参数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在URL中，我们可以通过&lt;code&gt;:name&lt;/code&gt;的形式定义路径参数。当处理请求的时候，Vert.x会自动获取这些路径参数并允许我们访问它们。拿我们的路由举个例子，&lt;code&gt;/todos/19&lt;/code&gt; 将 &lt;code&gt;todoId&lt;/code&gt; 映射为 &lt;code&gt;19&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;首先我们先在 &lt;code&gt;io.vertx.blueprint.todolist&lt;/code&gt; 包下创建一个&lt;code&gt;Constants&lt;/code&gt;类用于存储各种全局常量（当然也可以放到其对应的类中）：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Constants&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Constants&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{}
+
+  &lt;span class=&quot;hljs-javadoc&quot;&gt;/** API Route */&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String API_GET = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos/:todoId&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String API_LIST_ALL = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String API_CREATE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String API_UPDATE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos/:todoId&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String API_DELETE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos/:todoId&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String API_DELETE_ALL = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos&quot;&lt;/span&gt;;
+
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后我们将&lt;code&gt;start&lt;/code&gt;方法中的&lt;code&gt;TODO&lt;/code&gt;标识处替换为以下的内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// routes&lt;/span&gt;
+router.get(Constants.API_GET).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleGetTodo);
+router.get(Constants.API_LIST_ALL).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleGetAll);
+router.post(Constants.API_CREATE).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleCreateTodo);
+router.patch(Constants.API_UPDATE).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleUpdateTodo);
+router.delete(Constants.API_DELETE).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleDeleteOne);
+router.delete(Constants.API_DELETE_ALL).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleDeleteAll);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;代码很直观、明了。我们用对应的方法（如&lt;code&gt;get&lt;/code&gt;,&lt;code&gt;post&lt;/code&gt;,&lt;code&gt;patch&lt;/code&gt;等等）将路由路径与路由器绑定，并且我们调用&lt;code&gt;handler&lt;/code&gt;方法给每个路由绑定上对应的&lt;code&gt;Handler&lt;/code&gt;，接受的&lt;code&gt;Handler&lt;/code&gt;类型为&lt;code&gt;Handler&lt;RoutingContext&gt;&lt;/code&gt;。这里我们分别绑定了六个方法引用，它们的形式都类似于这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleRequest&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// ...&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们将在稍后实现这六个方法，这也是我们待办事项服务逻辑的核心。&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;异步方法模式&lt;/h2&gt;
+&lt;p&gt;我们之前提到过，Vert.x是 &lt;strong&gt;异步、非阻塞的&lt;/strong&gt; 。每一个异步的方法总会接受一个 &lt;code&gt;Handler&lt;/code&gt; 参数作为回调函数，当对应的操作完成时会调用接受的&lt;code&gt;Handler&lt;/code&gt;，这是异步方法的一种实现。还有一种等价的实现是返回&lt;code&gt;Future&lt;/code&gt;对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;doAsync&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(A a, B b, Handler&lt;R&gt; handler)&lt;/span&gt;&lt;/span&gt;;
+&lt;span class=&quot;hljs-comment&quot;&gt;// 这两种实现等价&lt;/span&gt;
+&lt;span class=&quot;hljs-function&quot;&gt;Future&lt;R&gt; &lt;span class=&quot;hljs-title&quot;&gt;doAsync&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(A a, B b)&lt;/span&gt;&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code&gt;Future&lt;/code&gt; 对象代表着一个操作的结果，这个操作可能还没有进行，可能正在进行，可能成功也可能失败。当操作完成时，&lt;code&gt;Future&lt;/code&gt;对象会得到对应的结果。我们也可以通过&lt;code&gt;setHandler&lt;/code&gt;方法给&lt;code&gt;Future&lt;/code&gt;绑定一个&lt;code&gt;Handler&lt;/code&gt;，当&lt;code&gt;Future&lt;/code&gt;被赋予结果的时候，此&lt;code&gt;Handler&lt;/code&gt;会被调用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;Future&lt;R&gt; future = doAsync(A a, B b);
+future.setHandler(r -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (r.failed()) {
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 处理失败&lt;/span&gt;
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 操作结果&lt;/span&gt;
+    }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vert.x中大多数异步方法都是基于Handler的。而在本教程中，这两种异步模式我们都会接触到。&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;待办事项逻辑实现&lt;/h2&gt;
+&lt;p&gt;现在是时候来实现我们的待办事项业务逻辑了！这里我们使用 Redis 作为数据持久化存储。有关Redis的详细介绍请参照&lt;a href=&quot;http://redis.io/&quot;&gt;Redis 官方网站&lt;/a&gt;。Vert.x给我们提供了一个组件—— Vert.x-redis，允许我们以异步的形式操作Redis数据。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如何安装Redis？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请参照Redis官方网站上详细的&lt;a href=&quot;http://redis.io/download#installation&quot;&gt;安装指南&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;vert-x-redis&quot;&gt;Vert.x Redis&lt;/h3&gt;
+&lt;p&gt;Vert.x Redis允许我们以异步的形式操作Redis数据。我们首先需要在&lt;code&gt;build.gradle&lt;/code&gt;中添加以下依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs gradle&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx:vertx-redis-client:3.4.1&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们通过&lt;code&gt;RedisClient&lt;/code&gt;对象来操作Redis中的数据，因此我们定义了一个类成员&lt;code&gt;redis&lt;/code&gt;。在使用&lt;code&gt;RedisClient&lt;/code&gt;之前，我们首先需要与Redis建立连接，并且需要配置（以&lt;code&gt;RedisOptions&lt;/code&gt;的形式），后边我们再讲需要配置哪些东西。&lt;/p&gt;
+&lt;p&gt;我们来实现 &lt;code&gt;initData&lt;/code&gt; 方法用于初始化 &lt;code&gt;RedisClient&lt;/code&gt; 并且测试连接：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;initData&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+  RedisOptions config = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; RedisOptions()
+      .setHost(config().getString(&lt;span class=&quot;hljs-string&quot;&gt;&quot;redis.host&quot;&lt;/span&gt;, REDIS_HOST)) &lt;span class=&quot;hljs-comment&quot;&gt;// redis host&lt;/span&gt;
+      .setPort(config().getInteger(&lt;span class=&quot;hljs-string&quot;&gt;&quot;redis.port&quot;&lt;/span&gt;, REDIS_PORT)); &lt;span class=&quot;hljs-comment&quot;&gt;// redis port&lt;/span&gt;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.redis = RedisClient.create(vertx, config); &lt;span class=&quot;hljs-comment&quot;&gt;// create redis client&lt;/span&gt;
+
+  redis.hset(Constants.REDIS_TODO_KEY, &lt;span class=&quot;hljs-string&quot;&gt;&quot;24&quot;&lt;/span&gt;, Json.encodePrettily( &lt;span class=&quot;hljs-comment&quot;&gt;// test connection&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(&lt;span class=&quot;hljs-number&quot;&gt;24&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Something to do...&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;todo/ex&quot;&lt;/span&gt;)), res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.failed()) {
+      LOGGER.error(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Redis service is not running!&quot;&lt;/span&gt;);
+      res.cause().printStackTrace();
+    }
+  });
+
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当我们在加载Verticle的时候，我们会首先调用&lt;code&gt;initData&lt;/code&gt;方法，这样可以保证&lt;code&gt;RedisClient&lt;/code&gt;可以被正常创建。&lt;/p&gt;
+&lt;h3 id=&quot;-&quot;&gt;存储格式&lt;/h3&gt;
+&lt;p&gt;我们知道，Redis支持各种格式的数据，并且支持多种方式存储（如&lt;code&gt;list&lt;/code&gt;、&lt;code&gt;hash map&lt;/code&gt;等）。这里我们将我们的待办事项存储在 &lt;em&gt;哈希表(map)&lt;/em&gt; 中。我们使用待办事项的&lt;code&gt;id&lt;/code&gt;作为key，JSON格式的待办事项数据作为value。同时，我们的哈希表本身也要有个key，我们把它命名为 &lt;em&gt;VERT_TODO&lt;/em&gt;，并且存储到&lt;code&gt;Constants&lt;/code&gt;类中：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String REDIS_TODO_KEY = &lt;span class=&quot;hljs-string&quot;&gt;&quot;VERT_TODO&quot;&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;正如我们之前提到的，我们利用了生成的JSON数据转换类来实现&lt;code&gt;Todo&lt;/code&gt;实体与JSON数据之间的转换（通过几个构造函数），在后面实现待办事项服务的时候可以广泛利用。&lt;/p&gt;
+&lt;h3 id=&quot;-&quot;&gt;获取/获取所有待办事项&lt;/h3&gt;
+&lt;p&gt;我们首先来实现获取待办事项的逻辑。正如我们之前所提到的，我们的处理逻辑方法需要接受一个&lt;code&gt;RoutingContext&lt;/code&gt;类型的参数。我们看一下获取某一待办事项的逻辑方法(&lt;code&gt;handleGetTodo&lt;/code&gt;)：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  String todoID = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// (1)&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (todoID == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
+    sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response()); &lt;span class=&quot;hljs-comment&quot;&gt;// (2)&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+    redis.hget(Constants.REDIS_TODO_KEY, todoID, x -&gt; { &lt;span class=&quot;hljs-comment&quot;&gt;// (3)&lt;/span&gt;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (x.succeeded()) {
+        String result = x.result();
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (result == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
+          sendError(&lt;span class=&quot;hljs-number&quot;&gt;404&lt;/span&gt;, context.response());
+        &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+          context.response()
+            .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+            .end(result); &lt;span class=&quot;hljs-comment&quot;&gt;// (4)&lt;/span&gt;
+        }
+      } &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response()&lt;/span&gt;)&lt;/span&gt;;
+    });
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先我们先通过&lt;code&gt;getParam&lt;/code&gt;方法获取路径参数&lt;code&gt;todoId&lt;/code&gt; (1)。我们需要检测路径参数获取是否成功，如果不成功就返回 &lt;code&gt;400 Bad Request&lt;/code&gt; 错误 (2)。这里我们写一个函数封装返回错误response的逻辑：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; statusCode, HttpServerResponse response)&lt;/span&gt; &lt;/span&gt;{
+  response.setStatusCode(statusCode).end();
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里面，&lt;code&gt;end&lt;/code&gt;方法是非常重要的。只有我们调用&lt;code&gt;end&lt;/code&gt;方法时，对应的HTTP Response才能被发送回客户端。&lt;/p&gt;
+&lt;p&gt;再回到&lt;code&gt;handleGetTodo&lt;/code&gt;方法中。如果我们成功获取到了&lt;code&gt;todoId&lt;/code&gt;，我们可以通过&lt;code&gt;hget&lt;/code&gt;操作从Redis中获取对应的待办事项 (3)。&lt;code&gt;hget&lt;/code&gt;代表通过key从对应的哈希表中获取对应的value，我们来看一下&lt;code&gt;hget&lt;/code&gt;函数的定义：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;RedisClient &lt;span class=&quot;hljs-title&quot;&gt;hget&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String key, String field, Handler&lt;AsyncResult&lt;String&gt;&gt; handler)&lt;/span&gt;&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一个参数&lt;code&gt;key&lt;/code&gt;对应哈希表的key，第二个参数&lt;code&gt;field&lt;/code&gt;代表待办事项的key，第三个参数代表当获取操作成功时对应的回调。在&lt;code&gt;Handler&lt;/code&gt;中，我们首先检查操作是否成功，如果不成功就返回&lt;code&gt;503&lt;/code&gt;错误。如果成功了，我们就可以获取操作的结果了。结果是&lt;code&gt;null&lt;/code&gt;的话，说明Redis中没有对应的待办事项，因此我们返回&lt;code&gt;404 Not Found&lt;/code&gt;代表不存在。如果结果存在，那么我们就可以通过&lt;code&gt;end&lt;/code&gt;方法将其写入response中 (4)。注意到我们所有的RESTful API都返回JSON格式的数据，所以我们将&lt;code&gt;content-type&lt;/code&gt;头设为&lt;code&gt;JSON&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;获取所有待办事项的逻辑&lt;code&gt;handleGetAll&lt;/code&gt;与&lt;code&gt;handleGetTodo&lt;/code&gt;大体上类似，但实现上有些许不同：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  redis.hvals(Constants.REDIS_TODO_KEY, res -&gt; { &lt;span class=&quot;hljs-comment&quot;&gt;// (1)&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded()) {
+      String encoded = Json.encodePrettily(res.result().stream() &lt;span class=&quot;hljs-comment&quot;&gt;// (2)&lt;/span&gt;
+        .map(x -&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo((String) x))
+        .collect(Collectors.toList()));
+      context.response()
+        .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+        .end(encoded); &lt;span class=&quot;hljs-comment&quot;&gt;// (3)&lt;/span&gt;
+    } &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response()&lt;/span&gt;)&lt;/span&gt;;
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里我们通过&lt;code&gt;hvals&lt;/code&gt;操作 (1) 来获取某个哈希表中的所有数据（以JSON数组的形式返回，即&lt;code&gt;JsonArray&lt;/code&gt;对象）。在Handler中我们还是像之前那样先检查操作是否成功。如果成功的话我们就可以将结果写入response了。注意这里我们不能直接将返回的&lt;code&gt;JsonArray&lt;/code&gt;写入response。想象一下返回的&lt;code&gt;JsonArray&lt;/code&gt;包括着待办事项的key以及对应的JSON数据（字符串形式），因此此时每个待办事项对应的JSON数据都被转义了，所以我们需要先把这些转义过的JSON数据转换成实体对象，再重新编码。&lt;/p&gt;
+&lt;p&gt;我们这里采用了一种响应式编程思想的方法。首先我们了解到&lt;code&gt;JsonArray&lt;/code&gt;类继承了&lt;code&gt;Iterable&lt;Object&gt;&lt;/code&gt;接口（是不是感觉它很像&lt;code&gt;List&lt;/code&gt;呢？），因此我们可以通过&lt;code&gt;stream&lt;/code&gt;方法将其转化为&lt;code&gt;Stream&lt;/code&gt;对象。注意这里的&lt;code&gt;Stream&lt;/code&gt;可不是传统意义上讲的输入输出流(I/O stream)，而是数据流(data flow)。我们需要对数据流进行一系列的变换处理操作，这就是响应式编程的思想（也有点函数式编程的思想）。我们将数据流中的每个字符串数据转换为&lt;code&gt;Todo&lt;/code&gt;实体对象，这个过程是通过&lt;code&gt;map&lt;/code&gt;算子实现的。我们这里就不深入讨论&lt;code&gt;map&lt;/code&gt;算子了，但它在函数式编程中非常重要。在&lt;code&gt;map&lt;/code&gt;过后，我们通过&lt;code&gt;collect&lt;/code&gt;方法将数据流“归约”成&lt;code&gt;List&lt;Todo&gt;&lt;/code&gt;。现在我们就可以通过&lt;code&gt;Json.encodePrettily&lt;/code&gt;方法对得到的list进行编码了，转换成JSON格式的数据。最后我们将转换后的结果写入到response中 (3)。&lt;/p&gt;
+&lt;h3 id=&quot;-&quot;&gt;创建待办事项&lt;/h3&gt;
+&lt;p&gt;经过了上面两个业务逻辑实现的过程，你应该开始熟悉Vert.x了～现在我们来实现创建待办事项的逻辑：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleCreateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;try&lt;/span&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Todo todo = wrapObject(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(context.getBodyAsString()), context);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String encoded = Json.encodePrettily(todo);
+    redis.hset(Constants.REDIS_TODO_KEY, String.valueOf(todo.getId()),
+      encoded, res -&gt; {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded())
+          context.response()
+            .setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;201&lt;/span&gt;)
+            .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+            .end(encoded);
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+          &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response()&lt;/span&gt;)&lt;/span&gt;;
+      });
+  } &lt;span class=&quot;hljs-keyword&quot;&gt;catch&lt;/span&gt; (DecodeException e) {
+    sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response());
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先我们通过&lt;code&gt;context.getBodyAsString()&lt;/code&gt;方法来从请求正文中获取JSON数据并转换成&lt;code&gt;Todo&lt;/code&gt;实体对象 (1)。这里我们包装了一个处理&lt;code&gt;Todo&lt;/code&gt;实例的方法，用于给其添加必要的信息（如URL）：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; Todo &lt;span class=&quot;hljs-title&quot;&gt;wrapObject&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Todo todo, RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; id = todo.getId();
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (id &gt; Todo.getIncId()) {
+    Todo.setIncIdWith(id);
+  } &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(id == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;
+    todo.&lt;span class=&quot;hljs-title&quot;&gt;setIncId&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;
+  todo.setUrl(context.request().absoluteURI() + &lt;span class=&quot;hljs-string&quot;&gt;&quot;/&quot;&lt;/span&gt; + todo.getId());
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; todo;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于没有ID（或者为默认ID）的待办事项，我们会给它分配一个ID。这里我们采用了自增ID的策略，通过&lt;code&gt;AtomicInteger&lt;/code&gt;来实现。&lt;/p&gt;
+&lt;p&gt;然后我们通过&lt;code&gt;Json.encodePrettily&lt;/code&gt;方法将我们的&lt;code&gt;Todo&lt;/code&gt;实例再次编码成JSON格式的数据 (2)。接下来我们利用&lt;code&gt;hset&lt;/code&gt;函数将待办事项实例插入到对应的哈希表中 (3)。如果插入成功，返回 &lt;code&gt;201&lt;/code&gt; 状态码 (4)。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#39;admonition-block note&#39;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&#39;admonition-icon&#39;&gt;&lt;i class=&#39;admonition-icon fa fa-comment&#39;&gt;&lt;/i&gt;&lt;/td&gt;&lt;td class=&#39;content&#39;&gt;&lt;span class=&#39;title&#39;&gt;201 状态码? &lt;/span&gt;&lt;br/&gt;&lt;span class=&#39;content&#39;&gt; 正如你所看到的那样，我们将状态码设为&lt;code&gt;201&lt;/code&gt;，这代表&lt;code&gt;CREATED&lt;/code&gt;（已创建）。另外，如果不指定状态码的话，Vert.x Web默认将状态码设为 &lt;code&gt;200 OK&lt;/code&gt;。&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;同时，我们接收到的HTTP请求首部可能格式不正确，因此我们需要在方法中捕获&lt;code&gt;DecodeException&lt;/code&gt;异常。这样一旦捕获到&lt;code&gt;DecodeException&lt;/code&gt;异常，我们就返回&lt;code&gt;400 Bad Request&lt;/code&gt;状态码。&lt;/p&gt;
+&lt;h3 id=&quot;-&quot;&gt;更新待办事项&lt;/h3&gt;
+&lt;p&gt;如果你想改变你的计划，你就需要更新你的待办事项。我们来实现更新待办事项的逻辑，它有点小复杂（或者说是，繁琐？）：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// PATCH /todos/:todoId&lt;/span&gt;
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleUpdateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;try&lt;/span&gt; {
+    String todoID = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// (1)&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Todo newTodo = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(context.getBodyAsString()); &lt;span class=&quot;hljs-comment&quot;&gt;// (2)&lt;/span&gt;
+    &lt;span class=&quot;hljs-comment&quot;&gt;// handle error&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (todoID == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; || newTodo == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;) {
+      sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response());
+      &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
+    }
+
+    redis.hget(Constants.REDIS_TODO_KEY, todoID, x -&gt; { &lt;span class=&quot;hljs-comment&quot;&gt;// (3)&lt;/span&gt;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (x.succeeded()) {
+        String result = x.result();
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (result == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
+          sendError(&lt;span class=&quot;hljs-number&quot;&gt;404&lt;/span&gt;, context.response()); &lt;span class=&quot;hljs-comment&quot;&gt;// (4)&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+          Todo oldTodo = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(result);
+          String response = Json.encodePrettily(oldTodo.merge(newTodo)); &lt;span class=&quot;hljs-comment&quot;&gt;// (5)&lt;/span&gt;
+          redis.hset(Constants.REDIS_TODO_KEY, todoID, response, res -&gt; { &lt;span class=&quot;hljs-comment&quot;&gt;// (6)&lt;/span&gt;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded()) {
+              context.response()
+                .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+                .end(response); &lt;span class=&quot;hljs-comment&quot;&gt;// (7)&lt;/span&gt;
+            }
+          });
+        }
+      } &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response()&lt;/span&gt;)&lt;/span&gt;;
+    });
+  } &lt;span class=&quot;hljs-keyword&quot;&gt;catch&lt;/span&gt; (DecodeException e) {
+    sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response());
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;唔。。。一大长串代码诶。。。我们来看一下。首先我们从 &lt;code&gt;RoutingContext&lt;/code&gt; 中获取路径参数 &lt;code&gt;todoId&lt;/code&gt; (1)，这是我们想要更改待办事项对应的id。然后我们从请求正文中获取新的待办事项数据 (2)。这一步也有可能抛出 &lt;code&gt;DecodeException&lt;/code&gt; 异常因此我们也需要去捕获它。要更新待办事项，我们需要先通过&lt;code&gt;hget&lt;/code&gt;函数获取之前的待办事项 (3)，检查其是否存在。获取旧的待办事项之后，我们调用之前在&lt;code&gt;Todo&lt;/code&gt;类中实现的&lt;code&gt;merge&lt;/code&gt;方法将旧待办事项与新待办事项整合到一起 (5)，然后编码成JSON格式的数据。然后我们通过&lt;code&gt;hset&lt;/code&gt;函数更新对应的待办事项 (6)（&lt;code&gt;hset&lt;/code&gt;表示如果不存在就插入，存在就更新）。操作成功的话，返回 &lt;code&gt;200 OK&lt;/code&gt; 状态。&lt;/p&gt;
+&lt;p&gt;这就是更新待办事项的逻辑～要有耐心哟，我们马上就要见到胜利的曙光了～下面我们来实现删除待办事项的逻辑。&lt;/p&gt;
+&lt;h3 id=&quot;-&quot;&gt;删除/删除全部待办事项&lt;/h3&gt;
+&lt;p&gt;删除待办事项的逻辑非常简单。我们利用&lt;code&gt;hdel&lt;/code&gt;函数来删除某一待办事项，用&lt;code&gt;del&lt;/code&gt;函数删掉所有待办事项（实际上是直接把那个哈希表给删了）。如果删除操作成功，返回&lt;code&gt;204 No Content&lt;/code&gt; 状态。&lt;/p&gt;
+&lt;p&gt;这里直接给出代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleDeleteOne&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  String todoID = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;);
+  redis.hdel(Constants.REDIS_TODO_KEY, todoID, res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded())
+      context.response().setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;204&lt;/span&gt;).end();
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response()&lt;/span&gt;)&lt;/span&gt;;
+  });
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleDeleteAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  redis.del(Constants.REDIS_TODO_KEY, res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded())
+      context.response().setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;204&lt;/span&gt;).end();
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response()&lt;/span&gt;)&lt;/span&gt;;
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;啊哈！我们实现待办事项服务的Verticle已经完成咯～一颗赛艇！但是我们该如何去运行我们的&lt;code&gt;Verticle&lt;/code&gt;呢？答案是，我们需要 &lt;em&gt;部署并运行&lt;/em&gt; 我们的Verticle。还好Vert.x提供了一个运行Verticle的辅助工具：Vert.x Launcher，让我们来看看如何利用它。&lt;/p&gt;
+&lt;h2 id=&quot;-vert-x-launcher-&quot;&gt;将应用与Vert.x Launcher一起打包&lt;/h2&gt;
+&lt;p&gt;要通过Vert.x Launcher来运行Verticle，我们需要在&lt;code&gt;build.gradle&lt;/code&gt;中配置一下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs gradle&quot;&gt;jar {
+  &lt;span class=&quot;hljs-comment&quot;&gt;// by default fat jar&lt;/span&gt;
+  archiveName = &lt;span class=&quot;hljs-string&quot;&gt;&#39;vertx-blueprint-todo-backend-fat.jar&#39;&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; { &lt;span class=&quot;hljs-keyword&quot;&gt;configurations&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;collect&lt;/span&gt; { it.isDirectory() ? it : zipTree(it) } }
+  manifest {
+      attributes &lt;span class=&quot;hljs-string&quot;&gt;&#39;Main-Class&#39;&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx.core.Launcher&#39;&lt;/span&gt;
+      attributes &lt;span class=&quot;hljs-string&quot;&gt;&#39;Main-Verticle&#39;&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx.blueprint.todolist.verticles.SingleApplicationVerticle&#39;&lt;/span&gt;
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在&lt;code&gt;jar&lt;/code&gt;区块中，我们配置Gradle使其生成 &lt;strong&gt;fat-jar&lt;/strong&gt;，并指定启动类。&lt;em&gt;fat-jar&lt;/em&gt; 是一个给Vert.x应用打包的简便方法，它直接将我们的应用连同所有的依赖都给打包到jar包中去了，这样我们可以直接通过jar包运行我们的应用而不必再指定依赖的 &lt;code&gt;CLASSPATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;我们将&lt;code&gt;Main-Class&lt;/code&gt;属性设为&lt;code&gt;io.vertx.core.Launcher&lt;/code&gt;，这样就可以通过Vert.x Launcher来启动对应的Verticle了。另外我们需要将&lt;code&gt;Main-Verticle&lt;/code&gt;属性设为我们想要部署的Verticle的类名（全名）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;配置好了以后，我们就可以打包了：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;gradle build&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;-&quot;&gt;运行我们的服务&lt;/h2&gt;
+&lt;p&gt;万事俱备，只欠东风。是时候运行我们的待办事项服务了！首先我们先启动Redis服务：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;redis-server&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后运行服务：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;java -jar build/libs/vertx-blueprint-todo-backend-fat.jar&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果没问题的话，你将会在终端中看到 &lt;code&gt;Succeeded in deploying verticle&lt;/code&gt; 的字样。下面我们可以自由测试我们的API了，其中最简便的方法是借助 &lt;a href=&quot;https://github.com/TodoBackend/todo-backend-js-spec&quot;&gt;todo-backend-js-spec&lt;/a&gt; 来测试。&lt;/p&gt;
+&lt;p&gt;键入 &lt;code&gt;http://127.0.0.1:8082/todos&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/blog/blueprint-tutorials/todo-test-input.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;测试结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/blog/blueprint-tutorials/todo-test-result.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当然，我们也可以用其它工具，比如 &lt;code&gt;curl&lt;/code&gt; ：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs json&quot;&gt;sczyh30@sczyh30-workshop:~$ curl http://127.0.0.1:8082/todos
+[ {
+  &quot;id&quot; : 20578623,
+  &quot;title&quot; : &quot;blah&quot;,
+  &quot;completed&quot; : false,
+  &quot;order&quot; : 95,
+  &quot;url&quot; : &quot;http://127.0.0.1:8082/todos/20578623&quot;
+}, {
+  &quot;id&quot; : 1744802607,
+  &quot;title&quot; : &quot;blah&quot;,
+  &quot;completed&quot; : false,
+  &quot;order&quot; : 523,
+  &quot;url&quot; : &quot;http://127.0.0.1:8082/todos/1744802607&quot;
+}, {
+  &quot;id&quot; : 981337975,
+  &quot;title&quot; : &quot;blah&quot;,
+  &quot;completed&quot; : false,
+  &quot;order&quot; : 95,
+  &quot;url&quot; : &quot;http://127.0.0.1:8082/todos/981337975&quot;
+} ]&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;-&quot;&gt;将服务与控制器分离&lt;/h1&gt;
+&lt;p&gt;啊哈～我们的待办事项服务已经可以正常运行了，但是回头再来看看 &lt;code&gt;SingleApplicationVerticle&lt;/code&gt; 类的代码，你会发现它非常混乱，待办事项业务逻辑与控制器混杂在一起，让这个类非常的庞大，并且这也不利于我们服务的扩展。根据面向对象解耦的思想，我们需要将控制器部分与业务逻辑部分分离。&lt;/p&gt;
+&lt;h2 id=&quot;-future-&quot;&gt;用Future实现异步服务&lt;/h2&gt;
+&lt;p&gt;下面我们来设计我们的业务逻辑层。就像我们之前提到的那样，我们的服务需要是异步的，因此这些服务的方法要么需要接受一个&lt;code&gt;Handler&lt;/code&gt;参数作为回调，要么需要返回一个&lt;code&gt;Future&lt;/code&gt;对象。但是想象一下很多个&lt;code&gt;Handler&lt;/code&gt;混杂在一起嵌套的情况，你会陷入 &lt;em&gt;回调地狱&lt;/em&gt;，这是非常糟糕的。因此，这里我们用&lt;code&gt;Future&lt;/code&gt;实现我们的待办事项服务。&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;io.vertx.blueprint.todolist.service&lt;/code&gt; 包下创建 &lt;code&gt;TodoService&lt;/code&gt; 接口并且编写以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist.service;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.blueprint.todolist.entity.Todo;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.Future;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.List;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.Optional;
+
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TodoService&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-function&quot;&gt;Future&lt;Boolean&gt; &lt;span class=&quot;hljs-title&quot;&gt;initData&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 初始化数据（或数据库）&lt;/span&gt;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;Future&lt;Boolean&gt; &lt;span class=&quot;hljs-title&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Todo todo)&lt;/span&gt;&lt;/span&gt;;
+
+  Future&lt;List&lt;Todo&gt;&gt; getAll();
+
+  Future&lt;Optional&lt;Todo&gt;&gt; getCertain(String todoID);
+
+  &lt;span class=&quot;hljs-function&quot;&gt;Future&lt;Todo&gt; &lt;span class=&quot;hljs-title&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String todoId, Todo newTodo)&lt;/span&gt;&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;Future&lt;Boolean&gt; &lt;span class=&quot;hljs-title&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String todoId)&lt;/span&gt;&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;Future&lt;Boolean&gt; &lt;span class=&quot;hljs-title&quot;&gt;deleteAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;
+
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意到&lt;code&gt;getCertain&lt;/code&gt;方法返回一个&lt;code&gt;Future&lt;Optional&lt;Todo&gt;&gt;&lt;/code&gt;对象。那么&lt;code&gt;Optional&lt;/code&gt;是啥呢？它封装了一个可能为空的对象。因为数据库里面可能没有与我们给定的&lt;code&gt;todoId&lt;/code&gt;相对应的待办事项，查询的结果可能为空，因此我们给它包装上 &lt;code&gt;Optional&lt;/code&gt;。&lt;code&gt;Optional&lt;/code&gt; 可以避免万恶的 &lt;code&gt;NullPointerException&lt;/code&gt;，并且它在函数式编程中用途特别广泛（在Haskell中对应 &lt;strong&gt;Maybe Monad&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;既然我们已经设计好我们的异步服务接口了，让我们来重构原先的Verticle吧！&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;开始重构！&lt;/h2&gt;
+&lt;p&gt;我们创建一个新的Verticle。在 &lt;code&gt;io.vertx.blueprint.todolist.verticles&lt;/code&gt; 包中创建 &lt;code&gt;TodoVerticle&lt;/code&gt; 类，并编写以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist.verticles;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.blueprint.todolist.Constants;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.blueprint.todolist.entity.Todo;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.blueprint.todolist.service.TodoService;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.AbstractVerticle;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.AsyncResult;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.Future;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.Handler;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.http.HttpMethod;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.http.HttpServerResponse;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.json.DecodeException;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.json.Json;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.ext.web.Router;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.ext.web.RoutingContext;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.ext.web.handler.BodyHandler;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.ext.web.handler.CorsHandler;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.HashSet;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.Random;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.Set;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.function.Consumer;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TodoVerticle&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;AbstractVerticle&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String HOST = &lt;span class=&quot;hljs-string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; PORT = &lt;span class=&quot;hljs-number&quot;&gt;8082&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; TodoService service;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;initData&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Future&lt;Void&gt; future)&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;throws&lt;/span&gt; Exception &lt;/span&gt;{
+    Router router = Router.router(vertx);
+    &lt;span class=&quot;hljs-comment&quot;&gt;// CORS support&lt;/span&gt;
+    Set&lt;String&gt; allowHeaders = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; HashSet&lt;&gt;();
+    allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;x-requested-with&quot;&lt;/span&gt;);
+    allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;);
+    allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;origin&quot;&lt;/span&gt;);
+    allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;);
+    allowHeaders.add(&lt;span class=&quot;hljs-string&quot;&gt;&quot;accept&quot;&lt;/span&gt;);
+    Set&lt;HttpMethod&gt; allowMethods = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; HashSet&lt;&gt;();
+    allowMethods.add(HttpMethod.GET);
+    allowMethods.add(HttpMethod.POST);
+    allowMethods.add(HttpMethod.DELETE);
+    allowMethods.add(HttpMethod.PATCH);
+
+    router.route().handler(BodyHandler.create());
+    router.route().handler(CorsHandler.create(&lt;span class=&quot;hljs-string&quot;&gt;&quot;*&quot;&lt;/span&gt;)
+      .allowedHeaders(allowHeaders)
+      .allowedMethods(allowMethods));
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// routes&lt;/span&gt;
+    router.get(Constants.API_GET).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleGetTodo);
+    router.get(Constants.API_LIST_ALL).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleGetAll);
+    router.post(Constants.API_CREATE).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleCreateTodo);
+    router.patch(Constants.API_UPDATE).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleUpdateTodo);
+    router.delete(Constants.API_DELETE).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleDeleteOne);
+    router.delete(Constants.API_DELETE_ALL).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleDeleteAll);
+
+    vertx.createHttpServer()
+      .requestHandler(router::accept)
+      .listen(PORT, HOST, result -&gt; {
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (result.succeeded())
+            future.complete();
+          &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+            future.fail(result.cause());
+        });
+
+    initData();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleCreateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleUpdateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleDeleteOne&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleDeleteAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+     &lt;span class=&quot;hljs-comment&quot;&gt;// TODO&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;sendError&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; statusCode, HttpServerResponse response)&lt;/span&gt; &lt;/span&gt;{
+    response.setStatusCode(statusCode).end();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;badRequest&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    context.response().setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;).end();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;notFound&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    context.response().setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;404&lt;/span&gt;).end();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;serviceUnavailable&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    context.response().setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;).end();
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; Todo &lt;span class=&quot;hljs-title&quot;&gt;wrapObject&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Todo todo, RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; id = todo.getId();
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (id &gt; Todo.getIncId()) {
+      Todo.setIncIdWith(id);
+    } &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(id == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;
+      todo.&lt;span class=&quot;hljs-title&quot;&gt;setIncId&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;
+    todo.setUrl(context.request().absoluteURI() + &lt;span class=&quot;hljs-string&quot;&gt;&quot;/&quot;&lt;/span&gt; + todo.getId());
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; todo;
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;很熟悉吧？这个&lt;code&gt;Verticle&lt;/code&gt;的结构与我们之前的Verticle相类似，这里就不多说了。下面我们来利用我们之前编写的服务接口实现每一个控制器方法。&lt;/p&gt;
+&lt;p&gt;首先先实现 &lt;code&gt;initData&lt;/code&gt; 方法，此方法用于初始化存储结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;initData&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String serviceType = config().getString(&lt;span class=&quot;hljs-string&quot;&gt;&quot;service.type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;redis&quot;&lt;/span&gt;);
+  LOGGER.info(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Service Type: &quot;&lt;/span&gt; + serviceType);
+  &lt;span class=&quot;hljs-keyword&quot;&gt;switch&lt;/span&gt; (serviceType) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;jdbc&quot;&lt;/span&gt;:
+      service = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; JdbcTodoService(vertx, config());
+      &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;redis&quot;&lt;/span&gt;:
+    &lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt;:
+      RedisOptions config = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; RedisOptions()
+        .setHost(config().getString(&lt;span class=&quot;hljs-string&quot;&gt;&quot;redis.host&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;))
+        .setPort(config().getInteger(&lt;span class=&quot;hljs-string&quot;&gt;&quot;redis.port&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;6379&lt;/span&gt;));
+      service = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; RedisTodoService(vertx, config);
+  }
+
+  service.initData().setHandler(res -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.failed()) {
+        LOGGER.error(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Persistence service is not running!&quot;&lt;/span&gt;);
+        res.cause().printStackTrace();
+      }
+    });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先我们从配置中获取服务的类型，这里我们有两种类型的服务：&lt;code&gt;redis&lt;/code&gt;和&lt;code&gt;jdbc&lt;/code&gt;，默认是&lt;code&gt;redis&lt;/code&gt;。接着我们会根据服务的类型以及对应的配置来创建服务。在这里，我们的配置都是从JSON格式的配置文件中读取，并通过Vert.x Launcher的&lt;code&gt;-conf&lt;/code&gt;项加载。后面我们再讲要配置哪些东西。&lt;/p&gt;
+&lt;p&gt;接着我们给&lt;code&gt;service.initData()&lt;/code&gt;方法返回的&lt;code&gt;Future&lt;/code&gt;对象绑定了一个&lt;code&gt;Handler&lt;/code&gt;，这个&lt;code&gt;Handler&lt;/code&gt;将会在&lt;code&gt;Future&lt;/code&gt;得到结果的时候被调用。一旦初始化过程失败，错误信息将会显示到终端上。&lt;/p&gt;
+&lt;p&gt;其它的方法实现也类似，这里就不详细解释了，直接放上代码，非常简洁明了：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+ * Wrap the result handler with failure handler (503 Service Unavailable)
+ */&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;T&gt; Handler&lt;AsyncResult&lt;T&gt;&gt; resultHandler(RoutingContext context, Consumer&lt;T&gt; consumer) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded()) {
+      consumer.accept(res.result());
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      serviceUnavailable(context);
+    }
+  };
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleCreateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;try&lt;/span&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Todo todo = wrapObject(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(context.getBodyAsString()), context);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String encoded = Json.encodePrettily(todo);
+
+    service.insert(todo).setHandler(resultHandler(context, res -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res) {
+        context.response()
+          .setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;201&lt;/span&gt;)
+          .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+          .end(encoded);
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        serviceUnavailable(context);
+      }
+    }));
+  } &lt;span class=&quot;hljs-keyword&quot;&gt;catch&lt;/span&gt; (DecodeException e) {
+    sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response());
+  }
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  String todoID = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;);
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (todoID == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;) {
+    sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response());
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
+  }
+
+  service.getCertain(todoID).setHandler(resultHandler(context, res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!res.isPresent())
+      notFound(context);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String encoded = Json.encodePrettily(res.get());
+      context.response()
+        .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+        .end(encoded);
+    }
+  }));
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  service.getAll().setHandler(resultHandler(context, res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;) {
+      serviceUnavailable(context);
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String encoded = Json.encodePrettily(res);
+      context.response()
+        .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+        .end(encoded);
+    }
+  }));
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleUpdateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;try&lt;/span&gt; {
+    String todoID = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Todo newTodo = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(context.getBodyAsString());
+    &lt;span class=&quot;hljs-comment&quot;&gt;// handle error&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (todoID == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;) {
+      sendError(&lt;span class=&quot;hljs-number&quot;&gt;400&lt;/span&gt;, context.response());
+      &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
+    }
+    service.update(todoID, newTodo)
+      .setHandler(resultHandler(context, res -&gt; {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
+          notFound(context);
+        &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+          &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String encoded = Json.encodePrettily(res);
+          context.response()
+            .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+            .end(encoded);
+        }
+      }));
+  } &lt;span class=&quot;hljs-keyword&quot;&gt;catch&lt;/span&gt; (DecodeException e) {
+    badRequest(context);
+  }
+}
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; Handler&lt;AsyncResult&lt;Boolean&gt;&gt; deleteResultHandler(RoutingContext context) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded()) {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.result()) {
+        context.response().setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;204&lt;/span&gt;).end();
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        serviceUnavailable(context);
+      }
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      serviceUnavailable(context);
+    }
+  };
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleDeleteOne&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  String todoID = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;);
+  service.delete(todoID)
+    .setHandler(deleteResultHandler(context));
+}
+
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleDeleteAll&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+  service.deleteAll()
+    .setHandler(deleteResultHandler(context));
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;是不是和之前的Verticle很相似呢？这里我们还封装了两个&lt;code&gt;Handler&lt;/code&gt;生成器：&lt;code&gt;resultHandler&lt;/code&gt; 和 &lt;code&gt;deleteResultHandler&lt;/code&gt;。这两个生成器封装了一些重复的代码，可以减少代码量。&lt;/p&gt;
+&lt;p&gt;嗯。。。我们的新Verticle写好了，那么是时候去实现具体的业务逻辑了。这里我们会实现两个版本的业务逻辑，分别对应两种存储：&lt;strong&gt;Redis&lt;/strong&gt; 和 &lt;strong&gt;MySQL&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;vert-x-redis-&quot;&gt;Vert.x-Redis版本的待办事项服务&lt;/h2&gt;
+&lt;p&gt;之前我们已经实现过一遍Redis版本的服务了，因此你应该对其非常熟悉了。这里我们仅仅解释一个 &lt;code&gt;update&lt;/code&gt; 方法，其它的实现都非常类似，代码可以在&lt;a href=&quot;https://github.com/sczyh30/vertx-blueprint-todo-backend/blob/master/src/main/java/io/vertx/blueprint/todolist/service/RedisTodoService.java&quot;&gt;GitHub&lt;/a&gt;上浏览。&lt;/p&gt;
+&lt;h3 id=&quot;monadic-future&quot;&gt;Monadic Future&lt;/h3&gt;
+&lt;p&gt;回想一下我们之前写的更新待办事项的逻辑，我们会发现它其实是由两个独立的操作组成 - &lt;code&gt;get&lt;/code&gt; 和 &lt;code&gt;insert&lt;/code&gt;（对于Redis来说）。所以呢，我们可不可以复用 &lt;code&gt;getCertain&lt;/code&gt; 和 &lt;code&gt;insert&lt;/code&gt; 这两个方法？当然了！因为&lt;code&gt;Future&lt;/code&gt;是可组合的，因此我们可以将这两个方法返回的&lt;code&gt;Future&lt;/code&gt;组合到一起。是不是非常方便呢？我们来编写此方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Future&lt;Todo&gt; &lt;span class=&quot;hljs-title&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String todoId, Todo newTodo)&lt;/span&gt; &lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.getCertain(todoId).compose(old -&gt; { &lt;span class=&quot;hljs-comment&quot;&gt;// (1)&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (old.isPresent()) {
+      Todo fnTodo = old.get().merge(newTodo);
+      &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.insert(fnTodo)
+        .map(r -&gt; r ? fnTodo : &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// (2)&lt;/span&gt;
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; Future.succeededFuture(); &lt;span class=&quot;hljs-comment&quot;&gt;// (3)&lt;/span&gt;
+    }
+  });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先我们调用了&lt;code&gt;getCertain&lt;/code&gt;方法，此方法返回一个&lt;code&gt;Future&lt;Optional&lt;Todo&gt;&gt;&lt;/code&gt;对象。同时我们使用&lt;code&gt;compose&lt;/code&gt;函数将此方法返回的&lt;code&gt;Future&lt;/code&gt;与另一个&lt;code&gt;Future&lt;/code&gt;进行组合（1），其中&lt;code&gt;compose&lt;/code&gt;函数接受一个&lt;code&gt;T =&gt; Future&lt;U&gt;&lt;/code&gt;类型的lambda。然后我们接着检查旧的待办事项是否存在，如果存在的话，我们将新的待办事项与旧的待办事项相融合，然后更新待办事项。注意到&lt;code&gt;insert&lt;/code&gt;方法返回&lt;code&gt;Future&lt;Boolean&gt;&lt;/code&gt;类型的&lt;code&gt;Future&lt;/code&gt;，因此我们还需要对此Future的结果做变换，这个变换的过程是通过&lt;code&gt;map&lt;/code&gt;函数实现的（2）。&lt;code&gt;map&lt;/code&gt;函数接受一个&lt;code&gt;T =&gt; U&lt;/code&gt;类型的lambda。如果旧的待办事项不存在，我们返回一个包含null的&lt;code&gt;Future&lt;/code&gt;（3）。最后我们返回组合后的&lt;code&gt;Future&lt;/code&gt;对象。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Future&lt;/code&gt; 的本质&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在函数式编程中，&lt;code&gt;Future&lt;/code&gt; 实际上是一种 &lt;code&gt;Monad&lt;/code&gt;。有关&lt;code&gt;Monad&lt;/code&gt;的理论较为复杂，这里就不进行阐述了。你可以简单地把它看作是一个可以进行变换(&lt;code&gt;map&lt;/code&gt;)和组合(&lt;code&gt;compose&lt;/code&gt;)的包装对象。我们把这种特性叫做 &lt;strong&gt;monadic&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面来实现MySQL版本的待办事项服务。&lt;/p&gt;
+&lt;h2 id=&quot;vert-x-jdbc-&quot;&gt;Vert.x-JDBC版本的待办事项服务&lt;/h2&gt;
+&lt;h3 id=&quot;jdbc-&quot;&gt;JDBC ++ 异步&lt;/h3&gt;
+&lt;p&gt;我们使用Vert.x-JDBC和MySQL来实现JDBC版本的待办事项服务。我们知道，数据库操作都是阻塞操作，很可能会占用不少时间。而Vert.x-JDBC提供了一种异步操作数据库的模式，很神奇吧？所以，在传统JDBC代码下我们要执行SQL语句需要这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;String SQL = &lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT * FROM todo&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-comment&quot;&gt;// ...&lt;/span&gt;
+ResultSet rs = pstmt.executeQuery(SQL);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而在Vert.x JDBC中，我们可以利用回调获取数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;connection.query(SQL, result -&gt; {
+    &lt;span class=&quot;hljs-comment&quot;&gt;// do something with result...&lt;/span&gt;
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种异步操作可以有效避免对数据的等待。当数据获取成功时会自动调用回调函数来执行处理数据的逻辑。&lt;/p&gt;
+&lt;h3 id=&quot;-&quot;&gt;添加依赖&lt;/h3&gt;
+&lt;p&gt;首先我们需要向&lt;code&gt;build.gradle&lt;/code&gt;文件中添加依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs groovy&quot;&gt;compile &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx:vertx-jdbc-client:3.4.1&#39;&lt;/span&gt;
+compile &lt;span class=&quot;hljs-string&quot;&gt;&#39;mysql:mysql-connector-java:6.0.5&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中第二个依赖是MySQL的驱动，如果你想使用其他的数据库，你需要自行替换掉这个依赖。&lt;/p&gt;
+&lt;h3 id=&quot;-jdbcclient&quot;&gt;初始化JDBCClient&lt;/h3&gt;
+&lt;p&gt;在Vert.x JDBC中，我们需要从一个&lt;code&gt;JDBCClient&lt;/code&gt;对象中获取数据库连接，因此我们来看一下如何创建&lt;code&gt;JDBCClient&lt;/code&gt;实例。在&lt;code&gt;io.vertx.blueprint.todolist.service&lt;/code&gt;包下创建&lt;code&gt;JdbcTodoService&lt;/code&gt;类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; io.vertx.blueprint.todolist.service;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.blueprint.todolist.entity.Todo;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.Future;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.Vertx;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.json.JsonArray;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.core.json.JsonObject;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.ext.jdbc.JDBCClient;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; io.vertx.ext.sql.SQLConnection;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.List;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.Optional;
+&lt;span class=&quot;hljs-keyword&quot;&gt;import&lt;/span&gt; java.util.stream.Collectors;
+
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;JdbcTodoService&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TodoService&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; Vertx vertx;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; JsonObject config;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; JDBCClient client;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;JdbcTodoService&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(JsonObject config)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;(Vertx.vertx(), config);
+  }
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;JdbcTodoService&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Vertx vertx, JsonObject config)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.vertx = vertx;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.config = config;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.client = JDBCClient.createShared(vertx, config);
+  }
+
+  &lt;span class=&quot;hljs-comment&quot;&gt;// ...&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们使用&lt;code&gt;JDBCClient.createShared(vertx, config)&lt;/code&gt;方法来创建一个&lt;code&gt;JDBCClient&lt;/code&gt;实例，其中我们传入一个&lt;code&gt;JsonObject&lt;/code&gt;对象作为配置。一般来说，我们需要配置以下的内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;url&lt;/em&gt; - JDBC URL，比如 &lt;code&gt;jdbc:mysql://localhost/vertx_blueprint&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;driver_class&lt;/em&gt; - JDBC驱动名称，比如 &lt;code&gt;com.mysql.cj.jdbc.Driver&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;user&lt;/em&gt; - 数据库用户&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;password&lt;/em&gt; - 数据库密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们将会通过Vert.x Launcher从配置文件中读取此&lt;code&gt;JsonObject&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;现在我们已经创建了&lt;code&gt;JDBCClient&lt;/code&gt;实例了，下面我们需要在MySQL中建这样一个表：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs sql&quot;&gt;&lt;span class=&quot;hljs-operator&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;`todo`&lt;/span&gt; (
+  &lt;span class=&quot;hljs-string&quot;&gt;`id`&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;INT&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;11&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;NULL&lt;/span&gt; AUTO_INCREMENT,
+  &lt;span class=&quot;hljs-string&quot;&gt;`title`&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;VARCHAR&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;255&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;NULL&lt;/span&gt;,
+  &lt;span class=&quot;hljs-string&quot;&gt;`completed`&lt;/span&gt; TINYINT(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;NULL&lt;/span&gt;,
+  &lt;span class=&quot;hljs-string&quot;&gt;`order`&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;INT&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;11&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;NULL&lt;/span&gt;,
+  &lt;span class=&quot;hljs-string&quot;&gt;`url`&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;VARCHAR&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;255&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;NULL&lt;/span&gt;,
+  &lt;span class=&quot;hljs-keyword&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;KEY&lt;/span&gt; (&lt;span class=&quot;hljs-string&quot;&gt;`id`&lt;/span&gt;)
+)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们把要用到的数据库语句都存到服务类中（这里我们就不讨论如何设计表以及写SQL了）：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_CREATE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;CREATE TABLE IF NOT EXISTS `todo` (\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;  `id` int(11) NOT NULL AUTO_INCREMENT,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;  `title` varchar(255) DEFAULT NULL,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;  `completed` tinyint(1) DEFAULT NULL,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;  `order` int(11) DEFAULT NULL,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;  `url` varchar(255) DEFAULT NULL,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;  PRIMARY KEY (`id`) )&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_INSERT = &lt;span class=&quot;hljs-string&quot;&gt;&quot;INSERT INTO `todo` &quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;(`id`, `title`, `completed`, `order`, `url`) VALUES (?, ?, ?, ?, ?)&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_QUERY = &lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT * FROM todo WHERE id = ?&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_QUERY_ALL = &lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT * FROM todo&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_UPDATE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;UPDATE `todo`\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;SET `id` = ?,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;`title` = ?,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;`completed` = ?,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;`order` = ?,\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;`url` = ?\n&quot;&lt;/span&gt; +
+  &lt;span class=&quot;hljs-string&quot;&gt;&quot;WHERE `id` = ?;&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_DELETE = &lt;span class=&quot;hljs-string&quot;&gt;&quot;DELETE FROM `todo` WHERE `id` = ?&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; String SQL_DELETE_ALL = &lt;span class=&quot;hljs-string&quot;&gt;&quot;DELETE FROM `todo`&quot;&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK！一切工作准备就绪，下面我们来实现我们的JDBC版本的服务～&lt;/p&gt;
+&lt;h3 id=&quot;-jdbc-&quot;&gt;实现JDBC版本的服务&lt;/h3&gt;
+&lt;p&gt;所有的获取连接、获取执行数据的操作都要在&lt;code&gt;Handler&lt;/code&gt;中完成。比如我们可以这样获取数据库连接：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;client.getConnection(conn -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (conn.succeeded()) {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; SQLConnection connection = conn.result();
+        &lt;span class=&quot;hljs-comment&quot;&gt;// do something...&lt;/span&gt;
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        &lt;span class=&quot;hljs-comment&quot;&gt;// handle failure&lt;/span&gt;
+      }
+    });&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;由于每一个数据库操作都需要获取数据库连接，因此我们来包装一个返回&lt;code&gt;Handler&lt;AsyncResult&lt;SQLConnection&gt;&gt;&lt;/code&gt;的方法，在此回调中可以直接使用数据库连接，可以减少一些代码量：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; Handler&lt;AsyncResult&lt;SQLConnection&gt;&gt; connHandler(Future future, Handler&lt;SQLConnection&gt; handler) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; conn -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (conn.succeeded()) {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;final&lt;/span&gt; SQLConnection connection = conn.result();
+      handler.handle(connection);
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      future.fail(conn.cause());
+    }
+  };
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;获取数据库连接以后，我们就可以对数据库进行各种操作了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;query&lt;/code&gt; : 执行查询（raw SQL）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;queryWithParams&lt;/code&gt; : 执行预编译查询（prepared statement）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;updateWithParams&lt;/code&gt; : 执行预编译DDL语句（prepared statement）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;execute&lt;/code&gt;: 执行任意SQL语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所有的方法都是异步的所以每个方法最后都接受一个&lt;code&gt;Handler&lt;/code&gt;参数，我们可以在此&lt;code&gt;Handler&lt;/code&gt;中获取结果并执行相应逻辑。&lt;/p&gt;
+&lt;p&gt;现在我们来编写初始化数据库表的&lt;code&gt;initData&lt;/code&gt;方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Future&lt;Boolean&gt; &lt;span class=&quot;hljs-title&quot;&gt;initData&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+  Future&lt;Boolean&gt; result = Future.future();
+  client.getConnection(connHandler(result, connection -&gt;
+    connection.execute(SQL_CREATE, create -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (create.succeeded()) {
+        result.complete(&lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;);
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        result.fail(create.cause());
+      }
+      connection.close();
+    })));
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; result;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此方法仅会在Verticle初始化时被调用，如果&lt;code&gt;todo&lt;/code&gt;表不存在的话就创建一下。注意，&lt;strong&gt;最后一定要关闭数据库连接&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;下面我们来实现插入逻辑方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Future&lt;Boolean&gt; &lt;span class=&quot;hljs-title&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(Todo todo)&lt;/span&gt; &lt;/span&gt;{
+  Future&lt;Boolean&gt; result = Future.future();
+  client.getConnection(connHandler(result, connection -&gt; {
+    connection.updateWithParams(SQL_INSERT, &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; JsonArray().add(todo.getId())
+      .add(todo.getTitle())
+      .add(todo.isCompleted())
+      .add(todo.getOrder())
+      .add(todo.getUrl()), r -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (r.failed()) {
+        result.fail(r.cause());
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        result.complete(&lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;);
+      }
+      connection.close();
+    });
+  }));
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; result;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们使用&lt;code&gt;updateWithParams&lt;/code&gt;方法执行插入逻辑，并且传递了一个&lt;code&gt;JsonArray&lt;/code&gt;变量作为预编译参数。这一点很重要，使用预编译语句可以有效防止SQL注入。&lt;/p&gt;
+&lt;p&gt;我们再来实现&lt;code&gt;getCertain&lt;/code&gt;方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Future&lt;Optional&lt;Todo&gt;&gt; getCertain(String todoID) {
+  Future&lt;Optional&lt;Todo&gt;&gt; result = Future.future();
+  client.getConnection(connHandler(result, connection -&gt; {
+    connection.queryWithParams(SQL_QUERY, &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; JsonArray().add(todoID), r -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (r.failed()) {
+        result.fail(r.cause());
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+        List&lt;JsonObject&gt; list = r.result().getRows();
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (list == &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; || list.isEmpty()) {
+          result.complete(Optional.empty());
+        } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+          result.complete(Optional.of(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Todo(list.get(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;))));
+        }
+      }
+      connection.close();
+    });
+  }));
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; result;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在这个方法里，当我们的查询语句执行以后，我们获得到了&lt;code&gt;ResultSet&lt;/code&gt;实例作为查询的结果集。我们可以通过&lt;code&gt;getColumnNames&lt;/code&gt;方法获取字段名称，通过&lt;code&gt;getResults&lt;/code&gt;方法获取结果。这里我们通过&lt;code&gt;getRows&lt;/code&gt;方法来获取结果集，结果集的类型为&lt;code&gt;List&lt;JsonObject&gt;&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;其余的几个方法：&lt;code&gt;getAll&lt;/code&gt;, &lt;code&gt;update&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt; 以及 &lt;code&gt;deleteAll&lt;/code&gt;都遵循上面的模式，这里就不多说了。你可以在&lt;a href=&quot;https://github.com/sczyh30/vertx-blueprint-todo-backend/blob/master/src/main/java/io/vertx/blueprint/todolist/service/JdbcTodoService.java&quot;&gt;GitHub&lt;/a&gt;上浏览完整的源代码。&lt;/p&gt;
+&lt;p&gt;重构完毕，我们来写待办事项服务对应的配置，然后再来运行！&lt;/p&gt;
+&lt;h2 id=&quot;-&quot;&gt;再来运行！&lt;/h2&gt;
+&lt;p&gt;首先我们在项目的根目录下创建一个 &lt;code&gt;config&lt;/code&gt; 文件夹作为配置文件夹。我们在其中创建一个&lt;code&gt;config_jdbc.json&lt;/code&gt;文件作为 &lt;code&gt;jdbc&lt;/code&gt; 类型服务的配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs json&quot;&gt;{
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;service.type&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;jdbc&quot;&lt;/span&gt;&lt;/span&gt;,
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;url&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;jdbc:mysql://localhost/vertx_blueprint?characterEncoding=UTF-8&amp;useSSL=false&quot;&lt;/span&gt;&lt;/span&gt;,
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;driver_class&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;com.mysql.cj.jdbc.Driver&quot;&lt;/span&gt;&lt;/span&gt;,
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;user&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;vbpdb1&quot;&lt;/span&gt;&lt;/span&gt;,
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;password&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;666666*&quot;&lt;/span&gt;&lt;/span&gt;,
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;max_pool_size&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-number&quot;&gt;30&lt;/span&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你需要根据自己的情况替换掉上述配置文件中相应的内容(如 &lt;em&gt;JDBC URL&lt;/em&gt;，&lt;em&gt;JDBC 驱动&lt;/em&gt; 等)。&lt;/p&gt;
+&lt;p&gt;再建一个&lt;code&gt;config.json&lt;/code&gt;文件作为&lt;code&gt;redis&lt;/code&gt;类型服务的配置（其它的项就用默认配置好啦）：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs json&quot;&gt;{
+  &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;service.type&lt;/span&gt;&quot;: &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;redis&quot;&lt;/span&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们的构建文件也需要更新咯～这里直接给出最终的&lt;code&gt;build.gradle&lt;/code&gt;文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs gradle&quot;&gt;plugins {
+  id &lt;span class=&quot;hljs-string&quot;&gt;&#39;java&#39;&lt;/span&gt;
+}
+
+version &lt;span class=&quot;hljs-string&quot;&gt;&#39;3.4.1&#39;&lt;/span&gt;
+
+ext {
+  vertxVersion = &lt;span class=&quot;hljs-string&quot;&gt;&quot;3.4.1&quot;&lt;/span&gt;
+}
+
+jar {
+  &lt;span class=&quot;hljs-comment&quot;&gt;// by default fat jar&lt;/span&gt;
+  archiveName = &lt;span class=&quot;hljs-string&quot;&gt;&#39;vertx-blueprint-todo-backend-fat.jar&#39;&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; { &lt;span class=&quot;hljs-keyword&quot;&gt;configurations&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;collect&lt;/span&gt; { it.isDirectory() ? it : zipTree(it) } }
+  manifest {
+    attributes &lt;span class=&quot;hljs-string&quot;&gt;&#39;Main-Class&#39;&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx.core.Launcher&#39;&lt;/span&gt;
+    attributes &lt;span class=&quot;hljs-string&quot;&gt;&#39;Main-Verticle&#39;&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;io.vertx.blueprint.todolist.verticles.TodoVerticle&#39;&lt;/span&gt;
+  }
+}
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;repositories&lt;/span&gt; {
+  jcenter()
+}
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// compileOnly requires Gradle 2.12+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;task&lt;/span&gt; annotationProcessing(type: JavaCompile, &lt;span class=&quot;hljs-keyword&quot;&gt;group&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;build&#39;&lt;/span&gt;) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;sourceSets&lt;/span&gt;.main.java
+  &lt;span class=&quot;hljs-keyword&quot;&gt;classpath&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;configurations&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt; + &lt;span class=&quot;hljs-keyword&quot;&gt;configurations&lt;/span&gt;.compileOnly
+  &lt;span class=&quot;hljs-keyword&quot;&gt;destinationDir&lt;/span&gt; = &lt;span class=&quot;hljs-keyword&quot;&gt;project&lt;/span&gt;.&lt;span class=&quot;hljs-keyword&quot;&gt;file&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&#39;src/main/generated&#39;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-keyword&quot;&gt;options&lt;/span&gt;.compilerArgs = [
+    &lt;span class=&quot;hljs-string&quot;&gt;&quot;-proc:only&quot;&lt;/span&gt;,
+    &lt;span class=&quot;hljs-string&quot;&gt;&quot;-processor&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx.codegen.CodeGenProcessor&quot;&lt;/span&gt;,
+    &lt;span class=&quot;hljs-string&quot;&gt;&quot;-Acodegen.output=${destinationDir.absolutePath}&quot;&lt;/span&gt;
+  ]
+}
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;sourceSets&lt;/span&gt; {
+  main {
+    java {
+      srcDirs += &lt;span class=&quot;hljs-string&quot;&gt;&#39;src/main/generated&#39;&lt;/span&gt;
+    }
+  }
+}
+
+compileJava {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;targetCompatibility&lt;/span&gt; = &lt;span class=&quot;hljs-number&quot;&gt;1.8&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;sourceCompatibility&lt;/span&gt; = &lt;span class=&quot;hljs-number&quot;&gt;1.8&lt;/span&gt;
+
+  dependsOn annotationProcessing
+}
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;dependencies&lt;/span&gt; {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-core:${vertxVersion}&quot;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-web:${vertxVersion}&quot;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-jdbc-client:${vertxVersion}&quot;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-redis-client:${vertxVersion}&quot;&lt;/span&gt;)
+  compileOnly(&lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-codegen:${vertxVersion}&quot;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;mysql:mysql-connector-java:6.0.5&#39;&lt;/span&gt;
+
+  testCompile(&lt;span class=&quot;hljs-string&quot;&gt;&quot;io.vertx:vertx-unit:${vertxVersion}&quot;&lt;/span&gt;)
+  testCompile &lt;span class=&quot;hljs-keyword&quot;&gt;group&lt;/span&gt;: &lt;span class=&quot;hljs-string&quot;&gt;&#39;junit&#39;&lt;/span&gt;, name: &lt;span class=&quot;hljs-string&quot;&gt;&#39;junit&#39;&lt;/span&gt;, version: &lt;span class=&quot;hljs-string&quot;&gt;&#39;4.12&#39;&lt;/span&gt;
+}
+
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;task&lt;/span&gt; wrapper(type: Wrapper) {
+  gradleVersion = &lt;span class=&quot;hljs-string&quot;&gt;&#39;3.4&#39;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;好啦好啦，迫不及待了吧？～打开终端，构建我们的应用：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;gradle build&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后我们可以运行Redis版本的待办事项服务：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;java -jar build/libs/vertx-blueprint-todo-backend-fat.jar -conf config/config.json&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们也可以运行JDBC版本的待办事项服务：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;java -jar build/libs/vertx-blueprint-todo-backend-fat.jar -conf config/config_jdbc.json&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同样地，我们也可以使用&lt;a href=&quot;https://github.com/TodoBackend/todo-backend-js-spec&quot;&gt;todo-backend-js-spec&lt;/a&gt;来测试我们的API。由于我们的API设计没有改变，因此测试结果应该不会有变化。&lt;/p&gt;
+&lt;p&gt;我们也提供了待办事项服务对应的Docker Compose镜像构建文件，可以直接通过Docker来运行我们的待办事项服务。你可以在仓库的根目录下看到&lt;a href=&quot;https://github.com/sczyh30/vertx-blueprint-todo-backend/blob/master/docker-compose.yml&quot;&gt;相应的配置文件&lt;/a&gt;，并通过 &lt;code&gt;docker-compose up -- build&lt;/code&gt; 命令来构建并运行。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/blog/blueprint-tutorials/vbptds-docker-compose-running.png&quot; alt=&quot;Docker Compose&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;-&quot;&gt;哈哈，成功了！&lt;/h1&gt;
+&lt;p&gt;哈哈，恭喜你完成了整个待办事项服务，是不是很开心？～在整个教程中，你应该学到了很多关于 &lt;code&gt;Vert.x Web&lt;/code&gt;、 &lt;code&gt;Vert.x Redis&lt;/code&gt; 和 &lt;code&gt;Vert.x JDBC&lt;/code&gt; 的开发知识。当然，最重要的是，你会对Vert.x的 &lt;strong&gt;异步开发模式&lt;/strong&gt; 有了更深的理解和领悟。&lt;/p&gt;
+&lt;p&gt;另外，Vert.x 蓝图系列已经发布至Vert.x官网：&lt;a href=&quot;http://vertx.io/blog/vert-x-blueprint-tutorials/&quot;&gt;Vert.x Blueprint Tutorials&lt;/a&gt;。其中&lt;a href=&quot;http://sczyh30.github.io/vertx-blueprint-job-queue/cn/kue-core/index.html&quot;&gt;第二个Blueprint&lt;/a&gt;是关于消息应用的，&lt;a href=&quot;http://sczyh30.github.io/vertx-blueprint-microservice/cn/index.html&quot;&gt;第三个Blueprint&lt;/a&gt;是关于微服务的，有兴趣的朋友可以参考后面几篇蓝图教程。&lt;/p&gt;
+&lt;p&gt;更多关于Vert.x的文章，请参考&lt;a href=&quot;http://vertx.io/blog/archives/&quot;&gt;Blog on Vert.x Website&lt;/a&gt;。官网的资料是最全面的 :-)&lt;/p&gt;
+&lt;h1 id=&quot;-&quot;&gt;来自其它框架？&lt;/h1&gt;
+&lt;p&gt;之前你可能用过其它的框架，比如Spring Boot。这一小节，我将会用类比的方式来介绍Vert.x Web的使用。&lt;/p&gt;
+&lt;h2 id=&quot;-spring-boot-spring-mvc&quot;&gt;来自Spring Boot/Spring MVC&lt;/h2&gt;
+&lt;p&gt;在Spring Boot中，我们通常在控制器(Controller)中来配置路由以及处理请求，比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@RestController&lt;/span&gt;
+&lt;span class=&quot;hljs-annotation&quot;&gt;@ComponentScan&lt;/span&gt;
+&lt;span class=&quot;hljs-annotation&quot;&gt;@EnableAutoConfiguration&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TodoController&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@Autowired&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; TodoService service;
+
+  &lt;span class=&quot;hljs-annotation&quot;&gt;@RequestMapping&lt;/span&gt;(method = RequestMethod.GET, value = &lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos/{id}&quot;&lt;/span&gt;)
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; Todo &lt;span class=&quot;hljs-title&quot;&gt;getCertain&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(@PathVariable(&lt;span class=&quot;hljs-string&quot;&gt;&quot;id&quot;&lt;/span&gt;)&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; id) &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; service.fetch(id);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在Spring Boot中，我们使用 &lt;code&gt;@RequestMapping&lt;/code&gt; 注解来配置路由，而在Vert.x Web中，我们是通过 &lt;code&gt;Router&lt;/code&gt; 对象来配置路由的。并且因为Vert.x Web是异步的，我们会给每个路由绑定一个处理器（&lt;code&gt;Handler&lt;/code&gt;）来处理对应的请求。&lt;/p&gt;
+&lt;p&gt;另外，在Vert.x Web中，我们使用 &lt;code&gt;end&lt;/code&gt; 方法来向客户端发送HTTP response。相对地，在Spring Boot中我们直接在每个方法中返回结果作为response。&lt;/p&gt;
+&lt;h2 id=&quot;-play-framework-2&quot;&gt;来自Play Framework 2&lt;/h2&gt;
+&lt;p&gt;如果之前用过Play Framework 2的话，你一定会非常熟悉异步开发模式。在Play Framework 2中，我们在 &lt;code&gt;routes&lt;/code&gt; 文件中定义路由，类似于这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs scala&quot;&gt;&lt;span class=&quot;hljs-type&quot;&gt;GET&lt;/span&gt;     /todos/:todoId      controllers.&lt;span class=&quot;hljs-type&quot;&gt;TodoController&lt;/span&gt;.handleGetCertain(todoId: &lt;span class=&quot;hljs-type&quot;&gt;Int&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而在Vert.x Web中，我们通过&lt;code&gt;Router&lt;/code&gt;对象来配置路由：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;router.get(&lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos/:todoId&quot;&lt;/span&gt;).handler(&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;::handleGetCertain);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;this::handleGetCertain&lt;/code&gt;是处理对应请求的方法引用（在Scala里可以把它看作是一个函数）。&lt;/p&gt;
+&lt;p&gt;Play Framework 2中的异步开发模式是基于&lt;code&gt;Future&lt;/code&gt;的。每一个路由处理函数都返回一个&lt;code&gt;Action&lt;/code&gt;对象（实质上是一个类型为&lt;code&gt;Request[A] =&gt; Result&lt;/code&gt;的函数），我们在&lt;code&gt;Action.apply&lt;/code&gt;(或&lt;code&gt;Action.async&lt;/code&gt;)闭包中编写我们的处理逻辑，类似于这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs scala&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleGetCertain&lt;/span&gt;(&lt;/span&gt;todoId: &lt;span class=&quot;hljs-type&quot;&gt;Int&lt;/span&gt;): &lt;span class=&quot;hljs-type&quot;&gt;Action&lt;/span&gt;[&lt;span class=&quot;hljs-type&quot;&gt;AnyContent&lt;/span&gt;] = &lt;span class=&quot;hljs-type&quot;&gt;Action&lt;/span&gt;.async {
+    service.getCertain(todoId) map { &lt;span class=&quot;hljs-comment&quot;&gt;// 服务返回的类型是 `Future[Option[Todo]]`&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;Some&lt;/span&gt;(res) =&gt;
+            &lt;span class=&quot;hljs-type&quot;&gt;Ok&lt;/span&gt;(&lt;span class=&quot;hljs-type&quot;&gt;Json&lt;/span&gt;.toJson(res))
+        &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;None&lt;/span&gt; =&gt;
+            &lt;span class=&quot;hljs-type&quot;&gt;NotFound&lt;/span&gt;()
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而在Vert.x Web中，异步开发模式基本上都是基于回调的（当然也可以用Vert.x RxJava）。我们可以这么写：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;handleCreateTodo&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(RoutingContext context)&lt;/span&gt; &lt;/span&gt;{
+    String todoId = context.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 获取Path Variable&lt;/span&gt;
+    service.getCertain(todoId).setHandler(r -&gt; { &lt;span class=&quot;hljs-comment&quot;&gt;// 服务返回的类型是 `Future&lt;Optional&lt;Todo&gt;&gt;`&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (r.succeeded) {
+            Optional&lt;Todo&gt; res = r.result;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.isPresent()) {
+                context.response()
+                    .putHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;content-type&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;application/json&quot;&lt;/span&gt;)
+                    .end(Json.encodePrettily(res));
+            } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+                sendError(&lt;span class=&quot;hljs-number&quot;&gt;404&lt;/span&gt;, context.response()); &lt;span class=&quot;hljs-comment&quot;&gt;// NotFound(404)&lt;/span&gt;
+            }
+        } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+            sendError(&lt;span class=&quot;hljs-number&quot;&gt;503&lt;/span&gt;, context.response());
+        }
+    });
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;-&quot;&gt;想要使用其它持久化存储框架？&lt;/h2&gt;
+&lt;p&gt;你可能想在Vert.x中使用其它的持久化存储框架或库，比如MyBatis ORM或者Jedis，这当然可以啦！Vert.x允许开发者整合任何其它的框架和库，但是像MyBatis ORM这种框架都是阻塞型的，可能会阻塞Event Loop线程，因此我们需要利用&lt;code&gt;blockingHandler&lt;/code&gt;方法去执行阻塞的操作：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;router.get(&lt;span class=&quot;hljs-string&quot;&gt;&quot;/todos/:todoId&quot;&lt;/span&gt;).blockingHandler(routingContext -&gt; {
+            String todoID = routingContext.request().getParam(&lt;span class=&quot;hljs-string&quot;&gt;&quot;todoId&quot;&lt;/span&gt;);
+            Todo res = service.fetchBlocking(todoID); &lt;span class=&quot;hljs-comment&quot;&gt;// 阻塞型&lt;/span&gt;
+
+            &lt;span class=&quot;hljs-comment&quot;&gt;// 做一些微小的工作&lt;/span&gt;
+
+            routingContext.next();
+        });&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vert.x会使用Worker线程去执行&lt;code&gt;blockingHandler&lt;/code&gt;方法(或者Worker Verticles)中的操作，因此不会阻塞Event Loop线程。&lt;/p&gt;
+&lt;/article&gt;
+      </description>
+          <pubDate>Thu, 01 Sep 2016 08:00:00 +0800</pubDate>
+          <link>https://vertx.tk/blog/vert-x-blueprint-tutorials-cn</link>
+          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-blueprint-tutorials-cn</guid>
           <author>
             <name>sczyh30</name>
             <uri>http://github.com/sczyh30</uri>

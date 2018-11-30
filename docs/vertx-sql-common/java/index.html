@@ -234,7 +234,7 @@
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-sql-common&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -247,7 +247,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-sql-common:3.6.0-SNAPSHOT'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-sql-common:3.6.0'</code></pre>
 </div>
 </div>
 </div>
@@ -343,7 +343,7 @@ perform the following steps for you:</p>
 </div>
 <div class="paragraph">
 <p>如果您希望在同一个事务中执行多个操作，就应该使用
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#setAutoCommit-boolean-io.vertx.core.Handler-">setAutoCommit</a>`方法设置自动提交为`false</code>。</p>
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#setAutoCommit-boolean-io.vertx.core.Handler-">setAutoCommit</a></code> 方法设置自动提交为`false`。</p>
 </div>
 <div class="paragraph">
 <p>当操作完成时，回调方法将会被执行：</p>
@@ -384,11 +384,11 @@ perform the following steps for you:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../../apidocs/io/vertx/ext/sql/ResultSet.html">ResultSet</a>`类代表查询结果。</p>
+<p><code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html">ResultSet</a></code> 类代表查询结果。</p>
 </div>
 <div class="paragraph">
 <p>您可以通过 <code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getColumnNames--">getColumnNames</a></code> 方法获得查询结果的列名 List 集合，实际的结果集可以通过
-`<a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getResults--">getResults</a>`方法获得。</p>
+<code><a href="../../apidocs/io/vertx/ext/sql/ResultSet.html#getResults--">getResults</a></code> 方法获得。</p>
 </div>
 <div class="paragraph">
 <p>结果集被包装成了一组 <code><a href="../../apidocs/io/vertx/core/json/JsonArray.html">JsonArray</a></code> 列表，其中的每个元素代表一行结果。</p>
@@ -670,7 +670,7 @@ connection.batchWithParams("INSERT INTO emp (name) VALUES (?)", batch, res -&gt;
 <h3 id="_执行其他操作">执行其他操作</h3>
 <div class="paragraph">
 <p>若需要执行其他数据库操作，例如您可以使用
-<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#execute-java.lang.String-io.vertx.core.Handler-">execute</a>`方法来执行 `CREATE TABLE</code> 语句。</p>
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#execute-java.lang.String-io.vertx.core.Handler-">execute</a></code> 方法来执行 <code>CREATE TABLE</code> 语句。</p>
 </div>
 <div class="paragraph">
 <p>SQL语句传给数据库时，不会经过任何处理。操作结束时将调用回调方法。</p>
@@ -755,8 +755,8 @@ connection.execute(sql, execute -&gt; {
 </div>
 <div class="paragraph">
 <p>然后您就可以执行在同一个事务中的操作，在需要提交事务时，调用
-`<a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#commit-io.vertx.core.Handler-">commit</a>`方法；在需要回滚时，调用
-`<a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#rollback-io.vertx.core.Handler-">rollback</a>`方法。</p>
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#commit-io.vertx.core.Handler-">commit</a></code> 方法；在需要回滚时，调用
+<code><a href="../../apidocs/io/vertx/ext/sql/SQLConnection.html#rollback-io.vertx.core.Handler-">rollback</a></code> 方法。</p>
 </div>
 <div class="paragraph">
 <p>一旦 <code>commit</code>/<code>rollback</code> 方法执行结束，将会调用回调方法。然后下一个事务也将自动开始。</p>
@@ -787,7 +787,7 @@ connection.execute(sql, execute -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:20:24 CST
+                上次更新时间 2018-11-30 10:24:24 CST
               
               
             </div>
@@ -814,8 +814,8 @@ connection.execute(sql, execute -&gt; {
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

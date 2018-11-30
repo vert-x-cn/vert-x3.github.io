@@ -450,8 +450,8 @@ socket.write("some data", "UTF-16");</code></pre>
 <div class="sect2">
 <h3 id="_流式的socket">流式的Socket</h3>
 <div class="paragraph">
-<p><code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a>`接口继承了 `<a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> 和
-`<a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a>`接口，因此您可以将它套用（pump）到其他的读写流上。</p>
+<p><code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code> 接口继承了 <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> 和
+<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> 接口，因此您可以将它套用（pump）到其他的读写流上。</p>
 </div>
 <div class="paragraph">
 <p>有关更多信息，请参阅 <a href="#streams">流和管道</a>  章节。</p>
@@ -593,7 +593,7 @@ var client = vertx.createNetClient(options);</code></pre>
 <div class="paragraph">
 <p>您可以使用 <code><a href="../../jsdoc/module-vertx-js_net_client-NetClient.html#connect">connect</a></code> ,
 方法创建到服务器的连接。请指定服务器的端口和主机，以及用于处理
-`<a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a>`的处理器。当连接成功或失败时处理器会被调用。</p>
+<code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code> 的处理器。当连接成功或失败时处理器会被调用。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -617,7 +617,7 @@ client.connect(4321, "localhost", function (res, res_err) {
 <div class="paragraph">
 <p>可以将客户端配置为在无法连接的情况下自动重试。
 这是通过 <code><a href="../dataobjects.html#NetClientOptions#setReconnectInterval">reconnectInterval</a></code> 和
-`<a href="../dataobjects.html#NetClientOptions#setReconnectAttempts">reconnectAttempts</a>`方法配置的。</p>
+<code><a href="../dataobjects.html#NetClientOptions#setReconnectAttempts">reconnectAttempts</a></code> 方法配置的。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -995,7 +995,7 @@ var client = vertx.createNetClient(options);</code></pre>
 </div>
 <div class="paragraph">
 <p>它只是一个标准的Java密钥存储，与服务器端的密钥存储相同。通过在
-<code><a href="../dataobjects.html#JksOptions">jks options</a>`上使用 `<a href="../dataobjects.html#JksOptions#setPath">path</a></code>
+<code><a href="../dataobjects.html#JksOptions">jks options</a></code> 上使用 <code><a href="../dataobjects.html#JksOptions#setPath">path</a></code>
 设置客户端受信存储位置。如果服务器在连接期间提供不在客户端受信存储中的证书，则尝试连接将不会成功。</p>
 </div>
 <div class="listingblock">
@@ -1215,8 +1215,8 @@ var client = vertx.createNetClient(options);</code></pre>
 <p>在运行单元/集成测试或是运行开发版的应用程序时都经常需要自签名证书。</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../jsdoc/module-vertx-js_self_signed_certificate-SelfSignedCertificate.html">SelfSignedCertificate</a>`可用于提供自签名PEM证书，并可以提供
-give `KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
+<p><code><a href="../../jsdoc/module-vertx-js_self_signed_certificate-SelfSignedCertificate.html">SelfSignedCertificate</a></code> 可用于提供自签名PEM证书，并可以提供
+give <code>KeyCertOptions</code> 和 <code>TrustOptions</code> configurations 配置：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1459,7 +1459,7 @@ var netServer = vertx.createNetServer({
 </div>
 </div>
 <div class="paragraph">
-<p>`<a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a>`can be configured to hold multiple entries:</p>
+<p><code><a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> can be configured to hold multiple entries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1600,11 +1600,11 @@ client.connect(1234, "localhost", "server.name", function (res, res_err) {
 <div class="sect2">
 <h3 id="_客户端连接使用代理">客户端连接使用代理</h3>
 <div class="paragraph">
-<p>`<a href="../../jsdoc/module-vertx-js_net_client-NetClient.html">NetClient</a>`支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
+<p><code><a href="../../jsdoc/module-vertx-js_net_client-NetClient.html">NetClient</a></code> 支持HTTP/1.x <strong>CONNECT</strong>、<strong>SOCKS4a</strong> 或 <strong>SOCKS5</strong> 代理。</p>
 </div>
 <div class="paragraph">
 <p>代理可以在 <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> 内设置
-`<a href="../dataobjects.html#ProxyOptions">ProxyOptions</a>`来配置代理类型、主机名、端口、可选的用户名和密码。</p>
+<code><a href="../dataobjects.html#ProxyOptions">ProxyOptions</a></code> 来配置代理类型、主机名、端口、可选的用户名和密码。</p>
 </div>
 <div class="paragraph">
 <p>以下是一个例子：</p>
@@ -1635,7 +1635,7 @@ var client = vertx.createNetClient(options);</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:53 CST
+                上次更新时间 2018-11-30 10:22:51 CST
               
               
             </div>
@@ -1662,8 +1662,8 @@ var client = vertx.createNetClient(options);</code></pre>
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

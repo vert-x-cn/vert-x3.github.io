@@ -266,7 +266,7 @@ descriptor:</p>
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-stomp&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -279,7 +279,7 @@ descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-stomp:3.6.0-SNAPSHOT'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-stomp:3.6.0'</code></pre>
 </div>
 </div>
 </div>
@@ -310,7 +310,7 @@ method:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you pass {@code -1} as port, the TCP server would not be started. This is useful when using the websocket
+<p>If you pass <code>-1</code> as port, the TCP server would not be started. This is useful when using the websocket
 bridge. To be notified when the server is ready, use a handler as follows:</p>
 </div>
 <div class="listingblock">
@@ -365,7 +365,7 @@ bridge. To be notified when the server is ready, use a handler as follows:</p>
 <p>First, the STOMP server is based on a
 <code><a href="../../apidocs/io/vertx/core/net/NetServer.html">NetServer</a></code>, so you can configure the underlying <code><a href="../../apidocs/io/vertx/core/net/NetServer.html">NetServer</a></code> from
 the <code><a href="../../apidocs/io/vertx/ext/stomp/StompServerOptions.html">StompServerOptions</a></code>. Alternatively you can also pass the
-`<a href="../../apidocs/io/vertx/core/net/NetServer.html">NetServer</a>`you want to use:</p>
+<code><a href="../../apidocs/io/vertx/core/net/NetServer.html">NetServer</a></code> you want to use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -581,7 +581,7 @@ at the default implementations.</p>
 </div>
 <div class="paragraph">
 <p>The previous snippet creates a STOMP client connecting to "0.0.0.0:61613". Once connected, you get a
-`<a href="../../apidocs/io/vertx/ext/stomp/StompClientConnection.html">StompClientConnection</a>`that let you interact with the server. You can
+<code><a href="../../apidocs/io/vertx/ext/stomp/StompClientConnection.html">StompClientConnection</a></code> that let you interact with the server. You can
 configure the host and port as follows:</p>
 </div>
 <div class="listingblock">
@@ -735,11 +735,11 @@ for instance tries to reconnect to the server:</p>
 <h3 id="_configuration_2">Configuration</h3>
 <div class="paragraph">
 <p>You can configure various aspect by passing a
-<code><a href="../../apidocs/io/vertx/ext/stomp/StompClientOptions.html">StompClientOptions</a>`when creating the `<a href="../../apidocs/io/vertx/ext/stomp/StompClient.html">StompClient</a></code>. As the
+<code><a href="../../apidocs/io/vertx/ext/stomp/StompClientOptions.html">StompClientOptions</a></code> when creating the <code><a href="../../apidocs/io/vertx/ext/stomp/StompClient.html">StompClient</a></code>. As the
 STOMP client relies on a <code><a href="../../apidocs/io/vertx/core/net/NetClient.html">NetClient</a></code>, you can configure the underlying Net Client from
 the <code><a href="../../apidocs/io/vertx/ext/stomp/StompClientOptions.html">StompClientOptions</a></code>. Alternatively, you can pass the <code><a href="../../apidocs/io/vertx/core/net/NetClient.html">NetClient</a></code>
 you want to use in the
-`<a href="../../apidocs/io/vertx/ext/stomp/StompClient.html#connect-io.vertx.core.net.NetClient-io.vertx.core.Handler-">connect</a>`method:</p>
+<code><a href="../../apidocs/io/vertx/ext/stomp/StompClient.html#connect-io.vertx.core.net.NetClient-io.vertx.core.Handler-">connect</a></code> method:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1010,7 +1010,7 @@ STOMP frames on the web socket. It also receives the STOMP frame directly on the
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Enable the web socket bridge and configure the path of the listening web socket ({@code /stomp} by default).</p>
+<p>Enable the web socket bridge and configure the path of the listening web socket (<code>/stomp</code> by default).</p>
 </li>
 <li>
 <p>Import <a href="http://jmesnil.net/stomp-websocket/doc/#download">StompJS</a> in your application (as a script on an
@@ -1023,8 +1023,8 @@ HTML page, or as an npm module (<a href="https://www.npmjs.com/package/stompjs" 
 </div>
 <div class="paragraph">
 <p>To achieve the first step, you would need a HTTP server, and pass the
-<code><a href="../../apidocs/io/vertx/ext/stomp/StompServer.html#webSocketHandler--">webSocketHandler</a>`result to
-`<a href="../../apidocs/io/vertx/core/http/HttpServer.html#websocketHandler-io.vertx.core.Handler-">websocketHandler</a></code>:</p>
+<code><a href="../../apidocs/io/vertx/ext/stomp/StompServer.html#webSocketHandler--">webSocketHandler</a></code> result to
+<code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#websocketHandler-io.vertx.core.Handler-">websocketHandler</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1066,8 +1066,8 @@ var subscription = client.subscribe("foo", callback);
 <div class="sectionbody">
 <div class="paragraph">
 <p>STOMP clients, client&#8217;s connections and server handlers support registering a received
-`<a href="../../apidocs/io/vertx/ext/stomp/Frame.html">Frame</a>`handler that would be notified every time a frame is received from the wire. It lets
-you log the frames, or implement custom behavior. The handler is already called for {@code PING}
+<code><a href="../../apidocs/io/vertx/ext/stomp/Frame.html">Frame</a></code> handler that would be notified every time a frame is received from the wire. It lets
+you log the frames, or implement custom behavior. The handler is already called for <code>PING</code>
 frames, and <em>illegal / unknown</em> frames:</p>
 </div>
 <div class="listingblock">
@@ -1085,7 +1085,7 @@ def client = StompClient.create(vertx).receivedFrameHandler({ frame -&gt;
 <p>The handler is called before the frame is processed, so you can also <em>modify</em> the frame.</p>
 </div>
 <div class="paragraph">
-<p>Frames not using a valid STOMP command use the {@code UNKNOWN} command. The original command is written
+<p>Frames not using a valid STOMP command use the <code>UNKNOWN</code> command. The original command is written
 in the headers using the <code><a href="../../apidocs/io/vertx/ext/stomp/Frame.html#STOMP_FRAME_COMMAND">Frame.STOMP_FRAME_COMMAND</a></code> key.</p>
 </div>
 <div class="paragraph">
@@ -1110,7 +1110,7 @@ def client = StompClient.create(vertx).writingFrameHandler({ frame -&gt;
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:20:28 CST
+                上次更新时间 2018-11-30 10:24:28 CST
               
               
             </div>
@@ -1137,8 +1137,8 @@ def client = StompClient.create(vertx).writingFrameHandler({ frame -&gt;
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>

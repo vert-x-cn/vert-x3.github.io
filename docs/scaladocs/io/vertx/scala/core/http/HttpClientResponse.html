@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.0-SNAPSHOT API  - io.vertx.scala.core.http.HttpClientResponse</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.0 - SNAPSHOT API - io.vertx.scala.core.http.HttpClientResponse" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.0 SNAPSHOT API io.vertx.scala.core.http.HttpClientResponse" />
+          <title>vertx-lang-scala-docs_2.12 3.6.0 API  - io.vertx.scala.core.http.HttpClientResponse</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.0 API - io.vertx.scala.core.http.HttpClientResponse" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.0 API io.vertx.scala.core.http.HttpClientResponse" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.0-SNAPSHOT API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.0 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -209,6 +209,10 @@
                         <a class="object" href="ServerWebSocket$.html" title=""></a>
                         <a class="class" href="ServerWebSocket.html" title="Represents a server side WebSocket."></a>
                         <a href="ServerWebSocket.html" title="Represents a server side WebSocket.">ServerWebSocket</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="StreamPriority$.html" title=""></a>
+                        <a class="class" href="StreamPriority.html" title="This class represents HTTP/2 stream priority defined in RFC 7540 clause 5.3"></a>
+                        <a href="StreamPriority.html" title="This class represents HTTP/2 stream priority defined in RFC 7540 clause 5.3">StreamPriority</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="WebSocket$.html" title=""></a>
                         <a class="class" href="WebSocket.html" title="Represents a client-side WebSocket."></a>
@@ -798,7 +802,7 @@ remote peer and it responded with a status code of 200.   * @return the net sock
         <span class="name">pause</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpClientResponse">HttpClientResponse</a></span>
       </span>
       
-      <p class="shortcomment cmt">Pause the <code>ReadStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>. While it's paused, no data will be sent to the data <code>handler</code>   * @return a reference to this, so the API can be used fluently
+      <p class="shortcomment cmt">Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.</p><p>While it's paused, no data will be sent to the data <code>handler</code>.   * @return a reference to this, so the API can be used fluently
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpClientResponse">HttpClientResponse</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpClientResponse#request" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="request():io.vertx.scala.core.http.HttpClientRequest"></a><a id="request():HttpClientRequest"></a>
@@ -831,7 +835,7 @@ remote peer and it responded with a status code of 200.   * @return the net sock
         <span class="name">resume</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpClientResponse">HttpClientResponse</a></span>
       </span>
       
-      <p class="shortcomment cmt">Resume reading.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading. If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
+      <p class="shortcomment cmt">Resume reading, and sets the buffer in <code>flowing</code> mode.</p><div class="fullcomment"><div class="comment cmt"><p>Resume reading, and sets the buffer in <code>flowing</code> mode.</p><p>If the <code>ReadStream</code> has been paused, reading will recommence on it.   * @return a reference to this, so the API can be used fluently
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpClientResponse">HttpClientResponse</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpClientResponse#statusCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="statusCode():Int"></a>
@@ -865,6 +869,23 @@ remote peer and it responded with a status code of 200.   * @return the net sock
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the status message of the response</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpClientResponse#streamPriorityHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="streamPriorityHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.StreamPriority]):io.vertx.scala.core.http.HttpClientResponse"></a><a id="streamPriorityHandler(Handler[StreamPriority]):HttpClientResponse"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpClientResponse.html#streamPriorityHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.StreamPriority]):io.vertx.scala.core.http.HttpClientResponse" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">streamPriorityHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="StreamPriority.html" class="extype" name="io.vertx.scala.core.http.StreamPriority">StreamPriority</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpClientResponse">HttpClientResponse</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Set an handler for stream priority changes.</p><div class="fullcomment"><div class="comment cmt"><p>Set an handler for stream priority changes.</p><p>This is not implemented for HTTP/1.x.   * @param handler the handler to be called when the stream priority changes
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

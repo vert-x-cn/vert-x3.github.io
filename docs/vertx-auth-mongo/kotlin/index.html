@@ -204,7 +204,7 @@
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-auth-mongo&lt;/artifactId&gt;
- &lt;version&gt;3.6.0-SNAPSHOT&lt;/version&gt;
+ &lt;version&gt;3.6.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -217,7 +217,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-auth-mongo:3.6.0-SNAPSHOT'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-auth-mongo:3.6.0'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -273,9 +273,9 @@ var authProvider = MongoAuth.create(client, authProperties)</code></pre>
 <p>MongoDB中可以设置下边几种`SALT`的值：</p>
 </div>
 <div class="paragraph">
-<p><code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashSaltStyle.html#NO_SALT">NO_SALT</a></code>：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
-<code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashSaltStyle.html#COLUMN">COLUMN</a></code>：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
-<code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashSaltStyle.html#EXTERNAL">EXTERNAL</a></code>：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashStrategy.html#setExternalSalt-java.lang.String-">setExternalSalt</a></code> 方法进行设置。</p>
+<p><code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashSaltStyle.html#NO_SALT">NO_SALT</a></code> ：密码就不会执行加密以明文的方式存储。（参考下边WARNING）
+<code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashSaltStyle.html#COLUMN">COLUMN</a></code> ：Vert.X会为每个用户创建一个"salt"值，并且存储在用户表定义的列中；（参考下边WARNING）
+<code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashSaltStyle.html#EXTERNAL">EXTERNAL</a></code> ：Vert.X仅仅将密码最终加密结果存储在数据库中，"salt"值可以在外部使用，并且可以调用 <code><a href="../../apidocs/io/vertx/ext/auth/mongo/HashStrategy.html#setExternalSalt-java.lang.String-">setExternalSalt</a></code> 方法进行设置。</p>
 </div>
 <div class="paragraph">
 <p>如果你想要重写上述行为，则你可以调用
@@ -429,8 +429,8 @@ authProvider.authenticate(authInfo, { res -&gt;
 </div>
 <div class="paragraph">
 <p>如果想要替换上边的 <code>username</code> 和 <code>password</code> 两个默认字段名，你可以使用
-`<a href="../../apidocs/io/vertx/ext/auth/mongo/MongoAuth.html#setUsernameCredentialField-java.lang.String-">setUsernameCredentialField</a>`和
-`<a href="../../apidocs/io/vertx/ext/auth/mongo/MongoAuth.html#setPasswordCredentialField-java.lang.String-">setPasswordCredentialField</a>`方法。</p>
+<code><a href="../../apidocs/io/vertx/ext/auth/mongo/MongoAuth.html#setUsernameCredentialField-java.lang.String-">setUsernameCredentialField</a></code> 和
+<code><a href="../../apidocs/io/vertx/ext/auth/mongo/MongoAuth.html#setPasswordCredentialField-java.lang.String-">setPasswordCredentialField</a></code> 方法。</p>
 </div>
 </div>
 </div>
@@ -442,7 +442,7 @@ authProvider.authenticate(authInfo, { res -&gt;
 </div>
 <div class="paragraph">
 <p>如果要验证一个用户是否拥有特定的许可，则要将许可信息传递到
-`<a href="../../apidocs/io/vertx/ext/auth/User.html#isAuthorised-java.lang.String-io.vertx.core.Handler-">isAuthorised</a>`中：</p>
+<code><a href="../../apidocs/io/vertx/ext/auth/User.html#isAuthorised-java.lang.String-io.vertx.core.Handler-">isAuthorised</a></code> 中：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -477,7 +477,7 @@ authProvider.authenticate(authInfo, { res -&gt;
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-06 11:18:10 CST
+                上次更新时间 2018-11-30 10:22:07 CST
               
               
             </div>
@@ -504,8 +504,8 @@ authProvider.authenticate(authInfo, { res -&gt;
       <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
         <h2>Community</h2>
         <ul class="list-unstyled">
-          <li><a href="https://vertx.tk/community/">Help &amp; Contributors</a></li>
-          <li><a href="https://vertx.tk/materials/">Learning materials</a></li>
+          <li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li>
+          <li><a href="https://vertx.tk/materials/">学习资料</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
           <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
           <li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li>
