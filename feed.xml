@@ -3,9 +3,181 @@
     <channel>
       <title>Vert.x</title>
       <description>Vert.x is a tool-kit for building reactive applications on the JVM.</description>
-      <link>https://vertx.tk/</link>
+      <link>https://okou19900722.gitee.io/cn.vertx.tk//</link>
 
-      <atom:link href="https://vertx.tk/feed.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://okou19900722.gitee.io/cn.vertx.tk//feed.xml" rel="self" type="application/rss+xml" />
+      
+        <item>
+          <title>Eclipse Vert.x 3.6.0 released !</title>
+          <description>
+      &lt;article&gt;&lt;p&gt;We are pleased to announce the Eclipse Vert.x 3.6.0 release.&lt;/p&gt;
+&lt;p&gt;As always, the community contributions have been key in achieving this milestone. 
+To all of you who participated: thank you, you are awesome!&lt;/p&gt;
+&lt;p&gt;Without further ado, let’s take a look at some of the most exciting new features and enhancements.  &lt;/p&gt;
+&lt;h4 id=&quot;vert-x-cassandra-client&quot;&gt;Vert.x Cassandra client&lt;/h4&gt;
+&lt;p&gt;In this release we introduce the &lt;a href=&quot;https://github.com/vert-x3/vertx-cassandra-client&quot;&gt;Vert.x Cassandra client&lt;/a&gt;, an extension for interation with &lt;a href=&quot;http://cassandra.apache.org/&quot;&gt;Apache Cassandra&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The client supports:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;prepared queries&lt;/li&gt;
+&lt;li&gt;batching&lt;/li&gt;
+&lt;li&gt;query streaming&lt;/li&gt;
+&lt;li&gt;bulk fetching&lt;/li&gt;
+&lt;li&gt;low level fetching&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To give you an idea of how the API usage may looks like, we provide this example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;cassandraClient.queryStream(&lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT my_string_col FROM my_keyspace.my_table where my_key = &#39;my_value&#39;&quot;&lt;/span&gt;, queryStream -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (queryStream.succeeded()) {
+    CassandraRowStream stream = queryStream.result();
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// resume stream when queue is ready to accept buffers again&lt;/span&gt;
+    response.drainHandler(v -&gt; stream.resume());
+
+    stream.handler(row -&gt; {
+        String value = row.getString(&lt;span class=&quot;hljs-string&quot;&gt;&quot;my_string_col&quot;&lt;/span&gt;);
+        response.write(value);
+
+        &lt;span class=&quot;hljs-comment&quot;&gt;// pause row stream when we buffer queue is full&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (response.writeQueueFull()) {
+        stream.pause();
+        }
+    });
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// end request when we reached end of the stream&lt;/span&gt;
+    stream.endHandler(end -&gt; response.end());
+
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+    queryStream.cause().printStackTrace();
+    &lt;span class=&quot;hljs-comment&quot;&gt;// response with internal server error if we are not able to execute given query&lt;/span&gt;
+    response
+        .setStatusCode(&lt;span class=&quot;hljs-number&quot;&gt;500&lt;/span&gt;)
+        .end(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Unable to execute the query&quot;&lt;/span&gt;);
+    }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;vert-x-for-kotlin&quot;&gt;Vert.x for Kotlin&lt;/h4&gt;
+&lt;p&gt;Vert.x for Kotlin has been updated to the very recent Kotlin 1.3 (and coroutines 1.0).&lt;/p&gt;
+&lt;p&gt;Vert.x 3.5 introduced a powerful way to write synchronous non-blocking code with Kotlin coroutines:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;val &lt;span class=&quot;hljs-literal&quot;&gt;result&lt;/span&gt; = awaitResult&lt;&lt;span class=&quot;hljs-type&quot;&gt;ResultSet&lt;/span&gt;&gt; { client.queryWithParams(&lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT TITLE FROM MOVIE WHERE ID=?&quot;&lt;/span&gt;, json { &lt;span class=&quot;hljs-type&quot;&gt;array&lt;/span&gt;(id) }, it) };&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this release, &lt;code&gt;awaitResult&lt;/code&gt; idiom as extension methods are provided, so now you can directly write:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;val &lt;span class=&quot;hljs-literal&quot;&gt;result&lt;/span&gt; = client.queryWithParamsAwait(&lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT TITLE FROM MOVIE WHERE ID=?&quot;&lt;/span&gt;, json { &lt;span class=&quot;hljs-type&quot;&gt;array&lt;/span&gt;(id) })&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note the &lt;code&gt;Await&lt;/code&gt; suffix: all Vert.x asynchronous methods provide now an &lt;em&gt;awaitified&lt;/em&gt; extension.&lt;/p&gt;
+&lt;h4 id=&quot;web-api-gateways&quot;&gt;Web API gateways&lt;/h4&gt;
+&lt;p&gt;The new &lt;a href=&quot;https://vertx.io/docs/vertx-web-api-service/java/&quot;&gt;Vert.x Web API Service&lt;/a&gt; module allows you to
+ create &lt;a href=&quot;https://vertx.io/docs/vertx-web-api-contract/java/&quot;&gt;Vert.x Web API Contract&lt;/a&gt; gateways.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/blog/vertx-web-api-service/vertx-web-api-service.png&quot; alt=&quot;Web API Service Architecture&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@WebApiServiceGen&lt;/code&gt; can annotate your service interface to handle
+&lt;a href=&quot;https://www.openapis.org/&quot;&gt;OpenAPI 3&lt;/a&gt;: &lt;a href=&quot;https://vertx.io/docs/vertx-web-api-service/java/&quot;&gt;Vert.x Web API Service&lt;/a&gt;
+requests:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-annotation&quot;&gt;@WebApiServiceGen&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TransactionService&lt;/span&gt; &lt;/span&gt;{
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getTransactionsList&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String from, String to, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)&lt;/span&gt;&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;putTransaction&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(JsonObject body, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)&lt;/span&gt;&lt;/span&gt;;
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;OpenAPI3RouterFactory&lt;/code&gt; web router becomes an API gateway sending requests directly to your services.&lt;/p&gt;
+&lt;p&gt;These services are powered by the Vert.x &lt;a href=&quot;https://vertx.io/docs/vertx-core/java/#event_bus&quot;&gt;event bus&lt;/a&gt; and benefits
+ from features like load balancing and clustering.&lt;/p&gt;
+&lt;p&gt;Check the &lt;a href=&quot;https://vertx.io/docs/vertx-web-api-service/java/&quot;&gt;complete documentation&lt;/a&gt; for more details (a tutorial post is coming soon!)&lt;/p&gt;
+&lt;h4 id=&quot;web-client&quot;&gt;Web Client&lt;/h4&gt;
+&lt;p&gt;Our beloved &lt;a href=&quot;https://vertx.io/docs/vertx-web-client/java/&quot;&gt;WebClient&lt;/a&gt; is now capable of handling client sessions. The
+&lt;code&gt;WebClientSession&lt;/code&gt; is a client extension that is very helpful when you need to manage cookies on the client side.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// The session is created per user&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;// from now on cookies are handled by the session&lt;/span&gt;
+WebClientSession session = WebClientSession.create(client);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cherry on the cake, the web client is now capable of performing server side response checks using &lt;em&gt;response predicates&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;client
+  .get(&lt;span class=&quot;hljs-number&quot;&gt;8080&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;myserver.mycompany.com&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;/some-uri&quot;&lt;/span&gt;)
+  .expect(ResponsePredicate.SC_SUCCESS)
+  .expect(ResponsePredicate.JSON)
+  .send(result -&gt; { ... });&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The server side response must validate the expectations defined before sending the request in order to make the response
+successful, relieving the user code to perform these checks manually. Of course many out of box expecations are provided
+and you can always create your own to implement custom checks.&lt;/p&gt;
+&lt;h4 id=&quot;use-templating-everywhere&quot;&gt;Use templating everywhere&lt;/h4&gt;
+&lt;p&gt;Template engines can now be used outside the realm of Vert.x Web.
+One great use case is to use them to generate email content:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;TemplateEngine template = ...
+
+template.render(new JsonObject(), &quot;my-template.txt, res -&gt; {
+   // Send result with the Vert.x Mail client
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;openid-connect-discovery&quot;&gt;OpenID Connect Discovery&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://vertx.io/docs/vertx-auth-oauth2/java/&quot;&gt;Oauth2&lt;/a&gt; has been greatly enhanced to support more of OpenID Connect, the most noticible is the support of &lt;code&gt;OpenID Connect Discovery 1.0&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;What this means for the end user is that, configuration is now a trivial task, as it is “&lt;em&gt;discoverd&lt;/em&gt;“ from the server, e.g.:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;OpenIDConnectAuth.discover(vertx,
+  &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; OAuth2ClientOptions()
+    .setSite(&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://accounts.google.com&quot;&lt;/span&gt;)
+    .setClientID(&lt;span class=&quot;hljs-string&quot;&gt;&quot;clientId&quot;&lt;/span&gt;),
+  res -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (res.succeeded()) {
+      &lt;span class=&quot;hljs-comment&quot;&gt;// the setup call succeeded.&lt;/span&gt;
+      &lt;span class=&quot;hljs-comment&quot;&gt;// at this moment your auth is ready to use and&lt;/span&gt;
+      &lt;span class=&quot;hljs-comment&quot;&gt;// google signature keys are loaded so tokens can be decoded and verified.&lt;/span&gt;
+    } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+      &lt;span class=&quot;hljs-comment&quot;&gt;// the setup failed.&lt;/span&gt;
+    }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you know your &lt;strong&gt;clientId&lt;/strong&gt; and your provider server URL (of course), all the remaining endoints, key signature algorithms and &lt;em&gt;JSON Web Keys&lt;/em&gt; are “discovered” for you and
+configured to the auth provider.&lt;/p&gt;
+&lt;h4 id=&quot;password-hashing-strategy&quot;&gt;Password Hashing strategy&lt;/h4&gt;
+&lt;p&gt;Vert.x auth components now support user defined password hashing strategies, If you’re not happy with the provided implementations: &lt;code&gt;SHA512&lt;/code&gt; or &lt;code&gt;PKDBF2&lt;/code&gt; you can now provide your own strategy
+so it can be used with &lt;code&gt;JDBC&lt;/code&gt; or &lt;code&gt;Mongo&lt;/code&gt; auth.&lt;/p&gt;
+&lt;p&gt;The hash verification algorithm has been improved to be time constant, regardless of the result, which protects Vert.x
+applications from hash timing attacks.&lt;/p&gt;
+&lt;h4 id=&quot;externalized-configuration-of-vert-x-options&quot;&gt;Externalized configuration of Vert.x options&lt;/h4&gt;
+&lt;p&gt;Whether you run your Vert.x app with the CLI or as an executable JAR with the &lt;code&gt;Launcher&lt;/code&gt;, you can now provide Vert.x
+options as a command line parameter:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;java -jar &lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;-app.jar -options /path/&lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;/&lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;/&lt;span class=&quot;hljs-type&quot;&gt;file&lt;/span&gt;.json&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or with the CLI:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;vertx &lt;span class=&quot;hljs-command&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;-verticle.js -options /path/&lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;/&lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;/&lt;span class=&quot;hljs-type&quot;&gt;file&lt;/span&gt;.json&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is particularly useful for complex clustered event-bus setups (encryption, public host vs cluster host…).&lt;/p&gt;
+&lt;h4 id=&quot;and-more-&quot;&gt;And more…&lt;/h4&gt;
+&lt;p&gt;Here are some other important improvements you can find in this release:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java 11 support (unless a Vert.x module depends on a third-party dependency that does not support it yet)&lt;/li&gt;
+&lt;li&gt;Hazelcast Cluster Manager &lt;a href=&quot;/docs/vertx-hazelcast/java/#_using_lite_members&quot;&gt;support for lite members&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/blog/simplified-database-transaction-management-with-the-vert-x-rxjava-api/&quot;&gt;Simplified database transaction management&lt;/a&gt; with the Vert.x &lt;em&gt;Rxified&lt;/em&gt; API&lt;/li&gt;
+&lt;li&gt;Event-bus interceptors&lt;/li&gt;
+&lt;li&gt;Documentation improvements&lt;ul&gt;
+&lt;li&gt;Cluster administration with &lt;a href=&quot;/docs/vertx-infinispan/java/#_cluster_administration&quot;&gt;Infinispan&lt;/a&gt; and &lt;a href=&quot;/docs/vertx-hazelcast/java/#_cluster_administration&quot;&gt;Hazelcast&lt;/a&gt; cluster managers&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Rxified&lt;/em&gt; API in the Vert.x &lt;a href=&quot;/docs/vertx-kafka-client/java/#_rxjava_2_api&quot;&gt;Kafka&lt;/a&gt;, &lt;a href=&quot;/docs/vertx-web-client/java/#_rxjava_2_api&quot;&gt;Web&lt;/a&gt; and &lt;a href=&quot;/docs/vertx-mongo-client/java/#_rxjava_2_api&quot;&gt;Mongo&lt;/a&gt; clients&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Performance improvements&lt;/li&gt;
+&lt;li&gt;And obviously we have the usual bug fixes!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;finally&quot;&gt;Finally&lt;/h4&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/vert-x3/wiki/wiki/3.6.0-Release-Notes&quot;&gt;3.6.0 release notes&lt;/a&gt; can be found on the wiki, as well as the list of &lt;a href=&quot;https://github.com/vert-x3/wiki/wiki/3.6.0-Deprecations-and-breaking-changes&quot;&gt;deprecations and breaking changes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker images are available on &lt;a href=&quot;https://hub.docker.com/u/vertx/&quot;&gt;Docker Hub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Vert.x distribution can be downloaded on the website but is also available from &lt;a href=&quot;http://sdkman.io/index.html&quot;&gt;SDKMan&lt;/a&gt; and &lt;a href=&quot;http://brew.sh/&quot;&gt;HomeBrew&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The event bus client using the SockJS bridge is available from:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/vertx3-eventbus-client&quot;&gt;NPM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/vert-x3/vertx-bus-bower&quot;&gt;Bower&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webjars.org/&quot;&gt;WebJars&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The release artifacts have been deployed to &lt;a href=&quot;http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.vertx%22%20AND%20v%3A%223.6.0%22&quot;&gt;Maven Central&lt;/a&gt; and you can get the distribution on &lt;a href=&quot;https://bintray.com/vertx/downloads/distribution/3.6.0/view&quot;&gt;Bintray&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That’s it! Happy coding and see you soon on our user or dev &lt;a href=&quot;https://vertx.io/community&quot;&gt;channels&lt;/a&gt;.&lt;/p&gt;
+&lt;/article&gt;
+      </description>
+          <pubDate>Mon, 03 Dec 2018 08:00:00 +0800</pubDate>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-6-0-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-6-0-released</guid>
+          <author>
+            <name>vietj</name>
+            <uri>http://github.com/vietj</uri>
+          </author>
+        </item>
       
         <item>
           <title>Eclipse Vert.x 3.5.4</title>
@@ -34,8 +206,8 @@
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 03 Oct 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-3-5-4</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-3-5-4</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-4</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-4</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -147,8 +319,8 @@ of the RSS reader app.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 05 Sep 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/the-rss-reader-tutorial-step-2</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/the-rss-reader-tutorial-step-2</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/the-rss-reader-tutorial-step-2</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/the-rss-reader-tutorial-step-2</guid>
           <author>
             <name>Sammers21</name>
             <uri>http://github.com/Sammers21</uri>
@@ -353,8 +525,8 @@ cqlsh&gt; SELECT description FROM rss_reader.articles_by_rss_link  limit &lt;spa
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 20 Aug 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/the-rss-reader-tutorial</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/the-rss-reader-tutorial</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/the-rss-reader-tutorial</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/the-rss-reader-tutorial</guid>
           <author>
             <name>Sammers21</name>
             <uri>http://github.com/Sammers21</uri>
@@ -382,8 +554,8 @@ cqlsh&gt; SELECT description FROM rss_reader.articles_by_rss_link  limit &lt;spa
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 13 Jul 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-3-5-3</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-3-5-3</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-3</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-3</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -498,8 +670,8 @@ In this case, you may simply create you source observable with one of the transa
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 02 Jul 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/simplified-database-transaction-management-with-the-vert-x-rxjava-api</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/simplified-database-transaction-management-with-the-vert-x-rxjava-api</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/simplified-database-transaction-management-with-the-vert-x-rxjava-api</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/simplified-database-transaction-management-with-the-vert-x-rxjava-api</guid>
           <author>
             <name>tsegismont</name>
             <uri>http://github.com/tsegismont</uri>
@@ -527,8 +699,8 @@ In this case, you may simply create you source observable with one of the transa
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 08 Jun 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-3-5-2</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-3-5-2</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-2</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-2</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -680,8 +852,8 @@ Substrate VM supports JNI and could in theory integrate these native libraries. 
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 04 Jun 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-goes-native</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-goes-native</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-goes-native</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-goes-native</guid>
           <author>
             <name>jotschi</name>
             <uri>http://github.com/jotschi</uri>
@@ -758,8 +930,8 @@ client.basicConsumer(&lt;span class=&quot;hljs-string&quot;&gt;&quot;my.queue&qu
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 23 Apr 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-rabbitmq-client-gets-a-new-consumer-api</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-rabbitmq-client-gets-a-new-consumer-api</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-rabbitmq-client-gets-a-new-consumer-api</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-rabbitmq-client-gets-a-new-consumer-api</guid>
           <author>
             <name>Sammers21</name>
             <uri>http://github.com/Sammers21</uri>
@@ -803,8 +975,8 @@ We hope you will be the next one!&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 13 Apr 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/new-community-channels</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/new-community-channels</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/new-community-channels</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/new-community-channels</guid>
           <author>
             <name>tsegismont</name>
             <uri>http://github.com/tsegismont</uri>
@@ -1033,8 +1205,8 @@ vertx.setPeriodic(&lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;, l
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 09 Apr 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-metrics-now-with-micrometer-io</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-metrics-now-with-micrometer-io</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-metrics-now-with-micrometer-io</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-metrics-now-with-micrometer-io</guid>
           <author>
             <name>jotak</name>
             <uri>http://github.com/jotak</uri>
@@ -1061,8 +1233,8 @@ Google will not extend the submission period but we can continue reviewing asses
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 13 Mar 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/google-summer-of-code-2018</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/google-summer-of-code-2018</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/google-summer-of-code-2018</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/google-summer-of-code-2018</guid>
           <author>
             <name>tsegismont</name>
             <uri>http://github.com/tsegismont</uri>
@@ -1120,7 +1292,7 @@ using a &lt;code&gt;@Timeout&lt;/code&gt; annotation.&lt;/p&gt;
 Note that &lt;code&gt;vertx-junit5&lt;/code&gt; is agnostic of the assertions library being used: you may opt for the built-in JUnit 5 assertions
 or use a 3rd-party library such as &lt;a href=&quot;http://joel-costigliola.github.io/assertj/&quot;&gt;AssertJ&lt;/a&gt; as we did in the example above.&lt;/p&gt;
 &lt;p&gt;You can checkout the &lt;a href=&quot;https://github.com/vert-x3/vertx-junit5&quot;&gt;source on GitHub&lt;/a&gt;, read
-&lt;a href=&quot;https://vertx.tk/docs/vertx-junit5/java/&quot;&gt;the manual&lt;/a&gt; and learn from
+&lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-junit5/java/&quot;&gt;the manual&lt;/a&gt; and learn from
 &lt;a href=&quot;https://github.com/vert-x3/vertx-examples/tree/master/junit5-examples&quot;&gt;the examples&lt;/a&gt;.&lt;/p&gt;
 &lt;h4 id=&quot;web-api-contract-enhancements&quot;&gt;Web API Contract enhancements&lt;/h4&gt;
 &lt;p&gt;The package &lt;code&gt;vertx-web-api-contract&lt;/code&gt; includes a variety of fixes, from schema &lt;code&gt;$ref&lt;/code&gt; to
@@ -1174,8 +1346,8 @@ when you want before calling &lt;code&gt;getRouter()&lt;/code&gt;.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 13 Feb 2018 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-3-5-1-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-3-5-1-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-1-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-1-released</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -1219,8 +1391,8 @@ As you have seen &lt;strong&gt;Vertx&lt;/strong&gt; with its async API makes the
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 21 Dec 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-based-framework-url-shortener-backend</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-based-framework-url-shortener-backend</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-based-framework-url-shortener-backend</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-based-framework-url-shortener-backend</guid>
           <author>
             <name>pendula95</name>
             <uri>http://github.com/pendula95</uri>
@@ -1315,8 +1487,8 @@ Create a new package under `src/main/kotlin`. The package name should be adapted
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 20 Dec 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/tcp-client-using-eclipse-vert-x-kotlin-and-gradle-build</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/tcp-client-using-eclipse-vert-x-kotlin-and-gradle-build</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/tcp-client-using-eclipse-vert-x-kotlin-and-gradle-build</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/tcp-client-using-eclipse-vert-x-kotlin-and-gradle-build</guid>
           <author>
             <name>usmansaleem</name>
             <uri>http://github.com/usmansaleem</uri>
@@ -1449,8 +1621,8 @@ I have not yet explored that part of GraphQL but I assume it might not be that h
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 14 Nov 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-meets-graphql</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-meets-graphql</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-meets-graphql</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-meets-graphql</guid>
           <author>
             <name>jotschi</name>
             <uri>http://github.com/jotschi</uri>
@@ -1488,10 +1660,10 @@ ipAddress.subscribe(
 
 &lt;p&gt;What’s so different between &lt;code&gt;Flowable&lt;/code&gt; and &lt;code&gt;Observable&lt;/code&gt;? the former handles back-pressure, i.e the
 subscriber can control the flow of items and the later can not!!!&lt;/p&gt;
-&lt;p&gt;You can read the documentation in the section of the &lt;a href=&quot;https://vertx.tk/docs/master/vertx-rx/java2/&quot;&gt;docs&lt;/a&gt;
+&lt;p&gt;You can read the documentation in the section of the &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/master/vertx-rx/java2/&quot;&gt;docs&lt;/a&gt;
 or go straight to the &lt;a href=&quot;https://github.com/vert-x3/vertx-examples/tree/master/rxjava2-examples&quot;&gt;examples&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;kotlin-coroutines&quot;&gt;Kotlin coroutines&lt;/h4&gt;
-&lt;p&gt;Support for &lt;a href=&quot;https://vertx.tk/docs/vertx-lang-kotlin-coroutines/kotlin/&quot;&gt;Kotlin Coroutines&lt;/a&gt; is one of my favourite 3.5 features (by the way I’ll present a talk about Vert.x
+&lt;p&gt;Support for &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-lang-kotlin-coroutines/kotlin/&quot;&gt;Kotlin Coroutines&lt;/a&gt; is one of my favourite 3.5 features (by the way I’ll present a talk about Vert.x
 and coroutines at &lt;a href=&quot;https://www.kotlinconf.com/sessions/&quot;&gt;KotlinConf&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Coroutines allows you to reason about asynchronous flow the same way you do with traditional sequential flow with
 the extra bonus to use &lt;code&gt;try&lt;/code&gt;/&lt;code&gt;catch&lt;/code&gt;/&lt;code&gt;finally&lt;/code&gt; super combo:&lt;/p&gt;
@@ -1513,8 +1685,8 @@ val connection = awaitResult&lt;&lt;span class=&quot;hljs-type&quot;&gt;SQLConne
 &lt;p&gt;This example is borrowed from our &lt;a href=&quot;https://github.com/vert-x3/vertx-examples/tree/master/kotlin-examples/coroutines&quot;&gt;examples&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;NOTE: I’ve used &lt;code&gt;try&lt;/code&gt;/&lt;code&gt;finally&lt;/code&gt; purposely instead of Kotlin’s &lt;code&gt;use&lt;/code&gt; extension method&lt;/p&gt;
 &lt;h4 id=&quot;mqtt-client&quot;&gt;MQTT Client&lt;/h4&gt;
-&lt;p&gt;In Vert.x 3.4 we added the &lt;a href=&quot;https://vertx.tk/docs/vertx-mqtt/java/#_vert_x_mqtt_server&quot;&gt;MQTT server&lt;/a&gt;, 3.5 completes the
-MQTT story with the &lt;a href=&quot;https://vertx.tk/docs/vertx-mqtt/java/#_vert_x_mqtt_client&quot;&gt;MQTT client&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;In Vert.x 3.4 we added the &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-mqtt/java/#_vert_x_mqtt_server&quot;&gt;MQTT server&lt;/a&gt;, 3.5 completes the
+MQTT story with the &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-mqtt/java/#_vert_x_mqtt_client&quot;&gt;MQTT client&lt;/a&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;MqttClient mqttClient = MqttClient.create(vertx,
    &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; MqttClientOptions()
      .setPort(BROKER_PORT)
@@ -1537,7 +1709,7 @@ MQTT story with the &lt;a href=&quot;https://vertx.tk/docs/vertx-mqtt/java/#_ver
 
 &lt;p&gt;You can find MQTT client and server examples &lt;a href=&quot;https://github.com/vert-x3/vertx-examples/tree/master/mqtt-examples&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;web-api-contracts&quot;&gt;Web API contracts&lt;/h4&gt;
-&lt;p&gt;With the new &lt;a href=&quot;https://vertx.tk/docs/vertx-web-api-contract/java/&quot;&gt;OpenAPI&lt;/a&gt; router factory we can focus on the API implementation and not on the validation
+&lt;p&gt;With the new &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-web-api-contract/java/&quot;&gt;OpenAPI&lt;/a&gt; router factory we can focus on the API implementation and not on the validation
 of the input. The usage is quite simple:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-type&quot;&gt;OpenAPI3RouterFactory&lt;/span&gt;.createRouterFactoryFromFile(vertx, &lt;span class=&quot;hljs-string&quot;&gt;&quot;petstore.yaml&quot;&lt;/span&gt;, ar -&gt; {
   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (ar.succeeded()) {
@@ -1563,7 +1735,7 @@ run on Java 9 (Groovy does not run well on Java 9, please see the support &lt;a 
 &lt;p&gt;As a bonus you can now use HTTP/2 out of the box with JDK SSL!&lt;/p&gt;
 &lt;p&gt;You can also use Vert.x jars as anonymous modules.&lt;/p&gt;
 &lt;h4 id=&quot;event-driven-json-parsing&quot;&gt;Event driven JSON Parsing&lt;/h4&gt;
-&lt;p&gt;We provide now an event driven &lt;a href=&quot;https://vertx.tk/docs/apidocs/io/vertx/core/parsetools/JsonParser.html&quot;&gt;JSON Parser&lt;/a&gt; emitting parse events that is very handy when you need to handle very large
+&lt;p&gt;We provide now an event driven &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/apidocs/io/vertx/core/parsetools/JsonParser.html&quot;&gt;JSON Parser&lt;/a&gt; emitting parse events that is very handy when you need to handle very large
 JSON structures and you don’t want to buffer it which introduce extra latency and increase the memory consumption.&lt;/p&gt;
 &lt;p&gt;The parser allows you to switch between fine grained JSON parse events or full structures, for instance
 you can parse an array of object very efficiently:&lt;/p&gt;
@@ -1598,18 +1770,18 @@ performed directly on the &lt;code&gt;SQLClient&lt;/code&gt;:&lt;/p&gt;
 
 &lt;p&gt;Under the hood, the client takes care of the pool acquire/release interaction for you.&lt;/p&gt;
 &lt;h4 id=&quot;native-transport-and-domain-sockets&quot;&gt;Native transport and domain sockets&lt;/h4&gt;
-&lt;p&gt;We now support &lt;a href=&quot;https://vertx.tk/docs/vertx-core/java/#_native_transports&quot;&gt;native transports&lt;/a&gt; on Linux (Epoll) and MacOS (KQueue), as well as &lt;a href=&quot;https://vertx.tk/docs/vertx-core/java/#_domain_sockets&quot;&gt;UNIX domain sockets&lt;/a&gt; for
+&lt;p&gt;We now support &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-core/java/#_native_transports&quot;&gt;native transports&lt;/a&gt; on Linux (Epoll) and MacOS (KQueue), as well as &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-core/java/#_domain_sockets&quot;&gt;UNIX domain sockets&lt;/a&gt; for
 &lt;code&gt;NetServer/NetClient&lt;/code&gt; (&lt;code&gt;HttpServer&lt;/code&gt;/&lt;code&gt;HttpClient&lt;/code&gt; should support UNIX domain sockets soon).&lt;/p&gt;
 &lt;h4 id=&quot;auth-handler-chaining&quot;&gt;Auth handler chaining&lt;/h4&gt;
 &lt;p&gt;There are times when you want to support multiple authN/authZ mechanisms in a single application.&lt;/p&gt;
-&lt;p&gt;Vert.x Web supports auth handlers &lt;a href=&quot;https://vertx.tk/docs/vertx-web/java/#_chaining_multiple_auth_handlers&quot;&gt;chaining&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Vert.x Web supports auth handlers &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-web/java/#_chaining_multiple_auth_handlers&quot;&gt;chaining&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;vert-x-config-improvements&quot;&gt;Vert.x config improvements&lt;/h4&gt;
 &lt;p&gt;Vert.x Config allows configuring your application by assembling config chunks from different locations such as file,
 http, zookeeper…&lt;/p&gt;
 &lt;p&gt;In this version, we have added the support for Consul and Vault.&lt;/p&gt;
-&lt;p&gt;With the &lt;a href=&quot;https://vertx.tk/docs/vertx-config/java/#_consul_configuration_store&quot;&gt;Consul config store&lt;/a&gt;, you can retrieve your configuration from a Consul server - so in other words, distribute
+&lt;p&gt;With the &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-config/java/#_consul_configuration_store&quot;&gt;Consul config store&lt;/a&gt;, you can retrieve your configuration from a Consul server - so in other words, distribute
 the configuration from your orchestration infrastructure.&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&quot;https://vertx.tk/docs/vertx-config/java/#_vault_config_store&quot;&gt;Vault config store&lt;/a&gt; lets you retrieve secrets avoiding hard coding secrets or distributing credentials using an
+&lt;p&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-config/java/#_vault_config_store&quot;&gt;Vault config store&lt;/a&gt; lets you retrieve secrets avoiding hard coding secrets or distributing credentials using an
 insecure way. Vault enforces the security of your secrets and only allowed applications can retrieve them. In other
 words, now you can keep your secrets secret.&lt;/p&gt;
 &lt;h4 id=&quot;acks&quot;&gt;ACKs&lt;/h4&gt;
@@ -1633,8 +1805,8 @@ from &lt;a href=&quot;http://sdkman.io/index.html&quot;&gt;SDKMan&lt;/a&gt; and 
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 20 Oct 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/eclipse-vert-x-3-5-0-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/eclipse-vert-x-3-5-0-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-0-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/eclipse-vert-x-3-5-0-released</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -1777,8 +1949,8 @@ The plugin also integrates well with other plugins and external tools for which 
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 28 Sep 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/an-eclipse-vert-x-gradle-plugin</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/an-eclipse-vert-x-gradle-plugin</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/an-eclipse-vert-x-gradle-plugin</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/an-eclipse-vert-x-gradle-plugin</guid>
           <author>
             <name>jponge</name>
             <uri>http://github.com/jponge</uri>
@@ -1855,8 +2027,8 @@ vertx.deployVerticle(MainVerticle.class.getCanonicalName());&lt;/code&gt;&lt;/pr
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 21 Aug 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/introducing-vert-x-mqtt-client</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/introducing-vert-x-mqtt-client</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/introducing-vert-x-mqtt-client</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/introducing-vert-x-mqtt-client</guid>
           <author>
             <name>sammers21</name>
             <uri>http://github.com/sammers21</uri>
@@ -1963,8 +2135,8 @@ provide early feedback!&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 10 Aug 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-5-0-beta1</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-5-0-beta1</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-5-0-beta1</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-5-0-beta1</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -2121,8 +2293,8 @@ server.requestHandler(router::accept).listen();&lt;/code&gt;&lt;/pre&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 04 Jul 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/openapi-fka-swagger-3-support-in-eclipse-vert-x-now-in-test-stage</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/openapi-fka-swagger-3-support-in-eclipse-vert-x-now-in-test-stage</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/openapi-fka-swagger-3-support-in-eclipse-vert-x-now-in-test-stage</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/openapi-fka-swagger-3-support-in-eclipse-vert-x-now-in-test-stage</guid>
           <author>
             <name>slinkydeveloper</name>
             <uri>http://github.com/slinkydeveloper</uri>
@@ -2160,8 +2332,8 @@ You can report feedback as Github issues to that repository and even offer pull-
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 09 Jun 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/preview-of-a-guide-for-java-developers</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/preview-of-a-guide-for-java-developers</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/preview-of-a-guide-for-java-developers</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/preview-of-a-guide-for-java-developers</guid>
           <author>
             <name>jponge</name>
             <uri>http://github.com/jponge</uri>
@@ -2283,8 +2455,8 @@ It can be seen as an API framework over Vert.X.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 22 May 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/presentation-of-the-vert-x-swagger-project</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/presentation-of-the-vert-x-swagger-project</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/presentation-of-the-vert-x-swagger-project</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/presentation-of-the-vert-x-swagger-project</guid>
           <author>
             <name>phiz71</name>
             <uri>http://github.com/phiz71</uri>
@@ -2529,8 +2701,8 @@ more in &lt;a href=&quot;https://modules.ceylon-lang.org/repo/1/herd/schedule/ch
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 09 May 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/time-scheduling-with-chime</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/time-scheduling-with-chime</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/time-scheduling-with-chime</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/time-scheduling-with-chime</guid>
           <author>
             <name>LisiLisenok</name>
             <uri>http://github.com/LisiLisenok</uri>
@@ -2700,8 +2872,8 @@ subscribeToActions(eventBusAddress: &lt;span class=&quot;hljs-built_in&quot;&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 26 Apr 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/building-a-real-time-web-app-with-angular-ngrx-and-vert-x</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/building-a-real-time-web-app-with-angular-ngrx-and-vert-x</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/building-a-real-time-web-app-with-angular-ngrx-and-vert-x</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/building-a-real-time-web-app-with-angular-ngrx-and-vert-x</guid>
           <author>
             <name>benorama</name>
             <uri>http://github.com/benorama</uri>
@@ -2747,8 +2919,8 @@ subscribeToActions(eventBusAddress: &lt;span class=&quot;hljs-built_in&quot;&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 14 Apr 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/dynamic-routing-in-serverless-microservice-with-vert-x-event-bus</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/dynamic-routing-in-serverless-microservice-with-vert-x-event-bus</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/dynamic-routing-in-serverless-microservice-with-vert-x-event-bus</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/dynamic-routing-in-serverless-microservice-with-vert-x-event-bus</guid>
           <author>
             <name>bytekast</name>
             <uri>http://github.com/bytekast</uri>
@@ -2902,8 +3074,8 @@ In my next blog post I will explain some of the decisions I made and the obstacl
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 20 Mar 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/scala-is-here</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/scala-is-here</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/scala-is-here</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/scala-is-here</guid>
           <author>
             <name>codepitbull</name>
             <uri>http://github.com/codepitbull</uri>
@@ -2931,7 +3103,7 @@ In my next blog post I will explain some of the decisions I made and the obstacl
 
 &lt;p&gt;For the current example we are going to use the read-only user credentials (&lt;em&gt;webclient:webclient&lt;/em&gt;).
 If you want to play around with the demo data you can point your browser to &lt;a href=&quot;http://localhost:8080/mesh-ui/&quot;&gt;http://localhost:8080/mesh-ui/&lt;/a&gt; to reach the Gentics Mesh user interface and use one of the &lt;a href=&quot;http://getmesh.io/docs/beta/getting-started.html#_startup&quot;&gt;available demo credentials&lt;/a&gt; to login.&lt;/p&gt;
-&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://vertx.tk/assets/blog/vertx-mesh/mesh-ui.jpg&quot; title=&quot;Gentics Mesh User Interface&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/vertx-mesh/mesh-ui.jpg&quot; title=&quot;Gentics Mesh User Interface&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;4-start-the-application-and-browse-the-product-catalogue&quot;&gt;4. Start - The application and browse the product catalogue&lt;/h3&gt;
 &lt;p&gt;You can start the Vert.x web server by running Server.java.&lt;/p&gt;
 &lt;p&gt;That’s it - now you can access the product catalogue website in your browser: &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:3000&lt;/a&gt;&lt;/p&gt;
@@ -2962,11 +3134,11 @@ If you want to play around with the demo data you can point your browser to &lt;
 &lt;p&gt;JSON responses on the other hand are examined to determine the type of node which was located. A typical node response contains information about the schema used by the node. This will effectively determine the type of the located content (e.g.: category, vehicle).&lt;/p&gt;
 &lt;script src=&quot;https://gist.github.com/Jotschi/39fc0d3fcd45122eafe68d61bea4c120.js?file=routeHandler.java&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://vertx.tk/assets/blog/vertx-mesh/mesh-schemas.jpg&quot; title=&quot;Mesh Schemas&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/vertx-mesh/mesh-schemas.jpg&quot; title=&quot;Mesh Schemas&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The demo application serves different pages which correspond to the identified type.
 Take a look at the template sources within &lt;em&gt;src/main/resources/templates/&lt;/em&gt; if you are interested in the &lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;handlebars syntax&lt;/a&gt;. 
 The templates in the example should cover most common cases.   &lt;/p&gt;
-&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://vertx.tk/assets/blog/vertx-mesh/mesh-vertx-templates.jpg&quot; title=&quot;Handlebars Template Overview&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/vertx-mesh/mesh-vertx-templates.jpg&quot; title=&quot;Handlebars Template Overview&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The Mesh REST Client library internally makes use of the &lt;a href=&quot;http://vertx.io/docs/vertx-core/java/#_creating_an_http_client&quot;&gt;Vert.x core HTTP client&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ReactiveX/RxJava&quot;&gt;RxJava&lt;/a&gt; is being used to handle these async requests. This way we can combine all asynchronously requested Gentics Mesh resources (breadcrumb, list of products) and add the loaded data into the routing context.&lt;/p&gt;
 &lt;p&gt;The Vert.x example server loads JSON content from the Gentics Mesh server. The &lt;em&gt;JsonObject&lt;/em&gt; is placed in the &lt;a href=&quot;https://github.com/jknack/handlebars.java&quot;&gt;handlebars&lt;/a&gt; render context and the template can access all nested fields within.&lt;/p&gt;
@@ -2980,8 +3152,8 @@ The templates in the example should cover most common cases.   &lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 13 Mar 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/data-driven-apps-made-easy-with-vert-x-3-4-0-and-headless-cms-gentics-mesh</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/data-driven-apps-made-easy-with-vert-x-3-4-0-and-headless-cms-gentics-mesh</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/data-driven-apps-made-easy-with-vert-x-3-4-0-and-headless-cms-gentics-mesh</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/data-driven-apps-made-easy-with-vert-x-3-4-0-and-headless-cms-gentics-mesh</guid>
           <author>
             <name>jotschi</name>
             <uri>http://github.com/jotschi</uri>
@@ -3043,8 +3215,8 @@ follow the OWASP recommendations. Also, Vert.x web got many usability improvemen
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 07 Mar 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-4-0-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-4-0-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-4-0-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-4-0-is-released</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -3272,8 +3444,8 @@ server.listen(ar -&gt; {
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 09 Feb 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-4-0-beta1-release</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-4-0-beta1-release</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-4-0-beta1-release</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-4-0-beta1-release</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -3348,8 +3520,8 @@ While getting back onto the correct context may not be critical if you have rema
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 31 Jan 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/an-introduction-to-the-vert-x-context-object</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/an-introduction-to-the-vert-x-context-object</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/an-introduction-to-the-vert-x-context-object</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/an-introduction-to-the-vert-x-context-object</guid>
           <author>
             <name>millross</name>
             <uri>http://github.com/millross</uri>
@@ -3478,8 +3650,8 @@ It also uses HTTP status codes in application properties of the different messag
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 25 Jan 2017 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/building-services-and-apis-with-amqp-1-0</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/building-services-and-apis-with-amqp-1-0</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/building-services-and-apis-with-amqp-1-0</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/building-services-and-apis-with-amqp-1-0</guid>
           <author>
             <name>scholzj</name>
             <uri>http://github.com/scholzj</uri>
@@ -3518,8 +3690,8 @@ It also uses HTTP status codes in application properties of the different messag
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 29 Dec 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/internet-of-things-reactive-and-asynchronous-with-vert-x</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/internet-of-things-reactive-and-asynchronous-with-vert-x</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/internet-of-things-reactive-and-asynchronous-with-vert-x</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/internet-of-things-reactive-and-asynchronous-with-vert-x</guid>
           <author>
             <name>ppatierno</name>
             <uri>http://github.com/ppatierno</uri>
@@ -3604,8 +3776,8 @@ foo&lt;span class=&quot;hljs-class&quot;&gt;.bar&lt;/span&gt;&lt;span class=&quo
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 07 Dec 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/getting-started-with-new-fabric8-vert-x-maven-plugin</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/getting-started-with-new-fabric8-vert-x-maven-plugin</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/getting-started-with-new-fabric8-vert-x-maven-plugin</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/getting-started-with-new-fabric8-vert-x-maven-plugin</guid>
           <author>
             <name>kameshsampath</name>
             <uri>http://github.com/kameshsampath</uri>
@@ -3648,8 +3820,8 @@ foo&lt;span class=&quot;hljs-class&quot;&gt;.bar&lt;/span&gt;&lt;span class=&quo
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 02 Dec 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/oauth2-got-easy</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/oauth2-got-easy</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/oauth2-got-easy</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/oauth2-got-easy</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -3830,8 +4002,8 @@ This command will launch a virtual machine hosting Jenkins with the required plu
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 28 Sep 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-featuring-continuous-delivery-with-jenkins-and-ansible</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-featuring-continuous-delivery-with-jenkins-and-ansible</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-featuring-continuous-delivery-with-jenkins-and-ansible</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-featuring-continuous-delivery-with-jenkins-and-ansible</guid>
           <author>
             <name>ricardohmon</name>
             <uri>http://github.com/ricardohmon</uri>
@@ -3859,8 +4031,8 @@ This command will launch a virtual machine hosting Jenkins with the required plu
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 12 Sep 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-3-3-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-3-3-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-3-3-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-3-3-is-released</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -3906,9 +4078,9 @@ This command will launch a virtual machine hosting Jenkins with the required plu
 &lt;p&gt;As shown in the diagram below, the general centralized logging solution comprises two main elements: the application server, which runs our Vert.x application; and a separate server, hosting the ELK stack. Both elements are linked by Filebeat, a highly configurable tool capable of shipping our application logs to the Logstash instance, i.e., our gateway to the ELK stack.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/blog/centralized-logging-using-elk/elk-overview.svg&quot; alt=&quot;Overview of centralized logging with ELK&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;app-logging-configuration&quot;&gt;App logging configuration&lt;/h2&gt;
-&lt;p&gt;The approach described here is based on a Filebeat + Logstash configuration, that means first we need to make sure our app logs to a file, whose records will be shipped to Logstash by Filebeat. Luckily, Vert.x provides the means to &lt;a href=&quot;https://vertx.tk/docs/vertx-core/java/#_logging&quot;&gt;configure&lt;/a&gt; alternative logging frameworks (e.g., Log4j, Log4j2 and SLF4J) besides the default JUL logging. However, we can use Filebeat independently of the logging framework chosen.&lt;/p&gt;
+&lt;p&gt;The approach described here is based on a Filebeat + Logstash configuration, that means first we need to make sure our app logs to a file, whose records will be shipped to Logstash by Filebeat. Luckily, Vert.x provides the means to &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-core/java/#_logging&quot;&gt;configure&lt;/a&gt; alternative logging frameworks (e.g., Log4j, Log4j2 and SLF4J) besides the default JUL logging. However, we can use Filebeat independently of the logging framework chosen.&lt;/p&gt;
 &lt;h3 id=&quot;log4j-logging&quot;&gt;Log4j Logging&lt;/h3&gt;
-&lt;p&gt;The demo that accompanies this post relies on Log4j2 as the logging framework. We instructed Vert.x to use this framework following the &lt;a href=&quot;https://vertx.tk/docs/vertx-core/java/#_logging&quot;&gt;guidelines&lt;/a&gt; and we made sure our logging calls are made asynchronous, since we don’t want them to block our application. For this purpose, we opted for the &lt;code&gt;AsyncAppender&lt;/code&gt; and this was included in the Log4J configuration together with the log output format described in a XML configuration available in the application’s &lt;em&gt;Resource&lt;/em&gt; folder.&lt;/p&gt;
+&lt;p&gt;The demo that accompanies this post relies on Log4j2 as the logging framework. We instructed Vert.x to use this framework following the &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//docs/vertx-core/java/#_logging&quot;&gt;guidelines&lt;/a&gt; and we made sure our logging calls are made asynchronous, since we don’t want them to block our application. For this purpose, we opted for the &lt;code&gt;AsyncAppender&lt;/code&gt; and this was included in the Log4J configuration together with the log output format described in a XML configuration available in the application’s &lt;em&gt;Resource&lt;/em&gt; folder.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;Configuration&lt;/span&gt;&gt;&lt;/span&gt;
   &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;Appenders&lt;/span&gt;&gt;&lt;/span&gt;
     &lt;span class=&quot;hljs-tag&quot;&gt;&lt;&lt;span class=&quot;hljs-title&quot;&gt;RollingFile&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;vertx_logs&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;append&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;fileName&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;/var/log/vertx.log&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;filePattern&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;/var/log/vertx/$${date:yyyy-MM}/vertx-%d{MM-dd-yyyy}-%i.log.gz&quot;&lt;/span&gt;&gt;&lt;/span&gt;
@@ -4095,8 +4267,8 @@ mvn &lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; &lt;span cla
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 08 Sep 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/centralized-logging-for-vert-x-applications-using-the-elk-stack</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/centralized-logging-for-vert-x-applications-using-the-elk-stack</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/centralized-logging-for-vert-x-applications-using-the-elk-stack</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/centralized-logging-for-vert-x-applications-using-the-elk-stack</guid>
           <author>
             <name>ricardohmon</name>
             <uri>http://github.com/ricardohmon</uri>
@@ -4191,8 +4363,8 @@ mvn &lt;span class=&quot;hljs-keyword&quot;&gt;package&lt;/span&gt; &lt;span cla
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 01 Sep 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-blueprint-tutorials</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-blueprint-tutorials</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-blueprint-tutorials</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-blueprint-tutorials</guid>
           <author>
             <name>sczyh30</name>
             <uri>http://github.com/sczyh30</uri>
@@ -5556,8 +5728,8 @@ compileJava {
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 01 Sep 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-blueprint-tutorials-cn</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-blueprint-tutorials-cn</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-blueprint-tutorials-cn</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-blueprint-tutorials-cn</guid>
           <author>
             <name>sczyh30</name>
             <uri>http://github.com/sczyh30</uri>
@@ -5598,8 +5770,8 @@ compileJava {
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 26 Aug 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-fall-conferences</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-fall-conferences</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-fall-conferences</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-fall-conferences</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -5632,8 +5804,8 @@ compileJava {
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 12 Jul 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-3-2-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-3-2-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-3-2-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-3-2-is-released</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -5671,8 +5843,8 @@ compileJava {
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 24 Jun 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-3-0-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-3-0-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-3-0-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-3-0-is-released</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -5702,8 +5874,8 @@ setup a realm on keycloak and once you’re done, export the configuration to yo
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 30 Mar 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vertx-3-and-keycloak-tutorial</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vertx-3-and-keycloak-tutorial</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vertx-3-and-keycloak-tutorial</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vertx-3-and-keycloak-tutorial</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -5734,8 +5906,8 @@ to form a cluster.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 17 Mar 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vertx-3-and-azure-cloud-platform-tutorial</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vertx-3-and-azure-cloud-platform-tutorial</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vertx-3-and-azure-cloud-platform-tutorial</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vertx-3-and-azure-cloud-platform-tutorial</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -5766,8 +5938,8 @@ The vert.x distribution is also available from &lt;a href=&quot;http://sdkman.io
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 05 Feb 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-2-1-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-2-1-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-2-1-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-2-1-is-released</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -5883,8 +6055,8 @@ http-client http://vertx.io
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 25 Jan 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/intro-to-vert-x-shell</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/intro-to-vert-x-shell</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/intro-to-vert-x-shell</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/intro-to-vert-x-shell</guid>
           <author>
             <name>vietj</name>
             <uri>http://github.com/vietj</uri>
@@ -6022,8 +6194,8 @@ http-client http://vertx.io
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 18 Jan 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/using-hamcrest-matchers-with-vert-x-unit</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/using-hamcrest-matchers-with-vert-x-unit</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/using-hamcrest-matchers-with-vert-x-unit</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/using-hamcrest-matchers-with-vert-x-unit</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -6297,8 +6469,8 @@ We discussed what Vert.x offers, among others, a distributed event bus and an el
 &lt;/article&gt;
       </description>
           <pubDate>Fri, 15 Jan 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/real-time-bidding-with-websockets-and-vert-x</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/real-time-bidding-with-websockets-and-vert-x</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/real-time-bidding-with-websockets-and-vert-x</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/real-time-bidding-with-websockets-and-vert-x</guid>
           <author>
             <name>mwarc</name>
             <uri>http://github.com/mwarc</uri>
@@ -6334,7 +6506,7 @@ below into it. Finally, open your command prompt and execute&lt;/p&gt;
 
 &lt;p&gt;This will run a small HTTP server that listens to requests on port 8080. If you
 open your browser and go to &lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt; you will see the following:&lt;/p&gt;
-&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://vertx.tk/assets/blog/ecmascript-6-7-on-the-jvm-with-typscript-and-vertx/output.png&quot; title=&quot;Output of the verticle written in TypeScript&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;img-responsive center-block&quot; src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/ecmascript-6-7-on-the-jvm-with-typscript-and-vertx/output.png&quot; title=&quot;Output of the verticle written in TypeScript&quot;&gt;&lt;/p&gt;
 &lt;p&gt;So far so good. Now let’s have a look at the code. I numbered the individual
 ECMAScript features used. Here’s a complete list:&lt;/p&gt;
 &lt;ol&gt;
@@ -6389,8 +6561,8 @@ typing that you will certainly find useful for any larger project.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Sun, 03 Jan 2016 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/ecmascript-6-7-on-the-jvm-with-typescript-and-vert-x</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/ecmascript-6-7-on-the-jvm-with-typescript-and-vert-x</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/ecmascript-6-7-on-the-jvm-with-typescript-and-vert-x</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/ecmascript-6-7-on-the-jvm-with-typescript-and-vert-x</guid>
           <author>
             <name>michel-kraemer</name>
             <uri>http://github.com/michel-kraemer</uri>
@@ -6448,8 +6620,8 @@ typing that you will certainly find useful for any larger project.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Sun, 20 Dec 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/automatic-redeployment-in-eclipse-ide</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/automatic-redeployment-in-eclipse-ide</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/automatic-redeployment-in-eclipse-ide</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/automatic-redeployment-in-eclipse-ide</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -6494,8 +6666,8 @@ The vert.x distribution is also available from &lt;a href=&quot;http://sdkman.io
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 15 Dec 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-2-0-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-2-0-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-2-0-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-2-0-is-released</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -6510,11 +6682,11 @@ The vert.x distribution is also available from &lt;a href=&quot;http://sdkman.io
 &lt;p&gt;But before going further, let’s recap.&lt;/p&gt;
 &lt;h2 id=&quot;previously-in-introduction-to-vert-x-&quot;&gt;Previously in  ‘introduction to vert.x’&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/my-first-vert-x-3-application/&quot;&gt;first post&lt;/a&gt; has described how to build a vert.x application with Maven and execute unit tests.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/vert-x-application-configuration/&quot;&gt;second post&lt;/a&gt; has described how this application can become configurable.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/some-rest-with-vert-x/&quot;&gt;third post&lt;/a&gt; has introduced &lt;a href=&quot;http://vertx.io/docs/vertx-web/java/&quot;&gt;vertx-web&lt;/a&gt;, and a small collection management application has been developed. This application offers a REST API used by a HTML/JavaScript frontend.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/unit-and-integration-tests/&quot;&gt;fourth post&lt;/a&gt; has presented how you can run integration tests to ensure the behavior of your application.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/using-the-asynchronous-sql-client/&quot;&gt;last post&lt;/a&gt; has presented how you can interact with a JDBC database using the vertx-jdbc-client.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application/&quot;&gt;first post&lt;/a&gt; has described how to build a vert.x application with Maven and execute unit tests.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-application-configuration/&quot;&gt;second post&lt;/a&gt; has described how this application can become configurable.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/some-rest-with-vert-x/&quot;&gt;third post&lt;/a&gt; has introduced &lt;a href=&quot;http://vertx.io/docs/vertx-web/java/&quot;&gt;vertx-web&lt;/a&gt;, and a small collection management application has been developed. This application offers a REST API used by a HTML/JavaScript frontend.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/unit-and-integration-tests/&quot;&gt;fourth post&lt;/a&gt; has presented how you can run integration tests to ensure the behavior of your application.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/using-the-asynchronous-sql-client/&quot;&gt;last post&lt;/a&gt; has presented how you can interact with a JDBC database using the vertx-jdbc-client.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;This post shows another client that lets you use MongoDB in a vert.x application. This client provides an vert.x API to access asynchronously to the Mongo database. We won’t compare whether or not JDBC is superior to Mongo, they have both pros and cons, and you should use the one that meet your requirements. Vert.x lets you choose, that’s the point.&lt;/p&gt;
 &lt;p&gt;The vertx-mongo-client documentation is available &lt;a href=&quot;http://vertx.io/docs/vertx-mongo-client/java/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -6747,8 +6919,8 @@ java -jar target/&lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;-&lt;
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 30 Nov 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/combine-vert-x-and-mongo-to-build-a-giant</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/combine-vert-x-and-mongo-to-build-a-giant</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/combine-vert-x-and-mongo-to-build-a-giant</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/combine-vert-x-and-mongo-to-build-a-giant</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -6833,8 +7005,8 @@ you now compile your project:&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 25 Nov 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-es6-back-to-the-future</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-es6-back-to-the-future</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-es6-back-to-the-future</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-es6-back-to-the-future</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -6848,10 +7020,10 @@ you now compile your project:&lt;/p&gt;
 &lt;h2 id=&quot;previously-in-the-introduction-to-vert-x-series&quot;&gt;Previously in the introduction to vert.x series&lt;/h2&gt;
 &lt;p&gt;As it was quite some time since the last post, let’s start by refreshing our mind about the four previous posts:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/my-first-vert-x-3-application/&quot;&gt;first post&lt;/a&gt; has described how to build a vert.x application with Maven and execute unit tests.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/vert-x-application-configuration/&quot;&gt;second post&lt;/a&gt; has described how this application can become configurable.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/some-rest-with-vert-x/&quot;&gt;third post&lt;/a&gt; has introduced &lt;a href=&quot;http://vertx.io/docs/vertx-web/java/&quot;&gt;vertx-web&lt;/a&gt;, and a small collection management application has been developed. This application offers a REST API used by a HTML/JavaScript frontend.&lt;/li&gt;
-&lt;li&gt;The &lt;a href=&quot;https://vertx.tk/blog/unit-and-integration-tests/&quot;&gt;previous post&lt;/a&gt; has presented how you can run integration tests to ensure the behavior of your application.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application/&quot;&gt;first post&lt;/a&gt; has described how to build a vert.x application with Maven and execute unit tests.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-application-configuration/&quot;&gt;second post&lt;/a&gt; has described how this application can become configurable.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/some-rest-with-vert-x/&quot;&gt;third post&lt;/a&gt; has introduced &lt;a href=&quot;http://vertx.io/docs/vertx-web/java/&quot;&gt;vertx-web&lt;/a&gt;, and a small collection management application has been developed. This application offers a REST API used by a HTML/JavaScript frontend.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/unit-and-integration-tests/&quot;&gt;previous post&lt;/a&gt; has presented how you can run integration tests to ensure the behavior of your application.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;In this post, back to code. The current application uses an in-memory map to store the products. It’s time to use a database. In this post we are going to use &lt;a href=&quot;http://hsqldb.org/&quot;&gt;HSQL&lt;/a&gt;, but you can use any database providing a JDBC driver. Interactions with the database will be asynchronous and made using the &lt;a href=&quot;http://vertx.io/docs/vertx-jdbc-client/java/&quot;&gt;vertx-jdbc-client&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The code of this post are available on this Github &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app&quot;&gt;project&lt;/a&gt;, in the &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app/tree/post-5&quot;&gt;post-5 branch&lt;/a&gt; branch.&lt;/p&gt;
@@ -7063,8 +7235,8 @@ This method checks that the `SQLConnection` is available and then start executin
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 19 Oct 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/using-the-asynchronous-sql-client</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/using-the-asynchronous-sql-client</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/using-the-asynchronous-sql-client</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/using-the-asynchronous-sql-client</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -7106,8 +7278,8 @@ regular terminals using different protocols.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 08 Oct 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-1-0-is-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-1-0-is-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-1-0-is-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-1-0-is-released</guid>
           <author>
             <name>purplefox</name>
             <uri>http://github.com/purplefox</uri>
@@ -7294,8 +7466,8 @@ supported languages using the same technique). We create a &lt;a href=&quot;http
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 17 Sep 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/contract-driven-rest-services-with-vert-x3</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/contract-driven-rest-services-with-vert-x3</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/contract-driven-rest-services-with-vert-x3</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/contract-driven-rest-services-with-vert-x3</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -7449,8 +7621,8 @@ SEVERE: java&lt;span class=&quot;hljs-class&quot;&gt;.net&lt;/span&gt;&lt;span c
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 14 Sep 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/writing-secure-vert-x-web-apps</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/writing-secure-vert-x-web-apps</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/writing-secure-vert-x-web-apps</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/writing-secure-vert-x-web-apps</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -7473,9 +7645,9 @@ shared in real time on their screen.&lt;/p&gt;
 what is being drawn, however the external application has limited read write access to a single address on Vert.x
 event bus, ensuring that other services running on the cluster will not be exposed.&lt;/p&gt;
 &lt;p&gt;This is what you should expect to see:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://vertx.tk/assets/blog/vertx3-realtime-webapps/screencast.gif&quot; alt=&quot;Screencast&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/vertx3-realtime-webapps/screencast.gif&quot; alt=&quot;Screencast&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;bootstrap-a-project&quot;&gt;Bootstrap a project&lt;/h2&gt;
-&lt;p&gt;If you followed the previous &lt;a href=&quot;https://vertx.tk/blog/my-first-vert-x-3-application/index.html&quot;&gt;series&lt;/a&gt; on Vert.x development, you saw
+&lt;p&gt;If you followed the previous &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application/index.html&quot;&gt;series&lt;/a&gt; on Vert.x development, you saw
 that Java and Maven were the main topic, since Vert.x is polyglot I will focus on JavaScript and
 &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;NPM&lt;/a&gt; as my programming language and package management tool.&lt;/p&gt;
 &lt;p&gt;With NPM start by creating a &lt;code&gt;package.json&lt;/code&gt;, in order to do this we should run:&lt;/p&gt;
@@ -7502,7 +7674,7 @@ you can run the application. You can add it to the &lt;code&gt;dependencies&lt;/
 }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If you do not know why there is the dependency on &lt;code&gt;vertx3-full&lt;/code&gt; or why the added &lt;code&gt;scripts&lt;/code&gt; property please check the
-&lt;a href=&quot;https://vertx.tk/blog/vert-x3-says-hello-to-npm-users/index.html&quot;&gt;older&lt;/a&gt; blog post about it.&lt;/p&gt;
+&lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-says-hello-to-npm-users/index.html&quot;&gt;older&lt;/a&gt; blog post about it.&lt;/p&gt;
 &lt;h2 id=&quot;project-structure&quot;&gt;Project Structure&lt;/h2&gt;
 &lt;p&gt;This post has no preference over project structure, so if you do not agree with the structure used here feel free to
 use what you feel best. For this example I will keep it to:&lt;/p&gt;
@@ -7705,8 +7877,8 @@ on the other window, if you then draw on the second you should get the mirror ef
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 31 Aug 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x3-real-time-web-apps</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x3-real-time-web-apps</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-real-time-web-apps</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-real-time-web-apps</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -7717,7 +7889,7 @@ on the other window, if you then draw on the second you should get the mirror ef
           <title>Unit and Integration Tests</title>
           <description>
       &lt;article&gt;&lt;h2 id=&quot;previously-in-introduction-to-vert-x-&quot;&gt;Previously in “introduction to vert.x”&lt;/h2&gt;
-&lt;p&gt;Let’s refresh our mind about what we developed so far in the &lt;em&gt;introduction to vert.x&lt;/em&gt; series. In &lt;a href=&quot;https://vertx.tk/blog/my-first-vert-x-3-application/&quot;&gt;the first post&lt;/a&gt;, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. In &lt;a href=&quot;https://vertx.tk/blog/vert-x-application-configuration/&quot;&gt;the second post&lt;/a&gt;, we saw how this application became configurable and how we can use a random port in test, and use another configurable port in production. Finally, the &lt;a href=&quot;https://vertx.tk/blog/some-rest-with-vert-x/&quot;&gt;previous post&lt;/a&gt; has shown how to use vertx-web and how to implement a small REST API. However, we forgot an important task. We didn’t test the API. In this post we will increase the confidence we have on this application by implementing unit and integration tests.&lt;/p&gt;
+&lt;p&gt;Let’s refresh our mind about what we developed so far in the &lt;em&gt;introduction to vert.x&lt;/em&gt; series. In &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application/&quot;&gt;the first post&lt;/a&gt;, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. In &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-application-configuration/&quot;&gt;the second post&lt;/a&gt;, we saw how this application became configurable and how we can use a random port in test, and use another configurable port in production. Finally, the &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/some-rest-with-vert-x/&quot;&gt;previous post&lt;/a&gt; has shown how to use vertx-web and how to implement a small REST API. However, we forgot an important task. We didn’t test the API. In this post we will increase the confidence we have on this application by implementing unit and integration tests.&lt;/p&gt;
 &lt;p&gt;The code of this post is available in the &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app/tree/post-4&quot;&gt;post-4 branch&lt;/a&gt; of the &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app&quot;&gt;project&lt;/a&gt;. The starting post, however is the code available in the &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app/tree/post-3&quot;&gt;post-3 branch&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;tests-tests-tests-&quot;&gt;Tests, Tests, Tests…&lt;/h2&gt;
 &lt;p&gt;This post is mainly about tests. We distinguish two types of tests: unit tests and integration tests. Both are equally important, but have different focus. Unit tests ensure that one &lt;em&gt;component&lt;/em&gt; of your application, generally a class in the Java world, behaves as expected. The application is not tested as a whole, but pieces by pieces. Integration tests are more &lt;em&gt;black box&lt;/em&gt; in the sense that the application is started and tested generally externally.&lt;/p&gt;
@@ -8104,8 +8276,8 @@ So, now we have integration tests let&#39;s try:
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 03 Aug 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/unit-and-integration-tests</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/unit-and-integration-tests</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/unit-and-integration-tests</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/unit-and-integration-tests</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -8116,7 +8288,7 @@ So, now we have integration tests let&#39;s try:
           <title>Some Rest with Vert.x</title>
           <description>
       &lt;article&gt;&lt;h2 id=&quot;previously-in-this-blog-series&quot;&gt;Previously in this blog series&lt;/h2&gt;
-&lt;p&gt;This post is part of the &lt;em&gt;Introduction to Vert.x&lt;/em&gt; series. So, let’s have a quick look about the content of the previous posts. In &lt;a href=&quot;https://vertx.tk/blog/my-first-vert-x-3-application/&quot;&gt;the first post&lt;/a&gt;, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. In &lt;a href=&quot;https://vertx.tk/blog/vert-x-application-configuration/&quot;&gt;the last post&lt;/a&gt;, we saw how this application became configurable and how we can use a random port in test.&lt;/p&gt;
+&lt;p&gt;This post is part of the &lt;em&gt;Introduction to Vert.x&lt;/em&gt; series. So, let’s have a quick look about the content of the previous posts. In &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application/&quot;&gt;the first post&lt;/a&gt;, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. In &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-application-configuration/&quot;&gt;the last post&lt;/a&gt;, we saw how this application became configurable and how we can use a random port in test.&lt;/p&gt;
 &lt;p&gt;Well, nothing fancy… Let’s go a bit further this time and develop a &lt;em&gt;CRUD-ish&lt;/em&gt; application. So an application exposing an HTML page interacting with the backend using a REST API. The level of &lt;em&gt;RESTfullness&lt;/em&gt; of the API is not the topic of this post, I let you decide as it’s a very slippery topic.&lt;/p&gt;
 &lt;p&gt;So, in other words we are going to see:&lt;/p&gt;
 &lt;ul&gt;
@@ -8351,7 +8523,7 @@ java -jar target/my-first-app-&lt;span class=&quot;hljs-number&quot;&gt;1.0&lt;/
 java -jar target/my-first-app-&lt;span class=&quot;hljs-number&quot;&gt;1.0&lt;/span&gt;-SNAPSHOT-fat.jar&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Then open the HTML page in your browser (&lt;code&gt;http://localhost:8080/assets/index.html&lt;/code&gt;), and should should see:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://vertx.tk/assets/blog/intro-series/post-3-My_Whisky_Collection.png&quot; class=&quot;img-responsive&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/intro-series/post-3-My_Whisky_Collection.png&quot; class=&quot;img-responsive&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I’m sure you are curious, and want to actually see what is returned by our REST API. Let’s open a browser to &lt;code&gt;http://localhost:8080/api/whiskies&lt;/code&gt;. You should get:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;[ {
   &quot;&lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;&quot; : &lt;span class=&quot;hljs-value&quot;&gt;&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;,
@@ -8416,8 +8588,8 @@ java -jar target/&lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;-&lt;
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 27 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/some-rest-with-vert-x</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/some-rest-with-vert-x</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/some-rest-with-vert-x</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/some-rest-with-vert-x</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -8428,7 +8600,7 @@ java -jar target/&lt;span class=&quot;hljs-keyword&quot;&gt;my&lt;/span&gt;-&lt;
           <title>Vert.x Application Configuration</title>
           <description>
       &lt;article&gt;&lt;h2 id=&quot;previously-in-introduction-to-vert-x-&quot;&gt;Previously in ‘Introduction to Vert.x’&lt;/h2&gt;
-&lt;p&gt;In &lt;a href=&quot;https://vertx.tk/blog/my-first-vert-x-3-application/&quot;&gt;this post&lt;/a&gt;, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. That was nice, isn’t it ? Well, ok, that was only the beginning. In this post, we are going to enhance our application to support &lt;em&gt;external&lt;/em&gt; configuration.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&quot;https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application/&quot;&gt;this post&lt;/a&gt;, we developed a very simple Vert.x 3 application, and saw how this application can be tested, packaged and executed. That was nice, isn’t it ? Well, ok, that was only the beginning. In this post, we are going to enhance our application to support &lt;em&gt;external&lt;/em&gt; configuration.&lt;/p&gt;
 &lt;p&gt;So just to remind you, we have an application starting a HTTP server on the port 8080 and replying a polite “Hello” message to all HTTP requests. The previous code is available &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app/tree/post-1&quot;&gt;here&lt;/a&gt;. The code developed in this post is in the &lt;a href=&quot;https://github.com/cescoffier/my-vertx-first-app/tree/post-2&quot;&gt;post-2 branch&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;so-why-do-we-need-configuration-&quot;&gt;So, why do we need configuration?&lt;/h2&gt;
 &lt;p&gt;That’s a good question. The application works right now, but well, let’s say you want to deploy it on a machine where the port 8080 is already taken. We would need to change the port in the application code and in the test, just for this machine. That would be sad. Fortunately, Vert.x applications are configurable.&lt;/p&gt;
@@ -8516,8 +8688,8 @@ vertx.deployVerticle(MyFirstVerticle.class.getName(), options, context.asyncAsse
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 20 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-application-configuration</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-application-configuration</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-application-configuration</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-application-configuration</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -8734,8 +8906,8 @@ vertx.deployVerticle(MyFirstVerticle.class.getName(), options, context.asyncAsse
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 14 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/my-first-vert-x-3-application</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/my-first-vert-x-3-application</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/my-first-vert-x-3-application</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -8851,8 +9023,8 @@ for example &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 13 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x3-says-hello-to-npm-users</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x3-says-hello-to-npm-users</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-says-hello-to-npm-users</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-says-hello-to-npm-users</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -8969,8 +9141,8 @@ so, if something does come up, it should be a small one (KNOCK ON WOOD)&lt;/p&gt
 &lt;/article&gt;
       </description>
           <pubDate>Mon, 06 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/checklist-for-migrating-from-vert-x-2-1-x-to-vert-x-3-part-one</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/checklist-for-migrating-from-vert-x-2-1-x-to-vert-x-3-part-one</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/checklist-for-migrating-from-vert-x-2-1-x-to-vert-x-3-part-one</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/checklist-for-migrating-from-vert-x-2-1-x-to-vert-x-3-part-one</guid>
           <author>
             <name>bytor99999</name>
             <uri>http://github.com/bytor99999</uri>
@@ -9009,8 +9181,8 @@ Content-Length: &lt;span class=&quot;hljs-number&quot;&gt;75&lt;/span&gt;
 {&lt;span class=&quot;hljs-string&quot;&gt;&quot;id&quot;&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;customer_name&quot;&lt;/span&gt;:&lt;span class=&quot;hljs-string&quot;&gt;&quot;John&quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;items&quot;&lt;/span&gt;:{&lt;span class=&quot;hljs-string&quot;&gt;&quot;description&quot;&lt;/span&gt;:&lt;span class=&quot;hljs-string&quot;&gt;&quot;milk&quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&quot;quantity&quot;&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;}}&lt;/code&gt;&lt;/pre&gt;&lt;/article&gt;
       </description>
           <pubDate>Fri, 03 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x3-and-postgresql-json-type</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x3-and-postgresql-json-type</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-and-postgresql-json-type</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-and-postgresql-json-type</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -9067,8 +9239,8 @@ service my-service-script restart&lt;/code&gt;&lt;/pre&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Thu, 02 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-3-init-d-script</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-3-init-d-script</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-init-d-script</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-3-init-d-script</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
@@ -9188,12 +9360,12 @@ choose any format he likes.&lt;/p&gt;
 &lt;p&gt;At this moment you can build and package your app like &lt;code&gt;mvn clean package&lt;/code&gt;, then deploy it to your raspberrypi like:
 &lt;code&gt;scp target/rpi-1.0-fat.jar pi@raspberrypi:~/&lt;/code&gt; and finally run it: &lt;code&gt;java -jar rpi-1.0-fat.jar&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Open a browser to &lt;a href=&quot;http://raspberrypi:8080&quot;&gt;see&lt;/a&gt; the realtime graph!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://vertx.tk/assets/blog/vertx3-web-easy-as-pi/rpi.png&quot; alt=&quot;Screenshot&quot; class=&quot;img-responsive&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://okou19900722.gitee.io/cn.vertx.tk//assets/blog/vertx3-web-easy-as-pi/rpi.png&quot; alt=&quot;Screenshot&quot; class=&quot;img-responsive&quot;&gt;&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Wed, 01 Jul 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x3-web-easy-as-pi</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x3-web-easy-as-pi</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-web-easy-as-pi</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x3-web-easy-as-pi</guid>
           <author>
             <name>pmlopes</name>
             <uri>http://github.com/pmlopes</uri>
@@ -9219,8 +9391,8 @@ choose any format he likes.&lt;/p&gt;
 &lt;/article&gt;
       </description>
           <pubDate>Tue, 30 Jun 2015 08:00:00 +0800</pubDate>
-          <link>https://vertx.tk/blog/vert-x-2-1-6-released</link>
-          <guid isPermaLink="true">https://vertx.tk/blog/vert-x-2-1-6-released</guid>
+          <link>https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-2-1-6-released</link>
+          <guid isPermaLink="true">https://okou19900722.gitee.io/cn.vertx.tk//blog/vert-x-2-1-6-released</guid>
           <author>
             <name>cescoffier</name>
             <uri>http://github.com/cescoffier</uri>
