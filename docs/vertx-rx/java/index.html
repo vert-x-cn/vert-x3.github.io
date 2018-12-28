@@ -161,6 +161,7 @@
 <ul class="sectlevel2">
 <li><a href="#_using_vert_x_api_for_rxjava1">Using Vert.x API for RxJava1</a></li>
 <li><a href="#_read_stream_support">Read stream support</a></li>
+<li><a href="#_write_stream_support">Write stream support</a></li>
 <li><a href="#_handler_support">Handler support</a></li>
 <li><a href="#_async_result_support">Async result support</a></li>
 <li><a href="#_scheduler_support">Scheduler support</a></li>
@@ -196,6 +197,7 @@
 <ul class="sectlevel2">
 <li><a href="#_using_vert_x_api_for_rxjava1">Using Vert.x API for RxJava1</a></li>
 <li><a href="#_read_stream_support">Read stream support</a></li>
+<li><a href="#_write_stream_support">Write stream support</a></li>
 <li><a href="#_handler_support">Handler support</a></li>
 <li><a href="#_async_result_support">Async result support</a></li>
 <li><a href="#_scheduler_support">Scheduler support</a></li>
@@ -256,7 +258,7 @@ observable wherever you can use streams or asynchronous results.</p>
 <pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
  &lt;groupId&gt;io.vertx&lt;/groupId&gt;
  &lt;artifactId&gt;vertx-rx-java&lt;/artifactId&gt;
- &lt;version&gt;3.6.0&lt;/version&gt;
+ &lt;version&gt;3.6.2&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -269,7 +271,7 @@ observable wherever you can use streams or asynchronous results.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-rx-java:3.6.0'</code></pre>
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">compile 'io.vertx:vertx-rx-java:3.6.2'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -389,6 +391,113 @@ ReadStream&lt;Buffer&gt; readStream = RxHelper.toReadStream(observable);
 Pump pump = Pump.pump(readStream, response);
 pump.start();</code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_write_stream_support">Write stream support</h3>
+<div class="paragraph">
+<p>A <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code>, like a <code>rx.Subscriber</code>, consumes items, and, when it can&#8217;t keep-up, collaborates with the producer to avoid an ever-growing backlog.</p>
+</div>
+<div class="paragraph">
+<p>Vert.x provides the <code><a href="../../apidocs/io/vertx/rx/java/WriteStreamSubscriber.html">WriteStreamSubscriber</a></code> adapter that you can use to send <code>Observable</code> items to any <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Sending buffers to an HTTP server response</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">response.setChunked(true);
+WriteStreamSubscriber&lt;io.vertx.core.buffer.Buffer&gt; subscriber = io.vertx.rx.java.RxHelper.toSubscriber(response);
+observable.subscribe(subscriber);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are progamming with the <em>Rxified</em> Vert.x API, the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> implementations provide a <code>toSubscriber</code> method.
+The previous example then becomes even more straightforward:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">response.setChunked(true);
+observable.subscribe(response.toSubscriber());</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When the <code>Observable</code> terminates successfully, the adapter invokes the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html#end--">end</a></code> method.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+The adapter sets the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> <code>drain</code> and <code>exception</code> handlers, so don&#8217;t use them after subscribing.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/rx/java/WriteStreamSubscriber.html">WriteStreamSubscriber</a></code> adapter is able to invoke callbacks when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code>Observable</code> completes, or</p>
+</li>
+<li>
+<p>the <code>Observable</code> terminates with an error, or</p>
+</li>
+<li>
+<p>the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> fails (e.g. HTTP connection is closed or filesystem is full)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows for a more robust program design, as well as scheduling other tasks after the stream has been handled:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">response.setChunked(true);
+
+WriteStreamSubscriber&lt;Buffer&gt; subscriber = response.toSubscriber();
+
+subscriber.onError(throwable -&gt; {
+  if (!response.headWritten() &amp;&amp; response.closed()) {
+    response.setStatusCode(500).end("oops");
+  } else {
+    // log error
+  }
+});
+
+subscriber.onWriteStreamError(throwable -&gt; {
+  // log error
+});
+
+subscriber.onComplete(() -&gt; {
+  // log end of transaction to audit system...
+});
+
+observable.subscribe(subscriber);</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+If the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> fails, the adapter unsubscribes from the <code>Observable</code>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1044,7 +1153,7 @@ socketObservable.subscribe(
           <div id="footer">
             <div id="footer-text">
               
-                上次更新时间 2018-11-28 23:02:44 CST
+                上次更新时间 2018-12-17 08:51:28 CST
               
               
             </div>

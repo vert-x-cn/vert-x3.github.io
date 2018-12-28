@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang=en><head><title>Vert.x Web API Service Introduction</title><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta content="width=device-width,initial-scale=1" name=viewport><meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name=description><link href=https://vertx.tk/stylesheets/main.css media=screen rel=stylesheet><link href=https://vertx.tk/stylesheets/font-awesome.min.css media=screen rel=stylesheet><link href=https://vertx.tk/javascripts/styles/rainbow.min.css media=screen rel=stylesheet><!--[if lt IE 9]><script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script><![endif]--><link rel=apple-touch-icon sizes=57x57 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png sizes=192x192><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png sizes=96x96><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png sizes=16x16><link rel=manifest href=https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json><link rel=mask-icon href=https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content=#7d3194><meta name=msapplication-TileImage content=https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png><meta name=theme-color content=#ffffff><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel=stylesheet type=text/css><link rel=alternate type=application/rss+xml title=RSS href=https://vertx.tk/feed.xml><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href=https://vertx.io>官网</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Vert.x Web API Service Introduction</h2><p class=blog-post-meta>13th December 2018 by <a href=http://github.com/slinkydeveloper>slinkydeveloper</a></p><article><h1 id=vert-x-web-api-service>Vert.x Web API Service</h1><p>Vert.x 3.6 introduces a new module called <code>vertx-web-api-service</code>. With the new Web API Services you can easily combine the <a href="https://vertx.io/docs/vertx-web/java/">Vert.x Web Router</a> and the <a href="https://vertx.io/docs/vertx-web-api-contract/java/">Vert.x OpenAPI Router Factory</a> features with <a href="https://vertx.io/docs/vertx-service-proxy/java/">Vert.x Services on Event Bus</a>.</p><h2 id=small-recap-on-openapi-and-vert-x-web-api-contract>Small recap on OpenAPI and Vert.x Web API Contract</h2><p>Let’s start from this OpenAPI definition:</p><pre><code>openapi: <span class=hljs-number>3.0</span><span class=hljs-number>.0</span>
+paths:
+  /api/transactions:
+    get:
+      operationId: getTransactionsList
+      description: Get transactions list filtered by sender
+      x-vertx-event-bus: transactions_manager.myapp
+      parameters:
+        - name: from
+          <span class=hljs-keyword>in</span>: query
+          description: Matches exactly the email from
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses: <span class=hljs-keyword>...</span>
+    post:
+      operationId: addTransaction
+      x-vertx-event-bus: transactions_manager.myapp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: <span class=hljs-string>"#/components/schemas/Transaction"</span>
+      responses: <span class=hljs-keyword>...</span>
+  /api/transactions/{transactionId}:
+    parameters:
+      - name: transactionId
+        <span class=hljs-keyword>in</span>: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: updateTransaction
+      x-vertx-event-bus: transactions_manager.myapp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: <span class=hljs-string>"#/components/schemas/Transaction"</span>
+      responses: <span class=hljs-keyword>...</span>
+    delete:
+      operationId: removeTransaction
+      x-vertx-event-bus: transactions_manager.myapp
+      responses: <span class=hljs-keyword>...</span>
+components:
+  schemas:
+    Transaction: <span class=hljs-keyword>...</span>
+    Error: <span class=hljs-keyword>...</span></code></pre><p>We defined <code>getTransactionsList</code>, <code>addTransaction</code>, <code>updateTransaction</code> and <code>removeTransaction</code> operations. Now with <code>OpenAPI3RouterFactory</code> we create a <code>Router</code> that accepts this various operation requests:</p><pre><code class="hljs java">OpenAPI3RouterFactory.create(vertx, <span class=hljs-string>"src/main/resources/petstore.yaml"</span>, ar -&gt; {
+  <span class=hljs-keyword>if</span> (ar.succeeded()) {
+    <span class=hljs-comment>// Spec loaded with success</span>
+    OpenAPI3RouterFactory routerFactory = ar.result();
+    routerFactory.addHandlerByOperationId(<span class=hljs-string>"getTransactionsList"</span>, routingContext -&gt; {
+      RequestParameters params = routingContext.get(<span class=hljs-string>"parsedParameters"</span>);
+      RequestParameter from = params.queryParameter(<span class=hljs-string>"from"</span>);
+      <span class=hljs-comment>// getTransactionsList business logic</span>
+    });
+    <span class=hljs-comment>// add handlers for addTransaction, updateTransaction and removeTransaction</span>
+    Router router = routerFactory.getRouter();
+  } <span class=hljs-keyword>else</span> {
+    <span class=hljs-comment>// Something went wrong during router factory initialization</span>
+    Throwable exception = ar.cause();
+    <span class=hljs-comment>// Log exception, fail verticle deployment ... etc</span>
+  }
+});</code></pre><p>The <code>OpenAPI3RouterFactory</code> provides an easy way to create a specification compliant <code>Router</code>, but it doesn’t provide a mechanism to decouple the business logic from your operation handlers.</p><p>In a typical Vert.x application, when you receive a request to your router, you would forward it to an event bus endpoint that performs some actions and sends the result back to the operation handler.</p><p>Vert.x Web API Service simplifies that integration between <code>RouterFactory</code> and <code>EventBus</code> with a new code generator. The final result is a <em>loose coupling</em> between the Web Router logic and your business logic.</p><h2 id=let-s-get-started-with-vert-x-web-api-services->Let’s get started with Vert.x Web Api Services!</h2><p>To use <code>vertx-web-api-service</code> you need to add a couple of dependencies to your project. In a Maven POM file that would be:</p><pre><code class="hljs xml"><span class=hljs-tag>&lt;<span class=hljs-title>dependency</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>groupId</span>&gt;</span>io.vertx<span class=hljs-tag>&lt;/<span class=hljs-title>groupId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>vertx-codegen<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>version</span>&gt;</span>3.6.0<span class=hljs-tag>&lt;/<span class=hljs-title>version</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>classifier</span>&gt;</span>processor<span class=hljs-tag>&lt;/<span class=hljs-title>classifier</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span>
+<span class=hljs-tag>&lt;<span class=hljs-title>dependency</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>groupId</span>&gt;</span>io.vertx<span class=hljs-tag>&lt;/<span class=hljs-title>groupId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>vertx-web-api-service<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>version</span>&gt;</span>3.6.0<span class=hljs-tag>&lt;/<span class=hljs-title>version</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>We will proceed in this order:</p><ol><li>Model the service interface</li><li>Rewrite it to work with Web Api Services</li><li>Implement the service</li><li>Mount the service on the event bus</li><li>Use the router factory to build a router with handlers that connects to our event bus services</li></ol><h2 id=model-your-service>Model your service</h2><p>Let’s say that we want to model a service that manages all operations regarding CRUD transactions. An example interface for this asynchronous service could be:</p><pre><code class="hljs java"><span class=hljs-keyword>public</span> <span class=hljs-class><span class=hljs-keyword>interface</span> <span class=hljs-title>TransactionsManagerService</span> </span>{
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>getTransactionsList</span><span class=hljs-params>(List&lt;String&gt; from, Handler&lt;AsyncResult&lt;List&lt;Transaction&gt;&gt;&gt; resultHandler)</span></span>;
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>addTransaction</span><span class=hljs-params>(Transaction transaction, Handler&lt;AsyncResult&lt;Transaction&gt;&gt; resultHandler)</span></span>;
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>updateTransaction</span><span class=hljs-params>(String transactionId, Transaction transaction, Handler&lt;AsyncResult&lt;Transaction&gt;&gt; resultHandler)</span></span>;
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>removeTransaction</span><span class=hljs-params>(String transactionId, Handler&lt;AsyncResult&lt;Integer&gt;&gt; resultHandler)</span></span>;
+}</code></pre><p>For each operation, we have some parameters, depending on the operation, and a callback (<code>resultHandler</code>) that should be called when the operation succeeds or fails.</p><p>With <a href="https://vertx.io/docs/vertx-service-proxy/java/">Vert.x Service Proxy</a>, you can define an event bus service with a Java interface similar to the one we just saw and then annotate it with <code>@ProxyGen</code>. This annotation will generate a <em>service handler</em> for the defined service that can be plugged to the event bus with <code>ServiceBinder</code>. <code>vertx-web-api-service</code> works in a very similar way: you need to annotate the Java interface with <code>@WebApiServiceGen</code> and it will generate the service handler for the event bus.</p><p>Let’s rewrite the <code>TransactionsManagerService</code> to work with Web API Service:</p><pre><code class="hljs java"><span class=hljs-keyword>import</span> io.vertx.ext.web.api.*;
+<span class=hljs-keyword>import</span> io.vertx.ext.web.api.generator.WebApiServiceGen;
+
+<span class=hljs-annotation>@WebApiServiceGen</span>
+<span class=hljs-keyword>public</span> <span class=hljs-class><span class=hljs-keyword>interface</span> <span class=hljs-title>TransactionsManagerService</span> </span>{
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>getTransactionsList</span><span class=hljs-params>(List&lt;String&gt; from, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)</span></span>;
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>addTransaction</span><span class=hljs-params>(Transaction body, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)</span></span>;
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>updateTransaction</span><span class=hljs-params>(String transactionId, Transaction body, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)</span></span>;
+  <span class=hljs-function><span class=hljs-keyword>void</span> <span class=hljs-title>removeTransaction</span><span class=hljs-params>(String transactionId, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)</span></span>;
+
+  <span class=hljs-comment>// Factory method to instantiate the implementation</span>
+  <span class=hljs-function><span class=hljs-keyword>static</span> TransactionsManagerService <span class=hljs-title>create</span><span class=hljs-params>(Vertx vertx)</span> </span>{
+    <span class=hljs-function><span class=hljs-keyword>return</span> <span class=hljs-keyword>new</span> <span class=hljs-title>TransactionsManagerServiceImpl</span><span class=hljs-params>(vertx)</span></span>;
+  }
+}</code></pre><p>First of all, look at the annotation <code>@WebApiServiceGen</code>. This annotation will trigger the code generator that generates the event bus handler for this service. Each method has the same two last parameters:</p><ul><li><code>OperationRequest context</code>: this data object contains the headers and the parameters of the HTTP request</li><li><code>Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler</code>: this callback accepts an <code>OperationResponse</code> data object that will encapsulate the body of the result, the status code, the status message and the headers</li></ul><p>The generated handler receives only the <code>OperationRequest</code> data object and extracts from it all operation parameters. For example, when the router receives a request at <code>getTransactionsList</code>, it sends to <code>TransactionsManagerService</code> the <code>OperationRequest</code> containing the <code>RequestParameters</code> map. From this map, the service generated handler extracts the <code>from</code> parameter.</p><p>Therefore <strong>operation parameters names should match method parameter names</strong>.</p><p>When you want to extract the body you must use <code>body</code> keyword. For more details, please refer to the <a href="https://vertx.io/docs/vertx-web-api-service/java/">documentation</a>.</p><h2 id=implement-the-service>Implement the service</h2><p>Now that you have your interface, you can implement the service:</p><pre><code class="hljs java"><span class=hljs-keyword>public</span> <span class=hljs-class><span class=hljs-keyword>class</span> <span class=hljs-title>TransactionsManagerServiceImpl</span> <span class=hljs-keyword>implements</span> <span class=hljs-title>TransactionsManagerService</span> </span>{
+
+  <span class=hljs-keyword>private</span> Vertx vertx;
+
+  <span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-title>TransactionsManagerServiceImpl</span><span class=hljs-params>(Vertx vertx)</span> </span>{  <span class=hljs-keyword>this</span>.vertx = vertx;  }
+
+  <span class=hljs-annotation>@Override</span>
+  <span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-keyword>void</span> <span class=hljs-title>getTransactionsList</span><span class=hljs-params>(List&lt;String&gt; from, OperationRequest context, Handler&lt;AsyncResult&lt;OperationResponse&gt;&gt; resultHandler)</span></span>{
+    <span class=hljs-comment>// Write your business logic here</span>
+    resultHandler.handle(Future.succeededFuture(OperationResult.completedWithJson(resultJson)));
+  }
+
+  <span class=hljs-comment>// Implement other operations</span>
+
+}</code></pre><p>Check the <code>OperationResult</code> documentation to look at various handy methods to create a complete response.</p><h2 id=mount-the-service>Mount the Service</h2><p>Now that you have your service interface and implementation, you can mount your service with <code>ServiceBinder</code>:</p><pre><code class="hljs java">ServiceBinder serviceBinder = <span class=hljs-keyword>new</span> ServiceBinder(vertx);
+
+TransactionsManagerService transactionsManagerService = TransactionsManagerService.create(vertx);
+registeredConsumers.add(
+  serviceBinder
+    .setAddress(<span class=hljs-string>"transactions_manager.myapp"</span>)
+    .register(TransactionsManagerService.class, transactionsManagerService)
+);</code></pre><h2 id=and-the-router-factory->And the Router Factory?</h2><p>The service is up and running, but we need to connect it to the <code>Router</code> built by <code>OpenAPI3RouterFactory</code>:</p><pre><code class="hljs java">OpenAPI3RouterFactory.create(<span class=hljs-keyword>this</span>.vertx, <span class=hljs-string>"my_spec.yaml"</span>, openAPI3RouterFactoryAsyncResult -&gt; {
+  <span class=hljs-keyword>if</span> (openAPI3RouterFactoryAsyncResult.succeeded()) {
+    OpenAPI3RouterFactory routerFactory = openAPI3RouterFactoryAsyncResult.result();
+    <span class=hljs-comment>// Mount services on event bus based on extensions</span>
+    routerFactory.mountServicesFromExtensions(); <span class=hljs-comment>// &lt;- Pure magic happens!</span>
+    <span class=hljs-comment>// Generate the router</span>
+    Router router = routerFactory.getRouter();
+    server = vertx.createHttpServer(<span class=hljs-keyword>new</span> HttpServerOptions().setPort(<span class=hljs-number>8080</span>));
+    server.requestHandler(router).listen();
+    <span class=hljs-comment>// Initialization completed</span>
+  } <span class=hljs-keyword>else</span> {
+    <span class=hljs-comment>// Something went wrong during router factory initialization</span>
+  }
+});</code></pre><p>In our spec example we added an extension <code>x-vertx-event-bus</code> to each operation that specifies the address of the service. Using this extension, you only need to call <code>OpenAPI3RouterFactory.mountServicesFromExtensions()</code> to trigger a scan of all operations and mount all found service addresses. For each operation that contains <code>x-vertx-event-bus</code>, the Router Factory instantiates an handler that routes the incoming requests to the address you specified.</p><p>This is one of the methods you can use to match services with router operation handlers. Check the documentation for all details.</p><h2 id=more-examples>More examples</h2><p>Check out the complete example in <a href=https://github.com/vert-x3/vertx-examples/tree/master/web-api-service-example>vertx-examples repo</a>.</p><p>Thanks you for your time, stay tuned for more updates! And please provide feedback about this new package!</p></article></article></div><div class=row><div class=col-xs-12 id=disqus_thread></div></div><script>var disqus_config = function () {
+  this.page.url = "https://vertx.tk/blog/vert-x-web-api-service-introduction/";
+  this.page.identifier = "/blog/vert-x-web-api-service-introduction/";
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://vertx.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><footer><div class=container><div class=row><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse Vert.x</h2><ul class=list-unstyled><li><a href="https://vertx.tk/">主页</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Community</h2><ul class=list-unstyled><li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li><li><a href="https://vertx.tk/materials/">学习资料</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx>User Group</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx-dev>Developer Group</a></li><li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse</h2><ul class=list-unstyled><li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li><li><a href=https://eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=http://www.eclipse.org/legal>Legal Resources</a></li></ul></div><div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright"><p>Eclipse Vert.x is open source and dual-licensed under the <a href=http://www.eclipse.org/legal/epl-v20.html>Eclipse Public License 2.0</a> and <a href=https://www.apache.org/licenses/LICENSE-2.0.html>Apache License 2.0</a>.</p><p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>Design by <a href=https://www.michel-kraemer.com>Michel Kr&auml;mer</a>.</p><div class=row><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2"><a href=http://eclipse.org><img class="logo eclipse-logo" src=https://vertx.tk/assets/eclipse_logo_grey_small.png width=204 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0"><a href=http://cloudbees.com><img class="logo cloudbees-logo" src=https://vertx.tk/assets/Button-Built-on-CB-1-grey.png width=180 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler"><a href=http://www.ej-technologies.com/products/jprofiler/overview.html style=text-decoration:none><img class="logo jprofiler-logo" src=https://vertx.tk/assets/jprofiler-logo.png width=48 height=48><span class=jprofiler-logo>&nbsp; JPROFILER</span></a></div></div></div></div></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script><script src=https://vertx.tk/javascripts/bootstrap.min.js></script><script src=https://vertx.tk/javascripts/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script><link rel=stylesheet type=text/css href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js></script><script>window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});</script></body></html>

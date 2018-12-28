@@ -281,7 +281,7 @@ If you want to notify the sender that processing failed, then @see \io\vertx\jph
                                             <a id="method_body"></a>
                         <div class="element clickable method public  method_body" data-toggle="collapse" data-target=".method_body .collapse">
                             <h2>The body of the message. Can be null.</h2>
-                            <pre>body() : object</pre>
+                            <pre>body() : mixed</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
 
@@ -302,7 +302,7 @@ If you want to notify the sender that processing failed, then @see \io\vertx\jph
 
                                     
                                                                             <h3>Response</h3>
-                                        <code>object</code><p><p>the body, or null.</p></p>
+                                        <code>mixed</code><p><p>the body, or null.</p></p>
                                                                     </div>
                             </div>
 
@@ -411,7 +411,7 @@ If the message was sent specifying a reply handler, that handler will be
 called when it has received a reply. If the message wasn't sent specifying a receipt handler
 this method does nothing.
 
-param $message [object] the message to reply with.
+param $message [mixed] the message to reply with.
 <b>
 reply($message)
 </b>
@@ -419,7 +419,7 @@ reply($message)
 The same as <code>reply(R message)</code> but you can specify handler for the reply - i.e.
 to receive the reply to the reply.
 
-param $message [object] the message to reply with.
+param $message [mixed] the message to reply with.
 param $replyHandler [callable] the reply handler for the reply.
 <b>
 reply($message, $replyHandler)
@@ -427,7 +427,7 @@ reply($message, $replyHandler)
 
 Link @see \io\vertx\jphp\core\eventbus\Message::reply but allows you to specify delivery options for the reply.
 
-param $message [object] the reply message
+param $message [mixed] the reply message
 param $options [DeliveryOptions | array] the delivery options
 <b>
 reply($message, $options)
@@ -436,7 +436,7 @@ reply($message, $options)
 The same as <code>reply(R message, DeliveryOptions)</code> but you can specify handler for the reply - i.e.
 to receive the reply to the reply.
 
-param $message [object] the reply message
+param $message [mixed] the reply message
 param $options [DeliveryOptions | array] the delivery options
 param $replyHandler [callable] the reply handler for the reply.
 <b>
@@ -449,7 +449,7 @@ reply($message, $options, $replyHandler)
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg0</h4>
-                                                <code></code><p><p>object</p></p>
+                                                <code></code><p><p>mixed</p></p>
                                             </div>
                                                                                     <div class="subelement argument">
                                                 <h4>$arg1</h4>
@@ -515,7 +515,7 @@ reply($message, $options, $replyHandler)
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Wed, 05 Dec 2018 08:48:04 +0000.<br/>
+            generated on Tue, 25 Dec 2018 11:11:24 +0000.<br/>
     </footer>
     </body>
 </html>

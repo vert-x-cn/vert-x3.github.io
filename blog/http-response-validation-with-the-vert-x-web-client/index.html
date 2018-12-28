@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang=en><head><title>HTTP response validation with the Vert.x Web Client</title><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta content="width=device-width,initial-scale=1" name=viewport><meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name=description><link href=https://vertx.tk/stylesheets/main.css media=screen rel=stylesheet><link href=https://vertx.tk/stylesheets/font-awesome.min.css media=screen rel=stylesheet><link href=https://vertx.tk/javascripts/styles/rainbow.min.css media=screen rel=stylesheet><!--[if lt IE 9]><script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script><![endif]--><link rel=apple-touch-icon sizes=57x57 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=https://vertx.tk/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/android-chrome-192x192.png sizes=192x192><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-96x96.png sizes=96x96><link rel=icon type=image/png href=https://vertx.tk/assets/favicons/vertx-favicon-7/favicon-16x16.png sizes=16x16><link rel=manifest href=https://vertx.tk/assets/favicons/vertx-favicon-7/manifest.json><link rel=mask-icon href=https://vertx.tk/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content=#7d3194><meta name=msapplication-TileImage content=https://vertx.tk/assets/favicons/vertx-favicon-7/mstile-144x144.png><meta name=theme-color content=#ffffff><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel=stylesheet type=text/css><link rel=alternate type=application/rss+xml title=RSS href=https://vertx.tk/feed.xml><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');</script><style>.page-link-to-github {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      border: 1px solid #782B90;
+      border-radius: 5px;
+      color: #782B90;
+      font-size: 12px;
+      padding: 4px 10px;
+      text-decoration: none;
+      background-color: #ffffff;
+    }
+    .page-link-to-github:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+      background-color: #782B90;
+    }
+
+    .page-link-to-github .github-icon {
+      position: absolute;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*background-position: -50px 0*/
+      background: url('https://vertx.tk/assets/github.png') no-repeat 0 0;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
+      .page-link-to-github .github-icon {
+        background-image:url('https://vertx.tk/assets/github@2x.png');
+        background-size: 150px auto
+      }
+    }
+
+    .page-link-to-github:hover .github-icon {
+      /*background-position: 0 0*/
+      background-position: -100px 0
+    }
+    .text {
+      text-decoration: underline
+    }
+    .page-link-to-github .text {
+      padding-left: 27px
+    }
+    .text {
+      padding-right: 8px
+    }
+    .page-link-to-github {
+      float: right;
+      top: 4px
+    }</style></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.tk/" class=navbar-brand><img alt=Brand src=https://vertx.tk/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=http://start.vertx.io>Starter</a></li><li><a href=https://vertx.io>官网</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/community/">社区</a></li><li><a href="https://vertx.tk/materials/">资料</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>HTTP response validation with the Vert.x Web Client</h2><p class=blog-post-meta>10th December 2018 by <a href=http://github.com/tsegismont>tsegismont</a></p><article><p>By default, a <a href="/docs/vertx-web-client/java/">Vert.x Web Client</a> request ends with an error only if something wrong happens at the network level. In other words, a <code>404 Not Found</code> response, or a response with the wrong content type, are <strong>not</strong> considered as failures.</p><p>Hence, you would usually perform sanity checks manually after the response is received:</p><pre><code class=hljs>client
+  .get(<span class=hljs-number>8080</span>, <span class=hljs-string>"myserver.mycompany.com"</span>, <span class=hljs-string>"/some-uri"</span>)
+  .send(ar -&gt; {
+    <span class=hljs-keyword>if</span> (ar.succeeded()) {
+      <span class=hljs-type>HttpResponse</span>&lt;<span class=hljs-type>Buffer</span>&gt; response = ar.<span class=hljs-literal>result</span>();
+      <span class=hljs-keyword>if</span> (response.statusCode() == <span class=hljs-number>200</span> &amp;&amp; response.getHeader(<span class=hljs-string>"content-type"</span>).equals(<span class=hljs-string>"application/json"</span>)) {
+        // <span class=hljs-type>Decode</span> the body <span class=hljs-keyword>as</span> a json <span class=hljs-keyword>object</span>
+        <span class=hljs-type>JsonObject</span> body = response.bodyAsJsonObject();
+      } <span class=hljs-keyword>else</span> {
+        <span class=hljs-type>System</span>.<span class=hljs-keyword>out</span>.println(<span class=hljs-string>"Something went wrong "</span> + response.statusCode());
+      }
+    } <span class=hljs-keyword>else</span> {
+      <span class=hljs-type>System</span>.<span class=hljs-keyword>out</span>.println(<span class=hljs-string>"Something went wrong "</span> + ar.cause().getMessage());
+    }
+  });</code></pre><p>Starting with <a href="/blog/eclipse-vert-x-3-6-0-released/">Vert.x 3.6</a>, you can can trade flexibility for clarity and conciseness using <em>response predicates</em>.</p><h2 id=response-predicates>Response predicates</h2><p><a href=/docs/apidocs/io/vertx/ext/web/client/predicate/ResponsePredicate.html>Response predicates</a> can fail a request when the response does not match criterion.</p><p>The Web Client module comes with a set of ready-to-use predicates:</p><pre><code class=hljs>client
+  .get(<span class=hljs-number>8080</span>, <span class=hljs-string>"myserver.mycompany.com"</span>, <span class=hljs-string>"/some-uri"</span>)
+  .expect(<span class=hljs-type>ResponsePredicate</span>.<span class=hljs-type>SC_SUCCESS</span>)
+  .expect(<span class=hljs-type>ResponsePredicate</span>.<span class=hljs-type>JSON</span>)
+  .send(ar -&gt; {
+    <span class=hljs-keyword>if</span> (ar.succeeded()) {
+      <span class=hljs-type>HttpResponse</span>&lt;<span class=hljs-type>Buffer</span>&gt; response = ar.<span class=hljs-literal>result</span>();
+      // <span class=hljs-type>Safely</span> decode the body <span class=hljs-keyword>as</span> a json <span class=hljs-keyword>object</span>
+      <span class=hljs-type>JsonObject</span> body = response.bodyAsJsonObject();
+    } <span class=hljs-keyword>else</span> {
+      <span class=hljs-type>System</span>.<span class=hljs-keyword>out</span>.println(<span class=hljs-string>"Something went wrong "</span> + ar.cause().getMessage());
+    }
+  });</code></pre><p>The web is full of HTTP/JSON endpoints, so there is no doubt the <code>ResponsePredicate.SC_SUCCESS</code> and <code>ResponsePredicate.JSON</code> can be handy.</p><p>Nevertheless, you might also need to check that the status code is whithin a specific range:</p><pre><code class=hljs>client
+  .<span class=hljs-keyword>get</span>(<span class=hljs-number>8080</span>, <span class=hljs-string>"myserver.mycompany.com"</span>, <span class=hljs-string>"/some-uri"</span>)
+  .expect(ResponsePredicate.status(<span class=hljs-number>200</span>, <span class=hljs-number>202</span>))
+  .send(ar -&gt; {
+    <span class=hljs-comment>// ....</span>
+  });</code></pre><p>Or that the content is of a specific type:</p><pre><code class=hljs>client
+  .<span class=hljs-keyword>get</span>(<span class=hljs-number>8080</span>, <span class=hljs-string>"myserver.mycompany.com"</span>, <span class=hljs-string>"/some-uri"</span>)
+  .expect(ResponsePredicate.contentType(<span class=hljs-string>"some/content-type"</span>))
+  .send(ar -&gt; {
+    <span class=hljs-comment>// ....</span>
+  });</code></pre><p>Please refer to the <a href=/docs/apidocs/io/vertx/ext/web/client/predicate/ResponsePredicate.html><code>ResponsePredicate</code> documentation</a> for a full list of predefined predicates.</p><h3 id=custom-predicates>Custom predicates</h3><p>Eventually, predicates were not designed for status code and content type checking only, so feel free to create your own validation code:</p><pre><code class=hljs><span class=hljs-comment>// Check CORS header allowing to do POST</span>
+Function<span class=hljs-subst>&lt;</span>HttpResponse<span class=hljs-subst>&lt;</span><span class=hljs-literal>Void</span><span class=hljs-subst>&gt;</span>, ResponsePredicateResult<span class=hljs-subst>&gt;</span> methodsPredicate <span class=hljs-subst>=</span> resp <span class=hljs-subst>-&gt; </span>{
+  <span class=hljs-built_in>String</span> methods <span class=hljs-subst>=</span> resp<span class=hljs-built_in>.</span>getHeader(<span class=hljs-string>"Access-Control-Allow-Methods"</span>);
+  <span class=hljs-keyword>if</span> (methods <span class=hljs-subst>!=</span> <span class=hljs-built_in>null</span>) {
+    <span class=hljs-keyword>if</span> (methods<span class=hljs-built_in>.</span>contains(<span class=hljs-string>"POST"</span>)) {
+      <span class=hljs-keyword>return</span> ResponsePredicateResult<span class=hljs-built_in>.</span>success();
+    }
+  }
+  <span class=hljs-keyword>return</span> ResponsePredicateResult<span class=hljs-built_in>.</span>failure(<span class=hljs-string>"Does not work"</span>);
+};
+
+<span class=hljs-comment>// Send pre-flight CORS request</span>
+client
+  <span class=hljs-built_in>.</span>request(HttpMethod<span class=hljs-built_in>.</span>OPTIONS, <span class=hljs-number>8080</span>, <span class=hljs-string>"myserver.mycompany.com"</span>, <span class=hljs-string>"/some-uri"</span>)
+  <span class=hljs-built_in>.</span>putHeader(<span class=hljs-string>"Origin"</span>, <span class=hljs-string>"Server-b.com"</span>)
+  <span class=hljs-built_in>.</span>putHeader(<span class=hljs-string>"Access-Control-Request-Method"</span>, <span class=hljs-string>"POST"</span>)
+  <span class=hljs-built_in>.</span>expect(methodsPredicate)
+  <span class=hljs-built_in>.</span>send(ar <span class=hljs-subst>-&gt; </span>{
+    <span class=hljs-keyword>if</span> (ar<span class=hljs-built_in>.</span>succeeded()) {
+      <span class=hljs-comment>// Process the POST request now</span>
+    } <span class=hljs-keyword>else</span> {
+      System<span class=hljs-built_in>.</span>out<span class=hljs-built_in>.</span>println(<span class=hljs-string>"Something went wrong "</span> <span class=hljs-subst>+</span> ar<span class=hljs-built_in>.</span>cause()<span class=hljs-built_in>.</span>getMessage());
+    }
+  });</code></pre><p>Note that response predicates are evaluated <em>before</em> the response body is received. Therefore <strong>you can’t inspect the response body</strong> in a predicate test function, only status code, status message and response headers.</p><h2 id=dealing-with-failures>Dealing with failures</h2><p>By default, response predicates (including the predefined ones) use a generic error converter which discards the response body and conveys a simple message. You can customize the exception class by changing the error converter:</p><pre><code class=hljs><span class=hljs-type>ResponsePredicate</span> predicate = <span class=hljs-type>ResponsePredicate</span>.create(<span class=hljs-type>ResponsePredicate</span>.<span class=hljs-type>SC_SUCCESS</span>, <span class=hljs-literal>result</span> -&gt; {
+  <span class=hljs-keyword>return</span> new <span class=hljs-type>MyCustomException</span>(<span class=hljs-literal>result</span>.message());
+});</code></pre><p>Beware that creating exceptions in Java comes with the <strong>performance cost</strong> of capturing the call stack. The generic error converter generates exceptions that do not capture it.</p><h3 id=reading-details-in-error-responses>Reading details in error responses</h3><p>Many web APIs provide details in error responses. For example, the <a href=https://developer.marvel.com/docs>Marvel API</a> uses this JSON object format:</p><pre><code class=hljs>{
+  "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"InvalidCredentials"</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"The passed API key is invalid."</span>
+</span>}</code></pre><p>To avoid losing this information, it is possible to wait for the response body to be fully received before the error converter is called:</p><pre><code class=hljs><span class=hljs-type>ErrorConverter</span> <span class=hljs-keyword>converter</span> = <span class=hljs-type>ErrorConverter</span>.createFullBody(<span class=hljs-literal>result</span> -&gt; {
+
+  // <span class=hljs-type>Invoked</span> after the response body <span class=hljs-keyword>is</span> fully received
+  <span class=hljs-type>HttpResponse</span>&lt;<span class=hljs-type>Buffer</span>&gt; response = <span class=hljs-literal>result</span>.response();
+
+  <span class=hljs-keyword>if</span> (response.getHeader(<span class=hljs-string>"content-type"</span>).equals(<span class=hljs-string>"application/json"</span>)) {
+    // <span class=hljs-type>Error</span> body <span class=hljs-keyword>is</span> <span class=hljs-type>JSON</span> data
+    <span class=hljs-type>JsonObject</span> body = response.bodyAsJsonObject();
+    <span class=hljs-keyword>return</span> new <span class=hljs-type>MyCustomException</span>(body.getString(<span class=hljs-string>"code"</span>), body.getString(<span class=hljs-string>"message"</span>));
+  }
+
+  // <span class=hljs-type>Fallback</span> to defaut message
+  <span class=hljs-keyword>return</span> new <span class=hljs-type>MyCustomException</span>(<span class=hljs-literal>result</span>.message());
+});
+
+<span class=hljs-type>ResponsePredicate</span> predicate = <span class=hljs-type>ResponsePredicate</span>.create(<span class=hljs-type>ResponsePredicate</span>.<span class=hljs-type>SC_SUCCESS</span>, <span class=hljs-keyword>converter</span>);</code></pre><p>That’s it! Feel free to comment here or ask questions on our <a href=/community>community channels</a>.</p></article></article></div><div class=row><div class=col-xs-12 id=disqus_thread></div></div><script>var disqus_config = function () {
+  this.page.url = "https://vertx.tk/blog/http-response-validation-with-the-vert-x-web-client/";
+  this.page.identifier = "/blog/http-response-validation-with-the-vert-x-web-client/";
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://vertx.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><footer><div class=container><div class=row><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse Vert.x</h2><ul class=list-unstyled><li><a href="https://vertx.tk/">主页</a></li><li><a href="https://vertx.tk/download/">下载</a></li><li><a href="https://vertx.tk/docs/">文档</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>维基</a></li><li><a href="https://vertx.tk/blog/">博客</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Community</h2><ul class=list-unstyled><li><a href="https://vertx.tk/community/">帮助 &amp; 贡献者</a></li><li><a href="https://vertx.tk/materials/">学习资料</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx>User Group</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx-dev>Developer Group</a></li><li><a href="//shang.qq.com/wpa/qunwpa?idkey=587f58cacb9557e3291b46098e0fe09427b98a1c0f866da23c04c2762bc7e2ad">QQ群</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse</h2><ul class=list-unstyled><li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li><li><a href=https://eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=http://www.eclipse.org/legal>Legal Resources</a></li></ul></div><div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright"><p>Eclipse Vert.x is open source and dual-licensed under the <a href=http://www.eclipse.org/legal/epl-v20.html>Eclipse Public License 2.0</a> and <a href=https://www.apache.org/licenses/LICENSE-2.0.html>Apache License 2.0</a>.</p><p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>Design by <a href=https://www.michel-kraemer.com>Michel Kr&auml;mer</a>.</p><div class=row><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2"><a href=http://eclipse.org><img class="logo eclipse-logo" src=https://vertx.tk/assets/eclipse_logo_grey_small.png width=204 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0"><a href=http://cloudbees.com><img class="logo cloudbees-logo" src=https://vertx.tk/assets/Button-Built-on-CB-1-grey.png width=180 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler"><a href=http://www.ej-technologies.com/products/jprofiler/overview.html style=text-decoration:none><img class="logo jprofiler-logo" src=https://vertx.tk/assets/jprofiler-logo.png width=48 height=48><span class=jprofiler-logo>&nbsp; JPROFILER</span></a></div></div></div></div></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script><script src=https://vertx.tk/javascripts/bootstrap.min.js></script><script src=https://vertx.tk/javascripts/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script><link rel=stylesheet type=text/css href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js></script><script>window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});</script></body></html>
